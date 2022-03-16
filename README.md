@@ -42,7 +42,7 @@ WINDOWS 11 SETTINGS <br />
 Settings > Sound > Volume Mixer <br />
 ![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)<br />
 
-
+Your microphone for the app should be what ever microphone you normally use!
 # KillFrenzy Avatar Text
 To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
