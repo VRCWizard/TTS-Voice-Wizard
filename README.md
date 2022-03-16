@@ -1,5 +1,5 @@
 # TTS-Voice-Wizard-Beta
-Repository to allow testers to download and run the TTS Voice Wizard software.
+This app allows you to convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognitiona and TTS. It also allows you to send that text as OSC messages to VRChat which can be displayed on your avatar using KillFrenzyAvatarText. https://github.com/killfrenzy96/KillFrenzyAvatarText
 
 ![AppMain](https://user-images.githubusercontent.com/101527472/158492198-deabcf22-e5a7-4b7c-a12a-b741897e8d83.jpg)
 
