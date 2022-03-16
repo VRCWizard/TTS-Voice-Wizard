@@ -36,6 +36,9 @@ You should need change the Apps output device to the virtual cable output which 
 To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer
 https://github.com/killfrenzy96/KillFrenzyAvatarText/
 
+# Need Help / Have Questions?
+Join the discord server https://discord.gg/7ncjXEzf
+
 # Donation
 If you feel like it <3
 https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD
