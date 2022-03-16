@@ -3,20 +3,20 @@ This app allows you to convert your Speech to Text and back to Speech through Mi
 ![AppMain](https://user-images.githubusercontent.com/101527472/158492198-deabcf22-e5a7-4b7c-a12a-b741897e8d83.jpg)
 
 # Getting Started
-Download the latest version from releases and run the .exe file
-https://github.com/VRCWizard/TTS-Voice-Wizard/releases
+Download the latest version from releases and run the .exe file <br />
+https://github.com/VRCWizard/TTS-Voice-Wizard/releases <br />
 
 # Microsoft Azure Subscription Key
 For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
 https://azure.microsoft.com/en-us/free/ <br />
-or
+or <br />
 https://azure.microsoft.com/en-us/free/student (no credit card required)<br />
 
 relevent information: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
 
 
-After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application.
-https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF
+After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application. <br />
+https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
 
 ![Screenshot 2022-03-15 190559](https://user-images.githubusercontent.com/101527472/158492227-f704aaef-4077-413d-9f9d-a48c6183df0d.jpg)
@@ -38,17 +38,18 @@ You will need change the Apps output device to the virtual cable output which wi
 
 
 # KillFrenzy Avatar Text
-To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer
-https://github.com/killfrenzy96/KillFrenzyAvatarText/
+To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer <br />
+https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 
 # Can I set hotkey on my controllers?
-this feature is not avaliable as apart of this ATM but you can use this handy program!
-https://github.com/BOLL7708/OpenVR2Key
-(set one button to "ctrl" and one to "g")
+this feature is not avaliable as apart of this ATM but you can use this handy program! <br />
+https://github.com/BOLL7708/OpenVR2Key <br />
+(set one button to "ctrl" and one to "g") <br />
 
 # Need Help / Have Questions?
-Join the discord server https://discord.gg/7ncjXEzf
+Join the discord server <br />
+https://discord.gg/7ncjXEzf <br />
 
 # Donation
-If you feel like it <3
-https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD
+If you feel like it <3 <br />
+https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD <br />
