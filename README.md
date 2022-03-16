@@ -48,11 +48,11 @@ To have text output on your avatar in vrchat you must install killfrenzy96's Ava
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 
 # Can I set hotkey on my controllers?
-this feature is not avaliable as apart of this ATM but you can use this handy program! <br />
+This feature is not avaliable as apart of this ATM but you can use this handy program! <br />
 https://github.com/BOLL7708/OpenVR2Key <br />
 (set one button to "ctrl" and one to "g") <br />
 
-# Need Help / Have Questions?
+# Need Help / Have Questions / Wanna make suggestions?
 Join the discord server <br />
 https://discord.gg/7ncjXEzf <br />
 
