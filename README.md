@@ -4,6 +4,7 @@ Repository to allow testers to download and run the TTS Voice Wizard software.
 ![AppMain](https://user-images.githubusercontent.com/101527472/158492198-deabcf22-e5a7-4b7c-a12a-b741897e8d83.jpg)
 
 # Microsoft Azure Subscription Key
+For Speech Recognition and TTS to work you must have an Azure Subscription Key.
 https://azure.microsoft.com/en-us/free/
 
 After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application.
@@ -24,6 +25,7 @@ Download a virtual audio cable, you can find one here https://vb-audio.com/Cable
 
 To be able to hear the TTS while outputing it though the microphone checkmark "listen to this device" for the virtual cable.
 Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties > Listen
+(known issue, on computer restart listen to this device may not work. To fix this uncheck/apply and then recheck/apply changes.)
 ![Screenshot 2022-03-15 192241](https://user-images.githubusercontent.com/101527472/158493212-8b1db84b-bf10-45ae-bca4-71c858113bb9.jpg)
 
 
