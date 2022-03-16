@@ -32,9 +32,15 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 (known issue, on computer restart listen to this device may not work. To fix this uncheck/apply and then recheck/apply changes.)
 ![Screenshot 2022-03-15 192241](https://user-images.githubusercontent.com/101527472/158493212-8b1db84b-bf10-45ae-bca4-71c858113bb9.jpg)
 
-You will need change the Apps output device to the virtual cable output which will allow you to play the TTS though your microphone.
-(WINDOWS 11 SETTINGS)
-![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)
+You will then need change the Apps **output device**  to the **virtual cable** which will allow you to play the TTS though your microphone.
+WINDOWS 10 <br />
+Settings > Sound > App volume and device preferences <br />
+![windows10 settings](https://user-images.githubusercontent.com/101527472/158684476-8ead5ee2-f441-4249-becc-530798b27ed8.png)
+
+
+WINDOWS 11 SETTINGS <br />
+Settings > Sound > Volume Mixer <br />
+![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)<br />
 
 
 # KillFrenzy Avatar Text
