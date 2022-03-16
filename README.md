@@ -15,10 +15,6 @@ https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF
 
 # How to output TTS though microphone?
 Upon clicking the TTS button you should be able to hear the TTS in the Sara voice by default (The app must have outputted audio for you to select it in volume mixer)
-(WINDOWS 11 SETTINGS)
-![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)
-
-
 
 Download a virtual audio cable, you can find one here https://vb-audio.com/Cable/
 
@@ -27,6 +23,10 @@ To be able to hear the TTS while outputing it though the microphone checkmark "l
 Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties > Listen
 (known issue, on computer restart listen to this device may not work. To fix this uncheck/apply and then recheck/apply changes.)
 ![Screenshot 2022-03-15 192241](https://user-images.githubusercontent.com/101527472/158493212-8b1db84b-bf10-45ae-bca4-71c858113bb9.jpg)
+
+You should need change the Apps output device to the virtual cable output which will allow you to play the sound TTS though your microphone.
+(WINDOWS 11 SETTINGS)
+![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)
 
 
 # KillFrenzy Avatar Text
