@@ -7,8 +7,13 @@ Download the latest version from releases and run the .exe file
 https://github.com/VRCWizard/TTS-Voice-Wizard/releases
 
 # Microsoft Azure Subscription Key
-For Speech Recognition and TTS to work you must have an Azure Subscription Key.
-https://azure.microsoft.com/en-us/free/
+For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
+https://azure.microsoft.com/en-us/free/ <br />
+or
+https://azure.microsoft.com/en-us/free/student (no credit card required)<br />
+
+relevent information: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
+
 
 After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application.
 https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF
