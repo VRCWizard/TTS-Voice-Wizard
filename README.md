@@ -15,7 +15,7 @@ https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF
 
 # How to output TTS though microphone?
 Upon clicking the TTS button you should be able to hear the TTS in the Sara voice by default (The app must have outputted audio for you to select it in volume mixer)
-
+(WINDOWS 11 SETTINGS)
 ![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)
 
 
