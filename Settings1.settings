@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OSCVRCWiz" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="yourKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="yourRegion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">eastus</Value>
+    </Setting>
+    <Setting Name="remember" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="recognition" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="activationWord" Type="System.String" Scope="User">
+      <Value Profile="(Default)">begin quoting me</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
