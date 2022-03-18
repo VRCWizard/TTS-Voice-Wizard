@@ -13,7 +13,7 @@ Download the x64 version for desktop apps.
 For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
 https://azure.microsoft.com/en-us/free/ <br />
 or <br />
-https://azure.microsoft.com/en-us/free/student (no credit card required)<br />
+https://azure.microsoft.com/en-us/free/students/(no credit card required)<br />
 
 relevent information: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
 
