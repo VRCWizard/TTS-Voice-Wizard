@@ -53,7 +53,8 @@ https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 # Can I set hotkey on my controllers?
 This feature is not avaliable as apart of this ATM but you can use this handy program! <br />
 https://github.com/BOLL7708/OpenVR2Key <br />
-(set one button to "ctrl" and one to "g") <br />
+Make sure app is not running then set a button to "ctrl + g" (if app is running it will steal the input)<br />
+
 
 # Need Help / Have Questions / Wanna make suggestions?
 Join the discord server <br />
