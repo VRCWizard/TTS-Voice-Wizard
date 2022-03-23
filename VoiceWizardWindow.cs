@@ -274,7 +274,16 @@ namespace OSCVRCWiz
             }
         }
 
-
+        public void logLine(string line)
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(AppendTextBox), new object[] { line });
+                return;
+            }
+            richTextBox1.Select(0, 0);
+            richTextBox1.SelectedText = line + "\r\n";
+        }
 
 
         public void AppendTextBox(string value)

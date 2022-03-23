@@ -10,7 +10,8 @@ namespace OSCVRCWiz
     {
         public async void outputLog(VoiceWizardWindow MainForm, string textstring)
         {
-            MainForm.AppendTextBox("You Said: " + textstring + "\r");
+            //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
+            MainForm.logLine("["+DateTime.Now.ToString("h:mm:ss tt") +"]" +" You Said: " + textstring);
 
         }
         public async void outputVRChat(VoiceWizardWindow MainForm, string textstring)
@@ -166,7 +167,8 @@ namespace OSCVRCWiz
             int frenzyDisplayLimit = 128;
             int frenzyDisplayMaxChar = 4;
 
-
+            //currently error if u talk past word limit (setting point back to 1 around here should fix it)
+            //also increase limit
 
             for (int z = startingPoint; z <= (frenzyDisplayLimit / frenzyDisplayMaxChar); z++) //INCREASE VALUE TO Killfrenzy limit!!! (old limit 128/4=32 chracters)
             {

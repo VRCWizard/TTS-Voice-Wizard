@@ -43,7 +43,8 @@ namespace OSCVRCWiz
           
             if (e.Result.Text == MainForm.activationWord)
             {
-                MainForm.AppendTextBox("Recognized Activation Word: " + MainForm.activationWord + "\r");
+                // MainForm.AppendTextBox("Recognized Activation Word: " + MainForm.activationWord + "\r");
+                MainForm.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]"+ " Recognized Activation Word: " + MainForm.activationWord);
                 MainForm.speechTTSButton.PerformClick();
                // MessageBox.Show("This ran");
 
