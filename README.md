@@ -58,7 +58,7 @@ Make sure app is not running then set a button to "ctrl + g" (if app is running 
 
 # Need Help / Have Questions / Wanna make suggestions?
 Join the discord server <br />
-https://discord.gg/7ncjXEzf <br />
+https://discord.gg/YjgR9SWPnW (updated to permanate link, thank you)<br />
 
 # Donation
 If you feel like it <3 <br />
