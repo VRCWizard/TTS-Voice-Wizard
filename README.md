@@ -63,3 +63,4 @@ https://discord.gg/YjgR9SWPnW (updated to permanate link, thank you)<br />
 # Donation
 If you feel like it <3 <br />
 https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD <br />
+(will also take github stars XD)
