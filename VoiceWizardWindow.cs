@@ -19,7 +19,8 @@ namespace OSCVRCWiz
         public string activationWord = Settings1.Default.activationWord;
         public int debugDelayValue = 250;// Recommended delay of 250ms 
         int audioOutputIndex = -1;
-      //  SpeechRecognitionEngine recognizer;
+        public bool profanityFilter = true;
+        //  SpeechRecognitionEngine recognizer;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
@@ -187,6 +188,15 @@ namespace OSCVRCWiz
 
 
                 speechConfig.SpeechRecognitionLanguage = "en-US";
+
+                if (profanityFilter == false)
+                {
+                    speechConfig.SetProfanity(ProfanityOption.Raw);
+                }
+                if (profanityFilter == true)
+                {
+                    speechConfig.SetProfanity(ProfanityOption.Masked);
+                }
 
                 //To recognize speech from an audio file, use `FromWavFileInput` instead of `FromDefaultMicrophoneInput`:
                 //using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
@@ -368,7 +378,7 @@ namespace OSCVRCWiz
 
         private void comboBoxVirtualOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
-            audioOutputIndex = comboBoxVirtualOutput.SelectedIndex - 1; //+1 while i have mapped device in there
+          //  audioOutputIndex = comboBoxVirtualOutput.SelectedIndex - 1; //+1 while i have mapped device in there
             System.Diagnostics.Debug.WriteLine("audio device index: " + audioOutputIndex);
 
         }
@@ -445,6 +455,26 @@ namespace OSCVRCWiz
             activationWord = textBoxActivationWord.Text.ToString();
             Settings1.Default.activationWord = textBoxActivationWord.Text.ToString();
             Settings1.Default.Save();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox5.Checked == true)
+            {
+                profanityFilter = true;
+
+            }
+            if (checkBox5.Checked == false)
+            {
+                profanityFilter = false;
+
+            }
+
         }
     }
 }

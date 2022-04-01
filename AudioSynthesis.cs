@@ -9,12 +9,14 @@ namespace OSCVRCWiz
 {
     public class AudioSynthesis
     {
-   
+        
+
         //TTS
         public static async Task SynthesizeAudioAsync(string text, string style, string rate, string pitch, string volume, string voice, int outputIndex) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
+                
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
                 // Note: if only language is set, the default voice of that language is chosen.
                 //  config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
@@ -22,6 +24,8 @@ namespace OSCVRCWiz
                 // The voice setting will not overwrite the voice element in input SSML.
                 //config.SpeechSynthesisVoiceName = "en-US-JennyNeural";
                 // config.SpeechSynthesisVoiceName = "en-US-SaraNeural";
+           
+
 
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition

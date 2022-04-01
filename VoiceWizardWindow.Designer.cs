@@ -51,6 +51,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -58,9 +59,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.buttonActivationWord = new System.Windows.Forms.Button();
             this.textBoxActivationWord = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBoxVirtualOutput = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -370,6 +368,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage2.Controls.Add(this.checkBox5);
             this.tabPage2.Controls.Add(this.checkBox1);
             this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Controls.Add(this.checkBox2);
@@ -377,9 +376,6 @@
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.buttonActivationWord);
             this.tabPage2.Controls.Add(this.textBoxActivationWord);
-            this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.comboBoxVirtualOutput);
             this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label12);
@@ -394,13 +390,27 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Checked = true;
+            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.checkBox5.Location = new System.Drawing.Point(27, 216);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(251, 24);
+            this.checkBox5.TabIndex = 40;
+            this.checkBox5.Text = "Voice Recognition Profanity Filter";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(32, 253);
+            this.checkBox1.Location = new System.Drawing.Point(27, 276);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(291, 24);
             this.checkBox1.TabIndex = 24;
@@ -422,12 +432,13 @@
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.checkBox2.Location = new System.Drawing.Point(32, 223);
+            this.checkBox2.Location = new System.Drawing.Point(27, 246);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(190, 24);
             this.checkBox2.TabIndex = 25;
             this.checkBox2.Text = "Output Transcript in Log";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox4
             // 
@@ -466,35 +477,6 @@
             this.textBoxActivationWord.Size = new System.Drawing.Size(334, 27);
             this.textBoxActivationWord.TabIndex = 35;
             this.textBoxActivationWord.Text = "Quote";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(367, 413);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(124, 20);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "not implemented";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(23, 387);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(144, 20);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "Virtual Output Cable";
-            // 
-            // comboBoxVirtualOutput
-            // 
-            this.comboBoxVirtualOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVirtualOutput.FormattingEnabled = true;
-            this.comboBoxVirtualOutput.Location = new System.Drawing.Point(27, 410);
-            this.comboBoxVirtualOutput.Name = "comboBoxVirtualOutput";
-            this.comboBoxVirtualOutput.Size = new System.Drawing.Size(334, 28);
-            this.comboBoxVirtualOutput.TabIndex = 26;
-            this.comboBoxVirtualOutput.SelectedIndexChanged += new System.EventHandler(this.comboBoxVirtualOutput_SelectedIndexChanged);
             // 
             // textBox4
             // 
@@ -697,9 +679,6 @@
         private TextBox textBox4;
         private Label label15;
         private CheckBox checkBox2;
-        private Label label14;
-        private ComboBox comboBoxVirtualOutput;
-        private Label label16;
         private CheckBox checkBox3;
         private Label label17;
         private Button buttonActivationWord;
@@ -707,5 +686,6 @@
         private CheckBox checkBox4;
         private Label label18;
         public Button speechTTSButton;
+        private CheckBox checkBox5;
     }
 }
