@@ -175,7 +175,30 @@
             "Jacob",
             "Michelle",
             "Monica",
-            "Davis"});
+            "Davis",
+            "Natasha (AU)",
+            "William (AU)",
+            "Clara (CA)",
+            "Liam (CA)",
+            "Sonia (UK)",
+            "Ryan (UK)",
+            "Abbi (UK)",
+            "Bella (UK)",
+            "Hollie (UK)",
+            "Olivia (UK)",
+            "Maisie (UK)",
+            "Alfie (UK)",
+            "Elliot (UK)",
+            "Ethan (UK)",
+            "Noah (UK)",
+            "Oliver (UK)",
+            "Thomas (UK)",
+            "Dalia [Spanish] (MX)",
+            "Jorge [Spanish] (MX)",
+            "Brigitte [French]",
+            "Jerome [French]",
+            "Amala [German]",
+            "Christoph [German]"});
             this.comboBox2.Location = new System.Drawing.Point(28, 306);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(187, 28);

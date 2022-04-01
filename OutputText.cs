@@ -111,6 +111,12 @@ namespace OSCVRCWiz
                     case '$': letter = 0.031496063f; break;
                     case '\'': letter = 0.05511811f; break;
                     case '.': letter = 0.11023622f; break;
+
+                    case ',': letter = 0.09448819f; break;
+                    case ':': letter = 0.20472442f; break;
+                    case ';': letter = 0.21259843f; break;
+                    case '!': letter = 0.007874016f; break;
+
                     case ' ': letter = 0.0f; break;
                     case '?': letter = 0.24409449f; break;
 

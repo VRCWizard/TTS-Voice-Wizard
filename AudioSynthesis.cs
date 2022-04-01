@@ -9,29 +9,7 @@ namespace OSCVRCWiz
 {
     public class AudioSynthesis
     {
-      /*  public static void OutputSpeechRecognitionResult(SpeechRecognitionResult speechRecognitionResult) //STT
-        {
-            switch (speechRecognitionResult.Reason)
-            {
-                case ResultReason.RecognizedSpeech:
-                    System.Diagnostics.Debug.WriteLine($"RECOGNIZED: Text={speechRecognitionResult.Text}");
-                    break;
-                case ResultReason.NoMatch:
-                    System.Diagnostics.Debug.WriteLine($"NOMATCH: Speech could not be recognized.");
-                    break;
-                case ResultReason.Canceled:
-                    var cancellation = CancellationDetails.FromResult(speechRecognitionResult);
-                    System.Diagnostics.Debug.WriteLine($"CANCELED: Reason={cancellation.Reason}");
-
-                    if (cancellation.Reason == CancellationReason.Error)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
-                        System.Diagnostics.Debug.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
-                        System.Diagnostics.Debug.WriteLine($"CANCELED: Double check the speech resource key and region.");
-                    }
-                    break;
-            }
-        } */
+   
         //TTS
         public static async Task SynthesizeAudioAsync(string text, string style, string rate, string pitch, string volume, string voice, int outputIndex) //TTS Outputs through speakers //can not change voice style
         {
@@ -97,6 +75,37 @@ namespace OSCVRCWiz
                 string monica = "<voice name=\"en-US-MonicaNeural\">";//15
                 string davis = "<voice name=\"en-US-DavisNeural\">";//16
 
+                string natashaAU = "<voice name=\"en-AU-NatashaNeural\">";//17
+                string williamAU = "<voice name=\"en-AU-WilliamNeural\">";//18
+                string claraCA = "<voice name=\"en-CA-ClaraNeural\">";//19
+                string liamCA = "<voice name=\"en-CA-LiamNeural\">";//20
+                string soniaUK = "<voice name=\"en-GB-SoniaNeural\">";//21
+                string ryanUK = "<voice name=\"en-GB-RyanNeural\">";//22
+
+
+                string abbiUK = "<voice name=\"en-GB-AbbiNeural\">";//23
+                string bellaUK = "<voice name=\"en-GB-BellaNeural\">";//23
+                string hollieUK = "<voice name=\"en-GB-HollieNeural\">";//24
+                string oliviaUK = "<voice name=\"en-GB-OliviaNeural\">";//25
+                string maisieUK = "<voice name=\"en-GB-MaisieNeural\">";//26
+
+                string alfieUK = "<voice name=\"	en-GB-AlfieNeural\">";//
+                string elliotUK = "<voice name=\"en-GB-ElliotNeural\">";//
+                string ethanUK = "<voice name=\"en-GB-EthanNeural\">";//
+                string noahUK = "<voice name=\"en-GB-NoahNeural\">";//
+                string oliverUK = "<voice name=\"en-GB-OliverNeural\">";//
+                string thomasUK = "<voice name=\"en-GB-ThomasNeural\">";//
+
+                string daliaSpanish_Mexico = "<voice name=\"es-MX-DaliaNeural\">";//
+                string jorgeSpanish_Mexico = "<voice name=\"es-MX-JorgeNeural\">";//
+
+                string brigitteFrench = "<voice name=\"fr-FR-BrigitteNeural\">";//
+                string jeromeFrench = "<voice name=\"fr-FR-JeromeNeural\">";//
+
+                string amalaGerman = "<voice name=\"de-DE-AmalaNeural\">";//
+                string christophGerman = "<voice name=\"de-DE-ChristophNeural\">";//
+
+
 
                 System.Diagnostics.Debug.WriteLine(rate);
                 System.Diagnostics.Debug.WriteLine(pitch);
@@ -134,6 +143,36 @@ namespace OSCVRCWiz
                     case "Michelle": ssml0 += michelle; ; break;
                     case "Monica": ssml0 += monica; ; break;
                     case "Davis": ssml0 += davis; ; break;
+
+                    case "Natasha (AU)": ssml0 += natashaAU; ; break;
+                    case "William (AU)": ssml0 += williamAU; ; break;
+                    case "Clara (CA)": ssml0 += claraCA; ; break;
+                    case "Liam (CA)": ssml0 += liamCA; ; break;
+                    case "Sonia (UK)": ssml0 += soniaUK; ; break;
+                    case "Ryan (UK)": ssml0 += ryanUK; ; break;
+
+                    case "Abbi (UK)": ssml0 += abbiUK; ; break;
+                    case "Bella (UK)": ssml0 += bellaUK; ; break;
+                    case "Hollie (UK)": ssml0 += hollieUK; ; break;
+                    case "Olivia (UK)": ssml0 += oliviaUK; ; break;
+                    case "Maisie (UK)": ssml0 += maisieUK; ; break;
+
+                    case "Alfie (UK)": ssml0 += alfieUK; ; break;
+                    case "Elliot (UK)": ssml0 += elliotUK; ; break;
+                    case "Ethan (UK)": ssml0 += ethanUK; ; break;
+                    case "Noah (UK)": ssml0 += noahUK; ; break;
+                    case "Oliver (UK)": ssml0 += oliverUK; ; break;
+                    case "Thomas (UK)": ssml0 += thomasUK; ; break;
+
+                    case "Dalia [Spanish] (MX)": ssml0 += daliaSpanish_Mexico; ; break;
+                    case "Jorge [Spanish] (MX)": ssml0 += jorgeSpanish_Mexico; ; break;
+
+                    case "Brigitte [French]": ssml0 += brigitteFrench; ; break;
+                    case "Jerome [French]": ssml0 += jeromeFrench; ; break;
+
+                    case "Amala [German]": ssml0 += amalaGerman; ; break;
+                    case "Christoph [German]": ssml0 += christophGerman; ; break;
+
 
 
                     default: ssml0 += "<voice name=\"en-US-SaraNeural\">"; break;
