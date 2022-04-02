@@ -6,7 +6,7 @@ This app allows you to convert your Speech to Text and back to Speech through Mi
 Download the latest version from releases and run the .exe file (recommended to use latest release, not pre-release) <br />
 https://github.com/VRCWizard/TTS-Voice-Wizard/releases <br />
 
-It may ask you to install missing framework for .Net
+It may ask you to install missing framework for .Net upon running the .exe file.
 Download the x64 version for desktop apps.
 
 # Microsoft Azure Subscription Key
