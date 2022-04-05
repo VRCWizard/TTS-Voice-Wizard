@@ -23,7 +23,7 @@ relevent information: https://docs.microsoft.com/en-us/azure/cost-management-bil
 
 
 After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application. <br />
-https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
+Follow this video to get your key and region information: https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
 
 ![Screenshot 2022-03-15 190559](https://user-images.githubusercontent.com/101527472/158492227-f704aaef-4077-413d-9f9d-a48c6183df0d.jpg)
