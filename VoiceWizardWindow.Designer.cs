@@ -50,7 +50,12 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxErase = new System.Windows.Forms.TextBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -84,20 +89,20 @@
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(477, 3);
+            this.richTextBox1.Location = new System.Drawing.Point(592, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(432, 500);
+            this.richTextBox1.Size = new System.Drawing.Size(436, 458);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
             // speechTTSButton
             // 
-            this.speechTTSButton.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.speechTTSButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.speechTTSButton.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.speechTTSButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.speechTTSButton.Location = new System.Drawing.Point(28, 45);
             this.speechTTSButton.Name = "speechTTSButton";
-            this.speechTTSButton.Size = new System.Drawing.Size(443, 222);
+            this.speechTTSButton.Size = new System.Drawing.Size(552, 222);
             this.speechTTSButton.TabIndex = 5;
             this.speechTTSButton.Text = "Speech To Text To Speech";
             this.speechTTSButton.UseVisualStyleBackColor = true;
@@ -107,13 +112,13 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(28, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(335, 27);
+            this.textBox1.Size = new System.Drawing.Size(450, 27);
             this.textBox1.TabIndex = 9;
             this.textBox1.Text = "Read this aloud.";
             // 
             // TTSButton
             // 
-            this.TTSButton.Location = new System.Drawing.Point(369, 12);
+            this.TTSButton.Location = new System.Drawing.Point(484, 12);
             this.TTSButton.Name = "TTSButton";
             this.TTSButton.Size = new System.Drawing.Size(102, 27);
             this.TTSButton.TabIndex = 10;
@@ -191,23 +196,58 @@
             "Noah (UK)",
             "Oliver (UK)",
             "Thomas (UK)",
-            "Dalia [Spanish] (MX)",
-            "Jorge [Spanish] (MX)",
-            "Brigitte [French]",
-            "Jerome [French]",
-            "Amala [German]",
-            "Christoph [German]"});
+            "[Arabic] {Female} (Egypt)",
+            "[Arabic] {Male} (Egypt)",
+            "[Chinese] {Female} (Mandarin, Simplified)",
+            "[Chinese] {Male} (Mandarin, Simplified)",
+            "[Danish] {Female}",
+            "[Danish] {Male}",
+            "[Dutch] {Female}",
+            "[Dutch] {Male}",
+            "Brigitte [French] {Female}",
+            "Jerome [French] {Male}",
+            "Amala [German] {Female}",
+            "Christoph [German] {Male}",
+            "[Hendi] {Female}",
+            "[Hendi] {Male}",
+            "[Irish] {Female}",
+            "[Irish] {Male}",
+            "[Italian] {Female}",
+            "[Italian] {Male}",
+            "[Japanese] {Female}",
+            "[Japanese] {Male}",
+            "[Korean] {Female}",
+            "[Korean] {Male}",
+            "[Norwegian] {Female}",
+            "[Norwegian] {Male}",
+            "[Polish] {Female}",
+            "[Polish] {Male}",
+            "[Portuguese] {Female}",
+            "[Portuguese] {Male}",
+            "[Russian] {Female}",
+            "[Russian] {Male}",
+            "Dalia [Spanish] {Female} (Mexico)",
+            "Jorge [Spanish] {Male} (Mexcio)",
+            "[Swedish] {Female}",
+            "[Swedish] {Male}",
+            "[Thai] {Female}",
+            "[Thai] {Male}",
+            "[Ukrainian] {Female}",
+            "[Ukrainian] {Male}",
+            "[Vietnamese] {Female}",
+            "[Vietnamese] {Male}"});
             this.comboBox2.Location = new System.Drawing.Point(28, 306);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(187, 28);
             this.comboBox2.TabIndex = 13;
+            this.comboBox2.Tag = "Sara";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // hideVRCTextButton
             // 
-            this.hideVRCTextButton.Location = new System.Drawing.Point(320, 437);
+            this.hideVRCTextButton.Location = new System.Drawing.Point(466, 360);
             this.hideVRCTextButton.Name = "hideVRCTextButton";
-            this.hideVRCTextButton.Size = new System.Drawing.Size(114, 57);
+            this.hideVRCTextButton.Size = new System.Drawing.Size(114, 97);
             this.hideVRCTextButton.TabIndex = 16;
             this.hideVRCTextButton.Text = "Hide VRC Text Display";
             this.hideVRCTextButton.UseVisualStyleBackColor = true;
@@ -215,9 +255,9 @@
             // 
             // logClearButton
             // 
-            this.logClearButton.Location = new System.Drawing.Point(320, 399);
+            this.logClearButton.Location = new System.Drawing.Point(466, 306);
             this.logClearButton.Name = "logClearButton";
-            this.logClearButton.Size = new System.Drawing.Size(114, 32);
+            this.logClearButton.Size = new System.Drawing.Size(114, 41);
             this.logClearButton.TabIndex = 17;
             this.logClearButton.Text = "Log Clear";
             this.logClearButton.UseVisualStyleBackColor = true;
@@ -336,12 +376,14 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(920, 539);
+            this.tabControl1.Size = new System.Drawing.Size(1039, 497);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.comboBox3);
             this.tabPage1.Controls.Add(this.logClearButton);
             this.tabPage1.Controls.Add(this.speechTTSButton);
             this.tabPage1.Controls.Add(this.textBox1);
@@ -361,13 +403,56 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(912, 506);
+            this.tabPage1.Size = new System.Drawing.Size(1031, 464);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(247, 399);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 20);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Translate to Language";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "English [en] (Default)",
+            "Arabic [ar]",
+            "Chinese [zh]",
+            "Danish [da]",
+            "Dutch [nl]",
+            "French [fr]",
+            "German [de]",
+            "Hendi [hi]",
+            "Irish [ga]",
+            "Italian [it]",
+            "Japanese [ja]",
+            "Korean [ko]",
+            "Norwegian [nb]",
+            "Polish [pl]",
+            "Portuguese [pt]",
+            "Russian [ru]",
+            "Spanish [es]",
+            "Swedish [sv]",
+            "Thai [th]",
+            "Ukrainian [uk]",
+            "Vietnamese [vi]"});
+            this.comboBox3.Location = new System.Drawing.Point(247, 422);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(187, 28);
+            this.comboBox3.TabIndex = 25;
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.textBoxErase);
+            this.tabPage2.Controls.Add(this.checkBox6);
             this.tabPage2.Controls.Add(this.checkBox5);
             this.tabPage2.Controls.Add(this.checkBox1);
             this.tabPage2.Controls.Add(this.label18);
@@ -386,9 +471,39 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(912, 506);
+            this.tabPage2.Size = new System.Drawing.Size(1031, 464);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(158, 415);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "Change";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.buttonErase_Click);
+            // 
+            // textBoxErase
+            // 
+            this.textBoxErase.Location = new System.Drawing.Point(27, 417);
+            this.textBoxErase.Name = "textBoxErase";
+            this.textBoxErase.Size = new System.Drawing.Size(125, 27);
+            this.textBoxErase.TabIndex = 42;
+            this.textBoxErase.Text = "5000";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.checkBox6.Location = new System.Drawing.Point(27, 387);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(206, 24);
+            this.checkBox6.TabIndex = 41;
+            this.checkBox6.Text = "Hide Text After Delay (ms)";
+            this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox5
             // 
@@ -491,7 +606,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(255, 474);
+            this.label13.Location = new System.Drawing.Point(255, 401);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(337, 20);
             this.label13.TabIndex = 30;
@@ -530,7 +645,7 @@
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(912, 506);
+            this.tabPage3.Size = new System.Drawing.Size(1031, 464);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
             // 
@@ -549,7 +664,7 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(249, 461);
+            this.label15.Location = new System.Drawing.Point(249, 388);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(271, 20);
             this.label15.TabIndex = 34;
@@ -623,7 +738,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(949, 563);
+            this.ClientSize = new System.Drawing.Size(1068, 521);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -646,18 +761,13 @@
         private RichTextBox richTextBox1;
         private TextBox textBox1;
         private Button TTSButton;
-        private ComboBox comboBox1;
         private Label label1;
         private Label label2;
-        private ComboBox comboBox2;
         private Button hideVRCTextButton;
         private Button logClearButton;
         private Label label4;
-        private ComboBox comboBoxRate;
         private Label label5;
-        private ComboBox comboBoxPitch;
         private Label label6;
-        private ComboBox comboBoxVolume;
         private TextBox textBoxDelay;
         private Label label7;
         private Button buttonDelayHere;
@@ -672,13 +782,11 @@
         private Label label9;
         private Button button6;
         private TextBox textBox3;
-        private CheckBox checkBox1;
         private Label label11;
         private Label label13;
         private Label label12;
         private TextBox textBox4;
         private Label label15;
-        private CheckBox checkBox2;
         private CheckBox checkBox3;
         private Label label17;
         private Button buttonActivationWord;
@@ -686,6 +794,18 @@
         private CheckBox checkBox4;
         private Label label18;
         public Button speechTTSButton;
-        private CheckBox checkBox5;
+        public CheckBox checkBox6;
+        private Button button1;
+        private TextBox textBoxErase;
+        private Label label3;
+        public ComboBox comboBox1;
+        public ComboBox comboBox2;
+        public ComboBox comboBoxRate;
+        public ComboBox comboBoxPitch;
+        public ComboBox comboBoxVolume;
+        public CheckBox checkBox5;
+        public ComboBox comboBox3;
+        public CheckBox checkBox1;
+        public CheckBox checkBox2;
     }
 }

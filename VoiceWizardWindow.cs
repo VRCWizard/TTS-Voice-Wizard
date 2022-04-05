@@ -1,6 +1,7 @@
 //Wizard
 using Microsoft.CognitiveServices.Speech;//Subcription Azure
 using Microsoft.CognitiveServices.Speech.Audio; //Subcription Azure
+using Microsoft.CognitiveServices.Speech.Translation;
 using SharpOSC;
 using System;
 using System.Speech.Recognition;//free Windows
@@ -15,9 +16,10 @@ namespace OSCVRCWiz
 
         public static string YourSubscriptionKey = Settings1.Default.yourKey;
         public static string YourServiceRegion = Settings1.Default.yourRegion;
-        string dictationString = "";
+        public string dictationString = "";
         public string activationWord = Settings1.Default.activationWord;
         public int debugDelayValue = 250;// Recommended delay of 250ms 
+        public int eraseDelay = 5000;
         int audioOutputIndex = -1;
         public bool profanityFilter = true;
         //  SpeechRecognitionEngine recognizer;
@@ -149,7 +151,7 @@ namespace OSCVRCWiz
             //Send Text to TTS
             
             
-            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice, audioOutputIndex));
+            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice));
 
         }
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
@@ -179,110 +181,7 @@ namespace OSCVRCWiz
 
 
 
-        private async void speechTTSButton_Click(object sender, EventArgs e)//speech to text
-        {
-            System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
-            try
-            {
-                var speechConfig = SpeechConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
-
-
-                speechConfig.SpeechRecognitionLanguage = "en-US";
-
-                if (profanityFilter == false)
-                {
-                    speechConfig.SetProfanity(ProfanityOption.Raw);
-                }
-                if (profanityFilter == true)
-                {
-                    speechConfig.SetProfanity(ProfanityOption.Masked);
-                }
-
-                //To recognize speech from an audio file, use `FromWavFileInput` instead of `FromDefaultMicrophoneInput`:
-                //using var audioConfig = AudioConfig.FromWavFileInput("YourAudioFile.wav");
-                var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-                var speechRecognizer = new Microsoft.CognitiveServices.Speech.SpeechRecognizer(speechConfig, audioConfig);
-
-                var speechRecognitionResult = await speechRecognizer.RecognizeOnceAsync();
-                //OutputSpeechRecognitionResult(speechRecognitionResult);
-
-
-                dictationString = speechRecognitionResult.Text; //Dictation string
-                string emotion = "Normal";
-                string rate = "default";
-                string pitch = "default";
-                string volume = "default";
-                string voice = "Sara";
-                this.Invoke((MethodInvoker)delegate ()
-                {
-                    if (string.IsNullOrWhiteSpace(comboBox1.Text.ToString()))
-                    {
-                        emotion = "Normal";
-
-                    }
-                    else
-                    {
-                        emotion = comboBox1.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(comboBoxRate.Text.ToString()))
-                    {
-                        rate = "default";
-
-                    }
-                    else
-                    {
-                        rate = comboBoxRate.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(comboBoxPitch.Text.ToString()))
-                    {
-                        pitch = "default";
-
-                    }
-                    else
-                    {
-                        pitch = comboBoxPitch.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(comboBoxVolume.Text.ToString()))
-                    {
-                        volume = "default";
-
-                    }
-                    else
-                    {
-                        volume = comboBoxVolume.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(comboBox2.Text.ToString()))
-                    {
-                        voice = "Sara";
-
-                    }
-                    else
-                    {
-                        voice = comboBox2.Text.ToString();
-                    }
-
-
-                });
-                var ot = new OutputText();
-                if (checkBox2.Checked == true)
-                {
-                    ot.outputLog(this,dictationString);
-                }
-                //Send Text to Vrchat
-                if (checkBox1.Checked == true)
-                {
-                    Task.Run(() => ot.outputVRChat(this,dictationString));
-                }
-                //Send Text to TTS
-
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(dictationString, emotion, rate, pitch, volume, voice, audioOutputIndex));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No valid subscription key given or speech service has been disabled");
-
-            }
-        }
+      
 
         public void logLine(string line)
         {
@@ -441,6 +340,14 @@ namespace OSCVRCWiz
 
             checkBox3.Checked = Settings1.Default.remember;
 
+            
+            comboBox2.SelectedIndex = 0;//voice
+            comboBox1.SelectedIndex = 0;//style (must be set after voice)
+            comboBox3.SelectedIndex = 0;//language
+            comboBoxPitch.SelectedIndex = 5;
+            comboBoxVolume.SelectedIndex = 4;
+            comboBoxRate.SelectedIndex = 5;
+
         }
      
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -475,6 +382,40 @@ namespace OSCVRCWiz
 
             }
 
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonErase_Click(object sender, EventArgs e)
+        {
+           
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    eraseDelay = Int32.Parse(textBoxErase.Text.ToString());
+
+
+                });
+
+        }
+
+        private void speechTTSButton_Click(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                if (comboBox3.Text.ToString() == "English [en] (Default)")
+                {
+                    TextSynthesis.speechTTTS(this);
+
+                }
+                else
+                {
+                    TextSynthesis.translationSTTTS(this,comboBox3.Text.ToString());
+
+                }
+            });
         }
     }
 }

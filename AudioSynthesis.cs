@@ -1,4 +1,5 @@
 ﻿using Microsoft.CognitiveServices.Speech;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,19 +13,21 @@ namespace OSCVRCWiz
         
 
         //TTS
-        public static async Task SynthesizeAudioAsync(string text, string style, string rate, string pitch, string volume, string voice, int outputIndex) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
                 
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+               
+              
                 // Note: if only language is set, the default voice of that language is chosen.
                 //  config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
                 // The voice setting will overwrite the language setting.
                 // The voice setting will not overwrite the voice element in input SSML.
                 //config.SpeechSynthesisVoiceName = "en-US-JennyNeural";
                 // config.SpeechSynthesisVoiceName = "en-US-SaraNeural";
-           
+
 
 
 
@@ -109,6 +112,47 @@ namespace OSCVRCWiz
                 string amalaGerman = "<voice name=\"de-DE-AmalaNeural\">";//
                 string christophGerman = "<voice name=\"de-DE-ChristophNeural\">";//
 
+                string arabicFemale_Egypt = "<voice name=\"ar-EG-SalmaNeural\">";//
+                string arabicMale_Egypt = "<voice name=\"ar-EG-ShakirNeural\">";//
+
+                string chineseFemale_MandarinSimple = "<voice name=\"zh-CN-XiaomoNeural\">";//
+                string chineseMale_MandarinSimple = "<voice name=\"	zh-CN-YunyeNeural\">";//
+
+                string danishFemale = "<voice name=\"da-DK-ChristelNeural\">";//
+                string danishMale = "<voice name=\"da-DK-JeppeNeural\">";//
+
+                string dutchFemale = "<voice name=\"nl-BE-DenaNeural\">";//
+                string dutchMale = "<voice name=\"nl-BE-ArnaudNeural\">";//
+
+                string hendiFemale = "<voice name=\"hi-IN-SwaraNeural\">";//
+                string hendiMale = "<voice name=\"hi-IN-MadhurNeural\">";//
+
+                string irishFemale = "<voice name=\"ga-IE-OrlaNeural\">";//
+                string irishMale = "<voice name=\"ga-IE-ColmNeural\">";//
+                string italianFemale = "<voice name=\"it-IT-ElsaNeural\">";//
+                string italianMale = "<voice name=\"it-IT-DiegoNeural\">";//
+                string japaneseFemale = "<voice name=\"ja-JP-NanamiNeural\">";//
+                string japaneseMale = "<voice name=\"ja-JP-KeitaNeural\">";//
+                string koreanFemale = "<voice name=\"ko-KR-SunHiNeural\">";//
+                string koreanMale = "<voice name=\"	ko-KR-InJoonNeural\">";//
+                string norwegianFemale = "<voice name=\"nb-NO-PernilleNeural\">";//
+                string norweigianMale = "<voice name=\"nb-NO-FinnNeural\">";//
+                string polishFemale = "<voice name=\"pl-PL-AgnieszkaNeural\">";//
+                string polishMale = "<voice name=\"	pl-PL-MarekNeural\">";//
+                string portugueseFemale = "<voice name=\"pt-BR-FranciscaNeural\">";//
+                string portugueseMale = "<voice name=\"pt-BR-AntonioNeural\">";//
+                string russianFemale = "<voice name=\"ru-RU-DariyaNeural\">";//
+                string russianMale = "<voice name=\"ru-RU-DmitryNeural\">";//
+                
+                string swedishFemale = "<voice name=\"sv-SE-HilleviNeural\">";//
+                string swedishMale = "<voice name=\"sv-SE-MattiasNeural\">";//
+                string thaiFemale = "<voice name=\"th-TH-AcharaNeural\">";//
+                string thaiMale = "<voice name=\"th-TH-NiwatNeural\">";//
+                string ukranianFemale = "<voice name=\"uk-UA-PolinaNeural\">";//
+                string ukranianMale = "<voice name=\"uk-UA-OstapNeural\">";//
+                string vietnameseFemale = "<voice name=\"vi-VN-HoaiMyNeural\">";//
+                string vietnameseMale = "<voice name=\"vi-VN-NamMinhNeural\">";//
+
 
 
                 System.Diagnostics.Debug.WriteLine(rate);
@@ -168,14 +212,59 @@ namespace OSCVRCWiz
                     case "Oliver (UK)": ssml0 += oliverUK; ; break;
                     case "Thomas (UK)": ssml0 += thomasUK; ; break;
 
-                    case "Dalia [Spanish] (MX)": ssml0 += daliaSpanish_Mexico; ; break;
-                    case "Jorge [Spanish] (MX)": ssml0 += jorgeSpanish_Mexico; ; break;
+                   
 
-                    case "Brigitte [French]": ssml0 += brigitteFrench; ; break;
-                    case "Jerome [French]": ssml0 += jeromeFrench; ; break;
 
-                    case "Amala [German]": ssml0 += amalaGerman; ; break;
-                    case "Christoph [German]": ssml0 += christophGerman; ; break;
+                    case "[Arabic] {Female} (Egypt)": ssml0 += arabicFemale_Egypt; ; break;
+                    case "[Arabic] {Male} (Egypt)": ssml0 += arabicMale_Egypt; ; break;
+
+                    case "[Chinese] {Female} (Mandarin, Simplified)": ssml0 += chineseFemale_MandarinSimple; ; break;
+                    case "[Chinese] {Male} (Mandarin, Simplified)": ssml0 += chineseMale_MandarinSimple; ; break;
+                    case "[Danish] {Female}": ssml0 += danishFemale; ; break;
+                    case "[Danish] {Male}": ssml0 += danishMale; ; break;
+                    case "[Dutch] {Female}": ssml0 += dutchFemale; ; break;
+                    case "[Dutch] {Male}": ssml0 += dutchMale; ; break;
+
+
+                    case "Brigitte [French] {Female}": ssml0 += brigitteFrench; ; break;
+                    case "Jerome [French] {Male}": ssml0 += jeromeFrench; ; break;
+
+                    case "Amala [German] {Female}": ssml0 += amalaGerman; ; break;
+                    case "Christoph [German] {Male}": ssml0 += christophGerman; ; break;
+
+
+                    case "[Hendi] {Female}": ssml0 += hendiFemale; ; break;
+                    case "[Hendi] {Male}": ssml0 += hendiMale; ; break;
+                    case "[Irish] {Female}": ssml0 += irishFemale; ; break;
+                    case "[Irish] {Male}": ssml0 += irishMale; ; break;
+                    case "[Italian] {Female}": ssml0 += italianFemale; ; break;
+                    case "[Italian] {Male}": ssml0 += italianMale; ; break;
+                    case "[Japanese] {Female}": ssml0 += japaneseFemale; ; break;
+                    case "[Japanese] {Male}": ssml0 += japaneseMale; ; break;
+                    case "[Korean] {Female}": ssml0 += koreanFemale; ; break;
+                    case "[Korean] {Male}": ssml0 += koreanMale; ; break;
+                    case "[Norwegian] {Female}": ssml0 += norwegianFemale; ; break;
+                    case "[Norwegian] {Male}": ssml0 += norweigianMale; ; break;
+                    case "[Polish] {Female}": ssml0 +=polishFemale ; ; break;
+                    case "[Polish] {Male}": ssml0 += polishMale; ; break;
+                    case "[Portuguese] {Female}": ssml0 += portugueseFemale; ; break;
+                    case "[Portuguese] {Male}": ssml0 += portugueseMale; ; break;
+                    case "[Russian] {Female}": ssml0 += russianFemale; ; break;
+                    case "[Russian] {Male}": ssml0 += russianMale; ; break;
+
+                    case "Dalia [Spanish] {Female} (Mexico)": ssml0 += daliaSpanish_Mexico; ; break;
+                    case "Jorge [Spanish] {Male} (Mexcio)": ssml0 += jorgeSpanish_Mexico; ; break;
+
+                    case "[Swedish] {Female}": ssml0 += swedishFemale; ; break;
+                    case "[Swedish] {Male}": ssml0 += swedishMale; ; break;
+                    case "[Thai] {Female}": ssml0 += thaiFemale; ; break;
+                    case "[Thai] {Male}": ssml0 += thaiMale; ; break;
+                    case "[Ukrainian] {Female}": ssml0 += ukranianFemale; ; break;
+                    case "[Ukrainian] {Male}": ssml0 += ukranianMale; ; break;
+                    case "[Vietnamese] {Female}": ssml0 += vietnameseFemale; ; break;
+                    case "[Vietnamese] {Male}": ssml0 +=vietnameseMale ; ; break;
+
+
 
 
 
@@ -238,11 +327,15 @@ namespace OSCVRCWiz
 
                 System.Diagnostics.Debug.WriteLine(ssml0);
                 await synthesizer.SpeakSsmlAsync(ssml0);
+            
+            
+               
+            
                 //using var result = await synthesizer.SpeakSsmlAsync(ssml0);
 
-            }
-            catch (Exception ex)
-            {
+          }
+          catch (Exception ex)
+          {
                 MessageBox.Show("No valid subscription key given or speech service has been disabled");
 
             }
@@ -250,5 +343,6 @@ namespace OSCVRCWiz
 
 
         }
+       
     }
 }

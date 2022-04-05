@@ -8,14 +8,16 @@ namespace OSCVRCWiz
 {
     public class OutputText
     {
+        bool currentlyPrinting = false;
         public async void outputLog(VoiceWizardWindow MainForm, string textstring)
         {
             //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
-            MainForm.logLine("["+DateTime.Now.ToString("h:mm:ss tt") +"]" +" You Said: " + textstring);
+            MainForm.logLine("["+DateTime.Now.ToString("h:mm:ss tt") +"]" +": " + textstring);
 
         }
         public async void outputVRChat(VoiceWizardWindow MainForm, string textstring)
         {
+           // currentlyPrinting = true;
 
             var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
 
@@ -120,6 +122,9 @@ namespace OSCVRCWiz
                     case ' ': letter = 0.0f; break;
                     case '?': letter = 0.24409449f; break;
 
+                    case '[': letter = 0.46456692f; break;
+                    case ']': letter = 0.48031497f; break;
+
 
 
                     default: letter = 0.0f; break;
@@ -144,12 +149,14 @@ namespace OSCVRCWiz
                         message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
                         message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
                         message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                        message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
                         sender2.Send(message1);
                         sender2.Send(message2);
                         sender2.Send(message3);
                         sender2.Send(message4);
                         sender2.Send(message5);
+                        sender2.Send(message0);
 
                         System.Diagnostics.Debug.WriteLine("Sending working 3");
                         stringPoint += 1;
@@ -164,35 +171,69 @@ namespace OSCVRCWiz
 
 
                 charCounter += 1;
+              //  currentlyPrinting = true;
 
 
 
 
             }
+           // currentlyPrinting = false; //does not work as intended, look into sharing betwwen threads possibly?
             int startingPoint = stringPoint;
             int frenzyDisplayLimit = 128;
             int frenzyDisplayMaxChar = 4;
+            if (currentlyPrinting == false)
+            {
+             
+                    //Natural Erase just incase previous sentence was longer than the current sentence (and erase not checked)
+                    System.Diagnostics.Debug.WriteLine("Natural erase begun");
+                    for (int z = startingPoint; z <= (frenzyDisplayLimit / frenzyDisplayMaxChar); z++) //INCREASE VALUE TO Killfrenzy limit!!! (old limit 128/4=32 chracters)
+                    {
+
+                        Task.Delay(MainForm.debugDelayValue).Wait();
+                        message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", z);
+                        message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", 0.0f);
+                        message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", 0.0f);
+                        message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", 0.0f);
+                        message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", 0.0f);
+                        message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+
+                    sender2.Send(message1);
+                        sender2.Send(message2);
+                        sender2.Send(message3);
+                        sender2.Send(message4);
+                        sender2.Send(message5);
+                    sender2.Send(message0);
+
+
+                }
+
+
+
+                if (MainForm.checkBox6.Checked) //inactive hide
+                {
+                    System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished");
+
+                    System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
+                    Task.Delay(MainForm.eraseDelay).Wait();
+
+                    message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+
+                    sender2.Send(message0);
+                }
+
+             
+            }
+
+
+
+
 
             //currently error if u talk past word limit (setting point back to 1 around here should fix it)
-            //also increase limit
-
-            for (int z = startingPoint; z <= (frenzyDisplayLimit / frenzyDisplayMaxChar); z++) //INCREASE VALUE TO Killfrenzy limit!!! (old limit 128/4=32 chracters)
-            {
-                Task.Delay(MainForm.debugDelayValue).Wait();
-                message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", z);
-                message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", 0.0f);
-                message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", 0.0f);
-                message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", 0.0f);
-                message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", 0.0f);
-
-                sender2.Send(message1);
-                sender2.Send(message2);
-                sender2.Send(message3);
-                sender2.Send(message4);
-                sender2.Send(message5);
 
 
-            }
+
+
+
 
 
 
