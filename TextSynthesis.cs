@@ -12,15 +12,44 @@ using System.Threading.Tasks;
 {
     public class TextSynthesis
     {
-        public static async void speechTTTS(VoiceWizardWindow MainForm)//speech to text
+        public static async void speechTTTS(VoiceWizardWindow MainForm, string fromLanguageFullname)//speech to text
         {
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
             try
             {
                 var speechConfig = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+                var fromLanguage = "en-US";
+                switch (fromLanguageFullname)
+                {
+                    case "Arabic [ar-EG]": fromLanguage = "ar-EG"; break;
+                    case "Chinese [zh-CN]": fromLanguage = "zh-CN"; break;
+                    case "Danish [da-DK]": fromLanguage = "da-DK"; break;
+                    case "Dutch [nl-NL]": fromLanguage = "nl-NL"; break;
+                    case "English [en-US] (Default)": fromLanguage = "en-US"; break;
+                    case "Filipino [fil-PH]": fromLanguage = "fil-PH"; break;
+                    case "Finnish [fi-FI]": fromLanguage = "fi-FI"; break;
+                    case "French [fr-FR]": fromLanguage = "fr-FR"; break;
+                    case "German [de-DE]": fromLanguage = "de-DE"; break;
+                    case "Hendi [hi-IN]": fromLanguage = "hi-IN"; break;
+                    case "Irish [ga-IE]": fromLanguage = "ga-IE"; break;
+                    case "Italian [it-IT]": fromLanguage = "it-IT"; break;
+                    case "Japanese [ja-JP]": fromLanguage = "ja-JP"; break;
+                    case "Korean [ko-KR]": fromLanguage = "ko-KR"; break;
+                    case "Norwegian [nb-NO]": fromLanguage = "nb-NO"; break;
+                    case "Polish [pl-PL]": fromLanguage = "pl-PL"; break;
+                    case "Portuguese [pt-BR]": fromLanguage = "pt-BR"; break;
+                    //place holder^^
+                    case "Russian [ru-RU]": fromLanguage = "ru-RU"; break;
+                    case "Spanish [es-MX]": fromLanguage = "es-MX"; break;
+                    //place holder^^
+                    case "Swedish [sv-SE]": fromLanguage = "sv-SE"; break;
+                    case "Thai [th-TH]": fromLanguage = "th-TH"; break;
+                    case "Ukrainian [uk-UA]": fromLanguage = "uk-UA"; break;
+                    case "Vietnamese [vi-VN]": fromLanguage = "vi-VN"; break;
+                    default: fromLanguage = "en-US"; break; // if translation to english happens something is wrong
+                }
 
-
-                speechConfig.SpeechRecognitionLanguage = "en-US";
+                speechConfig.SpeechRecognitionLanguage = fromLanguage ;
 
                 if (MainForm.profanityFilter == false)
                 {
@@ -101,14 +130,16 @@ using System.Threading.Tasks;
                 {
                     ot.outputLog(MainForm, MainForm.dictationString);
                 }
+                AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice);
                 //Send Text to Vrchat
                 if (MainForm.checkBox1.Checked == true)
                 {
-                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString));
+                    ot.outputVRChat(MainForm, MainForm.dictationString);
+                   // Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString));
                 }
                 //Send Text to TTS
 
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
+               // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
             }
             catch (Exception ex)
             {
@@ -116,7 +147,7 @@ using System.Threading.Tasks;
 
             }
         }
-        public static async void translationSTTTS(VoiceWizardWindow MainForm,string languageFullname)//translate speech to text
+        public static async void translationSTTTS(VoiceWizardWindow MainForm,string toLanguageFullname, string fromLanguageFullname)//translate speech to text
         {
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
          //   try
@@ -127,13 +158,44 @@ using System.Threading.Tasks;
                 var fromLanguage = "en-US";
                 var toLanguage = "en";
 
+            switch (fromLanguageFullname)
+            {
+                case "Arabic [ar-EG]": fromLanguage = "ar-EG"; break;
+                case "Chinese [zh-CN]": fromLanguage = "zh-CN"; break;
+                case "Danish [da-DK]": fromLanguage = "da-DK"; break;
+                case "Dutch [nl-NL]": fromLanguage = "nl-NL"; break;
+                case "English [en-US] (Default)": fromLanguage = "en-US"; break;
+                case "Filipino [fil-PH]": fromLanguage = "fil-PH"; break;
+                case "Finnish [fi-FI]": fromLanguage = "fi-FI"; break;
+                case "French [fr-FR]": fromLanguage = "fr-FR"; break;
+                case "German [de-DE]": fromLanguage = "de-DE"; break;
+                case "Hendi [hi-IN]": fromLanguage = "hi-IN"; break;
+                case "Irish [ga-IE]": fromLanguage = "ga-IE"; break;
+                case "Italian [it-IT]": fromLanguage = "it-IT"; break;
+                case "Japanese [ja-JP]": fromLanguage = "ja-JP"; break;
+                case "Korean [ko-KR]": fromLanguage = "ko-KR"; break;
+                case "Norwegian [nb-NO]": fromLanguage = "nb-NO"; break;
+                case "Polish [pl-PL]": fromLanguage = "pl-PL"; break;
+                case "Portuguese [pt-BR]": fromLanguage = "pt-BR"; break;
+                    //place holder^^
+                case "Russian [ru-RU]": fromLanguage = "ru-RU"; break;
+                case "Spanish [es-MX]": fromLanguage = "es-MX"; break;
+                //place holder^^
+                case "Swedish [sv-SE]": fromLanguage = "sv-SE"; break;
+                case "Thai [th-TH]": fromLanguage = "th-TH"; break;
+                case "Ukrainian [uk-UA]": fromLanguage = "uk-UA"; break;
+                case "Vietnamese [vi-VN]": fromLanguage = "vi-VN"; break;
+                default: fromLanguage = "en-US"; break; // if translation to english happens something is wrong
+            }
 
-                switch (languageFullname)
+
+            switch (toLanguageFullname)
                 {
                     case "Arabic [ar]": toLanguage = "ar"; break;
                     case "Chinese [zh]": toLanguage = "zh-Hans"; break;
                     case "Danish [da]": toLanguage = "da"; break;
                     case "Dutch [nl]": toLanguage = "nl"; break;
+                    case "English [en]": toLanguage = "en"; break;
                     case "Filipino [fil]": toLanguage = "fil"; break;
                     case "Finnish [fi]": toLanguage = "fi"; break;
                     case "French [fr]": toLanguage = "fr"; break;
@@ -154,6 +216,7 @@ using System.Threading.Tasks;
                     case "Vietnamese [vi]": toLanguage = "vi"; break;
                     default: toLanguage = "en"; break; // if translation to english happens something is wrong
                 }
+            
 
 
 
@@ -182,7 +245,8 @@ using System.Threading.Tasks;
                 System.Diagnostics.Debug.WriteLine($"Say something in '{fromLanguage}' and ");
                 System.Diagnostics.Debug.WriteLine($"we'll translate into '{toLanguage}'.\n");
 
-                var speechRecognitionResult = await translationRecognizer.RecognizeOnceAsync();
+            var speechRecognitionResult = await translationRecognizer.RecognizeOnceAsync();
+         
                 if (speechRecognitionResult.Reason == ResultReason.TranslatedSpeech)
                 {
                     System.Diagnostics.Debug.WriteLine($"Recognized: \"{speechRecognitionResult.Text}\"");
@@ -249,16 +313,30 @@ using System.Threading.Tasks;
                 var ot = new OutputText();
                 if (MainForm.checkBox2.Checked == true)
                 {
-                    ot.outputLog(MainForm, MainForm.dictationString + " [" + toLanguage + "]: " + "[" + translatedString + "]");
+                    ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage+ ">"+ toLanguage + "]: " + "[" + translatedString + "]");
                 }
+            //Send Text to TTS
+            AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice);
                 //Send Text to Vrchat
                 if (MainForm.checkBox1.Checked == true)
                 {
-                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + toLanguage + "]"));
-                }
+                    if (MainForm.checkBox7.Checked == true)
+                    {
+                    ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]");
+
+                    }
+                    else
+                    {
+                    ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]");
+
+                    }
+                
+                
+                // Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + toLanguage + "]"));
+            }
                 //Send Text to TTS
 
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
+               // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
            // }
           //  catch (Exception ex)
          //   {

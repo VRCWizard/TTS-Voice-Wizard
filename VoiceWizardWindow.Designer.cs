@@ -50,6 +50,9 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -92,7 +95,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(592, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(436, 458);
+            this.richTextBox1.Size = new System.Drawing.Size(436, 509);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
@@ -185,17 +188,17 @@
             "Liam (CA)",
             "Sonia (UK)",
             "Ryan (UK)",
-            "Abbi (UK)",
-            "Bella (UK)",
-            "Hollie (UK)",
-            "Olivia (UK)",
-            "Maisie (UK)",
-            "Alfie (UK)",
-            "Elliot (UK)",
-            "Ethan (UK)",
-            "Noah (UK)",
-            "Oliver (UK)",
-            "Thomas (UK)",
+            "Abbi (UK) Preview",
+            "Bella (UK) Preview",
+            "Hollie (UK) Preview",
+            "Olivia (UK) Preview",
+            "Maisie (UK) Preview",
+            "Alfie (UK) Preview",
+            "Elliot (UK) Preview",
+            "Ethan (UK) Preview",
+            "Noah (UK) Preview",
+            "Oliver (UK) Preview",
+            "Thomas (UK) Preview",
             "[Arabic] {Female} (Egypt)",
             "[Arabic] {Male} (Egypt)",
             "[Chinese] {Female} (Mandarin, Simplified)",
@@ -383,12 +386,15 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1039, 497);
+            this.tabControl1.Size = new System.Drawing.Size(1039, 548);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage1.Controls.Add(this.checkBox7);
+            this.tabPage1.Controls.Add(this.label14);
+            this.tabPage1.Controls.Add(this.comboBox4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.comboBox3);
             this.tabPage1.Controls.Add(this.logClearButton);
@@ -410,14 +416,67 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1031, 464);
+            this.tabPage1.Size = new System.Drawing.Size(1031, 515);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(255, 480);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(248, 24);
+            this.checkBox7.TabIndex = 29;
+            this.checkBox7.Text = "VRC Text as Translated Language";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(28, 398);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(127, 20);
+            this.label14.TabIndex = 28;
+            this.label14.Text = "Spoken Language";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Arabic [ar-EG]",
+            "Chinese [zh-CN]",
+            "Danish [da-DK]",
+            "Dutch [nl-NL]",
+            "English [en-US] (Default)",
+            "Filipino [fil-PH]",
+            "Finnish [fi-FI]",
+            "French [fr-FR]",
+            "German [de-DE]",
+            "Hendi [hi-IN]",
+            "Irish [ga-IE]",
+            "Italian [it-IT]",
+            "Japanese [ja-JP]",
+            "Korean [ko-KR]",
+            "Norwegian [nb-NO]",
+            "Polish [pl-PL]",
+            "Portuguese [pt-BR]",
+            "Russian [ru-RU]",
+            "Spanish [es-MX]",
+            "Swedish [sv-SE]",
+            "Thai [th-TH]",
+            "Ukrainian [uk-UA]",
+            "Vietnamese [vi-VN]",
+            "-Test Entry- []"});
+            this.comboBox4.Location = new System.Drawing.Point(28, 421);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(221, 28);
+            this.comboBox4.TabIndex = 27;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 398);
+            this.label3.Location = new System.Drawing.Point(28, 455);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 26;
@@ -428,11 +487,12 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "English [en] (Default)",
+            "No Translation (Default)",
             "Arabic [ar]",
             "Chinese [zh]",
             "Danish [da]",
             "Dutch [nl]",
+            "English [en]",
             "Filipino [fil]",
             "Finnish [fi]",
             "French [fr]",
@@ -452,7 +512,7 @@
             "Ukrainian [uk]",
             "Vietnamese [vi]",
             "-Test Entry- []"});
-            this.comboBox3.Location = new System.Drawing.Point(28, 421);
+            this.comboBox3.Location = new System.Drawing.Point(28, 478);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(221, 28);
             this.comboBox3.TabIndex = 25;
@@ -481,7 +541,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1031, 464);
+            this.tabPage2.Size = new System.Drawing.Size(1031, 515);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
@@ -655,7 +715,7 @@
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1031, 464);
+            this.tabPage3.Size = new System.Drawing.Size(1031, 515);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
             // 
@@ -748,7 +808,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1068, 521);
+            this.ClientSize = new System.Drawing.Size(1068, 572);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -817,5 +877,8 @@
         public ComboBox comboBox3;
         public CheckBox checkBox1;
         public CheckBox checkBox2;
+        private Label label14;
+        public ComboBox comboBox4;
+        public CheckBox checkBox7;
     }
 }

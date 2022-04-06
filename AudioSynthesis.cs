@@ -106,11 +106,11 @@ namespace OSCVRCWiz
                 string daliaSpanish_Mexico = "<voice name=\"es-MX-DaliaNeural\">";//
                 string jorgeSpanish_Mexico = "<voice name=\"es-MX-JorgeNeural\">";//
 
-                string brigitteFrench = "<voice name=\"fr-FR-BrigitteNeural\">";//
-                string jeromeFrench = "<voice name=\"fr-FR-JeromeNeural\">";//
+                string brigitteFrench = "<voice name=\"fr-FR-DeniseNeural\">";//no longer preview
+                string jeromeFrench = "<voice name=\"fr-FR-HenriNeural\">";//no longer preview
 
-                string amalaGerman = "<voice name=\"de-DE-AmalaNeural\">";//
-                string christophGerman = "<voice name=\"de-DE-ChristophNeural\">";//
+                string amalaGerman = "<voice name=\"de-DE-KatjaNeural\">";//no longer preview
+                string christophGerman = "<voice name=\"de-DE-ConradNeural\">";//no longer preview
 
                 string arabicFemale_Egypt = "<voice name=\"ar-EG-SalmaNeural\">";//
                 string arabicMale_Egypt = "<voice name=\"ar-EG-ShakirNeural\">";//
@@ -159,9 +159,12 @@ namespace OSCVRCWiz
 
 
 
-                System.Diagnostics.Debug.WriteLine(rate);
-                System.Diagnostics.Debug.WriteLine(pitch);
-                System.Diagnostics.Debug.WriteLine(volume);
+                System.Diagnostics.Debug.WriteLine("rate: "+rate);
+                System.Diagnostics.Debug.WriteLine("pitch: " + pitch);
+                System.Diagnostics.Debug.WriteLine("volume: " + volume);
+                System.Diagnostics.Debug.WriteLine("voice: " + voice);
+                System.Diagnostics.Debug.WriteLine("style: " + style);
+                System.Diagnostics.Debug.WriteLine("text: " + text);
 
 
 
@@ -203,18 +206,18 @@ namespace OSCVRCWiz
                     case "Sonia (UK)": ssml0 += soniaUK; ; break;
                     case "Ryan (UK)": ssml0 += ryanUK; ; break;
 
-                    case "Abbi (UK)": ssml0 += abbiUK; ; break;
-                    case "Bella (UK)": ssml0 += bellaUK; ; break;
-                    case "Hollie (UK)": ssml0 += hollieUK; ; break;
-                    case "Olivia (UK)": ssml0 += oliviaUK; ; break;
-                    case "Maisie (UK)": ssml0 += maisieUK; ; break;
+                    case "Abbi (UK) Preview": ssml0 += abbiUK; ; break;
+                    case "Bella (UK) Preview": ssml0 += bellaUK; ; break;
+                    case "Hollie (UK) Preview": ssml0 += hollieUK; ; break;
+                    case "Olivia (UK) Preview": ssml0 += oliviaUK; ; break;
+                    case "Maisie (UK) Preview": ssml0 += maisieUK; ; break;
 
-                    case "Alfie (UK)": ssml0 += alfieUK; ; break;
-                    case "Elliot (UK)": ssml0 += elliotUK; ; break;
-                    case "Ethan (UK)": ssml0 += ethanUK; ; break;
-                    case "Noah (UK)": ssml0 += noahUK; ; break;
-                    case "Oliver (UK)": ssml0 += oliverUK; ; break;
-                    case "Thomas (UK)": ssml0 += thomasUK; ; break;
+                    case "Alfie (UK) Preview": ssml0 += alfieUK; ; break;
+                    case "Elliot (UK) Preview": ssml0 += elliotUK; ; break;
+                    case "Ethan (UK) Preview": ssml0 += ethanUK; ; break;
+                    case "Noah (UK) Preview": ssml0 += noahUK; ; break;
+                    case "Oliver (UK) Preview": ssml0 += oliverUK; ; break;
+                    case "Thomas (UK) Preview": ssml0 += thomasUK; ; break;
 
                    
 

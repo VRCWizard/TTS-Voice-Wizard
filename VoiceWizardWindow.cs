@@ -141,17 +141,20 @@ namespace OSCVRCWiz
             {
                 ot.outputLog(this,text);
             }
+            AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice);//new
             if (checkBox1.Checked == true)
             {
 
 
 
-                Task.Run(() => ot.outputVRChat(this,text));
+                //Task.Run(() => ot.outputVRChat(this,text)); //original
+                ot.outputVRChat(this, text);//new
             }
             //Send Text to TTS
-            
-            
-            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice));
+
+
+            // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice)); //original
+
 
         }
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
@@ -345,7 +348,8 @@ namespace OSCVRCWiz
             
             comboBox2.SelectedIndex = 0;//voice
             comboBox1.SelectedIndex = 0;//style (must be set after voice)
-            comboBox3.SelectedIndex = 0;//language
+            comboBox3.SelectedIndex = 0;//language to
+            comboBox4.SelectedItem = "English [en-US] (Default)";//language from [5 is english0
             comboBoxPitch.SelectedIndex = 5;
             comboBoxVolume.SelectedIndex = 4;
             comboBoxRate.SelectedIndex = 5;
@@ -407,14 +411,14 @@ namespace OSCVRCWiz
         {
             this.Invoke((MethodInvoker)delegate ()
             {
-                if (comboBox3.Text.ToString() == "English [en] (Default)")
+                if (comboBox3.Text.ToString() == "No Translation (Default)")
                 {
-                    TextSynthesis.speechTTTS(this);
+                    TextSynthesis.speechTTTS(this, comboBox4.Text.ToString());
 
                 }
                 else
                 {
-                    TextSynthesis.translationSTTTS(this,comboBox3.Text.ToString());
+                    TextSynthesis.translationSTTTS(this,comboBox3.Text.ToString(), comboBox4.Text.ToString());
 
                 }
             });
