@@ -131,9 +131,11 @@ using System.Threading.Tasks;
                 switch (languageFullname)
                 {
                     case "Arabic [ar]": toLanguage = "ar"; break;
-                    case "Chinese [zh] ": toLanguage = "zh"; break;
+                    case "Chinese [zh]": toLanguage = "zh-Hans"; break;
                     case "Danish [da]": toLanguage = "da"; break;
                     case "Dutch [nl]": toLanguage = "nl"; break;
+                    case "Filipino [fil]": toLanguage = "fil"; break;
+                    case "Finnish [fi]": toLanguage = "fi"; break;
                     case "French [fr]": toLanguage = "fr"; break;
                     case "German [de]": toLanguage = "de"; break;
                     case "Hendi [hi]": toLanguage = "hi"; break;

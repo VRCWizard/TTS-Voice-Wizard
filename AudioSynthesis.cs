@@ -123,7 +123,11 @@ namespace OSCVRCWiz
 
                 string dutchFemale = "<voice name=\"nl-BE-DenaNeural\">";//
                 string dutchMale = "<voice name=\"nl-BE-ArnaudNeural\">";//
-
+                
+                string filipinoFemale = "<voice name=\"fil-PH-BlessicaNeural\">";//
+                string filipinoMale = "<voice name=\"fil-PH-AngeloNeural\">";//
+                string finnishFemale = "<voice name=\"fi-FI-NooraNeural\">";//
+                string finnishMale = "<voice name=\"fi-FI-HarriNeural\">";//
                 string hendiFemale = "<voice name=\"hi-IN-SwaraNeural\">";//
                 string hendiMale = "<voice name=\"hi-IN-MadhurNeural\">";//
 
@@ -225,12 +229,18 @@ namespace OSCVRCWiz
                     case "[Dutch] {Female}": ssml0 += dutchFemale; ; break;
                     case "[Dutch] {Male}": ssml0 += dutchMale; ; break;
 
+                    case "[French] {Female}": ssml0 += brigitteFrench; ; break;
+                    case "[French] {Male}": ssml0 += jeromeFrench; ; break;
 
-                    case "Brigitte [French] {Female}": ssml0 += brigitteFrench; ; break;
-                    case "Jerome [French] {Male}": ssml0 += jeromeFrench; ; break;
 
-                    case "Amala [German] {Female}": ssml0 += amalaGerman; ; break;
-                    case "Christoph [German] {Male}": ssml0 += christophGerman; ; break;
+                    case "[Filipino] {Female}": ssml0 += filipinoFemale; ; break;
+                    case "[Filipino] {Male}": ssml0 += filipinoMale; ; break;
+
+                    case "[German] {Female}": ssml0 += amalaGerman; ; break;
+                    case "[German] {Male}": ssml0 += christophGerman; ; break;
+
+                    case "[Finnish] {Female}": ssml0 += finnishFemale; ; break;
+                    case "[Finnish] {Male}": ssml0 += finnishMale; ; break;
 
 
                     case "[Hendi] {Female}": ssml0 += hendiFemale; ; break;
@@ -252,8 +262,8 @@ namespace OSCVRCWiz
                     case "[Russian] {Female}": ssml0 += russianFemale; ; break;
                     case "[Russian] {Male}": ssml0 += russianMale; ; break;
 
-                    case "Dalia [Spanish] {Female} (Mexico)": ssml0 += daliaSpanish_Mexico; ; break;
-                    case "Jorge [Spanish] {Male} (Mexcio)": ssml0 += jorgeSpanish_Mexico; ; break;
+                    case "[Spanish] {Female} (Mexico)": ssml0 += daliaSpanish_Mexico; ; break;
+                    case "[Spanish] {Male} (Mexcio)": ssml0 += jorgeSpanish_Mexico; ; break;
 
                     case "[Swedish] {Female}": ssml0 += swedishFemale; ; break;
                     case "[Swedish] {Male}": ssml0 += swedishMale; ; break;

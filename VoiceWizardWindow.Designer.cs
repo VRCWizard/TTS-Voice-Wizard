@@ -137,7 +137,7 @@
             "Sad"});
             this.comboBox1.Location = new System.Drawing.Point(28, 360);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 28);
+            this.comboBox1.Size = new System.Drawing.Size(221, 28);
             this.comboBox1.TabIndex = 11;
             // 
             // label1
@@ -204,10 +204,12 @@
             "[Danish] {Male}",
             "[Dutch] {Female}",
             "[Dutch] {Male}",
-            "Brigitte [French] {Female}",
-            "Jerome [French] {Male}",
-            "Amala [German] {Female}",
-            "Christoph [German] {Male}",
+            "[Finnish] {Female}",
+            "[Finnish] {Male}",
+            "[French] {Female}",
+            "[French] {Male}",
+            "[German] {Female}",
+            "[German] {Male}",
             "[Hendi] {Female}",
             "[Hendi] {Male}",
             "[Irish] {Female}",
@@ -226,8 +228,8 @@
             "[Portuguese] {Male}",
             "[Russian] {Female}",
             "[Russian] {Male}",
-            "Dalia [Spanish] {Female} (Mexico)",
-            "Jorge [Spanish] {Male} (Mexcio)",
+            "[Spanish] {Female} (Mexico)",
+            "[Spanish] {Male} (Mexcio)",
             "[Swedish] {Female}",
             "[Swedish] {Male}",
             "[Thai] {Female}",
@@ -238,7 +240,7 @@
             "[Vietnamese] {Male}"});
             this.comboBox2.Location = new System.Drawing.Point(28, 306);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 28);
+            this.comboBox2.Size = new System.Drawing.Size(221, 28);
             this.comboBox2.TabIndex = 13;
             this.comboBox2.Tag = "Sara";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
@@ -266,11 +268,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 399);
+            this.label4.Location = new System.Drawing.Point(279, 398);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 20);
             this.label4.TabIndex = 19;
             this.label4.Text = "Rate";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // comboBoxRate
             // 
@@ -283,19 +286,20 @@
             "fast",
             "x-fast",
             "default"});
-            this.comboBoxRate.Location = new System.Drawing.Point(28, 422);
+            this.comboBoxRate.Location = new System.Drawing.Point(279, 421);
             this.comboBoxRate.Name = "comboBoxRate";
-            this.comboBoxRate.Size = new System.Drawing.Size(187, 28);
+            this.comboBoxRate.Size = new System.Drawing.Size(155, 28);
             this.comboBoxRate.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(247, 283);
+            this.label5.Location = new System.Drawing.Point(279, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 21;
             this.label5.Text = "Pitch";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBoxPitch
             // 
@@ -308,19 +312,20 @@
             "high",
             "x-high",
             "default"});
-            this.comboBoxPitch.Location = new System.Drawing.Point(247, 306);
+            this.comboBoxPitch.Location = new System.Drawing.Point(279, 306);
             this.comboBoxPitch.Name = "comboBoxPitch";
-            this.comboBoxPitch.Size = new System.Drawing.Size(187, 28);
+            this.comboBoxPitch.Size = new System.Drawing.Size(155, 28);
             this.comboBoxPitch.TabIndex = 20;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(247, 338);
+            this.label6.Location = new System.Drawing.Point(279, 338);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
             this.label6.Text = "Volume";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // comboBoxVolume
             // 
@@ -332,9 +337,9 @@
             "loud",
             "x-loud",
             "default"});
-            this.comboBoxVolume.Location = new System.Drawing.Point(247, 361);
+            this.comboBoxVolume.Location = new System.Drawing.Point(279, 361);
             this.comboBoxVolume.Name = "comboBoxVolume";
-            this.comboBoxVolume.Size = new System.Drawing.Size(187, 28);
+            this.comboBoxVolume.Size = new System.Drawing.Size(155, 28);
             this.comboBoxVolume.TabIndex = 22;
             // 
             // textBoxDelay
@@ -410,7 +415,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(247, 399);
+            this.label3.Location = new System.Drawing.Point(28, 398);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 26;
@@ -426,6 +431,7 @@
             "Chinese [zh]",
             "Danish [da]",
             "Dutch [nl]",
+            "Finnish [fi]",
             "French [fr]",
             "German [de]",
             "Hendi [hi]",
@@ -441,10 +447,11 @@
             "Swedish [sv]",
             "Thai [th]",
             "Ukrainian [uk]",
-            "Vietnamese [vi]"});
-            this.comboBox3.Location = new System.Drawing.Point(247, 422);
+            "Vietnamese [vi]",
+            "-Test Entry- []"});
+            this.comboBox3.Location = new System.Drawing.Point(28, 421);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(187, 28);
+            this.comboBox3.Size = new System.Drawing.Size(221, 28);
             this.comboBox3.TabIndex = 25;
             // 
             // tabPage2
