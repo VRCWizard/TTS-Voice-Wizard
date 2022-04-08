@@ -31,6 +31,8 @@ After making your account you will need to create a speech service to get your K
 
 **Follow this video to get your key and region information:** https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
+**Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** Then try out the lite version of the app that uses windows built in TTS and voice recognition engine https://github.com/VRCWizard/TTS-Voice-Wizard-Lite<br />
+
 
 ![Screenshot 2022-03-15 190559](https://user-images.githubusercontent.com/101527472/158492227-f704aaef-4077-413d-9f9d-a48c6183df0d.jpg)
 
