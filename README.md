@@ -31,7 +31,7 @@ After making your account you will need to create a speech service to get your K
 **Follow this video to get your key and region information:** https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
 
-**I am not responsible for any charges you recieve if you upgrade from a Free Azure Account! It is up to you to monitor your own usage if you are using a pay-as-you-go azure account **<br />
+**I am not responsible for any charges you recieve if you upgrade from a Free Azure Account! It is up to you to monitor your own usage if you are using a pay-as-you-go azure account** <br />
 **Spending Limits:**: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
 **Avoid Charges:** https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/avoid-charges-free-account <br />
 **Azure Speech Service Pricing and Free Monthly Limits:**  https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/ <br />
