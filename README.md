@@ -5,7 +5,8 @@ Use TTS Voice Wizard's accessibily features to improve your VRChat experience (i
 * You can translate what you say in one language to one of 20+ other support languages! (Have a language you want added? Join the discord linked below and let me know!) <br />
 * There are over 50 different voices with various customization options so you can pick a voice that best suits you! <br />
 
-![AppMain](https://user-images.githubusercontent.com/101527472/158492198-deabcf22-e5a7-4b7c-a12a-b741897e8d83.jpg)
+![Screenshot 2022-04-08 114323](https://user-images.githubusercontent.com/101527472/162486249-50a3c8cf-bb6c-497c-9c51-c3f7ec04440f.png)
+
 
 # Getting Started
 Download the latest version from releases and run the .exe file (recommended to use latest release, not pre-release) <br />
