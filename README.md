@@ -27,19 +27,16 @@ or <br />
 https://azure.microsoft.com/en-us/free/students/ (no credit card required)<br />
 
 
-
-
 After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application. <br />
+**Follow this video to get your key and region information:** https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
-**I am not responsible for any charges you recieve if you upgrade from a Free Azure Account!** It is up to you to monitor your own usage if you are using a pay-as-you-go azure account <br />
+
+**I am not responsible for any charges you recieve if you upgrade from a Free Azure Account! It is up to you to monitor your own usage if you are using a pay-as-you-go azure account **<br />
 **Spending Limits:**: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
 **Avoid Charges:** https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/avoid-charges-free-account <br />
 **Azure Speech Service Pricing and Free Monthly Limits:**  https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/ <br />
 (This program using Speech to Text Standard, Text to Speech Neural, and Speech Translation Standard)
 **Monitor Usage:** https://docs.microsoft.com/en-us/answers/questions/643390/how-to-see-text-to-speech-usage.html (the location to see your speech service usage can be hard to find, the post should help!)
-
-
-**Follow this video to get your key and region information:** https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
 **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** Then try out the lite version of the app that uses windows built in TTS and voice recognition engine https://github.com/VRCWizard/TTS-Voice-Wizard-Lite<br />
 
