@@ -68,6 +68,7 @@ Your microphone for the app should be whatever microphone you normally use!
 # KillFrenzy Avatar Text
 To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
+**Download KillFrenzy Avatar Text (KAT) v1.1.1 (Other versions not supported yet)**
 
 # Can I set hotkey on my controllers?
 This feature is not avaliable as apart of this ATM but you can use this handy program! <br />
