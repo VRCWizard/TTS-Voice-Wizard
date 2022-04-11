@@ -78,12 +78,12 @@ Make sure app is not running then set a button to "ctrl + g" (if app is running 
 
 # Need Help / Have Questions / Wanna make suggestions?
 Join the discord server <br />
-https://discord.gg/YjgR9SWPnW (updated to permanate link, thank you)<br />
+https://discord.gg/YjgR9SWPnW <br />
 
 # Donation
 If you feel like it<br />
 https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD <br />
-(will also take github stars XD)
+(will also take github stars)
 # My Socials
 https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg <br />
 https://twitter.com/Wizard_VR <br />
