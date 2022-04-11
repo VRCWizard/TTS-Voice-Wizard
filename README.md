@@ -81,7 +81,7 @@ Join the discord server <br />
 https://discord.gg/YjgR9SWPnW (updated to permanate link, thank you)<br />
 
 # Donation
-If you feel like it <3 <br />
+If you feel like it<br />
 https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD <br />
 (will also take github stars XD)
 # My Socials
