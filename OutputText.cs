@@ -552,10 +552,10 @@ namespace OSCVRCWiz
                 Task.Delay(MainForm.eraseDelay).Wait();
 
                 message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
-                message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+               // message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); HIDE TEXT SHOULD NOT CLEAR TEXT, THIS WILL FIX THE ISSUE OF DELAYED HIDE
 
                 sender2.Send(message0);
-                sender2.Send(message1);
+              ///  sender2.Send(message1);
             }
             // currentlyPrinting = false; //does not work as intended, look into sharing betwwen threads possibly?
           //  int startingPoint = stringPoint;

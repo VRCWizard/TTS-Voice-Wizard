@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.speechTTSButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TTSButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,12 +49,15 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxErase = new System.Windows.Forms.TextBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -81,6 +83,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -95,7 +98,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(592, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(436, 509);
+            this.richTextBox1.Size = new System.Drawing.Size(436, 508);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
@@ -103,27 +106,19 @@
             // 
             this.speechTTSButton.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.speechTTSButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.speechTTSButton.Location = new System.Drawing.Point(28, 45);
+            this.speechTTSButton.Location = new System.Drawing.Point(28, 78);
             this.speechTTSButton.Name = "speechTTSButton";
-            this.speechTTSButton.Size = new System.Drawing.Size(552, 222);
+            this.speechTTSButton.Size = new System.Drawing.Size(552, 189);
             this.speechTTSButton.TabIndex = 5;
             this.speechTTSButton.Text = "Speech To Text To Speech";
             this.speechTTSButton.UseVisualStyleBackColor = true;
             this.speechTTSButton.Click += new System.EventHandler(this.speechTTSButton_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(28, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(450, 27);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = "Read this aloud.";
-            // 
             // TTSButton
             // 
             this.TTSButton.Location = new System.Drawing.Point(484, 12);
             this.TTSButton.Name = "TTSButton";
-            this.TTSButton.Size = new System.Drawing.Size(102, 27);
+            this.TTSButton.Size = new System.Drawing.Size(96, 60);
             this.TTSButton.TabIndex = 10;
             this.TTSButton.Text = "TTS";
             this.TTSButton.UseVisualStyleBackColor = true;
@@ -386,12 +381,13 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1039, 548);
+            this.tabControl1.Size = new System.Drawing.Size(1039, 547);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage1.Controls.Add(this.richTextBox3);
             this.tabPage1.Controls.Add(this.checkBox7);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.comboBox4);
@@ -399,7 +395,6 @@
             this.tabPage1.Controls.Add(this.comboBox3);
             this.tabPage1.Controls.Add(this.logClearButton);
             this.tabPage1.Controls.Add(this.speechTTSButton);
-            this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.hideVRCTextButton);
             this.tabPage1.Controls.Add(this.TTSButton);
             this.tabPage1.Controls.Add(this.label2);
@@ -416,9 +411,17 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1031, 515);
+            this.tabPage1.Size = new System.Drawing.Size(1031, 514);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(28, 12);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(450, 60);
+            this.richTextBox3.TabIndex = 30;
+            this.richTextBox3.Text = "Read this aloud.";
             // 
             // checkBox7
             // 
@@ -520,6 +523,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.CadetBlue;
+            this.tabPage2.Controls.Add(this.checkBox10);
+            this.tabPage2.Controls.Add(this.checkBox9);
+            this.tabPage2.Controls.Add(this.checkBox8);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.textBoxErase);
             this.tabPage2.Controls.Add(this.checkBox6);
@@ -541,14 +547,37 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1031, 515);
+            this.tabPage2.Size = new System.Drawing.Size(1031, 514);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.checkBox9.Location = new System.Drawing.Point(27, 309);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(125, 24);
+            this.checkBox9.TabIndex = 45;
+            this.checkBox9.Text = "Always on top";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.checkBox8.Location = new System.Drawing.Point(27, 279);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(186, 24);
+            this.checkBox8.TabIndex = 44;
+            this.checkBox8.Text = "Clear text box after TTS";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(158, 415);
+            this.button1.Location = new System.Drawing.Point(158, 476);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 43;
@@ -558,7 +587,7 @@
             // 
             // textBoxErase
             // 
-            this.textBoxErase.Location = new System.Drawing.Point(27, 417);
+            this.textBoxErase.Location = new System.Drawing.Point(27, 478);
             this.textBoxErase.Name = "textBoxErase";
             this.textBoxErase.Size = new System.Drawing.Size(125, 27);
             this.textBoxErase.TabIndex = 42;
@@ -568,7 +597,7 @@
             // 
             this.checkBox6.AutoSize = true;
             this.checkBox6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.checkBox6.Location = new System.Drawing.Point(27, 387);
+            this.checkBox6.Location = new System.Drawing.Point(27, 448);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(206, 24);
             this.checkBox6.TabIndex = 41;
@@ -581,7 +610,7 @@
             this.checkBox5.Checked = true;
             this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.checkBox5.Location = new System.Drawing.Point(27, 216);
+            this.checkBox5.Location = new System.Drawing.Point(27, 189);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(251, 24);
             this.checkBox5.TabIndex = 40;
@@ -595,7 +624,7 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(27, 276);
+            this.checkBox1.Location = new System.Drawing.Point(27, 249);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(291, 24);
             this.checkBox1.TabIndex = 24;
@@ -605,7 +634,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(467, 168);
+            this.label18.Location = new System.Drawing.Point(467, 148);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(128, 20);
             this.label18.TabIndex = 39;
@@ -617,7 +646,7 @@
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.checkBox2.Location = new System.Drawing.Point(27, 246);
+            this.checkBox2.Location = new System.Drawing.Point(27, 219);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(190, 24);
             this.checkBox2.TabIndex = 25;
@@ -628,7 +657,7 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(27, 134);
+            this.checkBox4.Location = new System.Drawing.Point(27, 114);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(208, 24);
             this.checkBox4.TabIndex = 38;
@@ -639,7 +668,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(23, 111);
+            this.label17.Location = new System.Drawing.Point(23, 91);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(167, 20);
             this.label17.TabIndex = 36;
@@ -647,7 +676,7 @@
             // 
             // buttonActivationWord
             // 
-            this.buttonActivationWord.Location = new System.Drawing.Point(367, 166);
+            this.buttonActivationWord.Location = new System.Drawing.Point(367, 146);
             this.buttonActivationWord.Name = "buttonActivationWord";
             this.buttonActivationWord.Size = new System.Drawing.Size(94, 29);
             this.buttonActivationWord.TabIndex = 37;
@@ -657,7 +686,7 @@
             // 
             // textBoxActivationWord
             // 
-            this.textBoxActivationWord.Location = new System.Drawing.Point(27, 166);
+            this.textBoxActivationWord.Location = new System.Drawing.Point(27, 146);
             this.textBoxActivationWord.Name = "textBoxActivationWord";
             this.textBoxActivationWord.Size = new System.Drawing.Size(334, 27);
             this.textBoxActivationWord.TabIndex = 35;
@@ -665,7 +694,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(27, 336);
+            this.textBox4.Location = new System.Drawing.Point(27, 397);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(125, 27);
@@ -676,7 +705,7 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(255, 401);
+            this.label13.Location = new System.Drawing.Point(675, 485);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(337, 20);
             this.label13.TabIndex = 30;
@@ -685,7 +714,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(158, 339);
+            this.label12.Location = new System.Drawing.Point(158, 400);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(104, 20);
             this.label12.TabIndex = 28;
@@ -695,7 +724,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(23, 313);
+            this.label11.Location = new System.Drawing.Point(23, 374);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 20);
             this.label11.TabIndex = 27;
@@ -715,7 +744,7 @@
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1031, 515);
+            this.tabPage3.Size = new System.Drawing.Size(1031, 514);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
             // 
@@ -734,7 +763,7 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(249, 388);
+            this.label15.Location = new System.Drawing.Point(744, 490);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(271, 20);
             this.label15.TabIndex = 34;
@@ -803,12 +832,23 @@
             this.textBox2.Size = new System.Drawing.Size(356, 27);
             this.textBox2.TabIndex = 27;
             // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.checkBox10.Location = new System.Drawing.Point(27, 339);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(179, 24);
+            this.checkBox10.TabIndex = 46;
+            this.checkBox10.Text = "Disable TTS (no voice)";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(1068, 572);
+            this.ClientSize = new System.Drawing.Size(1068, 571);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -829,7 +869,6 @@
 
         #endregion
         private RichTextBox richTextBox1;
-        private TextBox textBox1;
         private Button TTSButton;
         private Label label1;
         private Label label2;
@@ -880,5 +919,9 @@
         private Label label14;
         public ComboBox comboBox4;
         public CheckBox checkBox7;
+        private RichTextBox richTextBox3;
+        public CheckBox checkBox8;
+        public CheckBox checkBox9;
+        public CheckBox checkBox10;
     }
 }

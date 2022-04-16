@@ -130,12 +130,15 @@ using System.Threading.Tasks;
                 {
                     ot.outputLog(MainForm, MainForm.dictationString);
                 }
-                AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice);
+                if (MainForm.checkBox10.Checked == false)
+                {
+                    Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
+                }
                 //Send Text to Vrchat
                 if (MainForm.checkBox1.Checked == true)
                 {
-                    ot.outputVRChat(MainForm, MainForm.dictationString);
-                   // Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString));
+                    //ot.outputVRChat(MainForm, MainForm.dictationString);
+                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString));
                 }
                 //Send Text to TTS
 
@@ -313,21 +316,26 @@ using System.Threading.Tasks;
                 var ot = new OutputText();
                 if (MainForm.checkBox2.Checked == true)
                 {
-                    ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage+ ">"+ toLanguage + "]: " + "[" + translatedString + "]");
+                 ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage+ ">"+ toLanguage + "]: " + "[" + translatedString + "]");
                 }
             //Send Text to TTS
-            AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice);
+            if (MainForm.checkBox10.Checked == false)
+            {
+                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
+
+            }
+            
                 //Send Text to Vrchat
                 if (MainForm.checkBox1.Checked == true)
                 {
                     if (MainForm.checkBox7.Checked == true)
                     {
-                    ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]");
+                    Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]"));
 
                     }
                     else
                     {
-                    ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]");
+                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]"));
 
                     }
                 

@@ -54,6 +54,7 @@ namespace OSCVRCWiz
 
             int id = 0;// The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+            
 
 
 
@@ -80,7 +81,7 @@ namespace OSCVRCWiz
             string text = "";
             this.Invoke((MethodInvoker)delegate ()
             {
-                text = textBox1.Text.ToString();
+                text = richTextBox3.Text.ToString();
 
 
                 if (string.IsNullOrWhiteSpace(comboBox1.Text.ToString()))
@@ -139,17 +140,26 @@ namespace OSCVRCWiz
             //Send Text to Vrchat
             if (checkBox2.Checked == true)
             {
-                ot.outputLog(this,text);
+                ot.outputLog(this, text);
             }
-            AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice);//new
+            if (checkBox10.Checked == false)
+            {
+                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice));//new
+            }
             if (checkBox1.Checked == true)
             {
 
 
 
-                //Task.Run(() => ot.outputVRChat(this,text)); //original
-                ot.outputVRChat(this, text);//new
+                Task.Run(() => ot.outputVRChat(this,text)); //original
+               // ot.outputVRChat(this, text);//new
             }
+            if(checkBox8.Checked ==true)
+            {
+                richTextBox3.Clear();
+
+            }
+           
             //Send Text to TTS
 
 
@@ -190,7 +200,7 @@ namespace OSCVRCWiz
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action<string>(AppendTextBox), new object[] { line });
+                this.Invoke(new Action<string>(logLine), new object[] { line });
                 return;
             }
             richTextBox1.Select(0, 0);
@@ -437,6 +447,35 @@ namespace OSCVRCWiz
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox9.Checked == true)
+            {
+                TopMost = true;
+
+            }
+            if (checkBox9.Checked == false)
+            {
+                TopMost = false;
+
+            }
+
+        }
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TTSButton.PerformClick();
+
+                e.Handled = true;
+            }
         }
     }
 }
