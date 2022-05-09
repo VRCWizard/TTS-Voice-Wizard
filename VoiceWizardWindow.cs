@@ -18,8 +18,8 @@ namespace OSCVRCWiz
         public static string YourServiceRegion = Settings1.Default.yourRegion;
         public string dictationString = "";
         public string activationWord = Settings1.Default.activationWord;
-        public int debugDelayValue = 250;// Recommended delay of 250ms 
-        public int eraseDelay = 5000;
+        public int debugDelayValue = Convert.ToInt32(Settings1.Default.delayDebugValueSetting);// Recommended delay of 250ms 
+        public int eraseDelay = Convert.ToInt32(Settings1.Default.hideDelayValue);
         int audioOutputIndex = -1;
         public bool profanityFilter = true;
         //  SpeechRecognitionEngine recognizer;
@@ -50,6 +50,12 @@ namespace OSCVRCWiz
 
             textBox2.PasswordChar = '*';
             tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Appearance = TabAppearance.FlatButtons;
+            tabControl1.ItemSize = new Size(0, 1);
+            tabControl1.SizeMode = TabSizeMode.Fixed;
+           
+            
+
 
 
             int id = 0;// The id of the hotkey. 
@@ -122,6 +128,7 @@ namespace OSCVRCWiz
                 }
                 else
                 {
+                    
                     volume = comboBoxVolume.Text.ToString();
                 }
                 if (string.IsNullOrWhiteSpace(comboBox2.Text.ToString()))
@@ -131,6 +138,7 @@ namespace OSCVRCWiz
                 }
                 else
                 {
+                  
                     voice = comboBox2.Text.ToString();
                 }
 
@@ -138,15 +146,15 @@ namespace OSCVRCWiz
             });
             var ot = new OutputText();
             //Send Text to Vrchat
-            if (checkBox2.Checked == true)
+            if (rjToggleButton2.Checked == true)
             {
                 ot.outputLog(this, text);
             }
-            if (checkBox10.Checked == false)
+            if (rjToggleButtonDisableTTS.Checked == false)
             {
                 Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(text, emotion, rate, pitch, volume, voice));//new
             }
-            if (checkBox1.Checked == true)
+            if (rjToggleButton4.Checked == true)
             {
 
 
@@ -154,7 +162,7 @@ namespace OSCVRCWiz
                 Task.Run(() => ot.outputVRChat(this,text)); //original
                // ot.outputVRChat(this, text);//new
             }
-            if(checkBox8.Checked ==true)
+            if(rjToggleButton3.Checked ==true)
             {
                 richTextBox3.Clear();
 
@@ -187,6 +195,8 @@ namespace OSCVRCWiz
             this.Invoke((MethodInvoker)delegate ()
             {
                 debugDelayValue = Int32.Parse(textBoxDelay.Text.ToString());
+                Settings1.Default.delayDebugValueSetting = textBoxDelay.Text.ToString();
+                Settings1.Default.Save();
 
 
             });
@@ -242,7 +252,7 @@ namespace OSCVRCWiz
             {
                 text = textBox2.Text.ToString();
                 YourSubscriptionKey = text;
-                if (checkBox3.Checked == true)
+                if (rjToggleButtonKeyRegion.Checked == true)
                 {
                     Settings1.Default.yourKey = text;
                     Settings1.Default.Save();
@@ -263,7 +273,7 @@ namespace OSCVRCWiz
             {
                 text = textBox3.Text.ToString();
                 YourServiceRegion = text;
-                if (checkBox3.Checked == true)
+                if (rjToggleButtonKeyRegion.Checked == true)
                 {
                     Settings1.Default.yourRegion = text;
                     Settings1.Default.Save();
@@ -279,12 +289,28 @@ namespace OSCVRCWiz
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(this.Handle, 0);
-            if (checkBox3.Checked == false)
+            if (rjToggleButtonKeyRegion.Checked == false)
             {
                 Settings1.Default.yourRegion = "";
                 Settings1.Default.yourKey = "";
             }
-            Settings1.Default.recognition = checkBox4.Checked;
+            Settings1.Default.recognition = rjToggleButton7.Checked;
+
+            
+            Settings1.Default.profanityFilterSetting = rjToggleButton1.Checked;
+            Settings1.Default.logOrNotSetting = rjToggleButton2.Checked;
+            Settings1.Default.sendOSCSetting= rjToggleButton4.Checked;
+            Settings1.Default.clearTTSWindowSetting = rjToggleButton3.Checked;
+
+
+            Settings1.Default.alwaysTopSetting = rjToggleButtonOnTop.Checked;
+            Settings1.Default.disableTTSSetting = rjToggleButtonDisableTTS.Checked;
+
+            Settings1.Default.hideDelaySetting = rjToggleButtonHideDelay.Checked;
+            Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
+            Settings1.Default.wordsTranslateVRCSetting = rjToggleButtonTextAsTranslated.Checked;
+
+
             Settings1.Default.Save();
         }
 
@@ -334,7 +360,7 @@ namespace OSCVRCWiz
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            checkBox4.Checked = Settings1.Default.recognition;
+            rjToggleButton7.Checked = Settings1.Default.recognition;
             textBoxActivationWord.Text = Settings1.Default.activationWord;
             activationWord = Settings1.Default.activationWord;
             if (Settings1.Default.recognition == true)
@@ -350,10 +376,28 @@ namespace OSCVRCWiz
             textBox2.Text = Settings1.Default.yourKey;
             textBox3.Text = Settings1.Default.yourRegion;
 
+
+            textBoxDelay.Text = Settings1.Default.delayDebugValueSetting;
+            rjToggleButton1.Checked = Settings1.Default.profanityFilterSetting;
+            rjToggleButton2.Checked = Settings1.Default.logOrNotSetting;
+            rjToggleButton4.Checked = Settings1.Default.sendOSCSetting;
+            rjToggleButton3.Checked = Settings1.Default.clearTTSWindowSetting;
+
+
+            rjToggleButtonOnTop.Checked = Settings1.Default.alwaysTopSetting;
+            rjToggleButtonDisableTTS.Checked = Settings1.Default.disableTTSSetting;
+
+            rjToggleButtonHideDelay.Checked = Settings1.Default.hideDelaySetting;
+            textBoxErase.Text = Settings1.Default.hideDelayValue;
+            rjToggleButtonTextAsTranslated.Checked = Settings1.Default.wordsTranslateVRCSetting;
+
+
+
+
             YourSubscriptionKey = Settings1.Default.yourKey;
             YourServiceRegion = Settings1.Default.yourRegion;
 
-            checkBox3.Checked = Settings1.Default.remember;
+            rjToggleButtonKeyRegion.Checked = Settings1.Default.remember;
 
             
             comboBox2.SelectedIndex = 0;//voice
@@ -368,7 +412,7 @@ namespace OSCVRCWiz
      
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            Settings1.Default.remember = checkBox3.Checked;
+            Settings1.Default.remember = rjToggleButtonKeyRegion.Checked;
             Settings1.Default.Save();
         }
 
@@ -380,19 +424,16 @@ namespace OSCVRCWiz
             Settings1.Default.Save();
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox5.Checked == true)
+            if(rjToggleButton1.Checked == true)
             {
                 profanityFilter = true;
 
             }
-            if (checkBox5.Checked == false)
+            if (rjToggleButton1.Checked == false)
             {
                 profanityFilter = false;
 
@@ -400,10 +441,7 @@ namespace OSCVRCWiz
 
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void buttonErase_Click(object sender, EventArgs e)
         {
@@ -411,6 +449,8 @@ namespace OSCVRCWiz
                 this.Invoke((MethodInvoker)delegate ()
                 {
                     eraseDelay = Int32.Parse(textBoxErase.Text.ToString());
+                    Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
+                    Settings1.Default.Save();
 
 
                 });
@@ -434,34 +474,16 @@ namespace OSCVRCWiz
             });
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox9.Checked == true)
+            if (rjToggleButtonOnTop.Checked == true)
             {
                 TopMost = true;
 
             }
-            if (checkBox9.Checked == false)
+            if (rjToggleButtonOnTop.Checked == false)
             {
                 TopMost = false;
 
@@ -476,6 +498,53 @@ namespace OSCVRCWiz
 
                 e.Handled = true;
             }
+        }
+
+
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage1);//sttts
+            
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage3);//provider
+
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage2);//settings
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage4);//Dashboard
+
+
+        }
+
+
+
+        private void iconButton6_Click(object sender, EventArgs e)
+        {
+
+            //    System.Diagnostics.Process.Start(new ProcessStartInfo("https://discord.gg/YjgR9SWPnW") { UseShellExecute = true });
+            System.Diagnostics.Process.Start("explorer.exe", "https://discord.gg/YjgR9SWPnW");
+
+        }
+
+        private void iconButton7_Click(object sender, EventArgs e)
+        {
+            //System.Diagnostics.Process.Start("https://github.com/VRCWizard/TTS-Voice-Wizard");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard");
+        }
+
+        private void metroTrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+           // System.Diagnostics.Debug.WriteLine(metroTrackBar1.Value);
         }
     }
 }

@@ -126,16 +126,16 @@ using System.Threading.Tasks;
 
                 });
                 var ot = new OutputText();
-                if (MainForm.checkBox2.Checked == true)
+                if (MainForm.rjToggleButton2.Checked == true)
                 {
                     ot.outputLog(MainForm, MainForm.dictationString);
                 }
-                if (MainForm.checkBox10.Checked == false)
+                if (MainForm.rjToggleButtonDisableTTS.Checked == false)
                 {
                     Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
                 }
                 //Send Text to Vrchat
-                if (MainForm.checkBox1.Checked == true)
+                if (MainForm.rjToggleButton4.Checked == true)
                 {
                     //ot.outputVRChat(MainForm, MainForm.dictationString);
                     Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString));
@@ -314,21 +314,21 @@ using System.Threading.Tasks;
 
                 });
                 var ot = new OutputText();
-                if (MainForm.checkBox2.Checked == true)
+                if (MainForm.rjToggleButton2.Checked == true)
                 {
                  ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage+ ">"+ toLanguage + "]: " + "[" + translatedString + "]");
                 }
             //Send Text to TTS
-            if (MainForm.checkBox10.Checked == false)
+            if (MainForm.rjToggleButtonDisableTTS.Checked == false)
             {
                 Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
 
             }
             
                 //Send Text to Vrchat
-                if (MainForm.checkBox1.Checked == true)
+                if (MainForm.rjToggleButton4.Checked == true)
                 {
-                    if (MainForm.checkBox7.Checked == true)
+                    if (MainForm.rjToggleButtonTextAsTranslated.Checked == true) //changed from checkbox7
                     {
                     Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]"));
 

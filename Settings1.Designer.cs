@@ -82,5 +82,125 @@ namespace OSCVRCWiz {
                 this["activationWord"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
+        public string delayDebugValueSetting {
+            get {
+                return ((string)(this["delayDebugValueSetting"]));
+            }
+            set {
+                this["delayDebugValueSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool profanityFilterSetting {
+            get {
+                return ((bool)(this["profanityFilterSetting"]));
+            }
+            set {
+                this["profanityFilterSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool logOrNotSetting {
+            get {
+                return ((bool)(this["logOrNotSetting"]));
+            }
+            set {
+                this["logOrNotSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool sendOSCSetting {
+            get {
+                return ((bool)(this["sendOSCSetting"]));
+            }
+            set {
+                this["sendOSCSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool clearTTSWindowSetting {
+            get {
+                return ((bool)(this["clearTTSWindowSetting"]));
+            }
+            set {
+                this["clearTTSWindowSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool alwaysTopSetting {
+            get {
+                return ((bool)(this["alwaysTopSetting"]));
+            }
+            set {
+                this["alwaysTopSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool disableTTSSetting {
+            get {
+                return ((bool)(this["disableTTSSetting"]));
+            }
+            set {
+                this["disableTTSSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hideDelaySetting {
+            get {
+                return ((bool)(this["hideDelaySetting"]));
+            }
+            set {
+                this["hideDelaySetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string hideDelayValue {
+            get {
+                return ((string)(this["hideDelayValue"]));
+            }
+            set {
+                this["hideDelayValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool wordsTranslateVRCSetting {
+            get {
+                return ((bool)(this["wordsTranslateVRCSetting"]));
+            }
+            set {
+                this["wordsTranslateVRCSetting"] = value;
+            }
+        }
     }
 }
