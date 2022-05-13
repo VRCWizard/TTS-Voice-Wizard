@@ -22,6 +22,7 @@ namespace OSCVRCWiz
         public int eraseDelay = Convert.ToInt32(Settings1.Default.hideDelayValue);
         int audioOutputIndex = -1;
         public bool profanityFilter = true;
+        public string numKATSyncParameters = "4";
         //  SpeechRecognitionEngine recognizer;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -388,6 +389,14 @@ namespace OSCVRCWiz
             comboBoxVolume.SelectedIndex = 4;
             comboBoxRate.SelectedIndex = 5;
 
+           // comboBoxPara.SelectedIndex = 0;//KAT 4 para
+
+            this.Invoke((MethodInvoker)delegate ()
+            { 
+                comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;
+
+            });
+
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -556,6 +565,20 @@ namespace OSCVRCWiz
         private void metroTrackBar1_ValueChanged(object sender, EventArgs e)
         {
            // System.Diagnostics.Debug.WriteLine(metroTrackBar1.Value);
+        }
+
+        private void comboBoxPara_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                numKATSyncParameters = comboBoxPara.SelectedItem.ToString();
+                Settings1.Default.SyncParaValue = comboBoxPara.SelectedIndex;
+
+                Settings1.Default.Save();
+            });
+          
+
+
         }
     }
 }

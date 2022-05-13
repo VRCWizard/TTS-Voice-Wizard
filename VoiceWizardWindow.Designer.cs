@@ -59,6 +59,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBoxPara = new System.Windows.Forms.ComboBox();
+            this.rjTogglePhraseList = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.rjToggleButton7 = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -106,9 +111,6 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.rjTogglePhraseList = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -619,6 +621,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.comboBoxPara);
             this.tabPage2.Controls.Add(this.rjTogglePhraseList);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.richTextBox6);
@@ -658,6 +662,63 @@
             this.tabPage2.Size = new System.Drawing.Size(976, 526);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.Color.Snow;
+            this.label15.Location = new System.Drawing.Point(643, 21);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(186, 20);
+            this.label15.TabIndex = 66;
+            this.label15.Text = "KAT Sync Parameter Speed";
+            // 
+            // comboBoxPara
+            // 
+            this.comboBoxPara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPara.FormattingEnabled = true;
+            this.comboBoxPara.Items.AddRange(new object[] {
+            "4",
+            "8"});
+            this.comboBoxPara.Location = new System.Drawing.Point(648, 44);
+            this.comboBoxPara.Name = "comboBoxPara";
+            this.comboBoxPara.Size = new System.Drawing.Size(181, 28);
+            this.comboBoxPara.TabIndex = 31;
+            this.comboBoxPara.SelectedIndexChanged += new System.EventHandler(this.comboBoxPara_SelectedIndexChanged);
+            // 
+            // rjTogglePhraseList
+            // 
+            this.rjTogglePhraseList.AutoSize = true;
+            this.rjTogglePhraseList.Location = new System.Drawing.Point(649, 97);
+            this.rjTogglePhraseList.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjTogglePhraseList.Name = "rjTogglePhraseList";
+            this.rjTogglePhraseList.OffBackColor = System.Drawing.Color.Gray;
+            this.rjTogglePhraseList.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjTogglePhraseList.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjTogglePhraseList.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjTogglePhraseList.Size = new System.Drawing.Size(45, 22);
+            this.rjTogglePhraseList.TabIndex = 65;
+            this.rjTogglePhraseList.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.Snow;
+            this.label13.Location = new System.Drawing.Point(700, 97);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(78, 20);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Phrase List";
+            // 
+            // richTextBox6
+            // 
+            this.richTextBox6.Location = new System.Drawing.Point(649, 125);
+            this.richTextBox6.Name = "richTextBox6";
+            this.richTextBox6.Size = new System.Drawing.Size(289, 210);
+            this.richTextBox6.TabIndex = 63;
+            this.richTextBox6.Text = "";
             // 
             // label16
             // 
@@ -918,7 +979,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.Snow;
-            this.label18.Location = new System.Drawing.Point(467, 132);
+            this.label18.Location = new System.Drawing.Point(413, 131);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(128, 20);
             this.label18.TabIndex = 39;
@@ -941,7 +1002,7 @@
             this.buttonActivationWord.FlatAppearance.BorderSize = 0;
             this.buttonActivationWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonActivationWord.ForeColor = System.Drawing.Color.Snow;
-            this.buttonActivationWord.Location = new System.Drawing.Point(367, 130);
+            this.buttonActivationWord.Location = new System.Drawing.Point(313, 127);
             this.buttonActivationWord.Name = "buttonActivationWord";
             this.buttonActivationWord.Size = new System.Drawing.Size(94, 29);
             this.buttonActivationWord.TabIndex = 37;
@@ -953,7 +1014,7 @@
             // 
             this.textBoxActivationWord.Location = new System.Drawing.Point(27, 130);
             this.textBoxActivationWord.Name = "textBoxActivationWord";
-            this.textBoxActivationWord.Size = new System.Drawing.Size(334, 27);
+            this.textBoxActivationWord.Size = new System.Drawing.Size(280, 27);
             this.textBoxActivationWord.TabIndex = 35;
             this.textBoxActivationWord.Text = "Quote";
             // 
@@ -1280,39 +1341,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // richTextBox6
-            // 
-            this.richTextBox6.Location = new System.Drawing.Point(648, 279);
-            this.richTextBox6.Name = "richTextBox6";
-            this.richTextBox6.Size = new System.Drawing.Size(289, 210);
-            this.richTextBox6.TabIndex = 63;
-            this.richTextBox6.Text = "";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.Snow;
-            this.label13.Location = new System.Drawing.Point(694, 251);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 20);
-            this.label13.TabIndex = 64;
-            this.label13.Text = "Phrase List";
-            // 
-            // rjTogglePhraseList
-            // 
-            this.rjTogglePhraseList.AutoSize = true;
-            this.rjTogglePhraseList.Location = new System.Drawing.Point(643, 251);
-            this.rjTogglePhraseList.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjTogglePhraseList.Name = "rjTogglePhraseList";
-            this.rjTogglePhraseList.OffBackColor = System.Drawing.Color.Gray;
-            this.rjTogglePhraseList.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjTogglePhraseList.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjTogglePhraseList.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjTogglePhraseList.Size = new System.Drawing.Size(45, 22);
-            this.rjTogglePhraseList.TabIndex = 65;
-            this.rjTogglePhraseList.UseVisualStyleBackColor = true;
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1423,5 +1451,7 @@
         public RJControls.RJToggleButton rjTogglePhraseList;
         private Label label13;
         public RichTextBox richTextBox6;
+        public ComboBox comboBoxPara;
+        private Label label15;
     }
 }
