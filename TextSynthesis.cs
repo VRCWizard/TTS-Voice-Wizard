@@ -65,7 +65,34 @@ using System.Threading.Tasks;
                 var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
                 var speechRecognizer = new Microsoft.CognitiveServices.Speech.SpeechRecognizer(speechConfig, audioConfig);
 
-                var speechRecognitionResult = await speechRecognizer.RecognizeOnceAsync();
+                ///Phrase List
+                var phraseList = PhraseListGrammar.FromRecognizer(speechRecognizer);
+                if ( MainForm.rjTogglePhraseList.Checked == true)
+                {
+                    string words = MainForm.richTextBox6.Text.ToString();
+
+                    string[] split = words.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string s in split)
+                    {
+
+                        if (s.Trim() != "")
+                            phraseList.AddPhrase(s);
+                        System.Diagnostics.Debug.WriteLine(s);
+
+                    }
+             
+                    
+
+                }
+                if (MainForm.rjTogglePhraseList.Checked == false)
+                {
+                    phraseList.Clear();
+                }
+
+
+
+
+                    var speechRecognitionResult = await speechRecognizer.RecognizeOnceAsync();
                 //OutputSpeechRecognitionResult(speechRecognitionResult);
 
 
@@ -241,11 +268,35 @@ using System.Threading.Tasks;
                 var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
                 using var translationRecognizer = new TranslationRecognizer(translationConfig, audioConfig);
 
+            // Phrase list
+            var phraseList = PhraseListGrammar.FromRecognizer(translationRecognizer);
+            if (MainForm.rjTogglePhraseList.Checked == true)
+            {
+                string words = MainForm.richTextBox6.Text.ToString();
+
+                string[] split = words.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string s in split)
+                {
+
+                    if (s.Trim() != "")
+                        phraseList.AddPhrase(s);
+                    System.Diagnostics.Debug.WriteLine(s);
+
+                }
 
 
-                //OutputSpeechRecognitionResult(speechRecognitionResult);
 
-                System.Diagnostics.Debug.WriteLine($"Say something in '{fromLanguage}' and ");
+            }
+            if (MainForm.rjTogglePhraseList.Checked == false)
+            {
+                phraseList.Clear();
+            }
+
+
+
+            //OutputSpeechRecognitionResult(speechRecognitionResult);
+
+            System.Diagnostics.Debug.WriteLine($"Say something in '{fromLanguage}' and ");
                 System.Diagnostics.Debug.WriteLine($"we'll translate into '{toLanguage}'.\n");
 
             var speechRecognitionResult = await translationRecognizer.RecognizeOnceAsync();

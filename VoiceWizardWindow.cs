@@ -286,33 +286,7 @@ namespace OSCVRCWiz
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            UnregisterHotKey(this.Handle, 0);
-            if (rjToggleButtonKeyRegion.Checked == false)
-            {
-                Settings1.Default.yourRegion = "";
-                Settings1.Default.yourKey = "";
-            }
-            Settings1.Default.recognition = rjToggleButton7.Checked;
-
-            
-            Settings1.Default.profanityFilterSetting = rjToggleButton1.Checked;
-            Settings1.Default.logOrNotSetting = rjToggleButton2.Checked;
-            Settings1.Default.sendOSCSetting= rjToggleButton4.Checked;
-            Settings1.Default.clearTTSWindowSetting = rjToggleButton3.Checked;
-
-
-            Settings1.Default.alwaysTopSetting = rjToggleButtonOnTop.Checked;
-            Settings1.Default.disableTTSSetting = rjToggleButtonDisableTTS.Checked;
-
-            Settings1.Default.hideDelaySetting = rjToggleButtonHideDelay.Checked;
-            Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
-            Settings1.Default.wordsTranslateVRCSetting = rjToggleButtonTextAsTranslated.Checked;
-
-
-            Settings1.Default.Save();
-        }
+       
 
         private void comboBoxVirtualOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -392,6 +366,12 @@ namespace OSCVRCWiz
             rjToggleButtonTextAsTranslated.Checked = Settings1.Default.wordsTranslateVRCSetting;
 
 
+            richTextBox6.Text = Settings1.Default.phraseListValue;
+            rjTogglePhraseList.Checked = Settings1.Default.phraseListBoolSetting;
+
+
+
+
 
 
             YourSubscriptionKey = Settings1.Default.yourKey;
@@ -409,7 +389,38 @@ namespace OSCVRCWiz
             comboBoxRate.SelectedIndex = 5;
 
         }
-     
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKey(this.Handle, 0);
+            if (rjToggleButtonKeyRegion.Checked == false)
+            {
+                Settings1.Default.yourRegion = "";
+                Settings1.Default.yourKey = "";
+            }
+            Settings1.Default.recognition = rjToggleButton7.Checked;
+
+
+            Settings1.Default.profanityFilterSetting = rjToggleButton1.Checked;
+            Settings1.Default.logOrNotSetting = rjToggleButton2.Checked;
+            Settings1.Default.sendOSCSetting = rjToggleButton4.Checked;
+            Settings1.Default.clearTTSWindowSetting = rjToggleButton3.Checked;
+
+
+            Settings1.Default.alwaysTopSetting = rjToggleButtonOnTop.Checked;
+            Settings1.Default.disableTTSSetting = rjToggleButtonDisableTTS.Checked;
+
+            Settings1.Default.hideDelaySetting = rjToggleButtonHideDelay.Checked;
+            Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
+            Settings1.Default.wordsTranslateVRCSetting = rjToggleButtonTextAsTranslated.Checked;
+
+            Settings1.Default.phraseListValue = richTextBox6.Text.ToString();
+            Settings1.Default.phraseListBoolSetting = rjTogglePhraseList.Checked;
+
+
+
+            Settings1.Default.Save();
+        }
+
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             Settings1.Default.remember = rjToggleButtonKeyRegion.Checked;

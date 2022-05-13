@@ -106,6 +106,9 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.rjTogglePhraseList = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -616,6 +619,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage2.Controls.Add(this.rjTogglePhraseList);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.richTextBox6);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label27);
             this.tabPage2.Controls.Add(this.rjToggleButton7);
@@ -1274,6 +1280,39 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // richTextBox6
+            // 
+            this.richTextBox6.Location = new System.Drawing.Point(648, 279);
+            this.richTextBox6.Name = "richTextBox6";
+            this.richTextBox6.Size = new System.Drawing.Size(289, 210);
+            this.richTextBox6.TabIndex = 63;
+            this.richTextBox6.Text = "";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.Snow;
+            this.label13.Location = new System.Drawing.Point(694, 251);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(78, 20);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "Phrase List";
+            // 
+            // rjTogglePhraseList
+            // 
+            this.rjTogglePhraseList.AutoSize = true;
+            this.rjTogglePhraseList.Location = new System.Drawing.Point(643, 251);
+            this.rjTogglePhraseList.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjTogglePhraseList.Name = "rjTogglePhraseList";
+            this.rjTogglePhraseList.OffBackColor = System.Drawing.Color.Gray;
+            this.rjTogglePhraseList.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjTogglePhraseList.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjTogglePhraseList.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjTogglePhraseList.Size = new System.Drawing.Size(45, 22);
+            this.rjTogglePhraseList.TabIndex = 65;
+            this.rjTogglePhraseList.UseVisualStyleBackColor = true;
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1381,5 +1420,8 @@
         public RJControls.RJToggleButton rjToggleButton7;
         private FontAwesome.Sharp.IconButton iconButton7;
         private RichTextBox richTextBox5;
+        public RJControls.RJToggleButton rjTogglePhraseList;
+        private Label label13;
+        public RichTextBox richTextBox6;
     }
 }

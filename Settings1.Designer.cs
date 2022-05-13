@@ -202,5 +202,29 @@ namespace OSCVRCWiz {
                 this["wordsTranslateVRCSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool phraseListBoolSetting {
+            get {
+                return ((bool)(this["phraseListBoolSetting"]));
+            }
+            set {
+                this["phraseListBoolSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Jessie,Jakob,")]
+        public string phraseListValue {
+            get {
+                return ((string)(this["phraseListValue"]));
+            }
+            set {
+                this["phraseListValue"] = value;
+            }
+        }
     }
 }
