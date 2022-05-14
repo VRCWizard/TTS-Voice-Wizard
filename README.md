@@ -84,7 +84,5 @@ https://discord.gg/YjgR9SWPnW <br />
 If you feel like it<br />
 https://www.paypal.com/donate/?business=JFVLGL2PTSSW2&no_recurring=0&currency_code=USD <br />
 (will also take github stars)
-# My Socials
-https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg <br />
-https://twitter.com/Wizard_VR <br />
+
 
