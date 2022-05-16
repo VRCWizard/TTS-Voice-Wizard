@@ -1,5 +1,5 @@
 # TTS-Voice-Wizard-Beta
-Use TTS Voice Wizard's accessibily features to improve your VRChat experience (it works out of VRChat too!)
+Use TTS Voice Wizard's accessibily features to improve your VRChat experience (it works outside of VRChat too!)
 * You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.<br />
 * You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!<br />
 * You can translate what you say in one language to one of 20+ other support languages! (Have a language you want added? Join the discord linked below and let me know!) <br />
