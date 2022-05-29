@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.speechTTSButton = new System.Windows.Forms.Button();
@@ -59,29 +60,33 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rjToggleButtonActivation = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonPhraseList2 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonHideDelay2 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonAsTranslated2 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonDisableTTS2 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonOnTop2 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonClear = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonOSC = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonLog = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonProfan = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label29 = new System.Windows.Forms.Label();
+            this.comboBoxOutput = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.comboBoxInput = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.comboBoxPara = new System.Windows.Forms.ComboBox();
-            this.rjTogglePhraseList = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label13 = new System.Windows.Forms.Label();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.rjToggleButton7 = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleButtonTextAsTranslated = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label26 = new System.Windows.Forms.Label();
-            this.rjToggleButtonHideDelay = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label24 = new System.Windows.Forms.Label();
-            this.rjToggleButtonDisableTTS = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label25 = new System.Windows.Forms.Label();
-            this.rjToggleButtonOnTop = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label22 = new System.Windows.Forms.Label();
-            this.rjToggleButton3 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label23 = new System.Windows.Forms.Label();
-            this.rjToggleButton4 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label21 = new System.Windows.Forms.Label();
-            this.rjToggleButton2 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label20 = new System.Windows.Forms.Label();
-            this.rjToggleButton1 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxErase = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -92,8 +97,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.rjToggleButtonCurrentSong = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label34 = new System.Windows.Forms.Label();
+            this.rjToggleButtonConnectSpotify = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.buttonSpotify = new System.Windows.Forms.Button();
+            this.rjToggleButtonKeyRegion2 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label19 = new System.Windows.Forms.Label();
-            this.rjToggleButtonKeyRegion = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -111,6 +124,7 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -129,7 +143,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(592, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(378, 520);
+            this.richTextBox1.Size = new System.Drawing.Size(378, 521);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             // 
@@ -433,7 +447,7 @@
             this.tabControl1.Location = new System.Drawing.Point(220, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(984, 559);
+            this.tabControl1.Size = new System.Drawing.Size(984, 595);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage4
@@ -445,7 +459,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(976, 526);
+            this.tabPage4.Size = new System.Drawing.Size(976, 562);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dashboard";
             // 
@@ -458,10 +472,10 @@
             this.richTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richTextBox5.ForeColor = System.Drawing.Color.White;
-            this.richTextBox5.Location = new System.Drawing.Point(41, 341);
+            this.richTextBox5.Location = new System.Drawing.Point(41, 367);
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.ReadOnly = true;
-            this.richTextBox5.Size = new System.Drawing.Size(866, 177);
+            this.richTextBox5.Size = new System.Drawing.Size(866, 187);
             this.richTextBox5.TabIndex = 3;
             this.richTextBox5.Text = resources.GetString("richTextBox5.Text");
             // 
@@ -474,7 +488,8 @@
             this.richTextBox4.Location = new System.Drawing.Point(23, -2);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.ReadOnly = true;
-            this.richTextBox4.Size = new System.Drawing.Size(793, 68);
+            this.richTextBox4.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox4.Size = new System.Drawing.Size(793, 55);
             this.richTextBox4.TabIndex = 2;
             this.richTextBox4.Text = "TTS Voice Wizard";
             // 
@@ -484,10 +499,11 @@
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richTextBox2.ForeColor = System.Drawing.Color.White;
-            this.richTextBox2.Location = new System.Drawing.Point(23, 75);
+            this.richTextBox2.Location = new System.Drawing.Point(23, 72);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(947, 276);
+            this.richTextBox2.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox2.Size = new System.Drawing.Size(947, 289);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
@@ -517,7 +533,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(976, 526);
+            this.tabPage1.Size = new System.Drawing.Size(976, 527);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
             // 
@@ -621,29 +637,33 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage2.Controls.Add(this.rjToggleButtonActivation);
+            this.tabPage2.Controls.Add(this.rjToggleButtonPhraseList2);
+            this.tabPage2.Controls.Add(this.rjToggleButtonHideDelay2);
+            this.tabPage2.Controls.Add(this.rjToggleButtonAsTranslated2);
+            this.tabPage2.Controls.Add(this.rjToggleButtonDisableTTS2);
+            this.tabPage2.Controls.Add(this.rjToggleButtonOnTop2);
+            this.tabPage2.Controls.Add(this.rjToggleButtonClear);
+            this.tabPage2.Controls.Add(this.rjToggleButtonOSC);
+            this.tabPage2.Controls.Add(this.rjToggleButtonLog);
+            this.tabPage2.Controls.Add(this.rjToggleButtonProfan);
+            this.tabPage2.Controls.Add(this.label29);
+            this.tabPage2.Controls.Add(this.comboBoxOutput);
+            this.tabPage2.Controls.Add(this.label28);
+            this.tabPage2.Controls.Add(this.comboBoxInput);
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.comboBoxPara);
-            this.tabPage2.Controls.Add(this.rjTogglePhraseList);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.richTextBox6);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label27);
-            this.tabPage2.Controls.Add(this.rjToggleButton7);
-            this.tabPage2.Controls.Add(this.rjToggleButtonTextAsTranslated);
             this.tabPage2.Controls.Add(this.label26);
-            this.tabPage2.Controls.Add(this.rjToggleButtonHideDelay);
             this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.rjToggleButtonDisableTTS);
             this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.rjToggleButtonOnTop);
             this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.rjToggleButton3);
             this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.rjToggleButton4);
             this.tabPage2.Controls.Add(this.label21);
-            this.tabPage2.Controls.Add(this.rjToggleButton2);
             this.tabPage2.Controls.Add(this.label20);
-            this.tabPage2.Controls.Add(this.rjToggleButton1);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.textBoxErase);
             this.tabPage2.Controls.Add(this.label18);
@@ -659,9 +679,199 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(976, 526);
+            this.tabPage2.Size = new System.Drawing.Size(976, 527);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            // 
+            // rjToggleButtonActivation
+            // 
+            this.rjToggleButtonActivation.AutoSize = true;
+            this.rjToggleButtonActivation.Location = new System.Drawing.Point(27, 97);
+            this.rjToggleButtonActivation.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonActivation.Name = "rjToggleButtonActivation";
+            this.rjToggleButtonActivation.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonActivation.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonActivation.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonActivation.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonActivation.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonActivation.TabIndex = 80;
+            this.rjToggleButtonActivation.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonPhraseList2
+            // 
+            this.rjToggleButtonPhraseList2.AutoSize = true;
+            this.rjToggleButtonPhraseList2.Location = new System.Drawing.Point(649, 97);
+            this.rjToggleButtonPhraseList2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonPhraseList2.Name = "rjToggleButtonPhraseList2";
+            this.rjToggleButtonPhraseList2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonPhraseList2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonPhraseList2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonPhraseList2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonPhraseList2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonPhraseList2.TabIndex = 79;
+            this.rjToggleButtonPhraseList2.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonHideDelay2
+            // 
+            this.rjToggleButtonHideDelay2.AutoSize = true;
+            this.rjToggleButtonHideDelay2.Location = new System.Drawing.Point(23, 451);
+            this.rjToggleButtonHideDelay2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonHideDelay2.Name = "rjToggleButtonHideDelay2";
+            this.rjToggleButtonHideDelay2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonHideDelay2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonHideDelay2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonHideDelay2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonHideDelay2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonHideDelay2.TabIndex = 78;
+            this.rjToggleButtonHideDelay2.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonAsTranslated2
+            // 
+            this.rjToggleButtonAsTranslated2.AutoSize = true;
+            this.rjToggleButtonAsTranslated2.Location = new System.Drawing.Point(23, 353);
+            this.rjToggleButtonAsTranslated2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonAsTranslated2.Name = "rjToggleButtonAsTranslated2";
+            this.rjToggleButtonAsTranslated2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonAsTranslated2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonAsTranslated2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonAsTranslated2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonAsTranslated2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonAsTranslated2.TabIndex = 77;
+            this.rjToggleButtonAsTranslated2.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonDisableTTS2
+            // 
+            this.rjToggleButtonDisableTTS2.AutoSize = true;
+            this.rjToggleButtonDisableTTS2.Location = new System.Drawing.Point(23, 323);
+            this.rjToggleButtonDisableTTS2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonDisableTTS2.Name = "rjToggleButtonDisableTTS2";
+            this.rjToggleButtonDisableTTS2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonDisableTTS2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonDisableTTS2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonDisableTTS2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonDisableTTS2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonDisableTTS2.TabIndex = 76;
+            this.rjToggleButtonDisableTTS2.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonOnTop2
+            // 
+            this.rjToggleButtonOnTop2.AutoSize = true;
+            this.rjToggleButtonOnTop2.Location = new System.Drawing.Point(23, 295);
+            this.rjToggleButtonOnTop2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonOnTop2.Name = "rjToggleButtonOnTop2";
+            this.rjToggleButtonOnTop2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonOnTop2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonOnTop2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonOnTop2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonOnTop2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonOnTop2.TabIndex = 75;
+            this.rjToggleButtonOnTop2.UseVisualStyleBackColor = true;
+            this.rjToggleButtonOnTop2.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            // 
+            // rjToggleButtonClear
+            // 
+            this.rjToggleButtonClear.AutoSize = true;
+            this.rjToggleButtonClear.Location = new System.Drawing.Point(23, 266);
+            this.rjToggleButtonClear.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonClear.Name = "rjToggleButtonClear";
+            this.rjToggleButtonClear.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonClear.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonClear.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonClear.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonClear.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonClear.TabIndex = 74;
+            this.rjToggleButtonClear.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonOSC
+            // 
+            this.rjToggleButtonOSC.AutoSize = true;
+            this.rjToggleButtonOSC.Checked = true;
+            this.rjToggleButtonOSC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonOSC.Location = new System.Drawing.Point(23, 235);
+            this.rjToggleButtonOSC.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonOSC.Name = "rjToggleButtonOSC";
+            this.rjToggleButtonOSC.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonOSC.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonOSC.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonOSC.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonOSC.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonOSC.TabIndex = 73;
+            this.rjToggleButtonOSC.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonLog
+            // 
+            this.rjToggleButtonLog.AutoSize = true;
+            this.rjToggleButtonLog.Checked = true;
+            this.rjToggleButtonLog.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonLog.Location = new System.Drawing.Point(23, 206);
+            this.rjToggleButtonLog.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonLog.Name = "rjToggleButtonLog";
+            this.rjToggleButtonLog.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonLog.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonLog.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonLog.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonLog.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonLog.TabIndex = 72;
+            this.rjToggleButtonLog.UseVisualStyleBackColor = true;
+            // 
+            // rjToggleButtonProfan
+            // 
+            this.rjToggleButtonProfan.AutoSize = true;
+            this.rjToggleButtonProfan.Checked = true;
+            this.rjToggleButtonProfan.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonProfan.Location = new System.Drawing.Point(23, 175);
+            this.rjToggleButtonProfan.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonProfan.Name = "rjToggleButtonProfan";
+            this.rjToggleButtonProfan.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonProfan.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonProfan.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonProfan.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonProfan.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonProfan.TabIndex = 71;
+            this.rjToggleButtonProfan.UseVisualStyleBackColor = true;
+            this.rjToggleButtonProfan.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label29.ForeColor = System.Drawing.Color.Snow;
+            this.label29.Location = new System.Drawing.Point(643, 431);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(104, 20);
+            this.label29.TabIndex = 70;
+            this.label29.Text = "Output Device";
+            // 
+            // comboBoxOutput
+            // 
+            this.comboBoxOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOutput.FormattingEnabled = true;
+            this.comboBoxOutput.Location = new System.Drawing.Point(648, 454);
+            this.comboBoxOutput.Name = "comboBoxOutput";
+            this.comboBoxOutput.Size = new System.Drawing.Size(322, 28);
+            this.comboBoxOutput.TabIndex = 69;
+            this.comboBoxOutput.SelectedIndexChanged += new System.EventHandler(this.comboBoxOutput_SelectedIndexChanged);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label28.ForeColor = System.Drawing.Color.Snow;
+            this.label28.Location = new System.Drawing.Point(643, 371);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(92, 20);
+            this.label28.TabIndex = 68;
+            this.label28.Text = "Input Device";
+            // 
+            // comboBoxInput
+            // 
+            this.comboBoxInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxInput.FormattingEnabled = true;
+            this.comboBoxInput.Location = new System.Drawing.Point(648, 394);
+            this.comboBoxInput.Name = "comboBoxInput";
+            this.comboBoxInput.Size = new System.Drawing.Size(322, 28);
+            this.comboBoxInput.TabIndex = 67;
+            this.comboBoxInput.SelectedIndexChanged += new System.EventHandler(this.comboBoxInput_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -686,20 +896,6 @@
             this.comboBoxPara.Size = new System.Drawing.Size(181, 28);
             this.comboBoxPara.TabIndex = 31;
             this.comboBoxPara.SelectedIndexChanged += new System.EventHandler(this.comboBoxPara_SelectedIndexChanged);
-            // 
-            // rjTogglePhraseList
-            // 
-            this.rjTogglePhraseList.AutoSize = true;
-            this.rjTogglePhraseList.Location = new System.Drawing.Point(649, 97);
-            this.rjTogglePhraseList.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjTogglePhraseList.Name = "rjTogglePhraseList";
-            this.rjTogglePhraseList.OffBackColor = System.Drawing.Color.Gray;
-            this.rjTogglePhraseList.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjTogglePhraseList.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjTogglePhraseList.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjTogglePhraseList.Size = new System.Drawing.Size(45, 22);
-            this.rjTogglePhraseList.TabIndex = 65;
-            this.rjTogglePhraseList.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -742,34 +938,6 @@
             this.label27.TabIndex = 62;
             this.label27.Text = "Enabled (restart necessary)";
             // 
-            // rjToggleButton7
-            // 
-            this.rjToggleButton7.AutoSize = true;
-            this.rjToggleButton7.Location = new System.Drawing.Point(27, 95);
-            this.rjToggleButton7.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton7.Name = "rjToggleButton7";
-            this.rjToggleButton7.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton7.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton7.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton7.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton7.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton7.TabIndex = 61;
-            this.rjToggleButton7.UseVisualStyleBackColor = true;
-            // 
-            // rjToggleButtonTextAsTranslated
-            // 
-            this.rjToggleButtonTextAsTranslated.AutoSize = true;
-            this.rjToggleButtonTextAsTranslated.Location = new System.Drawing.Point(27, 351);
-            this.rjToggleButtonTextAsTranslated.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonTextAsTranslated.Name = "rjToggleButtonTextAsTranslated";
-            this.rjToggleButtonTextAsTranslated.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonTextAsTranslated.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonTextAsTranslated.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonTextAsTranslated.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonTextAsTranslated.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonTextAsTranslated.TabIndex = 33;
-            this.rjToggleButtonTextAsTranslated.UseVisualStyleBackColor = true;
-            // 
             // label26
             // 
             this.label26.AutoSize = true;
@@ -780,20 +948,6 @@
             this.label26.Size = new System.Drawing.Size(184, 20);
             this.label26.TabIndex = 60;
             this.label26.Text = "Hide Text After Delay (ms)";
-            // 
-            // rjToggleButtonHideDelay
-            // 
-            this.rjToggleButtonHideDelay.AutoSize = true;
-            this.rjToggleButtonHideDelay.Location = new System.Drawing.Point(27, 453);
-            this.rjToggleButtonHideDelay.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonHideDelay.Name = "rjToggleButtonHideDelay";
-            this.rjToggleButtonHideDelay.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonHideDelay.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonHideDelay.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonHideDelay.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonHideDelay.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonHideDelay.TabIndex = 59;
-            this.rjToggleButtonHideDelay.UseVisualStyleBackColor = true;
             // 
             // label24
             // 
@@ -806,20 +960,6 @@
             this.label24.TabIndex = 58;
             this.label24.Text = "Disable TTS (no voice)";
             // 
-            // rjToggleButtonDisableTTS
-            // 
-            this.rjToggleButtonDisableTTS.AutoSize = true;
-            this.rjToggleButtonDisableTTS.Location = new System.Drawing.Point(27, 323);
-            this.rjToggleButtonDisableTTS.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonDisableTTS.Name = "rjToggleButtonDisableTTS";
-            this.rjToggleButtonDisableTTS.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonDisableTTS.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonDisableTTS.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonDisableTTS.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonDisableTTS.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonDisableTTS.TabIndex = 57;
-            this.rjToggleButtonDisableTTS.UseVisualStyleBackColor = true;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -830,21 +970,6 @@
             this.label25.Size = new System.Drawing.Size(103, 20);
             this.label25.TabIndex = 56;
             this.label25.Text = "Always on top";
-            // 
-            // rjToggleButtonOnTop
-            // 
-            this.rjToggleButtonOnTop.AutoSize = true;
-            this.rjToggleButtonOnTop.Location = new System.Drawing.Point(27, 295);
-            this.rjToggleButtonOnTop.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonOnTop.Name = "rjToggleButtonOnTop";
-            this.rjToggleButtonOnTop.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonOnTop.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonOnTop.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonOnTop.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonOnTop.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonOnTop.TabIndex = 55;
-            this.rjToggleButtonOnTop.UseVisualStyleBackColor = true;
-            this.rjToggleButtonOnTop.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 
             // label22
             // 
@@ -857,20 +982,6 @@
             this.label22.TabIndex = 54;
             this.label22.Text = "Clear text box after TTS";
             // 
-            // rjToggleButton3
-            // 
-            this.rjToggleButton3.AutoSize = true;
-            this.rjToggleButton3.Location = new System.Drawing.Point(27, 266);
-            this.rjToggleButton3.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton3.Name = "rjToggleButton3";
-            this.rjToggleButton3.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton3.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton3.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton3.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton3.TabIndex = 53;
-            this.rjToggleButton3.UseVisualStyleBackColor = true;
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -881,22 +992,6 @@
             this.label23.Size = new System.Drawing.Size(269, 20);
             this.label23.TabIndex = 52;
             this.label23.Text = "Send OSC Messages to VRC Avatar Text";
-            // 
-            // rjToggleButton4
-            // 
-            this.rjToggleButton4.AutoSize = true;
-            this.rjToggleButton4.Checked = true;
-            this.rjToggleButton4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton4.Location = new System.Drawing.Point(27, 235);
-            this.rjToggleButton4.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton4.Name = "rjToggleButton4";
-            this.rjToggleButton4.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton4.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton4.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton4.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton4.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton4.TabIndex = 51;
-            this.rjToggleButton4.UseVisualStyleBackColor = true;
             // 
             // label21
             // 
@@ -909,22 +1004,6 @@
             this.label21.TabIndex = 50;
             this.label21.Text = "Output Transcript in Log";
             // 
-            // rjToggleButton2
-            // 
-            this.rjToggleButton2.AutoSize = true;
-            this.rjToggleButton2.Checked = true;
-            this.rjToggleButton2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton2.Location = new System.Drawing.Point(27, 206);
-            this.rjToggleButton2.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton2.Name = "rjToggleButton2";
-            this.rjToggleButton2.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton2.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton2.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton2.TabIndex = 49;
-            this.rjToggleButton2.UseVisualStyleBackColor = true;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -935,23 +1014,6 @@
             this.label20.Size = new System.Drawing.Size(229, 20);
             this.label20.TabIndex = 48;
             this.label20.Text = "Voice Recognition Profanity Filter";
-            // 
-            // rjToggleButton1
-            // 
-            this.rjToggleButton1.AutoSize = true;
-            this.rjToggleButton1.Checked = true;
-            this.rjToggleButton1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton1.Location = new System.Drawing.Point(27, 175);
-            this.rjToggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton1.Name = "rjToggleButton1";
-            this.rjToggleButton1.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton1.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton1.TabIndex = 47;
-            this.rjToggleButton1.UseVisualStyleBackColor = true;
-            this.rjToggleButton1.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
             // 
             // button1
             // 
@@ -1051,8 +1113,16 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage3.Controls.Add(this.rjToggleButtonCurrentSong);
+            this.tabPage3.Controls.Add(this.label34);
+            this.tabPage3.Controls.Add(this.rjToggleButtonConnectSpotify);
+            this.tabPage3.Controls.Add(this.label33);
+            this.tabPage3.Controls.Add(this.label32);
+            this.tabPage3.Controls.Add(this.label31);
+            this.tabPage3.Controls.Add(this.label30);
+            this.tabPage3.Controls.Add(this.buttonSpotify);
+            this.tabPage3.Controls.Add(this.rjToggleButtonKeyRegion2);
             this.tabPage3.Controls.Add(this.label19);
-            this.tabPage3.Controls.Add(this.rjToggleButtonKeyRegion);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.button6);
@@ -1062,9 +1132,120 @@
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(976, 526);
+            this.tabPage3.Size = new System.Drawing.Size(976, 527);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
+            // 
+            // rjToggleButtonCurrentSong
+            // 
+            this.rjToggleButtonCurrentSong.AutoSize = true;
+            this.rjToggleButtonCurrentSong.Checked = true;
+            this.rjToggleButtonCurrentSong.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonCurrentSong.Location = new System.Drawing.Point(27, 479);
+            this.rjToggleButtonCurrentSong.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonCurrentSong.Name = "rjToggleButtonCurrentSong";
+            this.rjToggleButtonCurrentSong.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonCurrentSong.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonCurrentSong.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonCurrentSong.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonCurrentSong.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonCurrentSong.TabIndex = 45;
+            this.rjToggleButtonCurrentSong.UseVisualStyleBackColor = true;
+            this.rjToggleButtonCurrentSong.CheckedChanged += new System.EventHandler(this.rjToggleButtonCurrentSong_CheckedChanged);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Snow;
+            this.label34.Location = new System.Drawing.Point(78, 481);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(145, 20);
+            this.label34.TabIndex = 44;
+            this.label34.Text = "Output Current Song";
+            // 
+            // rjToggleButtonConnectSpotify
+            // 
+            this.rjToggleButtonConnectSpotify.AutoSize = true;
+            this.rjToggleButtonConnectSpotify.Location = new System.Drawing.Point(27, 440);
+            this.rjToggleButtonConnectSpotify.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonConnectSpotify.Name = "rjToggleButtonConnectSpotify";
+            this.rjToggleButtonConnectSpotify.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonConnectSpotify.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonConnectSpotify.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonConnectSpotify.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonConnectSpotify.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonConnectSpotify.TabIndex = 43;
+            this.rjToggleButtonConnectSpotify.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.ForeColor = System.Drawing.Color.Snow;
+            this.label33.Location = new System.Drawing.Point(78, 442);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(249, 20);
+            this.label33.TabIndex = 42;
+            this.label33.Text = "Ask to \'Connect Spotify\' on app start";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.Color.Snow;
+            this.label32.Location = new System.Drawing.Point(203, 386);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(250, 20);
+            this.label32.TabIndex = 41;
+            this.label32.Text = "Must be clicked again on app restart";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.Color.Snow;
+            this.label31.Location = new System.Drawing.Point(203, 331);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(412, 20);
+            this.label31.TabIndex = 40;
+            this.label31.Text = "This feature will output your currently playing song in VRChat";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label30.ForeColor = System.Drawing.Color.Snow;
+            this.label30.Location = new System.Drawing.Point(12, 326);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(185, 25);
+            this.label30.TabIndex = 39;
+            this.label30.Text = "Spotify (Experimental)";
+            // 
+            // buttonSpotify
+            // 
+            this.buttonSpotify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonSpotify.FlatAppearance.BorderSize = 0;
+            this.buttonSpotify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSpotify.ForeColor = System.Drawing.Color.Snow;
+            this.buttonSpotify.Location = new System.Drawing.Point(31, 372);
+            this.buttonSpotify.Name = "buttonSpotify";
+            this.buttonSpotify.Size = new System.Drawing.Size(153, 49);
+            this.buttonSpotify.TabIndex = 31;
+            this.buttonSpotify.Text = "Connect Spotify";
+            this.buttonSpotify.UseVisualStyleBackColor = false;
+            this.buttonSpotify.Click += new System.EventHandler(this.buttonSpotify_Click);
+            // 
+            // rjToggleButtonKeyRegion2
+            // 
+            this.rjToggleButtonKeyRegion2.AutoSize = true;
+            this.rjToggleButtonKeyRegion2.Location = new System.Drawing.Point(27, 229);
+            this.rjToggleButtonKeyRegion2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonKeyRegion2.Name = "rjToggleButtonKeyRegion2";
+            this.rjToggleButtonKeyRegion2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonKeyRegion2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonKeyRegion2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonKeyRegion2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonKeyRegion2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonKeyRegion2.TabIndex = 38;
+            this.rjToggleButtonKeyRegion2.UseVisualStyleBackColor = true;
+            this.rjToggleButtonKeyRegion2.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // label19
             // 
@@ -1075,21 +1256,6 @@
             this.label19.Size = new System.Drawing.Size(197, 20);
             this.label19.TabIndex = 37;
             this.label19.Text = "Remember Key and Region?";
-            // 
-            // rjToggleButtonKeyRegion
-            // 
-            this.rjToggleButtonKeyRegion.AutoSize = true;
-            this.rjToggleButtonKeyRegion.Location = new System.Drawing.Point(27, 231);
-            this.rjToggleButtonKeyRegion.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonKeyRegion.Name = "rjToggleButtonKeyRegion";
-            this.rjToggleButtonKeyRegion.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonKeyRegion.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonKeyRegion.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonKeyRegion.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonKeyRegion.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonKeyRegion.TabIndex = 36;
-            this.rjToggleButtonKeyRegion.UseVisualStyleBackColor = true;
-            this.rjToggleButtonKeyRegion.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // label10
             // 
@@ -1150,7 +1316,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.Snow;
-            this.button5.Location = new System.Drawing.Point(393, 97);
+            this.button5.Location = new System.Drawing.Point(393, 95);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(94, 29);
             this.button5.TabIndex = 29;
@@ -1179,7 +1345,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 559);
+            this.panel1.Size = new System.Drawing.Size(220, 595);
             this.panel1.TabIndex = 28;
             // 
             // iconButton7
@@ -1268,15 +1434,15 @@
             this.iconButton3.FlatAppearance.BorderSize = 0;
             this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton3.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Keyboard;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Spotify;
             this.iconButton3.IconColor = System.Drawing.Color.Snow;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton3.Location = new System.Drawing.Point(0, 260);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Size = new System.Drawing.Size(220, 60);
             this.iconButton3.TabIndex = 3;
-            this.iconButton3.Text = "TTS";
+            this.iconButton3.Text = "Spotify";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton3.UseVisualStyleBackColor = true;
@@ -1341,12 +1507,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.ClientSize = new System.Drawing.Size(1216, 559);
+            this.ClientSize = new System.Drawing.Size(1216, 595);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1425,10 +1597,8 @@
         private TabPage tabPage4;
         private FontAwesome.Sharp.IconButton iconButton6;
         private RichTextBox richTextBox2;
-        private RichTextBox richTextBox4;
-        public RJControls.RJToggleButton rjToggleButtonTextAsTranslated;
+        private RichTextBox richTextBox4; 
         private Label label16;
-        private RJControls.RJToggleButton rjToggleButtonKeyRegion;
         private Label label26;
         private Label label24;
         private Label label25;
@@ -1437,21 +1607,38 @@
         private Label label21;
         private Label label20;
         private Label label19;
-        public RJControls.RJToggleButton rjToggleButtonHideDelay;
-        public RJControls.RJToggleButton rjToggleButtonDisableTTS;
-        public RJControls.RJToggleButton rjToggleButtonOnTop;
-        public RJControls.RJToggleButton rjToggleButton3;
-        public RJControls.RJToggleButton rjToggleButton4;
-        public RJControls.RJToggleButton rjToggleButton2;
-        public RJControls.RJToggleButton rjToggleButton1;
+
         private Label label27;
-        public RJControls.RJToggleButton rjToggleButton7;
+
         private FontAwesome.Sharp.IconButton iconButton7;
         private RichTextBox richTextBox5;
-        public RJControls.RJToggleButton rjTogglePhraseList;
         private Label label13;
         public RichTextBox richTextBox6;
         public ComboBox comboBoxPara;
         private Label label15;
+        private Label label28;
+        public ComboBox comboBoxInput;
+        private Label label29;
+        public ComboBox comboBoxOutput;
+        private Button buttonSpotify;
+        private RJControls.RJToggleButton rjToggleButtonActivation;
+        private RJControls.RJToggleButton rjToggleButtonOnTop2;
+        private RJControls.RJToggleButton rjToggleButtonClear;
+        private RJControls.RJToggleButton rjToggleButtonProfan;
+        private RJControls.RJToggleButton rjToggleButtonKeyRegion2;
+        public RJControls.RJToggleButton rjToggleButtonPhraseList2;
+        private System.Windows.Forms.Timer timer1;
+        public RJControls.RJToggleButton rjToggleButtonHideDelay2;
+        public RJControls.RJToggleButton rjToggleButtonOSC;
+        public RJControls.RJToggleButton rjToggleButtonLog;
+        public RJControls.RJToggleButton rjToggleButtonDisableTTS2;
+        public RJControls.RJToggleButton rjToggleButtonAsTranslated2;
+        private Label label31;
+        private Label label30;
+        private Label label32;
+        private RJControls.RJToggleButton rjToggleButtonConnectSpotify;
+        private Label label33;
+        private RJControls.RJToggleButton rjToggleButtonCurrentSong;
+        private Label label34;
     }
 }

@@ -61,6 +61,12 @@
     <value>Changelog: 
 (full changelogs visible here https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
 
+Public Beta v0.4.0 Spotify Addon - May 28, 2022
+-This update makes the setup process easier as you can now set your microphone and speaker device in the app
+-This update also adds a new experimental feature for VRChat users, you can now output the name of your currently playing on Spotify to your avatar so all your friends can see what you're vibing to.
+-minor refactoring of code
+
+
 Public Beta v0.3.7 (8 Kat Sync Parameters) - May 13, 2022
 Adds an option to increase the amount of sync parameters my app supports.
 -If you have extra parameters to spare I recommend using 8 parameter sync with your avatar rather than 4 for faster OSC sync. 
@@ -112,15 +118,15 @@ Fixes:
   <data name="richTextBox2.Text" xml:space="preserve">
     <value>Use TTS Voice Wizard's accessibily features to improve your gaming experience!
 
-&gt;You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.
+  -You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.
 
-&gt;You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!
+  -You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!
 
-&gt;You can translate what you say in one language to one of over 20 other support languages!
+  -You can translate what you say in one language to one of over 20 other support languages!
 
-&gt;There are over 50 different voices with various customization options so you can pick a voice that best suits you!
+  -There are over 50 different voices with various customization options so you can pick a voice that best suits you!
 
-&gt; Need Help? Join the discord.</value>
+  -Need Help? Join the discord.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -334,6 +340,12 @@ Fixes:
         KH3cAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>53</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAP8AAAEAIAAIHAQAFgAAACgAAAAAAQAA/gEAAAEAIAAAAAAAAPwDAAAAAAAAAAAAAAAAAAAA

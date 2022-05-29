@@ -618,7 +618,7 @@ namespace OSCVRCWiz
 
             }
 
-            if (MainForm.rjToggleButtonHideDelay.Checked) //inactive hide
+            if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
             {
                 System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished");
 

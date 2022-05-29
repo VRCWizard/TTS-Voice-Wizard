@@ -238,5 +238,41 @@ namespace OSCVRCWiz {
                 this["SyncParaValue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public string MicName {
+            get {
+                return ((string)(this["MicName"]));
+            }
+            set {
+                this["MicName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public string SpeakerName {
+            get {
+                return ((string)(this["SpeakerName"]));
+            }
+            set {
+                this["SpeakerName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConnectSpot {
+            get {
+                return ((bool)(this["ConnectSpot"]));
+            }
+            set {
+                this["ConnectSpot"] = value;
+            }
+        }
     }
 }

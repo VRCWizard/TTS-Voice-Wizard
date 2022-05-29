@@ -1,5 +1,5 @@
 ﻿using Microsoft.CognitiveServices.Speech;
-
+using Microsoft.CognitiveServices.Speech.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +13,12 @@ namespace OSCVRCWiz
         
 
         //TTS
-        public static async Task SynthesizeAudioAsync(string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm,string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
-                
+
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
-               
-              
                 // Note: if only language is set, the default voice of that language is chosen.
                 //  config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
                 // The voice setting will overwrite the language setting.
@@ -172,8 +170,14 @@ namespace OSCVRCWiz
 
 
 
+                var audioConfig = AudioConfig.FromSpeakerOutput(MainForm.currentOutputDevice);
+                if(MainForm.currentOutputDeviceName== "Default")
+                {
+                    audioConfig = AudioConfig.FromDefaultSpeakerOutput();
 
-                var synthesizer = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config);
+                }
+
+                var synthesizer = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config,audioConfig);
 
                 string ssml0 = "<speak version=\"1.0\"";
                 ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
@@ -340,11 +344,6 @@ namespace OSCVRCWiz
 
                 System.Diagnostics.Debug.WriteLine(ssml0);
                 await synthesizer.SpeakSsmlAsync(ssml0);
-            
-            
-               
-            
-                //using var result = await synthesizer.SpeakSsmlAsync(ssml0);
 
           }
           catch (Exception ex)
