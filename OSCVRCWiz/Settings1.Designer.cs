@@ -274,5 +274,29 @@ namespace OSCVRCWiz {
                 this["ConnectSpot"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PKCERefreshToken {
+            get {
+                return ((string)(this["PKCERefreshToken"]));
+            }
+            set {
+                this["PKCERefreshToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PKCEAccessToken {
+            get {
+                return ((string)(this["PKCEAccessToken"]));
+            }
+            set {
+                this["PKCEAccessToken"] = value;
+            }
+        }
     }
 }

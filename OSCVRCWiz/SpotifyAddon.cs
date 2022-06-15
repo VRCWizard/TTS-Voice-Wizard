@@ -14,11 +14,12 @@ namespace OSCVRCWiz
     {
        // private const string CredentialsPath = "credentials.json";
         //  private static readonly string? clientId = Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID");
-        private static readonly string? clientId = "8ed3657eca864590843f45a659ec2976";
+        private static string clientId = "8ed3657eca864590843f45a659ec2976";
         //private static EmbedIOAuthServer _server = new EmbedIOAuthServer(new Uri("http://localhost:5000/callback"), 5000);
         private static EmbedIOAuthServer _server;
         private static SpotifyClient myClient =null;
         private static PKCETokenResponse myPKCEToken = null;
+       // public static string PKCEcode= "";
         private static string lastSong = "";
         private static string globalVerifier = "";
 
@@ -57,23 +58,41 @@ namespace OSCVRCWiz
           */
         public static async Task getCurrentSongInfo(VoiceWizardWindow MainForm)
         {
-            //  var newResponse = await new OAuthClient().RequestToken(
-            //  new AuthorizationCodeRefreshRequest(clientId, clientSecret, myToken.RefreshToken));
 
-            //   myClient = new SpotifyClient(newResponse.AccessToken);
-
-
-
-
-           var authenticator = new PKCEAuthenticator(clientId, myPKCEToken);
-
-            var config = SpotifyClientConfig.CreateDefault()
-            .WithAuthenticator(authenticator);
-            var spotify = new SpotifyClient(config);
-            myClient = spotify;
-
+           if(myClient==null)
+            {
+                myClient = new SpotifyClient(Settings1.Default.PKCEAccessToken);
+            }
             if (myClient != null)
             {
+                try
+                {
+                    System.Diagnostics.Debug.WriteLine("----Token refreshed Attempt-----");
+                    PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
+                    PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+                   myClient = new SpotifyClient(refreshResponse.AccessToken);
+                    //  var authenticator = new PKCEAuthenticator(clientId, refreshResponse);
+
+                    //    var config = SpotifyClientConfig.CreateDefault()
+                    //       .WithAuthenticator(authenticator);
+                    //   myClient = new SpotifyClient(config);
+                    Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
+                    Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
+                    Settings1.Default.Save();
+                    System.Diagnostics.Debug.WriteLine("----Token refreshed Successful-----");
+
+                }
+                catch (APIException ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("-----Token doesn't need to refresh-----"+ ex.Response.Body.ToString());
+
+                }
+              //  catch (Exception ex)
+             //   {
+             //       System.Diagnostics.Debug.WriteLine("-----Token doesn't need to refresh-----", ex.Message);
+
+            //    }
+             
 
 
                 // var spotify = new SpotifyClient(tokenResponse.AccessToken);
@@ -134,23 +153,15 @@ namespace OSCVRCWiz
         }
 
 
-        public async Task SpotifyConnect()
+        public async Task SpotifyConnect(VoiceWizardWindow MainForm)
         {
+          MainForm.getSpotify = true;
+            
+            System.Diagnostics.Debug.WriteLine("Connect spotify");
             /*
 
                // Make sure "http://localhost:5000/callback" is in your spotify application as redirect uri!
                _server = new EmbedIOAuthServer(new Uri("http://localhost:5000/callback"), 5000);
-               await _server.Start();
-
-               // _server.AuthorizationCodeReceived += OnAuthorizationCodeReceived;
-               _server.ImplictGrantReceived += OnImplicitGrantReceived;
-               _server.ErrorReceived += OnErrorReceived;
-
-               // var request = new LoginRequest(_server.BaseUri, clientId, LoginRequest.ResponseType.Code)//for OnAuthorizationCodeReceived (do not use 'yet' requires putting secret in code or server)
-               var request = new LoginRequest(_server.BaseUri, clientId, LoginRequest.ResponseType.Token) //for OnImplicitGrantReceived
-               {
-                   Scope = new List<string> { Scopes.UserReadCurrentlyPlaying }
-               };
              BrowserUtil.Open(request.ToUri());
 
                */
@@ -175,16 +186,18 @@ namespace OSCVRCWiz
         }
 
         // This method should be called from your web-server when the user visits "http://localhost:5000/callback"
-        private static async Task GetCallback(object sender, AuthorizationCodeResponse response)
+        public static async Task GetCallback(object sender, AuthorizationCodeResponse response)
         {
-            System.Diagnostics.Debug.WriteLine("code: " + response.Code.ToString());
+            System.Diagnostics.Debug.WriteLine("Getcallback code: " + response.Code.ToString());
             // Note that we use the verifier calculated above!
-            var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+             var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
 
-            //var spotify = new SpotifyClient(initialResponse.AccessToken);
-            // Also important for later: response.RefreshToken
-            myPKCEToken = initialResponse;
-            
+            Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
+            Settings1.Default.PKCEAccessToken= initialResponse.AccessToken;
+            Settings1.Default.Save();
+
+
+
         }
 
 

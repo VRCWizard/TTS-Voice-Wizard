@@ -38,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.hideVRCTextButton = new System.Windows.Forms.Button();
-            this.logClearButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxRate = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,6 +53,8 @@
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.logTrash = new FontAwesome.Sharp.IconButton();
+            this.ttsTrash = new FontAwesome.Sharp.IconButton();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -99,8 +100,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rjToggleButtonCurrentSong = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label34 = new System.Windows.Forms.Label();
-            this.rjToggleButtonConnectSpotify = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -125,6 +124,7 @@
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -187,7 +187,7 @@
             "Sad"});
             this.comboBox1.Location = new System.Drawing.Point(28, 360);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(221, 28);
+            this.comboBox1.Size = new System.Drawing.Size(265, 28);
             this.comboBox1.TabIndex = 11;
             // 
             // label1
@@ -294,7 +294,7 @@
             "[Vietnamese] {Male}"});
             this.comboBox2.Location = new System.Drawing.Point(28, 306);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(221, 28);
+            this.comboBox2.Size = new System.Drawing.Size(265, 28);
             this.comboBox2.TabIndex = 13;
             this.comboBox2.Tag = "Sara";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
@@ -305,33 +305,19 @@
             this.hideVRCTextButton.FlatAppearance.BorderSize = 0;
             this.hideVRCTextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideVRCTextButton.ForeColor = System.Drawing.Color.Snow;
-            this.hideVRCTextButton.Location = new System.Drawing.Point(466, 360);
+            this.hideVRCTextButton.Location = new System.Drawing.Point(353, 230);
             this.hideVRCTextButton.Name = "hideVRCTextButton";
-            this.hideVRCTextButton.Size = new System.Drawing.Size(114, 97);
+            this.hideVRCTextButton.Size = new System.Drawing.Size(188, 31);
             this.hideVRCTextButton.TabIndex = 16;
             this.hideVRCTextButton.Text = "Hide VRC Text Display";
             this.hideVRCTextButton.UseVisualStyleBackColor = false;
             this.hideVRCTextButton.Click += new System.EventHandler(this.hideVRCTextButton_Click);
             // 
-            // logClearButton
-            // 
-            this.logClearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.logClearButton.FlatAppearance.BorderSize = 0;
-            this.logClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logClearButton.ForeColor = System.Drawing.Color.Snow;
-            this.logClearButton.Location = new System.Drawing.Point(466, 306);
-            this.logClearButton.Name = "logClearButton";
-            this.logClearButton.Size = new System.Drawing.Size(114, 41);
-            this.logClearButton.TabIndex = 17;
-            this.logClearButton.Text = "Log Clear";
-            this.logClearButton.UseVisualStyleBackColor = false;
-            this.logClearButton.Click += new System.EventHandler(this.logClearButton_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(279, 398);
+            this.label4.Location = new System.Drawing.Point(320, 398);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 20);
             this.label4.TabIndex = 19;
@@ -348,16 +334,16 @@
             "fast",
             "x-fast",
             "default"});
-            this.comboBoxRate.Location = new System.Drawing.Point(279, 421);
+            this.comboBoxRate.Location = new System.Drawing.Point(320, 421);
             this.comboBoxRate.Name = "comboBoxRate";
-            this.comboBoxRate.Size = new System.Drawing.Size(155, 28);
+            this.comboBoxRate.Size = new System.Drawing.Size(221, 28);
             this.comboBoxRate.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Snow;
-            this.label5.Location = new System.Drawing.Point(279, 283);
+            this.label5.Location = new System.Drawing.Point(320, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 21;
@@ -374,16 +360,16 @@
             "high",
             "x-high",
             "default"});
-            this.comboBoxPitch.Location = new System.Drawing.Point(279, 306);
+            this.comboBoxPitch.Location = new System.Drawing.Point(320, 306);
             this.comboBoxPitch.Name = "comboBoxPitch";
-            this.comboBoxPitch.Size = new System.Drawing.Size(155, 28);
+            this.comboBoxPitch.Size = new System.Drawing.Size(221, 28);
             this.comboBoxPitch.TabIndex = 20;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(279, 338);
+            this.label6.Location = new System.Drawing.Point(320, 338);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
@@ -399,9 +385,9 @@
             "loud",
             "x-loud",
             "default"});
-            this.comboBoxVolume.Location = new System.Drawing.Point(279, 361);
+            this.comboBoxVolume.Location = new System.Drawing.Point(320, 360);
             this.comboBoxVolume.Name = "comboBoxVolume";
-            this.comboBoxVolume.Size = new System.Drawing.Size(155, 28);
+            this.comboBoxVolume.Size = new System.Drawing.Size(221, 28);
             this.comboBoxVolume.TabIndex = 22;
             // 
             // textBoxDelay
@@ -510,14 +496,14 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage1.Controls.Add(this.logTrash);
+            this.tabPage1.Controls.Add(this.ttsTrash);
             this.tabPage1.Controls.Add(this.richTextBox3);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.comboBox4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.comboBox3);
-            this.tabPage1.Controls.Add(this.logClearButton);
             this.tabPage1.Controls.Add(this.speechTTSButton);
-            this.tabPage1.Controls.Add(this.hideVRCTextButton);
             this.tabPage1.Controls.Add(this.TTSButton);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.comboBox1);
@@ -533,9 +519,44 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(976, 527);
+            this.tabPage1.Size = new System.Drawing.Size(976, 562);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
+            // 
+            // logTrash
+            // 
+            this.logTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.logTrash.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.logTrash.FlatAppearance.BorderSize = 0;
+            this.logTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logTrash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.logTrash.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.logTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.logTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.logTrash.IconSize = 15;
+            this.logTrash.Location = new System.Drawing.Point(935, 495);
+            this.logTrash.Name = "logTrash";
+            this.logTrash.Size = new System.Drawing.Size(35, 29);
+            this.logTrash.TabIndex = 32;
+            this.logTrash.UseVisualStyleBackColor = false;
+            this.logTrash.Click += new System.EventHandler(this.logTrash_Click);
+            // 
+            // ttsTrash
+            // 
+            this.ttsTrash.BackColor = System.Drawing.Color.White;
+            this.ttsTrash.FlatAppearance.BorderSize = 0;
+            this.ttsTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ttsTrash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ttsTrash.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            this.ttsTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ttsTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ttsTrash.IconSize = 15;
+            this.ttsTrash.Location = new System.Drawing.Point(443, 43);
+            this.ttsTrash.Name = "ttsTrash";
+            this.ttsTrash.Size = new System.Drawing.Size(35, 29);
+            this.ttsTrash.TabIndex = 31;
+            this.ttsTrash.UseVisualStyleBackColor = false;
+            this.ttsTrash.Click += new System.EventHandler(this.ttsTrash_Click);
             // 
             // richTextBox3
             // 
@@ -586,7 +607,7 @@
             "-Test Entry- []"});
             this.comboBox4.Location = new System.Drawing.Point(28, 421);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(221, 28);
+            this.comboBox4.Size = new System.Drawing.Size(265, 28);
             this.comboBox4.TabIndex = 27;
             // 
             // label3
@@ -631,7 +652,7 @@
             "-Test Entry- []"});
             this.comboBox3.Location = new System.Drawing.Point(28, 478);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(221, 28);
+            this.comboBox3.Size = new System.Drawing.Size(265, 28);
             this.comboBox3.TabIndex = 25;
             // 
             // tabPage2
@@ -645,6 +666,7 @@
             this.tabPage2.Controls.Add(this.rjToggleButtonOnTop2);
             this.tabPage2.Controls.Add(this.rjToggleButtonClear);
             this.tabPage2.Controls.Add(this.rjToggleButtonOSC);
+            this.tabPage2.Controls.Add(this.hideVRCTextButton);
             this.tabPage2.Controls.Add(this.rjToggleButtonLog);
             this.tabPage2.Controls.Add(this.rjToggleButtonProfan);
             this.tabPage2.Controls.Add(this.label29);
@@ -679,7 +701,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(976, 527);
+            this.tabPage2.Size = new System.Drawing.Size(976, 562);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             // 
@@ -1113,10 +1135,9 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.rjToggleButtonCurrentSong);
             this.tabPage3.Controls.Add(this.label34);
-            this.tabPage3.Controls.Add(this.rjToggleButtonConnectSpotify);
-            this.tabPage3.Controls.Add(this.label33);
             this.tabPage3.Controls.Add(this.label32);
             this.tabPage3.Controls.Add(this.label31);
             this.tabPage3.Controls.Add(this.label30);
@@ -1132,7 +1153,7 @@
             this.tabPage3.Controls.Add(this.textBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(976, 527);
+            this.tabPage3.Size = new System.Drawing.Size(976, 562);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
             // 
@@ -1141,7 +1162,7 @@
             this.rjToggleButtonCurrentSong.AutoSize = true;
             this.rjToggleButtonCurrentSong.Checked = true;
             this.rjToggleButtonCurrentSong.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonCurrentSong.Location = new System.Drawing.Point(27, 479);
+            this.rjToggleButtonCurrentSong.Location = new System.Drawing.Point(31, 509);
             this.rjToggleButtonCurrentSong.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonCurrentSong.Name = "rjToggleButtonCurrentSong";
             this.rjToggleButtonCurrentSong.OffBackColor = System.Drawing.Color.Gray;
@@ -1157,35 +1178,11 @@
             // 
             this.label34.AutoSize = true;
             this.label34.ForeColor = System.Drawing.Color.Snow;
-            this.label34.Location = new System.Drawing.Point(78, 481);
+            this.label34.Location = new System.Drawing.Point(82, 509);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(145, 20);
+            this.label34.Size = new System.Drawing.Size(260, 20);
             this.label34.TabIndex = 44;
-            this.label34.Text = "Output Current Song";
-            // 
-            // rjToggleButtonConnectSpotify
-            // 
-            this.rjToggleButtonConnectSpotify.AutoSize = true;
-            this.rjToggleButtonConnectSpotify.Location = new System.Drawing.Point(27, 440);
-            this.rjToggleButtonConnectSpotify.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonConnectSpotify.Name = "rjToggleButtonConnectSpotify";
-            this.rjToggleButtonConnectSpotify.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonConnectSpotify.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonConnectSpotify.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonConnectSpotify.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonConnectSpotify.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonConnectSpotify.TabIndex = 43;
-            this.rjToggleButtonConnectSpotify.UseVisualStyleBackColor = true;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.Color.Snow;
-            this.label33.Location = new System.Drawing.Point(78, 442);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(249, 20);
-            this.label33.TabIndex = 42;
-            this.label33.Text = "Ask to \'Connect Spotify\' on app start";
+            this.label34.Text = "Output Current Song On Song Change";
             // 
             // label32
             // 
@@ -1193,9 +1190,10 @@
             this.label32.ForeColor = System.Drawing.Color.Snow;
             this.label32.Location = new System.Drawing.Point(203, 386);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(250, 20);
+            this.label32.Size = new System.Drawing.Size(534, 20);
             this.label32.TabIndex = 41;
-            this.label32.Text = "Must be clicked again on app restart";
+            this.label32.Text = "Access Limited: Join the discord server and DM Wizard for access to this feature\r" +
+    "\n";
             // 
             // label31
             // 
@@ -1203,9 +1201,9 @@
             this.label31.ForeColor = System.Drawing.Color.Snow;
             this.label31.Location = new System.Drawing.Point(203, 331);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(412, 20);
+            this.label31.Size = new System.Drawing.Size(416, 20);
             this.label31.TabIndex = 40;
-            this.label31.Text = "This feature will output your currently playing song in VRChat";
+            this.label31.Text = "This feature will output your currently playing song in VRChat ";
             // 
             // label30
             // 
@@ -1224,9 +1222,9 @@
             this.buttonSpotify.FlatAppearance.BorderSize = 0;
             this.buttonSpotify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSpotify.ForeColor = System.Drawing.Color.Snow;
-            this.buttonSpotify.Location = new System.Drawing.Point(31, 372);
+            this.buttonSpotify.Location = new System.Drawing.Point(31, 367);
             this.buttonSpotify.Name = "buttonSpotify";
-            this.buttonSpotify.Size = new System.Drawing.Size(153, 49);
+            this.buttonSpotify.Size = new System.Drawing.Size(153, 59);
             this.buttonSpotify.TabIndex = 31;
             this.buttonSpotify.Text = "Connect Spotify";
             this.buttonSpotify.UseVisualStyleBackColor = false;
@@ -1235,7 +1233,7 @@
             // rjToggleButtonKeyRegion2
             // 
             this.rjToggleButtonKeyRegion2.AutoSize = true;
-            this.rjToggleButtonKeyRegion2.Location = new System.Drawing.Point(27, 229);
+            this.rjToggleButtonKeyRegion2.Location = new System.Drawing.Point(27, 200);
             this.rjToggleButtonKeyRegion2.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonKeyRegion2.Name = "rjToggleButtonKeyRegion2";
             this.rjToggleButtonKeyRegion2.OffBackColor = System.Drawing.Color.Gray;
@@ -1251,11 +1249,11 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.Snow;
-            this.label19.Location = new System.Drawing.Point(78, 231);
+            this.label19.Location = new System.Drawing.Point(82, 200);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(197, 20);
+            this.label19.Size = new System.Drawing.Size(190, 20);
             this.label19.TabIndex = 37;
-            this.label19.Text = "Remember Key and Region?";
+            this.label19.Text = "Remember Key and Region";
             // 
             // label10
             // 
@@ -1284,7 +1282,7 @@
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.Snow;
-            this.button6.Location = new System.Drawing.Point(393, 164);
+            this.button6.Location = new System.Drawing.Point(393, 152);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(94, 29);
             this.button6.TabIndex = 32;
@@ -1294,7 +1292,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(31, 166);
+            this.textBox3.Location = new System.Drawing.Point(31, 154);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(356, 27);
             this.textBox3.TabIndex = 30;
@@ -1316,7 +1314,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.Snow;
-            this.button5.Location = new System.Drawing.Point(393, 95);
+            this.button5.Location = new System.Drawing.Point(393, 83);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(94, 29);
             this.button5.TabIndex = 29;
@@ -1326,7 +1324,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(31, 97);
+            this.textBox2.Location = new System.Drawing.Point(31, 85);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(356, 27);
             this.textBox2.TabIndex = 27;
@@ -1513,6 +1511,20 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Snow;
+            this.button2.Location = new System.Drawing.Point(31, 443);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(153, 42);
+            this.button2.TabIndex = 33;
+            this.button2.Text = "Show Current Song";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1548,7 +1560,6 @@
         private Label label1;
         private Label label2;
         private Button hideVRCTextButton;
-        private Button logClearButton;
         private Label label4;
         private Label label5;
         private Label label6;
@@ -1636,9 +1647,10 @@
         private Label label31;
         private Label label30;
         private Label label32;
-        private RJControls.RJToggleButton rjToggleButtonConnectSpotify;
-        private Label label33;
         private RJControls.RJToggleButton rjToggleButtonCurrentSong;
         private Label label34;
+        private FontAwesome.Sharp.IconButton ttsTrash;
+        private FontAwesome.Sharp.IconButton logTrash;
+        private Button button2;
     }
 }

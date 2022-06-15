@@ -38,6 +38,9 @@ namespace OSCVRCWiz
         public string currentOutputDevice = "";
         public string currentInputDeviceName = "Default";
         public string currentOutputDeviceName = "Default";
+        public bool getSpotify = false;
+        public System.Threading.Timer testtimer;
+        public SharpOSC.UDPSender sender3;
 
 
         enum KeyModifier
@@ -99,7 +102,13 @@ namespace OSCVRCWiz
             tabControl1.SizeMode = TabSizeMode.Fixed;
 
 
-          
+            sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+            testtimer = new System.Threading.Timer(testtimertick);
+           // testtimer.Change(5000, 0);
+            testtimer.Change(Timeout.Infinite, Timeout.Infinite);
+
+
+
 
 
 
@@ -288,6 +297,19 @@ namespace OSCVRCWiz
 
         }
 
+        public void ClearTextBoxTTS()
+        {
+
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(ClearTextBoxTTS));
+                return;
+            }
+
+            richTextBox3.Text = "";
+
+        }
+
 
 
         private void button5_Click(object sender, EventArgs e)
@@ -380,7 +402,7 @@ namespace OSCVRCWiz
         {
 
             rjToggleButtonActivation.Checked = Settings1.Default.recognition; //activation phrase off
-            rjToggleButtonConnectSpotify.Checked = Settings1.Default.ConnectSpot;
+          //  rjToggleButtonConnectSpotify.Checked = Settings1.Default.ConnectSpot;
             textBoxActivationWord.Text = Settings1.Default.activationWord;
             activationWord = Settings1.Default.activationWord;
             if (Settings1.Default.recognition == true)
@@ -390,12 +412,12 @@ namespace OSCVRCWiz
                 va.loadSpeechRecognition(this);
                 MessageBox.Show("STTTS Voice Activation Initiated");
             }
-            if (Settings1.Default.ConnectSpot == true)
-            {
-                var sa = new SpotifyAddon();
-                sa.SpotifyConnect();
+         //   if (Settings1.Default.ConnectSpot == true)
+          //  {
+         //       var sa = new SpotifyAddon();
+         //       sa.SpotifyConnect(this);
 
-            }
+        //    }
 
 
 
@@ -471,7 +493,7 @@ namespace OSCVRCWiz
                 Settings1.Default.yourKey = "";
             }
             Settings1.Default.recognition = rjToggleButtonActivation.Checked;
-            Settings1.Default.ConnectSpot = rjToggleButtonConnectSpotify.Checked;
+           // Settings1.Default.ConnectSpot = rjToggleButtonConnectSpotify.Checked;
 
 
             Settings1.Default.profanityFilterSetting = rjToggleButtonProfan.Checked;
@@ -685,15 +707,20 @@ namespace OSCVRCWiz
         private void buttonSpotify_Click(object sender, EventArgs e)
         {
             var sa = new SpotifyAddon();
-            sa.SpotifyConnect();
+            sa.SpotifyConnect(this);
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             //var sa = new SpotifyAddon();
-            Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
-           // SpotifyAddon.getCurrentSongInfo(this); //Use Task.Run to prevent application from freezing while completeing this action
+          // if(getSpotify==true)
+         //   {
+                Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
+
+          //  }
+       
+           //////////////////////////// SpotifyAddon.getCurrentSongInfo(this); //Use Task.Run to prevent application from freezing while completeing this action
 
            
         }
@@ -711,6 +738,41 @@ namespace OSCVRCWiz
 
             }
         }
-        
+
+        private void logTrash_Click(object sender, EventArgs e)
+        {
+            ClearTextBox();
+        }
+
+        private void ttsTrash_Click(object sender, EventArgs e)
+        {
+            ClearTextBoxTTS();
+        }
+
+
+        private void testtimertick(object sender)
+        {
+
+            Thread t = new Thread(dostuff);
+            t.Start();
+        }
+        private void dostuff()
+        {
+            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+
+            sender3.Send(message0);
+            
+            //Executes some code
+            //Thread.Sleep(100);
+            System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
+           // testtimer.Change(5000, 0);
+          //  testtimer.Change(Timeout.Infinite, Timeout.Infinite);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
+
+        }
     }
 }

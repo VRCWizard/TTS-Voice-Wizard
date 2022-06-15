@@ -19,7 +19,7 @@ namespace OSCVRCWiz
         {
             // currentlyPrinting = true;
 
-            var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+            //MainForm.sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
 
 
 
@@ -137,8 +137,9 @@ namespace OSCVRCWiz
 
 
             var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
-            sender2.Send(message1);
-            sender2.Send(message0);
+            MainForm.sender3.Send(message1);
+            Task.Delay(100).Wait(); // this delay is to fix text box showing your previous message for a brief second
+            MainForm.sender3.Send(message0);
 
 
             message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 1);
@@ -526,12 +527,12 @@ namespace OSCVRCWiz
                             message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
                             message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
-                            sender2.Send(message1);
-                            sender2.Send(message2);
-                            sender2.Send(message3);
-                            sender2.Send(message4);
-                            sender2.Send(message5);
-                            sender2.Send(message0);
+                            MainForm.sender3.Send(message1);
+                            MainForm.sender3.Send(message2);
+                            MainForm.sender3.Send(message3);
+                            MainForm.sender3.Send(message4);
+                            MainForm.sender3.Send(message5);
+                            MainForm.sender3.Send(message0);
 
 
                             stringPoint += 1;
@@ -574,18 +575,18 @@ namespace OSCVRCWiz
                         message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
                         message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
-                        sender2.Send(message1);
-                        sender2.Send(message2);
-                        sender2.Send(message3);
-                        sender2.Send(message4);
-                        sender2.Send(message5);
+                        MainForm.sender3.Send(message1);
+                        MainForm.sender3.Send(message2);
+                        MainForm.sender3.Send(message3);
+                        MainForm.sender3.Send(message4);
+                        MainForm.sender3.Send(message5);
 
-                        sender2.Send(message6);
-                        sender2.Send(message7);
-                        sender2.Send(message8);
-                        sender2.Send(message9);
+                        MainForm.sender3.Send(message6);
+                        MainForm.sender3.Send(message7);
+                        MainForm.sender3.Send(message8);
+                        MainForm.sender3.Send(message9);
 
-                        sender2.Send(message0);
+                        MainForm.sender3.Send(message0);
 
 
                         stringPoint += 1;
@@ -620,16 +621,25 @@ namespace OSCVRCWiz
 
             if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
             {
+                //make timer function start here or be reset here
                 System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished");
 
                 System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
-                Task.Delay(MainForm.eraseDelay).Wait();
 
-                message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
-               // message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); HIDE TEXT SHOULD NOT CLEAR TEXT, THIS WILL FIX THE ISSUE OF DELAYED HIDE
+              //  MainForm.hideDelayTimer.Enabled = false;
 
-                sender2.Send(message0);
-              ///  sender2.Send(message1);
+               // MainForm.hideDelayTimer.Enabled = true;
+                // MainForm.hideDelayTimer.Enabled = true;
+                System.Diagnostics.Debug.WriteLine("restart/start timer");
+                MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+
+                // Task.Delay(MainForm.eraseDelay).Wait();
+
+                //   message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+
+
+                // sender2.Send(message0);
+
             }
             // currentlyPrinting = false; //does not work as intended, look into sharing betwwen threads possibly?
           //  int startingPoint = stringPoint;
