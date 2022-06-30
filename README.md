@@ -11,7 +11,7 @@ Use TTS Voice Wizard's accessibily features to improve your VRChat experience (i
 
 
 # Getting Started
-Download the latest version from releases and run the .exe file (recommended to use latest release, not pre-release) <br />
+Download the latest version from releases and run the .exe file (recommended to use **"latest"** release, not pre-release) <br />
 https://github.com/VRCWizard/TTS-Voice-Wizard/releases <br />
 
 It may ask you to install missing framework for .Net upon running the .exe file.<br />
