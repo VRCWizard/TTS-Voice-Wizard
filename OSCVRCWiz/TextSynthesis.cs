@@ -30,6 +30,8 @@ using System.Threading.Tasks;
                 speechConfig = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
                 translationConfig = SpeechTranslationConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
 
+                speechConfig.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
+                //make option to enable/disable log to make debugging super easy
 
                 fromLanguage = "en-US";
                 toLanguage = "en";
@@ -125,6 +127,27 @@ using System.Threading.Tasks;
                 translationRecognizer1 = new TranslationRecognizer(translationConfig, audioConfig);
                 speechRecognizer1 = new Microsoft.CognitiveServices.Speech.SpeechRecognizer(speechConfig, audioConfig);
 
+              //  speechRecognizer1.Recognizing += (sender, eventArgs) =>
+             //   {
+                   // Console.WriteLine(eventArgs.Result.Text);
+                 //   var ot = new OutputText();
+                 //   Task.Run(() => ot.outputLog(MainForm, "Recognizing: " + eventArgs.Result.Text));
+              //  };
+
+                speechRecognizer1.Canceled += (sender, eventArgs) =>
+                {
+                    Console.WriteLine(eventArgs.Result.Text);
+                    var ot = new OutputText();
+                    Task.Run(() => ot.outputLog(MainForm, "Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString()+ " Error Details: " +eventArgs.ErrorDetails.ToString()));
+                };
+
+              //  speechRecognizer1.Recognized += (sender, eventArgs) =>
+              //  {
+                   // Console.WriteLine(eventArgs.Result.Text);
+                  //  var ot = new OutputText();
+                   // Task.Run(() => ot.outputLog(MainForm, "Recognized: "+eventArgs.Result.Text));
+               // };
+
                 ///Phrase List
                 var phraseList = PhraseListGrammar.FromRecognizer(speechRecognizer1);
                 if (MainForm.rjToggleButtonPhraseList2.Checked == true)
@@ -150,11 +173,11 @@ using System.Threading.Tasks;
                     phraseList.Clear();
                 }
             }
-            catch (Exception ex)
+          catch (Exception ex)
             {
-                MessageBox.Show("Speech Setup Failed: No valid subscription key or region");
+                MessageBox.Show("Speech Setup Failed: Make sure that you have setup your Azure Key and Region in the Provider tab (click the change buttons to apply changes) Reason:"+ ex.Message.ToString());
 
-            }
+           }
 
 
 
@@ -242,8 +265,9 @@ using System.Threading.Tasks;
                 //Send Text to Vrchat
                 if (MainForm.rjToggleButtonOSC.Checked == true)
                 {
+                    VoiceWizardWindow.pauseBPM = true;
                     //ot.outputVRChat(MainForm, MainForm.dictationString);
-                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString));
+                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString,"tts"));
                 }
                 //Send Text to TTS
 
@@ -251,14 +275,14 @@ using System.Threading.Tasks;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No valid subscription key given or speech service has been disabled");
+                MessageBox.Show("STTTS Failed: " + ex.Message.ToString());
 
             }
         }
         public async void translationSTTTS(VoiceWizardWindow MainForm,string toLanguageFullname, string fromLanguageFullname)//translate speech to text
         {
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
-            //   try
+            try {
         
 
             System.Diagnostics.Debug.WriteLine($"Say something in '{fromLanguage}' and ");
@@ -346,12 +370,14 @@ using System.Threading.Tasks;
                 {
                     if (MainForm.rjToggleButtonAsTranslated2.Checked == true) //changed from checkbox7
                     {
-                    Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]"));
+                    VoiceWizardWindow.pauseBPM = true;
+                    Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]","tts"));
 
                     }
                     else
                     {
-                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]"));
+                    VoiceWizardWindow.pauseBPM = true;
+                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
 
                     }
                 
@@ -361,12 +387,12 @@ using System.Threading.Tasks;
                 //Send Text to TTS
 
                // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
-           // }
-          //  catch (Exception ex)
-         //   {
-            //    MessageBox.Show("No valid subscription key given or speech service has been disabled");
-//
-         //   }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Translation STTTS Failed: This error usually occurs when attempting to translate your speech while your mic is not being picked up (check input device). Reason:" + ex.Message.ToString());
+                
+            }
         }
     }
 }

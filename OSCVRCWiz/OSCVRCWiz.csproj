@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
-    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.21.0" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.22.0" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />

@@ -19,6 +19,7 @@ namespace OSCVRCWiz
             {
 
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+                
                 // Note: if only language is set, the default voice of that language is chosen.
                 //  config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
                 // The voice setting will overwrite the language setting.
@@ -348,9 +349,9 @@ namespace OSCVRCWiz
           }
           catch (Exception ex)
           {
-                MessageBox.Show("No valid subscription key given or speech service has been disabled");
+                MessageBox.Show("No valid subscription key given or speech service has been disabled; "+ ex.Message.ToString());
 
-            }
+           }
 
 
 

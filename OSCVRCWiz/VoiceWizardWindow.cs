@@ -1,4 +1,4 @@
-//Wizard
+﻿//Wizard
 using Microsoft.CognitiveServices.Speech;//Subcription Azure
 using Microsoft.CognitiveServices.Speech.Audio; //Subcription Azure
 using Microsoft.CognitiveServices.Speech.Translation;
@@ -41,6 +41,12 @@ namespace OSCVRCWiz
         public bool getSpotify = false;
         public System.Threading.Timer testtimer;
         public SharpOSC.UDPSender sender3;
+        public bool justShowTheSong = false;
+        public static int heartRatePort = 4026;
+        public static bool pauseBPM = false;
+        public static bool stopBPM = false; // fix later should be set to setting value
+        public static bool BPMSpamLog = true;
+        public static int HRInternalValue= 5;
 
 
         enum KeyModifier
@@ -102,7 +108,7 @@ namespace OSCVRCWiz
             tabControl1.SizeMode = TabSizeMode.Fixed;
 
 
-            sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+            sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);//9000
             testtimer = new System.Threading.Timer(testtimertick);
            // testtimer.Change(5000, 0);
             testtimer.Change(Timeout.Infinite, Timeout.Infinite);
@@ -130,8 +136,9 @@ namespace OSCVRCWiz
 
             if (m.Msg == 0x0312)
             {
-                speechTTSButton.PerformClick();
-   
+                // speechTTSButton.PerformClick();
+                Task.Run(() => doSpeechTTS());
+
             }
         }
         private async void TTSButton_Click(object sender, EventArgs e)//TTS
@@ -216,8 +223,8 @@ namespace OSCVRCWiz
             {
 
 
-
-                Task.Run(() => ot.outputVRChat(this,text)); //original
+                VoiceWizardWindow.pauseBPM = true;
+                Task.Run(() => ot.outputVRChat(this,text, "tts")); //original
                // ot.outputVRChat(this, text);//new
             }
             if(rjToggleButtonClear.Checked ==true)
@@ -400,6 +407,12 @@ namespace OSCVRCWiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
+                File.WriteAllText("logfile.txt", String.Empty);
+            }
+            catch (Exception ex) { }
+            
 
             rjToggleButtonActivation.Checked = Settings1.Default.recognition; //activation phrase off
           //  rjToggleButtonConnectSpotify.Checked = Settings1.Default.ConnectSpot;
@@ -457,6 +470,18 @@ namespace OSCVRCWiz
             rjToggleButtonKeyRegion2.Checked = Settings1.Default.remember;
 
 
+
+            rjToggleButton3.Checked = Settings1.Default.EmojiSetting;
+            rjToggleButtonCurrentSong.Checked= Settings1.Default.SpotifyOutputSetting;
+
+            
+            HRInternalValue = Convert.ToInt32(Settings1.Default.HRIntervalSetting);
+             heartRatePort = Convert.ToInt32(Settings1.Default.HRPortSetting);
+            rjToggleButton2.Checked = Settings1.Default.BPMSpamSetting;
+
+
+
+
             comboBox2.SelectedIndex = 0;//voice
             comboBox1.SelectedIndex = 0;//style (must be set after voice)
             comboBox3.SelectedIndex = 0;//language to
@@ -474,6 +499,8 @@ namespace OSCVRCWiz
                 comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;
 
             });
+
+
 
 
            /// var ts = new TextSynthesis();
@@ -515,6 +542,15 @@ namespace OSCVRCWiz
 
             Settings1.Default.MicName =comboBoxInput.SelectedItem.ToString();
             Settings1.Default.SpeakerName = comboBoxOutput.SelectedItem.ToString();
+
+
+            Settings1.Default.EmojiSetting = rjToggleButton3.Checked;
+            Settings1.Default.SpotifyOutputSetting = rjToggleButtonCurrentSong.Checked;
+            Settings1.Default.HRIntervalSetting = HRInternalValue.ToString();
+            Settings1.Default.HRPortSetting = heartRatePort.ToString();
+            Settings1.Default.BPMSpamSetting = rjToggleButton2.Checked;
+
+
 
 
 
@@ -577,9 +613,15 @@ namespace OSCVRCWiz
 
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
+            Task.Run(() => doSpeechTTS());
+            
+           
+        }
+        private void doSpeechTTS()
+        {
             var ts = new TextSynthesis();
-            
-            
+
+
             this.Invoke((MethodInvoker)delegate ()
             {
                 if (comboBox3.Text.ToString() == "No Translation (Default)")
@@ -596,10 +638,11 @@ namespace OSCVRCWiz
                     System.Diagnostics.Debug.WriteLine("<speechSetup change>");
 
 
-                    ts.translationSTTTS(this,comboBox3.Text.ToString(), comboBox4.Text.ToString());
+                    ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
 
                 }
             });
+
         }
 
 
@@ -758,7 +801,9 @@ namespace OSCVRCWiz
         }
         private void dostuff()
         {
-            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+           // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+            pauseBPM = false;
 
             sender3.Send(message0);
             
@@ -771,7 +816,126 @@ namespace OSCVRCWiz
 
         private void button2_Click(object sender, EventArgs e)
         {
+            justShowTheSong = true;
             Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            PopupForm test  = new PopupForm();
+            test.BackColor = Color.Black;
+            test.TransparencyKey = Color.Black;
+
+            test.Show(this);
+        }
+       
+
+        private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButton1.Checked == true)
+            {
+
+                stopBPM = false;
+            }
+            if (rjToggleButton1.Checked == false)
+            {
+                stopBPM = true;
+
+
+            }
+
+
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => HeartbeatAddon.OSCRecieveHeartRate(this));
+            
+
+        }
+
+        private void rjToggleButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButton2.Checked == true)
+            {
+                BPMSpamLog = true;
+            }
+            if (rjToggleButton2.Checked == false)
+            {
+                BPMSpamLog = false;
+            }
+        }
+
+        private void HRIntervalChange_Click(object sender, EventArgs e)
+        {
+            HRInternalValue = Int32.Parse(HRInterval.Text.ToString());
+        }
+
+        private void iconButton8_Click(object sender, EventArgs e)
+        {
+           // tabControl1.SelectTab(tabPage5);//provider
+
+        }
+
+        private void iconButton3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabAddons);
+
+        }
+
+        private void iconButton9_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabSpotify);
+
+        }
+
+        private void iconButton10_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabHeartBeat);
+
+        }
+
+        private void iconButton11_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabEmoji);
+
+        }
+
+        private void rjToggleButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            //delete
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            //copies main log text to addon logs
+            richTextBox7.Text = richTextBox1.Text;
+            richTextBox8.Text = richTextBox1.Text;
+
+        }
+
+        private void iconButton12_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            heartRatePort = Convert.ToInt32(textBoxHRPort.Text.ToString());
+            
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            heartRatePort = Convert.ToInt32(textBoxHRPort.Text.ToString());
+
+        }
+
+        private void tabHeartBeat_Click(object sender, EventArgs e)
+        {
 
         }
     }

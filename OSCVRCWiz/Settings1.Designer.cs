@@ -298,5 +298,65 @@ namespace OSCVRCWiz {
                 this["PKCEAccessToken"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EmojiSetting {
+            get {
+                return ((bool)(this["EmojiSetting"]));
+            }
+            set {
+                this["EmojiSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SpotifyOutputSetting {
+            get {
+                return ((bool)(this["SpotifyOutputSetting"]));
+            }
+            set {
+                this["SpotifyOutputSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public string HRIntervalSetting {
+            get {
+                return ((string)(this["HRIntervalSetting"]));
+            }
+            set {
+                this["HRIntervalSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4026")]
+        public string HRPortSetting {
+            get {
+                return ((string)(this["HRPortSetting"]));
+            }
+            set {
+                this["HRPortSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BPMSpamSetting {
+            get {
+                return ((bool)(this["BPMSpamSetting"]));
+            }
+            set {
+                this["BPMSpamSetting"] = value;
+            }
+        }
     }
 }

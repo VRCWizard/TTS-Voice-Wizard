@@ -61,6 +61,41 @@
     <value>Changelog: 
 (full changelogs visible here https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
 
+Public Beta v0.5.0 Features and Fixes - July 20, 2022
+-UI changes
+  -Donate Button
+  -Addon Button (Spotify, HRtoVRChat_OSC, Emojis)
+
+-added support for KillfrenzyAvatarText 16 parameters sync
+-text is now deleted instead of being hidden after hide delay for better visuals (prevents flickering)
+-STTTS hotkey now works from anywhere in the app
+-added a bunch of error handling to help users troubleshoot
+  -Now creates logfile.txt in folder
+
+-Spotify Show current song button now works as intended
+
+-emoji addon currently only works with spotify and heartbeat, it replaces some text with a heart or the spotify symbol for example.
+ (To use this in unity replace the KAT texture with the file provided and enable emojis in the app)
+
+-This update also allows for connecting HRtoVRChat_OSC to TTS Voice Wizard through OSC
+ -200Tigersbloxed's app is truly amazing with how many devices are supported get it here: https://github.com/200Tigersbloxed/HRtoVRChat_OSC
+ -To connect to it to TTS Voice Wizard set the sending port of HRtoVRChat_OSC to 4026 (instead of the default of 9000 which is VRChats receiving port)
+  Note: HRtoVRChat_OSC also has a neat unity component so you could just use that instead. Voice Wizard only makes the BPM values output in killfrenzy avatar text.
+
+-Updated Microsoft.CognitiveServices.Speech from 1.21.0 to the Latest stable 1.22.0
+
+
+
+Public Beta v0.4.1 Quality of Life - June 15, 2022
+-TTS text box and log text box now have neat little clear buttons
+-Spotify Feature now only requires you to accept once instead of on every app start (Limited Access: DM me your spotify email on discord for access to this feature)
+-Hide text delay now uses a timer and restarts if you send a new message before a previous hide delay would have finished
+-Fixed glitch where your previous message would appear for a brief moment in VRChat when you sent a new message
+
+
+
+
+
 Public Beta v0.4.0 Spotify Addon - May 28, 2022
 -This update makes the setup process easier as you can now set your microphone and speaker device in the app
 -This update also adds a new experimental feature for VRChat users, you can now output the name of your currently playing on Spotify to your avatar so all your friends can see what you're vibing to.
@@ -344,7 +379,7 @@ Fixes:
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>53</value>
+    <value>63</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

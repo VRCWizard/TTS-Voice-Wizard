@@ -8,6 +8,7 @@ namespace OSCVRCWiz
 {
     public class OutputText
     {
+        static string previousRequestType = "";
         bool currentlyPrinting = false;
         public async void outputLog(VoiceWizardWindow MainForm, string textstring)
         {
@@ -15,7 +16,7 @@ namespace OSCVRCWiz
             MainForm.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]" + ": " + textstring);
 
         }
-        public async void outputVRChat(VoiceWizardWindow MainForm, string textstring)
+        public async void outputVRChat(VoiceWizardWindow MainForm, string textstring, string type)
         {
             // currentlyPrinting = true;
 
@@ -32,8 +33,86 @@ namespace OSCVRCWiz
             }
             //System.Diagnostics.Debug.WriteLine("textstring length =" + textstring.Length);
 
+            int sentenceLength = stringleng % 16;
 
-            if (stringleng % 8 == 1)
+            switch (sentenceLength)
+            {
+                case 1: 
+                    textstring += "   ";
+                    if (MainForm.numKATSyncParameters == "8" || MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "    ";
+                    };
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    };
+                    break;
+
+                case 2:
+                    textstring += "  ";
+                    if (MainForm.numKATSyncParameters == "8"|| MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "    ";
+                    }
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    };
+                    break;
+                case 3:
+                    textstring += " ";
+                    if (MainForm.numKATSyncParameters == "8"|| MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "    ";
+                    }
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    };
+                    break;
+                case 4:
+                    textstring += "";
+                    if (MainForm.numKATSyncParameters == "8"|| MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "    ";
+                    }
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    };
+                    break;
+                case 5: textstring += "   ";
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    }; break;
+                case 6: textstring += "  ";
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    }; break;
+                case 7: textstring += " ";
+                    if (MainForm.numKATSyncParameters == "16")
+                    {
+                        textstring += "        ";
+                    }; break;
+                 case 8: textstring += "        "; break; //16 mode
+                 case 9: textstring += "       "; break; //16 mode
+                case 10: textstring += "      "; break; //16 mode
+                case 11: textstring += "     "; break; //16 mode
+                case 12: textstring += "    "; break; //16 mode
+                case 13: textstring += "   "; break; //16 mode
+                case 14: textstring += "  "; break; //16 mode
+                case 15: textstring += " "; break; //16 mode
+                default: ; break;
+            }
+
+
+
+
+            /*
+                    if (stringleng % 8 == 1)
             {
                 textstring += "   ";
                 if (MainForm.numKATSyncParameters == "8")
@@ -78,37 +157,23 @@ namespace OSCVRCWiz
                 }
             if (stringleng % 8 == 5)
             {
-               
-             //   if (MainForm.numKATSyncParameters == "8")
-             //   {
+
                     textstring += "   ";
 
-
-              //  }
             }
             if (stringleng % 8 == 6)
             {
 
-               // if (MainForm.numKATSyncParameters == "8")
-              //  {
                     textstring += "  ";
 
-
-              //  }
             }
             if (stringleng % 8 == 7)
             {
 
-              //  if (MainForm.numKATSyncParameters == "8")
-              //  {
                     textstring += " ";
 
-
-               // }
             }
-
-            //  System.Diagnostics.Debug.WriteLine("textstring length =" + textstring.Length);
-
+            */
             float letter = 0.0F;
             int charCounter = 0;
             int stringPoint = 1;
@@ -123,6 +188,15 @@ namespace OSCVRCWiz
             float letterFloat6 = 0;
             float letterFloat7 = 0;
 
+            float letterFloat8 = 0; //16 mode
+            float letterFloat9 = 0;//16 mode
+            float letterFloat10 = 0;//16 mode
+            float letterFloat11 = 0;//16 mode
+            float letterFloat12 = 0;//16 mode
+            float letterFloat13 = 0;//16 mode
+            float letterFloat14 = 0;//16 mode
+            float letterFloat15 = 0;//16 mode
+
             var message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
             var message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
             var message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
@@ -134,12 +208,32 @@ namespace OSCVRCWiz
             var message8 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
             var message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
 
+            var message10 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat8);
+            var message11 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat9);
+            var message12 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat10);
+            var message13 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat11);
+            var message14 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat12);
+            var message15 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat13);
+            var message16 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat14);
+            var message17 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat15);
+
 
 
             var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
-            MainForm.sender3.Send(message1);
-            Task.Delay(100).Wait(); // this delay is to fix text box showing your previous message for a brief second
-            MainForm.sender3.Send(message0);
+
+            if(type =="bpm" && previousRequestType=="bpm")
+            {
+                System.Diagnostics.Debug.WriteLine("bpm case ran");
+                Task.Delay(50).Wait();
+            }
+            else
+            {
+                MainForm.sender3.Send(message1);
+            }
+
+            previousRequestType = type;
+           // Task.Delay(100).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
+          //  MainForm.sender3.Send(message0);
 
 
             message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 1);
@@ -288,9 +382,9 @@ namespace OSCVRCWiz
                     // case '': letter = 124; break;
                     // case '': letter = 125; break;
                     // case '': letter = 126; break;
-                    case 'ぬ': letter = 127; break;
+                    case 'ぬ': letter = 127; break; //used as heart emoji
                     //case '': letter = 128; break;
-                    case 'ふ': letter = 129; break;
+                    case 'ふ': letter = 129; break; //used as spotify emoji
 
                     case 'あ': letter = 130; break;
                     case 'う': letter = 131; break;
@@ -496,7 +590,15 @@ namespace OSCVRCWiz
 
 
                 }
-                if(letter > 127.5)
+                // 7display send letter (no implemented)
+               // var messageDislay7 = new SharpOSC.OscMessage("/avatar/parameters/7Display", letter);
+               // MainForm.sender3.Send(messageDislay7);
+                //var messageDislay7Enter = new SharpOSC.OscMessage("/avatar/parameters/7Display", 10);
+              //  MainForm.sender3.Send(messageDislay7Enter);
+
+
+
+                if (letter > 127.5)
                 {
                     letter = letter - 256;
 
@@ -544,7 +646,7 @@ namespace OSCVRCWiz
                             
 
                         }
-                        if (MainForm.numKATSyncParameters == "8")
+                        if (MainForm.numKATSyncParameters == "8" || MainForm.numKATSyncParameters == "16")
                         {
                             letterFloat3 = letter;
 
@@ -560,9 +662,79 @@ namespace OSCVRCWiz
                         letterFloat6 = letter;
                         break;
                     case 7:
+                        if (MainForm.numKATSyncParameters == "4")
+                        {
+                            Task.Delay(MainForm.debugDelayValue).Wait();
+                            letterFloat7 = letter;
+                            message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                            message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                            message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                            message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                            message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
+                            message6 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+                            message7 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+                            message8 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+                            message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+                            message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+
+                            MainForm.sender3.Send(message1);
+                            MainForm.sender3.Send(message2);
+                            MainForm.sender3.Send(message3);
+                            MainForm.sender3.Send(message4);
+                            MainForm.sender3.Send(message5);
+
+                            MainForm.sender3.Send(message6);
+                            MainForm.sender3.Send(message7);
+                            MainForm.sender3.Send(message8);
+                            MainForm.sender3.Send(message9);
+
+                            MainForm.sender3.Send(message0);
+
+
+                            stringPoint += 1;
+                            charCounter = -1;
+                            letterFloat0 = 0;
+                            letterFloat1 = 0;
+                            letterFloat2 = 0;
+                            letterFloat3 = 0;
+
+                            letterFloat4 = 0;
+                            letterFloat5 = 0;
+                            letterFloat6 = 0;
+                            letterFloat7 = 0;
+                        }
+                        if (MainForm.numKATSyncParameters == "16")
+                        {
+                            letterFloat7 = letter;
+
+                        }
+                        break;
+
+                    case 8:
+                        letterFloat8 = letter;
+                        break;
+                    case 9:
+                        letterFloat9 = letter;
+                        break;
+                    case 10:
+                        letterFloat10 = letter;
+                        break;
+                    case 11:
+                        letterFloat11 = letter;
+                        break;
+                    case 12:
+                        letterFloat12 = letter;
+                        break;
+                    case 13:
+                        letterFloat13 = letter;
+                        break;
+                    case 14:
+                        letterFloat14 = letter;
+                        break;
+                    case 15:
                         Task.Delay(MainForm.debugDelayValue).Wait();
-                        letterFloat7 = letter;
+                        letterFloat15 = letter;
                         message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
                         message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
                         message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
@@ -573,9 +745,20 @@ namespace OSCVRCWiz
                         message7 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
                         message8 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
                         message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+
+                        message10 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync8", letterFloat8);
+                        message11 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync9", letterFloat9);
+                        message12 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync10", letterFloat10);
+                        message13 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync11", letterFloat11);
+
+                        message14 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync12", letterFloat12);
+                        message15 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync13", letterFloat13);
+                        message16 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync14", letterFloat14);
+                        message17 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync15", letterFloat15);
                         message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
                         MainForm.sender3.Send(message1);
+
                         MainForm.sender3.Send(message2);
                         MainForm.sender3.Send(message3);
                         MainForm.sender3.Send(message4);
@@ -585,6 +768,16 @@ namespace OSCVRCWiz
                         MainForm.sender3.Send(message7);
                         MainForm.sender3.Send(message8);
                         MainForm.sender3.Send(message9);
+
+                        MainForm.sender3.Send(message10);
+                        MainForm.sender3.Send(message11);
+                        MainForm.sender3.Send(message12);
+                        MainForm.sender3.Send(message13);
+                        MainForm.sender3.Send(message14);
+                        MainForm.sender3.Send(message15);
+                        MainForm.sender3.Send(message16);
+                        MainForm.sender3.Send(message17);
+    
 
                         MainForm.sender3.Send(message0);
 
@@ -600,8 +793,17 @@ namespace OSCVRCWiz
                         letterFloat5 = 0;
                         letterFloat6 = 0;
                         letterFloat7 = 0;
-                        break;
 
+
+                        letterFloat8 = 0;
+                        letterFloat9 = 0;
+                        letterFloat10 = 0;
+                        letterFloat11 = 0;
+                        letterFloat12 = 0;
+                        letterFloat13 = 0;
+                        letterFloat14 = 0;
+                        letterFloat15 = 0;
+                        break;
 
                     default: break;
                 }
@@ -626,64 +828,12 @@ namespace OSCVRCWiz
 
                 System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
 
-              //  MainForm.hideDelayTimer.Enabled = false;
-
-               // MainForm.hideDelayTimer.Enabled = true;
-                // MainForm.hideDelayTimer.Enabled = true;
                 System.Diagnostics.Debug.WriteLine("restart/start timer");
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
 
-                // Task.Delay(MainForm.eraseDelay).Wait();
-
-                //   message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
-
-
-                // sender2.Send(message0);
-
             }
-            // currentlyPrinting = false; //does not work as intended, look into sharing betwwen threads possibly?
-          //  int startingPoint = stringPoint;
-           // int frenzyDisplayLimit = 128;
-           // int frenzyDisplayMaxChar = 4;
-            /*    if (currentlyPrinting == false)
-                {
+           
 
-                        //Natural Erase just incase previous sentence was longer than the current sentence (and erase not checked)
-                        System.Diagnostics.Debug.WriteLine("Natural erase begun");
-                        for (int z = startingPoint; z <= (frenzyDisplayLimit / frenzyDisplayMaxChar); z++) //INCREASE VALUE TO Killfrenzy limit!!! (old limit 128/4=32 chracters)
-                        {
-
-                            Task.Delay(MainForm.debugDelayValue).Wait();
-                            message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", z);
-                            message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", 0.0f);
-                            message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", 0.0f);
-                            message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", 0.0f);
-                            message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", 0.0f);
-                            message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
-
-                        sender2.Send(message1);
-                            sender2.Send(message2);
-                            sender2.Send(message3);
-                            sender2.Send(message4);
-                            sender2.Send(message5);
-                        sender2.Send(message0);
-
-
-                    } */
-
-
-
-
-            //}
-
-        
-    
-
-
-
-
-
-            //currently error if u talk past word limit (setting point back to 1 around here should fix it)
 
 
 
