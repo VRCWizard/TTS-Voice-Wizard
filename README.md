@@ -21,6 +21,8 @@ https://github.com/VRCWizard/TTS-Voice-Wizard/releases <br />
 
 ![download this one](https://user-images.githubusercontent.com/101527472/161798523-48efb29a-81a6-4ac5-acaf-45a33a857b73.png)
 
+- If popup does not appear and application does not start use this link. https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime?utm_source=getdotnetcore&utm_medium=referral
+
 # Microsoft Azure Subscription Key
 - For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
 https://azure.microsoft.com/en-us/free/ <br />
