@@ -47,7 +47,7 @@ https://azure.microsoft.com/en-us/free/students/ (no credit card required)<br />
 ![Screenshot 2022-05-09 121758wa](https://user-images.githubusercontent.com/101527472/167463062-909190bb-eec0-42f3-a985-7e7c714782bb.png)
 
 
-# How to output TTS though microphone?
+# How to output TTS through microphone?
 - Upon clicking the TTS button you should be able to hear the TTS in the Sara voice by default (The app must have outputted audio for you to select it in volume mixer)
 
 - Download a virtual audio cable, you can find one here https://vb-audio.com/Cable/
