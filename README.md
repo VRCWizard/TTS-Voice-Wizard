@@ -61,7 +61,8 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 - You will then need change the Apps **Output Device**  to the **Virtual Cable** which will allow you to play the TTS though your microphone.
 ![image](https://user-images.githubusercontent.com/101527472/170846684-cd7d01f7-f2fa-4a05-aea6-ec8653d3a58d.png)
 
-- Your microphone for the app should be whatever microphone you normally use!
+- Your microphone/input device for TTSVoiceWizard should be whatever microphone you normally use!
+- In the application you want the audio to play in like VRChat or Discord you will set your microphone to the vitrual cable!
 # KillFrenzy Avatar Text
 - To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
