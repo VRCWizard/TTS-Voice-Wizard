@@ -48,6 +48,8 @@ namespace OSCVRCWiz
         public static bool BPMSpamLog = true;
         public static int HRInternalValue= 5;
 
+        //public bool STTTSContinuous = false;
+
 
         enum KeyModifier
         {
@@ -482,16 +484,28 @@ namespace OSCVRCWiz
 
 
 
-            comboBox2.SelectedIndex = 0;//voice
-            comboBox1.SelectedIndex = 0;//style (must be set after voice)
-            comboBox3.SelectedIndex = 0;//language to
-            comboBox4.SelectedItem = "English [en-US] (Default)";//language from [5 is english0
-            comboBoxPitch.SelectedIndex = 5;
-            comboBoxVolume.SelectedIndex = 4;
-            comboBoxRate.SelectedIndex = 5;
+            // comboBox2.SelectedIndex = 0;//voice
+            //   comboBox1.SelectedIndex = 0;//style (must be set after voice)
+            //  comboBox3.SelectedIndex = 0;//language to
+            //  comboBox4.SelectedItem = "English [en-US] (Default)";//language from [5 is english0
+            //  comboBoxPitch.SelectedIndex = 5;
+            //  comboBoxVolume.SelectedIndex = 4;
+            //  comboBoxRate.SelectedIndex = 5;
+            comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
+            comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+            comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
+            comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
+            comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
+            comboBoxVolume.SelectedIndex = Settings1.Default.volumeSetting;
+            comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
+
+            rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
+
 
             comboBoxInput.SelectedItem = Settings1.Default.MicName;
             comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
+
+
 
 
             this.Invoke((MethodInvoker)delegate ()
@@ -549,6 +563,22 @@ namespace OSCVRCWiz
             Settings1.Default.HRIntervalSetting = HRInternalValue.ToString();
             Settings1.Default.HRPortSetting = heartRatePort.ToString();
             Settings1.Default.BPMSpamSetting = rjToggleButton2.Checked;
+
+
+
+
+             Settings1.Default.voiceBoxSetting= comboBox2.SelectedIndex;
+            Settings1.Default.styleBoxSetting = comboBox1.SelectedIndex;
+             Settings1.Default.langToBoxSetting = comboBox3.SelectedIndex;
+            Settings1.Default.langSpokenSetting = comboBox4.SelectedIndex;
+              Settings1.Default.pitchSetting= comboBoxPitch.SelectedIndex;
+             Settings1.Default.volumeSetting= comboBoxVolume.SelectedIndex;
+             Settings1.Default.rateSetting= comboBoxRate.SelectedIndex;
+
+
+
+            Settings1.Default.STTTSContinuous = rjToggleButton4.Checked;
+
 
 
 
@@ -801,8 +831,8 @@ namespace OSCVRCWiz
         }
         private void dostuff()
         {
-            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
-           // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+           // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
+            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
             pauseBPM = false;
 
             sender3.Send(message0);
@@ -937,6 +967,19 @@ namespace OSCVRCWiz
         private void tabHeartBeat_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
+        {
+         //   if (rjToggleButton4.Checked == true)
+         //   {
+
+         //   }
+          //  if (rjToggleButton4.Checked == false)
+          //  {
+
+
+          //  }
         }
     }
 }

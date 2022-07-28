@@ -15,9 +15,14 @@ using System.Threading.Tasks;
         public SpeechConfig speechConfig;
         public SpeechTranslationConfig translationConfig;
         public static Microsoft.CognitiveServices.Speech.SpeechRecognizer speechRecognizer1;
+        public static Microsoft.CognitiveServices.Speech.SpeechRecognizer speechRecognizerContinuous;
         public static TranslationRecognizer translationRecognizer1;
+       // public static TaskCompletionSource<int> stopRecognition;
         public string fromLanguage = "en-US";
         public string toLanguage = "en";
+        public static bool continuousListening = false;
+        public static bool continuousListeningTranslate = false;
+
 
         public void speechSetup(VoiceWizardWindow MainForm, string toLanguageFullname, string fromLanguageFullname)//speech to text setup
 
@@ -29,6 +34,7 @@ using System.Threading.Tasks;
             {
                 speechConfig = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
                 translationConfig = SpeechTranslationConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+                
 
                 speechConfig.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
                 //make option to enable/disable log to make debugging super easy
@@ -123,30 +129,228 @@ using System.Threading.Tasks;
                     audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 
                 }
+                if (continuousListening == false)//SO THAT STOPPING IT ACTUALLY WORKS
+                {
+                    translationRecognizer1 = new TranslationRecognizer(translationConfig, audioConfig);
 
-                translationRecognizer1 = new TranslationRecognizer(translationConfig, audioConfig);
-                speechRecognizer1 = new Microsoft.CognitiveServices.Speech.SpeechRecognizer(speechConfig, audioConfig);
+              
+                    speechRecognizer1 = new Microsoft.CognitiveServices.Speech.SpeechRecognizer(speechConfig, audioConfig);
+                }
+              
+                   
 
-              //  speechRecognizer1.Recognizing += (sender, eventArgs) =>
-             //   {
-                   // Console.WriteLine(eventArgs.Result.Text);
-                 //   var ot = new OutputText();
-                 //   Task.Run(() => ot.outputLog(MainForm, "Recognizing: " + eventArgs.Result.Text));
-              //  };
+                //  speechRecognizer1.Recognizing += (sender, eventArgs) =>
+                //   {
+                // Console.WriteLine(eventArgs.Result.Text);
+                //   var ot = new OutputText();
+                //   Task.Run(() => ot.outputLog(MainForm, "Recognizing: " + eventArgs.Result.Text));
+                //  };
 
-                speechRecognizer1.Canceled += (sender, eventArgs) =>
+                translationRecognizer1.Canceled += (sender, eventArgs) =>
+                {
+                    Console.WriteLine(eventArgs.Result.Text);
+                    var ot = new OutputText();
+                    Task.Run(() => ot.outputLog(MainForm, "Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString()));
+                };
+
+                translationRecognizer1.Recognized += (sender, eventArgs) =>
+                {
+                    if (MainForm.rjToggleButton4.Checked == true)
+                    {
+                        var speechRecognitionResult = eventArgs.Result;
+
+
+                        MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
+                        string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string
+                        string emotion = "Normal";
+                        string rate = "default";
+                        string pitch = "default";
+                        string volume = "default";
+                        string voice = "Sara";
+                        MainForm.Invoke((MethodInvoker)delegate ()
+                        {
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString()))
+                            {
+                                emotion = "Normal";
+
+                            }
+                            else
+                            {
+                                emotion = MainForm.comboBox1.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString()))
+                            {
+                                rate = "default";
+
+                            }
+                            else
+                            {
+                                rate = MainForm.comboBoxRate.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString()))
+                            {
+                                pitch = "default";
+
+                            }
+                            else
+                            {
+                                pitch = MainForm.comboBoxPitch.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString()))
+                            {
+                                volume = "default";
+
+                            }
+                            else
+                            {
+                                volume = MainForm.comboBoxVolume.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString()))
+                            {
+                                voice = "Sara";
+
+                            }
+                            else
+                            {
+                                voice = MainForm.comboBox2.Text.ToString();
+                            }
+
+
+                        });
+                        var ot = new OutputText();
+                        if (MainForm.rjToggleButtonLog.Checked == true)
+                        {
+                            ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
+                        }
+                        //Send Text to TTS
+                        if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
+                        {
+                            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice));
+
+                        }
+
+                        //Send Text to Vrchat
+                        if (MainForm.rjToggleButtonOSC.Checked == true)
+                        {
+                            if (MainForm.rjToggleButtonAsTranslated2.Checked == true) //changed from checkbox7
+                            {
+                                VoiceWizardWindow.pauseBPM = true;
+                                Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                            }
+                            else
+                            {
+                                VoiceWizardWindow.pauseBPM = true;
+                                Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                            }
+
+
+                            // Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + toLanguage + "]"));
+                        }
+                        //Send Text to TTS
+
+                        // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
+
+                    }
+                
+
+
+                };
+
+                    speechRecognizer1.Canceled += (sender, eventArgs) =>
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                     var ot = new OutputText();
                     Task.Run(() => ot.outputLog(MainForm, "Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString()+ " Error Details: " +eventArgs.ErrorDetails.ToString()));
                 };
 
-              //  speechRecognizer1.Recognized += (sender, eventArgs) =>
-              //  {
-                   // Console.WriteLine(eventArgs.Result.Text);
-                  //  var ot = new OutputText();
-                   // Task.Run(() => ot.outputLog(MainForm, "Recognized: "+eventArgs.Result.Text));
-               // };
+                speechRecognizer1.Recognized += (sender, eventArgs) =>
+                {
+                    // Console.WriteLine(eventArgs.Result.Text);
+                    //  var ot = new OutputText();
+                    //  Task.Run(() => ot.outputLog(MainForm, "Recognized: "+eventArgs.Result.Text));
+                    if(MainForm.rjToggleButton4.Checked == true)
+                    {
+                        MainForm.dictationString = eventArgs.Result.Text; //Dictation string
+
+                        string emotion = "Normal";
+                        string rate = "default";
+                        string pitch = "default";
+                        string volume = "default";
+                        string voice = "Sara";
+                        MainForm.Invoke((MethodInvoker)delegate ()
+                        {
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString()))
+                            {
+                                emotion = "Normal";
+
+                            }
+                            else
+                            {
+                                emotion = MainForm.comboBox1.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString()))
+                            {
+                                rate = "default";
+
+                            }
+                            else
+                            {
+                                rate = MainForm.comboBoxRate.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString()))
+                            {
+                                pitch = "default";
+
+                            }
+                            else
+                            {
+                                pitch = MainForm.comboBoxPitch.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString()))
+                            {
+                                volume = "default";
+
+                            }
+                            else
+                            {
+                                volume = MainForm.comboBoxVolume.Text.ToString();
+                            }
+                            if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString()))
+                            {
+                                voice = "Sara";
+
+                            }
+                            else
+                            {
+                                voice = MainForm.comboBox2.Text.ToString();
+                            }
+
+
+                        });
+                        var ot = new OutputText();
+                        if (MainForm.rjToggleButtonLog.Checked == true)
+                        {
+                            ot.outputLog(MainForm, MainForm.dictationString);
+                        }
+                        if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
+                        {
+                            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice));
+                        }
+                        //Send Text to Vrchat
+                        if (MainForm.rjToggleButtonOSC.Checked == true)
+                        {
+                            VoiceWizardWindow.pauseBPM = true;
+                            //ot.outputVRChat(MainForm, MainForm.dictationString);
+                            Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString, "tts"));
+                        }
+                        //Send Text to TTS
+
+                        // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
+
+                    }
+                };
 
                 ///Phrase List
                 var phraseList = PhraseListGrammar.FromRecognizer(speechRecognizer1);
@@ -185,6 +389,7 @@ using System.Threading.Tasks;
         }
         public async void speechTTTS(VoiceWizardWindow MainForm, string fromLanguageFullname)//speech to text
         {
+            
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
             try
             {
@@ -192,12 +397,15 @@ using System.Threading.Tasks;
 
                 
 
+                if (MainForm.rjToggleButton4.Checked == false)
+                {
+                    var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
+                    //OutputSpeechRecognitionResult(speechRecognitionResult);
+                    MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
+           
 
-                var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
-                //OutputSpeechRecognitionResult(speechRecognitionResult);
 
 
-                MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
                 string emotion = "Normal";
                 string rate = "default";
                 string pitch = "default";
@@ -269,9 +477,39 @@ using System.Threading.Tasks;
                     //ot.outputVRChat(MainForm, MainForm.dictationString);
                     Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString,"tts"));
                 }
-                //Send Text to TTS
+                    //Send Text to TTS
 
-               // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
+                    // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
+                }
+
+                if (MainForm.rjToggleButton4.Checked == true && continuousListening == false)
+                {
+                  //  await translationRecognizer1.StopContinuousRecognitionAsync();//may cause issues
+                    // stopRecognition = new TaskCompletionSource<int>();//testing
+                    continuousListening = true;
+                    System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
+                    var ot = new OutputText();
+                    ot.outputLog(MainForm, "Continuous Listening Enabled");
+
+                await speechRecognizer1.StartContinuousRecognitionAsync();
+                    // Waits for completion. Use Task.WaitAny to keep the task rooted.
+                   // Task.Run(() => Task.WaitAny(new[] { stopRecognition.Task }));
+
+                    // Make the following call at some point to stop recognition:
+                    // await recognizer.StopContinuousRecognitionAsync();
+                }
+                else if (continuousListening == true)
+                {
+                    continuousListening = false;
+                    // Make the following call at some point to stop recognition:
+                    System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
+
+                    await speechRecognizer1.StopContinuousRecognitionAsync();
+                 //   speechRecognizer1.Dispose();
+                    var ot = new OutputText();
+                    ot.outputLog(MainForm, "Continuous Listening Disabled");
+                }
+
             }
             catch (Exception ex)
             {
@@ -287,106 +525,142 @@ using System.Threading.Tasks;
 
             System.Diagnostics.Debug.WriteLine($"Say something in '{fromLanguage}' and ");
                 System.Diagnostics.Debug.WriteLine($"we'll translate into '{toLanguage}'.\n");
-
-            var speechRecognitionResult = await translationRecognizer1.RecognizeOnceAsync();
-         
-                if (speechRecognitionResult.Reason == ResultReason.TranslatedSpeech)
+                if (MainForm.rjToggleButton4.Checked == false)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Recognized: \"{speechRecognitionResult.Text}\"");
-                    System.Diagnostics.Debug.WriteLine($"Translated into '{toLanguage}': {speechRecognitionResult.Translations[toLanguage]}");
+
+                    var speechRecognitionResult = await translationRecognizer1.RecognizeOnceAsync();
+
+                    if (speechRecognitionResult.Reason == ResultReason.TranslatedSpeech)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Recognized: \"{speechRecognitionResult.Text}\"");
+                        System.Diagnostics.Debug.WriteLine($"Translated into '{toLanguage}': {speechRecognitionResult.Translations[toLanguage]}");
+                    }
+
+                    MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
+                    string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string
+                    string emotion = "Normal";
+                    string rate = "default";
+                    string pitch = "default";
+                    string volume = "default";
+                    string voice = "Sara";
+                    MainForm.Invoke((MethodInvoker)delegate ()
+                    {
+                        if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString()))
+                        {
+                            emotion = "Normal";
+
+                        }
+                        else
+                        {
+                            emotion = MainForm.comboBox1.Text.ToString();
+                        }
+                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString()))
+                        {
+                            rate = "default";
+
+                        }
+                        else
+                        {
+                            rate = MainForm.comboBoxRate.Text.ToString();
+                        }
+                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString()))
+                        {
+                            pitch = "default";
+
+                        }
+                        else
+                        {
+                            pitch = MainForm.comboBoxPitch.Text.ToString();
+                        }
+                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString()))
+                        {
+                            volume = "default";
+
+                        }
+                        else
+                        {
+                            volume = MainForm.comboBoxVolume.Text.ToString();
+                        }
+                        if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString()))
+                        {
+                            voice = "Sara";
+
+                        }
+                        else
+                        {
+                            voice = MainForm.comboBox2.Text.ToString();
+                        }
+
+
+                    });
+                    var ot = new OutputText();
+                    if (MainForm.rjToggleButtonLog.Checked == true)
+                    {
+                        ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
+                    }
+                    //Send Text to TTS
+                    if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
+                    {
+                        Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice));
+
+                    }
+
+                    //Send Text to Vrchat
+                    if (MainForm.rjToggleButtonOSC.Checked == true)
+                    {
+                        if (MainForm.rjToggleButtonAsTranslated2.Checked == true) //changed from checkbox7
+                        {
+                            VoiceWizardWindow.pauseBPM = true;
+                            Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                        }
+                        else
+                        {
+                            VoiceWizardWindow.pauseBPM = true;
+                            Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                        }
+
+
+                        // Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + toLanguage + "]"));
+                    }
+                    //Send Text to TTS
+
+                    // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
+                }
+                if (MainForm.rjToggleButton4.Checked == true && continuousListening == false)
+                {
+                 //   await speechRecognizer1.StopContinuousRecognitionAsync();//may cause issues
+                    // stopRecognition = new TaskCompletionSource<int>();//testing
+                    continuousListening = true;
+                    System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
+                    var ot = new OutputText();
+                    ot.outputLog(MainForm, "Continuous Listening Enabled (Translating)");
+
+                    await translationRecognizer1.StartContinuousRecognitionAsync();
+                    // Waits for completion. Use Task.WaitAny to keep the task rooted.
+                    // Task.Run(() => Task.WaitAny(new[] { stopRecognition.Task }));
+
+                    // Make the following call at some point to stop recognition:
+                    // await recognizer.StopContinuousRecognitionAsync();
+                }
+                else if (continuousListening == true)
+                {
+                    continuousListening = false;
+                    // Make the following call at some point to stop recognition:
+                    System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
+
+                    await translationRecognizer1.StopContinuousRecognitionAsync();
+                    //   speechRecognizer1.Dispose();
+                    var ot = new OutputText();
+                    ot.outputLog(MainForm, "Continuous Listening Disabled (Translating)");
                 }
 
-                MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
-                string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string
-                string emotion = "Normal";
-                string rate = "default";
-                string pitch = "default";
-                string volume = "default";
-                string voice = "Sara";
-                MainForm.Invoke((MethodInvoker)delegate ()
-                {
-                    if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString()))
-                    {
-                        emotion = "Normal";
-
-                    }
-                    else
-                    {
-                        emotion = MainForm.comboBox1.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString()))
-                    {
-                        rate = "default";
-
-                    }
-                    else
-                    {
-                        rate = MainForm.comboBoxRate.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString()))
-                    {
-                        pitch = "default";
-
-                    }
-                    else
-                    {
-                        pitch = MainForm.comboBoxPitch.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString()))
-                    {
-                        volume = "default";
-
-                    }
-                    else
-                    {
-                        volume = MainForm.comboBoxVolume.Text.ToString();
-                    }
-                    if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString()))
-                    {
-                        voice = "Sara";
-
-                    }
-                    else
-                    {
-                        voice = MainForm.comboBox2.Text.ToString();
-                    }
 
 
-                });
-                var ot = new OutputText();
-                if (MainForm.rjToggleButtonLog.Checked == true)
-                {
-                 ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage+ ">"+ toLanguage + "]: " + "[" + translatedString + "]");
-                }
-            //Send Text to TTS
-            if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
-            {
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm,translatedString, emotion, rate, pitch, volume, voice));
 
-            }
-            
-                //Send Text to Vrchat
-                if (MainForm.rjToggleButtonOSC.Checked == true)
-                {
-                    if (MainForm.rjToggleButtonAsTranslated2.Checked == true) //changed from checkbox7
-                    {
-                    VoiceWizardWindow.pauseBPM = true;
-                    Task.Run(() => ot.outputVRChat(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]","tts"));
 
-                    }
-                    else
-                    {
-                    VoiceWizardWindow.pauseBPM = true;
-                    Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
 
-                    }
-                
-                
-                // Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + toLanguage + "]"));
-            }
-                //Send Text to TTS
-
-               // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(translatedString, emotion, rate, pitch, volume, voice));
             }
             catch (Exception ex)
             {
@@ -394,5 +668,6 @@ using System.Threading.Tasks;
                 
             }
         }
+
     }
 }

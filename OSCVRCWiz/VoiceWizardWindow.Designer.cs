@@ -61,6 +61,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.rjToggleButton4 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label36 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.rjToggleButtonActivation = new OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonPhraseList2 = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -178,6 +182,7 @@
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Location = new System.Drawing.Point(592, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -603,6 +608,7 @@
             // 
             // richTextBox3
             // 
+            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox3.Location = new System.Drawing.Point(28, 12);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(450, 60);
@@ -701,6 +707,10 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage2.Controls.Add(this.label48);
+            this.tabPage2.Controls.Add(this.label47);
+            this.tabPage2.Controls.Add(this.rjToggleButton4);
+            this.tabPage2.Controls.Add(this.label36);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.rjToggleButtonActivation);
             this.tabPage2.Controls.Add(this.rjToggleButtonPhraseList2);
@@ -748,6 +758,53 @@
             this.tabPage2.Size = new System.Drawing.Size(976, 661);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.ForeColor = System.Drawing.Color.Snow;
+            this.label48.Location = new System.Drawing.Point(251, 622);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(618, 20);
+            this.label48.TabIndex = 85;
+            this.label48.Text = "Warning: Disable Continuous Listening before switching language settings or error" +
+    " will occur";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.Color.Snow;
+            this.label47.Location = new System.Drawing.Point(251, 593);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(508, 20);
+            this.label47.TabIndex = 84;
+            this.label47.Text = "Warning: You are more likely to go over free limits with this feature enabled";
+            // 
+            // rjToggleButton4
+            // 
+            this.rjToggleButton4.AutoSize = true;
+            this.rjToggleButton4.Location = new System.Drawing.Point(23, 591);
+            this.rjToggleButton4.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButton4.Name = "rjToggleButton4";
+            this.rjToggleButton4.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton4.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton4.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButton4.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton4.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButton4.TabIndex = 83;
+            this.rjToggleButton4.UseVisualStyleBackColor = true;
+            this.rjToggleButton4.CheckedChanged += new System.EventHandler(this.rjToggleButton4_CheckedChanged);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label36.ForeColor = System.Drawing.Color.Snow;
+            this.label36.Location = new System.Drawing.Point(78, 591);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(167, 20);
+            this.label36.TabIndex = 82;
+            this.label36.Text = "Continuous Recognition";
             // 
             // button3
             // 
@@ -2183,5 +2240,9 @@
         private FontAwesome.Sharp.IconButton iconButton12;
         private Label label46;
         private Button button8;
+        private Label label47;
+        public RJControls.RJToggleButton rjToggleButton4;
+        private Label label36;
+        private Label label48;
     }
 }

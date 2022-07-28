@@ -61,6 +61,21 @@
     <value>Changelog: 
 (full changelogs visible here https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
 
+Public Beta v0.5.6 Feature Requests - July 27, 2022
+### Added
+ - Voice customization option now save on app close
+ - Continuous Voice Recognition Option Added (makes the sttts button act as a toggle)
+ - VRChat KAT Change: If I word would be cut off it will now be pushed to the next line instead
+ - UI changes, TTS page rich text boxes now use flat style to conceal the trashcan buttons better
+
+### Known Bugs
+-  Some words will not return anything with STTTS
+    -  For example, saying only the word "Supercalifragilisticexpialidocious" alone will cause an empty output without errors
+
+### Demonstration Video
+-  https://www.youtube.com/watch?v=wBRUcx9EWes
+
+
 Public Beta v0.5.0 Features and Fixes - July 20, 2022
 -UI changes
   -Donate Button

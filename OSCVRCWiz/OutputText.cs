@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace OSCVRCWiz
 {
@@ -16,15 +17,68 @@ namespace OSCVRCWiz
             MainForm.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]" + ": " + textstring);
 
         }
-        public async void outputVRChat(VoiceWizardWindow MainForm, string textstring, string type)
+        private static string SplitToLines(string value, int maximumLineLength)
         {
+            try {
+            string perfectString = "";
+            var words = value.Split(' ');
+            var line = new StringBuilder();
+
+            foreach (var word in words)
+            {
+                //if (word.Length > maximumLineLength)
+                //{
+                //    perfectString += word.ToString();
+                //  }
+                if ((line.Length + word.Length) >= maximumLineLength)
+                {
+                    System.Diagnostics.Debug.WriteLine(line.ToString());
+                    if (line.ToString().Length <= 32)
+                    {
+                        perfectString += line.ToString();
+                        int spacesToAdd = 32 - line.ToString().Length;
+                        for (int i = 0; i < spacesToAdd; i++)
+                        {
+                            perfectString += " ";
+                        }
+
+                    }
+                    line = new StringBuilder();
+                }
+
+                line.AppendFormat("{0}{1}", (line.Length > 0) ? " " : "", word);
+            }
+
+            System.Diagnostics.Debug.WriteLine(line.ToString());
+            perfectString += line.ToString();
+            return perfectString;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR FOUND==========================================================wefwefefwefwfweffwefwef");
+                return "error";
+            }
+
+
+        }
+        public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
+        {
+
+
             // currentlyPrinting = true;
 
             //MainForm.sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+            System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
 
+            string textstring = SplitToLines(textstringbefore, 32);
 
+            System.Diagnostics.Debug.WriteLine("perfectString= " + textstring);
+            System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
 
             //textstring = textstring.ToLower();  // no more lowercase
+
+
+
 
             int stringleng = 0;
             foreach (char h in textstring)
@@ -232,8 +286,8 @@ namespace OSCVRCWiz
             }
 
             previousRequestType = type;
-           // Task.Delay(100).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
-          //  MainForm.sender3.Send(message0);
+            Task.Delay(50).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
+            MainForm.sender3.Send(message0);
 
 
             message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 1);
@@ -662,7 +716,7 @@ namespace OSCVRCWiz
                         letterFloat6 = letter;
                         break;
                     case 7:
-                        if (MainForm.numKATSyncParameters == "4")
+                        if (MainForm.numKATSyncParameters == "8")
                         {
                             Task.Delay(MainForm.debugDelayValue).Wait();
                             letterFloat7 = letter;

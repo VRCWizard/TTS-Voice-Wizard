@@ -358,5 +358,101 @@ namespace OSCVRCWiz {
                 this["BPMSpamSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int voiceBoxSetting {
+            get {
+                return ((int)(this["voiceBoxSetting"]));
+            }
+            set {
+                this["voiceBoxSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int styleBoxSetting {
+            get {
+                return ((int)(this["styleBoxSetting"]));
+            }
+            set {
+                this["styleBoxSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int langToBoxSetting {
+            get {
+                return ((int)(this["langToBoxSetting"]));
+            }
+            set {
+                this["langToBoxSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int langSpokenSetting {
+            get {
+                return ((int)(this["langSpokenSetting"]));
+            }
+            set {
+                this["langSpokenSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int pitchSetting {
+            get {
+                return ((int)(this["pitchSetting"]));
+            }
+            set {
+                this["pitchSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int volumeSetting {
+            get {
+                return ((int)(this["volumeSetting"]));
+            }
+            set {
+                this["volumeSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int rateSetting {
+            get {
+                return ((int)(this["rateSetting"]));
+            }
+            set {
+                this["rateSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool STTTSContinuous {
+            get {
+                return ((bool)(this["STTTSContinuous"]));
+            }
+            set {
+                this["STTTSContinuous"] = value;
+            }
+        }
     }
 }
