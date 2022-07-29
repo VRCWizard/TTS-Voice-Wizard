@@ -1,4 +1,4 @@
-# TTS-Voice-Wizard-Beta
+# TTS-Voice-Wizard
 [![Discord](https://img.shields.io/discord/681732152517591048?label=Discord)](https://discord.gg/YjgR9SWPnW) 
 ![downloads](https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Downloads) <br />
 Use TTS Voice Wizard's accessibily features to improve your VRChat experience (it works outside of VRChat too!)<br />
@@ -8,7 +8,9 @@ Use TTS Voice Wizard's accessibily features to improve your VRChat experience (i
 * There are over 50 different voices with various customization options so you can pick a voice that best suits you! <br />
 
 ![Screenshot 2022-05-09 121718](https://user-images.githubusercontent.com/101527472/167462899-f954be86-4914-4d23-a38c-9b2b4259cffb.png)
+# Demonstration Video
 
+[![TTSVoiceWizard an OSC Speech to TTS App for VRChat](https://i.ytimg.com/an_webp/wBRUcx9EWes/mqdefault_6s.webp?du=3000&sqp=CIDHkJcG&rs=AOn4CLB9GbTdGGAMXNCVHLa7rLkbAsudXQ)](https://youtu.be/wBRUcx9EWes "TTSVoiceWizard an OSC Speech to TTS App for VRChat")
 
 # Getting Started
 - Download the latest version from releases and run the .exe file (recommended to use **"latest"** release, not pre-release) <br />
