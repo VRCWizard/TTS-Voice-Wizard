@@ -25,16 +25,18 @@ https://github.com/VRCWizard/TTS-Voice-Wizard/releases <br />
 
 - If popup does not appear and application does not start use this link. https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime?utm_source=getdotnetcore&utm_medium=referral
 
-# Microsoft Azure Subscription Key
+# How to get Key and Region
 - For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
 https://azure.microsoft.com/en-us/free/ <br />
 or <br />
 https://azure.microsoft.com/en-us/free/students/ (no credit card required)<br />
 
 
-- After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application. <br />
-- **Follow this video to get your key and region information:** https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF <br />
 
+
+- After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application. <br />
+- **Follow this video to get your key and region information:**<br />
+[![How to get your Key and Region](https://user-images.githubusercontent.com/101527472/181855148-a90bdabb-f997-4e5e-b574-d32b6bbe3035.png)](https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF "How to get your Key and Region")
 
 - **I am not responsible for any charges you recieve if you upgrade from a Free Azure Account! It is up to you to monitor your own usage if you are using a pay-as-you-go azure account** <br />
     - **Spending Limits:**: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
