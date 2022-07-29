@@ -10,7 +10,8 @@ Use TTS Voice Wizard's accessibily features to improve your VRChat experience (i
 ![Screenshot 2022-05-09 121718](https://user-images.githubusercontent.com/101527472/167462899-f954be86-4914-4d23-a38c-9b2b4259cffb.png)
 # Demonstration Video
 
-[![TTSVoiceWizard an OSC Speech to TTS App for VRChat](https://i.ytimg.com/an_webp/wBRUcx9EWes/mqdefault_6s.webp?du=3000&sqp=CIDHkJcG&rs=AOn4CLB9GbTdGGAMXNCVHLa7rLkbAsudXQ)](https://youtu.be/wBRUcx9EWes "TTSVoiceWizard an OSC Speech to TTS App for VRChat")
+
+[![TTSVoiceWizard an OSC Speech to TTS App for VRChat](https://user-images.githubusercontent.com/101527472/181857099-15efc1ec-863d-4e1c-90aa-a5d8c432ca0b.png)](https://youtu.be/wBRUcx9EWes "TTSVoiceWizard an OSC Speech to TTS App for VRChat")
 
 # Getting Started
 - Download the latest version from releases and run the .exe file (recommended to use **"latest"** release, not pre-release) <br />
