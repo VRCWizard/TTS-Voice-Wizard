@@ -80,6 +80,11 @@ https://github.com/BOLL7708/OpenVR2Key <br />
 - Join the discord server <br />
 https://discord.gg/YjgR9SWPnW <br />
 
+# Socials
+https://twitter.com/Wizard_VR <br />
+https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg <br />
+
+
 # Donate
 - Leave me a Github Star (it's free) or <br />
 
