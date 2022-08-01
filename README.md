@@ -61,7 +61,8 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 (known issue, on computer restart listen to this device may not work. To fix this uncheck/apply and then recheck/apply changes.)
 ![Screenshot 2022-03-15 192241](https://user-images.githubusercontent.com/101527472/158493212-8b1db84b-bf10-45ae-bca4-71c858113bb9.jpg)
 
-- You will then need change the Apps **Output Device**  to the **Virtual Cable** which will allow you to play the TTS though your microphone.
+- **This step is for Azure, for System speech refer to this** https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/README.md#windows-built-in-system-speech-ignore-if-using--microsoft-azure-key
+- You will then need change the Apps **Output Device**  to the **Virtual Cable** which will allow you to play the TTS though your microphone. 
 ![image](https://user-images.githubusercontent.com/101527472/170846684-cd7d01f7-f2fa-4a05-aea6-ec8653d3a58d.png)
 
 - Your microphone/input device for TTSVoiceWizard should be whatever microphone you normally use!
