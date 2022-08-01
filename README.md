@@ -43,7 +43,8 @@ https://azure.microsoft.com/en-us/free/students/ (no credit card required)<br />
 (This program using Speech to Text Standard, Text to Speech Neural, and Speech Translation Standard)
     - **Monitor Usage:** https://docs.microsoft.com/en-us/answers/questions/643390/how-to-see-text-to-speech-usage.html (the location to see your speech service usage can be hard to find, the post should help!)
 
-- **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** Then try out the lite version of the app that uses windows built in TTS and voice recognition engine https://github.com/VRCWizard/TTS-Voice-Wizard-Lite<br />
+- **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** 
+    -  Follow these steps to set up Windows Built in TTS and STT https://github.com/VRCWizard/TTS-Voice-Wizard/edit/main/README.md#windows-built-in-system-speech
 
 
 ![Screenshot 2022-05-09 121758wa](https://user-images.githubusercontent.com/101527472/167463062-909190bb-eec0-42f3-a985-7e7c714782bb.png)
@@ -65,6 +66,25 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 
 - Your microphone/input device for TTSVoiceWizard should be whatever microphone you normally use!
 - In the application you want the audio to play in like VRChat or Discord you will set your microphone to the vitrual cable!
+
+# Windows Built-In System Speech (Ignore if using  Microsoft Azure Key)
+- **If using a microsoft azure key you should ignore these steps**
+- If you don't want to setup / use the Azure Conginitive Speech Services you can use your windows build in speech to text and text to speech engine. <br />
+- Whats the difference you may ask?
+    -  Azure can cost money if used too often as explained above https://github.com/VRCWizard/TTS-Voice-Wizard/edit/main/README.md#how-to-get-your-microsoft-azure-key-and-region
+    -  Azure has better TTS voices and Speech recognition ability as demonstrated in the video above
+- Setting it up: The input and output devices must be setup in windows setting not through the TTSVoiceWizard settings tab
+    - You will then need change the Apps **output device**  to the **virtual cable** which will allow you to play the TTS though your microphone.
+    - Your microphone for the app should be whatever microphone you normally use!
+    -  WINDOWS 10 SETTINGS <br />
+        -  Settings > Sound > App volume and device preferences <br />
+![windows10 settings](https://user-images.githubusercontent.com/101527472/158684476-8ead5ee2-f441-4249-becc-530798b27ed8.png)
+
+   -  WINDOWS 11 SETTINGS <br />
+        -  Settings > Sound > Volume Mixer <br />
+![Screenshot 2022-03-15 192707](https://user-images.githubusercontent.com/101527472/158493678-def6648a-02ea-480f-88ab-5666c59a0442.jpg)<br />
+
+
 # KillFrenzy Avatar Text
 - To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
@@ -77,11 +97,13 @@ https://github.com/BOLL7708/OpenVR2Key <br />
 
 
 # Need Help / Have Questions / Wanna make suggestions?
-- Join the discord server <br />
+- Join the discord server: <br />
 https://discord.gg/YjgR9SWPnW <br />
 
 # Socials
+-  Twitter:<br />
 https://twitter.com/Wizard_VR <br />
+-  Youtube:<br />
 https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg <br />
 
 
