@@ -73,7 +73,7 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 - Whats the difference you may ask?
     -  Azure can cost money if used too often as explained above https://github.com/VRCWizard/TTS-Voice-Wizard/edit/main/README.md#how-to-get-your-microsoft-azure-key-and-region
     -  Azure has better TTS voices and Speech recognition ability as demonstrated in the video above
--Setup: 
+- Setup: 
     - You will then need change the Apps **output device**  to the **virtual cable** which will allow you to play the System Speech TTS though your microphone.
     - System Speech will always use default microphone (you can set this through control panel or for this app specifically through window sound settings)
     ![image](https://user-images.githubusercontent.com/101527472/182208586-3d159102-45c0-4317-be47-be9957bd77f2.png)
