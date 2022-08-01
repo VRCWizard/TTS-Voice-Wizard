@@ -150,7 +150,7 @@ using System.Threading.Tasks;
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                     var ot = new OutputText();
-                    Task.Run(() => ot.outputLog(MainForm, "Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString()));
+                    Task.Run(() => ot.outputLog(MainForm, "[Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString()+"]"));
                 };
 
                 translationRecognizer1.Recognized += (sender, eventArgs) =>
@@ -262,7 +262,7 @@ using System.Threading.Tasks;
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                     var ot = new OutputText();
-                    Task.Run(() => ot.outputLog(MainForm, "Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString()+ " Error Details: " +eventArgs.ErrorDetails.ToString()));
+                    Task.Run(() => ot.outputLog(MainForm, "[Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString()+ " Error Details: " +eventArgs.ErrorDetails.ToString()+"]"));
                 };
 
                 speechRecognizer1.Recognized += (sender, eventArgs) =>
@@ -489,7 +489,7 @@ using System.Threading.Tasks;
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
                     var ot = new OutputText();
-                    ot.outputLog(MainForm, "Continuous Listening Enabled");
+                    ot.outputLog(MainForm, "[Azure Continuous Listening Enabled]");
 
                 await speechRecognizer1.StartContinuousRecognitionAsync();
                     // Waits for completion. Use Task.WaitAny to keep the task rooted.
@@ -507,7 +507,7 @@ using System.Threading.Tasks;
                     await speechRecognizer1.StopContinuousRecognitionAsync();
                  //   speechRecognizer1.Dispose();
                     var ot = new OutputText();
-                    ot.outputLog(MainForm, "Continuous Listening Disabled");
+                    ot.outputLog(MainForm, "[Azure Continuous Listening Disabled]");
                 }
 
             }
@@ -635,7 +635,7 @@ using System.Threading.Tasks;
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
                     var ot = new OutputText();
-                    ot.outputLog(MainForm, "Continuous Listening Enabled (Translating)");
+                    ot.outputLog(MainForm, "[Azure Continuous Listening Enabled (Translating)]");
 
                     await translationRecognizer1.StartContinuousRecognitionAsync();
                     // Waits for completion. Use Task.WaitAny to keep the task rooted.
@@ -653,7 +653,7 @@ using System.Threading.Tasks;
                     await translationRecognizer1.StopContinuousRecognitionAsync();
                     //   speechRecognizer1.Dispose();
                     var ot = new OutputText();
-                    ot.outputLog(MainForm, "Continuous Listening Disabled (Translating)");
+                    ot.outputLog(MainForm, "[Azure Continuous Listening Disabled (Translating)]");
                 }
 
 

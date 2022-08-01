@@ -454,5 +454,41 @@ namespace OSCVRCWiz {
                 this["STTTSContinuous"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool useBuiltInSetting {
+            get {
+                return ((bool)(this["useBuiltInSetting"]));
+            }
+            set {
+                this["useBuiltInSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int BuiltInVoiceSetting {
+            get {
+                return ((int)(this["BuiltInVoiceSetting"]));
+            }
+            set {
+                this["BuiltInVoiceSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int BuiltInOutputSetting {
+            get {
+                return ((int)(this["BuiltInOutputSetting"]));
+            }
+            set {
+                this["BuiltInOutputSetting"] = value;
+            }
+        }
     }
 }

@@ -53,6 +53,7 @@
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label62 = new System.Windows.Forms.Label();
             this.logTrash = new FontAwesome.Sharp.IconButton();
             this.ttsTrash = new FontAwesome.Sharp.IconButton();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
@@ -103,6 +104,18 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label63 = new System.Windows.Forms.Label();
+            this.comboLiteOutput = new System.Windows.Forms.ComboBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.comboLiteInput = new System.Windows.Forms.ComboBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.rjToggleButtonLiteMode = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.comboBoxLite = new System.Windows.Forms.ComboBox();
             this.rjToggleButtonKeyRegion2 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -162,6 +175,7 @@
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label54 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -186,7 +200,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(592, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(378, 521);
+            this.richTextBox1.Size = new System.Drawing.Size(378, 588);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -229,7 +243,7 @@
             "Angry",
             "Happy",
             "Sad"});
-            this.comboBox1.Location = new System.Drawing.Point(28, 360);
+            this.comboBox1.Location = new System.Drawing.Point(28, 387);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(265, 28);
             this.comboBox1.TabIndex = 11;
@@ -238,7 +252,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(28, 337);
+            this.label1.Location = new System.Drawing.Point(28, 364);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 12;
@@ -248,7 +262,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(28, 283);
+            this.label2.Location = new System.Drawing.Point(28, 310);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 20);
             this.label2.TabIndex = 14;
@@ -336,7 +350,7 @@
             "[Ukrainian] {Male}",
             "[Vietnamese] {Female}",
             "[Vietnamese] {Male}"});
-            this.comboBox2.Location = new System.Drawing.Point(28, 306);
+            this.comboBox2.Location = new System.Drawing.Point(28, 333);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(265, 28);
             this.comboBox2.TabIndex = 13;
@@ -361,7 +375,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(320, 398);
+            this.label4.Location = new System.Drawing.Point(320, 425);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 20);
             this.label4.TabIndex = 19;
@@ -378,7 +392,7 @@
             "fast",
             "x-fast",
             "default"});
-            this.comboBoxRate.Location = new System.Drawing.Point(320, 421);
+            this.comboBoxRate.Location = new System.Drawing.Point(320, 448);
             this.comboBoxRate.Name = "comboBoxRate";
             this.comboBoxRate.Size = new System.Drawing.Size(221, 28);
             this.comboBoxRate.TabIndex = 18;
@@ -387,7 +401,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Snow;
-            this.label5.Location = new System.Drawing.Point(320, 283);
+            this.label5.Location = new System.Drawing.Point(320, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 21;
@@ -404,7 +418,7 @@
             "high",
             "x-high",
             "default"});
-            this.comboBoxPitch.Location = new System.Drawing.Point(320, 306);
+            this.comboBoxPitch.Location = new System.Drawing.Point(320, 333);
             this.comboBoxPitch.Name = "comboBoxPitch";
             this.comboBoxPitch.Size = new System.Drawing.Size(221, 28);
             this.comboBoxPitch.TabIndex = 20;
@@ -413,7 +427,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(320, 338);
+            this.label6.Location = new System.Drawing.Point(320, 365);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
@@ -429,7 +443,7 @@
             "loud",
             "x-loud",
             "default"});
-            this.comboBoxVolume.Location = new System.Drawing.Point(320, 360);
+            this.comboBoxVolume.Location = new System.Drawing.Point(320, 387);
             this.comboBoxVolume.Name = "comboBoxVolume";
             this.comboBoxVolume.Size = new System.Drawing.Size(221, 28);
             this.comboBoxVolume.TabIndex = 22;
@@ -544,6 +558,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage1.Controls.Add(this.label62);
             this.tabPage1.Controls.Add(this.logTrash);
             this.tabPage1.Controls.Add(this.ttsTrash);
             this.tabPage1.Controls.Add(this.richTextBox3);
@@ -571,6 +586,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
             // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label62.ForeColor = System.Drawing.Color.Snow;
+            this.label62.Location = new System.Drawing.Point(28, 281);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(252, 20);
+            this.label62.TabIndex = 33;
+            this.label62.Text = "Voice Customization Options (Azure)";
+            // 
             // logTrash
             // 
             this.logTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -582,7 +608,7 @@
             this.logTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.logTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.logTrash.IconSize = 15;
-            this.logTrash.Location = new System.Drawing.Point(935, 495);
+            this.logTrash.Location = new System.Drawing.Point(935, 547);
             this.logTrash.Name = "logTrash";
             this.logTrash.Size = new System.Drawing.Size(35, 29);
             this.logTrash.TabIndex = 32;
@@ -614,12 +640,13 @@
             this.richTextBox3.Size = new System.Drawing.Size(450, 60);
             this.richTextBox3.TabIndex = 30;
             this.richTextBox3.Text = "Read this aloud.";
+            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Snow;
-            this.label14.Location = new System.Drawing.Point(28, 398);
+            this.label14.Location = new System.Drawing.Point(28, 425);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(127, 20);
             this.label14.TabIndex = 28;
@@ -654,7 +681,7 @@
             "Ukrainian [uk-UA]",
             "Vietnamese [vi-VN]",
             "-Test Entry- []"});
-            this.comboBox4.Location = new System.Drawing.Point(28, 421);
+            this.comboBox4.Location = new System.Drawing.Point(28, 448);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(265, 28);
             this.comboBox4.TabIndex = 27;
@@ -663,7 +690,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(28, 455);
+            this.label3.Location = new System.Drawing.Point(28, 482);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 20);
             this.label3.TabIndex = 26;
@@ -699,7 +726,7 @@
             "Ukrainian [uk]",
             "Vietnamese [vi]",
             "-Test Entry- []"});
-            this.comboBox3.Location = new System.Drawing.Point(28, 478);
+            this.comboBox3.Location = new System.Drawing.Point(28, 505);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(265, 28);
             this.comboBox3.TabIndex = 25;
@@ -763,7 +790,7 @@
             // 
             this.label48.AutoSize = true;
             this.label48.ForeColor = System.Drawing.Color.Snow;
-            this.label48.Location = new System.Drawing.Point(251, 622);
+            this.label48.Location = new System.Drawing.Point(293, 622);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(618, 20);
             this.label48.TabIndex = 85;
@@ -774,7 +801,7 @@
             // 
             this.label47.AutoSize = true;
             this.label47.ForeColor = System.Drawing.Color.Snow;
-            this.label47.Location = new System.Drawing.Point(251, 593);
+            this.label47.Location = new System.Drawing.Point(293, 593);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(508, 20);
             this.label47.TabIndex = 84;
@@ -802,9 +829,9 @@
             this.label36.ForeColor = System.Drawing.Color.Snow;
             this.label36.Location = new System.Drawing.Point(78, 591);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(167, 20);
+            this.label36.Size = new System.Drawing.Size(219, 20);
             this.label36.TabIndex = 82;
-            this.label36.Text = "Continuous Recognition";
+            this.label36.Text = "Continuous Recognition (Azure)";
             // 
             // button3
             // 
@@ -976,9 +1003,9 @@
             this.label29.ForeColor = System.Drawing.Color.Snow;
             this.label29.Location = new System.Drawing.Point(643, 431);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(104, 20);
+            this.label29.Size = new System.Drawing.Size(156, 20);
             this.label29.TabIndex = 70;
-            this.label29.Text = "Output Device";
+            this.label29.Text = "Output Device (Azure)";
             // 
             // comboBoxOutput
             // 
@@ -997,9 +1024,9 @@
             this.label28.ForeColor = System.Drawing.Color.Snow;
             this.label28.Location = new System.Drawing.Point(643, 371);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(92, 20);
+            this.label28.Size = new System.Drawing.Size(144, 20);
             this.label28.TabIndex = 68;
-            this.label28.Text = "Input Device";
+            this.label28.Text = "Input Device (Azure)";
             // 
             // comboBoxInput
             // 
@@ -1043,9 +1070,9 @@
             this.label13.ForeColor = System.Drawing.Color.Snow;
             this.label13.Location = new System.Drawing.Point(700, 97);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 20);
+            this.label13.Size = new System.Drawing.Size(130, 20);
             this.label13.TabIndex = 64;
-            this.label13.Text = "Phrase List";
+            this.label13.Text = "Phrase List (Azure)";
             // 
             // richTextBox6
             // 
@@ -1062,9 +1089,9 @@
             this.label16.ForeColor = System.Drawing.Color.Snow;
             this.label16.Location = new System.Drawing.Point(78, 418);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(226, 20);
+            this.label16.Size = new System.Drawing.Size(278, 20);
             this.label16.TabIndex = 34;
-            this.label16.Text = "VRC Text as Translated Language";
+            this.label16.Text = "VRC Text as Translated Language (Azure)";
             // 
             // label27
             // 
@@ -1150,9 +1177,9 @@
             this.label20.ForeColor = System.Drawing.Color.Snow;
             this.label20.Location = new System.Drawing.Point(78, 175);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(229, 20);
+            this.label20.Size = new System.Drawing.Size(281, 20);
             this.label20.TabIndex = 48;
-            this.label20.Text = "Voice Recognition Profanity Filter";
+            this.label20.Text = "Voice Recognition Profanity Filter (Azure)";
             // 
             // button1
             // 
@@ -1252,6 +1279,19 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage3.Controls.Add(this.label54);
+            this.tabPage3.Controls.Add(this.label63);
+            this.tabPage3.Controls.Add(this.comboLiteOutput);
+            this.tabPage3.Controls.Add(this.label64);
+            this.tabPage3.Controls.Add(this.comboLiteInput);
+            this.tabPage3.Controls.Add(this.label59);
+            this.tabPage3.Controls.Add(this.label52);
+            this.tabPage3.Controls.Add(this.label53);
+            this.tabPage3.Controls.Add(this.rjToggleButtonLiteMode);
+            this.tabPage3.Controls.Add(this.label51);
+            this.tabPage3.Controls.Add(this.label50);
+            this.tabPage3.Controls.Add(this.label49);
+            this.tabPage3.Controls.Add(this.comboBoxLite);
             this.tabPage3.Controls.Add(this.rjToggleButtonKeyRegion2);
             this.tabPage3.Controls.Add(this.label19);
             this.tabPage3.Controls.Add(this.label10);
@@ -1266,6 +1306,134 @@
             this.tabPage3.Size = new System.Drawing.Size(976, 661);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label63.ForeColor = System.Drawing.Color.Snow;
+            this.label63.Location = new System.Drawing.Point(580, 511);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(217, 20);
+            this.label63.TabIndex = 99;
+            this.label63.Text = "Output Device (System Speech)";
+            // 
+            // comboLiteOutput
+            // 
+            this.comboLiteOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboLiteOutput.FormattingEnabled = true;
+            this.comboLiteOutput.Location = new System.Drawing.Point(585, 534);
+            this.comboLiteOutput.Name = "comboLiteOutput";
+            this.comboLiteOutput.Size = new System.Drawing.Size(322, 28);
+            this.comboLiteOutput.TabIndex = 98;
+            this.comboLiteOutput.SelectedIndexChanged += new System.EventHandler(this.comboLiteOutput_SelectedIndexChanged);
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label64.ForeColor = System.Drawing.Color.Snow;
+            this.label64.Location = new System.Drawing.Point(580, 451);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(205, 20);
+            this.label64.TabIndex = 97;
+            this.label64.Text = "Input Device (System Speech)";
+            // 
+            // comboLiteInput
+            // 
+            this.comboLiteInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboLiteInput.FormattingEnabled = true;
+            this.comboLiteInput.Location = new System.Drawing.Point(585, 474);
+            this.comboLiteInput.Name = "comboLiteInput";
+            this.comboLiteInput.Size = new System.Drawing.Size(322, 28);
+            this.comboLiteInput.TabIndex = 96;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.ForeColor = System.Drawing.Color.Snow;
+            this.label59.Location = new System.Drawing.Point(286, 296);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(526, 20);
+            this.label59.TabIndex = 93;
+            this.label59.Text = "If no Azure Key is given will enable Windows Built-In system speech by deafult";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.ForeColor = System.Drawing.Color.Snow;
+            this.label52.Location = new System.Drawing.Point(27, 391);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(479, 20);
+            this.label52.TabIndex = 87;
+            this.label52.Text = "Warning: Will disable voice custimization options on Speech to TTS tab";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.ForeColor = System.Drawing.Color.Snow;
+            this.label53.Location = new System.Drawing.Point(27, 371);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(441, 20);
+            this.label53.TabIndex = 86;
+            this.label53.Text = "Warning: Experience will not be as good as using Microsoft Azure";
+            // 
+            // rjToggleButtonLiteMode
+            // 
+            this.rjToggleButtonLiteMode.AutoSize = true;
+            this.rjToggleButtonLiteMode.Location = new System.Drawing.Point(27, 339);
+            this.rjToggleButtonLiteMode.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonLiteMode.Name = "rjToggleButtonLiteMode";
+            this.rjToggleButtonLiteMode.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonLiteMode.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonLiteMode.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonLiteMode.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonLiteMode.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonLiteMode.TabIndex = 43;
+            this.rjToggleButtonLiteMode.UseVisualStyleBackColor = true;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.ForeColor = System.Drawing.Color.Snow;
+            this.label51.Location = new System.Drawing.Point(82, 339);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(256, 20);
+            this.label51.TabIndex = 42;
+            this.label51.Text = "Enable Windows Built-In STT and TTS";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label50.ForeColor = System.Drawing.Color.Snow;
+            this.label50.Location = new System.Drawing.Point(12, 291);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(271, 25);
+            this.label50.TabIndex = 41;
+            this.label50.Text = "Windows Built-In System Speech";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label49.ForeColor = System.Drawing.Color.Snow;
+            this.label49.Location = new System.Drawing.Point(38, 451);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(45, 20);
+            this.label49.TabIndex = 40;
+            this.label49.Text = "Voice";
+            // 
+            // comboBoxLite
+            // 
+            this.comboBoxLite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLite.FormattingEnabled = true;
+            this.comboBoxLite.Location = new System.Drawing.Point(38, 474);
+            this.comboBoxLite.Name = "comboBoxLite";
+            this.comboBoxLite.Size = new System.Drawing.Size(265, 28);
+            this.comboBoxLite.TabIndex = 39;
+            this.comboBoxLite.Tag = "Sara";
+            this.comboBoxLite.SelectedIndexChanged += new System.EventHandler(this.comboBoxLite_SelectedIndexChanged);
             // 
             // rjToggleButtonKeyRegion2
             // 
@@ -1299,9 +1467,9 @@
             this.label10.ForeColor = System.Drawing.Color.Snow;
             this.label10.Location = new System.Drawing.Point(12, 23);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(143, 25);
+            this.label10.Size = new System.Drawing.Size(278, 25);
             this.label10.TabIndex = 33;
-            this.label10.Text = "Microsoft Azure ";
+            this.label10.Text = "Microsoft Azure Cognitive Service";
             // 
             // label9
             // 
@@ -2072,6 +2240,16 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.ForeColor = System.Drawing.Color.Snow;
+            this.label54.Location = new System.Drawing.Point(393, 602);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(461, 20);
+            this.label54.TabIndex = 100;
+            this.label54.Text = "You may need to restart the app after changing default audio device";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -2151,7 +2329,6 @@
         public ComboBox comboBox3;
         private Label label14;
         public ComboBox comboBox4;
-        private RichTextBox richTextBox3;
         private Panel panel1;
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton4;
@@ -2244,5 +2421,20 @@
         public RJControls.RJToggleButton rjToggleButton4;
         private Label label36;
         private Label label48;
+        public RichTextBox richTextBox3;
+        private Label label50;
+        private Label label49;
+        public ComboBox comboBoxLite;
+        private Label label52;
+        private Label label53;
+        private RJControls.RJToggleButton rjToggleButtonLiteMode;
+        private Label label51;
+        private Label label59;
+        private Label label62;
+        private Label label63;
+        public ComboBox comboLiteOutput;
+        private Label label64;
+        public ComboBox comboLiteInput;
+        private Label label54;
     }
 }

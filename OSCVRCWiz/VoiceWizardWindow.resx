@@ -61,6 +61,17 @@
     <value>Changelog: 
 (full changelogs visible here https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
 
+Public Beta v0.5.8 System Speech Improvements- August 1, 2022
+### Added
+-  You can now set the output device for System Speech within the "Speech Provider" tab
+-  Added settings on the "Speech Provider" tab now save
+
+Public Beta v0.5.7 Lite Version Merge - July 31, 2022
+### Added
+-  Lite version of the app now referred to as "Windows Built-In System Speech" merged with the main app
+-  Windows Built-In System Speech is enabled by default (no key given)
+-  many settings are now labeled to show they are for Azure only
+
 Public Beta v0.5.6 Feature Requests - July 27, 2022
 ### Added
  - Voice customization option now save on app close

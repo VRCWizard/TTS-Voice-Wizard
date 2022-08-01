@@ -86,7 +86,7 @@ namespace OSCVRCWiz
                     if (spotifyConnect == false)
                     {
                         var ot = new OutputText();
-                        ot.outputLog(MainForm, "Spotify Connected");
+                        ot.outputLog(MainForm, "[Spotify Connected]");
                         spotifyConnect = true;
 
                     }

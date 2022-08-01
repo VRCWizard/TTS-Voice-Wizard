@@ -5,8 +5,13 @@ using Microsoft.CognitiveServices.Speech.Translation;
 using SharpOSC;
 using System;
 using System.Speech.Recognition;//free Windows
+using System.Speech;//free windows
+using System.Speech.Synthesis;//free windows
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
+using CSCore;
+using CSCore.MediaFoundation;
+using CSCore.SoundOut;
 
 
 
@@ -38,6 +43,7 @@ namespace OSCVRCWiz
         public string currentOutputDevice = "";
         public string currentInputDeviceName = "Default";
         public string currentOutputDeviceName = "Default";
+        public int currentOutputDeviceLite = 0;
         public bool getSpotify = false;
         public System.Threading.Timer testtimer;
         public SharpOSC.UDPSender sender3;
@@ -47,6 +53,12 @@ namespace OSCVRCWiz
         public static bool stopBPM = false; // fix later should be set to setting value
         public static bool BPMSpamLog = true;
         public static int HRInternalValue= 5;
+        public static string TTSLiteText = "";
+
+
+        public string CultureSelected = "en-US";//free
+        public System.Speech.Synthesis.SpeechSynthesizer synthesizerLite;//free
+        public MemoryStream stream;
 
         //public bool STTTSContinuous = false;
 
@@ -93,6 +105,8 @@ namespace OSCVRCWiz
             }
 
 
+
+
             InitializeComponent();
             foreach (var i in comboIn)
             {
@@ -102,6 +116,28 @@ namespace OSCVRCWiz
             {
                 comboBoxOutput.Items.Add(i);
             }
+
+
+            stream = new MemoryStream();
+            synthesizerLite = new System.Speech.Synthesis.SpeechSynthesizer();
+
+            System.Diagnostics.Debug.WriteLine("Available output devices:");
+            foreach (var device in WaveOutDevice.EnumerateDevices())
+            {
+                System.Diagnostics.Debug.WriteLine("{0}: {1}", device.DeviceId, device.Name);
+                comboLiteOutput.Items.Add(device.Name);
+            }
+            synthesizerLite.SetOutputToWaveStream(stream);
+
+                comboLiteInput.Items.Add("Default");
+
+
+
+
+
+
+
+
 
             textBox2.PasswordChar = '*';
             tabControl1.Dock = DockStyle.Fill;
@@ -117,11 +153,26 @@ namespace OSCVRCWiz
 
 
 
+       
+               
+
+           
+            
 
 
 
 
+            foreach (var voice in synthesizerLite.GetInstalledVoices())
+            {
+                var info = voice.VoiceInfo;
+                System.Diagnostics.Debug.WriteLine($"Id: {info.Id} | Name: {info.Name} | Age: { info.Age} | Gender: { info.Gender} | Culture: { info.Culture}");
+                comboBoxLite.Items.Add(info.Name +"|"+ info.Culture);
+            }
 
+         
+
+
+            TTSLiteText = richTextBox3.Text.ToString();
 
 
             int id = 0;// The id of the hotkey. 
@@ -143,101 +194,7 @@ namespace OSCVRCWiz
 
             }
         }
-        private async void TTSButton_Click(object sender, EventArgs e)//TTS
-        {
-            string emotion = "Normal";
-            string rate = "default";
-            string pitch = "default";
-            string volume = "default";
-            string voice = "Sara";
-
-            string text = "";
-            this.Invoke((MethodInvoker)delegate ()
-            {
-                text = richTextBox3.Text.ToString();
-
-
-                if (string.IsNullOrWhiteSpace(comboBox1.Text.ToString()))
-                {
-                    emotion = "Normal";
-
-                }
-                else
-                {
-                    emotion = comboBox1.Text.ToString();
-                }
-                ////////////
-                
-                if (string.IsNullOrWhiteSpace(comboBoxRate.Text.ToString()) )
-                {
-                    rate = "default";
-
-                }
-                else
-                {
-                    rate = comboBoxRate.Text.ToString();
-                }
-                //////////
-                if (string.IsNullOrWhiteSpace(comboBoxPitch.Text.ToString()))
-                {
-                    pitch = "default";
-
-                }
-                else
-                {
-                    pitch = comboBoxPitch.Text.ToString();
-                }
-                //////////
-                if (string.IsNullOrWhiteSpace(comboBoxVolume.Text.ToString()))
-                {
-                    volume = "default";
-
-                }
-                else
-                {
-                    
-                    volume = comboBoxVolume.Text.ToString();
-                }
-                if (string.IsNullOrWhiteSpace(comboBox2.Text.ToString()))
-                {
-                    voice = "Sara";
-
-                }
-                else
-                {
-                  
-                    voice = comboBox2.Text.ToString();
-                }
-
-
-            });
-            var ot = new OutputText();
-            //Send Text to Vrchat
-            if (rjToggleButtonLog.Checked == true)
-            {
-                ot.outputLog(this, text);
-            }
-            if (rjToggleButtonDisableTTS2.Checked == false)
-            {
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));//new
-            }
-            if (rjToggleButtonOSC.Checked == true)
-            {
-
-
-                VoiceWizardWindow.pauseBPM = true;
-                Task.Run(() => ot.outputVRChat(this,text, "tts")); //original
-               // ot.outputVRChat(this, text);//new
-            }
-            if(rjToggleButtonClear.Checked ==true)
-            {
-                richTextBox3.Clear();
-
-            }
-
-
-
-        }
+      
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
         {
             var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
@@ -425,7 +382,7 @@ namespace OSCVRCWiz
                 var va = new VoiceActivation();
 
                 va.loadSpeechRecognition(this);
-                MessageBox.Show("STTTS Voice Activation Initiated");
+                MessageBox.Show("[STTTS Voice Activation Initiated]");
             }
          //   if (Settings1.Default.ConnectSpot == true)
           //  {
@@ -506,6 +463,13 @@ namespace OSCVRCWiz
             comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
 
 
+            
+            rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
+            comboLiteInput.SelectedIndex = 0;
+            comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
+            comboLiteOutput.SelectedIndex = Settings1.Default.BuiltInOutputSetting;
+
+
 
 
             this.Invoke((MethodInvoker)delegate ()
@@ -580,6 +544,9 @@ namespace OSCVRCWiz
             Settings1.Default.STTTSContinuous = rjToggleButton4.Checked;
 
 
+             Settings1.Default.useBuiltInSetting= rjToggleButtonLiteMode.Checked;
+            Settings1.Default.BuiltInVoiceSetting= comboBoxLite.SelectedIndex;
+            Settings1.Default.BuiltInOutputSetting= comboLiteOutput.SelectedIndex;
 
 
 
@@ -640,10 +607,49 @@ namespace OSCVRCWiz
                 });
 
         }
+        private async void TTSButton_Click(object sender, EventArgs e)//TTS
+        {
+            if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
+            {
+                var ot = new OutputText();
+                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Speech Provider' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Speech Provider' tab]");
+            }
+            if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
+            {
+              
+
+                var lite = new WindowsBuiltInSTTTS();
+                Task.Run(() => lite.TTSButtonLiteClick(this));
+            }
+            else
+            {
+                Task.Run(() => doTTSOnly());
+            }
+
+
+
+
+
+        }
 
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
-            Task.Run(() => doSpeechTTS());
+            if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
+            {
+                var ot = new OutputText();
+                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Speech Provider' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Speech Provider' tab]");
+            }
+            if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
+            {
+                var lite = new WindowsBuiltInSTTTS();
+                Task.Run(() => lite.speechTTSButtonLiteClick(this));
+            }
+            else
+            {
+                Task.Run(() => doSpeechTTS());
+            }
+
+  
             
            
         }
@@ -674,10 +680,104 @@ namespace OSCVRCWiz
             });
 
         }
+        private void doTTSOnly()
+        {
+            string emotion = "Normal";
+            string rate = "default";
+            string pitch = "default";
+            string volume = "default";
+            string voice = "Sara";
+
+            string text = "";
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                text = richTextBox3.Text.ToString();
+
+
+                if (string.IsNullOrWhiteSpace(comboBox1.Text.ToString()))
+                {
+                    emotion = "Normal";
+
+                }
+                else
+                {
+                    emotion = comboBox1.Text.ToString();
+                }
+                ////////////
+
+                if (string.IsNullOrWhiteSpace(comboBoxRate.Text.ToString()))
+                {
+                    rate = "default";
+
+                }
+                else
+                {
+                    rate = comboBoxRate.Text.ToString();
+                }
+                //////////
+                if (string.IsNullOrWhiteSpace(comboBoxPitch.Text.ToString()))
+                {
+                    pitch = "default";
+
+                }
+                else
+                {
+                    pitch = comboBoxPitch.Text.ToString();
+                }
+                //////////
+                if (string.IsNullOrWhiteSpace(comboBoxVolume.Text.ToString()))
+                {
+                    volume = "default";
+
+                }
+                else
+                {
+
+                    volume = comboBoxVolume.Text.ToString();
+                }
+                if (string.IsNullOrWhiteSpace(comboBox2.Text.ToString()))
+                {
+                    voice = "Sara";
+
+                }
+                else
+                {
+
+                    voice = comboBox2.Text.ToString();
+                }
+
+
+            });
+            var ot = new OutputText();
+            //Send Text to Vrchat
+            if (rjToggleButtonLog.Checked == true)
+            {
+                ot.outputLog(this, text);
+            }
+            if (rjToggleButtonDisableTTS2.Checked == false)
+            {
+                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));//new
+            }
+            if (rjToggleButtonOSC.Checked == true)
+            {
+
+
+                VoiceWizardWindow.pauseBPM = true;
+                Task.Run(() => ot.outputVRChat(this, text, "tts")); //original
+                                                                    // ot.outputVRChat(this, text);//new
+            }
+            if (rjToggleButtonClear.Checked == true)
+            {
+                richTextBox3.Clear();
+
+            }
+
+        }
 
 
 
-        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+
+            private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
             if (rjToggleButtonOnTop2.Checked == true)
             {
@@ -771,6 +871,7 @@ namespace OSCVRCWiz
 
         private void comboBoxOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             currentOutputDevice = speakerIDs[comboBoxOutput.SelectedIndex];
             currentOutputDeviceName = comboBoxOutput.SelectedItem.ToString();
             System.Diagnostics.Debug.WriteLine("speaker changed");
@@ -980,6 +1081,87 @@ namespace OSCVRCWiz
 
 
           //  }
+        }
+        public void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)//lite version, WindowsBuiltInSTTTS Help
+        {
+            System.Diagnostics.Debug.WriteLine("Recognized text: " + e.Result.Text);
+            string text = e.Result.Text.ToString();
+            var ot = new OutputText();
+            //Send Text to Vrchat
+            if (rjToggleButtonLog.Checked == true)
+            {
+                ot.outputLog(this, text);
+
+            }
+            if (rjToggleButtonDisableTTS2.Checked == false)
+            {
+
+                //  Task.Run(() => synthesizerLite.Speak(text));//new
+                //  using (var waveOut = new WaveOut { Device = new WaveOutDevice(currentOutputDeviceIndex) })
+                //  using (var waveSource = new MediaFoundationDecoder(stream))
+                //  {
+                //      waveOut.Initialize(waveSource);
+                //      waveOut.Play();
+                //      waveOut.WaitForStopped();
+                //   }
+                stream = new MemoryStream();
+                synthesizerLite.SetOutputToWaveStream(stream);
+                synthesizerLite.Speak(text);
+                var waveOut = new WaveOut { Device = new WaveOutDevice(currentOutputDeviceLite) }; //StreamReader closes the underlying stream automatically when being disposed of. The using statement does this automatically.
+                var waveSource = new MediaFoundationDecoder(stream);
+                waveOut.Initialize(waveSource);
+                waveOut.Play();
+                waveOut.WaitForStopped();
+
+            }
+
+            if (rjToggleButtonOSC.Checked == true)
+            {
+
+
+
+                Task.Run(() => ot.outputVRChat(this, text, "tts")); //original
+                                                                    // ot.outputVRChat(this, text);//new
+            }
+        }
+
+        private void comboBoxLite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string phrase = comboBoxLite.Text.ToString();
+            string[] words = phrase.Split('|');
+            int counter = 1;
+            foreach (var word in words)
+            {
+                if(counter ==1)
+                {
+                    synthesizerLite.SelectVoice(word);
+                    System.Diagnostics.Debug.WriteLine(counter +": "+ word + "///////////////////////////////////////////");
+
+                }
+                if(counter ==2)
+                {
+                    CultureSelected = word;
+                    System.Diagnostics.Debug.WriteLine(counter + ": " + word+"///////////////////////////////////////////");
+                }
+                counter++;
+         
+               
+            }
+
+            
+        }
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+            TTSLiteText = richTextBox3.Text.ToString();
+
+        }
+
+        private void comboLiteOutput_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentOutputDeviceLite = comboLiteOutput.SelectedIndex;
+
         }
     }
 }
