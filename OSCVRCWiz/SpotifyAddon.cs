@@ -12,51 +12,16 @@ namespace OSCVRCWiz
     public class SpotifyAddon 
 
     {
-       // private const string CredentialsPath = "credentials.json";
-        //  private static readonly string? clientId = Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID");
-        private static string clientId = "8ed3657eca864590843f45a659ec2976";
-        //private static EmbedIOAuthServer _server = new EmbedIOAuthServer(new Uri("http://localhost:5000/callback"), 5000);
+        private static string clientId = "8ed3657eca864590843f45a659ec2976"; //TTSVoiceWizard Spotify Client ID
         private static EmbedIOAuthServer _server;
         private static SpotifyClient myClient =null;
         private static PKCETokenResponse myPKCEToken = null;
-       // public static string PKCEcode= "";
-        private static string lastSong = "";
+        public static string lastSong = "";
         private static string globalVerifier = "";
         static bool spotifyConnect = false;
+        public static string title = "";
+        
 
-
-
-
-
-
-
-        /*   private static async Task OnAuthorizationCodeReceived(object sender, AuthorizationCodeResponse response)
-           {
-               await _server.Stop();
-
-               var config = SpotifyClientConfig.CreateDefault();
-               var tokenResponse = await new OAuthClient(config).RequestToken(
-                 new AuthorizationCodeTokenRequest(
-                   clientId, clientSecret, response.Code, new Uri("http://localhost:5000/callback")
-                 )
-               );
-
-               var spotify = new SpotifyClient(tokenResponse.AccessToken);
-               // do calls with Spotify and save token?
-
-               myClient = spotify;
-               myToken = tokenResponse;
-
-           } 
-         private static async Task OnImplicitGrantReceived(object sender, ImplictGrantResponse response)
-         {
-           await _server.Stop();
-           var spotify = new SpotifyClient(response.AccessToken);
-           // do calls with Spotify
-            myClient = spotify;
-
-         }
-          */
         public static async Task getCurrentSongInfo(VoiceWizardWindow MainForm)
         {
             
@@ -73,11 +38,6 @@ namespace OSCVRCWiz
                     PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
                     PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
                     myClient = new SpotifyClient(refreshResponse.AccessToken);
-                    //  var authenticator = new PKCEAuthenticator(clientId, refreshResponse);
-
-                    //    var config = SpotifyClientConfig.CreateDefault()
-                    //       .WithAuthenticator(authenticator);
-                    //   myClient = new SpotifyClient(config);
                     Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
                     Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
                     Settings1.Default.Save();
@@ -100,21 +60,13 @@ namespace OSCVRCWiz
                     System.Diagnostics.Debug.WriteLine("-----Token doesn't need to refresh-----" + ex.Response.Body.ToString());
 
                 }
-              //  catch (Exception ex)
-             //   {
-             //       System.Diagnostics.Debug.WriteLine("-----Token doesn't need to refresh-----", ex.Message);
-
-            //    }
-             
-
-
-                // var spotify = new SpotifyClient(tokenResponse.AccessToken);
                 FullTrack m_currentTrack;
                 CurrentlyPlaying m_currentlyPlaying;
                 m_currentlyPlaying = await myClient.Player.GetCurrentlyPlaying(new PlayerCurrentlyPlayingRequest());
-                var title = "";
+                title = "";
                 var artist = "";
                 var duration = "";
+                var progress = "";
                 if (m_currentlyPlaying != null)
                 {
                     IPlayableItem currentlyPlayingItem = m_currentlyPlaying.Item;
@@ -128,40 +80,69 @@ namespace OSCVRCWiz
                         
 
                         string currentArtists = string.Empty;
+                        int counter = 0;
                         foreach (SimpleArtist currentArtist in m_currentTrack.Artists)
                         {
-                            currentArtists += currentArtist.Name + ", ";
+                            if (counter <= 1)
+                            {
+                                currentArtists += currentArtist.Name + ", ";
+                            }
+
+                            counter++;
                         }
 
                         artist = currentArtists.Remove(currentArtists.Length - 2, 2);
                         // AlbumLabel.Content = m_currentTrack.Album.Name;
-                        duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
+                        progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
+                        duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
                     }
                 }
-                if ((lastSong != title && !string.IsNullOrWhiteSpace(title)) || MainForm.justShowTheSong == true)
+                if ((lastSong != title  || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked==true) && !string.IsNullOrWhiteSpace(title) && title != ""&& VoiceWizardWindow.pauseSpotify!=true)
                 {
                     VoiceWizardWindow.pauseBPM = true;
-                    lastSong = title;
+                   // lastSong = title;
                     System.Diagnostics.Debug.WriteLine(title);
                     System.Diagnostics.Debug.WriteLine(artist);
                     System.Diagnostics.Debug.WriteLine(duration);
 
 
-                    var theString = "Now listening to '" + title + "' by '" + artist + "' on Spotify";
-                    if (MainForm.rjToggleButton3.Checked == false)
+                    var theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration+ " on Spotify";
+                    if (MainForm.rjToggleButtonPeriodic.Checked==true)
                     {
-                        theString = "Now listening to '" + title + "' by '" + artist + "' on Spotify";
+                        if (MainForm.rjToggleButton3.Checked == false)
+                        {
+                            theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
+
+                        }
+                        if (MainForm.rjToggleButton3.Checked == true)
+                        {
+                            theString = "ふ Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration;
+                        }
 
                     }
-                    if (MainForm.rjToggleButton3.Checked == true)
+                    if (MainForm.rjToggleButtonPeriodic.Checked == false)
                     {
-                        theString = "ふ Now listening to '" + title + "' by '" + artist + "'";
+                        if (MainForm.rjToggleButton3.Checked == false)
+                        {
+                            theString = "Listening to '" + title + "' by '" + artist + "'" + " on Spotify";
+
+                        }
+                        if (MainForm.rjToggleButton3.Checked == true)
+                        {
+                            theString = "ふ Listening to '" + title + "' by '" + artist + "' ";
+                        }
+
                     }
 
-                   
-                    var ot = new OutputText();
-                    Task.Run(() => ot.outputLog(MainForm, theString));
+
+
+                        var ot = new OutputText();
+                    if(MainForm.rjToggleButtonSpotifySpam.Checked==true)
+                    {
+                        Task.Run(() => ot.outputLog(MainForm, theString));
+                    }        
                     Task.Run(() => ot.outputVRChat(MainForm, theString,"spotify"));
+                   // lastSong = title;
                     MainForm.justShowTheSong = false;
                     
                 }

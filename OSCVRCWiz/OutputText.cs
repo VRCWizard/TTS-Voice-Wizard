@@ -11,6 +11,7 @@ namespace OSCVRCWiz
     {
         static string previousRequestType = "";
         bool currentlyPrinting = false;
+        static DateTime lastDateTime =DateTime.Now;
         public async void outputLog(VoiceWizardWindow MainForm, string textstring)
         {
             //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
@@ -272,18 +273,65 @@ namespace OSCVRCWiz
             var message17 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat15);
 
 
-
             var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
-            if(type =="bpm" && previousRequestType=="bpm")
+
+            //   string testingthis = (DateTime.Now - lastDateTime).ToString("ss");
+
+            //  ot.outputLog(MainForm, testingthis);
+          
+
+            if ((DateTime.Now-lastDateTime).Seconds<=1)
             {
-                System.Diagnostics.Debug.WriteLine("bpm case ran");
-                Task.Delay(50).Wait();
+              //  var ot = new OutputText();
+              //  ot.outputLog(MainForm, "collision");
+               
+                Task.Delay(1555).Wait();
             }
-            else
+            lastDateTime = DateTime.Now;
+
+            switch (type)
             {
-                MainForm.sender3.Send(message1);
+                case "bpm":
+                    if (previousRequestType == "bpm")
+                    {
+                        System.Diagnostics.Debug.WriteLine("bpm case ran");
+                        Task.Delay(50).Wait();
+                    }
+                    else
+                    {
+                        MainForm.sender3.Send(message1);
+                    }
+                    break;
+                case "spotify":
+
+                    if (previousRequestType == "spotify")
+                    {
+                        if (SpotifyAddon.title == SpotifyAddon.lastSong)
+                        {
+                            System.Diagnostics.Debug.WriteLine("spotify case ran");
+                            Task.Delay(50).Wait();
+                           //  MainForm.sender3.Send(message1);//remove after testing
+                        }
+                        else
+                        {
+                            MainForm.sender3.Send(message1);
+                        }
+
+                    }
+                    else
+                    {
+                        MainForm.sender3.Send(message1);
+                    }
+                    SpotifyAddon.lastSong = SpotifyAddon.title;
+                    break;
+                default:
+                    MainForm.sender3.Send(message1);
+
+                    break;
+
             }
+
 
             previousRequestType = type;
             Task.Delay(50).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    

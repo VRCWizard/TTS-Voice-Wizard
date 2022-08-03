@@ -58,123 +58,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox5.Text" xml:space="preserve">
-    <value>Changelog: 
-(full changelogs visible here https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
+    <value>Current Version: v0.6.1 - August 3, 2022
+Changelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
 
-Public Beta v0.5.8 System Speech Improvements- August 1, 2022
 ### Added
--  You can now set the output device for System Speech within the "Speech Provider" tab
--  Added settings on the "Speech Provider" tab now save
+-  Voices
+    -  New preview voices added
+    -  New styles were added for the new voices and a few existing voices
+    -  Style naming scheme more accurate to actual names (For example, "Happy" is now "cheerful")
 
-Public Beta v0.5.7 Lite Version Merge - July 31, 2022
-### Added
--  Lite version of the app now referred to as "Windows Built-In System Speech" merged with the main app
--  Windows Built-In System Speech is enabled by default (no key given)
--  many settings are now labeled to show they are for Azure only
-
-Public Beta v0.5.6 Feature Requests - July 27, 2022
-### Added
- - Voice customization option now save on app close
- - Continuous Voice Recognition Option Added (makes the sttts button act as a toggle)
- - VRChat KAT Change: If I word would be cut off it will now be pushed to the next line instead
- - UI changes, TTS page rich text boxes now use flat style to conceal the trashcan buttons better
-
-### Known Bugs
--  Some words will not return anything with STTTS
-    -  For example, saying only the word "Supercalifragilisticexpialidocious" alone will cause an empty output without errors
-
-### Demonstration Video
--  https://www.youtube.com/watch?v=wBRUcx9EWes
+-  Audio Quality
+    -  specified high-fidelity RIFF format Riff24Khz16BitMonoPcm by setting SpeechSynthesisOutputFormat on the SpeechConfig for TTS
+        -  TTS now sounds higher quality and less muffled 
+        -  it only took 1 line of code why didn't i do this before XD
+        
+ -  Spotify Feature Improvements
+     -  Text Collision Detection, prevent KAT text from being accidentally overridden halfway by another text output. For example, a TTS action outputting at the same time as a Spotify action used to cause half of the Spotify text to be cut off by the TTS text.
+    -  Spotify Feature can now display the current song periodically along with the duration and progress of the song.
+    -  Code refactoring
+    -  Changed changelog section format on dashboard tab.
 
 
-Public Beta v0.5.0 Features and Fixes - July 20, 2022
--UI changes
-  -Donate Button
-  -Addon Button (Spotify, HRtoVRChat_OSC, Emojis)
-
--added support for KillfrenzyAvatarText 16 parameters sync
--text is now deleted instead of being hidden after hide delay for better visuals (prevents flickering)
--STTTS hotkey now works from anywhere in the app
--added a bunch of error handling to help users troubleshoot
-  -Now creates logfile.txt in folder
-
--Spotify Show current song button now works as intended
-
--emoji addon currently only works with spotify and heartbeat, it replaces some text with a heart or the spotify symbol for example.
- (To use this in unity replace the KAT texture with the file provided and enable emojis in the app)
-
--This update also allows for connecting HRtoVRChat_OSC to TTS Voice Wizard through OSC
- -200Tigersbloxed's app is truly amazing with how many devices are supported get it here: https://github.com/200Tigersbloxed/HRtoVRChat_OSC
- -To connect to it to TTS Voice Wizard set the sending port of HRtoVRChat_OSC to 4026 (instead of the default of 9000 which is VRChats receiving port)
-  Note: HRtoVRChat_OSC also has a neat unity component so you could just use that instead. Voice Wizard only makes the BPM values output in killfrenzy avatar text.
-
--Updated Microsoft.CognitiveServices.Speech from 1.21.0 to the Latest stable 1.22.0
-
-
-
-Public Beta v0.4.1 Quality of Life - June 15, 2022
--TTS text box and log text box now have neat little clear buttons
--Spotify Feature now only requires you to accept once instead of on every app start (Limited Access: DM me your spotify email on discord for access to this feature)
--Hide text delay now uses a timer and restarts if you send a new message before a previous hide delay would have finished
--Fixed glitch where your previous message would appear for a brief moment in VRChat when you sent a new message
-
-
-
-
-
-Public Beta v0.4.0 Spotify Addon - May 28, 2022
--This update makes the setup process easier as you can now set your microphone and speaker device in the app
--This update also adds a new experimental feature for VRChat users, you can now output the name of your currently playing on Spotify to your avatar so all your friends can see what you're vibing to.
--minor refactoring of code
-
-
-Public Beta v0.3.7 (8 Kat Sync Parameters) - May 13, 2022
-Adds an option to increase the amount of sync parameters my app supports.
--If you have extra parameters to spare I recommend using 8 parameter sync with your avatar rather than 4 for faster OSC sync. 
--(Sorry it took me a while to get around to this feature)
-
--Thank You KillFrenzy &lt;3
--Don't forget to leave a star on Kill Frenzy's Github
-https://github.com/killfrenzy96/KillFrenzyAvatarText
-
-
-Public Beta v0.3.6 Phrase List Update - May 13, 2022
-This update implements the "phrase list" feature.
--Have a phrase that the Azure voice recognition won't recognize, add it manually on the settings page
--Now you can call everyone a "Suss E Baka" instead of a "sassy Parker")
--Other useful applications include adding people's names/usernames that the program had a hard time recognizing.
--Enjoy!
-
-Phrase List:   Jakob,Jessie,Firetik,Suss E Baka
-
-
-Public Beta v0.3.5 UI Update Full Release / Settings Saving Update 1 - May 9, 2022
-Features:
--New nav bar
--Checkboxs replaced with RJCode Toggle Sliders
--UI given more modern and contrasted feel
--All settings in the Settings tab now save on app close
-(The main apps config file is located in Appdata /Local/OSCVRCWiz you may safely delete all folders in that directory. 
-This will reset ALL of your settings (including Azure key and region settings) if the program breaks due to setting changes.)
-
-
-Preview Beta v0.3.3 UI Update - May 7, 2022
-Features:
--New nav bar
--Checkboxs replaced with RJCode Toggle Sliders
--UI given more modern and contrasted feel
-
-Public Beta v0.3.2 Small Feature Update - April 16, 2022
-Features:
--Option to turn off TTS (no voice, for outputting only the text to VRChat)
--Option to have the app always on top
--Bigger TTS Box (this will fix paste when the text being pasted has "newlines")
--Option to clear TTS Box after pressing the TTS button
--TTS button now activates on pressing enter
-
-Fixes:
--Transcription logging function fixed
--Text is now only erased at the start of the next operation, not during the hide delay (somewhat fixes hide delay prematurely erasing text in some cases)</value>
+### Added Since v0.6.0
+-  Fix: Spotify Feature is now paused until hide text delay is finished after a TTS action.
+-  Dashboard now includes my socials</value>
   </data>
   <data name="richTextBox2.Text" xml:space="preserve">
     <value>Use TTS Voice Wizard's accessibily features to improve your gaming experience!
@@ -405,7 +312,7 @@ Fixes:
     <value>17, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>63</value>
+    <value>25</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

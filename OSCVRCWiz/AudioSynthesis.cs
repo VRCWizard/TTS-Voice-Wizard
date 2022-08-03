@@ -19,7 +19,9 @@ namespace OSCVRCWiz
             {
 
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
-                
+               // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
+               config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
+
                 // Note: if only language is set, the default voice of that language is chosen.
                 //  config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
                 // The voice setting will overwrite the language setting.
@@ -32,7 +34,7 @@ namespace OSCVRCWiz
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
                 string angry = "<mstts:express-as style=\"angry\">"; //1
-                string happy = "<mstts:express-as style=\"cheerful\">"; //2
+                string cheerful = "<mstts:express-as style=\"cheerful\">"; //2
                 string sad = "<mstts:express-as style=\"sad\">";//3
 
                 string chat = "<mstts:express-as style=\"chat\">"; //1
@@ -43,6 +45,14 @@ namespace OSCVRCWiz
                 string newscastForm = "<mstts:express-as style=\"newscast-formal\">";//3
                 string newscast = "<mstts:express-as style=\"newscast\">"; //1
                 string assistant = "<mstts:express-as style=\"assistant\">"; //2
+
+                string excited = "<mstts:express-as style=\"excited\">"; //New
+                string friendly = "<mstts:express-as style=\"friendly\">"; //2
+                string hopeful = "<mstts:express-as style=\"hopeful\">"; //2
+                string shouting = "<mstts:express-as style=\"shouting\">"; //2
+                string terrified = "<mstts:express-as style=\"terrified\">"; //2
+                string unfriendly = "<mstts:express-as style=\"unfriendly\">"; //2
+                string whispering = "<mstts:express-as style=\"whispering\">"; //2
 
 
                 string ratexslow = "<prosody rate=\"x-slow\">"; //1
@@ -80,6 +90,11 @@ namespace OSCVRCWiz
                 string michelle = "<voice name=\"en-US-MichelleNeural\">";//14
                 string monica = "<voice name=\"en-US-MonicaNeural\">";//15
                 string davis = "<voice name=\"en-US-DavisNeural\">";//16
+
+                string jane = "<voice name=\"en-US-JaneNeural\">";//16
+                string nancy = "<voice name=\"en-US-NancyNeural\">";//16
+                string jason = "<voice name=\"en-US-DavisNeural\">";//16
+                string tony = "<voice name=\"en-US-TonyNeural\">";//16
 
                 string natashaAU = "<voice name=\"en-AU-NatashaNeural\">";//17
                 string williamAU = "<voice name=\"en-AU-WilliamNeural\">";//18
@@ -182,17 +197,26 @@ namespace OSCVRCWiz
 
                 string ssml0 = "<speak version=\"1.0\"";
                 ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
-                if (style != "Normal") { ssml0 += " xmlns:mstts=\"https://www.w3.org/2001/mstts\""; }
+                if (style != "normal") { ssml0 += " xmlns:mstts=\"https://www.w3.org/2001/mstts\""; }
                 ssml0 += " xml:lang=\"en-US\">";
 
                 switch (voice)
                 {
                     case "Sara": ssml0 += sara; break;
                     case "Jenny": ssml0 += jenny; ; break;
+                    case "Aria": ssml0 += aria; ; break;
                     case "Guy": ssml0 += guy; ; break;
+                    case "Jane <Preview>": ssml0 += jane; ; break;
+                    case "Nancy <Preview>": ssml0 += nancy; ; break;
+                    case "Jason <Preview>": ssml0 += jason; ; break;
+                    case "Davis <Preview>": ssml0 += davis; ; break;
+                    case "Tony <Preview>": ssml0 += tony; ; break;
+
+
+
                     case "Amber": ssml0 += amber; ; break;
                     case "Ana": ssml0 += ana; ; break;
-                    case "Aria": ssml0 += aria; ; break;
+                    
                     case "Ashley": ssml0 += ashley; ; break;
                     case "Brandon": ssml0 += brandon; ; break;
                     case "Christopher": ssml0 += christopher; ; break;
@@ -202,7 +226,8 @@ namespace OSCVRCWiz
                     case "Jacob": ssml0 += jacob; ; break;
                     case "Michelle": ssml0 += michelle; ; break;
                     case "Monica": ssml0 += monica; ; break;
-                    case "Davis": ssml0 += davis; ; break;
+
+                    
 
                     case "Natasha (AU)": ssml0 += natashaAU; ; break;
                     case "William (AU)": ssml0 += williamAU; ; break;
@@ -289,20 +314,30 @@ namespace OSCVRCWiz
                     default: ssml0 += "<voice name=\"en-US-SaraNeural\">"; break;
                 }
 
-                if (style != "Normal")
+                if (style != "normal")
                 {
+                    switch (style)
+                    {
+                        case "angry": ssml0 += angry; break;
+                        case "chat": ssml0 += chat; break;
+                        case "cheerful": ssml0 += cheerful; break;
+                        case "customerservice": ssml0 += customerservice; break;
+                        case "empathetic": ssml0 += empathetic; break;
+                        case "assistant": ssml0 += assistant; break;
+                        case "excited": ssml0 += excited; break;
+                        case "friendly": ssml0 += friendly; break;
+                        case "hopeful": ssml0 += hopeful; break;
+                        case "narration-professional": ssml0 += narrationProf; break;
+                        case "newscast-casual": ssml0 += newscastCas; break;
+                        case "newscast-formal": ssml0 += newscastForm; break;
+                        case "newscast": ssml0 += newscast; break;
+                        case "sad": ssml0 += sad; break;
+                        case "shouting": ssml0 += shouting; break;
+                        case "terrified": ssml0 += terrified; break;
+                        case "unfriendly": ssml0 += unfriendly; break;
+                        case "whispering": ssml0 += whispering; break;
 
-                    if (style == "Angry") { ssml0 += angry; }
-                    if (style == "Happy") { ssml0 += happy; }
-                    if (style == "Sad") { ssml0 += sad; }
-                    if (style == "Chat") { ssml0 += chat; }
-                    if (style == "Customer Service") { ssml0 += customerservice; }
-                    if (style == "Empathetic") { ssml0 += empathetic; }
-                    if (style == "Narration (Professional)") { ssml0 += narrationProf; }
-                    if (style == "Newscast (Casual)") { ssml0 += newscastCas; }
-                    if (style == "Newscast (Formal)") { ssml0 += newscastForm; }
-                    if (style == "Newscast") { ssml0 += newscast; }
-                    if (style == "Assistant") { ssml0 += assistant; }
+                    } 
 
                 }
                 if (rate != "default")
@@ -332,14 +367,11 @@ namespace OSCVRCWiz
                     if (volume == "x-loud") { ssml0 += volumexhigh; }
 
                 }
-
-
                 ssml0 += text;
                 if (rate != "default") { ssml0 += "</prosody>"; }
                 if (pitch != "default") { ssml0 += "</prosody>"; }
                 if (volume != "default") { ssml0 += "</prosody>"; }
-
-                if (style != "Normal") { ssml0 += "</mstts:express-as>"; }
+                if (style != "normal") { ssml0 += "</mstts:express-as>"; }
                 ssml0 += "</voice>";
                 ssml0 += "</speak>";
 

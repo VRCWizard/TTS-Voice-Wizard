@@ -490,5 +490,41 @@ namespace OSCVRCWiz {
                 this["BuiltInOutputSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SpotifyPeriodicallySetting {
+            get {
+                return ((bool)(this["SpotifyPeriodicallySetting"]));
+            }
+            set {
+                this["SpotifyPeriodicallySetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SpotifySpamSetting {
+            get {
+                return ((bool)(this["SpotifySpamSetting"]));
+            }
+            set {
+                this["SpotifySpamSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        public string SpotifyTimerIntervalSetting {
+            get {
+                return ((string)(this["SpotifyTimerIntervalSetting"]));
+            }
+            set {
+                this["SpotifyTimerIntervalSetting"] = value;
+            }
+        }
     }
 }
