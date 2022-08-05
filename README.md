@@ -72,7 +72,7 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 - **If using a microsoft azure key you should ignore these steps**
 - If you don't want to setup / use the Azure Conginitive Speech Services you can use your windows build in speech to text and text to speech engine. <br />
 - Whats the difference you may ask?
-    -  Azure can cost money if used too often as explained above https://github.com/VRCWizard/TTS-Voice-Wizard/edit/main/README.md#how-to-get-your-microsoft-azure-key-and-region
+    -  Azure can cost money if used too often as explained above https://github.com/VRCWizard/TTS-Voice-Wizard#how-to-get-your-microsoft-azure-key-and-region
     -  Azure has better TTS voices and Speech recognition ability as demonstrated in the video above
 - Setup: 
     - You will then need to change the Apps **output device**  to the **virtual cable** which will allow you to play the System Speech TTS though your microphone.
