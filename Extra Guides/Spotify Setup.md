@@ -5,3 +5,7 @@
 -  Emoji addon currently only works with Spotify and heartbeat, it replaces some text with a heart or the Spotify symbol for example.
     - How to add emojis: in unity replace the KAT texture with the png file provided in the "KAT Emoji Texture Sheet" folder and enable emojis in the app through the addon tab)
     ![image](https://user-images.githubusercontent.com/101527472/182697581-161c3458-0f75-4ca5-8523-af8f32aab7f3.png)
+ 
+-  If you would like to remove Spotify acceess for any reason 
+![image](https://user-images.githubusercontent.com/101527472/183119678-9f88d8c8-de13-4ba8-9b26-3e448c106500.png)
+
