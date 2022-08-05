@@ -93,6 +93,9 @@ https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 https://github.com/BOLL7708/OpenVR2Key <br />
 - Make sure TTSVoiceWizard is not running then set a button to "ctrl + g" (if app is running it will steal the input)<br />
 
+# How to enable Spotify feature
+-  https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md
+
 # Need Help / Have Questions / Wanna make suggestions?
 - Join the discord server: <br />
 https://discord.gg/YjgR9SWPnW <br />
