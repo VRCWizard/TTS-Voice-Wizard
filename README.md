@@ -44,7 +44,7 @@ https://azure.microsoft.com/en-us/free/students/ (no credit card required)<br />
     - **Monitor Usage:** https://docs.microsoft.com/en-us/answers/questions/643390/how-to-see-text-to-speech-usage.html (the location to see your speech service usage can be hard to find, the post should help!)
 
 - **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** 
-    -  Follow these steps to set up Windows Built in TTS and STT https://github.com/VRCWizard/TTS-Voice-Wizard/edit/main/README.md#windows-built-in-system-speech
+    -  Follow these steps to set up Windows Built in TTS and STT https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/README.md#windows-built-in-system-speech-ignore-if-using--microsoft-azure-key
 
 
 ![Screenshot 2022-05-09 121758wa](https://user-images.githubusercontent.com/101527472/167463062-909190bb-eec0-42f3-a985-7e7c714782bb.png)
