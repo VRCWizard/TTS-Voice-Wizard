@@ -128,5 +128,11 @@
     <Setting Name="SpotifyTimerIntervalSetting" Type="System.String" Scope="User">
       <Value Profile="(Default)">10000</Value>
     </Setting>
+    <Setting Name="AudioCancelSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="cultureInfoSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -526,5 +526,29 @@ namespace OSCVRCWiz {
                 this["SpotifyTimerIntervalSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AudioCancelSetting {
+            get {
+                return ((bool)(this["AudioCancelSetting"]));
+            }
+            set {
+                this["AudioCancelSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        public string cultureInfoSetting {
+            get {
+                return ((string)(this["cultureInfoSetting"]));
+            }
+            set {
+                this["cultureInfoSetting"] = value;
+            }
+        }
     }
 }

@@ -67,6 +67,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.rjToggleButtonCancelAudio = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label58 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.rjToggleButton4 = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -109,6 +111,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.textBoxCultureInfo = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.comboLiteOutput = new System.Windows.Forms.ComboBox();
@@ -142,6 +148,7 @@
             this.label43 = new System.Windows.Forms.Label();
             this.rjToggleButton3 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabSpotify = new System.Windows.Forms.TabPage();
+            this.iconButton18 = new FontAwesome.Sharp.IconButton();
             this.label57 = new System.Windows.Forms.Label();
             this.rjToggleButtonSpotifySpam = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label56 = new System.Windows.Forms.Label();
@@ -379,11 +386,11 @@
             this.hideVRCTextButton.FlatAppearance.BorderSize = 0;
             this.hideVRCTextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideVRCTextButton.ForeColor = System.Drawing.Color.Snow;
-            this.hideVRCTextButton.Location = new System.Drawing.Point(27, 278);
+            this.hideVRCTextButton.Location = new System.Drawing.Point(23, 304);
             this.hideVRCTextButton.Name = "hideVRCTextButton";
             this.hideVRCTextButton.Size = new System.Drawing.Size(188, 31);
             this.hideVRCTextButton.TabIndex = 16;
-            this.hideVRCTextButton.Text = "Hide VRC Text Display";
+            this.hideVRCTextButton.Text = "Hide VRC KAT";
             this.hideVRCTextButton.UseVisualStyleBackColor = false;
             this.hideVRCTextButton.Click += new System.EventHandler(this.hideVRCTextButton_Click);
             // 
@@ -845,6 +852,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage2.Controls.Add(this.rjToggleButtonCancelAudio);
+            this.tabPage2.Controls.Add(this.label58);
             this.tabPage2.Controls.Add(this.label48);
             this.tabPage2.Controls.Add(this.label47);
             this.tabPage2.Controls.Add(this.rjToggleButton4);
@@ -897,16 +906,41 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
             // 
+            // rjToggleButtonCancelAudio
+            // 
+            this.rjToggleButtonCancelAudio.AutoSize = true;
+            this.rjToggleButtonCancelAudio.Location = new System.Drawing.Point(23, 263);
+            this.rjToggleButtonCancelAudio.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonCancelAudio.Name = "rjToggleButtonCancelAudio";
+            this.rjToggleButtonCancelAudio.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonCancelAudio.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonCancelAudio.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonCancelAudio.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonCancelAudio.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonCancelAudio.TabIndex = 87;
+            this.rjToggleButtonCancelAudio.UseVisualStyleBackColor = true;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label58.ForeColor = System.Drawing.Color.Snow;
+            this.label58.Location = new System.Drawing.Point(78, 263);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(297, 20);
+            this.label58.TabIndex = 86;
+            this.label58.Text = "Stop Previous TTS When New TTS is Started";
+            // 
             // label48
             // 
             this.label48.AutoSize = true;
             this.label48.ForeColor = System.Drawing.Color.Snow;
             this.label48.Location = new System.Drawing.Point(293, 622);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(618, 20);
+            this.label48.Size = new System.Drawing.Size(639, 20);
             this.label48.TabIndex = 85;
-            this.label48.Text = "Warning: Disable Continuous Listening before switching language settings or error" +
-    " will occur";
+            this.label48.Text = "Warning: Disable Continuous Recognition before switching language settings or err" +
+    "or will occur";
             // 
             // label47
             // 
@@ -989,7 +1023,7 @@
             // rjToggleButtonHideDelay2
             // 
             this.rjToggleButtonHideDelay2.AutoSize = true;
-            this.rjToggleButtonHideDelay2.Location = new System.Drawing.Point(23, 516);
+            this.rjToggleButtonHideDelay2.Location = new System.Drawing.Point(23, 526);
             this.rjToggleButtonHideDelay2.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonHideDelay2.Name = "rjToggleButtonHideDelay2";
             this.rjToggleButtonHideDelay2.OffBackColor = System.Drawing.Color.Gray;
@@ -1003,7 +1037,7 @@
             // rjToggleButtonAsTranslated2
             // 
             this.rjToggleButtonAsTranslated2.AutoSize = true;
-            this.rjToggleButtonAsTranslated2.Location = new System.Drawing.Point(23, 418);
+            this.rjToggleButtonAsTranslated2.Location = new System.Drawing.Point(23, 438);
             this.rjToggleButtonAsTranslated2.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonAsTranslated2.Name = "rjToggleButtonAsTranslated2";
             this.rjToggleButtonAsTranslated2.OffBackColor = System.Drawing.Color.Gray;
@@ -1017,7 +1051,7 @@
             // rjToggleButtonDisableTTS2
             // 
             this.rjToggleButtonDisableTTS2.AutoSize = true;
-            this.rjToggleButtonDisableTTS2.Location = new System.Drawing.Point(23, 388);
+            this.rjToggleButtonDisableTTS2.Location = new System.Drawing.Point(23, 408);
             this.rjToggleButtonDisableTTS2.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonDisableTTS2.Name = "rjToggleButtonDisableTTS2";
             this.rjToggleButtonDisableTTS2.OffBackColor = System.Drawing.Color.Gray;
@@ -1031,7 +1065,7 @@
             // rjToggleButtonOnTop2
             // 
             this.rjToggleButtonOnTop2.AutoSize = true;
-            this.rjToggleButtonOnTop2.Location = new System.Drawing.Point(23, 360);
+            this.rjToggleButtonOnTop2.Location = new System.Drawing.Point(23, 380);
             this.rjToggleButtonOnTop2.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonOnTop2.Name = "rjToggleButtonOnTop2";
             this.rjToggleButtonOnTop2.OffBackColor = System.Drawing.Color.Gray;
@@ -1046,7 +1080,7 @@
             // rjToggleButtonClear
             // 
             this.rjToggleButtonClear.AutoSize = true;
-            this.rjToggleButtonClear.Location = new System.Drawing.Point(23, 331);
+            this.rjToggleButtonClear.Location = new System.Drawing.Point(23, 351);
             this.rjToggleButtonClear.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonClear.Name = "rjToggleButtonClear";
             this.rjToggleButtonClear.OffBackColor = System.Drawing.Color.Gray;
@@ -1197,7 +1231,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label16.ForeColor = System.Drawing.Color.Snow;
-            this.label16.Location = new System.Drawing.Point(78, 418);
+            this.label16.Location = new System.Drawing.Point(78, 438);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(278, 20);
             this.label16.TabIndex = 34;
@@ -1219,7 +1253,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label26.ForeColor = System.Drawing.Color.Snow;
-            this.label26.Location = new System.Drawing.Point(78, 518);
+            this.label26.Location = new System.Drawing.Point(78, 528);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(184, 20);
             this.label26.TabIndex = 60;
@@ -1230,7 +1264,7 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label24.ForeColor = System.Drawing.Color.Snow;
-            this.label24.Location = new System.Drawing.Point(78, 388);
+            this.label24.Location = new System.Drawing.Point(78, 408);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(157, 20);
             this.label24.TabIndex = 58;
@@ -1241,7 +1275,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label25.ForeColor = System.Drawing.Color.Snow;
-            this.label25.Location = new System.Drawing.Point(78, 360);
+            this.label25.Location = new System.Drawing.Point(78, 380);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(105, 20);
             this.label25.TabIndex = 56;
@@ -1252,11 +1286,11 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label22.ForeColor = System.Drawing.Color.Snow;
-            this.label22.Location = new System.Drawing.Point(78, 331);
+            this.label22.Location = new System.Drawing.Point(78, 351);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(164, 20);
+            this.label22.Size = new System.Drawing.Size(175, 20);
             this.label22.TabIndex = 54;
-            this.label22.Text = "Clear text box after TTS";
+            this.label22.Text = "Clear Texxt Box After TTS";
             // 
             // label23
             // 
@@ -1265,9 +1299,9 @@
             this.label23.ForeColor = System.Drawing.Color.Snow;
             this.label23.Location = new System.Drawing.Point(78, 235);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(269, 20);
+            this.label23.Size = new System.Drawing.Size(221, 20);
             this.label23.TabIndex = 52;
-            this.label23.Text = "Send OSC Messages to VRC Avatar Text";
+            this.label23.Text = "Send OSC Messages to VRC KAT";
             // 
             // label21
             // 
@@ -1297,7 +1331,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Snow;
-            this.button1.Location = new System.Drawing.Point(158, 541);
+            this.button1.Location = new System.Drawing.Point(158, 551);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 43;
@@ -1307,7 +1341,7 @@
             // 
             // textBoxErase
             // 
-            this.textBoxErase.Location = new System.Drawing.Point(27, 543);
+            this.textBoxErase.Location = new System.Drawing.Point(27, 553);
             this.textBoxErase.Name = "textBoxErase";
             this.textBoxErase.Size = new System.Drawing.Size(125, 27);
             this.textBoxErase.TabIndex = 42;
@@ -1358,7 +1392,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(27, 479);
+            this.textBox4.Location = new System.Drawing.Point(27, 489);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(125, 27);
@@ -1369,7 +1403,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(158, 482);
+            this.label12.Location = new System.Drawing.Point(158, 492);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(104, 20);
             this.label12.TabIndex = 28;
@@ -1380,7 +1414,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(23, 456);
+            this.label11.Location = new System.Drawing.Point(23, 466);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 20);
             this.label11.TabIndex = 27;
@@ -1389,6 +1423,10 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage3.Controls.Add(this.label65);
+            this.tabPage3.Controls.Add(this.label61);
+            this.tabPage3.Controls.Add(this.textBoxCultureInfo);
+            this.tabPage3.Controls.Add(this.label60);
             this.tabPage3.Controls.Add(this.label54);
             this.tabPage3.Controls.Add(this.label63);
             this.tabPage3.Controls.Add(this.comboLiteOutput);
@@ -1416,6 +1454,45 @@
             this.tabPage3.Size = new System.Drawing.Size(976, 661);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Provider";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.ForeColor = System.Drawing.Color.Snow;
+            this.label65.Location = new System.Drawing.Point(38, 611);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(190, 20);
+            this.label65.TabIndex = 105;
+            this.label65.Text = "CultureInfo example: en-US";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.ForeColor = System.Drawing.Color.Snow;
+            this.label61.Location = new System.Drawing.Point(38, 582);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(294, 20);
+            this.label61.TabIndex = 104;
+            this.label61.Text = "\"default\" will use same CultureInfo as voice";
+            // 
+            // textBoxCultureInfo
+            // 
+            this.textBoxCultureInfo.Location = new System.Drawing.Point(38, 544);
+            this.textBoxCultureInfo.Name = "textBoxCultureInfo";
+            this.textBoxCultureInfo.Size = new System.Drawing.Size(265, 27);
+            this.textBoxCultureInfo.TabIndex = 103;
+            this.textBoxCultureInfo.Text = "default";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label60.ForeColor = System.Drawing.Color.Snow;
+            this.label60.Location = new System.Drawing.Point(38, 521);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(131, 20);
+            this.label60.TabIndex = 102;
+            this.label60.Text = "CultureInfo Debug";
             // 
             // label54
             // 
@@ -1722,9 +1799,9 @@
             this.iconButton9.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton9.FlatAppearance.BorderSize = 0;
             this.iconButton9.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.Spotify;
             this.iconButton9.IconColor = System.Drawing.Color.White;
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton9.Location = new System.Drawing.Point(0, 0);
             this.iconButton9.Name = "iconButton9";
@@ -1798,6 +1875,7 @@
             // tabSpotify
             // 
             this.tabSpotify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabSpotify.Controls.Add(this.iconButton18);
             this.tabSpotify.Controls.Add(this.label57);
             this.tabSpotify.Controls.Add(this.rjToggleButtonSpotifySpam);
             this.tabSpotify.Controls.Add(this.label56);
@@ -1819,6 +1897,25 @@
             this.tabSpotify.Size = new System.Drawing.Size(976, 661);
             this.tabSpotify.TabIndex = 6;
             this.tabSpotify.Text = "Spotify";
+            // 
+            // iconButton18
+            // 
+            this.iconButton18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton18.FlatAppearance.BorderSize = 0;
+            this.iconButton18.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton18.IconChar = FontAwesome.Sharp.IconChar.Spotify;
+            this.iconButton18.IconColor = System.Drawing.Color.White;
+            this.iconButton18.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton18.Location = new System.Drawing.Point(499, 323);
+            this.iconButton18.Name = "iconButton18";
+            this.iconButton18.Size = new System.Drawing.Size(178, 48);
+            this.iconButton18.TabIndex = 55;
+            this.iconButton18.Text = "OPEN SPOTIFY";
+            this.iconButton18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton18.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton18.UseVisualStyleBackColor = false;
+            this.iconButton18.Click += new System.EventHandler(this.iconButton18_Click);
             // 
             // label57
             // 
@@ -1911,7 +2008,7 @@
             this.richTextBox7.Location = new System.Drawing.Point(32, 381);
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.ReadOnly = true;
-            this.richTextBox7.Size = new System.Drawing.Size(645, 253);
+            this.richTextBox7.Size = new System.Drawing.Size(645, 199);
             this.richTextBox7.TabIndex = 47;
             this.richTextBox7.Text = "";
             // 
@@ -1943,9 +2040,9 @@
             this.label30.ForeColor = System.Drawing.Color.Snow;
             this.label30.Location = new System.Drawing.Point(13, 23);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(185, 25);
+            this.label30.Size = new System.Drawing.Size(161, 25);
             this.label30.TabIndex = 39;
-            this.label30.Text = "Spotify (Experimental)";
+            this.label30.Text = "Spotify Integration";
             // 
             // button2
             // 
@@ -1984,9 +2081,10 @@
             this.label31.ForeColor = System.Drawing.Color.Snow;
             this.label31.Location = new System.Drawing.Point(204, 28);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(416, 20);
+            this.label31.Size = new System.Drawing.Size(619, 20);
             this.label31.TabIndex = 40;
-            this.label31.Text = "This feature will output your currently playing song in VRChat ";
+            this.label31.Text = "This feature will output the title, artist and progress of your currently playing" +
+    " song in VRChat ";
             // 
             // label32
             // 
@@ -2647,5 +2745,12 @@
         private FontAwesome.Sharp.IconButton iconButton15;
         private FontAwesome.Sharp.IconButton iconButton14;
         private FontAwesome.Sharp.IconButton iconButton13;
+        private FontAwesome.Sharp.IconButton iconButton18;
+        public RJControls.RJToggleButton rjToggleButtonCancelAudio;
+        private Label label58;
+        private Label label60;
+        private Label label61;
+        private Label label65;
+        public TextBox textBoxCultureInfo;
     }
 }

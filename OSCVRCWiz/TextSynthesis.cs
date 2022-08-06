@@ -163,7 +163,10 @@ namespace OSCVRCWiz
                         //Send Text to TTS
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                         {
-                            SpeechCt.Cancel();
+                            if (MainForm.rjToggleButtonCancelAudio.Checked == true)
+                            {
+                                SpeechCt.Cancel();
+                            }
                             SpeechCt = new();
                             Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice, SpeechCt.Token));
                         }
@@ -195,11 +198,11 @@ namespace OSCVRCWiz
 
                 };
                 speechRecognizer1.Canceled += (sender, eventArgs) =>
-            {
-                Console.WriteLine(eventArgs.Result.Text);
-                var ot = new OutputText();
-                Task.Run(() => ot.outputLog(MainForm, "[Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]"));
-            };
+                {
+                    Console.WriteLine(eventArgs.Result.Text);
+                    var ot = new OutputText();
+                    Task.Run(() => ot.outputLog(MainForm, "[Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]"));
+                };
 
                 speechRecognizer1.Recognized += (sender, eventArgs) =>
                 {
@@ -231,7 +234,10 @@ namespace OSCVRCWiz
                         }
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                         {
-                            SpeechCt.Cancel();
+                            if (MainForm.rjToggleButtonCancelAudio.Checked == true)
+                            {
+                                SpeechCt.Cancel();
+                            }
                             SpeechCt = new();
                             _ = Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice, SpeechCt.Token));
                         }

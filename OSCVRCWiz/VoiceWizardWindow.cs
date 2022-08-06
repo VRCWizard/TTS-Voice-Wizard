@@ -39,7 +39,7 @@ namespace OSCVRCWiz
         List<string> comboOut = new List<string>();
         List<string> micIDs = new List<string>();
         List<string> speakerIDs = new List<string>();
-        public string currentInputDevice ="";
+        public string currentInputDevice = "";
         public string currentOutputDevice = "";
         public string currentInputDeviceName = "Default";
         public string currentOutputDeviceName = "Default";
@@ -53,7 +53,7 @@ namespace OSCVRCWiz
         public static bool pauseSpotify = false;
         public static bool stopBPM = false; // fix later should be set to setting value
         public static bool BPMSpamLog = true;
-        public static int HRInternalValue= 5;
+        public static int HRInternalValue = 5;
         public static string TTSLiteText = "";
 
         public string CultureSelected = "en-US";//free
@@ -74,7 +74,7 @@ namespace OSCVRCWiz
 
             //Azure Audio Devices----------------------------
             comboIn.Add("Default");
-             micIDs.Add("Default");
+            micIDs.Add("Default");
             comboOut.Add("Default");
             speakerIDs.Add("Default");
             var enumerator1 = new MMDeviceEnumerator();
@@ -133,12 +133,12 @@ namespace OSCVRCWiz
             {
                 var info = voice.VoiceInfo;
                 System.Diagnostics.Debug.WriteLine($"Id: {info.Id} | Name: {info.Name} | Age: { info.Age} | Gender: { info.Gender} | Culture: { info.Culture}");
-                comboBoxLite.Items.Add(info.Name +"|"+ info.Culture);
-            }    
+                comboBoxLite.Items.Add(info.Name + "|" + info.Culture);
+            }
             TTSLiteText = richTextBox3.Text.ToString();
             int id = 0;// The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
-            
+
         }
         protected override void WndProc(ref Message m)
         {
@@ -266,11 +266,11 @@ namespace OSCVRCWiz
 
         }
 
-       
+
 
         private void comboBoxVirtualOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
-          //  audioOutputIndex = comboBoxVirtualOutput.SelectedIndex - 1; //+1 while i have mapped device in there
+            //  audioOutputIndex = comboBoxVirtualOutput.SelectedIndex - 1; //+1 while i have mapped device in there
             System.Diagnostics.Debug.WriteLine("audio device index: " + audioOutputIndex);
 
         }
@@ -361,7 +361,7 @@ namespace OSCVRCWiz
             }
 
 
-         
+
             comboBox1.SelectedIndex = 0;
 
         }
@@ -373,7 +373,7 @@ namespace OSCVRCWiz
                 File.WriteAllText("logfile.txt", String.Empty);
             }
             catch (Exception ex) { }
-            
+
 
             rjToggleButtonActivation.Checked = Settings1.Default.recognition; //activation phrase off
             textBoxActivationWord.Text = Settings1.Default.activationWord;
@@ -396,16 +396,16 @@ namespace OSCVRCWiz
             rjToggleButtonDisableTTS2.Checked = Settings1.Default.disableTTSSetting; //off
             rjToggleButtonAsTranslated2.Checked = Settings1.Default.wordsTranslateVRCSetting;
             rjToggleButtonHideDelay2.Checked = Settings1.Default.hideDelaySetting;//off
-            textBoxErase.Text = Settings1.Default.hideDelayValue;      
+            textBoxErase.Text = Settings1.Default.hideDelayValue;
             richTextBox6.Text = Settings1.Default.phraseListValue;
             rjToggleButtonPhraseList2.Checked = Settings1.Default.phraseListBoolSetting;
             YourSubscriptionKey = Settings1.Default.yourKey;
             YourServiceRegion = Settings1.Default.yourRegion;
             rjToggleButtonKeyRegion2.Checked = Settings1.Default.remember;
             rjToggleButton3.Checked = Settings1.Default.EmojiSetting;
-            rjToggleButtonCurrentSong.Checked= Settings1.Default.SpotifyOutputSetting;
+            rjToggleButtonCurrentSong.Checked = Settings1.Default.SpotifyOutputSetting;
             HRInternalValue = Convert.ToInt32(Settings1.Default.HRIntervalSetting);
-             heartRatePort = Convert.ToInt32(Settings1.Default.HRPortSetting);
+            heartRatePort = Convert.ToInt32(Settings1.Default.HRPortSetting);
             rjToggleButton2.Checked = Settings1.Default.BPMSpamSetting;
             comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
             comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
@@ -422,11 +422,15 @@ namespace OSCVRCWiz
             comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
             comboLiteOutput.SelectedIndex = Settings1.Default.BuiltInOutputSetting;
 
-           rjToggleButtonPeriodic.Checked = Settings1.Default.SpotifyPeriodicallySetting;
-            rjToggleButtonSpotifySpam.Checked= Settings1.Default.SpotifySpamSetting;
+            rjToggleButtonPeriodic.Checked = Settings1.Default.SpotifyPeriodicallySetting;
+            rjToggleButtonSpotifySpam.Checked = Settings1.Default.SpotifySpamSetting;
 
             textBoxSpotifyTime.Text = Settings1.Default.SpotifyTimerIntervalSetting;
             timer1.Interval = Int32.Parse(textBoxSpotifyTime.Text.ToString());
+
+            rjToggleButtonCancelAudio.Checked = Settings1.Default.AudioCancelSetting;
+
+            textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
 
 
             this.Invoke((MethodInvoker)delegate ()
@@ -453,31 +457,34 @@ namespace OSCVRCWiz
             Settings1.Default.disableTTSSetting = rjToggleButtonDisableTTS2.Checked;
             Settings1.Default.wordsTranslateVRCSetting = rjToggleButtonAsTranslated2.Checked;
             Settings1.Default.hideDelaySetting = rjToggleButtonHideDelay2.Checked;
-            Settings1.Default.hideDelayValue = textBoxErase.Text.ToString(); 
+            Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
             Settings1.Default.phraseListValue = richTextBox6.Text.ToString();
             Settings1.Default.phraseListBoolSetting = rjToggleButtonPhraseList2.Checked;
-            Settings1.Default.MicName =comboBoxInput.SelectedItem.ToString();
+            Settings1.Default.MicName = comboBoxInput.SelectedItem.ToString();
             Settings1.Default.SpeakerName = comboBoxOutput.SelectedItem.ToString();
             Settings1.Default.EmojiSetting = rjToggleButton3.Checked;
             Settings1.Default.SpotifyOutputSetting = rjToggleButtonCurrentSong.Checked;
             Settings1.Default.HRIntervalSetting = HRInternalValue.ToString();
             Settings1.Default.HRPortSetting = heartRatePort.ToString();
             Settings1.Default.BPMSpamSetting = rjToggleButton2.Checked;
-             Settings1.Default.voiceBoxSetting= comboBox2.SelectedIndex;
+            Settings1.Default.voiceBoxSetting = comboBox2.SelectedIndex;
             Settings1.Default.styleBoxSetting = comboBox1.SelectedIndex;
-             Settings1.Default.langToBoxSetting = comboBox3.SelectedIndex;
+            Settings1.Default.langToBoxSetting = comboBox3.SelectedIndex;
             Settings1.Default.langSpokenSetting = comboBox4.SelectedIndex;
-              Settings1.Default.pitchSetting= comboBoxPitch.SelectedIndex;
-             Settings1.Default.volumeSetting= comboBoxVolume.SelectedIndex;
-             Settings1.Default.rateSetting= comboBoxRate.SelectedIndex;
+            Settings1.Default.pitchSetting = comboBoxPitch.SelectedIndex;
+            Settings1.Default.volumeSetting = comboBoxVolume.SelectedIndex;
+            Settings1.Default.rateSetting = comboBoxRate.SelectedIndex;
             Settings1.Default.STTTSContinuous = rjToggleButton4.Checked;
-             Settings1.Default.useBuiltInSetting= rjToggleButtonLiteMode.Checked;
-            Settings1.Default.BuiltInVoiceSetting= comboBoxLite.SelectedIndex;
-            Settings1.Default.BuiltInOutputSetting= comboLiteOutput.SelectedIndex;
+            Settings1.Default.useBuiltInSetting = rjToggleButtonLiteMode.Checked;
+            Settings1.Default.BuiltInVoiceSetting = comboBoxLite.SelectedIndex;
+            Settings1.Default.BuiltInOutputSetting = comboLiteOutput.SelectedIndex;
 
             Settings1.Default.SpotifyPeriodicallySetting = rjToggleButtonPeriodic.Checked;
             Settings1.Default.SpotifySpamSetting = rjToggleButtonSpotifySpam.Checked;
-            Settings1.Default.SpotifyTimerIntervalSetting= textBoxSpotifyTime.Text.ToString();
+            Settings1.Default.SpotifyTimerIntervalSetting = textBoxSpotifyTime.Text.ToString();
+
+            Settings1.Default.AudioCancelSetting = rjToggleButtonCancelAudio.Checked;
+            Settings1.Default.cultureInfoSetting= textBoxCultureInfo.Text.ToString();
 
             Settings1.Default.Save();
         }
@@ -500,7 +507,7 @@ namespace OSCVRCWiz
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButtonProfan.Checked == true)
+            if (rjToggleButtonProfan.Checked == true)
             {
                 profanityFilter = true;
             }
@@ -511,13 +518,13 @@ namespace OSCVRCWiz
         }
         private void buttonErase_Click(object sender, EventArgs e)
         {
-           
-                this.Invoke((MethodInvoker)delegate ()
-                {
-                    eraseDelay = Int32.Parse(textBoxErase.Text.ToString());
-                    Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
-                    Settings1.Default.Save();
-                });
+
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                eraseDelay = Int32.Parse(textBoxErase.Text.ToString());
+                Settings1.Default.hideDelayValue = textBoxErase.Text.ToString();
+                Settings1.Default.Save();
+            });
         }
         private async void TTSButton_Click(object sender, EventArgs e)//TTS
         {
@@ -527,7 +534,7 @@ namespace OSCVRCWiz
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Speech Provider' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Speech Provider' tab]");
             }
             if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
-            {      
+            {
                 var lite = new WindowsBuiltInSTTTS();
                 Task.Run(() => lite.TTSButtonLiteClick(this));
             }
@@ -551,7 +558,7 @@ namespace OSCVRCWiz
             else
             {
                 Task.Run(() => doSpeechTTS());
-            }       
+            }
         }
         private void doSpeechTTS()
         {
@@ -649,12 +656,15 @@ namespace OSCVRCWiz
             var ot = new OutputText();
             //Send Text to Vrchat
             if (rjToggleButtonLog.Checked == true)
-            { 
+            {
                 ot.outputLog(this, text);
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-                TextSynthesis.SpeechCt.Cancel();
+               if( rjToggleButtonCancelAudio.Checked == true)
+                {
+                    TextSynthesis.SpeechCt.Cancel();
+                }
                 TextSynthesis.SpeechCt = new();
                 _ = Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice, TextSynthesis.SpeechCt.Token));//new
             }
@@ -698,7 +708,7 @@ namespace OSCVRCWiz
         private void iconButton2_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(tabPage1);//sttts
-            
+
         }
 
         private void iconButton4_Click(object sender, EventArgs e)
@@ -737,7 +747,7 @@ namespace OSCVRCWiz
 
         private void metroTrackBar1_ValueChanged(object sender, EventArgs e)
         {
-           // System.Diagnostics.Debug.WriteLine(metroTrackBar1.Value);
+            // System.Diagnostics.Debug.WriteLine(metroTrackBar1.Value);
         }
 
         private void comboBoxPara_SelectedIndexChanged(object sender, EventArgs e)
@@ -753,7 +763,7 @@ namespace OSCVRCWiz
         }
         private void comboBoxInput_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentInputDevice= micIDs[comboBoxInput.SelectedIndex];
+            currentInputDevice = micIDs[comboBoxInput.SelectedIndex];
             currentInputDeviceName = comboBoxInput.SelectedItem.ToString();
             System.Diagnostics.Debug.WriteLine("mic changed", currentInputDevice);
 
@@ -774,7 +784,7 @@ namespace OSCVRCWiz
 
         private void timerSpotify_Tick(object sender, EventArgs e)
         {
-                Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
+            Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
         }
 
         private void rjToggleButtonCurrentSong_CheckedChanged(object sender, EventArgs e)
@@ -810,7 +820,7 @@ namespace OSCVRCWiz
         }
         private void doTimerTick()
         {
-           // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
+            // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
             var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
             pauseBPM = false;
             pauseSpotify = false;
@@ -828,17 +838,17 @@ namespace OSCVRCWiz
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PopupForm test  = new PopupForm();
+            PopupForm test = new PopupForm();
             test.BackColor = Color.Black;
             test.TransparencyKey = Color.Black;
 
             test.Show(this);
         }
-       
+
 
         private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButton1.Checked == true)
+            if (rjToggleButton1.Checked == true)
             {
 
                 stopBPM = false;
@@ -852,11 +862,11 @@ namespace OSCVRCWiz
         private void button7_Click(object sender, EventArgs e)
         {
             Task.Run(() => HeartbeatAddon.OSCRecieveHeartRate(this));
-            
+
         }
         private void rjToggleButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButton2.Checked == true)
+            if (rjToggleButton2.Checked == true)
             {
                 BPMSpamLog = true;
             }
@@ -910,7 +920,7 @@ namespace OSCVRCWiz
         private void button4_Click(object sender, EventArgs e)
         {
             heartRatePort = Convert.ToInt32(textBoxHRPort.Text.ToString());
-            
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -949,7 +959,7 @@ namespace OSCVRCWiz
 
             if (rjToggleButtonOSC.Checked == true)
             {
-                Task.Run(() => ot.outputVRChat(this, text, "tts")); 
+                Task.Run(() => ot.outputVRChat(this, text, "tts"));
             }
         }
 
@@ -961,20 +971,20 @@ namespace OSCVRCWiz
             int counter = 1;
             foreach (var word in words)
             {
-                if(counter ==1)
+                if (counter == 1)
                 {
                     synthesizerLite.SelectVoice(word);
-                    System.Diagnostics.Debug.WriteLine(counter +": "+ word + "///////////////////////////////////////////");
+                    System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
 
                 }
-                if(counter ==2)
+                if (counter == 2)
                 {
                     CultureSelected = word;
-                    System.Diagnostics.Debug.WriteLine(counter + ": " + word+"///////////////////////////////////////////");
+                    System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
                 }
-                counter++;             
+                counter++;
             }
-     
+
         }
         private void richTextBox3_TextChanged(object sender, EventArgs e)
         {
@@ -1000,7 +1010,7 @@ namespace OSCVRCWiz
         private void iconButton14_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://twitter.com/Wizard_VR");
-        
+
         }
 
         private void iconButton15_Click(object sender, EventArgs e)
@@ -1016,6 +1026,11 @@ namespace OSCVRCWiz
         private void iconButton17_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard");
+
+        }
+        private void iconButton18_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", SpotifyAddon.spotifyurllink);
 
         }
     }

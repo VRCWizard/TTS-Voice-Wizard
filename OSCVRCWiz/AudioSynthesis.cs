@@ -32,6 +32,11 @@ namespace OSCVRCWiz
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
 
+              //  Dictionary<string, string> myExpressions = new Dictionary<string, string>(); //update code to use dictionaries to make it more clean and easier to add more voices etc.
+              //  myExpressions.Add("", "");
+             //   Dictionary<string, string> myVoices =new Dictionary<string, string>();
+
+
                 string angry = "<mstts:express-as style=\"angry\">"; //1
                 string cheerful = "<mstts:express-as style=\"cheerful\">"; //2
                 string sad = "<mstts:express-as style=\"sad\">";//3
@@ -370,7 +375,7 @@ namespace OSCVRCWiz
 
                 _ = synthesizer.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
                 ct.Register(async () => await synthesizer.StopSpeakingAsync());
-              
+
             }
             catch (Exception ex)
             {

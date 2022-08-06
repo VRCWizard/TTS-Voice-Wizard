@@ -62,7 +62,13 @@ namespace OSCVRCWiz
 
 
         }
-        public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
+        public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring)
+        {
+            var messageSpeechBubble = new SharpOSC.OscMessage("/avatar/parameters/PlaceHolder", textstring);
+            MainForm.sender3.Send(messageSpeechBubble);
+
+        }
+            public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
         {
 
 
@@ -946,5 +952,6 @@ namespace OSCVRCWiz
 
 
         }
+
     }
 }

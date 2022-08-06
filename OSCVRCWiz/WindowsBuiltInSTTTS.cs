@@ -73,7 +73,11 @@ namespace OSCVRCWiz
             {
                 string cultureHere = "en-US";
 
-                cultureHere = MainForm.CultureSelected;
+              //  cultureHere = MainForm.CultureSelected;
+              if(MainForm.textBoxCultureInfo.Text.ToString() !="default")
+            {
+                cultureHere = MainForm.textBoxCultureInfo.Text.ToString();
+            }
 
                 try
                 {

@@ -20,7 +20,9 @@ namespace OSCVRCWiz
         private static string globalVerifier = "";
         static bool spotifyConnect = false;
         public static string title = "";
-        
+        public static string spotifyurllink = "https://open.spotify.com/";
+
+
 
         public static async Task getCurrentSongInfo(VoiceWizardWindow MainForm)
         {
@@ -34,14 +36,14 @@ namespace OSCVRCWiz
             {
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine("----Token refreshed Attempt-----");
+                    System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
                     PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
                     PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
                     myClient = new SpotifyClient(refreshResponse.AccessToken);
                     Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
                     Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
                     Settings1.Default.Save();
-                    System.Diagnostics.Debug.WriteLine("----Token refreshed Successful-----");
+                    System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
 
                     if (spotifyConnect == false)
                     {
@@ -57,7 +59,7 @@ namespace OSCVRCWiz
 
                 catch (APIException ex)
                 {
-                    System.Diagnostics.Debug.WriteLine("-----Token doesn't need to refresh-----" + ex.Response.Body.ToString());
+                    System.Diagnostics.Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
 
                 }
                 FullTrack m_currentTrack;
@@ -75,7 +77,7 @@ namespace OSCVRCWiz
                     
                     if (m_currentTrack != null)
                     {
-
+                        //spotifyurllink = m_currentTrack.PreviewUrl; //does not seem to work correctly
                         title = m_currentTrack.Name;
                         
 
