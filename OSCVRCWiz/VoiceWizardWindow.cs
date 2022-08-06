@@ -649,12 +649,14 @@ namespace OSCVRCWiz
             var ot = new OutputText();
             //Send Text to Vrchat
             if (rjToggleButtonLog.Checked == true)
-            {
+            { 
                 ot.outputLog(this, text);
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));//new
+                TextSynthesis.SpeechCt.Cancel();
+                TextSynthesis.SpeechCt = new();
+                _ = Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice, TextSynthesis.SpeechCt.Token));//new
             }
             if (rjToggleButtonOSC.Checked == true)
             {
@@ -668,9 +670,7 @@ namespace OSCVRCWiz
             if (rjToggleButtonClear.Checked == true)
             {
                 richTextBox3.Clear();
-
             }
-
         }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using Microsoft.CognitiveServices.Speech.Audio;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,29 +11,27 @@ namespace OSCVRCWiz
 {
     public class AudioSynthesis
     {
-        
+
 
         //TTS
-        public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm,string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice, CancellationToken ct = default) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
 
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
-               // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
-               config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
+                // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
+                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
 
                 // Note: if only language is set, the default voice of that language is chosen.
-                //  config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
+                // config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
                 // The voice setting will overwrite the language setting.
                 // The voice setting will not overwrite the voice element in input SSML.
-                //config.SpeechSynthesisVoiceName = "en-US-JennyNeural";
+                // config.SpeechSynthesisVoiceName = "en-US-JennyNeural";
                 // config.SpeechSynthesisVoiceName = "en-US-SaraNeural";
 
-
-
-
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
+
                 string angry = "<mstts:express-as style=\"angry\">"; //1
                 string cheerful = "<mstts:express-as style=\"cheerful\">"; //2
                 string sad = "<mstts:express-as style=\"sad\">";//3
@@ -137,7 +136,7 @@ namespace OSCVRCWiz
 
                 string dutchFemale = "<voice name=\"nl-BE-DenaNeural\">";//
                 string dutchMale = "<voice name=\"nl-BE-ArnaudNeural\">";//
-                
+
                 string filipinoFemale = "<voice name=\"fil-PH-BlessicaNeural\">";//
                 string filipinoMale = "<voice name=\"fil-PH-AngeloNeural\">";//
                 string finnishFemale = "<voice name=\"fi-FI-NooraNeural\">";//
@@ -161,7 +160,7 @@ namespace OSCVRCWiz
                 string portugueseMale = "<voice name=\"pt-BR-AntonioNeural\">";//
                 string russianFemale = "<voice name=\"ru-RU-DariyaNeural\">";//
                 string russianMale = "<voice name=\"ru-RU-DmitryNeural\">";//
-                
+
                 string swedishFemale = "<voice name=\"sv-SE-HilleviNeural\">";//
                 string swedishMale = "<voice name=\"sv-SE-MattiasNeural\">";//
                 string thaiFemale = "<voice name=\"th-TH-AcharaNeural\">";//
@@ -171,29 +170,21 @@ namespace OSCVRCWiz
                 string vietnameseFemale = "<voice name=\"vi-VN-HoaiMyNeural\">";//
                 string vietnameseMale = "<voice name=\"vi-VN-NamMinhNeural\">";//
 
-
-
-                System.Diagnostics.Debug.WriteLine("rate: "+rate);
+                System.Diagnostics.Debug.WriteLine("rate: " + rate);
                 System.Diagnostics.Debug.WriteLine("pitch: " + pitch);
                 System.Diagnostics.Debug.WriteLine("volume: " + volume);
                 System.Diagnostics.Debug.WriteLine("voice: " + voice);
                 System.Diagnostics.Debug.WriteLine("style: " + style);
                 System.Diagnostics.Debug.WriteLine("text: " + text);
 
-
-
-
-
-
-
                 var audioConfig = AudioConfig.FromSpeakerOutput(MainForm.currentOutputDevice);
-                if(MainForm.currentOutputDeviceName== "Default")
+                if (MainForm.currentOutputDeviceName == "Default")
                 {
                     audioConfig = AudioConfig.FromDefaultSpeakerOutput();
 
                 }
 
-                var synthesizer = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config,audioConfig);
+                var synthesizer = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
 
                 string ssml0 = "<speak version=\"1.0\"";
                 ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
@@ -216,7 +207,7 @@ namespace OSCVRCWiz
 
                     case "Amber": ssml0 += amber; ; break;
                     case "Ana": ssml0 += ana; ; break;
-                    
+
                     case "Ashley": ssml0 += ashley; ; break;
                     case "Brandon": ssml0 += brandon; ; break;
                     case "Christopher": ssml0 += christopher; ; break;
@@ -227,7 +218,7 @@ namespace OSCVRCWiz
                     case "Michelle": ssml0 += michelle; ; break;
                     case "Monica": ssml0 += monica; ; break;
 
-                    
+
 
                     case "Natasha (AU)": ssml0 += natashaAU; ; break;
                     case "William (AU)": ssml0 += williamAU; ; break;
@@ -249,7 +240,7 @@ namespace OSCVRCWiz
                     case "Oliver (UK) Preview": ssml0 += oliverUK; ; break;
                     case "Thomas (UK) Preview": ssml0 += thomasUK; ; break;
 
-                   
+
 
 
                     case "[Arabic] {Female} (Egypt)": ssml0 += arabicFemale_Egypt; ; break;
@@ -288,7 +279,7 @@ namespace OSCVRCWiz
                     case "[Korean] {Male}": ssml0 += koreanMale; ; break;
                     case "[Norwegian] {Female}": ssml0 += norwegianFemale; ; break;
                     case "[Norwegian] {Male}": ssml0 += norweigianMale; ; break;
-                    case "[Polish] {Female}": ssml0 +=polishFemale ; ; break;
+                    case "[Polish] {Female}": ssml0 += polishFemale; ; break;
                     case "[Polish] {Male}": ssml0 += polishMale; ; break;
                     case "[Portuguese] {Female}": ssml0 += portugueseFemale; ; break;
                     case "[Portuguese] {Male}": ssml0 += portugueseMale; ; break;
@@ -305,7 +296,7 @@ namespace OSCVRCWiz
                     case "[Ukrainian] {Female}": ssml0 += ukranianFemale; ; break;
                     case "[Ukrainian] {Male}": ssml0 += ukranianMale; ; break;
                     case "[Vietnamese] {Female}": ssml0 += vietnameseFemale; ; break;
-                    case "[Vietnamese] {Male}": ssml0 +=vietnameseMale ; ; break;
+                    case "[Vietnamese] {Male}": ssml0 += vietnameseMale; ; break;
 
 
 
@@ -337,7 +328,7 @@ namespace OSCVRCWiz
                         case "unfriendly": ssml0 += unfriendly; break;
                         case "whispering": ssml0 += whispering; break;
 
-                    } 
+                    }
 
                 }
                 if (rate != "default")
@@ -376,18 +367,15 @@ namespace OSCVRCWiz
                 ssml0 += "</speak>";
 
                 System.Diagnostics.Debug.WriteLine(ssml0);
-                await synthesizer.SpeakSsmlAsync(ssml0);
 
-          }
-          catch (Exception ex)
-          {
-                MessageBox.Show("No valid subscription key given or speech service has been disabled; "+ ex.Message.ToString());
-
-           }
-
-
-
+                _ = synthesizer.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+                ct.Register(async () => await synthesizer.StopSpeakingAsync());
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No valid subscription key given or speech service has been disabled; " + ex.Message.ToString());
+            }
         }
-       
     }
 }
