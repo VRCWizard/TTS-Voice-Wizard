@@ -77,9 +77,9 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 - Setup: 
     - You will then need to change the Apps **output device**  to the **virtual cable** which will allow you to play the System Speech TTS though your microphone.
     - System Speech will always use default microphone. You can set this through control panel or for this app specifically through window sound settings
-        - WINDOWS 10- Settings > Sound > App volume and device preferences
-        - WINDOWS 11- Settings > Sound > Volume Mixer
-        (find TTS voice wizard and change the input device to your microphone)
+        - WINDOWS 10- Settings > Sound > App volume and device preferences<br />
+        - WINDOWS 11- Settings > Sound > Volume Mixer<br />
+        (find TTS voice wizard and change the input device to your microphone)<br />
     ![image](https://user-images.githubusercontent.com/101527472/182208586-3d159102-45c0-4317-be47-be9957bd77f2.png)
 
 
