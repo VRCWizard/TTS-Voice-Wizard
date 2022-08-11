@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OSCVRCWiz" GeneratedClassName="Settings1">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="Settings1">
   <Profiles />
   <Settings>
     <Setting Name="yourKey" Type="System.String" Scope="User">
@@ -116,8 +116,8 @@
     <Setting Name="BuiltInVoiceSetting" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="BuiltInOutputSetting" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="BuiltInOutputSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="SpotifyPeriodicallySetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -132,7 +132,22 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="cultureInfoSetting" Type="System.String" Scope="User">
-      <Value Profile="(Default)">default</Value>
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="bannerSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SpotifyLegacySetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SpotifyKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SendVRCChatBoxSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ChatBoxKeyboardSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

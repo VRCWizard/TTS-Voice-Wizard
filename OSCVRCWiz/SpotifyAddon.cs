@@ -12,7 +12,8 @@ namespace OSCVRCWiz
     public class SpotifyAddon 
 
     {
-        private static string clientId = "8ed3657eca864590843f45a659ec2976"; //TTSVoiceWizard Spotify Client ID
+        private static string clientIdLegacy = "8ed3657eca864590843f45a659ec2976"; //TTSVoiceWizard Spotify Client ID
+        //private static string clientIdLegacy = "8ed3657eca864590843f45a659ec2976"; //TTSVoiceWizard Spotify Client ID
         private static EmbedIOAuthServer _server;
         private static SpotifyClient myClient =null;
         private static PKCETokenResponse myPKCEToken = null;
@@ -21,6 +22,7 @@ namespace OSCVRCWiz
         static bool spotifyConnect = false;
         public static string title = "";
         public static string spotifyurllink = "https://open.spotify.com/";
+        public static bool legacyState = false;
 
 
 
@@ -36,14 +38,30 @@ namespace OSCVRCWiz
             {
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
-                    PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
-                    PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
-                    myClient = new SpotifyClient(refreshResponse.AccessToken);
-                    Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
-                    Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
-                    Settings1.Default.Save();
-                    System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+                    if (legacyState == true)
+                    {
+                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
+                        PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientIdLegacy, Settings1.Default.PKCERefreshToken);
+                        PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+                        myClient = new SpotifyClient(refreshResponse.AccessToken);
+                        Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
+                        Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
+                        Settings1.Default.Save();
+                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+                    }
+                    else
+                    {
+                        string clientId = Settings1.Default.SpotifyKey;
+                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
+                        PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
+                        PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+                        myClient = new SpotifyClient(refreshResponse.AccessToken);
+                        Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
+                        Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
+                        Settings1.Default.Save();
+                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+
+                    }
 
                     if (spotifyConnect == false)
                     {
@@ -142,9 +160,17 @@ namespace OSCVRCWiz
                     if(MainForm.rjToggleButtonSpotifySpam.Checked==true)
                     {
                         Task.Run(() => ot.outputLog(MainForm, theString));
-                    }        
-                    Task.Run(() => ot.outputVRChat(MainForm, theString,"spotify"));
-                   // lastSong = title;
+                    }
+                    if (MainForm.rjToggleButtonOSC.Checked == true)
+                    {
+                        Task.Run(() => ot.outputVRChat(MainForm, theString, "spotify"));
+                    }
+                    if (MainForm.rjToggleButtonChatBox.Checked == true)
+                    {
+                        Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
+
+                    }
+                    // lastSong = title;
                     MainForm.justShowTheSong = false;
                     
                 }
@@ -187,13 +213,32 @@ namespace OSCVRCWiz
             var (verifier, challenge) = PKCEUtil.GenerateCodes();
             globalVerifier = verifier;
 
-            var loginRequest = new LoginRequest(_server.BaseUri, clientId,LoginRequest.ResponseType.Code)
+          //  var loginRequest = new LoginRequest(_server.BaseUri, clientId,LoginRequest.ResponseType.Code)
+                if(legacyState==true)
             {
-                CodeChallengeMethod = "S256",
-                CodeChallenge = challenge,
-                Scope = new[] { Scopes.UserReadCurrentlyPlaying }
-            };
-             BrowserUtil.Open(loginRequest.ToUri());
+                var loginRequest = new LoginRequest(_server.BaseUri, clientIdLegacy, LoginRequest.ResponseType.Code)
+                {
+                    CodeChallengeMethod = "S256",
+                    CodeChallenge = challenge,
+                    Scope = new[] { Scopes.UserReadCurrentlyPlaying }
+                };
+                BrowserUtil.Open(loginRequest.ToUri());
+
+            }
+            else
+            {
+                string clientId = Settings1.Default.SpotifyKey;
+                var loginRequest = new LoginRequest(_server.BaseUri, clientId, LoginRequest.ResponseType.Code)
+                {
+                    CodeChallengeMethod = "S256",
+                    CodeChallenge = challenge,
+                    Scope = new[] { Scopes.UserReadCurrentlyPlaying }
+                };
+                BrowserUtil.Open(loginRequest.ToUri());
+
+            }
+
+          
         }
 
         // This method should be called from your web-server when the user visits "http://localhost:5000/callback"
@@ -201,11 +246,28 @@ namespace OSCVRCWiz
         {
             System.Diagnostics.Debug.WriteLine("Getcallback code: " + response.Code.ToString());
             // Note that we use the verifier calculated above!
-             var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+            // var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientIdLegacy, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+           // var vw = new VoiceWizardWindow();
 
-            Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
-            Settings1.Default.PKCEAccessToken= initialResponse.AccessToken;
-            Settings1.Default.Save();
+            if (legacyState== true)
+            {
+                var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientIdLegacy, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+                Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
+                Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
+                Settings1.Default.Save();
+
+            }
+            else
+            {
+                string clientId = Settings1.Default.SpotifyKey;
+                var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+                Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
+                Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
+                Settings1.Default.Save();
+
+            }
+
+              
 
 
 

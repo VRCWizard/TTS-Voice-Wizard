@@ -48,14 +48,19 @@ namespace OSCVRCWiz
                                     ot.outputLog(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
 
                                 }
-                                if(MainForm.rjToggleButton3.Checked == true)
+                                if(MainForm.rjToggleButton3.Checked == true && MainForm.rjToggleButtonOSC.Checked == true)
                                 {
                                     ot.outputVRChat(MainForm, "ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
 
                                 }
-                                if(MainForm.rjToggleButton3.Checked == false)
+                                if(MainForm.rjToggleButton3.Checked == false &&MainForm.rjToggleButtonOSC.Checked==true)
                                 {
                                    ot.outputVRChat(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+
+                                }
+                                if (MainForm.rjToggleButtonChatBox.Checked == true)
+                                {
+                                    Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
 
                                 }
 

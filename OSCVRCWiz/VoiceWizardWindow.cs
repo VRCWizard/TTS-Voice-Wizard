@@ -55,6 +55,7 @@ namespace OSCVRCWiz
         public static bool BPMSpamLog = true;
         public static int HRInternalValue = 5;
         public static string TTSLiteText = "";
+        
 
         public string CultureSelected = "en-US";//free
         public System.Speech.Synthesis.SpeechSynthesizer synthesizerLite;//free
@@ -136,6 +137,8 @@ namespace OSCVRCWiz
                 comboBoxLite.Items.Add(info.Name + "|" + info.Culture);
             }
             TTSLiteText = richTextBox3.Text.ToString();
+
+           // webView21.AutoScrollOffset(0, 109);
             int id = 0;// The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
 
@@ -419,8 +422,30 @@ namespace OSCVRCWiz
             comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
             rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
             comboLiteInput.SelectedIndex = 0;
+
             comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
-            comboLiteOutput.SelectedIndex = Settings1.Default.BuiltInOutputSetting;
+            comboLiteOutput.SelectedIndex = 0;
+
+            rjToggleButton5.Checked = Settings1.Default.bannerSetting;
+            if(rjToggleButton5.Checked==true)
+            {
+                webView21.Dispose();
+                button10.Dispose();
+                button9.Dispose();
+            }
+
+            try
+            {
+                comboLiteOutput.SelectedItem = Settings1.Default.BuiltInOutputSetting;
+
+            }
+            catch (Exception ex)
+            {
+                comboLiteOutput.SelectedIndex = 0;
+
+            }
+            
+           // comboLiteOutput.SelectedIndex = Settings1.Default.BuiltInOutputSetting;
 
             rjToggleButtonPeriodic.Checked = Settings1.Default.SpotifyPeriodicallySetting;
             rjToggleButtonSpotifySpam.Checked = Settings1.Default.SpotifySpamSetting;
@@ -431,6 +456,14 @@ namespace OSCVRCWiz
             rjToggleButtonCancelAudio.Checked = Settings1.Default.AudioCancelSetting;
 
             textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
+
+            textBoxSpotKey.Text = Settings1.Default.SpotifyKey;
+            rjToggleSpotLegacy.Checked = Settings1.Default.SpotifyLegacySetting;
+            SpotifyAddon.legacyState = rjToggleSpotLegacy.Checked;
+
+            rjToggleButtonChatBox.Checked = Settings1.Default.SendVRCChatBoxSetting;
+            rjToggleButtonShowKeyboard.Checked = Settings1.Default.ChatBoxKeyboardSetting;
+
 
 
             this.Invoke((MethodInvoker)delegate ()
@@ -477,7 +510,7 @@ namespace OSCVRCWiz
             Settings1.Default.STTTSContinuous = rjToggleButton4.Checked;
             Settings1.Default.useBuiltInSetting = rjToggleButtonLiteMode.Checked;
             Settings1.Default.BuiltInVoiceSetting = comboBoxLite.SelectedIndex;
-            Settings1.Default.BuiltInOutputSetting = comboLiteOutput.SelectedIndex;
+            Settings1.Default.BuiltInOutputSetting = comboLiteOutput.SelectedItem.ToString();
 
             Settings1.Default.SpotifyPeriodicallySetting = rjToggleButtonPeriodic.Checked;
             Settings1.Default.SpotifySpamSetting = rjToggleButtonSpotifySpam.Checked;
@@ -485,6 +518,14 @@ namespace OSCVRCWiz
 
             Settings1.Default.AudioCancelSetting = rjToggleButtonCancelAudio.Checked;
             Settings1.Default.cultureInfoSetting= textBoxCultureInfo.Text.ToString();
+
+            Settings1.Default.bannerSetting = rjToggleButton5.Checked;
+
+            Settings1.Default.SpotifyKey = textBoxSpotKey.Text.ToString();
+            Settings1.Default.SpotifyLegacySetting = rjToggleSpotLegacy.Checked;
+
+            Settings1.Default.SendVRCChatBoxSetting= rjToggleButtonChatBox.Checked;
+            Settings1.Default.ChatBoxKeyboardSetting= rjToggleButtonShowKeyboard.Checked;
 
             Settings1.Default.Save();
         }
@@ -545,6 +586,14 @@ namespace OSCVRCWiz
         }
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
+            if(rjToggleButtonChatBox.Checked==true)
+            {
+                var typingbubble = new SharpOSC.OscMessage("/chatbox/typing", true);
+                sender3.Send(typingbubble);
+
+            }
+           
+
             if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
             {
                 var ot = new OutputText();
@@ -677,7 +726,14 @@ namespace OSCVRCWiz
                 Task.Run(() => ot.outputVRChat(this, text, "tts")); //original
                                                                     // ot.outputVRChat(this, text);//new
             }
-            if (rjToggleButtonClear.Checked == true)
+            if (rjToggleButtonChatBox.Checked == true)
+            {
+                VoiceWizardWindow.pauseBPM = true;
+                VoiceWizardWindow.pauseSpotify = true;
+                Task.Run(() => ot.outputVRChatSpeechBubbles(this, text, "tts")); //original
+
+            }
+                if (rjToggleButtonClear.Checked == true)
             {
                 richTextBox3.Clear();
             }
@@ -719,7 +775,7 @@ namespace OSCVRCWiz
 
         private void iconButton5_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(tabPage2);//settings
+            tabControl1.SelectTab(SettingsNew);//settings
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
@@ -821,10 +877,15 @@ namespace OSCVRCWiz
         private void doTimerTick()
         {
             // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
-            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+            
             pauseBPM = false;
             pauseSpotify = false;
-            sender3.Send(message0);
+            if(rjToggleButtonOSC.Checked==true)
+            {
+                var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
+                sender3.Send(message0);
+            }
+            
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
 
         }
@@ -961,6 +1022,11 @@ namespace OSCVRCWiz
             {
                 Task.Run(() => ot.outputVRChat(this, text, "tts"));
             }
+            if (rjToggleButtonChatBox.Checked == true)
+            {
+                Task.Run(() => ot.outputVRChatSpeechBubbles(this, text, "tts")); //original
+
+            }
         }
 
         private void comboBoxLite_SelectedIndexChanged(object sender, EventArgs e)
@@ -1031,6 +1097,57 @@ namespace OSCVRCWiz
         private void iconButton18_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", SpotifyAddon.spotifyurllink);
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Uri uri = new Uri("https://voicewizardsponsors.carrd.co/");
+            webView21.Source = uri;
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+           // if (button10.Text == "X")
+          // {
+                webView21.Dispose();
+                button10.Dispose();
+                button9.Dispose();
+
+           // }
+
+
+        }
+
+        private void rjToggleSpotLegacy_CheckedChanged(object sender, EventArgs e)
+        {
+            SpotifyAddon.legacyState = rjToggleSpotLegacy.Checked;
+        }
+
+        private void textBoxSpotKey_TextChanged(object sender, EventArgs e)
+        {
+            Settings1.Default.SpotifyKey = textBoxSpotKey.Text.ToString();
+            Settings1.Default.Save();
+        }
+
+        private void iconButton20_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(General);//settings
+        }
+
+        private void iconButton19_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(TextOut);//settings
+        }
+
+        private void iconButton18_Click_1(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(AzureSet);//settings
+        }
+
+        private void iconButton21_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(SystemSet);//settings
 
         }
     }

@@ -142,6 +142,9 @@ namespace OSCVRCWiz
                 string dutchFemale = "<voice name=\"nl-BE-DenaNeural\">";//
                 string dutchMale = "<voice name=\"nl-BE-ArnaudNeural\">";//
 
+                string estonianFemale = "<voice name=\"et-EE-AnuNeural\">";//
+                string estonianMale = "<voice name=\"et-EE-KertNeural\">";//
+
                 string filipinoFemale = "<voice name=\"fil-PH-BlessicaNeural\">";//
                 string filipinoMale = "<voice name=\"fil-PH-AngeloNeural\">";//
                 string finnishFemale = "<voice name=\"fi-FI-NooraNeural\">";//
@@ -257,6 +260,10 @@ namespace OSCVRCWiz
                     case "[Danish] {Male}": ssml0 += danishMale; ; break;
                     case "[Dutch] {Female}": ssml0 += dutchFemale; ; break;
                     case "[Dutch] {Male}": ssml0 += dutchMale; ; break;
+
+
+                    case "[Estonian] {Female}": ssml0 += estonianFemale; ; break;
+                    case "[Estonian] {Male}": ssml0 += estonianMale; ; break;
 
                     case "[French] {Female}": ssml0 += brigitteFrench; ; break;
                     case "[French] {Male}": ssml0 += jeromeFrench; ; break;

@@ -45,6 +45,7 @@ namespace OSCVRCWiz
                     case "Danish [da-DK]": fromLanguage = "da-DK"; break;
                     case "Dutch [nl-NL]": fromLanguage = "nl-NL"; break;
                     case "English [en-US] (Default)": fromLanguage = "en-US"; break;
+                    case "Estonian [et-EE]": fromLanguage = "et-EE"; break;
                     case "Filipino [fil-PH]": fromLanguage = "fil-PH"; break;
                     case "Finnish [fi-FI]": fromLanguage = "fi-FI"; break;
                     case "French [fr-FR]": fromLanguage = "fr-FR"; break;
@@ -74,6 +75,7 @@ namespace OSCVRCWiz
                     case "Danish [da]": toLanguage = "da"; break;
                     case "Dutch [nl]": toLanguage = "nl"; break;
                     case "English [en]": toLanguage = "en"; break;
+                    case "Estonian [et]": toLanguage = "et"; break;
                     case "Filipino [fil]": toLanguage = "fil"; break;
                     case "Finnish [fi]": toLanguage = "fi"; break;
                     case "French [fr]": toLanguage = "fr"; break;
@@ -190,6 +192,27 @@ namespace OSCVRCWiz
                                 Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
 
                             }
+                        }
+                        if (MainForm.rjToggleButtonChatBox.Checked == true)
+                        {
+                            VoiceWizardWindow.pauseBPM = true;
+                            if (MainForm.rjToggleButtonAsTranslated2.Checked == true) //changed from checkbox7
+                            {
+
+                                VoiceWizardWindow.pauseBPM = true;
+                                VoiceWizardWindow.pauseSpotify = true;
+                                Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                            }
+                            else
+                            {
+                                VoiceWizardWindow.pauseBPM = true;
+                                VoiceWizardWindow.pauseSpotify = true;
+                                Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                            }
+
+
                         }
 
                     }
@@ -344,6 +367,14 @@ namespace OSCVRCWiz
                         //ot.outputVRChat(MainForm, MainForm.dictationString);
                         _ = Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString, "tts"));
                     }
+                    if(MainForm.rjToggleButtonChatBox.Checked==true)
+                    {
+                        VoiceWizardWindow.pauseBPM = true;
+                        VoiceWizardWindow.pauseSpotify = true;
+                        //ot.outputVRChat(MainForm, MainForm.dictationString);
+                        _ = Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString, "tts"));
+
+                    }
                 }
 
                 if (MainForm.rjToggleButton4.Checked == true && continuousListening == false)
@@ -451,6 +482,27 @@ namespace OSCVRCWiz
                             Task.Run(() => ot.outputVRChat(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
 
                         }
+
+                    }
+                    if (MainForm.rjToggleButtonChatBox.Checked == true)
+                    {
+                        VoiceWizardWindow.pauseBPM = true;
+                        if (MainForm.rjToggleButtonAsTranslated2.Checked == true) //changed from checkbox7
+                        {
+
+                            VoiceWizardWindow.pauseBPM = true;
+                            VoiceWizardWindow.pauseSpotify = true;
+                            _ = Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                        }
+                        else
+                        {
+                            VoiceWizardWindow.pauseBPM = true;
+                            VoiceWizardWindow.pauseSpotify = true;
+                            Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+
+                        }
+
 
                     }
 
