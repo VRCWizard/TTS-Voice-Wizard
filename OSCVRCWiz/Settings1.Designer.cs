@@ -481,10 +481,10 @@ namespace OSCVRCWiz {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int BuiltInOutputSetting {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BuiltInOutputSetting {
             get {
-                return ((int)(this["BuiltInOutputSetting"]));
+                return ((string)(this["BuiltInOutputSetting"]));
             }
             set {
                 this["BuiltInOutputSetting"] = value;
@@ -541,13 +541,73 @@ namespace OSCVRCWiz {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string cultureInfoSetting {
             get {
                 return ((string)(this["cultureInfoSetting"]));
             }
             set {
                 this["cultureInfoSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool bannerSetting {
+            get {
+                return ((bool)(this["bannerSetting"]));
+            }
+            set {
+                this["bannerSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SpotifyLegacySetting {
+            get {
+                return ((bool)(this["SpotifyLegacySetting"]));
+            }
+            set {
+                this["SpotifyLegacySetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SpotifyKey {
+            get {
+                return ((string)(this["SpotifyKey"]));
+            }
+            set {
+                this["SpotifyKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SendVRCChatBoxSetting {
+            get {
+                return ((bool)(this["SendVRCChatBoxSetting"]));
+            }
+            set {
+                this["SendVRCChatBoxSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ChatBoxKeyboardSetting {
+            get {
+                return ((bool)(this["ChatBoxKeyboardSetting"]));
+            }
+            set {
+                this["ChatBoxKeyboardSetting"] = value;
             }
         }
     }

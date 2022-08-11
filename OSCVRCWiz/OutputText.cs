@@ -62,10 +62,22 @@ namespace OSCVRCWiz
 
 
         }
-        public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring)
+        public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring, string type)
         {
-            var messageSpeechBubble = new SharpOSC.OscMessage("/avatar/parameters/PlaceHolder", textstring);
+            var typingbubble = new SharpOSC.OscMessage("/chatbox/typing",false);//this is turned on as soon as you press the STTTS button and turned off here
+            var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, false);
+            if(MainForm.rjToggleButtonChatBox.Checked==true)
+            {
+                messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, true);
+
+            }
+
+            MainForm.sender3.Send(typingbubble);
             MainForm.sender3.Send(messageSpeechBubble);
+            if(MainForm.rjToggleButtonOSC.Checked==false)
+            {
+                MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+            }
 
         }
             public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)

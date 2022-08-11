@@ -57,44 +57,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox5.Text" xml:space="preserve">
-    <value>Current Version: v0.6.1 - August 3, 2022
-Changelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases)
-
-### Added
--  Voices
-    -  New preview voices added
-    -  New styles were added for the new voices and a few existing voices
-    -  Style naming scheme more accurate to actual names (For example, "Happy" is now "cheerful")
-
--  Audio Quality
-    -  specified high-fidelity RIFF format Riff24Khz16BitMonoPcm by setting SpeechSynthesisOutputFormat on the SpeechConfig for TTS
-        -  TTS now sounds higher quality and less muffled 
-        -  it only took 1 line of code why didn't i do this before XD
-        
- -  Spotify Feature Improvements
-     -  Text Collision Detection, prevent KAT text from being accidentally overridden halfway by another text output. For example, a TTS action outputting at the same time as a Spotify action used to cause half of the Spotify text to be cut off by the TTS text.
-    -  Spotify Feature can now display the current song periodically along with the duration and progress of the song.
-    -  Code refactoring
-    -  Changed changelog section format on dashboard tab.
-
-
-### Added Since v0.6.0
--  Fix: Spotify Feature is now paused until hide text delay is finished after a TTS action.
--  Dashboard now includes my socials</value>
-  </data>
   <data name="richTextBox2.Text" xml:space="preserve">
-    <value>Use TTS Voice Wizard's accessibily features to improve your gaming experience!
-
-  -You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.
-
-  -You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!
-
-  -You can translate what you say in one language to one of over 20 other support languages!
-
-  -There are over 50 different voices with various customization options so you can pick a voice that best suits you!
-
-  -Need Help? Join the discord.</value>
+    <value>Use TTS Voice Wizard's accessibility features to improve your gaming experience!
+  - You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.
+  - You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!
+  - You can translate what you say in one language to one of over 20 other support languages!
+  - There are over 50 different voices with various customization options so you can pick a voice that best suits you!
+  - Need help? Have suggestion? Just wanna chat with other users? Join the Discord!!!</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

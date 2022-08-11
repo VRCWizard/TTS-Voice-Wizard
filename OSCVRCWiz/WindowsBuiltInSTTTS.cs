@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Recognition;//free Windows
 using System.Speech;//free windows
+
 using System.Speech.Synthesis;//free windows
 using CSCore;
 using CSCore.MediaFoundation;
@@ -74,7 +75,7 @@ namespace OSCVRCWiz
                 string cultureHere = "en-US";
 
               //  cultureHere = MainForm.CultureSelected;
-              if(MainForm.textBoxCultureInfo.Text.ToString() !="default")
+              if(MainForm.textBoxCultureInfo.Text.ToString() !="")
             {
                 cultureHere = MainForm.textBoxCultureInfo.Text.ToString();
             }
@@ -146,7 +147,7 @@ namespace OSCVRCWiz
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("A speech recognition engine that supports that language-country code must be installed");
+                    MessageBox.Show("System Speech STT error:" + ex.Message.ToString()+" | (Most likely you are trying to use a language that is not installed on your PC, therefore you must add that language for more info check the FAQ in the discord)");
 
                 }
 
