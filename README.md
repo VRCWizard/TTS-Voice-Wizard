@@ -83,8 +83,9 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
     ![image](https://user-images.githubusercontent.com/101527472/182208586-3d159102-45c0-4317-be47-be9957bd77f2.png)
 
 
-# KillFrenzy Avatar Text
-- To have text output on your avatar in vrchat you must install killfrenzy96's Avatar Text Displayer <br />
+# How to get Text in VRChat
+- You can use the new VRChat Chatboxes by default or download Killfrenzy96's Avatar Text Displayer <br />
+- Another method which has text output on your avatar in VRChat is Killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 **Download KillFrenzy Avatar Text (KAT) latest release (supports 4, 8, or 16 sync parameters currently)**
 
