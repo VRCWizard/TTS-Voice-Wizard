@@ -85,9 +85,12 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 
 # How to get Text in VRChat
 - You can now use the new VRChat Chatboxes by default <br />
+    -  Make sure to turn on OSC from the VRChat radial menu
+
 - Another method which has text output on your avatar in VRChat is Killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 **Download KillFrenzy Avatar Text (KAT) latest release (supports 4, 8, or 16 sync parameters currently)**
+
 
 # Can I set hotkey on my controllers?
 - This feature is not avaliable as apart of this ATM but you can use this handy program! <br />
