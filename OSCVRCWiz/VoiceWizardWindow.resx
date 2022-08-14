@@ -65,6 +65,13 @@
   - There are over 50 different voices with various customization options so you can pick a voice that best suits you!
   - Need help? Have suggestion? Just wanna chat with other users? Join the Discord!!!</value>
   </data>
+  <data name="label76.Text" xml:space="preserve">
+    <value>Warning: "There is a 5 messages per 5 seconds limit for 
+the VRChat Chatbox, if you cross that you will incur a 
+30 second cooldown" (In other words, don't spam TTS, 
+Heartrate or, Spotify every second)
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

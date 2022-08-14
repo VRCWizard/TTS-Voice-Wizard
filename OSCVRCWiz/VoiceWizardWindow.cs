@@ -20,8 +20,10 @@ namespace OSCVRCWiz
     public partial class VoiceWizardWindow : Form
     {
 
-        public static string YourSubscriptionKey = Settings1.Default.yourKey;
-        public static string YourServiceRegion = Settings1.Default.yourRegion;
+        /// public static string YourSubscriptionKey = Settings1.Default.yourKey;
+        /// public static string YourServiceRegion = Settings1.Default.yourRegion;
+        public static string YourSubscriptionKey;
+        public static string YourServiceRegion;
         public string dictationString = "";
         public string activationWord = Settings1.Default.activationWord;
         public int debugDelayValue = Convert.ToInt32(Settings1.Default.delayDebugValueSetting);// Recommended delay of 250ms 
@@ -390,6 +392,9 @@ namespace OSCVRCWiz
             }
             textBox2.Text = Settings1.Default.yourKey;
             textBox3.Text = Settings1.Default.yourRegion;
+            YourSubscriptionKey = Settings1.Default.yourKey;
+            YourServiceRegion = Settings1.Default.yourRegion;
+
             textBoxDelay.Text = Settings1.Default.delayDebugValueSetting;
             rjToggleButtonProfan.Checked = Settings1.Default.profanityFilterSetting;//on
             rjToggleButtonLog.Checked = Settings1.Default.logOrNotSetting;//on
@@ -528,6 +533,7 @@ namespace OSCVRCWiz
             Settings1.Default.ChatBoxKeyboardSetting= rjToggleButtonShowKeyboard.Checked;
 
             Settings1.Default.Save();
+            webView21.Dispose();
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -572,7 +578,7 @@ namespace OSCVRCWiz
             if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
             {
                 var ot = new OutputText();
-                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Speech Provider' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Speech Provider' tab]");
+                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
             }
             if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
             {
@@ -597,7 +603,7 @@ namespace OSCVRCWiz
             if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
             {
                 var ot = new OutputText();
-                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Speech Provider' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Speech Provider' tab]");
+                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
             }
             if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
             {
@@ -900,8 +906,8 @@ namespace OSCVRCWiz
         private void button3_Click(object sender, EventArgs e)
         {
             PopupForm test = new PopupForm();
-            test.BackColor = Color.Black;
-            test.TransparencyKey = Color.Black;
+            test.BackColor = Color.LimeGreen;
+           // test.TransparencyKey = Color.Black;
 
             test.Show(this);
         }

@@ -18,7 +18,7 @@ namespace OSCVRCWiz
             customrtb1.SelectAll();
             customrtb1.SelectionAlignment = HorizontalAlignment.Center;
             
-            this.TopMost = true;
+           // this.TopMost = true;
            // this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Select();
 

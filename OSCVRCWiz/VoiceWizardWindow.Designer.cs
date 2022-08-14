@@ -70,7 +70,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
             this.rjToggleButtonActivation = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label27 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -134,6 +133,7 @@
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
             this.iconButton20 = new FontAwesome.Sharp.IconButton();
             this.General = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.label74 = new System.Windows.Forms.Label();
             this.rjToggleButtonClear = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label25 = new System.Windows.Forms.Label();
@@ -149,6 +149,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.TextOut = new System.Windows.Forms.TabPage();
+            this.label76 = new System.Windows.Forms.Label();
             this.label75 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
@@ -732,7 +733,7 @@
             this.richTextBox5.ReadOnly = true;
             this.richTextBox5.Size = new System.Drawing.Size(931, 56);
             this.richTextBox5.TabIndex = 3;
-            this.richTextBox5.Text = "Current Version: v0.6.5 - August 11, 2022\nChangelog: (full changelogs visible at " +
+            this.richTextBox5.Text = "Current Version: v0.6.6 - August 14, 2022\nChangelog: (full changelogs visible at " +
     "https://github.com/VRCWizard/TTS-Voice-Wizard/releases)";
             // 
             // richTextBox4
@@ -945,7 +946,6 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.rjToggleButtonActivation);
             this.tabPage2.Controls.Add(this.label27);
             this.tabPage2.Controls.Add(this.label18);
@@ -958,21 +958,6 @@
             this.tabPage2.Size = new System.Drawing.Size(976, 698);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Settings";
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Snow;
-            this.button3.Location = new System.Drawing.Point(379, 471);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 29);
-            this.button3.TabIndex = 81;
-            this.button3.Text = "Green screen test";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // rjToggleButtonActivation
             // 
@@ -1795,6 +1780,7 @@
             // General
             // 
             this.General.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.General.Controls.Add(this.button3);
             this.General.Controls.Add(this.label74);
             this.General.Controls.Add(this.rjToggleButtonClear);
             this.General.Controls.Add(this.label25);
@@ -1814,6 +1800,21 @@
             this.General.Size = new System.Drawing.Size(976, 698);
             this.General.TabIndex = 9;
             this.General.Text = "General";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.Snow;
+            this.button3.Location = new System.Drawing.Point(610, 148);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(201, 83);
+            this.button3.TabIndex = 81;
+            this.button3.Text = "Green screen test";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label74
             // 
@@ -1987,6 +1988,7 @@
             // TextOut
             // 
             this.TextOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.TextOut.Controls.Add(this.label76);
             this.TextOut.Controls.Add(this.label75);
             this.TextOut.Controls.Add(this.label71);
             this.TextOut.Controls.Add(this.label70);
@@ -2012,16 +2014,26 @@
             this.TextOut.TabIndex = 10;
             this.TextOut.Text = "TextOut";
             // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.ForeColor = System.Drawing.Color.Snow;
+            this.label76.Location = new System.Drawing.Point(564, 151);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(376, 80);
+            this.label76.TabIndex = 97;
+            this.label76.Text = resources.GetString("label76.Text");
+            // 
             // label75
             // 
             this.label75.AutoSize = true;
             this.label75.ForeColor = System.Drawing.Color.Snow;
-            this.label75.Location = new System.Drawing.Point(23, 171);
+            this.label75.Location = new System.Drawing.Point(23, 168);
             this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(605, 20);
+            this.label75.Size = new System.Drawing.Size(342, 40);
             this.label75.TabIndex = 96;
-            this.label75.Text = "Also used to pause Spotify and Heartrate features when sending text with VRChat C" +
-    "hatbox";
+            this.label75.Text = "Also used to pause Spotify and Heartrate features \r\nwhen sending text with VRChat" +
+    " Chatbox";
             // 
             // label71
             // 
@@ -2063,7 +2075,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label15.ForeColor = System.Drawing.Color.Snow;
-            this.label15.Location = new System.Drawing.Point(18, 220);
+            this.label15.Location = new System.Drawing.Point(18, 231);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(186, 20);
             this.label15.TabIndex = 66;
@@ -2171,7 +2183,7 @@
             "4",
             "8",
             "16"});
-            this.comboBoxPara.Location = new System.Drawing.Point(23, 243);
+            this.comboBoxPara.Location = new System.Drawing.Point(23, 254);
             this.comboBoxPara.Name = "comboBoxPara";
             this.comboBoxPara.Size = new System.Drawing.Size(181, 28);
             this.comboBoxPara.TabIndex = 31;
@@ -2630,11 +2642,11 @@
             this.label54.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label54.AutoSize = true;
             this.label54.ForeColor = System.Drawing.Color.Snow;
-            this.label54.Location = new System.Drawing.Point(434, 300);
+            this.label54.Location = new System.Drawing.Point(502, 311);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(523, 20);
+            this.label54.Size = new System.Drawing.Size(322, 40);
             this.label54.TabIndex = 100;
-            this.label54.Text = "Warning: You may need to restart the app after changing default audio device";
+            this.label54.Text = "Warning: You may need to restart the app after \r\nchanging default audio device";
             // 
             // comboLiteOutput
             // 
@@ -3224,5 +3236,6 @@
         private Label label73;
         private Label label74;
         private Label label75;
+        private Label label76;
     }
 }
