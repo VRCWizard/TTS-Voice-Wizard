@@ -11,8 +11,9 @@
 -  You can then use KAT https://github.com/VRCWizard/TTS-Voice-Wizard#killfrenzy-avatar-text to display the text (shown in the section below) or the new VRChat Chatbox
 ![image](https://user-images.githubusercontent.com/101527472/184250055-0ce6dbf1-b474-440e-bff6-91c0805059b8.png)
 ![image](https://user-images.githubusercontent.com/101527472/184250129-65706fdc-ae58-4f32-a4ef-84308c9f4b87.png)
--  Note: If you did all of this and the SPotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder
+-  Note: If you did all of this and the Spotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder
 
+-  Example with VRChat Chatbox ![image](https://user-images.githubusercontent.com/101527472/185652165-31caebd6-75fe-4bfb-be86-092b12b7ceea.png)
 
 
 
@@ -24,6 +25,7 @@
 - Once that's all working if you havent already you must install KAT on your avatar to see the text in game https://github.com/VRCWizard/TTS-Voice-Wizard#killfrenzy-avatar-text (You can now use VRChats built in Chatbox feature instead)
 -  Emoji addon currently only works with Spotify and heartbeat, it replaces some text with a heart or the Spotify symbol for example.
     - How to add emojis: in unity replace the KAT texture with the png file provided in the "KAT Emoji Texture Sheet" folder and enable emojis in the app through the addon tab)
+    - Example with Killfrenzy Avatar Text (With Emojis on)
     ![image](https://user-images.githubusercontent.com/101527472/182697581-161c3458-0f75-4ca5-8523-af8f32aab7f3.png)
 
 
