@@ -11,6 +11,7 @@
 -  You can then use KAT https://github.com/VRCWizard/TTS-Voice-Wizard#killfrenzy-avatar-text to display the text (shown in the section below) or the new VRChat Chatbox
 ![image](https://user-images.githubusercontent.com/101527472/184250055-0ce6dbf1-b474-440e-bff6-91c0805059b8.png)
 ![image](https://user-images.githubusercontent.com/101527472/184250129-65706fdc-ae58-4f32-a4ef-84308c9f4b87.png)
+-  Note: If you did all of this and the SPotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder
 
 
 
