@@ -86,7 +86,8 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 
 # How to get Text in VRChat
 - You can now use the new VRChat Chatboxes by default <br />
-    -  Make sure to turn on OSC from the VRChat radial menu
+    -  Make sure to turn on OSC from the VRChat radial menu <br />
+    -  Currently you must opt into vrchats beta to use this feature <br />
     
     
 
