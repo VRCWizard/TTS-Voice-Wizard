@@ -87,10 +87,14 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 # How to get Text in VRChat
 - You can now use the new VRChat Chatboxes by default <br />
     -  Make sure to turn on OSC from the VRChat radial menu
+    
+    
 
 - Another method which has text output on your avatar in VRChat is Killfrenzy96's Avatar Text Displayer <br />
 https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
 **Download KillFrenzy Avatar Text (KAT) latest release (supports 4, 8, or 16 sync parameters currently)**
+    - Make sure to turn on "Send Text to VRChat with KAT" in TTSVoiceWizard Settings > Text Output 
+    - If it isn't working after uploading your avatar, you may have to delete your %appdata%..\LocalLow\VRChat\OSC files when reuploading an avatar with new parameters
 
 
 # Can I set hotkey on my controllers?
