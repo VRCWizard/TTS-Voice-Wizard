@@ -63,6 +63,8 @@ namespace OSCVRCWiz
         public System.Speech.Synthesis.SpeechSynthesizer synthesizerLite;//free
         public MemoryStream stream;
 
+        public PopupForm pf;
+
 
         enum KeyModifier
         {
@@ -74,7 +76,7 @@ namespace OSCVRCWiz
         }
         public VoiceWizardWindow()
         {
-
+          
             //Azure Audio Devices----------------------------
             comboIn.Add("Default");
             micIDs.Add("Default");
@@ -143,6 +145,33 @@ namespace OSCVRCWiz
            // webView21.AutoScrollOffset(0, 109);
             int id = 0;// The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+            //  panel1.SetBounds(0,0,220,731);
+           // panel2Logo.SetBounds(0, 0, 220, 140);
+            //pictureBox1.SetBounds(38,15,125,125);
+            // iconButton1.Text = "Dashboard";
+            // iconButton2.Text = "Speech Provider";
+            // iconButton4.Text = "Speech Provider";
+            //  iconButton5.Text = "Settings";
+            //     iconButton3.Text = "Addon";
+            // iconButton6.Text = "Discord";
+            //     iconButton7.Text = "Github";
+            // iconButton12.Text = "Donate";
+
+          /*  panel1.SetBounds(0, 0, 65, 731);
+            panel2Logo.SetBounds(0,0,220,55);
+            pictureBox1.SetBounds(0, 0, 55, 55);
+            iconButton1.Text = "";
+            iconButton2.Text = "";
+            iconButton4.Text = "";
+            iconButton5.Text = "";
+            iconButton3.Text = "";
+            iconButton6.Text = "";
+            iconButton7.Text = "";
+            iconButton12.Text = ""; */
+
+
+
+
 
         }
         protected override void WndProc(ref Message m)
@@ -469,6 +498,39 @@ namespace OSCVRCWiz
             rjToggleButtonChatBox.Checked = Settings1.Default.SendVRCChatBoxSetting;
             rjToggleButtonShowKeyboard.Checked = Settings1.Default.ChatBoxKeyboardSetting;
 
+            rjToggleButton6.Checked= Settings1.Default.minimizeToolBarSetting;
+
+           rjToggleButtonGreenScreen.Checked= Settings1.Default.GreenScreenSetting;
+            textBoxFont.Text = Settings1.Default.fontSizeSetting;
+
+            textBoxCustomSpot.Text = Settings1.Default.SpotifyCustomSetting;
+
+            rjToggleSoundNotification.Checked = Settings1.Default.VRCSoundNotifySetting;
+
+
+            EmojiBox1.Text = emojiSettings.Default.emoji1;
+            EmojiBox2.Text = emojiSettings.Default.emoji2;
+            EmojiBox3.Text = emojiSettings.Default.emoji3;
+            EmojiBox4.Text = emojiSettings.Default.emoji4;
+            EmojiBox5.Text = emojiSettings.Default.emoji5;
+            EmojiBox6.Text = emojiSettings.Default.emoji6;
+            EmojiBox7.Text = emojiSettings.Default.emoji7;
+            EmojiBox8.Text = emojiSettings.Default.emoji8;
+            EmojiBox9.Text = emojiSettings.Default.emoji9;
+            EmojiBox10.Text = emojiSettings.Default.emoji10;
+            EmojiBox11.Text = emojiSettings.Default.emoji11;
+            EmojiBox12.Text = emojiSettings.Default.emoji12;
+            EmojiBox13.Text = emojiSettings.Default.emoji13;
+            EmojiBox14.Text = emojiSettings.Default.emoji14;
+            EmojiBox15.Text = emojiSettings.Default.emoji15;
+            EmojiBox16.Text = emojiSettings.Default.emoji16;
+            EmojiBox17.Text = emojiSettings.Default.emoji17;
+            EmojiBox18.Text = emojiSettings.Default.emoji18;
+            EmojiBox19.Text = emojiSettings.Default.emoji19;
+            EmojiBox20.Text = emojiSettings.Default.emoji20;
+
+
+
 
 
             this.Invoke((MethodInvoker)delegate ()
@@ -532,7 +594,38 @@ namespace OSCVRCWiz
             Settings1.Default.SendVRCChatBoxSetting= rjToggleButtonChatBox.Checked;
             Settings1.Default.ChatBoxKeyboardSetting= rjToggleButtonShowKeyboard.Checked;
 
+           Settings1.Default.minimizeToolBarSetting= rjToggleButton6.Checked;
+            Settings1.Default.GreenScreenSetting = rjToggleButtonGreenScreen.Checked;
+             Settings1.Default.SpotifyCustomSetting= textBoxCustomSpot.Text.ToString();
+
+
+            Settings1.Default.VRCSoundNotifySetting = rjToggleSoundNotification.Checked;
+
+            emojiSettings.Default.emoji1 = EmojiBox1.Text.ToString();
+            emojiSettings.Default.emoji2 = EmojiBox2.Text.ToString();
+            emojiSettings.Default.emoji3 = EmojiBox3.Text.ToString();
+            emojiSettings.Default.emoji4 = EmojiBox4.Text.ToString();
+            emojiSettings.Default.emoji5 = EmojiBox5.Text.ToString();
+            emojiSettings.Default.emoji6 = EmojiBox6.Text.ToString();
+            emojiSettings.Default.emoji7 = EmojiBox7.Text.ToString();
+            emojiSettings.Default.emoji8 = EmojiBox8.Text.ToString();
+            emojiSettings.Default.emoji9 = EmojiBox9.Text.ToString();
+            emojiSettings.Default.emoji10 = EmojiBox10.Text.ToString();
+            emojiSettings.Default.emoji11 = EmojiBox11.Text.ToString();
+            emojiSettings.Default.emoji12 = EmojiBox12.Text.ToString();
+            emojiSettings.Default.emoji13 = EmojiBox13.Text.ToString();
+            emojiSettings.Default.emoji14 = EmojiBox14.Text.ToString();
+            emojiSettings.Default.emoji15 = EmojiBox15.Text.ToString();
+            emojiSettings.Default.emoji16 = EmojiBox16.Text.ToString();
+            emojiSettings.Default.emoji17 = EmojiBox17.Text.ToString();
+            emojiSettings.Default.emoji18 = EmojiBox18.Text.ToString();
+            emojiSettings.Default.emoji19 = EmojiBox19.Text.ToString();
+            emojiSettings.Default.emoji20 = EmojiBox20.Text.ToString();
+            
+
+
             Settings1.Default.Save();
+            emojiSettings.Default.Save();
             webView21.Dispose();
         }
 
@@ -739,6 +832,12 @@ namespace OSCVRCWiz
                 Task.Run(() => ot.outputVRChatSpeechBubbles(this, text, "tts")); //original
 
             }
+            if(rjToggleButtonGreenScreen.Checked==true)
+            {
+                Task.Run(() => ot.outputGreenScreen(this, text, "tts")); //original
+
+            }
+            
                 if (rjToggleButtonClear.Checked == true)
             {
                 richTextBox3.Clear();
@@ -893,6 +992,16 @@ namespace OSCVRCWiz
             }
             
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
+            if(rjToggleButtonGreenScreen.Checked==true)
+            {
+                Invoke((MethodInvoker)delegate ()
+                {
+                    pf.customrtb1.Text = "";
+                });
+                    
+
+            }
+           
 
         }
 
@@ -905,11 +1014,7 @@ namespace OSCVRCWiz
 
         private void button3_Click(object sender, EventArgs e)
         {
-            PopupForm test = new PopupForm();
-            test.BackColor = Color.LimeGreen;
-           // test.TransparencyKey = Color.Black;
-
-            test.Show(this);
+        
         }
 
 
@@ -976,6 +1081,7 @@ namespace OSCVRCWiz
             //copies main log text to addon logs
             richTextBox7.Text = richTextBox1.Text;
             richTextBox8.Text = richTextBox1.Text;
+         
 
         }
 
@@ -1033,6 +1139,11 @@ namespace OSCVRCWiz
                 Task.Run(() => ot.outputVRChatSpeechBubbles(this, text, "tts")); //original
 
             }
+            if (rjToggleButtonGreenScreen.Checked == true)
+            {
+                Task.Run(() => ot.outputGreenScreen(this, text, "tts")); //original
+
+            }
         }
 
         private void comboBoxLite_SelectedIndexChanged(object sender, EventArgs e)
@@ -1060,7 +1171,13 @@ namespace OSCVRCWiz
         }
         private void richTextBox3_TextChanged(object sender, EventArgs e)
         {
+            if (rjToggleButtonChatBox.Checked == true && (richTextBox3.Text.ToString().Length > TTSLiteText.Length))
+            {
+                var typingbubble = new SharpOSC.OscMessage("/chatbox/typing", true);
+                sender3.Send(typingbubble);
+            }
             TTSLiteText = richTextBox3.Text.ToString();
+          
         }
 
         private void comboLiteOutput_SelectedIndexChanged(object sender, EventArgs e)
@@ -1154,6 +1271,85 @@ namespace OSCVRCWiz
         private void iconButton21_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(SystemSet);//settings
+
+        }
+
+        private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            var ts = new TextSynthesis();
+            ts.stopContinuousListeningNow(this);
+        }
+
+        private void rjToggleButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButton6.Checked==true)
+            {
+                panel1.SetBounds(0, 0, 65, 731);
+                panel2Logo.SetBounds(0, 0, 220, 55);
+                pictureBox1.SetBounds(0, 0, 55, 55);
+                iconButton1.Text = "";
+                iconButton2.Text = "";
+                iconButton4.Text = "";
+                iconButton5.Text = "";
+                iconButton3.Text = "";
+                iconButton6.Text = "";
+                iconButton7.Text = "";
+                iconButton12.Text = "";
+            }
+            if (rjToggleButton6.Checked == false)
+            {
+                panel1.SetBounds(0,0,220,731);
+                panel2Logo.SetBounds(0, 0, 220, 140);
+                pictureBox1.SetBounds(38,15,125,125);
+                iconButton1.Text = "Dashboard";
+                iconButton2.Text = "Speech Provider";
+                iconButton4.Text = "Speech Provider";
+                iconButton5.Text = "Settings";
+                iconButton3.Text = "Addon";
+                iconButton6.Text = "Discord";
+                iconButton7.Text = "Github";
+                iconButton12.Text = "Donate";
+
+            }
+
+
+        }
+
+        private void rjToggleButtonGreenScreen_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleButtonGreenScreen.Checked == true)
+            {
+                pf = new PopupForm();
+                pf.BackColor = Color.LimeGreen;
+                pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
+                pf.Show(this);
+               // pf.Owner = this;
+                  //  pf.customrtb1.Text = richTextBox1.Text;
+            }
+            if (rjToggleButtonGreenScreen.Checked == false)
+            {
+                pf.Dispose();
+
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+             if(rjToggleButtonGreenScreen.Checked==true)
+            {
+               // pf.customrtb1.Text = "";
+               // pf.customrtb1.Font = new Font("Calibri", 10);
+                  pf.customrtb1.Font = new Font("Calibri", Int32.Parse(textBoxFont.Text.ToString()));
+
+            //    Font currentFont = pf.customrtb1.SelectionFont;
+             //   FontStyle newFontStyle = (FontStyle)(currentFont.Style | FontStyle.Regular);
+             //   pf.customrtb1.SelectionFont = new Font(currentFont.FontFamily, 10, newFontStyle);
+
+            }
+            Settings1.Default.fontSizeSetting=textBoxFont.Text.ToString();
+
+
+
 
         }
     }

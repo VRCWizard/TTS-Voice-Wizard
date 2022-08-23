@@ -42,6 +42,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
+    <Compile Update="emojiSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>emojiSettings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +61,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="emojiSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>emojiSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

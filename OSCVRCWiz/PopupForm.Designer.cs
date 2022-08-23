@@ -47,9 +47,9 @@
             this.customrtb1.ReadOnly = true;
             this.customrtb1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.customrtb1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.customrtb1.Size = new System.Drawing.Size(776, 426);
+            this.customrtb1.Size = new System.Drawing.Size(951, 426);
             this.customrtb1.TabIndex = 1;
-            this.customrtb1.Text = "Testing text box";
+            this.customrtb1.Text = "Use OBS chroma key filter set to green";
             // 
             // translucentPanel1
             // 
@@ -58,17 +58,17 @@
             this.translucentPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.translucentPanel1.Location = new System.Drawing.Point(0, 0);
             this.translucentPanel1.Name = "translucentPanel1";
-            this.translucentPanel1.Size = new System.Drawing.Size(800, 450);
+            this.translucentPanel1.Size = new System.Drawing.Size(975, 450);
             this.translucentPanel1.TabIndex = 2;
             // 
             // PopupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(975, 450);
             this.Controls.Add(this.translucentPanel1);
             this.Name = "PopupForm";
-            this.Text = "PopupForm";
+            this.Text = "TTS Voice Wizard Text Overlay ";
             this.translucentPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -136,6 +136,9 @@ namespace OSCVRCWiz
                 string chineseFemale_MandarinSimple = "<voice name=\"zh-CN-XiaomoNeural\">";//
                 string chineseMale_MandarinSimple = "<voice name=\"	zh-CN-YunyeNeural\">";//
 
+                string czechFemale = "<voice name=\"cs-CZ-VlastaNeural\">";//
+                string czechMale = "<voice name=\"cs-CZ-AntoninNeural\">";//
+
                 string danishFemale = "<voice name=\"da-DK-ChristelNeural\">";//
                 string danishMale = "<voice name=\"da-DK-JeppeNeural\">";//
 
@@ -256,6 +259,9 @@ namespace OSCVRCWiz
 
                     case "[Chinese] {Female} (Mandarin, Simplified)": ssml0 += chineseFemale_MandarinSimple; ; break;
                     case "[Chinese] {Male} (Mandarin, Simplified)": ssml0 += chineseMale_MandarinSimple; ; break;
+
+                    case "[Czech] {Female}": ssml0 += czechFemale; ; break;
+                    case "[Czech] {Male}": ssml0 += czechMale; ; break;
                     case "[Danish] {Female}": ssml0 += danishFemale; ; break;
                     case "[Danish] {Male}": ssml0 += danishMale; ; break;
                     case "[Dutch] {Female}": ssml0 += dutchFemale; ; break;

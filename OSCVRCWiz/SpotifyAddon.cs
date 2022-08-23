@@ -23,6 +23,7 @@ namespace OSCVRCWiz
         public static string title = "";
         public static string spotifyurllink = "https://open.spotify.com/";
         public static bool legacyState = false;
+        static string fullSongPauseCheck="";
 
 
 
@@ -87,6 +88,8 @@ namespace OSCVRCWiz
                 var artist = "";
                 var duration = "";
                 var progress = "";
+                var durationHours = "";
+                var progressHours = "";
                 if (m_currentlyPlaying != null)
                 {
                     IPlayableItem currentlyPlayingItem = m_currentlyPlaying.Item;
@@ -115,9 +118,11 @@ namespace OSCVRCWiz
                         // AlbumLabel.Content = m_currentTrack.Album.Name;
                         progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
                         duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
+                        progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
+                        durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
                     }
                 }
-                if ((lastSong != title  || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked==true) && !string.IsNullOrWhiteSpace(title) && title != ""&& VoiceWizardWindow.pauseSpotify!=true)
+                if ((lastSong != title  || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked==true) && (!string.IsNullOrWhiteSpace(title) && title != ""&& VoiceWizardWindow.pauseSpotify!=true))
                 {
                     VoiceWizardWindow.pauseBPM = true;
                    // lastSong = title;
@@ -125,54 +130,81 @@ namespace OSCVRCWiz
                     System.Diagnostics.Debug.WriteLine(artist);
                     System.Diagnostics.Debug.WriteLine(duration);
 
-
+                    var spotifySymbol = "ふ";
                     var theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration+ " on Spotify";
-                    if (MainForm.rjToggleButtonPeriodic.Checked==true)
+
+                    theString = $"{spotifySymbol}Listening to {title} by {artist} {progress}/{duration} on Spotify";  
+
+                    theString = MainForm.textBoxCustomSpot.Text.ToString();
+                    theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+                    theString = theString.Replace("{title}", title);
+                    theString = theString.Replace("{artist}", artist);
+                    theString = theString.Replace("{progressMinutes}", progress);
+                    theString = theString.Replace("{durationMinutes}", duration);
+                    theString = theString.Replace("{progressHours}", progressHours);
+                    theString = theString.Replace("{durationHours}", durationHours);
+
+
+                    //  if (MainForm.rjToggleButtonPeriodic.Checked==true)
+                    //   {
+                    //  if (MainForm.rjToggleButton3.Checked == false)
+                    //  {
+                    //   if(MainForm.rjToggleButtonMugi.Checked==true)
+                    //   {
+                    //        theString = title + " - '" + artist + "'";
+                    //     }
+                    //  else
+                    //     {
+                    //        theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
+
+                    //     }
+
+
+                    //    }
+                    //  if (MainForm.rjToggleButton3.Checked == true)
+                    //   {
+                    //        theString = "ふ Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration;
+                    //    }
+
+                    //   }
+                    //    if (MainForm.rjToggleButtonPeriodic.Checked == false)
+                    //   {
+                    //    if (MainForm.rjToggleButton3.Checked == false)
+                    //    {
+                    //      theString = "Listening to '" + title + "' by '" + artist + "'" + " on Spotify";
+
+                    //  }
+                    //    if (MainForm.rjToggleButton3.Checked == true)
+                    //    {
+                    //       theString = "ふ Listening to '" + title + "' by '" + artist + "' ";
+                    //    }
+
+                    //  }
+
+                    if (fullSongPauseCheck != progress)//stop outputting periodically is song paused
                     {
-                        if (MainForm.rjToggleButton3.Checked == false)
-                        {
-                            theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
-
-                        }
-                        if (MainForm.rjToggleButton3.Checked == true)
-                        {
-                            theString = "ふ Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration;
-                        }
-
-                    }
-                    if (MainForm.rjToggleButtonPeriodic.Checked == false)
-                    {
-                        if (MainForm.rjToggleButton3.Checked == false)
-                        {
-                            theString = "Listening to '" + title + "' by '" + artist + "'" + " on Spotify";
-
-                        }
-                        if (MainForm.rjToggleButton3.Checked == true)
-                        {
-                            theString = "ふ Listening to '" + title + "' by '" + artist + "' ";
-                        }
-
-                    }
-
 
 
                         var ot = new OutputText();
-                    if(MainForm.rjToggleButtonSpotifySpam.Checked==true)
-                    {
-                        Task.Run(() => ot.outputLog(MainForm, theString));
-                    }
-                    if (MainForm.rjToggleButtonOSC.Checked == true)
-                    {
-                        Task.Run(() => ot.outputVRChat(MainForm, theString, "spotify"));
-                    }
-                    if (MainForm.rjToggleButtonChatBox.Checked == true)
-                    {
-                        Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
+                        if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                        {
+                            Task.Run(() => ot.outputLog(MainForm, theString));
+                        }
+                        if (MainForm.rjToggleButtonOSC.Checked == true)
+                        {
+                            Task.Run(() => ot.outputVRChat(MainForm, theString, "spotify"));
+                        }
+                        if (MainForm.rjToggleButtonChatBox.Checked == true)
+                        {
+                            Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
 
+                        }
                     }
                     // lastSong = title;
                     MainForm.justShowTheSong = false;
-                    
+                    fullSongPauseCheck = progress;
+
+
                 }
 
                

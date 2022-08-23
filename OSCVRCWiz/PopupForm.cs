@@ -15,12 +15,12 @@ namespace OSCVRCWiz
         public PopupForm()
         {
             InitializeComponent();
-            customrtb1.SelectAll();
-            customrtb1.SelectionAlignment = HorizontalAlignment.Center;
+           // customrtb1.SelectAll();
+          //  customrtb1.SelectionAlignment = HorizontalAlignment.Center;
             
            // this.TopMost = true;
            // this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Select();
+           // this.Select();
 
 
         }

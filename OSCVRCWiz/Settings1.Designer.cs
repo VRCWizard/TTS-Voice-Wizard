@@ -610,5 +610,66 @@ namespace OSCVRCWiz {
                 this["ChatBoxKeyboardSetting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool minimizeToolBarSetting {
+            get {
+                return ((bool)(this["minimizeToolBarSetting"]));
+            }
+            set {
+                this["minimizeToolBarSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("36")]
+        public string fontSizeSetting {
+            get {
+                return ((string)(this["fontSizeSetting"]));
+            }
+            set {
+                this["fontSizeSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GreenScreenSetting {
+            get {
+                return ((bool)(this["GreenScreenSetting"]));
+            }
+            set {
+                this["GreenScreenSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{spotifySymbol} Listening to \'{title}\' by \'{artist}\' {progressMinutes}/{durationM" +
+            "inutes} on Spotify")]
+        public string SpotifyCustomSetting {
+            get {
+                return ((string)(this["SpotifyCustomSetting"]));
+            }
+            set {
+                this["SpotifyCustomSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VRCSoundNotifySetting {
+            get {
+                return ((bool)(this["VRCSoundNotifySetting"]));
+            }
+            set {
+                this["VRCSoundNotifySetting"] = value;
+            }
+        }
     }
 }

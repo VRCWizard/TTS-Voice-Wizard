@@ -64,12 +64,28 @@ namespace OSCVRCWiz
         }
         public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring, string type)
         {
+
+     
+           
+
+
             var typingbubble = new SharpOSC.OscMessage("/chatbox/typing",false);//this is turned on as soon as you press the STTTS button and turned off here
-            var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, true);
+          var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, true,false);
+        //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
+      //testing if error message appears /what value is defaulted to if not specified
             if(MainForm.rjToggleButtonShowKeyboard.Checked==true)
             {
-                messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, false);
+                messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, false,false);
 
+            }
+            if (type == "tts" && MainForm.rjToggleSoundNotification.Checked==true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
+            {
+                 messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, true, true);
+   
+                if (MainForm.rjToggleButtonShowKeyboard.Checked == true)
+                {
+                    messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, false, true); 
+                }
             }
 
             MainForm.sender3.Send(typingbubble);
@@ -79,14 +95,86 @@ namespace OSCVRCWiz
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
             }
 
+            if (type == "spotify")
+            {
+                if (MainForm.rjToggleButtonOSC.Checked==false)
+                {
+                    SpotifyAddon.lastSong = SpotifyAddon.title;
+                }
+                
+            }
+
         }
-            public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
+        public async void outputGreenScreen(VoiceWizardWindow MainForm, string textstring, string type)
+        {
+            MainForm.Invoke((MethodInvoker)delegate ()
+            {
+               // MainForm.pf.customrtb1.Text = "";
+             //   MainForm.pf.customrtb1.Font = new Font("Calibri", Int32.Parse(MainForm.textBoxFont.Text.ToString()));
+                MainForm.pf.customrtb1.Text= textstring;
+                MainForm.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
+                //  MainForm.pf.customrtb1.Font = new Font("Calibri", Int32.Parse(MainForm.textBoxFont.Text.ToString()));
+
+                //    Font currentFont = MainForm.pf.customrtb1.SelectionFont;
+                //  FontStyle newFontStyle = (FontStyle)(currentFont.Style | FontStyle.Regular);
+                //  MainForm.pf.customrtb1.SelectionFont = new Font(currentFont.FontFamily, 10, newFontStyle);
+                if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
+                {
+                    MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+
+                }
+
+            });
+           
+         
+        }
+        public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
         {
 
 
             // currentlyPrinting = true;
 
             //MainForm.sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+
+            if(MainForm.rjToggleButton3.Checked==true)
+            {
+                textstringbefore = textstringbefore.Replace("<3", "ぬ");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox1.Text.ToString(), "あう");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox1.Text.ToString().ToLower(), "あう");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox2.Text.ToString(), "えお");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox2.Text.ToString().ToLower(), "えお");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox3.Text.ToString(), "やゆ");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox3.Text.ToString().ToLower(), "やゆ");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox4.Text.ToString(), "よわ");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox4.Text.ToString().ToLower(), "よわ");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox5.Text.ToString(), "をほ");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox5.Text.ToString().ToLower(), "をほ");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox6.Text.ToString(), "へた");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox6.Text.ToString().ToLower(), "へた");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox7.Text.ToString(), "てい");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox7.Text.ToString().ToLower(), "てい");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox8.Text.ToString(), "すか");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox8.Text.ToString().ToLower(), "すか");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox9.Text.ToString(), "んな");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox9.Text.ToString().ToLower(), "んな");
+
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox10.Text.ToString(), "にら");
+                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox10.Text.ToString().ToLower(), "にら");
+            }
+   
+             
+        
+
+
             System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
 
             string textstring = SplitToLines(textstringbefore, 32);
@@ -96,7 +184,7 @@ namespace OSCVRCWiz
 
             //textstring = textstring.ToLower();  // no more lowercase
 
-
+            
 
 
             int stringleng = 0;
@@ -506,27 +594,27 @@ namespace OSCVRCWiz
                     //case '': letter = 128; break;
                     case 'ふ': letter = 129; break; //used as spotify emoji
 
-                    case 'あ': letter = 130; break;
-                    case 'う': letter = 131; break;
-                    case 'え': letter = 132; break;
-                    case 'お': letter = 133; break;
-                    case 'や': letter = 134; break;
-                    case 'ゆ': letter = 135; break;
-                    case 'よ': letter = 136; break;
-                    case 'わ': letter = 137; break;
-                    case 'を': letter = 138; break;
-                    case 'ほ': letter = 139; break;
+                    case 'あ': letter = 130; break;//emoji 1
+                    case 'う': letter = 131; break;//emoji 1
+                    case 'え': letter = 132; break;//emoji 2
+                    case 'お': letter = 133; break;//emoji 2
+                    case 'や': letter = 134; break;//emoji 3
+                    case 'ゆ': letter = 135; break;//emoji 3
+                    case 'よ': letter = 136; break;//emoji 4
+                    case 'わ': letter = 137; break;//emoji 4
+                    case 'を': letter = 138; break;//emoji 5
+                    case 'ほ': letter = 139; break;//emoji 5
 
-                    case 'へ': letter = 140; break;
-                    case 'た': letter = 141; break;
-                    case 'て': letter = 142; break;
-                    case 'い': letter = 143; break;
-                    case 'す': letter = 144; break;
-                    case 'か': letter = 145; break;
-                    case 'ん': letter = 146; break;
-                    case 'な': letter = 147; break;
-                    case 'に': letter = 148; break;
-                    case 'ら': letter = 149; break;
+                    case 'へ': letter = 140; break;//emoji 6
+                    case 'た': letter = 141; break;//emoji 6
+                    case 'て': letter = 142; break;//emoji 7
+                    case 'い': letter = 143; break;//emoji 7
+                    case 'す': letter = 144; break;//emoji 8
+                    case 'か': letter = 145; break;//emoji 8
+                    case 'ん': letter = 146; break;//emoji 9
+                    case 'な': letter = 147; break;//emoji 9
+                    case 'に': letter = 148; break;//emoji 10
+                    case 'ら': letter = 149; break;//emoji 10
 
                     case 'せ': letter = 150; break;
                     case 'ち': letter = 151; break;

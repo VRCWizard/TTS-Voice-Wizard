@@ -149,5 +149,20 @@
     <Setting Name="ChatBoxKeyboardSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="minimizeToolBarSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="fontSizeSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">36</Value>
+    </Setting>
+    <Setting Name="GreenScreenSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SpotifyCustomSetting" Type="System.String" Scope="User">
+      <Value Profile="(Default)">{spotifySymbol} Listening to '{title}' by '{artist}' {progressMinutes}/{durationMinutes} on Spotify</Value>
+    </Setting>
+    <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
