@@ -43,6 +43,7 @@ https://azure.microsoft.com/en-us/free/students/ (for university students, no cr
     - **Azure Speech Service Pricing and Free Monthly Limits:**  https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/ <br />
 (This program using Speech to Text Standard, Text to Speech Neural, and Speech Translation Standard)
     - **Monitor Usage:** https://docs.microsoft.com/en-us/answers/questions/643390/how-to-see-text-to-speech-usage.html (the location to see your speech service usage can be hard to find, the post should help!)
+    -  **Budgets and Alerts:** https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=Portal-Microsoft_Azure_CostManagement
 
 - **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** 
     -  Refer to the "Windows Built-In System Speech" section
