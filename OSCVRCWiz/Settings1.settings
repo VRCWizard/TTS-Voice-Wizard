@@ -96,13 +96,13 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="langSpokenSetting" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="pitchSetting" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="volumeSetting" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="rateSetting" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
@@ -162,6 +162,12 @@
       <Value Profile="(Default)">{spotifySymbol} Listening to '{title}' by '{artist}' {progressMinutes}/{durationMinutes} on Spotify</Value>
     </Setting>
     <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SystemTraySetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="playMediaSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

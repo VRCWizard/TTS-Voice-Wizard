@@ -192,6 +192,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.TextOut = new System.Windows.Forms.TabPage();
+            this.label78 = new System.Windows.Forms.Label();
+            this.rjToggleSoundNotification = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label82 = new System.Windows.Forms.Label();
             this.label81 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -273,8 +275,12 @@
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label78 = new System.Windows.Forms.Label();
-            this.rjToggleSoundNotification = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.label104 = new System.Windows.Forms.Label();
+            this.rjToggleButtonSystemTray = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label105 = new System.Windows.Forms.Label();
+            this.rjToggleButtonMedia = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -788,8 +794,8 @@
             this.richTextBox5.ReadOnly = true;
             this.richTextBox5.Size = new System.Drawing.Size(931, 56);
             this.richTextBox5.TabIndex = 3;
-            this.richTextBox5.Text = "Current Version: v0.6.9.1 - August 22, 2022\nChangelog: (full changelogs visible a" +
-    "t https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
+            this.richTextBox5.Text = "Current Version: v0.7.0 - August 27, 2022\nChangelog: (full changelogs visible at " +
+    "https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
             // 
             // richTextBox4
             // 
@@ -823,6 +829,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.label62);
             this.tabPage1.Controls.Add(this.logTrash);
             this.tabPage1.Controls.Add(this.ttsTrash);
@@ -2259,6 +2266,10 @@
             // General
             // 
             this.General.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.General.Controls.Add(this.label105);
+            this.General.Controls.Add(this.rjToggleButtonMedia);
+            this.General.Controls.Add(this.label104);
+            this.General.Controls.Add(this.rjToggleButtonSystemTray);
             this.General.Controls.Add(this.label77);
             this.General.Controls.Add(this.rjToggleButton6);
             this.General.Controls.Add(this.label74);
@@ -2412,7 +2423,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(23, 350);
+            this.textBox4.Location = new System.Drawing.Point(23, 514);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(125, 27);
@@ -2434,7 +2445,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(154, 353);
+            this.label12.Location = new System.Drawing.Point(154, 517);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(104, 20);
             this.label12.TabIndex = 28;
@@ -2470,7 +2481,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(19, 327);
+            this.label11.Location = new System.Drawing.Point(19, 491);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 20);
             this.label11.TabIndex = 27;
@@ -2513,6 +2524,33 @@
             this.TextOut.Size = new System.Drawing.Size(976, 698);
             this.TextOut.TabIndex = 10;
             this.TextOut.Text = "TextOut";
+            // 
+            // label78
+            // 
+            this.label78.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label78.ForeColor = System.Drawing.Color.Snow;
+            this.label78.Location = new System.Drawing.Point(619, 158);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(291, 20);
+            this.label78.TabIndex = 105;
+            this.label78.Text = "Send Sound Notification on Message Send";
+            // 
+            // rjToggleSoundNotification
+            // 
+            this.rjToggleSoundNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.rjToggleSoundNotification.AutoSize = true;
+            this.rjToggleSoundNotification.Location = new System.Drawing.Point(564, 158);
+            this.rjToggleSoundNotification.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleSoundNotification.Name = "rjToggleSoundNotification";
+            this.rjToggleSoundNotification.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleSoundNotification.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleSoundNotification.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleSoundNotification.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleSoundNotification.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleSoundNotification.TabIndex = 106;
+            this.rjToggleSoundNotification.UseVisualStyleBackColor = true;
             // 
             // label82
             // 
@@ -3582,32 +3620,75 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timerSpotify_Tick);
             // 
-            // label78
+            // notifyIcon1
             // 
-            this.label78.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label78.AutoSize = true;
-            this.label78.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label78.ForeColor = System.Drawing.Color.Snow;
-            this.label78.Location = new System.Drawing.Point(619, 158);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(291, 20);
-            this.label78.TabIndex = 105;
-            this.label78.Text = "Send Sound Notification on Message Send";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "TTS Voice Wizard";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // rjToggleSoundNotification
+            // label104
             // 
-            this.rjToggleSoundNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjToggleSoundNotification.AutoSize = true;
-            this.rjToggleSoundNotification.Location = new System.Drawing.Point(564, 158);
-            this.rjToggleSoundNotification.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleSoundNotification.Name = "rjToggleSoundNotification";
-            this.rjToggleSoundNotification.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleSoundNotification.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleSoundNotification.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleSoundNotification.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleSoundNotification.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleSoundNotification.TabIndex = 106;
-            this.rjToggleSoundNotification.UseVisualStyleBackColor = true;
+            this.label104.AutoSize = true;
+            this.label104.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label104.ForeColor = System.Drawing.Color.Snow;
+            this.label104.Location = new System.Drawing.Point(74, 320);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(245, 20);
+            this.label104.TabIndex = 98;
+            this.label104.Text = "Minimize Sends App to System Tray";
+            // 
+            // rjToggleButtonSystemTray
+            // 
+            this.rjToggleButtonSystemTray.AutoSize = true;
+            this.rjToggleButtonSystemTray.Location = new System.Drawing.Point(19, 320);
+            this.rjToggleButtonSystemTray.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonSystemTray.Name = "rjToggleButtonSystemTray";
+            this.rjToggleButtonSystemTray.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonSystemTray.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonSystemTray.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonSystemTray.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonSystemTray.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonSystemTray.TabIndex = 99;
+            this.rjToggleButtonSystemTray.UseVisualStyleBackColor = true;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label105.ForeColor = System.Drawing.Color.Snow;
+            this.label105.Location = new System.Drawing.Point(74, 362);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(284, 20);
+            this.label105.TabIndex = 100;
+            this.label105.Text = "STT and Stop Speech Sound Notifications";
+            // 
+            // rjToggleButtonMedia
+            // 
+            this.rjToggleButtonMedia.AutoSize = true;
+            this.rjToggleButtonMedia.Location = new System.Drawing.Point(19, 362);
+            this.rjToggleButtonMedia.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonMedia.Name = "rjToggleButtonMedia";
+            this.rjToggleButtonMedia.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonMedia.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonMedia.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonMedia.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonMedia.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonMedia.TabIndex = 101;
+            this.rjToggleButtonMedia.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.Color.Snow;
+            this.button11.Location = new System.Drawing.Point(320, 490);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(221, 43);
+            this.button11.TabIndex = 34;
+            this.button11.Text = "Stop Speech";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // VoiceWizardWindow
             // 
@@ -3623,6 +3704,7 @@
             this.Text = "TTS Voice Wizard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.VoiceWizardWindow_Resize);
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
@@ -3905,5 +3987,11 @@
         public TextBox textBoxCustomSpot;
         private Label label78;
         public RJControls.RJToggleButton rjToggleSoundNotification;
+        private NotifyIcon notifyIcon1;
+        private Label label105;
+        public RJControls.RJToggleButton rjToggleButtonMedia;
+        private Label label104;
+        public RJControls.RJToggleButton rjToggleButtonSystemTray;
+        private Button button11;
     }
 }

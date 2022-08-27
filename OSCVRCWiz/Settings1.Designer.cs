@@ -397,7 +397,7 @@ namespace OSCVRCWiz {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int langSpokenSetting {
             get {
                 return ((int)(this["langSpokenSetting"]));
@@ -421,7 +421,7 @@ namespace OSCVRCWiz {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int volumeSetting {
             get {
                 return ((int)(this["volumeSetting"]));
@@ -669,6 +669,30 @@ namespace OSCVRCWiz {
             }
             set {
                 this["VRCSoundNotifySetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SystemTraySetting {
+            get {
+                return ((bool)(this["SystemTraySetting"]));
+            }
+            set {
+                this["SystemTraySetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool playMediaSetting {
+            get {
+                return ((bool)(this["playMediaSetting"]));
+            }
+            set {
+                this["playMediaSetting"] = value;
             }
         }
     }

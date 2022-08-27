@@ -324,6 +324,7 @@ namespace OSCVRCWiz
                     System.Diagnostics.Debug.WriteLine("Phrase list cleared");
                     phraseList.Clear();
                 }
+
             }
             catch (Exception ex)
             {
@@ -335,6 +336,12 @@ namespace OSCVRCWiz
 
 
         }
+        public async void speechStop(VoiceWizardWindow MainForm)//speech to text
+        {
+            SpeechCt.Cancel();
+            SpeechCt = new();
+            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, "", "normal", "default", "default", "default", "Sara", SpeechCt.Token));
+        }
         public async void speechTTTS(VoiceWizardWindow MainForm, string fromLanguageFullname)//speech to text
         {
 
@@ -345,6 +352,7 @@ namespace OSCVRCWiz
                 if (MainForm.rjToggleButton4.Checked == false)
                 {
                     var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
+                    
                     //OutputSpeechRecognitionResult(speechRecognitionResult);
                     MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
 

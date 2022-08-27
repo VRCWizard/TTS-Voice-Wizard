@@ -12,6 +12,7 @@ using NAudio.CoreAudioApi;
 using CSCore;
 using CSCore.MediaFoundation;
 using CSCore.SoundOut;
+using System.Media;
 
 
 
@@ -174,6 +175,7 @@ namespace OSCVRCWiz
 
 
         }
+
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
@@ -507,6 +509,9 @@ namespace OSCVRCWiz
 
             rjToggleSoundNotification.Checked = Settings1.Default.VRCSoundNotifySetting;
 
+           rjToggleButtonSystemTray.Checked= Settings1.Default.SystemTraySetting;
+             rjToggleButtonMedia.Checked= Settings1.Default.playMediaSetting;
+
 
             EmojiBox1.Text = emojiSettings.Default.emoji1;
             EmojiBox2.Text = emojiSettings.Default.emoji2;
@@ -601,6 +606,9 @@ namespace OSCVRCWiz
 
             Settings1.Default.VRCSoundNotifySetting = rjToggleSoundNotification.Checked;
 
+            Settings1.Default.SystemTraySetting = rjToggleButtonSystemTray.Checked;
+            Settings1.Default.playMediaSetting = rjToggleButtonMedia.Checked;
+
             emojiSettings.Default.emoji1 = EmojiBox1.Text.ToString();
             emojiSettings.Default.emoji2 = EmojiBox2.Text.ToString();
             emojiSettings.Default.emoji3 = EmojiBox3.Text.ToString();
@@ -685,7 +693,19 @@ namespace OSCVRCWiz
         }
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
-            if(rjToggleButtonChatBox.Checked==true)
+            if (rjToggleButtonMedia.Checked == true)
+            {
+                try
+                {
+                    var soundPlayer = new SoundPlayer(@"sounds\speechButton.wav");
+                    soundPlayer.Play();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (rjToggleButtonChatBox.Checked==true)
             {
                 var typingbubble = new SharpOSC.OscMessage("/chatbox/typing", true);
                 sender3.Send(typingbubble);
@@ -1351,6 +1371,58 @@ namespace OSCVRCWiz
 
 
 
+        }
+
+        private void VoiceWizardWindow_Resize(object sender, EventArgs e)
+        {
+            if(rjToggleButtonSystemTray.Checked == true)
+            {
+                bool cursorNotInBar = Screen.GetWorkingArea(this).Contains(Cursor.Position);
+
+                if (this.WindowState == FormWindowState.Minimized && cursorNotInBar)
+                {
+                    this.ShowInTaskbar = false;
+                    notifyIcon1.Visible = true;
+                    this.Hide();
+                }
+
+            }
+          
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.ShowInTaskbar = true;
+                notifyIcon1.Visible = false;
+                this.Show();
+
+            }
+        
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var ts = new TextSynthesis();
+            ts.speechStop(this);
+
+            if(rjToggleButtonMedia.Checked==true)
+            {
+                try
+                {
+                    var soundPlayer = new SoundPlayer(@"sounds\stopButton.wav");
+                    soundPlayer.Play();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+               
+            }
+           
         }
     }
 }
