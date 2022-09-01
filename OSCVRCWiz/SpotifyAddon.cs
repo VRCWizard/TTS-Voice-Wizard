@@ -29,185 +29,201 @@ namespace OSCVRCWiz
 
         public static async Task getCurrentSongInfo(VoiceWizardWindow MainForm)
         {
-            
-
-           if(myClient==null)
+            try
             {
-                myClient = new SpotifyClient(Settings1.Default.PKCEAccessToken);
-            }
-            if (myClient != null)
-            {
-                try
+
+
+                if (myClient == null)
                 {
-                    if (legacyState == true)
-                    {
-                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
-                        PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientIdLegacy, Settings1.Default.PKCERefreshToken);
-                        PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
-                        myClient = new SpotifyClient(refreshResponse.AccessToken);
-                        Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
-                        Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
-                        Settings1.Default.Save();
-                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
-                    }
-                    else
-                    {
-                        string clientId = Settings1.Default.SpotifyKey;
-                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
-                        PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
-                        PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
-                        myClient = new SpotifyClient(refreshResponse.AccessToken);
-                        Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
-                        Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
-                        Settings1.Default.Save();
-                        System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
-
-                    }
-
-                    if (spotifyConnect == false)
-                    {
-                        var ot = new OutputText();
-                        ot.outputLog(MainForm, "[Spotify Connected]");
-                        spotifyConnect = true;
-
-                    }
+                    myClient = new SpotifyClient(Settings1.Default.PKCEAccessToken);
                 }
-
-
-
-
-                catch (APIException ex)
+                if (myClient != null)
                 {
-                    System.Diagnostics.Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
-
-                }
-                FullTrack m_currentTrack;
-                CurrentlyPlaying m_currentlyPlaying;
-                m_currentlyPlaying = await myClient.Player.GetCurrentlyPlaying(new PlayerCurrentlyPlayingRequest());
-                title = "";
-                var artist = "";
-                var duration = "";
-                var progress = "";
-                var durationHours = "";
-                var progressHours = "";
-                if (m_currentlyPlaying != null)
-                {
-                    IPlayableItem currentlyPlayingItem = m_currentlyPlaying.Item;
-                    m_currentTrack = currentlyPlayingItem as FullTrack;
-                    // System.Diagnostics.Debug.WriteLine(m_currentTrack.Name);
-                    
-                    if (m_currentTrack != null)
+                    try
                     {
-                        //spotifyurllink = m_currentTrack.PreviewUrl; //does not seem to work correctly
-                        title = m_currentTrack.Name;
-                        
-
-                        string currentArtists = string.Empty;
-                        int counter = 0;
-                        foreach (SimpleArtist currentArtist in m_currentTrack.Artists)
+                        if (legacyState == true)
                         {
-                            if (counter <= 1)
+                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
+                            PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientIdLegacy, Settings1.Default.PKCERefreshToken);
+                            PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+                            myClient = new SpotifyClient(refreshResponse.AccessToken);
+                            Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
+                            Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
+                            Settings1.Default.Save();
+                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+                        }
+                        else
+                        {
+                            string clientId = Settings1.Default.SpotifyKey;
+                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
+                            PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
+                            PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+                            myClient = new SpotifyClient(refreshResponse.AccessToken);
+                            Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
+                            Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
+                            Settings1.Default.Save();
+                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+
+                        }
+
+                        if (spotifyConnect == false)
+                        {
+                            var ot = new OutputText();
+                            ot.outputLog(MainForm, "[Spotify Connected]");
+                            spotifyConnect = true;
+
+                        }
+                    }
+
+
+
+
+                    catch (APIException ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
+
+                    }
+                    FullTrack m_currentTrack;
+                    CurrentlyPlaying m_currentlyPlaying;
+                    m_currentlyPlaying = await myClient.Player.GetCurrentlyPlaying(new PlayerCurrentlyPlayingRequest());
+                    title = "";
+                    var artist = "";
+                    var duration = "";
+                    var progress = "";
+                    var durationHours = "";
+                    var progressHours = "";
+                    if (m_currentlyPlaying != null)
+                    {
+                        IPlayableItem currentlyPlayingItem = m_currentlyPlaying.Item;
+                        m_currentTrack = currentlyPlayingItem as FullTrack;
+                        // System.Diagnostics.Debug.WriteLine(m_currentTrack.Name);
+
+                        if (m_currentTrack != null)
+                        {
+                            //spotifyurllink = m_currentTrack.PreviewUrl; //does not seem to work correctly
+                            title = m_currentTrack.Name;
+
+
+                            string currentArtists = string.Empty;
+                            int counter = 0;
+                            foreach (SimpleArtist currentArtist in m_currentTrack.Artists)
                             {
-                                currentArtists += currentArtist.Name + ", ";
+                                if (counter <= 1)
+                                {
+                                    currentArtists += currentArtist.Name + ", ";
+                                }
+
+                                counter++;
                             }
 
-                            counter++;
+                            artist = currentArtists.Remove(currentArtists.Length - 2, 2);
+                            // AlbumLabel.Content = m_currentTrack.Album.Name;
+                            progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
+                            duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
+                            progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
+                            durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
                         }
-
-                        artist = currentArtists.Remove(currentArtists.Length - 2, 2);
-                        // AlbumLabel.Content = m_currentTrack.Album.Name;
-                        progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
-                        duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
-                        progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
-                        durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
                     }
-                }
-                if ((lastSong != title  || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked==true) && (!string.IsNullOrWhiteSpace(title) && title != ""&& VoiceWizardWindow.pauseSpotify!=true))
-                {
-                    VoiceWizardWindow.pauseBPM = true;
-                   // lastSong = title;
-                    System.Diagnostics.Debug.WriteLine(title);
-                    System.Diagnostics.Debug.WriteLine(artist);
-                    System.Diagnostics.Debug.WriteLine(duration);
-
-                    var spotifySymbol = "ふ";
-                    var theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration+ " on Spotify";
-
-                    theString = $"{spotifySymbol}Listening to {title} by {artist} {progress}/{duration} on Spotify";  
-
-                    theString = MainForm.textBoxCustomSpot.Text.ToString();
-                    theString = theString.Replace("{spotifySymbol}", spotifySymbol);
-                    theString = theString.Replace("{title}", title);
-                    theString = theString.Replace("{artist}", artist);
-                    theString = theString.Replace("{progressMinutes}", progress);
-                    theString = theString.Replace("{durationMinutes}", duration);
-                    theString = theString.Replace("{progressHours}", progressHours);
-                    theString = theString.Replace("{durationHours}", durationHours);
-
-
-                    //  if (MainForm.rjToggleButtonPeriodic.Checked==true)
-                    //   {
-                    //  if (MainForm.rjToggleButton3.Checked == false)
-                    //  {
-                    //   if(MainForm.rjToggleButtonMugi.Checked==true)
-                    //   {
-                    //        theString = title + " - '" + artist + "'";
-                    //     }
-                    //  else
-                    //     {
-                    //        theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
-
-                    //     }
-
-
-                    //    }
-                    //  if (MainForm.rjToggleButton3.Checked == true)
-                    //   {
-                    //        theString = "ふ Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration;
-                    //    }
-
-                    //   }
-                    //    if (MainForm.rjToggleButtonPeriodic.Checked == false)
-                    //   {
-                    //    if (MainForm.rjToggleButton3.Checked == false)
-                    //    {
-                    //      theString = "Listening to '" + title + "' by '" + artist + "'" + " on Spotify";
-
-                    //  }
-                    //    if (MainForm.rjToggleButton3.Checked == true)
-                    //    {
-                    //       theString = "ふ Listening to '" + title + "' by '" + artist + "' ";
-                    //    }
-
-                    //  }
-
-                    if (fullSongPauseCheck != progress)//stop outputting periodically is song paused
+                    if ((lastSong != title || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked == true) && (!string.IsNullOrWhiteSpace(title) && title != "" && VoiceWizardWindow.pauseSpotify != true))
                     {
+                        VoiceWizardWindow.pauseBPM = true;
+                        // lastSong = title;
+                        System.Diagnostics.Debug.WriteLine(title);
+                        System.Diagnostics.Debug.WriteLine(artist);
+                        System.Diagnostics.Debug.WriteLine(duration);
+
+                        var spotifySymbol = "ふ";
+                        var theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
+
+                        theString = $"{spotifySymbol}Listening to {title} by {artist} {progress}/{duration} on Spotify";
+
+                        theString = MainForm.textBoxCustomSpot.Text.ToString();
+                        theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+                        theString = theString.Replace("{title}", title);
+                        theString = theString.Replace("{artist}", artist);
+                        theString = theString.Replace("{progressMinutes}", progress);
+                        theString = theString.Replace("{durationMinutes}", duration);
+                        theString = theString.Replace("{progressHours}", progressHours);
+                        theString = theString.Replace("{durationHours}", durationHours);
 
 
-                        var ot = new OutputText();
-                        if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
-                        {
-                            Task.Run(() => ot.outputLog(MainForm, theString));
-                        }
-                        if (MainForm.rjToggleButtonOSC.Checked == true)
-                        {
-                            Task.Run(() => ot.outputVRChat(MainForm, theString, "spotify"));
-                        }
-                        if (MainForm.rjToggleButtonChatBox.Checked == true)
-                        {
-                            Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
+                        //  if (MainForm.rjToggleButtonPeriodic.Checked==true)
+                        //   {
+                        //  if (MainForm.rjToggleButton3.Checked == false)
+                        //  {
+                        //   if(MainForm.rjToggleButtonMugi.Checked==true)
+                        //   {
+                        //        theString = title + " - '" + artist + "'";
+                        //     }
+                        //  else
+                        //     {
+                        //        theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
 
+                        //     }
+
+
+                        //    }
+                        //  if (MainForm.rjToggleButton3.Checked == true)
+                        //   {
+                        //        theString = "ふ Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration;
+                        //    }
+
+                        //   }
+                        //    if (MainForm.rjToggleButtonPeriodic.Checked == false)
+                        //   {
+                        //    if (MainForm.rjToggleButton3.Checked == false)
+                        //    {
+                        //      theString = "Listening to '" + title + "' by '" + artist + "'" + " on Spotify";
+
+                        //  }
+                        //    if (MainForm.rjToggleButton3.Checked == true)
+                        //    {
+                        //       theString = "ふ Listening to '" + title + "' by '" + artist + "' ";
+                        //    }
+
+                        //  }
+
+                        if (fullSongPauseCheck != progress)//stop outputting periodically is song paused
+                        {
+
+
+                            var ot = new OutputText();
+                            if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                            {
+                                Task.Run(() => ot.outputLog(MainForm, theString));
+                            }
+                            if (MainForm.rjToggleButtonOSC.Checked == true)
+                            {
+                                Task.Run(() => ot.outputVRChat(MainForm, theString, "spotify"));
+                            }
+                            if (MainForm.rjToggleButtonChatBox.Checked == true)
+                            {
+                                Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
+
+                            }
                         }
+                        // lastSong = title;
+                        MainForm.justShowTheSong = false;
+                        fullSongPauseCheck = progress;
+
+
                     }
-                    // lastSong = title;
-                    MainForm.justShowTheSong = false;
-                    fullSongPauseCheck = progress;
 
 
                 }
+            }
+            catch (APITooManyRequestsException e)
+            {
 
-               
+
+                System.Diagnostics.Debug.WriteLine("Spotify Feature timed out for: "+e.RetryAfter.ToString());
+
+                var ot = new OutputText();
+                if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                {
+                    Task.Run(() => ot.outputLog(MainForm, "Spotify Feature timed out for: " + e.RetryAfter.ToString()));
+                }
+
             }
 
         }

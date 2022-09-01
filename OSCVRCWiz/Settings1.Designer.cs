@@ -169,7 +169,7 @@ namespace OSCVRCWiz {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool hideDelaySetting {
             get {
                 return ((bool)(this["hideDelaySetting"]));
@@ -693,6 +693,18 @@ namespace OSCVRCWiz {
             }
             set {
                 this["playMediaSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VRCUseDelay {
+            get {
+                return ((bool)(this["VRCUseDelay"]));
+            }
+            set {
+                this["VRCUseDelay"] = value;
             }
         }
     }
