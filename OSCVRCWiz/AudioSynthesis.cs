@@ -11,17 +11,20 @@ namespace OSCVRCWiz
 {
     public class AudioSynthesis
     {
-
+       // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
 
         //TTS
-        public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice, CancellationToken ct = default) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
 
+                
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
                 // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
+
+             //   config.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
 
                 // Note: if only language is set, the default voice of that language is chosen.
                 // config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
@@ -32,9 +35,9 @@ namespace OSCVRCWiz
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
 
-              //  Dictionary<string, string> myExpressions = new Dictionary<string, string>(); //update code to use dictionaries to make it more clean and easier to add more voices etc.
-              //  myExpressions.Add("", "");
-             //   Dictionary<string, string> myVoices =new Dictionary<string, string>();
+                //  Dictionary<string, string> myExpressions = new Dictionary<string, string>(); //update code to use dictionaries to make it more clean and easier to add more voices etc.
+                //  myExpressions.Add("", "");
+                //   Dictionary<string, string> myVoices =new Dictionary<string, string>();
 
 
                 string angry = "<mstts:express-as style=\"angry\">"; //1
@@ -194,8 +197,23 @@ namespace OSCVRCWiz
                     audioConfig = AudioConfig.FromDefaultSpeakerOutput();
 
                 }
+          //      var ot = new OutputText();
+            //    if (synthesizerVoice != null &&MainForm.rjToggleButtonCancelAudio.Checked==true)
+            //    {
+                  
+             //       ot.outputLog(MainForm, "[Begining Speech Stopped]");
+             //       await synthesizerVoice.StopSpeakingAsync();
+             //       synthesizerVoice = null;
+                    
+                
+                   
+                   
+                   // synthesizerVoice.Dispose();
+                 //   synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
+              //     ot.outputLog(MainForm, "[Speech Stopped]");
+             //   }
 
-                var synthesizer = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
+                var synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
 
                 string ssml0 = "<speak version=\"1.0\"";
                 ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
@@ -385,9 +403,27 @@ namespace OSCVRCWiz
                 ssml0 += "</speak>";
 
                 System.Diagnostics.Debug.WriteLine(ssml0);
+                //  if (cancelToken.IsCancellationRequested)
+                //  {
 
-                _ = synthesizer.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
-                ct.Register(async () => await synthesizer.StopSpeakingAsync());
+                //  }
+                // synthesizerVoice.StopSpeakingAsync();
+                //  synthesizerVoice.SynthesisCompleted += (sender, eventArgs) =>
+                //  {
+                //     if (synthesizerVoice != null)
+                //      {
+                //   synthesizerVoice = null;
+                //   ot.outputLog(MainForm, "synthesizer reset to null");
+
+                //     }
+
+                //     };
+                //   await synthesizerVoice.SpeakSsmlAsync(ssml0);
+                synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+             //   ct.Register(async () => await synthesizerVoice.StopSpeakingAsync());
+                //  synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+
+                // ct.Register(async () => await synthesizer.StopSpeakingAsync());
 
             }
             catch (Exception ex)

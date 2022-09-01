@@ -39,7 +39,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="hideDelaySetting" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="hideDelayValue" Type="System.String" Scope="User">
       <Value Profile="(Default)">5000</Value>
@@ -168,6 +168,9 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="playMediaSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="VRCUseDelay" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>

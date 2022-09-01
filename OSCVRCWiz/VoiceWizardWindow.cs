@@ -49,6 +49,7 @@ namespace OSCVRCWiz
         public int currentOutputDeviceLite = 0;
         public bool getSpotify = false;
         public System.Threading.Timer testtimer;
+        public System.Threading.Timer typetimer;
         public SharpOSC.UDPSender sender3;
         public bool justShowTheSong = false;
         public static int heartRatePort = 4026;
@@ -58,6 +59,7 @@ namespace OSCVRCWiz
         public static bool BPMSpamLog = true;
         public static int HRInternalValue = 5;
         public static string TTSLiteText = "";
+        public static bool typingBox = false;
         
 
         public string CultureSelected = "en-US";//free
@@ -135,6 +137,12 @@ namespace OSCVRCWiz
             testtimer = new System.Threading.Timer(testtimertick);
             testtimer.Change(Timeout.Infinite, Timeout.Infinite);
 
+            typetimer = new System.Threading.Timer(typetimertick);
+            //  typetimer.Change(Timeout.Infinite, Timeout.Infinite);
+            typetimer.Change(1500, 0);
+
+
+
             foreach (var voice in synthesizerLite.GetInstalledVoices())
             {
                 var info = voice.VoiceInfo;
@@ -146,8 +154,9 @@ namespace OSCVRCWiz
            // webView21.AutoScrollOffset(0, 109);
             int id = 0;// The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+           // RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.OemOpenBrackets.GetHashCode());
             //  panel1.SetBounds(0,0,220,731);
-           // panel2Logo.SetBounds(0, 0, 220, 140);
+            // panel2Logo.SetBounds(0, 0, 220, 140);
             //pictureBox1.SetBounds(38,15,125,125);
             // iconButton1.Text = "Dashboard";
             // iconButton2.Text = "Speech Provider";
@@ -158,17 +167,17 @@ namespace OSCVRCWiz
             //     iconButton7.Text = "Github";
             // iconButton12.Text = "Donate";
 
-          /*  panel1.SetBounds(0, 0, 65, 731);
-            panel2Logo.SetBounds(0,0,220,55);
-            pictureBox1.SetBounds(0, 0, 55, 55);
-            iconButton1.Text = "";
-            iconButton2.Text = "";
-            iconButton4.Text = "";
-            iconButton5.Text = "";
-            iconButton3.Text = "";
-            iconButton6.Text = "";
-            iconButton7.Text = "";
-            iconButton12.Text = ""; */
+            /*  panel1.SetBounds(0, 0, 65, 731);
+              panel2Logo.SetBounds(0,0,220,55);
+              pictureBox1.SetBounds(0, 0, 55, 55);
+              iconButton1.Text = "";
+              iconButton2.Text = "";
+              iconButton4.Text = "";
+              iconButton5.Text = "";
+              iconButton3.Text = "";
+              iconButton6.Text = "";
+              iconButton7.Text = "";
+              iconButton12.Text = ""; */
 
 
 
@@ -179,13 +188,33 @@ namespace OSCVRCWiz
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
+          //  System.Diagnostics.Debug.WriteLine("-------------get key press id: " + m.Result.ToString());
 
             if (m.Msg == 0x0312)
             {
+                /* Note that the three lines below are not needed if you only want to register one hotkey.
+                * The below lines are useful in case you want to register multiple keys, which you can use a switch with the id as argument, or if you want to know which key/modifier was pressed for some particular reason. */
+
+                Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);                  // The key of the hotkey that was pressed.
+                KeyModifier modifier = (KeyModifier)((int)m.LParam & 0xFFFF);       // The modifier of the hotkey that was pressed.
+                int id = m.WParam.ToInt32();                                        // The id of the hotkey that was pressed.
+
+                System.Diagnostics.Debug.WriteLine("-------------get key press id: " + key.ToString());
                 // speechTTSButton.PerformClick();
-                Task.Run(() => doSpeechTTS());
+           //     if (key.ToString() == "OemOpenBrackets")
+            //    {
+             //       var ts = new TextSynthesis();
+             //       Task.Run(() => speechStop());
+            //    }
+             //   if (key.ToString() == "G")
+            //    {
+                    Task.Run(() => doSpeechTTS());
+
+            //    }
+                
 
             }
+           // if(m.)
         }
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
         {
@@ -256,6 +285,24 @@ namespace OSCVRCWiz
             }
 
             richTextBox3.Text = "";
+
+        }
+        public void ClearTypingBox()
+        {
+
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action(ClearTextBox));
+                return;
+            }
+
+            richTextBox9.Text = "";
+            if(rjToggleButtonOSC.Checked==true)
+            {
+
+                var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+                sender3.Send(message0);
+            }
 
         }
 
@@ -512,6 +559,8 @@ namespace OSCVRCWiz
            rjToggleButtonSystemTray.Checked= Settings1.Default.SystemTraySetting;
              rjToggleButtonMedia.Checked= Settings1.Default.playMediaSetting;
 
+             rjToggleButtonChatBoxUseDelay.Checked= Settings1.Default.VRCUseDelay;
+
 
             EmojiBox1.Text = emojiSettings.Default.emoji1;
             EmojiBox2.Text = emojiSettings.Default.emoji2;
@@ -548,6 +597,7 @@ namespace OSCVRCWiz
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             UnregisterHotKey(this.Handle, 0);
+          //  UnregisterHotKey(this.Handle, 1);
             if (rjToggleButtonKeyRegion2.Checked == false)
             {
                 Settings1.Default.yourRegion = "";
@@ -608,6 +658,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.SystemTraySetting = rjToggleButtonSystemTray.Checked;
             Settings1.Default.playMediaSetting = rjToggleButtonMedia.Checked;
+
+            Settings1.Default.VRCUseDelay= rjToggleButtonChatBoxUseDelay.Checked;
 
             emojiSettings.Default.emoji1 = EmojiBox1.Text.ToString();
             emojiSettings.Default.emoji2 = EmojiBox2.Text.ToString();
@@ -693,18 +745,7 @@ namespace OSCVRCWiz
         }
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
-            if (rjToggleButtonMedia.Checked == true)
-            {
-                try
-                {
-                    var soundPlayer = new SoundPlayer(@"sounds\speechButton.wav");
-                    soundPlayer.Play();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+           
             if (rjToggleButtonChatBox.Checked==true)
             {
                 var typingbubble = new SharpOSC.OscMessage("/chatbox/typing", true);
@@ -730,6 +771,18 @@ namespace OSCVRCWiz
         }
         private void doSpeechTTS()
         {
+            if (rjToggleButtonMedia.Checked == true)
+            {
+               try
+                {
+                    var soundPlayer = new SoundPlayer(@"sounds\speechButton.wav");
+                    soundPlayer.Play();
+                }
+                catch (Exception ex)
+                {
+                   MessageBox.Show(ex.Message);
+              }
+            }
             var ts = new TextSynthesis();
             this.Invoke((MethodInvoker)delegate ()
             {
@@ -829,12 +882,15 @@ namespace OSCVRCWiz
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-               if( rjToggleButtonCancelAudio.Checked == true)
-                {
-                    TextSynthesis.SpeechCt.Cancel();
-                }
-                TextSynthesis.SpeechCt = new();
-                _ = Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice, TextSynthesis.SpeechCt.Token));//new
+
+                //  if( rjToggleButtonCancelAudio.Checked == true)
+                // {
+                //  TextSynthesis.SpeechCt.Cancel();
+                // }
+             //   TextSynthesis.SpeechCt.Cancel();
+            //    TextSynthesis.SpeechCt = new();
+                //   Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));//new
+                AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice);
             }
             if (rjToggleButtonOSC.Checked == true)
             {
@@ -999,18 +1055,32 @@ namespace OSCVRCWiz
             Thread t = new Thread(doTimerTick);
             t.Start();
         }
+        private void typetimertick(object sender)
+        {
+
+            Thread t = new Thread(doTypeTimerTick);
+            t.Start();
+        }
         private void doTimerTick()
         {
             // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
             
             pauseBPM = false;
             pauseSpotify = false;
-            if(rjToggleButtonOSC.Checked==true)
+            
+            if (rjToggleButtonOSC.Checked==true)
             {
                 var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
                 sender3.Send(message0);
+                var message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+                sender3.Send(message1);
             }
-            
+            if (rjToggleButtonChatBox.Checked == true && rjToggleButtonChatBoxUseDelay.Checked == true && rjToggleButtonHideDelay2.Checked)
+            {
+                var message1 = new SharpOSC.OscMessage("/chatbox/input", "", true, false);
+                sender3.Send(message1);
+            }
+
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
             if(rjToggleButtonGreenScreen.Checked==true)
             {
@@ -1024,6 +1094,7 @@ namespace OSCVRCWiz
            
 
         }
+      
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -1309,7 +1380,7 @@ namespace OSCVRCWiz
                 pictureBox1.SetBounds(0, 0, 55, 55);
                 iconButton1.Text = "";
                 iconButton2.Text = "";
-                iconButton4.Text = "";
+                iconButton23.Text = "";
                 iconButton5.Text = "";
                 iconButton3.Text = "";
                 iconButton6.Text = "";
@@ -1322,8 +1393,9 @@ namespace OSCVRCWiz
                 panel2Logo.SetBounds(0, 0, 220, 140);
                 pictureBox1.SetBounds(38,15,125,125);
                 iconButton1.Text = "Dashboard";
-                iconButton2.Text = "Speech Provider";
-                iconButton4.Text = "Speech Provider";
+                iconButton2.Text = "Text to Speech";
+                iconButton23.Text = "Text to Text";
+                //  iconButton4.Text = "Speech Provider";
                 iconButton5.Text = "Settings";
                 iconButton3.Text = "Addon";
                 iconButton6.Text = "Discord";
@@ -1398,6 +1470,8 @@ namespace OSCVRCWiz
                 this.ShowInTaskbar = true;
                 notifyIcon1.Visible = false;
                 this.Show();
+                int id = 0;
+                RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
 
             }
         
@@ -1406,13 +1480,30 @@ namespace OSCVRCWiz
 
         private void button11_Click(object sender, EventArgs e)
         {
-            var ts = new TextSynthesis();
-            ts.speechStop(this);
 
-            if(rjToggleButtonMedia.Checked==true)
+            Task.Run(() => speechStop());
+
+           
+        }
+        public async void speechStop()//speech to text
+        {
+
+         //   if (AudioSynthesis.synthesizerVoice != null)
+         //   {
+         //       var ot = new OutputText();
+          //      ot.outputLog(this, "[Debug: Stopping]");
+         //       await AudioSynthesis.synthesizerVoice.StopSpeakingAsync();
+          //      AudioSynthesis.synthesizerVoice = null;
+          //      ot.outputLog(this, "[Debug: Speech Stopped]");
+         //   }
+
+
+            if (rjToggleButtonMedia.Checked == true)
             {
                 try
                 {
+                    
+                  //  Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, "", "normal", "default", "default", "default", "Sara"));//new
                     var soundPlayer = new SoundPlayer(@"sounds\stopButton.wav");
                     soundPlayer.Play();
                 }
@@ -1420,9 +1511,83 @@ namespace OSCVRCWiz
                 {
                     MessageBox.Show(ex.Message);
                 }
-               
+
             }
-           
+
+        
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            var sender4 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+            sender4.Send(message0);
+        }
+
+        private void richTextBox9_TextChanged(object sender, EventArgs e)
+        {
+          
+
+            typingBox = true;
+          
+            
+
+
+
+        }
+        private void doTypeTimerTick()
+        {
+
+         
+             
+            if (typingBox == true)
+            {
+                var ot = new OutputText();
+                // var senderTest = new SharpOSC.UDPSender("127.0.0.1", 9000);
+                //  var messageText = new SharpOSC.OscMessage("/chatbox/input", richTextBox9.Text.ToString(), true, false);
+                //   senderTest.Send(messageText);
+                var theString = "";
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    theString = richTextBox9.Text.ToString();
+
+                });
+
+
+                if (rjToggleButtonChatBox.Checked == true)
+                {
+                    VoiceWizardWindow.pauseBPM = true;
+                    VoiceWizardWindow.pauseSpotify = true;
+                    Task.Run(() => ot.outputVRChatSpeechBubbles(this, theString, "ttt")); //original
+
+
+                }
+                if (rjToggleButtonOSC.Checked == true)
+                {
+                    VoiceWizardWindow.pauseBPM = true;
+                    VoiceWizardWindow.pauseSpotify = true;
+                    Task.Run(() => ot.outputVRChat(this, theString, "tttAdd")); //original     
+                }
+            }
+            typingBox = false;
+            typetimer.Change(2000, 0);
+
+
+
+
+
+
+        }
+
+        private void iconButton23_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage3);//ttt
+        }
+
+        private void iconButton22_Click(object sender, EventArgs e)
+        {
+            ClearTypingBox();
         }
     }
 }

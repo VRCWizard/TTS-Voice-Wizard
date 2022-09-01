@@ -104,6 +104,11 @@ namespace OSCVRCWiz
                 }
                 
             }
+            if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
+            {
+                MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+
+            }
 
         }
         public async void outputGreenScreen(VoiceWizardWindow MainForm, string textstring, string type)
@@ -141,91 +146,30 @@ namespace OSCVRCWiz
             {
               
                 textstringbefore = textstringbefore.Replace("<3", "ぬ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox1.Text.ToString(), "あう");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox2.Text.ToString(), "えお");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox3.Text.ToString(), "やゆ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox4.Text.ToString(), "よわ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox5.Text.ToString(), "をほ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox6.Text.ToString(), "へた");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox7.Text.ToString(), "てい");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox8.Text.ToString(), "すか");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox9.Text.ToString(), "んな");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox10.Text.ToString(), "にら");
+                textstringbefore =Regex.Replace(textstringbefore, MainForm.EmojiBox1.Text.ToString(), "あう", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox2.Text.ToString(), "えお", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox3.Text.ToString(), "やゆ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox4.Text.ToString(), "よわ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox5.Text.ToString(), "をほ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox6.Text.ToString(), "へた", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox7.Text.ToString(), "てい", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox8.Text.ToString(), "すか", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox9.Text.ToString(), "んな", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox10.Text.ToString(), "にら", RegexOptions.IgnoreCase);
                 //////////////
-                Regex.Replace(textstringbefore, MainForm.EmojiBox11.Text.ToString(), "せち");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox12.Text.ToString(), "とし");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox13.Text.ToString(), "はき");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox14.Text.ToString(), "くま");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox15.Text.ToString(), "のり");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox16.Text.ToString(), "れけ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox17.Text.ToString(), "むつ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox18.Text.ToString(), "さそ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox19.Text.ToString(), "ひこ");
-                Regex.Replace(textstringbefore, MainForm.EmojiBox20.Text.ToString(), "みも");
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox11.Text.ToString(), "せち", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox12.Text.ToString(), "とし", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox13.Text.ToString(), "はき", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox14.Text.ToString(), "くま", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox15.Text.ToString(), "のり", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox16.Text.ToString(), "れけ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox17.Text.ToString(), "むつ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox18.Text.ToString(), "さそ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox19.Text.ToString(), "ひこ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox20.Text.ToString(), "みも", RegexOptions.IgnoreCase);
 
 
-                /*
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox1.Text.ToString(), "あう");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox1.Text.ToString().ToLower(), "あう");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox2.Text.ToString(), "えお");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox2.Text.ToString().ToLower(), "えお");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox3.Text.ToString(), "やゆ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox3.Text.ToString().ToLower(), "やゆ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox4.Text.ToString(), "よわ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox4.Text.ToString().ToLower(), "よわ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox5.Text.ToString(), "をほ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox5.Text.ToString().ToLower(), "をほ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox6.Text.ToString(), "へた");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox6.Text.ToString().ToLower(), "へた");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox7.Text.ToString(), "てい");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox7.Text.ToString().ToLower(), "てい");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox8.Text.ToString(), "すか");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox8.Text.ToString().ToLower(), "すか");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox9.Text.ToString(), "んな");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox9.Text.ToString().ToLower(), "んな");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox10.Text.ToString(), "にら");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox10.Text.ToString().ToLower(), "にら");
-
-                                //////////////
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox11.Text.ToString(), "せち");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox11.Text.ToString().ToLower(), "せち");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox12.Text.ToString(), "とし");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox12.Text.ToString().ToLower(), "とし");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox13.Text.ToString(), "はき");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox13.Text.ToString().ToLower(), "はき");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox14.Text.ToString(), "くま");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox14.Text.ToString().ToLower(), "くま");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox15.Text.ToString(), "のり");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox15.Text.ToString().ToLower(), "のり");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox16.Text.ToString(), "れけ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox16.Text.ToString().ToLower(), "れけ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox17.Text.ToString(), "むつ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox17.Text.ToString().ToLower(), "むつ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox18.Text.ToString(), "さそ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox18.Text.ToString().ToLower(), "さそ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox19.Text.ToString(), "ひこ");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox19.Text.ToString().ToLower(), "ひこ");
-
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox20.Text.ToString(), "みも");
-                                textstringbefore = textstringbefore.Replace(MainForm.EmojiBox20.Text.ToString().ToLower(), "みも");
-                */
+             
             }
    
              
@@ -487,6 +431,10 @@ namespace OSCVRCWiz
                         MainForm.sender3.Send(message1);
                     }
                     SpotifyAddon.lastSong = SpotifyAddon.title;
+                    break;
+                case "tttAdd":
+
+        
                     break;
                 default:
                     MainForm.sender3.Send(message1);

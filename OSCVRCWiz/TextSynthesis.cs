@@ -21,7 +21,8 @@ namespace OSCVRCWiz
         public string toLanguage = "en";
         public static bool continuousListening = false;
         public static bool continuousListeningTranslate = false;
-        public static CancellationTokenSource SpeechCt = new();
+       // public static CancellationTokenSource SpeechCt = new();
+
 
 
         public void speechSetup(VoiceWizardWindow MainForm, string toLanguageFullname, string fromLanguageFullname)//speech to text setup
@@ -167,12 +168,13 @@ namespace OSCVRCWiz
                         //Send Text to TTS
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                         {
-                            if (MainForm.rjToggleButtonCancelAudio.Checked == true)
-                            {
-                                SpeechCt.Cancel();
-                            }
-                            SpeechCt = new();
-                            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice, SpeechCt.Token));
+                            // if (MainForm.rjToggleButtonCancelAudio.Checked == true)
+                            //  {
+                            //SpeechCt.Cancel();
+                            //   }
+                            //  SpeechCt = new();
+                         
+                            AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice);
                         }
 
                         //Send Text to Vrchat
@@ -264,12 +266,13 @@ namespace OSCVRCWiz
                         }
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                         {
-                            if (MainForm.rjToggleButtonCancelAudio.Checked == true)
-                            {
-                                SpeechCt.Cancel();
-                            }
-                            SpeechCt = new();
-                            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice, SpeechCt.Token));
+                            //  if (MainForm.rjToggleButtonCancelAudio.Checked == true)
+                            //  {
+                            //SpeechCt.Cancel();
+                            // }
+                            //  SpeechCt = new();
+                          
+                            AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice);
                         }
                         //Send Text to Vrchat
                         if (MainForm.rjToggleButtonOSC.Checked == true)
@@ -285,7 +288,7 @@ namespace OSCVRCWiz
                             VoiceWizardWindow.pauseBPM = true;
                             VoiceWizardWindow.pauseSpotify = true;
                             //ot.outputVRChat(MainForm, MainForm.dictationString);
-                           Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString, "tts"));
+                            Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString, "tts"));
 
                         }
                         if (MainForm.rjToggleButtonGreenScreen.Checked == true)
@@ -293,9 +296,7 @@ namespace OSCVRCWiz
                             Task.Run(() => ot.outputGreenScreen(MainForm, MainForm.dictationString, "tts")); //original
 
                         }
-                        //Send Text to TTS
 
-                        // Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm.dictationString, emotion, rate, pitch, volume, voice));
 
                     }
                 };
@@ -336,12 +337,7 @@ namespace OSCVRCWiz
 
 
         }
-        public async void speechStop(VoiceWizardWindow MainForm)//speech to text
-        {
-            SpeechCt.Cancel();
-            SpeechCt = new();
-            Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, "", "normal", "default", "default", "default", "Sara", SpeechCt.Token));
-        }
+      
         public async void speechTTTS(VoiceWizardWindow MainForm, string fromLanguageFullname)//speech to text
         {
 
@@ -382,9 +378,9 @@ namespace OSCVRCWiz
                     }
                     if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                     {
-                        SpeechCt.Cancel();
-                        SpeechCt = new();
-                        Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice, SpeechCt.Token));
+
+                      
+                        AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice);
                     }
                     //Send Text to Vrchat
                     if (MainForm.rjToggleButtonOSC.Checked == true)
@@ -405,7 +401,7 @@ namespace OSCVRCWiz
                     }
                     if (MainForm.rjToggleButtonGreenScreen.Checked == true)
                     {
-                        Task.Run(() => ot.outputGreenScreen(MainForm, MainForm.dictationString, "tts")); //original
+                         Task.Run(() => ot.outputGreenScreen(MainForm, MainForm.dictationString, "tts")); //original
 
                     }
                 }
@@ -493,9 +489,8 @@ namespace OSCVRCWiz
                     //Send Text to TTS
                     if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                     {
-                        SpeechCt.Cancel();
-                        SpeechCt = new();
-                        Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice, SpeechCt.Token));
+                      
+                        AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice);
                     }
 
                     //Send Text to Vrchat
@@ -526,14 +521,14 @@ namespace OSCVRCWiz
 
                             VoiceWizardWindow.pauseBPM = true;
                             VoiceWizardWindow.pauseSpotify = true;
-                            Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+                             Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, translatedString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
 
                         }
                         else
                         {
                             VoiceWizardWindow.pauseBPM = true;
                             VoiceWizardWindow.pauseSpotify = true;
-                            Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
+                           Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, MainForm.dictationString + "[" + fromLanguage + " > " + toLanguage + "]", "tts"));
 
                         }
 
@@ -541,7 +536,7 @@ namespace OSCVRCWiz
                     }
                     if (MainForm.rjToggleButtonGreenScreen.Checked == true)
                     {
-                        Task.Run(() => ot.outputGreenScreen(MainForm, MainForm.dictationString, "tts")); //original
+                       Task.Run(() => ot.outputGreenScreen(MainForm, MainForm.dictationString, "tts")); //original
 
                     }
 
