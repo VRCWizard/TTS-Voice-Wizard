@@ -48,8 +48,9 @@ https://azure.microsoft.com/en-us/free/students/ (for university students, no cr
 - **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** 
     -  Refer to the "Windows Built-In System Speech" section
 
-
-![Screenshot 2022-05-09 121758wa](https://user-images.githubusercontent.com/101527472/167463062-909190bb-eec0-42f3-a985-7e7c714782bb.png)
+-  Your key and region go in the "Microsoft Azure Cognitive Service" tab located in "Settings"
+    -  Make sure to click the change button for both key and region
+![image](https://user-images.githubusercontent.com/101527472/188167519-2861d865-6e76-41d9-b6c2-965993b553e7.png)
 
 
 # How to output TTS through microphone?
@@ -65,7 +66,7 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
 
 - **This step is for Azure, for System speech refer to this** https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/README.md#windows-built-in-system-speech-ignore-if-using--microsoft-azure-key
 - You will then need change the Apps **Output Device**  to the **Virtual Cable** which will allow you to play the TTS though your microphone. 
-![image](https://user-images.githubusercontent.com/101527472/170846684-cd7d01f7-f2fa-4a05-aea6-ec8653d3a58d.png)
+![image](https://user-images.githubusercontent.com/101527472/188167891-e19cbb7f-fa17-4bc9-8934-f23f9f91ca5e.png)
 
 - Your microphone/input device for TTSVoiceWizard should be whatever microphone you normally use!
 - In the application you want the audio to play in like VRChat or Discord you will set your microphone to the vitrual cable!
@@ -82,7 +83,7 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
         - WINDOWS 10- Settings > Sound > App volume and device preferences<br />
         - WINDOWS 11- Settings > Sound > Volume Mixer<br />
         (find TTS voice wizard and change the input device to your microphone)<br />
-    ![image](https://user-images.githubusercontent.com/101527472/182208586-3d159102-45c0-4317-be47-be9957bd77f2.png)
+   ![image](https://user-images.githubusercontent.com/101527472/188168225-c10efdbe-a163-4957-a485-8e7bf25de4dd.png)
 
 
 # How to get Text in VRChat
