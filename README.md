@@ -29,21 +29,21 @@ https://github.com/VRCWizard/TTS-Voice-Wizard/releases <br />
 
 # How to get your Microsoft Azure Key and Region
 - For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
-https://azure.microsoft.com/en-us/free/ <br />
+[Free Azure Account](https://azure.microsoft.com/en-us/free/) (more releated info about free monthly limits after the first month avaliable in the [discord server](https://discord.gg/YjgR9SWPnW) #faq channel)<br />
 or <br />
-https://azure.microsoft.com/en-us/free/students/ (for university students, no credit card required)<br />
+[Free Azure Account for students (no credit card required)](https://azure.microsoft.com/en-us/free/students/) (Completely free, have to renew every year)>
 
 - After making your account you will need to create a speech service to get your Key and Region. You will enter this information into the "Provider" tab of the application. <br />
 - **Follow this video to get your key and region information:**<br />
 [![How to get your Key and Region](https://user-images.githubusercontent.com/101527472/181855148-a90bdabb-f997-4e5e-b574-d32b6bbe3035.png)](https://youtube.com/clip/Ugkxe7HlljnV9iwlI7AnAOx6YJSDus7K1GZF "How to get your Key and Region")
 
 - **I am not responsible for any charges you recieve if you upgrade from a Free Azure Account! It is up to you to monitor your own usage if you are using a pay-as-you-go azure account** <br />
-    - **Spending Limits:**: https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit  <br />
-    - **Avoid Charges:** https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/avoid-charges-free-account <br />
-    - **Azure Speech Service Pricing and Free Monthly Limits:**  https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/ <br />
+    - [Spending Limits](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/spending-limit)  <br />
+    - [Avoid Charges](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/avoid-charges-free-account) <br />
+    - [Azure Speech Service Pricing and Free Monthly Limits](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/) <br />
 (This program using Speech to Text Standard, Text to Speech Neural, and Speech Translation Standard)
-    - **Monitor Usage:** https://docs.microsoft.com/en-us/answers/questions/643390/how-to-see-text-to-speech-usage.html (the location to see your speech service usage can be hard to find, the post should help!)
-    -  **Budgets and Alerts:** https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=Portal-Microsoft_Azure_CostManagement
+    - [Monitor Usage](https://docs.microsoft.com/en-us/answers/questions/643390/how-to-see-text-to-speech-usage.html) (the location to see your speech service usage can be hard to find, this post should help!)
+    - [Budgets and Alerts](https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=Portal-Microsoft_Azure_CostManagement)
 
 - **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** 
     -  Refer to the "Windows Built-In System Speech" section
@@ -93,32 +93,28 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
     
     
 
-- Another method which has text output on your avatar in VRChat is Killfrenzy96's Avatar Text Displayer <br />
-https://github.com/killfrenzy96/KillFrenzyAvatarText/ <br />
+- Another method which has text output on your avatar in VRChat is [Killfrenzy96's Avatar Text Displayer](https://github.com/killfrenzy96/KillFrenzyAvatarText/) <br />
 **Download KillFrenzy Avatar Text (KAT) latest release (supports 4, 8, or 16 sync parameters currently)**
     - Make sure to turn on "Send Text to VRChat with KAT" in TTSVoiceWizard Settings > Text Output 
     - If it isn't working after uploading your avatar, you may have to delete your %appdata%..\LocalLow\VRChat\OSC files when reuploading an avatar with new parameters
-    - If you would like to add more functionaility to Killfrenzy Avatar Text. Frosty's Billboard is a KillFrenzy Avatar Text addon, it adds more functionality to the KAT such as making KAT grabbable and poseable. Download it from the "asset-showcase" channel in the discord server https://discord.gg/YjgR9SWPnW
+    - If you would like to add more functionaility to Killfrenzy Avatar Text. Frosty's Billboard is a KillFrenzy Avatar Text addon, it adds more functionality to the KAT such as making KAT grabbable and poseable. Download it from the "asset-showcase" channel in the [discord server](https://discord.gg/YjgR9SWPnW)
     ![VRChat_1920x1080_2022-08-20_16-26-38 130](https://user-images.githubusercontent.com/101527472/185766796-7ff16a81-a00b-42f2-8340-29e85e1387fe.png)
 
 
 # Can I set hotkey on my controllers?
 - This feature is not avaliable as apart of this ATM but you can use this handy program! <br />
-https://github.com/BOLL7708/OpenVR2Key <br />
+    - [App to bind key combinations to your VR controller](https://github.com/BOLL7708/OpenVR2Key) <br />
 - Make sure TTSVoiceWizard is not running then set a button to "ctrl + g" (if app is running it will steal the input)<br />
 
 # How to enable Spotify integration
--  https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md
+[Spotify integration setup guide](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md)
 
 # Need Help / Have Questions / Wanna make suggestions?
-- Join the discord server: <br />
-https://discord.gg/YjgR9SWPnW <br />
+[Join the discord server](https://discord.gg/YjgR9SWPnW) <br />
 
 # Socials
--  Twitter:<br />
-https://twitter.com/Wizard_VR <br />
--  Youtube:<br />
-https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg <br />
+[Follow me on Twitter](https://twitter.com/Wizard_VR) <br />
+[Subscribe to my Youtube](https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg) <br />
 
 
 # Donate
