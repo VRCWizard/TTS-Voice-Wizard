@@ -60,6 +60,7 @@ namespace OSCVRCWiz
         public static int HRInternalValue = 5;
         public static string TTSLiteText = "";
         public static bool typingBox = false;
+        public static bool firstVoiceLoad = true;
         
 
         public string CultureSelected = "en-US";//free
@@ -79,7 +80,9 @@ namespace OSCVRCWiz
         }
         public VoiceWizardWindow()
         {
-          
+           // var az = new AudioSynthesis();
+
+          //  az.SynthesisGetAvailableVoicesAsync();
             //Azure Audio Devices----------------------------
             comboIn.Add("Default");
             micIDs.Add("Default");
@@ -154,7 +157,7 @@ namespace OSCVRCWiz
            // webView21.AutoScrollOffset(0, 109);
             int id = 0;// The id of the hotkey. 
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
-           // RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.OemOpenBrackets.GetHashCode());
+            // RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.OemOpenBrackets.GetHashCode());
             //  panel1.SetBounds(0,0,220,731);
             // panel2Logo.SetBounds(0, 0, 220, 140);
             //pictureBox1.SetBounds(38,15,125,125);
@@ -178,6 +181,8 @@ namespace OSCVRCWiz
               iconButton6.Text = "";
               iconButton7.Text = "";
               iconButton12.Text = ""; */
+      
+         //       System.Diagnostics.Debug.WriteLine(hmm);
 
 
 
@@ -362,88 +367,10 @@ namespace OSCVRCWiz
         {
             comboBox1.Items.Clear();
             comboBox1.Items.Add("normal");
-            switch (comboBox2.Text.ToString())
-            {
-                case "Aria":
-                    comboBox1.Items.Add("angry");
-                    comboBox1.Items.Add("chat");
-                    comboBox1.Items.Add("cheerful");//replace happy
-                    comboBox1.Items.Add("customerservice");
-                    comboBox1.Items.Add("empathetic");
-                    comboBox1.Items.Add("excited");//new
-                    comboBox1.Items.Add("friendly");//new
-                    comboBox1.Items.Add("hopeful");//new
-                    comboBox1.Items.Add("narration-professional");
-                    comboBox1.Items.Add("newscast-casual");
-                    comboBox1.Items.Add("newscast-formal");
-                    comboBox1.Items.Add("sad");//new for this voice
-                    comboBox1.Items.Add("shouting");//new
-                    comboBox1.Items.Add("terrified");//new
-                    comboBox1.Items.Add("unfriendly");//new
-                    comboBox1.Items.Add("whispering");//new
-                    break;
-                case "Davis <Preview>":
-                    comboBox1.Items.Add("angry");
-                    comboBox1.Items.Add("chat");
-                    comboBox1.Items.Add("cheerful");//replace happy
-                    comboBox1.Items.Add("excited");//new
-                    comboBox1.Items.Add("friendly");//new
-                    comboBox1.Items.Add("hopeful");//new
-                    comboBox1.Items.Add("sad");//new for this voice
-                    comboBox1.Items.Add("shouting");//new
-                    comboBox1.Items.Add("terrified");//new
-                    comboBox1.Items.Add("unfriendly");//new
-                    comboBox1.Items.Add("whispering");//new
-                    break;
-                case "Guy":
-                    comboBox1.Items.Add("angry");//new
-                    comboBox1.Items.Add("cheerful");//new
-                    comboBox1.Items.Add("excited");//new
-                    comboBox1.Items.Add("friendly");//new
-                    comboBox1.Items.Add("hopeful");//new
-                    comboBox1.Items.Add("newscast");
-                    comboBox1.Items.Add("sad");//new 
-                    comboBox1.Items.Add("shouting");//new
-                    comboBox1.Items.Add("terrified");//new
-                    comboBox1.Items.Add("unfriendly");//new
-                    comboBox1.Items.Add("whispering");//new
-                    break;
-                case "Jenny":
-                    comboBox1.Items.Add("angry");//new
-                    comboBox1.Items.Add("assistant");
-                    comboBox1.Items.Add("chat");
-                    comboBox1.Items.Add("cheerful");//new
-                    comboBox1.Items.Add("customerservice");
-                    comboBox1.Items.Add("excited");//new
-                    comboBox1.Items.Add("friendly");//new
-                    comboBox1.Items.Add("hopeful");//new
-                    comboBox1.Items.Add("newscast");
-                    comboBox1.Items.Add("sad");//new 
-                    comboBox1.Items.Add("shouting");//new
-                    comboBox1.Items.Add("terrified");//new
-                    comboBox1.Items.Add("unfriendly");//new
-                    comboBox1.Items.Add("whispering");//new
-                    break;
-                default:
-                    if (comboBox2.Text.ToString() == "Jason <Preview>" || comboBox2.Text.ToString() == "Nancy <Preview>" || comboBox2.Text.ToString() == "Jane <Preview>" || comboBox2.Text.ToString() == "Sara" || comboBox2.Text.ToString() == "Tony <Preview>")
-                    {
-                        comboBox1.Items.Add("angry");//new
-                        comboBox1.Items.Add("cheerful");//new
-                        comboBox1.Items.Add("excited");//new
-                        comboBox1.Items.Add("friendly");//new
-                        comboBox1.Items.Add("hopeful");//new
-                        comboBox1.Items.Add("sad");//new 
-                        comboBox1.Items.Add("shouting");//new
-                        comboBox1.Items.Add("terrified");//new
-                        comboBox1.Items.Add("unfriendly");//new
-                        comboBox1.Items.Add("whispering");//new
-                    }
-                    break;
-
-
+            foreach (string style in AudioSynthesis.AllVoices4Language[comboBox2.Text.ToString()])
+                {
+                comboBox1.Items.Add(style);
             }
-
-
 
             comboBox1.SelectedIndex = 0;
 
@@ -493,8 +420,13 @@ namespace OSCVRCWiz
             HRInternalValue = Convert.ToInt32(Settings1.Default.HRIntervalSetting);
             heartRatePort = Convert.ToInt32(Settings1.Default.HRPortSetting);
             rjToggleButton2.Checked = Settings1.Default.BPMSpamSetting;
-            comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
-            comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+
+
+            comboBox5.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
+             
+
+           // comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
+           // comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
             comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
             comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
             comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
@@ -624,8 +556,13 @@ namespace OSCVRCWiz
             Settings1.Default.BPMSpamSetting = rjToggleButton2.Checked;
             Settings1.Default.voiceBoxSetting = comboBox2.SelectedIndex;
             Settings1.Default.styleBoxSetting = comboBox1.SelectedIndex;
+
+            Settings1.Default.voiceLanguage= comboBox5.SelectedIndex;//voice language (make this save)
             Settings1.Default.langToBoxSetting = comboBox3.SelectedIndex;
             Settings1.Default.langSpokenSetting = comboBox4.SelectedIndex;
+
+
+
             Settings1.Default.pitchSetting = comboBoxPitch.SelectedIndex;
             Settings1.Default.volumeSetting = comboBoxVolume.SelectedIndex;
             Settings1.Default.rateSetting = comboBoxRate.SelectedIndex;
@@ -1278,7 +1215,21 @@ namespace OSCVRCWiz
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            timer1.Interval = Int32.Parse(textBoxSpotifyTime.Text.ToString());
+            
+            
+            var mills = Int32.Parse(textBoxSpotifyTime.Text.ToString());
+            if (mills < 1500)
+            {
+                timer1.Interval = 1500;
+                textBoxSpotifyTime.Text = "1500";
+            }
+            else
+            {
+                timer1.Interval = Int32.Parse(textBoxSpotifyTime.Text.ToString());
+            }
+
+          
+
         }
 
         private void iconButton13_Click(object sender, EventArgs e)
@@ -1588,6 +1539,28 @@ namespace OSCVRCWiz
         private void iconButton22_Click(object sender, EventArgs e)
         {
             ClearTypingBox();
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+          //  AudioSynthesis.SynthesisGetAvailableVoicesAsync(this,comboBox4.Text.ToString());
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioSynthesis.SynthesisGetAvailableVoicesAsync(this, comboBox5.Text.ToString());
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            AudioSynthesis.SynthesisGetAvailableVoicesAsync(this, comboBox5.Text.ToString());
+
         }
     }
 }

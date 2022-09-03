@@ -61,6 +61,8 @@
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label109 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button11 = new System.Windows.Forms.Button();
             this.label62 = new System.Windows.Forms.Label();
             this.logTrash = new FontAwesome.Sharp.IconButton();
@@ -230,6 +232,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxErase = new System.Windows.Forms.TextBox();
             this.AzureSet = new System.Windows.Forms.TabPage();
+            this.button13 = new System.Windows.Forms.Button();
             this.label47 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -363,16 +366,16 @@
             "Angry",
             "Happy",
             "Sad"});
-            this.comboBox1.Location = new System.Drawing.Point(28, 387);
+            this.comboBox1.Location = new System.Drawing.Point(318, 334);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(265, 28);
+            this.comboBox1.Size = new System.Drawing.Size(223, 28);
             this.comboBox1.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(28, 364);
+            this.label1.Location = new System.Drawing.Point(318, 311);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 20);
             this.label1.TabIndex = 12;
@@ -503,7 +506,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(320, 425);
+            this.label4.Location = new System.Drawing.Point(320, 486);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 20);
             this.label4.TabIndex = 19;
@@ -520,7 +523,7 @@
             "fast",
             "x-fast",
             "default"});
-            this.comboBoxRate.Location = new System.Drawing.Point(320, 448);
+            this.comboBoxRate.Location = new System.Drawing.Point(320, 509);
             this.comboBoxRate.Name = "comboBoxRate";
             this.comboBoxRate.Size = new System.Drawing.Size(221, 28);
             this.comboBoxRate.TabIndex = 18;
@@ -529,7 +532,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Snow;
-            this.label5.Location = new System.Drawing.Point(320, 310);
+            this.label5.Location = new System.Drawing.Point(320, 371);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 21;
@@ -546,7 +549,7 @@
             "high",
             "x-high",
             "default"});
-            this.comboBoxPitch.Location = new System.Drawing.Point(320, 333);
+            this.comboBoxPitch.Location = new System.Drawing.Point(320, 394);
             this.comboBoxPitch.Name = "comboBoxPitch";
             this.comboBoxPitch.Size = new System.Drawing.Size(221, 28);
             this.comboBoxPitch.TabIndex = 20;
@@ -555,7 +558,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(320, 365);
+            this.label6.Location = new System.Drawing.Point(320, 426);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 23;
@@ -572,7 +575,7 @@
             "loud",
             "x-loud",
             "default"});
-            this.comboBoxVolume.Location = new System.Drawing.Point(320, 387);
+            this.comboBoxVolume.Location = new System.Drawing.Point(320, 448);
             this.comboBoxVolume.Name = "comboBoxVolume";
             this.comboBoxVolume.Size = new System.Drawing.Size(221, 28);
             this.comboBoxVolume.TabIndex = 22;
@@ -803,8 +806,8 @@
             this.richTextBox5.ReadOnly = true;
             this.richTextBox5.Size = new System.Drawing.Size(931, 56);
             this.richTextBox5.TabIndex = 3;
-            this.richTextBox5.Text = "Current Version: v0.7.2 - August 31, 2022\nChangelog: (full changelogs visible at " +
-    "https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
+            this.richTextBox5.Text = "Current Version: v0.7.5 - September 3, 2022\nChangelog: (full changelogs visible a" +
+    "t https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
             // 
             // richTextBox4
             // 
@@ -838,6 +841,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage1.Controls.Add(this.label109);
+            this.tabPage1.Controls.Add(this.comboBox5);
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.label62);
             this.tabPage1.Controls.Add(this.logTrash);
@@ -867,13 +872,59 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
             // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.ForeColor = System.Drawing.Color.Snow;
+            this.label109.Location = new System.Drawing.Point(28, 371);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(114, 20);
+            this.label109.TabIndex = 36;
+            this.label109.Text = "Voice Language";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Arabic [ar]",
+            "Chinese [zh]",
+            "Czech [cs]",
+            "Danish [da]",
+            "Dutch [nl]",
+            "English [en]",
+            "Estonian [et]",
+            "Filipino [fil]",
+            "Finnish [fi]",
+            "French [fr]",
+            "German [de]",
+            "Hindi [hi]",
+            "Irish [ga]",
+            "Italian [it]",
+            "Japanese [ja]",
+            "Korean [ko]",
+            "Norwegian [nb]",
+            "Polish [pl]",
+            "Portuguese [pt]",
+            "Russian [ru]",
+            "Spanish [es]",
+            "Swedish [sv]",
+            "Thai [th]",
+            "Ukrainian [uk]",
+            "Vietnamese [vi]"});
+            this.comboBox5.Location = new System.Drawing.Point(28, 394);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(265, 28);
+            this.comboBox5.TabIndex = 35;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.Color.Snow;
-            this.button11.Location = new System.Drawing.Point(320, 490);
+            this.button11.Location = new System.Drawing.Point(320, 567);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(221, 43);
             this.button11.TabIndex = 34;
@@ -964,7 +1015,7 @@
             "Finnish [fi-FI]",
             "French [fr-FR]",
             "German [de-DE]",
-            "Hendi [hi-IN]",
+            "Hindi [hi-IN]",
             "Irish [ga-IE]",
             "Italian [it-IT]",
             "Japanese [ja-JP]",
@@ -983,6 +1034,7 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(265, 28);
             this.comboBox4.TabIndex = 27;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -1011,7 +1063,7 @@
             "Finnish [fi]",
             "French [fr]",
             "German [de]",
-            "Hendi [hi]",
+            "Hindi [hi]",
             "Irish [ga]",
             "Italian [it]",
             "Japanese [ja]",
@@ -1030,6 +1082,7 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(265, 28);
             this.comboBox3.TabIndex = 25;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -3011,6 +3064,7 @@
             // AzureSet
             // 
             this.AzureSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.AzureSet.Controls.Add(this.button13);
             this.AzureSet.Controls.Add(this.label47);
             this.AzureSet.Controls.Add(this.label28);
             this.AzureSet.Controls.Add(this.label29);
@@ -3042,6 +3096,20 @@
             this.AzureSet.Size = new System.Drawing.Size(976, 698);
             this.AzureSet.TabIndex = 11;
             this.AzureSet.Text = "AzureSet";
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.ForeColor = System.Drawing.Color.Snow;
+            this.button13.Location = new System.Drawing.Point(555, 77);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(146, 40);
+            this.button13.TabIndex = 88;
+            this.button13.Text = "Reload Voices";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // label47
             // 
@@ -4134,5 +4202,8 @@
         private FontAwesome.Sharp.IconButton iconButton23;
         private Label label108;
         private Label label107;
+        private Label label109;
+        public ComboBox comboBox5;
+        private Button button13;
     }
 }

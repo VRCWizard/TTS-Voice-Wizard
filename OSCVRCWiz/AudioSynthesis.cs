@@ -11,9 +11,217 @@ namespace OSCVRCWiz
 {
     public class AudioSynthesis
     {
-       // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
+        // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
 
         //TTS
+        public static Dictionary<string, string[]> AllVoices4Language =new Dictionary<string, string[]>();
+        public static Dictionary<string, string[]> RememberLanguageVoices = new Dictionary<string, string[]>();
+
+        public static async Task SynthesisGetAvailableVoicesAsync(VoiceWizardWindow MainForm,string fromLanguageFullname)
+        {
+            // Creates an instance of a speech config with specified subscription key and service region.
+            // Replace with your own subscription key and service region (e.g., "westus").
+            // The default language is "en-us".
+            MainForm.comboBox2.Items.Clear();
+           var ot = new OutputText();
+
+            if (!RememberLanguageVoices.ContainsKey(fromLanguageFullname))
+            {
+                var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+
+                // Creates a speech synthesizer
+                using (var synthesizer = new SpeechSynthesizer(config, null as AudioConfig))
+                {
+                    var ts = new TextSynthesis();
+                    //   var language = ts.toLanguageID(fromLanguageFullname);
+
+                    List<string> localList = new List<string>();
+                    switch (fromLanguageFullname)
+                    {
+                        case "Arabic [ar]":
+                         //   localList.Add("ar-AE");
+                         
+                          //  localList.Add("ar-BH");
+                            localList.Add("ar-DZ");
+                            localList.Add("ar-EG");
+                          //  localList.Add("ar-IL");
+                            localList.Add("ar-IQ");
+                          //  localList.Add("ar-JO");
+                         //   localList.Add("ar-KW");
+                          //  localList.Add("ar-LB");
+                          //  localList.Add("ar-LY");
+                          //  localList.Add("ar-MA");
+                          //  localList.Add("ar-OM");
+                          //  localList.Add("ar-PS");
+                          //  localList.Add("ar-QA");
+                          //  localList.Add("ar-SA");
+                           // localList.Add("ar-SY");
+                          //  localList.Add("ar-TN");
+                          //  localList.Add("ar-YE");
+                            break;
+
+                        case "Chinese [zh]":
+                            localList.Add("zh-CN");
+                            localList.Add("zh-CN-SICHUAN");
+                            localList.Add("zh-HK");
+                            localList.Add("zh-TW"); break;
+                        case "Czech [cs]": localList.Add("cs-CZ"); break;
+                        case "Danish [da]": localList.Add("da-DK"); break;
+                        case "Dutch [nl]": localList.Add("nl-BE"); 
+                            localList.Add("nl-NL"); break;
+                        case "English [en]":
+                            localList.Add("en-US");
+                            localList.Add("en-GB");
+                            localList.Add("en-AU");
+                            localList.Add("en-CA");
+
+                           // localList.Add("en-GH");
+                         //   localList.Add("en-HK");
+                         //   localList.Add("en-IE");
+                         //   localList.Add("en-IN");
+                         //   localList.Add("en-KE");
+                        //    localList.Add("en-NZ");
+                         //   localList.Add("en-PH");
+                        //    localList.Add("en-SG");
+                         //   localList.Add("en-TZ");
+                         //   localList.Add("en-ZA");
+
+                            break;
+                        case "Estonian [et]": localList.Add("et-EE"); break;
+                        case "Filipino [fil]": localList.Add("fil-PH"); break;
+                        case "Finnish [fi]": localList.Add("fi-FI"); break;
+                        case "French [fr]":
+                            localList.Add("fr-FR");
+                            localList.Add("fr-BE");
+                            localList.Add("fr-CA");
+                            localList.Add("fr-CH");
+                            
+                            break;
+                        case "German [de]":
+                            localList.Add("de-AT");
+                            localList.Add("de-CH");
+                            localList.Add("de-DE");
+                            break;
+
+                        case "Hindi  [hi]": localList.Add("hi-IN"); break;
+                        case "Irish [ga]": localList.Add("ga-IE"); break;
+                        case "Italian [it]": localList.Add("it-IT"); break;
+                        case "Japanese [ja]": localList.Add("ja-JP"); break;
+                        case "Korean [ko]": localList.Add("ko-KR"); break;
+                        case "Norwegian [nb]": localList.Add("nb-NO"); break;
+                        case "Polish [pl]": localList.Add("pl-PL"); break;
+                        case "Portuguese [pt]":
+                            localList.Add("pt-BR");
+                            localList.Add("pt-PT"); break;
+                        case "Russian [ru]": localList.Add("ru-RU"); break;
+                        case "Spanish [es]":
+                            localList.Add("es-MX");
+                            localList.Add("es-ES");
+                            localList.Add("es-US");
+                          //  localList.Add("es-AR");
+                           // localList.Add("es-BO");
+                           // localList.Add("es-CL");
+                            //localList.Add("es-CO");
+                           // localList.Add("es-CR");
+                           // localList.Add("es-CU");
+                           // localList.Add("es-DO");
+                           // localList.Add("es-EC");
+
+                          //  //localList.Add("es-GQ");
+                           // localList.Add("es-GT");
+                          //  localList.Add("es-HN");
+
+                          //  localList.Add("es-PE");
+                         //   localList.Add("es-PR");
+                          //  localList.Add("es-PY");
+                          //  localList.Add("es-SV");
+
+                         //   localList.Add("es-UY");
+                         //   localList.Add("es-VE");
+                          //  localList.Add("es-AR");
+                           // 
+                           break;
+                        case "Swedish [sv]": localList.Add("sv-SE"); break;
+                        case "Thai [th]": localList.Add("th-TH"); break;
+                        case "Ukrainian [uk]": localList.Add("uk-UA"); break;
+                        case "Vietnamese [vi]": localList.Add("vi-VN"); break;
+
+                        default: localList.Add("en-US"); break; // if translation to english happens something is wrong
+                    }
+                    List<string> voiceList = new List<string>();
+                    foreach (var local in localList)
+                    {
+                        using (var result = await synthesizer.GetVoicesAsync(local))
+                        {
+                            if (result.Reason == ResultReason.VoicesListRetrieved)
+                            {
+                                ot.outputLog(MainForm, "[Voices successfully retrieved from Azure]");
+
+
+                                foreach (var voice in result.Voices)
+                                {
+
+                                    //  ot.outputLog(MainForm,voice.LocalName);
+                                    AllVoices4Language.Add(voice.ShortName, voice.StyleList);
+                                    MainForm.comboBox2.Items.Add(voice.ShortName);
+                                    voiceList.Add(voice.ShortName);
+                                    //   foreach (KeyValuePair<string, string[]> kvp in AllVoices4Language)
+                                    //  {
+                                    //   ot.outputLog(MainForm, kvp.Key.ToString());
+                                    // foreach (string style in kvp.Value)
+                                    //  {
+                                    //  ot.outputLog(MainForm, style);
+                                    //  }
+                                    //    }
+                                    //  ot.outputLog(MainForm, voice.ShortName);
+                                    //ot.outputLog(MainForm, voice.StyleList);
+                                    //  foreach (var style in voice.StyleList)
+                                    // {
+                                    //     ot.outputLog(MainForm, style);
+                                    // }
+                                }
+                            }
+                            else if (result.Reason == ResultReason.Canceled)
+                            {
+                                ot.outputLog(MainForm, $"CANCELED: ErrorDetails=[{result.ErrorDetails}]");
+                                ot.outputLog(MainForm, $"CANCELED: Did you update the Azure subscription info?");
+                            }
+                        }
+                    }
+                    RememberLanguageVoices.Add(fromLanguageFullname, voiceList.ToArray());
+
+                }
+            }
+            else
+            {
+                ot.outputLog(MainForm, "[Voices successfully reloaded locally]");
+                foreach (string voice in RememberLanguageVoices[fromLanguageFullname])
+                {
+                    MainForm.comboBox2.Items.Add(voice);
+                }
+            }
+            if (VoiceWizardWindow.firstVoiceLoad == false)
+            {
+                ot.outputLog(MainForm, "[setting to first voice]");
+                MainForm.comboBox2.SelectedIndex = 0;
+            }
+
+            if (VoiceWizardWindow.firstVoiceLoad == true)
+            {
+                ot.outputLog(MainForm, "setting to remembered voice");
+                MainForm.comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
+                MainForm.comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+                VoiceWizardWindow.firstVoiceLoad = false;
+                
+            }
+
+           
+
+           
+        }
+
+
+
         public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
         {
             try
@@ -23,6 +231,8 @@ namespace OSCVRCWiz
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
                 // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
+
+
 
              //   config.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
 
@@ -38,28 +248,6 @@ namespace OSCVRCWiz
                 //  Dictionary<string, string> myExpressions = new Dictionary<string, string>(); //update code to use dictionaries to make it more clean and easier to add more voices etc.
                 //  myExpressions.Add("", "");
                 //   Dictionary<string, string> myVoices =new Dictionary<string, string>();
-
-
-                string angry = "<mstts:express-as style=\"angry\">"; //1
-                string cheerful = "<mstts:express-as style=\"cheerful\">"; //2
-                string sad = "<mstts:express-as style=\"sad\">";//3
-
-                string chat = "<mstts:express-as style=\"chat\">"; //1
-                string customerservice = "<mstts:express-as style=\"customerservice\">"; //2
-                string empathetic = "<mstts:express-as style=\"empathetic\">";//3
-                string narrationProf = "<mstts:express-as style=\"narration-professional\">"; //1
-                string newscastCas = "<mstts:express-as style=\"newscast-casual\">"; //2
-                string newscastForm = "<mstts:express-as style=\"newscast-formal\">";//3
-                string newscast = "<mstts:express-as style=\"newscast\">"; //1
-                string assistant = "<mstts:express-as style=\"assistant\">"; //2
-
-                string excited = "<mstts:express-as style=\"excited\">"; //New
-                string friendly = "<mstts:express-as style=\"friendly\">"; //2
-                string hopeful = "<mstts:express-as style=\"hopeful\">"; //2
-                string shouting = "<mstts:express-as style=\"shouting\">"; //2
-                string terrified = "<mstts:express-as style=\"terrified\">"; //2
-                string unfriendly = "<mstts:express-as style=\"unfriendly\">"; //2
-                string whispering = "<mstts:express-as style=\"whispering\">"; //2
 
 
                 string ratexslow = "<prosody rate=\"x-slow\">"; //1
@@ -81,108 +269,8 @@ namespace OSCVRCWiz
                 string volumexhigh = "<prosody volume=\"x-loud\">"; //5
 
 
-                string sara = "<voice name=\"en-US-SaraNeural\">";//1
-                string jenny = "<voice name=\"en-US-JennyNeural\">";//2
-                string guy = "<voice name=\"en-US-GuyNeural\">";//3
-                string amber = "<voice name=\"en-US-AmberNeural\">";//4
-                string ana = "<voice name=\"en-US-AnaNeural\">";//5
-                string aria = "<voice name=\"en-US-AriaNeural\">";//6
-                string ashley = "<voice name=\"en-US-AshleyNeural\">";//7
-                string brandon = "<voice name=\"en-US-BrandonNeural\">";//8
-                string christopher = "<voice name=\"en-US-ChristopherNeural\">";//9
-                string cora = "<voice name=\"en-US-CoraNeural\">";//10
-                string elizabeth = "<voice name=\"en-US-ElizabethNeural\">";//11
-                string eric = "<voice name=\"en-US-EricNeural\">";//12
-                string jacob = "<voice name=\"en-US-JacobNeural\">";//13
-                string michelle = "<voice name=\"en-US-MichelleNeural\">";//14
-                string monica = "<voice name=\"en-US-MonicaNeural\">";//15
-                string davis = "<voice name=\"en-US-DavisNeural\">";//16
-
-                string jane = "<voice name=\"en-US-JaneNeural\">";//16
-                string nancy = "<voice name=\"en-US-NancyNeural\">";//16
-                string jason = "<voice name=\"en-US-DavisNeural\">";//16
-                string tony = "<voice name=\"en-US-TonyNeural\">";//16
-
-                string natashaAU = "<voice name=\"en-AU-NatashaNeural\">";//17
-                string williamAU = "<voice name=\"en-AU-WilliamNeural\">";//18
-                string claraCA = "<voice name=\"en-CA-ClaraNeural\">";//19
-                string liamCA = "<voice name=\"en-CA-LiamNeural\">";//20
-                string soniaUK = "<voice name=\"en-GB-SoniaNeural\">";//21
-                string ryanUK = "<voice name=\"en-GB-RyanNeural\">";//22
-
-
-                string abbiUK = "<voice name=\"en-GB-AbbiNeural\">";//23
-                string bellaUK = "<voice name=\"en-GB-BellaNeural\">";//23
-                string hollieUK = "<voice name=\"en-GB-HollieNeural\">";//24
-                string oliviaUK = "<voice name=\"en-GB-OliviaNeural\">";//25
-                string maisieUK = "<voice name=\"en-GB-MaisieNeural\">";//26
-
-                string alfieUK = "<voice name=\"	en-GB-AlfieNeural\">";//
-                string elliotUK = "<voice name=\"en-GB-ElliotNeural\">";//
-                string ethanUK = "<voice name=\"en-GB-EthanNeural\">";//
-                string noahUK = "<voice name=\"en-GB-NoahNeural\">";//
-                string oliverUK = "<voice name=\"en-GB-OliverNeural\">";//
-                string thomasUK = "<voice name=\"en-GB-ThomasNeural\">";//
-
-                string daliaSpanish_Mexico = "<voice name=\"es-MX-DaliaNeural\">";//
-                string jorgeSpanish_Mexico = "<voice name=\"es-MX-JorgeNeural\">";//
-
-                string brigitteFrench = "<voice name=\"fr-FR-DeniseNeural\">";//no longer preview
-                string jeromeFrench = "<voice name=\"fr-FR-HenriNeural\">";//no longer preview
-
-                string amalaGerman = "<voice name=\"de-DE-KatjaNeural\">";//no longer preview
-                string christophGerman = "<voice name=\"de-DE-ConradNeural\">";//no longer preview
-
-                string arabicFemale_Egypt = "<voice name=\"ar-EG-SalmaNeural\">";//
-                string arabicMale_Egypt = "<voice name=\"ar-EG-ShakirNeural\">";//
-
-                string chineseFemale_MandarinSimple = "<voice name=\"zh-CN-XiaomoNeural\">";//
-                string chineseMale_MandarinSimple = "<voice name=\"	zh-CN-YunyeNeural\">";//
-
-                string czechFemale = "<voice name=\"cs-CZ-VlastaNeural\">";//
-                string czechMale = "<voice name=\"cs-CZ-AntoninNeural\">";//
-
-                string danishFemale = "<voice name=\"da-DK-ChristelNeural\">";//
-                string danishMale = "<voice name=\"da-DK-JeppeNeural\">";//
-
-                string dutchFemale = "<voice name=\"nl-BE-DenaNeural\">";//
-                string dutchMale = "<voice name=\"nl-BE-ArnaudNeural\">";//
-
-                string estonianFemale = "<voice name=\"et-EE-AnuNeural\">";//
-                string estonianMale = "<voice name=\"et-EE-KertNeural\">";//
-
-                string filipinoFemale = "<voice name=\"fil-PH-BlessicaNeural\">";//
-                string filipinoMale = "<voice name=\"fil-PH-AngeloNeural\">";//
-                string finnishFemale = "<voice name=\"fi-FI-NooraNeural\">";//
-                string finnishMale = "<voice name=\"fi-FI-HarriNeural\">";//
-                string hendiFemale = "<voice name=\"hi-IN-SwaraNeural\">";//
-                string hendiMale = "<voice name=\"hi-IN-MadhurNeural\">";//
-
-                string irishFemale = "<voice name=\"ga-IE-OrlaNeural\">";//
-                string irishMale = "<voice name=\"ga-IE-ColmNeural\">";//
-                string italianFemale = "<voice name=\"it-IT-ElsaNeural\">";//
-                string italianMale = "<voice name=\"it-IT-DiegoNeural\">";//
-                string japaneseFemale = "<voice name=\"ja-JP-NanamiNeural\">";//
-                string japaneseMale = "<voice name=\"ja-JP-KeitaNeural\">";//
-                string koreanFemale = "<voice name=\"ko-KR-SunHiNeural\">";//
-                string koreanMale = "<voice name=\"	ko-KR-InJoonNeural\">";//
-                string norwegianFemale = "<voice name=\"nb-NO-PernilleNeural\">";//
-                string norweigianMale = "<voice name=\"nb-NO-FinnNeural\">";//
-                string polishFemale = "<voice name=\"pl-PL-AgnieszkaNeural\">";//
-                string polishMale = "<voice name=\"	pl-PL-MarekNeural\">";//
-                string portugueseFemale = "<voice name=\"pt-BR-FranciscaNeural\">";//
-                string portugueseMale = "<voice name=\"pt-BR-AntonioNeural\">";//
-                string russianFemale = "<voice name=\"ru-RU-DariyaNeural\">";//
-                string russianMale = "<voice name=\"ru-RU-DmitryNeural\">";//
-
-                string swedishFemale = "<voice name=\"sv-SE-HilleviNeural\">";//
-                string swedishMale = "<voice name=\"sv-SE-MattiasNeural\">";//
-                string thaiFemale = "<voice name=\"th-TH-AcharaNeural\">";//
-                string thaiMale = "<voice name=\"th-TH-NiwatNeural\">";//
-                string ukranianFemale = "<voice name=\"uk-UA-PolinaNeural\">";//
-                string ukranianMale = "<voice name=\"uk-UA-OstapNeural\">";//
-                string vietnameseFemale = "<voice name=\"vi-VN-HoaiMyNeural\">";//
-                string vietnameseMale = "<voice name=\"vi-VN-NamMinhNeural\">";//
+             
+                
 
                 System.Diagnostics.Debug.WriteLine("rate: " + rate);
                 System.Diagnostics.Debug.WriteLine("pitch: " + pitch);
@@ -197,8 +285,8 @@ namespace OSCVRCWiz
                     audioConfig = AudioConfig.FromDefaultSpeakerOutput();
 
                 }
-          //      var ot = new OutputText();
-            //    if (synthesizerVoice != null &&MainForm.rjToggleButtonCancelAudio.Checked==true)
+                var ot = new OutputText();
+            ///  if (synthesizerVoice != null &&MainForm.rjToggleButtonCancelAudio.Checked==true)
             //    {
                   
              //       ot.outputLog(MainForm, "[Begining Speech Stopped]");
@@ -215,156 +303,19 @@ namespace OSCVRCWiz
 
                 var synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
 
+
                 string ssml0 = "<speak version=\"1.0\"";
                 ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
                 if (style != "normal") { ssml0 += " xmlns:mstts=\"https://www.w3.org/2001/mstts\""; }
                 ssml0 += " xml:lang=\"en-US\">";
 
-                switch (voice)
-                {
-                    case "Sara": ssml0 += sara; break;
-                    case "Jenny": ssml0 += jenny; ; break;
-                    case "Aria": ssml0 += aria; ; break;
-                    case "Guy": ssml0 += guy; ; break;
-                    case "Jane <Preview>": ssml0 += jane; ; break;
-                    case "Nancy <Preview>": ssml0 += nancy; ; break;
-                    case "Jason <Preview>": ssml0 += jason; ; break;
-                    case "Davis <Preview>": ssml0 += davis; ; break;
-                    case "Tony <Preview>": ssml0 += tony; ; break;
-
-
-
-                    case "Amber": ssml0 += amber; ; break;
-                    case "Ana": ssml0 += ana; ; break;
-
-                    case "Ashley": ssml0 += ashley; ; break;
-                    case "Brandon": ssml0 += brandon; ; break;
-                    case "Christopher": ssml0 += christopher; ; break;
-                    case "Cora": ssml0 += cora; ; break;
-                    case "Elizabeth": ssml0 += elizabeth; ; break;
-                    case "Eric": ssml0 += eric; ; break;
-                    case "Jacob": ssml0 += jacob; ; break;
-                    case "Michelle": ssml0 += michelle; ; break;
-                    case "Monica": ssml0 += monica; ; break;
-
-
-
-                    case "Natasha (AU)": ssml0 += natashaAU; ; break;
-                    case "William (AU)": ssml0 += williamAU; ; break;
-                    case "Clara (CA)": ssml0 += claraCA; ; break;
-                    case "Liam (CA)": ssml0 += liamCA; ; break;
-                    case "Sonia (UK)": ssml0 += soniaUK; ; break;
-                    case "Ryan (UK)": ssml0 += ryanUK; ; break;
-
-                    case "Abbi (UK) Preview": ssml0 += abbiUK; ; break;
-                    case "Bella (UK) Preview": ssml0 += bellaUK; ; break;
-                    case "Hollie (UK) Preview": ssml0 += hollieUK; ; break;
-                    case "Olivia (UK) Preview": ssml0 += oliviaUK; ; break;
-                    case "Maisie (UK) Preview": ssml0 += maisieUK; ; break;
-
-                    case "Alfie (UK) Preview": ssml0 += alfieUK; ; break;
-                    case "Elliot (UK) Preview": ssml0 += elliotUK; ; break;
-                    case "Ethan (UK) Preview": ssml0 += ethanUK; ; break;
-                    case "Noah (UK) Preview": ssml0 += noahUK; ; break;
-                    case "Oliver (UK) Preview": ssml0 += oliverUK; ; break;
-                    case "Thomas (UK) Preview": ssml0 += thomasUK; ; break;
-
-
-
-
-                    case "[Arabic] {Female} (Egypt)": ssml0 += arabicFemale_Egypt; ; break;
-                    case "[Arabic] {Male} (Egypt)": ssml0 += arabicMale_Egypt; ; break;
-
-                    case "[Chinese] {Female} (Mandarin, Simplified)": ssml0 += chineseFemale_MandarinSimple; ; break;
-                    case "[Chinese] {Male} (Mandarin, Simplified)": ssml0 += chineseMale_MandarinSimple; ; break;
-
-                    case "[Czech] {Female}": ssml0 += czechFemale; ; break;
-                    case "[Czech] {Male}": ssml0 += czechMale; ; break;
-                    case "[Danish] {Female}": ssml0 += danishFemale; ; break;
-                    case "[Danish] {Male}": ssml0 += danishMale; ; break;
-                    case "[Dutch] {Female}": ssml0 += dutchFemale; ; break;
-                    case "[Dutch] {Male}": ssml0 += dutchMale; ; break;
-
-
-                    case "[Estonian] {Female}": ssml0 += estonianFemale; ; break;
-                    case "[Estonian] {Male}": ssml0 += estonianMale; ; break;
-
-                    case "[French] {Female}": ssml0 += brigitteFrench; ; break;
-                    case "[French] {Male}": ssml0 += jeromeFrench; ; break;
-
-
-                    case "[Filipino] {Female}": ssml0 += filipinoFemale; ; break;
-                    case "[Filipino] {Male}": ssml0 += filipinoMale; ; break;
-
-                    case "[German] {Female}": ssml0 += amalaGerman; ; break;
-                    case "[German] {Male}": ssml0 += christophGerman; ; break;
-
-                    case "[Finnish] {Female}": ssml0 += finnishFemale; ; break;
-                    case "[Finnish] {Male}": ssml0 += finnishMale; ; break;
-
-
-                    case "[Hendi] {Female}": ssml0 += hendiFemale; ; break;
-                    case "[Hendi] {Male}": ssml0 += hendiMale; ; break;
-                    case "[Irish] {Female}": ssml0 += irishFemale; ; break;
-                    case "[Irish] {Male}": ssml0 += irishMale; ; break;
-                    case "[Italian] {Female}": ssml0 += italianFemale; ; break;
-                    case "[Italian] {Male}": ssml0 += italianMale; ; break;
-                    case "[Japanese] {Female}": ssml0 += japaneseFemale; ; break;
-                    case "[Japanese] {Male}": ssml0 += japaneseMale; ; break;
-                    case "[Korean] {Female}": ssml0 += koreanFemale; ; break;
-                    case "[Korean] {Male}": ssml0 += koreanMale; ; break;
-                    case "[Norwegian] {Female}": ssml0 += norwegianFemale; ; break;
-                    case "[Norwegian] {Male}": ssml0 += norweigianMale; ; break;
-                    case "[Polish] {Female}": ssml0 += polishFemale; ; break;
-                    case "[Polish] {Male}": ssml0 += polishMale; ; break;
-                    case "[Portuguese] {Female}": ssml0 += portugueseFemale; ; break;
-                    case "[Portuguese] {Male}": ssml0 += portugueseMale; ; break;
-                    case "[Russian] {Female}": ssml0 += russianFemale; ; break;
-                    case "[Russian] {Male}": ssml0 += russianMale; ; break;
-
-                    case "[Spanish] {Female} (Mexico)": ssml0 += daliaSpanish_Mexico; ; break;
-                    case "[Spanish] {Male} (Mexcio)": ssml0 += jorgeSpanish_Mexico; ; break;
-
-                    case "[Swedish] {Female}": ssml0 += swedishFemale; ; break;
-                    case "[Swedish] {Male}": ssml0 += swedishMale; ; break;
-                    case "[Thai] {Female}": ssml0 += thaiFemale; ; break;
-                    case "[Thai] {Male}": ssml0 += thaiMale; ; break;
-                    case "[Ukrainian] {Female}": ssml0 += ukranianFemale; ; break;
-                    case "[Ukrainian] {Male}": ssml0 += ukranianMale; ; break;
-                    case "[Vietnamese] {Female}": ssml0 += vietnameseFemale; ; break;
-                    case "[Vietnamese] {Male}": ssml0 += vietnameseMale; ; break;
-
-
-
-
-
-                    default: ssml0 += "<voice name=\"en-US-SaraNeural\">"; break;
-                }
+                string thisVoice = "<voice name=\""+voice+"\">";//
+                   ssml0 += thisVoice;
+                   
 
                 if (style != "normal")
                 {
-                    switch (style)
-                    {
-                        case "angry": ssml0 += angry; break;
-                        case "chat": ssml0 += chat; break;
-                        case "cheerful": ssml0 += cheerful; break;
-                        case "customerservice": ssml0 += customerservice; break;
-                        case "empathetic": ssml0 += empathetic; break;
-                        case "assistant": ssml0 += assistant; break;
-                        case "excited": ssml0 += excited; break;
-                        case "friendly": ssml0 += friendly; break;
-                        case "hopeful": ssml0 += hopeful; break;
-                        case "narration-professional": ssml0 += narrationProf; break;
-                        case "newscast-casual": ssml0 += newscastCas; break;
-                        case "newscast-formal": ssml0 += newscastForm; break;
-                        case "newscast": ssml0 += newscast; break;
-                        case "sad": ssml0 += sad; break;
-                        case "shouting": ssml0 += shouting; break;
-                        case "terrified": ssml0 += terrified; break;
-                        case "unfriendly": ssml0 += unfriendly; break;
-                        case "whispering": ssml0 += whispering; break;
-
-                    }
+                    ssml0 += "<mstts:express-as style=\""+style+"\">";
 
                 }
                 if (rate != "default")

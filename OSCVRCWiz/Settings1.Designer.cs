@@ -707,5 +707,17 @@ namespace OSCVRCWiz {
                 this["VRCUseDelay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int voiceLanguage {
+            get {
+                return ((int)(this["voiceLanguage"]));
+            }
+            set {
+                this["voiceLanguage"] = value;
+            }
+        }
     }
 }
