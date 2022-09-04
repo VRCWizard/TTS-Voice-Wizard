@@ -23,9 +23,9 @@ namespace OSCVRCWiz
         public static bool continuousListeningTranslate = false;
        // public static CancellationTokenSource SpeechCt = new();
 
-        public string fromLanguageID(string fullname)
+        public void fromLanguageID(string fullname)
         {
-            var fromLanguage = "en-US";
+             fromLanguage = "en-US";
             switch (fullname)
             {
                 case "Arabic [ar-EG]": fromLanguage = "ar-EG"; break;
@@ -57,13 +57,13 @@ namespace OSCVRCWiz
                 case "Vietnamese [vi-VN]": fromLanguage = "vi-VN"; break;
                 default: fromLanguage = "en-US"; break; // if translation to english happens something is wrong
             }       
-            return fromLanguage;
+          //  return fromLanguage;
 
         }
 
-        public string toLanguageID(string fullname)
+        public void toLanguageID(string fullname)
         {
-           var toLanguage = "en";
+            toLanguage = "en";
           
 
             switch (fullname)
@@ -95,7 +95,7 @@ namespace OSCVRCWiz
                 case "Vietnamese [vi]": toLanguage = "vi"; break;
                 default: toLanguage = "en"; break; // if translation to english happens something is wrong
             }
-            return toLanguage;
+          //  return toLanguage;
 
         }
 
@@ -113,8 +113,8 @@ namespace OSCVRCWiz
 
                // fromLanguage = "en-US";
                // toLanguage = "en";
-                var fromLanguage = fromLanguageID(fromLanguageFullname);
-                var toLanguage = toLanguageID(toLanguageFullname);
+                fromLanguageID(fromLanguageFullname);
+                toLanguageID(toLanguageFullname);
                
              
                 speechConfig.SpeechRecognitionLanguage = fromLanguage;
