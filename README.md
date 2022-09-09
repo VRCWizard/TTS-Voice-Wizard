@@ -37,6 +37,7 @@ This video just runs through the instructions on this page.
 
 ### Azure (Recommended)
 -  [Setup Speech to Text and TTS with Microsoft Azure (Recommended)](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md) <br />
+    - all steps explained in the [setup guide video](https://www.youtube.com/watch?v=bGVs2ew08WY)
 
 
 ### System Speech
