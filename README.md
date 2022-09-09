@@ -35,15 +35,17 @@ This video just runs through the instructions on this page.
 
 # How to setup Speech to Text and TTS
 
-[Setup Speech to Text and TTS with Microsoft Azure (Recommended)](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md) <br />
+### Azure (Recommended)
+-  [Setup Speech to Text and TTS with Microsoft Azure (Recommended)](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md) <br />
 
 
+### System Speech
 - If you don't want to setup / use the Azure Conginitive Speech Services you can use your windows build in speech to text and text to speech engine. <br />
 - Whats the difference you may ask?
     -  Azure can cost money if used too often but is just fine and can be used completely free for most moderate users (information about avoding azure charges can be found in the Azure guide above aswell as pinned in the announcements section of the discord server)
     -  Azure has better TTS voices and Speech recognition ability as demonstrated in the video above
 
-[Setup Speech to Text and TTS using Windows built in System Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/System%20Speech%20Setup.md) <br />
+-  [Setup Speech to Text and TTS using Windows built in System Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/System%20Speech%20Setup.md) <br />
 
 
 # How to enable Spotify integration
