@@ -40,7 +40,7 @@ This video just runs through the instructions on this page.
     - all steps explained in the [setup guide video](https://www.youtube.com/watch?v=bGVs2ew08WY)
 
 
-### System Speech
+### System Speech (alternative, not nearly as good)
 - If you don't want to setup / use the Azure Conginitive Speech Services you can use your windows build in speech to text and text to speech engine. <br />
 - Whats the difference you may ask?
     -  Azure can cost money if used too often but is just fine and can be used completely free for most moderate users (information about avoding azure charges can be found in the Azure guide above aswell as pinned in the announcements section of the discord server)
