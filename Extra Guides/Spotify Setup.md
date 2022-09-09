@@ -17,6 +17,7 @@
 (Gif taken from Killfrenzy Avatar Text setup guide) <br />
 
 -  Note: If you did all of this and the Spotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder <br />
+-  (Close VRChat, delete the OSC folder then restart VRChat is the proper order of operations)
 ![image](https://user-images.githubusercontent.com/101527472/189431265-c3005a90-8f0b-49b9-88b6-3300f4e4a465.png) <br />
 
 
