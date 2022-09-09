@@ -11,8 +11,15 @@
 -  You can then use KAT https://github.com/VRCWizard/TTS-Voice-Wizard#killfrenzy-avatar-text to display the text (shown in the section below) or the new VRChat Chatbox
 ![image](https://user-images.githubusercontent.com/101527472/184250055-0ce6dbf1-b474-440e-bff6-91c0805059b8.png)
 ![image](https://user-images.githubusercontent.com/101527472/184250129-65706fdc-ae58-4f32-a4ef-84308c9f4b87.png)
--  Note: If you did all of this and the Spotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder
--  Also make sure you turned on OSC from the VRChat radial menu!!!
+
+-  Make sure you turned on OSC from the VRChat radial menu!!!!!!!!!!!!!!!!!!! <br />
+![EnableOSC (1)](https://user-images.githubusercontent.com/101527472/189431342-18dfecda-df3b-40c0-be66-6ecb56107543.gif) <br />
+(Gif taken from Killfrenzy Avatar Text setup guide) <br />
+
+-  Note: If you did all of this and the Spotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder <br />
+![image](https://user-images.githubusercontent.com/101527472/189431265-c3005a90-8f0b-49b9-88b6-3300f4e4a465.png) <br />
+
+
 
 -  Example with VRChat Chatbox ![image](https://user-images.githubusercontent.com/101527472/185652165-31caebd6-75fe-4bfb-be86-092b12b7ceea.png)
 
