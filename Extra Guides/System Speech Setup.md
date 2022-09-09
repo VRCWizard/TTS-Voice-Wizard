@@ -2,7 +2,7 @@
 - If you don't want to setup / use the Azure Conginitive Speech Services you can use your windows build in speech to text and text to speech engine. <br />
 - Whats the difference you may ask?
     -  Azure can cost money if used too often (more info in the [azure setup instuctions](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md) and in the discord annoucment pinned messages)
-    -  Azure has better TTS voices and Speech recognition ability as dshown in the [demonstartion video](https://youtu.be/wBRUcx9EWes)
+    -  Azure has better TTS voices and Speech recognition ability as shown in the [demonstartion video](https://youtu.be/wBRUcx9EWes)
 - Setup: 
     -  First you will need to [download and set up a virtual cable](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Virtual%20Cable%20Setup.md)
     - You will then need to change the Apps **output device**  to the **virtual cable** which will allow you to play the System Speech TTS though your microphone.
