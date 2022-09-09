@@ -20,6 +20,10 @@
 -  (Close VRChat, delete the OSC folder then restart VRChat is the proper order of operations)
 ![image](https://user-images.githubusercontent.com/101527472/189431265-c3005a90-8f0b-49b9-88b6-3300f4e4a465.png) <br />
 
+-  If for some reason it still isn't working make sure that legacy client id is not enabled by mistake
+![image](https://user-images.githubusercontent.com/101527472/189435955-82dec49d-fd0c-4e74-b052-1368d907d829.png)
+
+
 
 
 -  Example with VRChat Chatbox ![image](https://user-images.githubusercontent.com/101527472/185652165-31caebd6-75fe-4bfb-be86-092b12b7ceea.png)
