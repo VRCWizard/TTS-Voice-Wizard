@@ -1,3 +1,8 @@
+# Setup Tutorial Video
+
+[![TTS Voice Wizard Setup Tutorial](https://user-images.githubusercontent.com/101527472/188194398-a3fe8745-b582-4319-af38-44363474090a.png)](https://www.youtube.com/watch?v=bGVs2ew08WY "TTS Voice Wizard Setup Tutorial")  <br />
+This video just runs through the instructions on this page.
+
 # How to get your Microsoft Azure Key and Region
 - For Speech Recognition and TTS to work you must have an Azure Subscription Key. <br />
 [Free Azure Account](https://azure.microsoft.com/en-us/free/) (more releated info about free monthly limits after the first month avaliable in the [discord server](https://discord.gg/YjgR9SWPnW) #faq channel)<br />
