@@ -28,5 +28,5 @@ Control Panel > Sound > Recording > Select the Virtual Cable Output > Properties
    ![image](https://user-images.githubusercontent.com/101527472/188168225-c10efdbe-a163-4957-a485-8e7bf25de4dd.png)
    
 # How to get Text in VRChat
-[Text for VRChat Setup Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Text%20Setup.md)
+-  [Text for VRChat Setup Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Text%20Setup.md)
 
