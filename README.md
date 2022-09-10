@@ -1,11 +1,11 @@
 # TTS-Voice-Wizard
 [![Discord](https://img.shields.io/discord/681732152517591048?label=Discord)](https://discord.gg/YjgR9SWPnW) 
 ![downloads](https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Downloads) <br />
-Use TTS Voice Wizard's accessibility features to improve your VRChat experience (it works outside of VRChat too!)<br />
+Use TTS Voice Wizard's accessibility features to improve your VRChat experience (**it works outside of VRChat too!**)<br />
 * You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.<br />
-* You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!<br />
-* You can translate what you say in one language to one of 20+ other support languages! (Have a language you want added? Join the discord linked below and let me know!) <br />
-* There are over 50 different voices with various customization options so you can pick a voice that best suits you! <br />
+* You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText or VRChats Chatbox!<br />
+* You can translate what you say in one language to one of **20+ other support languages!** (Have a language you want added? Join the discord linked below and let me know!) <br />
+* There are **100+ different** voices with various customization options so you can pick a voice that best suits you! <br />
 * You can even let others know what you are listening to on Spotify by having a songs title, artist and progress appear above you! <br />
 
 ![Screenshot 2022-05-09 121718](https://user-images.githubusercontent.com/101527472/167462899-f954be86-4914-4d23-a38c-9b2b4259cffb.png)
