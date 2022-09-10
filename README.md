@@ -52,6 +52,9 @@ This video just runs through the instructions on this page.
 # How to enable Spotify integration
 [Spotify integration setup guide](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md)
 
+![image](https://user-images.githubusercontent.com/101527472/189490350-8dc6165c-3ace-4c9b-bb22-8c2adba5b6b5.png)
+
+
 # Need Help / Have Questions / Wanna make suggestions?
 [Join the discord server](https://discord.gg/YjgR9SWPnW) <br />
 
