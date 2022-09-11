@@ -33,7 +33,7 @@
 -  Example using [Killfrenzy Avtar Text](https://github.com/killfrenzy96/KillFrenzyAvatarText) with Frosty Billboard (avaliable in the discord server "asset showcase" channel) ![image](https://user-images.githubusercontent.com/101527472/189544397-e2784566-7909-4c99-b8b8-3ae721c3c237.png)
 
 
-- variables you can add or remove from "Customize Spotify Output Text" (include them in {})
+- Variables you can add or remove from "Customize Spotify Output Text" (include them in {})
    - spotifySymbol
    - title
    - artist
