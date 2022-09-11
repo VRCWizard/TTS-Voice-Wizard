@@ -1,6 +1,8 @@
 # How to setup Spotify Feature 
 -  Go to the Spotify developer dashboard https://developer.spotify.com/dashboard/
 -  Create a new app
+![image](https://user-images.githubusercontent.com/101527472/189543060-73dce2e7-0539-46d9-8d29-8d95fc582b09.png)
+
 -  add the correct redirect URI http://localhost:5000/callback
 ![image](https://user-images.githubusercontent.com/101527472/184249336-b0c075c3-6a71-4b6f-b60b-0bd6ce012af7.png)
 ![image](https://user-images.githubusercontent.com/101527472/184249358-79ef66c1-890a-46ab-84ea-db3ec70d872f.png)
