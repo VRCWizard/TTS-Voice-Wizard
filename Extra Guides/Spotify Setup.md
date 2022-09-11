@@ -32,6 +32,18 @@
 
 
 
+- variables you can add or remove from "Customize Spotify Output Text" (include them in {})
+   - spotifySymbol
+   - title
+   - artist
+   - progressMinutes
+   - durationMinutes
+   - progressHours
+   - durationHours
+![image](https://user-images.githubusercontent.com/101527472/189544304-8ed4c7c9-ff54-4db3-a8fc-a1be0e465247.png)
+
+
+
 
 
 # How to setup Spotify Feature (Legacy)
