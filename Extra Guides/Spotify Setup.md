@@ -30,6 +30,7 @@
 
 -  Example with VRChat Chatbox ![image](https://user-images.githubusercontent.com/101527472/185652165-31caebd6-75fe-4bfb-be86-092b12b7ceea.png)
 
+-  Example using [Killfrenzy Avtar Text](https://github.com/killfrenzy96/KillFrenzyAvatarText) with Frosty Billboard (avaliable in the discord server "asset showcase" channel) ![image](https://user-images.githubusercontent.com/101527472/189544397-e2784566-7909-4c99-b8b8-3ae721c3c237.png)
 
 
 - variables you can add or remove from "Customize Spotify Output Text" (include them in {})
