@@ -1,6 +1,8 @@
 # How to get Text in VRChat
 - You can now use the new VRChat Chatboxes by default <br />
     -  Make sure to turn on OSC from the VRChat radial menu <br />
+![EnableOSC (1)](https://user-images.githubusercontent.com/101527472/189733533-957f6e92-ebba-4c67-b857-f1abac9d0eb3.gif)
+
     
   
 - Another method which has text output on your avatar in VRChat is [Killfrenzy96's Avatar Text Displayer](https://github.com/killfrenzy96/KillFrenzyAvatarText/) <br />
