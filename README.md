@@ -59,6 +59,9 @@ This video just runs through the instructions on this page.
 # Need Help / Have Questions / Wanna make suggestions?
 -  [Join the discord server](https://discord.gg/YjgR9SWPnW) <br />
 
+# What comes next?
+-  Check the [Trello](https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features) page to see what features will be coming out next!
+
 # Socials
 -  [Follow me on Twitter](https://twitter.com/Wizard_VR) <br />
 -  [Subscribe to my Youtube](https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg) <br />
