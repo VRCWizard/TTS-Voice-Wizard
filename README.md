@@ -51,6 +51,7 @@ This video just runs through the instructions on this page.
 
 # How to enable Spotify integration
 -  [Spotify integration setup guide](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md)
+    - Used to display the details of the song you are listening to in text
 
 ![image](https://user-images.githubusercontent.com/101527472/189490765-b0ed4d51-ebb9-4368-8083-cb1fadf224ad.png)
 
