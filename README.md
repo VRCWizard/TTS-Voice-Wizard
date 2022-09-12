@@ -57,7 +57,7 @@ This video just runs through the instructions on this page.
 
 
 # Need Help / Have Questions / Wanna make suggestions?
--  [Join the discord server](https://discord.gg/YjgR9SWPnW) <br />
+-  [Join the Discord server](https://discord.gg/YjgR9SWPnW) <br />
 
 # What comes next?
 -  Check the [Trello](https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features) page to see what features will be coming out next!
