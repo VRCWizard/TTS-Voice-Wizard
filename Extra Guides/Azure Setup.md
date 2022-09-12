@@ -22,7 +22,7 @@ or <br />
     - [Budgets and Alerts](https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending?WT.mc_id=Portal-Microsoft_Azure_CostManagement)
 
 - **Don't want to use Microsoft Azure? Can't set up an account? No credit card to make account? No school email?:** 
-    -  Refer to the "Windows Built-In System Speech" section
+    -  Refer to the "[Windows Built-In System Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/System%20Speech%20Setup.md)" section
 
 -  Your key and region go in the "Microsoft Azure Cognitive Service" tab located in "Settings"
     -  Make sure to click the change button for both key and region
