@@ -32,6 +32,7 @@ This video just runs through the instructions on this page.
 ![download this one](https://user-images.githubusercontent.com/101527472/161798523-48efb29a-81a6-4ac5-acaf-45a33a857b73.png)
 
 - If popup does not appear and application does not start use this [.Net Runtime Referal Link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime?utm_source=getdotnetcore&utm_medium=referral)
+- Microsoft Edge must be installed for this program to function properly
 
 # How to setup Speech to Text and TTS
 
