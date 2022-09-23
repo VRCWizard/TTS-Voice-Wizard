@@ -61,6 +61,14 @@
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.rjToggleButtonWebCapSystem = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.rjToggleButtonWebCapAzure = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label17 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.buttonDeepSpeech = new System.Windows.Forms.Button();
             this.label109 = new System.Windows.Forms.Label();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button11 = new System.Windows.Forms.Button();
@@ -72,13 +80,7 @@
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.rjToggleButtonActivation = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.buttonActivationWord = new System.Windows.Forms.Button();
-            this.textBoxActivationWord = new System.Windows.Forms.TextBox();
+            this.tabWebCap = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label108 = new System.Windows.Forms.Label();
             this.label107 = new System.Windows.Forms.Label();
@@ -177,6 +179,7 @@
             this.SettingsNew = new System.Windows.Forms.TabPage();
             this.label73 = new System.Windows.Forms.Label();
             this.translucentPanel2 = new OSCVRCWiz.RJControls.TranslucentPanel();
+            this.iconButton24 = new FontAwesome.Sharp.IconButton();
             this.iconButton21 = new FontAwesome.Sharp.IconButton();
             this.iconButton18 = new FontAwesome.Sharp.IconButton();
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
@@ -296,7 +299,6 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabAddons.SuspendLayout();
             this.translucentPanel1.SuspendLayout();
@@ -326,6 +328,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(378, 588);
             this.richTextBox1.TabIndex = 4;
             this.richTextBox1.Text = "";
+            this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // speechTTSButton
@@ -617,7 +620,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabWebCap);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabAddons);
             this.tabControl1.Controls.Add(this.tabEmoji);
@@ -806,8 +809,9 @@
             this.richTextBox5.ReadOnly = true;
             this.richTextBox5.Size = new System.Drawing.Size(931, 56);
             this.richTextBox5.TabIndex = 3;
-            this.richTextBox5.Text = "Current Version: v0.7.5 - September 3, 2022\nChangelog: (full changelogs visible a" +
-    "t https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
+            this.richTextBox5.Text = "Current Version: VERSION - DATE\nChangelog: (full changelogs visible at https://gi" +
+    "thub.com/VRCWizard/TTS-Voice-Wizard/releases )";
+            this.richTextBox5.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox5_LinkClicked);
             // 
             // richTextBox4
             // 
@@ -841,6 +845,14 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage1.Controls.Add(this.label27);
+            this.tabPage1.Controls.Add(this.rjToggleButtonWebCapSystem);
+            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.rjToggleButtonWebCapAzure);
+            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.button15);
+            this.tabPage1.Controls.Add(this.button14);
+            this.tabPage1.Controls.Add(this.buttonDeepSpeech);
             this.tabPage1.Controls.Add(this.label109);
             this.tabPage1.Controls.Add(this.comboBox5);
             this.tabPage1.Controls.Add(this.button11);
@@ -871,6 +883,109 @@
             this.tabPage1.Size = new System.Drawing.Size(976, 698);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.Snow;
+            this.label27.Location = new System.Drawing.Point(265, 619);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(84, 20);
+            this.label27.TabIndex = 50;
+            this.label27.Text = "System TTS";
+            // 
+            // rjToggleButtonWebCapSystem
+            // 
+            this.rjToggleButtonWebCapSystem.AutoSize = true;
+            this.rjToggleButtonWebCapSystem.Location = new System.Drawing.Point(214, 619);
+            this.rjToggleButtonWebCapSystem.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonWebCapSystem.Name = "rjToggleButtonWebCapSystem";
+            this.rjToggleButtonWebCapSystem.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonWebCapSystem.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonWebCapSystem.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonWebCapSystem.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonWebCapSystem.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonWebCapSystem.TabIndex = 51;
+            this.rjToggleButtonWebCapSystem.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.Snow;
+            this.label18.Location = new System.Drawing.Point(425, 619);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 20);
+            this.label18.TabIndex = 48;
+            this.label18.Text = "Azure TTS";
+            // 
+            // rjToggleButtonWebCapAzure
+            // 
+            this.rjToggleButtonWebCapAzure.AutoSize = true;
+            this.rjToggleButtonWebCapAzure.Location = new System.Drawing.Point(374, 619);
+            this.rjToggleButtonWebCapAzure.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonWebCapAzure.Name = "rjToggleButtonWebCapAzure";
+            this.rjToggleButtonWebCapAzure.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonWebCapAzure.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonWebCapAzure.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonWebCapAzure.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonWebCapAzure.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonWebCapAzure.TabIndex = 49;
+            this.rjToggleButtonWebCapAzure.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.Snow;
+            this.label17.Location = new System.Drawing.Point(28, 571);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(320, 20);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Web Captioner Webhook (Pre-Release Feature)";
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.ForeColor = System.Drawing.Color.Snow;
+            this.button15.Location = new System.Drawing.Point(605, 571);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(178, 43);
+            this.button15.TabIndex = 39;
+            this.button15.Text = "Disable Web Captioner";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Visible = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.Color.Snow;
+            this.button14.Location = new System.Drawing.Point(28, 608);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(165, 43);
+            this.button14.TabIndex = 38;
+            this.button14.Text = "Try Web Captioner";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // buttonDeepSpeech
+            // 
+            this.buttonDeepSpeech.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonDeepSpeech.FlatAppearance.BorderSize = 0;
+            this.buttonDeepSpeech.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeepSpeech.ForeColor = System.Drawing.Color.Snow;
+            this.buttonDeepSpeech.Location = new System.Drawing.Point(659, 626);
+            this.buttonDeepSpeech.Name = "buttonDeepSpeech";
+            this.buttonDeepSpeech.Size = new System.Drawing.Size(53, 43);
+            this.buttonDeepSpeech.TabIndex = 37;
+            this.buttonDeepSpeech.Text = "DeepSpeech";
+            this.buttonDeepSpeech.UseVisualStyleBackColor = false;
+            this.buttonDeepSpeech.Visible = false;
+            this.buttonDeepSpeech.Click += new System.EventHandler(this.buttonDeepSpeech_Click);
             // 
             // label109
             // 
@@ -924,9 +1039,9 @@
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.Color.Snow;
-            this.button11.Location = new System.Drawing.Point(320, 567);
+            this.button11.Location = new System.Drawing.Point(737, 626);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(221, 43);
+            this.button11.Size = new System.Drawing.Size(58, 43);
             this.button11.TabIndex = 34;
             this.button11.Text = "Stop Speech";
             this.button11.UseVisualStyleBackColor = false;
@@ -1034,7 +1149,6 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(265, 28);
             this.comboBox4.TabIndex = 27;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -1082,97 +1196,16 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(265, 28);
             this.comboBox3.TabIndex = 25;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
-            // tabPage2
+            // tabWebCap
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.tabPage2.Controls.Add(this.rjToggleButtonActivation);
-            this.tabPage2.Controls.Add(this.label27);
-            this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.buttonActivationWord);
-            this.tabPage2.Controls.Add(this.textBoxActivationWord);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(976, 698);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Settings";
-            // 
-            // rjToggleButtonActivation
-            // 
-            this.rjToggleButtonActivation.AutoSize = true;
-            this.rjToggleButtonActivation.Location = new System.Drawing.Point(423, 333);
-            this.rjToggleButtonActivation.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonActivation.Name = "rjToggleButtonActivation";
-            this.rjToggleButtonActivation.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonActivation.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonActivation.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonActivation.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonActivation.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonActivation.TabIndex = 80;
-            this.rjToggleButtonActivation.UseVisualStyleBackColor = true;
-            this.rjToggleButtonActivation.Visible = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.ForeColor = System.Drawing.Color.Snow;
-            this.label27.Location = new System.Drawing.Point(474, 331);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(186, 20);
-            this.label27.TabIndex = 62;
-            this.label27.Text = "Enabled (restart necessary)";
-            this.label27.Visible = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Snow;
-            this.label18.Location = new System.Drawing.Point(423, 441);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(128, 20);
-            this.label18.TabIndex = 39;
-            this.label18.Text = "(restart necessary)";
-            this.label18.Visible = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.Snow;
-            this.label17.Location = new System.Drawing.Point(419, 311);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(167, 20);
-            this.label17.TabIndex = 36;
-            this.label17.Text = "STTTS Activation Phrase";
-            this.label17.Visible = false;
-            // 
-            // buttonActivationWord
-            // 
-            this.buttonActivationWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.buttonActivationWord.FlatAppearance.BorderSize = 0;
-            this.buttonActivationWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonActivationWord.ForeColor = System.Drawing.Color.Snow;
-            this.buttonActivationWord.Location = new System.Drawing.Point(423, 401);
-            this.buttonActivationWord.Name = "buttonActivationWord";
-            this.buttonActivationWord.Size = new System.Drawing.Size(94, 29);
-            this.buttonActivationWord.TabIndex = 37;
-            this.buttonActivationWord.Text = "Change";
-            this.buttonActivationWord.UseVisualStyleBackColor = false;
-            this.buttonActivationWord.Visible = false;
-            this.buttonActivationWord.Click += new System.EventHandler(this.buttonActivationWord_Click);
-            // 
-            // textBoxActivationWord
-            // 
-            this.textBoxActivationWord.Location = new System.Drawing.Point(423, 366);
-            this.textBoxActivationWord.Name = "textBoxActivationWord";
-            this.textBoxActivationWord.Size = new System.Drawing.Size(108, 27);
-            this.textBoxActivationWord.TabIndex = 35;
-            this.textBoxActivationWord.Text = "Quote";
-            this.textBoxActivationWord.Visible = false;
+            this.tabWebCap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabWebCap.Location = new System.Drawing.Point(4, 29);
+            this.tabWebCap.Name = "tabWebCap";
+            this.tabWebCap.Padding = new System.Windows.Forms.Padding(3);
+            this.tabWebCap.Size = new System.Drawing.Size(976, 698);
+            this.tabWebCap.TabIndex = 1;
+            this.tabWebCap.Text = "WebCaptioner";
             // 
             // tabPage3
             // 
@@ -2091,7 +2124,6 @@
             this.tabHeartBeat.Size = new System.Drawing.Size(976, 698);
             this.tabHeartBeat.TabIndex = 7;
             this.tabHeartBeat.Text = "Heartbeat";
-            this.tabHeartBeat.Click += new System.EventHandler(this.tabHeartBeat_Click);
             // 
             // label46
             // 
@@ -2305,6 +2337,7 @@
             // translucentPanel2
             // 
             this.translucentPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.translucentPanel2.Controls.Add(this.iconButton24);
             this.translucentPanel2.Controls.Add(this.iconButton21);
             this.translucentPanel2.Controls.Add(this.iconButton18);
             this.translucentPanel2.Controls.Add(this.iconButton19);
@@ -2313,6 +2346,27 @@
             this.translucentPanel2.Name = "translucentPanel2";
             this.translucentPanel2.Size = new System.Drawing.Size(463, 626);
             this.translucentPanel2.TabIndex = 1;
+            // 
+            // iconButton24
+            // 
+            this.iconButton24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton24.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton24.FlatAppearance.BorderSize = 0;
+            this.iconButton24.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton24.IconChar = FontAwesome.Sharp.IconChar.ClosedCaptioning;
+            this.iconButton24.IconColor = System.Drawing.Color.White;
+            this.iconButton24.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton24.Location = new System.Drawing.Point(0, 400);
+            this.iconButton24.Name = "iconButton24";
+            this.iconButton24.Size = new System.Drawing.Size(463, 100);
+            this.iconButton24.TabIndex = 13;
+            this.iconButton24.Text = "Web Captioner Webhook";
+            this.iconButton24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton24.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton24.UseVisualStyleBackColor = false;
+            this.iconButton24.Visible = false;
+            this.iconButton24.Click += new System.EventHandler(this.iconButton24_Click);
             // 
             // iconButton21
             // 
@@ -2324,9 +2378,9 @@
             this.iconButton21.IconColor = System.Drawing.Color.White;
             this.iconButton21.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton21.Location = new System.Drawing.Point(0, 393);
+            this.iconButton21.Location = new System.Drawing.Point(0, 300);
             this.iconButton21.Name = "iconButton21";
-            this.iconButton21.Size = new System.Drawing.Size(463, 131);
+            this.iconButton21.Size = new System.Drawing.Size(463, 100);
             this.iconButton21.TabIndex = 12;
             this.iconButton21.Text = "System Speech ";
             this.iconButton21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2344,9 +2398,9 @@
             this.iconButton18.IconColor = System.Drawing.Color.White;
             this.iconButton18.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton18.Location = new System.Drawing.Point(0, 262);
+            this.iconButton18.Location = new System.Drawing.Point(0, 200);
             this.iconButton18.Name = "iconButton18";
-            this.iconButton18.Size = new System.Drawing.Size(463, 131);
+            this.iconButton18.Size = new System.Drawing.Size(463, 100);
             this.iconButton18.TabIndex = 11;
             this.iconButton18.Text = "Microsoft Azure Cognative Services";
             this.iconButton18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2364,9 +2418,9 @@
             this.iconButton19.IconColor = System.Drawing.Color.White;
             this.iconButton19.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton19.Location = new System.Drawing.Point(0, 131);
+            this.iconButton19.Location = new System.Drawing.Point(0, 100);
             this.iconButton19.Name = "iconButton19";
-            this.iconButton19.Size = new System.Drawing.Size(463, 131);
+            this.iconButton19.Size = new System.Drawing.Size(463, 100);
             this.iconButton19.TabIndex = 10;
             this.iconButton19.Text = "Text Output";
             this.iconButton19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2386,7 +2440,7 @@
             this.iconButton20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton20.Location = new System.Drawing.Point(0, 0);
             this.iconButton20.Name = "iconButton20";
-            this.iconButton20.Size = new System.Drawing.Size(463, 131);
+            this.iconButton20.Size = new System.Drawing.Size(463, 100);
             this.iconButton20.TabIndex = 9;
             this.iconButton20.Text = "General";
             this.iconButton20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3909,8 +3963,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabAddons.ResumeLayout(false);
@@ -3949,30 +4001,22 @@
         private Label label4;
         private Label label5;
         private Label label6;
-        private TextBox textBoxDelay;
         private Label label7;
         private Button buttonDelayHere;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private TabPage tabPage2;
+        private TabPage tabWebCap;
         private TabPage tabPage3;
         private Label label8;
         private Button button5;
-        private TextBox textBox2;
         private Label label10;
         private Label label9;
         private Button button6;
-        private TextBox textBox3;
         private Label label11;
         private Label label12;
         private TextBox textBox4;
-        private Label label17;
-        private Button buttonActivationWord;
-        private TextBox textBoxActivationWord;
-        private Label label18;
         public Button speechTTSButton;
         private Button button1;
-        private TextBox textBoxErase;
         private Label label3;
         public ComboBox comboBox1;
         public ComboBox comboBox2;
@@ -4003,8 +4047,6 @@
         private Label label20;
         private Label label19;
 
-        private Label label27;
-
         private FontAwesome.Sharp.IconButton iconButton7;
         private RichTextBox richTextBox5;
         private Label label13;
@@ -4015,14 +4057,7 @@
         public ComboBox comboBoxInput;
         private Label label29;
         public ComboBox comboBoxOutput;
-        private Button buttonSpotify;
-        private RJControls.RJToggleButton rjToggleButtonActivation;
-        private RJControls.RJToggleButton rjToggleButtonOnTop2;
-        private RJControls.RJToggleButton rjToggleButtonClear;
-        private RJControls.RJToggleButton rjToggleButtonProfan;
-        private RJControls.RJToggleButton rjToggleButtonKeyRegion2;
         public RJControls.RJToggleButton rjToggleButtonPhraseList2;
-        private System.Windows.Forms.Timer timer1;
         public RJControls.RJToggleButton rjToggleButtonHideDelay2;
         public RJControls.RJToggleButton rjToggleButtonOSC;
         public RJControls.RJToggleButton rjToggleButtonLog;
@@ -4030,11 +4065,9 @@
         public RJControls.RJToggleButton rjToggleButtonAsTranslated2;
         private Label label31;
         private Label label30;
-        private RJControls.RJToggleButton rjToggleButtonCurrentSong;
         private Label label34;
         private FontAwesome.Sharp.IconButton ttsTrash;
         private FontAwesome.Sharp.IconButton logTrash;
-        private Button button2;
         private Label label37;
         public RJControls.RJToggleButton rjToggleButton1;
         private TextBox textBoxHRPort;
@@ -4078,7 +4111,6 @@
         public ComboBox comboBoxLite;
         private Label label52;
         private Label label53;
-        private RJControls.RJToggleButton rjToggleButtonLiteMode;
         private Label label51;
         private Label label59;
         private Label label62;
@@ -4089,7 +4121,6 @@
         private Label label54;
         private Label label55;
         private Button button4;
-        private TextBox textBoxSpotifyTime;
         private Label label56;
         public RJControls.RJToggleButton rjToggleButtonPeriodic;
         private Label label57;
@@ -4105,15 +4136,11 @@
         private Label label61;
         private Label label65;
         public TextBox textBoxCultureInfo;
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
-        private Button button10;
-        private Button button9;
         public RJControls.RJToggleButton rjToggleButton5;
         private Label label66;
         private Label label68;
         public RJControls.RJToggleButton rjToggleSpotLegacy;
         private Label label67;
-        private TextBox textBoxSpotKey;
         public RJControls.RJToggleButton rjToggleButtonChatBox;
         private Label label32;
         public RJControls.RJToggleButton rjToggleButtonShowKeyboard;
@@ -4187,12 +4214,10 @@
         public TextBox textBoxCustomSpot;
         private Label label78;
         public RJControls.RJToggleButton rjToggleSoundNotification;
-        private NotifyIcon notifyIcon1;
         private Label label105;
         public RJControls.RJToggleButton rjToggleButtonMedia;
         private Label label104;
         public RJControls.RJToggleButton rjToggleButtonSystemTray;
-        private Button button11;
         private Label label75;
         private Button button12;
         private Label label106;
@@ -4205,5 +4230,34 @@
         private Label label109;
         public ComboBox comboBox5;
         private Button button13;
+        public Button button11;
+        public Button buttonDeepSpeech;
+        public Button button14;
+        private FontAwesome.Sharp.IconButton iconButton24;
+        private Label label17;
+        public Button button15;
+        private Label label27;
+        public RJControls.RJToggleButton rjToggleButtonWebCapSystem;
+        private Label label18;
+        public RJControls.RJToggleButton rjToggleButtonWebCapAzure;
+        public RJControls.RJToggleButton rjToggleButtonOnTop2;
+        public RJControls.RJToggleButton rjToggleButtonProfan;
+        public RJControls.RJToggleButton rjToggleButtonKeyRegion2;
+        public Button button2;
+        public TextBox textBox2;
+        public TextBox textBox3;
+        public Button buttonSpotify;
+        public RJControls.RJToggleButton rjToggleButtonCurrentSong;
+        public Microsoft.Web.WebView2.WinForms.WebView2 webView21;
+        public Button button10;
+        public Button button9;
+        public RJControls.RJToggleButton rjToggleButtonClear;
+        public System.Windows.Forms.Timer timer1;
+        public RJControls.RJToggleButton rjToggleButtonLiteMode;
+        public TextBox textBoxSpotifyTime;
+        public NotifyIcon notifyIcon1;
+        public TextBox textBoxErase;
+        public TextBox textBoxSpotKey;
+        public TextBox textBoxDelay;
     }
 }

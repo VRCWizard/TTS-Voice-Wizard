@@ -10,6 +10,7 @@ namespace OSCVRCWiz
     public class HeartbeatAddon
     {
         static bool heartConnect = false;
+        public static string globalBPM = "0";
         public static void OSCRecieveHeartRate(VoiceWizardWindow MainForm)
         {
             int skipper = 0;
@@ -33,35 +34,43 @@ namespace OSCVRCWiz
 
 
 
-                        if (messageReceived.Address == "/avatar/parameters/HR" && VoiceWizardWindow.pauseBPM == false && VoiceWizardWindow.stopBPM == false)
+                        if (messageReceived.Address == "/avatar/parameters/HR" && VoiceWizardWindow.pauseBPM == false )
                         {
                             skipper += 1;
                             if (skipper >= VoiceWizardWindow.HRInternalValue)
                             {
                                 skipper = 0;
 
+
                                 System.Diagnostics.Debug.WriteLine("OSC Received a message Address: " + messageReceived.Address);
                                 System.Diagnostics.Debug.WriteLine("OSC Received a message Argument: " + messageReceived.Arguments[0].ToString());
-                                var ot = new OutputText();
-                                if (VoiceWizardWindow.BPMSpamLog == true)
-                                {
-                                    ot.outputLog(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
+                                globalBPM = messageReceived.Arguments[0].ToString();
 
-                                }
-                                if(MainForm.rjToggleButton3.Checked == true && MainForm.rjToggleButtonOSC.Checked == true)
+                                if (VoiceWizardWindow.stopBPM == false)
                                 {
-                                    ot.outputVRChat(MainForm, "ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
 
-                                }
-                                if(MainForm.rjToggleButton3.Checked == false &&MainForm.rjToggleButtonOSC.Checked==true)
-                                {
-                                   ot.outputVRChat(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+                                    var ot = new OutputText();
+                                    if (VoiceWizardWindow.BPMSpamLog == true)
+                                    {
+                                        ot.outputLog(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
 
-                                }
-                                if (MainForm.rjToggleButtonChatBox.Checked == true)
-                                {
-                                    Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
+                                    }
+                                    if (MainForm.rjToggleButton3.Checked == true && MainForm.rjToggleButtonOSC.Checked == true)
+                                    {
+                                        ot.outputVRChat(MainForm, "ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
 
+                                    }
+                                    if (MainForm.rjToggleButton3.Checked == false && MainForm.rjToggleButtonOSC.Checked == true)
+                                    {
+                                        ot.outputVRChat(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+
+                                    }
+                                    if (MainForm.rjToggleButtonChatBox.Checked == true)
+                                    {
+                                        Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
+
+
+                                    }
                                 }
 
 

@@ -159,25 +159,9 @@ namespace OSCVRCWiz
 
                         MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
                         string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string
-                        string emotion = "normal";
-                        string rate = "default";
-                        string pitch = "default";
-                        string volume = "default";
-                        string voice = "Sara";
-                        MainForm.Invoke((MethodInvoker)delegate ()
-                        {
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString())) { emotion = "normal"; }
-                            else { emotion = MainForm.comboBox1.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString())) { rate = "default"; } else { rate = MainForm.comboBoxRate.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString())) { pitch = "default"; }
-                            else { pitch = MainForm.comboBoxPitch.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString())) { volume = "default"; }
-                            else { volume = MainForm.comboBoxVolume.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString())) { voice = "Sara"; }
-                            else { voice = MainForm.comboBox2.Text.ToString(); }
 
+                        SetDefaultTTS.SetVoicePresets();
 
-                        });
                         var ot = new OutputText();
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
@@ -192,7 +176,7 @@ namespace OSCVRCWiz
                             //   }
                             //  SpeechCt = new();
                          
-                            AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice);
+                            AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice);
                         }
 
                         //Send Text to Vrchat
@@ -259,24 +243,7 @@ namespace OSCVRCWiz
                     if (MainForm.rjToggleButton4.Checked == true)
                     {
                         MainForm.dictationString = eventArgs.Result.Text; //Dictation string
-
-                        string emotion = "normal";
-                        string rate = "default";
-                        string pitch = "default";
-                        string volume = "default";
-                        string voice = "Sara";
-                        MainForm.Invoke((MethodInvoker)delegate ()
-                        {
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString())) { emotion = "normal"; }
-                            else { emotion = MainForm.comboBox1.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString())) { rate = "default"; } else { rate = MainForm.comboBoxRate.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString())) { pitch = "default"; }
-                            else { pitch = MainForm.comboBoxPitch.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString())) { volume = "default"; }
-                            else { volume = MainForm.comboBoxVolume.Text.ToString(); }
-                            if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString())) { voice = "Sara"; }
-                            else { voice = MainForm.comboBox2.Text.ToString(); }
-                        });
+                        SetDefaultTTS.SetVoicePresets();
                         var ot = new OutputText();
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
@@ -290,7 +257,7 @@ namespace OSCVRCWiz
                             // }
                             //  SpeechCt = new();
                           
-                            AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice);
+                            AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice);
                         }
                         //Send Text to Vrchat
                         if (MainForm.rjToggleButtonOSC.Checked == true)
@@ -370,25 +337,7 @@ namespace OSCVRCWiz
                     //OutputSpeechRecognitionResult(speechRecognitionResult);
                     MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
 
-                    string emotion = "normal";
-                    string rate = "default";
-                    string pitch = "default";
-                    string volume = "default";
-                    string voice = "Sara";
-                    MainForm.Invoke((MethodInvoker)delegate ()
-                    {
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString())) { emotion = "normal"; }
-                        else { emotion = MainForm.comboBox1.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString())) { rate = "default"; } else { rate = MainForm.comboBoxRate.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString())) { pitch = "default"; }
-                        else { pitch = MainForm.comboBoxPitch.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString())) { volume = "default"; }
-                        else { volume = MainForm.comboBoxVolume.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString())) { voice = "Sara"; }
-                        else { voice = MainForm.comboBox2.Text.ToString(); }
-
-
-                    });
+                    SetDefaultTTS.SetVoicePresets();
                     var ot = new OutputText();
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {
@@ -398,7 +347,7 @@ namespace OSCVRCWiz
                     {
 
                       
-                        AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, emotion, rate, pitch, volume, voice);
+                        AudioSynthesis.SynthesizeAudioAsync(MainForm, MainForm.dictationString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice);
                     }
                     //Send Text to Vrchat
                     if (MainForm.rjToggleButtonOSC.Checked == true)
@@ -482,23 +431,7 @@ namespace OSCVRCWiz
 
                     MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
                     string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string
-                    string emotion = "normal";
-                    string rate = "default";
-                    string pitch = "default";
-                    string volume = "default";
-                    string voice = "Sara";
-                    MainForm.Invoke((MethodInvoker)delegate ()
-                    {
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBox1.Text.ToString())) { emotion = "normal"; }
-                        else { emotion = MainForm.comboBox1.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxRate.Text.ToString())) { rate = "default"; } else { rate = MainForm.comboBoxRate.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxPitch.Text.ToString())) { pitch = "default"; }
-                        else { pitch = MainForm.comboBoxPitch.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBoxVolume.Text.ToString())) { volume = "default"; }
-                        else { volume = MainForm.comboBoxVolume.Text.ToString(); }
-                        if (string.IsNullOrWhiteSpace(MainForm.comboBox2.Text.ToString())) { voice = "Sara"; }
-                        else { voice = MainForm.comboBox2.Text.ToString(); }
-                    });
+                    SetDefaultTTS.SetVoicePresets();
                     var ot = new OutputText();
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {
@@ -508,7 +441,7 @@ namespace OSCVRCWiz
                     if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                     {
                       
-                        AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, emotion, rate, pitch, volume, voice);
+                        AudioSynthesis.SynthesizeAudioAsync(MainForm, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice);
                     }
 
                     //Send Text to Vrchat
