@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz
 {
@@ -103,7 +104,7 @@ namespace OSCVRCWiz
                             localList.Add("de-DE");
                             break;
 
-                        case "Hindi  [hi]": localList.Add("hi-IN"); break;
+                        case "Hindi [hi]": localList.Add("hi-IN"); break;
                         case "Irish [ga]": localList.Add("ga-IE"); break;
                         case "Italian [it]": localList.Add("it-IT"); break;
                         case "Japanese [ja]": localList.Add("ja-JP"); break;
@@ -194,7 +195,7 @@ namespace OSCVRCWiz
             }
             else
             {
-                ot.outputLog(MainForm, "[Voices successfully reloaded locally]");
+                ot.outputLog(MainForm, "[DEBUG: Voices successfully reloaded locally]");
                 foreach (string voice in RememberLanguageVoices[fromLanguageFullname])
                 {
                     MainForm.comboBox2.Items.Add(voice);
@@ -202,13 +203,13 @@ namespace OSCVRCWiz
             }
             if (VoiceWizardWindow.firstVoiceLoad == false)
             {
-                ot.outputLog(MainForm, "[setting to first voice]");
+                ot.outputLog(MainForm, "[DEBUG: setting to voice]");
                 MainForm.comboBox2.SelectedIndex = 0;
             }
 
             if (VoiceWizardWindow.firstVoiceLoad == true)
             {
-                ot.outputLog(MainForm, "setting to remembered voice");
+                ot.outputLog(MainForm, "[DEBUG: setting voice and style to saved values]");
                 MainForm.comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                 MainForm.comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
                 VoiceWizardWindow.firstVoiceLoad = false;
@@ -371,6 +372,9 @@ namespace OSCVRCWiz
                 //     };
                 //   await synthesizerVoice.SpeakSsmlAsync(ssml0);
                 synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+
+
+            
              //   ct.Register(async () => await synthesizerVoice.StopSpeakingAsync());
                 //  synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
 

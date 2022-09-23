@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSCVRCWiz {
+namespace OSCVRCWiz.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

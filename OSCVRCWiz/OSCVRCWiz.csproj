@@ -16,10 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="CSCore" Version="1.2.1.2" />
+    <PackageReference Include="DeepL.net" Version="1.4.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.23.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1340-prerelease" />
     <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="Octokit" Version="3.0.0" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />
     <PackageReference Include="System.Speech" Version="7.0.0-preview.2.22152.2" />
@@ -37,12 +39,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Settings1.Designer.cs">
+    <Compile Update="Settings\Settings1.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
-    <Compile Update="emojiSettings.Designer.cs">
+    <Compile Update="Settings\emojiSettings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
       <DependentUpon>emojiSettings.settings</DependentUpon>
@@ -57,12 +59,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Settings1.settings">
+    <None Update="Settings\Settings1.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="emojiSettings.settings">
+    <None Update="Settings\emojiSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>emojiSettings.Designer.cs</LastGenOutput>
     </None>

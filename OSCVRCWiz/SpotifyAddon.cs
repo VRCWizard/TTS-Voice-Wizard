@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SpotifyAPI.Web.Auth;
 using SpotifyAPI.Web;
+using OSCVRCWiz.Settings;
+
 
 namespace OSCVRCWiz
 {
@@ -126,7 +128,7 @@ namespace OSCVRCWiz
                     }
                     if ((lastSong != title || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked == true) && (!string.IsNullOrWhiteSpace(title) && title != "" && VoiceWizardWindow.pauseSpotify != true))
                     {
-                        VoiceWizardWindow.pauseBPM = true;
+                       // VoiceWizardWindow.pauseBPM = true; pause removed to fix with spotify 
                         // lastSong = title;
                         System.Diagnostics.Debug.WriteLine(title);
                         System.Diagnostics.Debug.WriteLine(artist);
@@ -145,6 +147,7 @@ namespace OSCVRCWiz
                         theString = theString.Replace("{durationMinutes}", duration);
                         theString = theString.Replace("{progressHours}", progressHours);
                         theString = theString.Replace("{durationHours}", durationHours);
+                        theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
 
 
                         //  if (MainForm.rjToggleButtonPeriodic.Checked==true)
@@ -190,7 +193,21 @@ namespace OSCVRCWiz
                             var ot = new OutputText();
                             if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                             {
-                                Task.Run(() => ot.outputLog(MainForm, theString));
+
+                              
+                              //  System.Diagnostics.Debug.WriteLine(thisone);
+                               //  string thisone2 = System.Net.WebUtility.UrlEncode("頼");
+                                // string thisone2 = System.Net.WebUtility.HtmlDecode(theString);
+                                // string thisone = Base64Encode(theString);
+                                //  string thisone2 = Base64Decode(thisone);
+                                //  byte[] asciiBytes = Encoding.ASCII.GetBytes("456hyh565u56u56");
+                                //  String s = Base64.getEncoder().encodeToString(asciiBytes);
+                                // byte[] decode = Base64.getDecoder().decode(s);
+                                  Task.Run(() => ot.outputLog(MainForm, theString));
+                              //  Task.Run(() => ot.outputLog(MainForm, thisone));
+                              //  Task.Run(() => ot.outputLog(MainForm, thisone2));
+
+
                             }
                             if (MainForm.rjToggleButtonOSC.Checked == true)
                             {
@@ -198,6 +215,10 @@ namespace OSCVRCWiz
                             }
                             if (MainForm.rjToggleButtonChatBox.Checked == true)
                             {
+
+                                // Encoding ascii = Encoding.ASCII;
+                              //  string thisone = System.Net.WebUtility.HtmlEncode(theString);
+                              //  string thisone2 = System.Net.WebUtility.HtmlDecode(thisone);
                                 Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
 
                             }
@@ -319,6 +340,16 @@ namespace OSCVRCWiz
 
 
 
+        }
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.ASCII.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.ASCII.GetString(base64EncodedBytes);
         }
 
 
