@@ -1,6 +1,6 @@
 
-- Enbale Web Captioner Webhook in TTS Voice Wizard
-
+#### Web Captioner Speech to Text Instructions:
+- Connect Web Captioner Webhook in TTS Voice Wizard
 -  Go to https://webcaptioner.com/captioner 
 -  Settings (bottom right) > Channels > Webhook
 -  Set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). 
