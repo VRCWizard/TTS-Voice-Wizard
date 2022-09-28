@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="Settings1">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Settings" GeneratedClassName="Settings1">
   <Profiles />
   <Settings>
     <Setting Name="yourKey" Type="System.String" Scope="User">
@@ -126,7 +126,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SpotifyTimerIntervalSetting" Type="System.String" Scope="User">
-      <Value Profile="(Default)">10000</Value>
+      <Value Profile="(Default)">5000</Value>
     </Setting>
     <Setting Name="AudioCancelSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -159,7 +159,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SpotifyCustomSetting" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{spotifySymbol} Listening to '{title}' by '{artist}' {progressMinutes}/{durationMinutes} on Spotify</Value>
+      <Value Profile="(Default)">Listening to '{title}' by '{artist}' {progressMinutes}/{durationMinutes} on Spotify</Value>
     </Setting>
     <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -175,6 +175,12 @@
     </Setting>
     <Setting Name="voiceLanguage" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="WebcaptionerSetting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="testtttt" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

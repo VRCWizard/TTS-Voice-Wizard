@@ -125,6 +125,9 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBoxUseDelay.Checked = Settings1.Default.VRCUseDelay;
 
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.WebcaptionerSetting;
+
+
             VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
             VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
             VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;

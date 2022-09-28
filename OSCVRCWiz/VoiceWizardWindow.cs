@@ -22,13 +22,14 @@ using Resources; //for darktitle
 using OSCVRCWiz.Settings;
 using Octokit;
 using System.Linq;
+using System.Diagnostics;
 
 namespace OSCVRCWiz
 {
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.7.8";
-        string releaseDate = "September 23, 2022";
+        string currentVersion = "0.7.9";
+        string releaseDate = "September 28, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -79,6 +80,14 @@ namespace OSCVRCWiz
         public static string volume = "default";
         public static string voice = "Sara";
 
+        HttpServer httpServer;
+        OutputText ot;
+
+        //  private PerformanceCounter cpuCounter;
+        // private PerformanceCounter ramCounter;
+
+
+
         public PopupForm pf;
 
         public static VoiceWizardWindow MainFormGlobal;
@@ -98,8 +107,12 @@ namespace OSCVRCWiz
             {
                 
                 InitializeComponent(); //initialize happens before voices load to help with error catching on app start
-               // CustomWindow(Color.Red, Color.Blue, Color.Green, Handle);
+                                       // CustomWindow(Color.Red, Color.Blue, Color.Green, Handle);
+            //    cpuCounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
+            //    ramCounter = new PerformanceCounter("Memory", "Available MBytes");
                 MainFormGlobal = this;
+                httpServer = new HttpServer();
+                ot = new OutputText();
                 //Azure Audio Devices----------------------------
                 comboIn.Add("Default");
                 micIDs.Add("Default");
@@ -182,9 +195,19 @@ namespace OSCVRCWiz
             }
 
         }
-///
-    
 
+
+        ///
+
+      /*  public string getCurrentCpuUsage()
+        {
+            return cpuCounter.NextValue() + "%";
+        }
+
+        public string getAvailableRAM()
+        {
+            return ramCounter.NextValue() + "MB";
+        }*/
 
 
         protected override void WndProc(ref Message m)
@@ -221,9 +244,9 @@ namespace OSCVRCWiz
 
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
         {
-            var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+          //  var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
             var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
-            sender2.Send(message0);
+            sender3.Send(message0);
         }
         private void logClearButton_Click(object sender, EventArgs e)//speech to text
         {
@@ -382,11 +405,12 @@ namespace OSCVRCWiz
                 Version localVersion = new Version(currentVersion);
 
                 int versionComparison = localVersion.CompareTo(latestGitHubVersion);
-                var ot = new OutputText();
+               // var ot = new OutputText();
                 if (versionComparison < 0)
                 {
                     //The version on GitHub is more up to date than this local release.
                     ot.outputLog(this, "[The version on GitHub (" + releaseText + ") is more up to date than the current version (" + currentVersion + "). Grab the new release from the Github https://github.com/VRCWizard/TTS-Voice-Wizard/releases ]");
+                    iconButton8.Visible = true;
                     //  ot.outputLog(this, "[After downloading the updated version you may want to copy your config settings over by replacing the new config file with the old one. Config files are stored in AppData/Local/TTSVoiceWizard]");
                 }
                 else if (versionComparison > 0)
@@ -460,9 +484,21 @@ namespace OSCVRCWiz
         }
         private async void TTSButton_Click(object sender, EventArgs e)//TTS
         {
+            if (rjToggleButtonMedia.Checked == true)
+            {
+                try
+                {
+                    var soundPlayer = new SoundPlayer(@"sounds\TTSButton.wav");
+                    soundPlayer.Play();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
             {
-                var ot = new OutputText();
+              //  var ot = new OutputText();
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
             }
             if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
@@ -488,7 +524,7 @@ namespace OSCVRCWiz
 
             if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
             {
-                var ot = new OutputText();
+              //  var ot = new OutputText();
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
             }
             if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
@@ -543,7 +579,7 @@ namespace OSCVRCWiz
        
             string text = "";
             SetDefaultTTS.SetVoicePresets();
-            var ot = new OutputText();
+          //  var ot = new OutputText();
             //Send Text to Vrchat
             this.Invoke((MethodInvoker)delegate ()
             {
@@ -590,7 +626,7 @@ namespace OSCVRCWiz
 
             string text = "";
             SetDefaultTTS.SetVoicePresets();
-            var ot = new OutputText();
+           // var ot = new OutputText();
             //Send Text to Vrchat
             if (rjToggleButtonLog.Checked == true)
             {
@@ -598,14 +634,6 @@ namespace OSCVRCWiz
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-
-                //  if( rjToggleButtonCancelAudio.Checked == true)
-                // {
-                //  TextSynthesis.SpeechCt.Cancel();
-                // }
-                //   TextSynthesis.SpeechCt.Cancel();
-                //    TextSynthesis.SpeechCt = new();
-                //   Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));//new
                 AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice);
             }
             if (rjToggleButtonOSC.Checked == true)
@@ -904,6 +932,7 @@ namespace OSCVRCWiz
             //copies main log text to addon logs
             richTextBox7.Text = richTextBox1.Text;
             richTextBox8.Text = richTextBox1.Text;
+            richTextBox10.Text = richTextBox1.Text;
         }
 
         private void iconButton12_Click(object sender, EventArgs e)
@@ -926,7 +955,7 @@ namespace OSCVRCWiz
         {
             System.Diagnostics.Debug.WriteLine("Recognized text: " + e.Result.Text);
             string text = e.Result.Text.ToString();
-            var ot = new OutputText();
+           // var ot = new OutputText();
             //Send Text to Vrchat
             if (rjToggleButtonLog.Checked == true)
             {
@@ -1119,6 +1148,7 @@ namespace OSCVRCWiz
                 iconButton6.Text = "";
                 iconButton7.Text = "";
                 iconButton12.Text = "";
+                iconButton8.Text = "";
             }
             if (rjToggleButton6.Checked == false)
             {
@@ -1134,6 +1164,7 @@ namespace OSCVRCWiz
                 iconButton6.Text = "Discord";
                 iconButton7.Text = "Github";
                 iconButton12.Text = "Donate";
+                iconButton8.Text = "Update";
 
             }
 
@@ -1204,7 +1235,7 @@ namespace OSCVRCWiz
         }
 
 
-        public async void speechStop()//speech to text
+      /*  public async void speechStop()//speech to text
         {
 
             if (rjToggleButtonMedia.Checked == true)
@@ -1223,7 +1254,7 @@ namespace OSCVRCWiz
 
             }
 
-        }
+        }*/
 
         private void button12_Click(object sender, EventArgs e)
         {
@@ -1243,7 +1274,7 @@ namespace OSCVRCWiz
 
             if (typingBox == true)
             {
-                var ot = new OutputText();
+             //   var ot = new OutputText();
                 // var senderTest = new SharpOSC.UDPSender("127.0.0.1", 9000);
                 //  var messageText = new SharpOSC.OscMessage("/chatbox/input", richTextBox9.Text.ToString(), true, false);
                 //   senderTest.Send(messageText);
@@ -1301,7 +1332,7 @@ namespace OSCVRCWiz
 
         }
 
-        private void buttonDeepSpeech_Click(object sender, EventArgs e)
+      /*  private void buttonDeepSpeech_Click(object sender, EventArgs e)
         {
 
 
@@ -1352,20 +1383,9 @@ namespace OSCVRCWiz
             }
 
             buttonDeepSpeech.Enabled = true;
-        }
+        }*/
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-            var ot = new OutputText();
-            
-            System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");
-
-            var httpServer = new HttpServer();
-            Task.Run(() => httpServer.Start());
-            System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
-            ot.outputLog(this, "[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
-
-        }
+      
 
         private void iconButton24_Click(object sender, EventArgs e)
         {
@@ -1386,6 +1406,89 @@ namespace OSCVRCWiz
         private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", e.LinkText);
+        }
+
+        private void rjToggleButton7_CheckedChanged(object sender, EventArgs e)
+        {
+          //  var ot = new OutputText();
+        /*    if (rjToggleButton7.Checked==true)
+            {
+               
+                System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");
+              //  var httpServer = new HttpServer();
+                Task.Run(() => httpServer.Start());
+                System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
+                ot.outputLog(this, "[HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
+
+            }
+            if (rjToggleButton7.Checked == false)
+            {
+                Task.Run(() => httpServer.Stop());
+                ot.outputLog(this, "[HTTP listener for Web Captioner Stopped.]" );
+            }*/
+
+
+        }
+
+        private void iconButton8_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/releases");
+        }
+
+        private void iconButton26_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features");
+        }
+
+        private void iconButton25_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/bGVs2ew08WY");
+
+        }
+
+        private void iconButton27_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/wBRUcx9EWes");
+        
+        }
+
+        private void iconButton28_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Web%20Captioner%20Setup.md");
+        }
+
+        private void iconButton31_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md");
+        
+        }
+
+        private void iconButton29_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md");
+        }
+
+        private void iconButton30_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/System%20Speech%20Setup.md");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+           
+               
+                System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");
+                var httpServer = new HttpServer();
+                Task.Run(() => httpServer.Start());
+                System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
+                ot.outputLog(this, "[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
+
+            
+        }
+
+        private void iconButton32_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Emoji%20Setup.md");
         }
     }
 

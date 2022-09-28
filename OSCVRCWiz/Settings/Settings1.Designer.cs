@@ -517,7 +517,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
         public string SpotifyTimerIntervalSetting {
             get {
                 return ((string)(this["SpotifyTimerIntervalSetting"]));
@@ -649,8 +649,8 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("{spotifySymbol} Listening to \'{title}\' by \'{artist}\' {progressMinutes}/{durationM" +
-            "inutes} on Spotify")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Listening to \'{title}\' by \'{artist}\' {progressMinutes}/{durationMinutes} on Spoti" +
+            "fy")]
         public string SpotifyCustomSetting {
             get {
                 return ((string)(this["SpotifyCustomSetting"]));
@@ -717,6 +717,30 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["voiceLanguage"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WebcaptionerSetting {
+            get {
+                return ((bool)(this["WebcaptionerSetting"]));
+            }
+            set {
+                this["WebcaptionerSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string testtttt {
+            get {
+                return ((string)(this["testtttt"]));
+            }
+            set {
+                this["testtttt"] = value;
             }
         }
     }

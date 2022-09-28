@@ -77,9 +77,6 @@ namespace OSCVRCWiz
                         }
                     }
 
-
-
-
                     catch (APIException ex)
                     {
                         System.Diagnostics.Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
@@ -149,43 +146,6 @@ namespace OSCVRCWiz
                         theString = theString.Replace("{durationHours}", durationHours);
                         theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
 
-
-                        //  if (MainForm.rjToggleButtonPeriodic.Checked==true)
-                        //   {
-                        //  if (MainForm.rjToggleButton3.Checked == false)
-                        //  {
-                        //   if(MainForm.rjToggleButtonMugi.Checked==true)
-                        //   {
-                        //        theString = title + " - '" + artist + "'";
-                        //     }
-                        //  else
-                        //     {
-                        //        theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
-
-                        //     }
-
-
-                        //    }
-                        //  if (MainForm.rjToggleButton3.Checked == true)
-                        //   {
-                        //        theString = "ふ Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration;
-                        //    }
-
-                        //   }
-                        //    if (MainForm.rjToggleButtonPeriodic.Checked == false)
-                        //   {
-                        //    if (MainForm.rjToggleButton3.Checked == false)
-                        //    {
-                        //      theString = "Listening to '" + title + "' by '" + artist + "'" + " on Spotify";
-
-                        //  }
-                        //    if (MainForm.rjToggleButton3.Checked == true)
-                        //    {
-                        //       theString = "ふ Listening to '" + title + "' by '" + artist + "' ";
-                        //    }
-
-                        //  }
-
                         if (fullSongPauseCheck != progress)//stop outputting periodically is song paused
                         {
 
@@ -193,20 +153,7 @@ namespace OSCVRCWiz
                             var ot = new OutputText();
                             if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                             {
-
-                              
-                              //  System.Diagnostics.Debug.WriteLine(thisone);
-                               //  string thisone2 = System.Net.WebUtility.UrlEncode("頼");
-                                // string thisone2 = System.Net.WebUtility.HtmlDecode(theString);
-                                // string thisone = Base64Encode(theString);
-                                //  string thisone2 = Base64Decode(thisone);
-                                //  byte[] asciiBytes = Encoding.ASCII.GetBytes("456hyh565u56u56");
-                                //  String s = Base64.getEncoder().encodeToString(asciiBytes);
-                                // byte[] decode = Base64.getDecoder().decode(s);
                                   Task.Run(() => ot.outputLog(MainForm, theString));
-                              //  Task.Run(() => ot.outputLog(MainForm, thisone));
-                              //  Task.Run(() => ot.outputLog(MainForm, thisone2));
-
 
                             }
                             if (MainForm.rjToggleButtonOSC.Checked == true)
@@ -215,10 +162,6 @@ namespace OSCVRCWiz
                             }
                             if (MainForm.rjToggleButtonChatBox.Checked == true)
                             {
-
-                                // Encoding ascii = Encoding.ASCII;
-                              //  string thisone = System.Net.WebUtility.HtmlEncode(theString);
-                              //  string thisone2 = System.Net.WebUtility.HtmlDecode(thisone);
                                 Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
 
                             }
