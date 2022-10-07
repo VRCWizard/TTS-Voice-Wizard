@@ -66,10 +66,16 @@ namespace OSCVRCWiz
                     Task.Run(() => ot.outputVRChat(MainForm, text,"tts")); //original
                                                                  // ot.outputVRChat(this, text);//new
                 }
+                if (MainForm.rjToggleButtonChatBox.Checked == true)
+                {
+
+                    Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, text, "tts")); //original
+                                                                            // ot.outputVRChat(this, text);//new
+                }
 
 
 
-            }
+        }
             public void startListeningNow(VoiceWizardWindow MainForm)
             {
                 string cultureHere = "en-US";

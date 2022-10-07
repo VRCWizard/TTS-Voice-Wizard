@@ -28,8 +28,8 @@ namespace OSCVRCWiz
 {
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.7.9";
-        string releaseDate = "September 28, 2022";
+        string currentVersion = "0.7.9.5";
+        string releaseDate = "October 7, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -437,11 +437,23 @@ namespace OSCVRCWiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+           // sender3 = new SharpOSC.UDPSender(textBoxOSCAddress.Text.ToString(), Convert.ToInt32(textBoxOSCPort.Text.ToString()));//9000
+
             // DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
             iconButton1.BackColor = Color.FromArgb(68, 72, 111);
             LoadSettings.LoadingSettings();
             getGithubInfo();
+
+            if(rjToggleButton8.Checked == true)//turn on osc listener on start
+            {
+                Task.Run(() => HeartbeatAddon.OSCRecieveHeartRate(this));
+                button7.Enabled = false;
+
+            }
+            
+
+
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -591,7 +603,7 @@ namespace OSCVRCWiz
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-                AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice);
+                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));
             }
             if (rjToggleButtonOSC.Checked == true)
             {
@@ -784,21 +796,32 @@ namespace OSCVRCWiz
 
         private void timerSpotify_Tick(object sender, EventArgs e)
         {
-            Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
+            if(rjToggleButtonCurrentSong.Checked)
+            {
+                Task.Run(() => SpotifyAddon.getCurrentSongInfo(this));
+            }
+            if (rjToggleButton9.Checked)
+            {
+                Task.Run(() => SpotifyAddon.getCurrentDataInfo(this));
+            }
+
         }
 
         private void rjToggleButtonCurrentSong_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButtonCurrentSong.Checked == true)
-
+           /* if (rjToggleButtonCurrentSong.Checked == true) // make it possible to output battery life without song
+            {
                 timer1.Start();
+            }
+
+                
 
 
             if (rjToggleButtonCurrentSong.Checked == false)
             {
                 timer1.Stop();
 
-            }
+            }*/
         }
 
         private void logTrash_Click(object sender, EventArgs e)
@@ -880,6 +903,7 @@ namespace OSCVRCWiz
         private void button7_Click(object sender, EventArgs e)
         {
             Task.Run(() => HeartbeatAddon.OSCRecieveHeartRate(this));
+            button7.Enabled = false;
 
         }
         private void rjToggleButton2_CheckedChanged(object sender, EventArgs e)
@@ -1266,13 +1290,19 @@ namespace OSCVRCWiz
         private void richTextBox9_TextChanged(object sender, EventArgs e)
         {
             typingBox = true;
+            var typingbubble = new SharpOSC.OscMessage("/chatbox/typing", true);
+            sender3.Send(typingbubble);
         }
         private void doTypeTimerTick()
         {
+            if (typingBox == false)
+            {
+                var typingbubble = new SharpOSC.OscMessage("/chatbox/typing", false);
+                sender3.Send(typingbubble);
+            }
 
 
-
-            if (typingBox == true)
+                if (typingBox == true)
             {
              //   var ot = new OutputText();
                 // var senderTest = new SharpOSC.UDPSender("127.0.0.1", 9000);
@@ -1302,6 +1332,7 @@ namespace OSCVRCWiz
                 }
             }
             typingBox = false;
+            
             typetimer.Change(2000, 0);
 
         }
@@ -1442,13 +1473,13 @@ namespace OSCVRCWiz
 
         private void iconButton25_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/bGVs2ew08WY");
+         //   System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/bGVs2ew08WY");
 
         }
 
         private void iconButton27_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/wBRUcx9EWes");
+          //  System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/wBRUcx9EWes");
         
         }
 
@@ -1489,6 +1520,50 @@ namespace OSCVRCWiz
         private void iconButton32_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Emoji%20Setup.md");
+        }
+
+        private void iconButton33_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/bGVs2ew08WY");
+        }
+
+        private void iconButton34_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/wBRUcx9EWes");
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            sender3 = new SharpOSC.UDPSender(textBoxOSCAddress.Text.ToString(), Convert.ToInt32(textBoxOSCPort.Text.ToString()));//9000
+            Settings1.Default.rememberPort = textBoxOSCPort.Text.ToString();
+            Settings1.Default.Save();
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            sender3 = new SharpOSC.UDPSender(textBoxOSCAddress.Text.ToString(), Convert.ToInt32(textBoxOSCPort.Text.ToString()));//9000
+            Settings1.Default.rememberAddress = textBoxOSCAddress.Text.ToString();
+            Settings1.Default.Save();
+        }
+
+        private void rjToggleButton8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjToggleButton9_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButton9.Checked==true)
+            {
+                rjToggleButtonCurrentSong.Checked = false;
+                rjToggleButtonCurrentSong.Enabled = false;
+            }
+            if (rjToggleButton9.Checked == false)
+            {
+                //rjToggleButtonCurrentSong.Checked = false;
+                rjToggleButtonCurrentSong.Enabled = true;
+            }
         }
     }
 

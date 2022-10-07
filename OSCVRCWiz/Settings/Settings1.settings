@@ -179,8 +179,17 @@
     <Setting Name="WebcaptionerSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="testtttt" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="activateOSCStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="independentSpotifyText" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="rememberAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="rememberPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

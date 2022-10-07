@@ -145,6 +145,10 @@ namespace OSCVRCWiz
                         theString = theString.Replace("{progressHours}", progressHours);
                         theString = theString.Replace("{durationHours}", durationHours);
                         theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
+                        theString = theString.Replace("{averageTrackerBattery}", HeartbeatAddon.globalAverageTrackerBattery.ToString());
+                        theString = theString.Replace("{leftControllerBattery}", HeartbeatAddon.globalLeftControllerBattery.ToString());
+                        theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
+                        theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
 
                         if (fullSongPauseCheck != progress)//stop outputting periodically is song paused
                         {
@@ -191,11 +195,47 @@ namespace OSCVRCWiz
             }
 
         }
-        
-       
+        public static async Task getCurrentDataInfo(VoiceWizardWindow MainForm)
+        {
+            if (VoiceWizardWindow.pauseBPM == false)
+            {
 
 
-       private static async Task OnErrorReceived(object sender, string error, string state)
+                var theString = "";
+                theString = MainForm.textBoxCustomSpot.Text.ToString();
+
+                theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
+                theString = theString.Replace("{averageTrackerBattery}", HeartbeatAddon.globalAverageTrackerBattery.ToString());
+                theString = theString.Replace("{leftControllerBattery}", HeartbeatAddon.globalLeftControllerBattery.ToString());
+                theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
+                theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
+
+
+
+
+                var ot = new OutputText();
+                if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                {
+                    Task.Run(() => ot.outputLog(MainForm, theString));
+
+                }
+                if (MainForm.rjToggleButtonOSC.Checked == true)
+                {
+                    Task.Run(() => ot.outputVRChat(MainForm, theString, "bpm"));
+                }
+                if (MainForm.rjToggleButtonChatBox.Checked == true)
+                {
+                    Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "bpm")); //original
+
+                }
+
+            }
+        }
+
+
+
+
+        private static async Task OnErrorReceived(object sender, string error, string state)
        {
             Console.WriteLine($"Aborting authorization, error received: {error}");
             await _server.Stop();

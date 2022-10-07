@@ -11,10 +11,16 @@ namespace OSCVRCWiz
     {
         static bool heartConnect = false;
         public static string globalBPM = "0";
+        public static int globalAverageTrackerBattery =0;
+        public static int globalLeftControllerBattery = 0;
+        public static int globalRightControllerBattery =0;
+        public static int globalAverageControllerBattery = 0;
         public static void OSCRecieveHeartRate(VoiceWizardWindow MainForm)
         {
             int skipper = 0;
+            var ot = new OutputText();
             // The cabllback function
+            ot.outputLog(MainForm, "[OSC Listener Activated]");
             HandleOscPacket callback = delegate (OscPacket packet)
             {
                 var messageReceived = (OscMessage)packet;
@@ -26,10 +32,77 @@ namespace OSCVRCWiz
                     {
                         if (heartConnect == false)
                         {
-                            var ot = new OutputText();
-                            ot.outputLog(MainForm, "HRtoVRChat_OSC Connected");
+                            
+                            ot.outputLog(MainForm, "[First OSC Recieved]");
                             heartConnect = true;
 
+                        }
+
+
+                        if (messageReceived.Address == "/avatar/parameters/averageTrackerBattery")
+                        {
+                           
+                            decimal averageTrackerBattery = Decimal.Parse(messageReceived.Arguments[0].ToString());
+                            int battery = Convert.ToInt32(averageTrackerBattery * 100);
+                            globalAverageTrackerBattery = battery;
+                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            {
+                              //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + messageReceived.Arguments[0].ToString() + "]");
+                              //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + Convert.ToInt32(averageTrackerBattery) + "]");
+                                ot.outputLog(MainForm, "[Average Tracker Battery: " + battery + "%]");
+                            }
+                         /*   if ((battery == 20 || battery == 15 || battery == 10) && MainForm.rjToggleButtonChatBox.Checked == true)
+                            {
+                                ot.outputVRChatSpeechBubbles(MainForm, "Warning: Trackers are getting low, their average battery life is " + battery + "%", "tts");
+                            }*/
+
+                        }
+                        if (messageReceived.Address == "/avatar/parameters/leftControllerBattery")
+                        {
+                            decimal leftControllerBattery = Decimal.Parse(messageReceived.Arguments[0].ToString());
+                            int battery = Convert.ToInt32(leftControllerBattery * 100);
+                            globalLeftControllerBattery = battery;
+                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            {
+                               
+                                ot.outputLog(MainForm, "[Left Controller Battery: " + battery + "%]");
+                            }
+                          /*  if (battery <= 20 && MainForm.rjToggleButtonChatBox.Checked == true)
+                            {
+                             //   ot.outputVRChatSpeechBubbles(MainForm, "Warning: Left Controller is getting low, its battery life is" + battery + "%", "tts");
+                            }*/
+                        }
+                        if (messageReceived.Address == "/avatar/parameters/rightControllerBattery")
+                        {
+                            decimal rightControllerBattery = Decimal.Parse(messageReceived.Arguments[0].ToString());
+                            int battery = Convert.ToInt32(rightControllerBattery * 100);
+                            globalRightControllerBattery = battery;
+                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            {
+                                
+                                ot.outputLog(MainForm, "[Right Controller Battery: " + battery + "%]");
+                            }
+                          /*  if (battery > 20 && MainForm.rjToggleButtonChatBox.Checked == true)
+                            {
+                               // ot.outputVRChatSpeechBubbles(MainForm, "Warning: Right Controller is getting low, its battery life is" + battery + "%", "tts");
+                            }*/
+                        }
+                        if (messageReceived.Address == "/avatar/parameters/averageControllerBattery")
+                        {
+                            decimal averageControllerBattery = Decimal.Parse(messageReceived.Arguments[0].ToString());
+                            int battery = Convert.ToInt32(averageControllerBattery * 100);
+                            globalAverageControllerBattery = battery;
+                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            {
+                                
+                                ot.outputLog(MainForm, "[Average Controller Battery: " + battery + "%]");
+                                
+                            }
+                          /*  if((battery == 20|| battery == 15|| battery == 10) && MainForm.rjToggleButtonChatBox.Checked == true)
+                            {
+                                ot.outputVRChatSpeechBubbles(MainForm, "Warning: Controllers are getting low, their average battery life is" + battery + "%","tts");
+                            }*/
+                         
                         }
 
 
@@ -49,7 +122,7 @@ namespace OSCVRCWiz
                                 if (VoiceWizardWindow.stopBPM == false)
                                 {
 
-                                    var ot = new OutputText();
+                                   // var ot = new OutputText();
                                     if (VoiceWizardWindow.BPMSpamLog == true)
                                     {
                                         ot.outputLog(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");

@@ -734,13 +734,49 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string testtttt {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool activateOSCStart {
             get {
-                return ((string)(this["testtttt"]));
+                return ((bool)(this["activateOSCStart"]));
             }
             set {
-                this["testtttt"] = value;
+                this["activateOSCStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool independentSpotifyText {
+            get {
+                return ((bool)(this["independentSpotifyText"]));
+            }
+            set {
+                this["independentSpotifyText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string rememberAddress {
+            get {
+                return ((string)(this["rememberAddress"]));
+            }
+            set {
+                this["rememberAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
+        public string rememberPort {
+            get {
+                return ((string)(this["rememberPort"]));
+            }
+            set {
+                this["rememberPort"] = value;
             }
         }
     }
