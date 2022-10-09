@@ -41,6 +41,13 @@
    - durationMinutes
    - progressHours
    - durationHours
+   - Other Variables requires OSC Listener Setup
+       - bpm
+       - averageTrackerBattery
+       - leftControllerBattery
+       - rightControllerBattery
+       - averageControllerBattery 
+   
 ![image](https://user-images.githubusercontent.com/101527472/189544304-8ed4c7c9-ff54-4db3-a8fc-a1be0e465247.png)
 
 
