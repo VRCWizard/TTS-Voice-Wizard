@@ -41,7 +41,7 @@
    - durationMinutes
    - progressHours
    - durationHours
-   - Other Variables requires OSC Listener Setup
+   - Other Variables requires [OSC Listener Setup](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/OSC%20Listener%20Setup.md)
        - bpm
        - averageTrackerBattery
        - leftControllerBattery
