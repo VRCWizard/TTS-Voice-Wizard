@@ -50,6 +50,8 @@
    
 ![image](https://user-images.githubusercontent.com/101527472/189544304-8ed4c7c9-ff54-4db3-a8fc-a1be0e465247.png)
 
+-  Use this feature to output variables like bpm and battery life without using spotify 
+![image](https://user-images.githubusercontent.com/101527472/194857632-a630b7af-c3cd-4c1b-9c02-94fef35d0d87.png)
 
 
 
