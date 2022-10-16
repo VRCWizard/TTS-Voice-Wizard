@@ -1,4 +1,20 @@
-# How to setup Spotify Feature 
+# Windows Media Setup (New v0.8.1 or higher)
+-  Using the new windows media setup is flipping a switch. Simply enable Windows Media Mode.
+-  If you have another media source such as a broswer, simply copy the name from the log and add it to the approved media source list seperated by commas.
+![image](https://user-images.githubusercontent.com/101527472/196054796-f43bfe04-bcfe-4845-98bf-0f8b383ef4fd.png)
+- Variables you can add or remove from "Customize Media Output Text" (include them in {})
+   - spotifySymbol
+   - title
+   - artist
+   - source
+   - Other Variables requires [OSC Listener Setup](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/OSC%20Listener%20Setup.md)
+       - bpm
+       - averageTrackerBattery
+       - leftControllerBattery
+       - rightControllerBattery
+       - averageControllerBattery    
+
+# How to setup Spotify Feature (Out of date)
 -  Go to the Spotify developer dashboard https://developer.spotify.com/dashboard/
 -  Create a new app
 ![image](https://user-images.githubusercontent.com/101527472/189543060-73dce2e7-0539-46d9-8d29-8d95fc582b09.png)
