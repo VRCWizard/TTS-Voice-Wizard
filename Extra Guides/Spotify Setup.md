@@ -14,6 +14,14 @@
        - rightControllerBattery
        - averageControllerBattery    
 
+-  Make sure you turned on OSC from the VRChat radial menu!!!!!!!!!!!!!!!!!!! <br />
+![EnableOSC (1)](https://user-images.githubusercontent.com/101527472/189431342-18dfecda-df3b-40c0-be66-6ecb56107543.gif) <br />
+(Gif taken from Killfrenzy Avatar Text setup guide) <br />
+
+-  Note: If you did all of this and the Spotify text does not appear then you must go to %appdata%..\LocalLow\VRChat and delete the OSC folder <br />
+-  (Close VRChat, delete the OSC folder then restart VRChat is the proper order of operations)
+![image](https://user-images.githubusercontent.com/101527472/189431265-c3005a90-8f0b-49b9-88b6-3300f4e4a465.png) <br />
+
 # How to setup Spotify Feature (Out of date)
 -  Go to the Spotify developer dashboard https://developer.spotify.com/dashboard/
 -  Create a new app
