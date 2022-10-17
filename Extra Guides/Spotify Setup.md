@@ -1,6 +1,6 @@
 # Windows Media Setup (New v0.8.1 or higher)
--  Using the new windows media setup is as easy as flipping switch. Simply enable Windows Media Mode.
--  If you have another media source such as a broswer, simply copy the name from the log and add it to the approved media source list seperated by commas.
+-  Using the new windows media setup is as easy as flipping switch. Simply **Enable Windows Media Mode**.
+-  If you have another media source such as a broswer, simply copy the name from the log and add it to the **Approved Media Source List** seperated by commas.
 ![image](https://user-images.githubusercontent.com/101527472/196054796-f43bfe04-bcfe-4845-98bf-0f8b383ef4fd.png)
 - Variables you can add or remove from "Customize Media Output Text" (include them in {})
    - spotifySymbol
