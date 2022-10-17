@@ -1,5 +1,5 @@
 # Windows Media Setup (New v0.8.1 or higher)
--  Using the new windows media setup is flipping a switch. Simply enable Windows Media Mode.
+-  Using the new windows media setup is as easy as flipping switch. Simply enable Windows Media Mode.
 -  If you have another media source such as a broswer, simply copy the name from the log and add it to the approved media source list seperated by commas.
 ![image](https://user-images.githubusercontent.com/101527472/196054796-f43bfe04-bcfe-4845-98bf-0f8b383ef4fd.png)
 - Variables you can add or remove from "Customize Media Output Text" (include them in {})
@@ -22,7 +22,7 @@
 -  (Close VRChat, delete the OSC folder then restart VRChat is the proper order of operations)
 ![image](https://user-images.githubusercontent.com/101527472/189431265-c3005a90-8f0b-49b9-88b6-3300f4e4a465.png) <br />
 
-# How to setup Spotify Feature (Out of date)
+# How to setup Spotify Feature (v0.7.9.5 or lower, still applies to newer version but pictures need to be updated)
 -  Go to the Spotify developer dashboard https://developer.spotify.com/dashboard/
 -  Create a new app
 ![image](https://user-images.githubusercontent.com/101527472/189543060-73dce2e7-0539-46d9-8d29-8d95fc582b09.png)
