@@ -28,6 +28,7 @@ This video just runs through the instructions on this page.
 ![unknown3](https://user-images.githubusercontent.com/101527472/161798516-682fba28-e549-40fe-83c3-2f1e0c18fd2f.png)
 
 - Download the and run both the x64 and x86 version for windows desktop apps.<br />
+    - Versions 0.8.0.1 and up require x86 framework for .NET
 
 ![image](https://user-images.githubusercontent.com/101527472/197399995-b96f4605-09c2-4ed4-b94f-8d395f0b0aff.png)
 
