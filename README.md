@@ -27,9 +27,9 @@ This video just runs through the instructions on this page.
 - It may ask you to install missing framework for .Net upon running the .exe file.<br />
 ![unknown3](https://user-images.githubusercontent.com/101527472/161798516-682fba28-e549-40fe-83c3-2f1e0c18fd2f.png)
 
-- Download the and run x64 version for desktop apps.<br />
+- Download the and run both the x64 and x86 version for windows desktop apps.<br />
 
-![download this one](https://user-images.githubusercontent.com/101527472/161798523-48efb29a-81a6-4ac5-acaf-45a33a857b73.png)
+![image](https://user-images.githubusercontent.com/101527472/197399995-b96f4605-09c2-4ed4-b94f-8d395f0b0aff.png)
 
 - If popup does not appear and application does not start use this [.Net Runtime Referal Link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime?utm_source=getdotnetcore&utm_medium=referral)
 - Microsoft Edge must be installed for this program to function properly
