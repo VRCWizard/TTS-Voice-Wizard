@@ -20,42 +20,8 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 [![TTS Voice Wizard Setup Tutorial](https://user-images.githubusercontent.com/101527472/188194398-a3fe8745-b582-4319-af38-44363474090a.png)](https://www.youtube.com/watch?v=bGVs2ew08WY "TTS Voice Wizard Setup Tutorial")  <br />
 This video just runs through the instructions on this page.
 
-# Getting Started
-- Download the latest version from [releases](https://github.com/VRCWizard/TTS-Voice-Wizard/releases) (it will be named something like TTSVoiceWizard-vx.x.x.zip, not the source code), unzip the folder and run the .exe file (recommended to use **"latest"** release, not pre-release) <br />
-
-
-- It may ask you to install missing framework for .Net upon running the .exe file.<br />
-![unknown3](https://user-images.githubusercontent.com/101527472/161798516-682fba28-e549-40fe-83c3-2f1e0c18fd2f.png)
-
-- Download the and run both the x64 and x86 version for windows desktop apps.<br />
-    - Versions 0.8.0.1 and up require x86 framework for .NET
-
-![image](https://user-images.githubusercontent.com/101527472/197399995-b96f4605-09c2-4ed4-b94f-8d395f0b0aff.png)
-
-- If popup does not appear and application does not start use this [.Net Runtime Referal Link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime?utm_source=getdotnetcore&utm_medium=referral)
-- Microsoft Edge must be installed for this program to function properly
-
-# How to setup Speech to Text and TTS
-
-### Azure (Recommended)
--  [Setup Speech to Text and TTS with Microsoft Azure (Recommended)](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md) <br />
-    - all steps explained in the [setup guide video](https://www.youtube.com/watch?v=bGVs2ew08WY)
-
-
-### System Speech (alternative, not nearly as good)
-- If you don't want to setup / use the Azure Conginitive Speech Services you can use your windows build in speech to text and text to speech engine. <br />
-- Whats the difference you may ask?
-    -  Azure can cost money if used too often but is just fine and can be used completely free for most moderate users (information about avoding azure charges can be found in the Azure guide above aswell as pinned in the announcements section of the discord server)
-    -  Azure has better TTS voices and Speech recognition ability as demonstrated in the video above
-
--  [Setup Speech to Text and TTS using Windows built in System Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/System%20Speech%20Setup.md) <br />
-
-
-# How to enable Spotify integration
--  [Spotify integration setup guide](https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md)
-    - Used to display the details of the song you are listening to in text
-
-![image](https://user-images.githubusercontent.com/101527472/189490765-b0ed4d51-ebb9-4368-8083-cb1fadf224ad.png)
+# Quickstart Guide
+-  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard
 
 
 # Need Help / Have Questions / Wanna make suggestions?
