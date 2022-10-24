@@ -25,18 +25,18 @@ This video just runs through the instructions on this page.
 
 
 # Need Help / Have Questions / Wanna make suggestions?
--  [Join the Discord server](https://discord.gg/YjgR9SWPnW) <br />
+-  Join the [Discord Server](https://discord.gg/YjgR9SWPnW) <br />
 
 # What comes next?
 -  Check the [Trello](https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features) page to see what features will be coming out next!
 
 # Socials
--  [Follow me on Twitter](https://twitter.com/Wizard_VR) <br />
--  [Subscribe to my Youtube](https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg) <br />
+-  Follow me on [Twitter](https://twitter.com/Wizard_VR) <br />
+-  Subscribe to my [Youtube](https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg) <br />
 
 
 # Donate
-- Leave me a Github Star (it's free) or <br />
+- Leave me a Github Star ⭐ (it's free) or <br />
 
 <a href='https://ko-fi.com/ttsvoicewizard' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /> <br />
 
