@@ -8,13 +8,13 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 * You can translate what you say in one language to one of **20+ other support languages!** (Have a language you want added? Join the discord linked below and let me know!) <br />
 * There are **100+ different** voices with various customization options so you can pick a voice that best suits you! <br />
 * You can even let others know what you are listening to on Spotify by having a songs title, artist and progress appear above you! <br />
-* Check out the [demonstration video](https://youtu.be/wBRUcx9EWes) for a more in-depth look
+* Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look
 
 <img src="https://user-images.githubusercontent.com/101527472/167462899-f954be86-4914-4d23-a38c-9b2b4259cffb.png" width="800" height="400" /> <br />
 
 ## Quickstart Guide
 -  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard
--  Watch the [tutorial video](https://www.youtube.com/watch?v=bGVs2ew08WY) for basic/speech setup instructions
+-  Watch the [Tutorial Video](https://www.youtube.com/watch?v=bGVs2ew08WY) for basic/speech setup instructions
 
 
 ## Need Help / Have Questions / Wanna make suggestions?
