@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SharpOSC;
+//using SharpOSC;
+using VRC.OSCQuery;//beta testing
+using CoreOSC;
+
 
 namespace OSCVRCWiz
 {
@@ -15,25 +18,37 @@ namespace OSCVRCWiz
         public static int globalLeftControllerBattery = 0;
         public static int globalRightControllerBattery =0;
         public static int globalAverageControllerBattery = 0;
+
         public static void OSCRecieveHeartRate(VoiceWizardWindow MainForm)
         {
+          
             int skipper = 0;
-            var ot = new OutputText();
+            // var ot = new OutputText();
             // The cabllback function
-            ot.outputLog(MainForm, "[OSC Listener Activated]");
+            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[OSC Listener Activated]");
             HandleOscPacket callback = delegate (OscPacket packet)
             {
                 var messageReceived = (OscMessage)packet;
                 if (messageReceived != null)
                 {
-
+                 //refactor using a switch case
+              /*   switch(messageReceived.Address)
+                    {
+                        case "/avatar/parameters/averageTrackerBattery": break;
+                            //etc
+                    }*/
 
                     try
                     {
+                        //VRCHAT BETA TESTING
+
+                        System.Diagnostics.Debug.WriteLine("address: " + messageReceived.Address.ToString()+"argument: " + messageReceived.Arguments[0].ToString());
+   
+
                         if (heartConnect == false)
                         {
-                            
-                            ot.outputLog(MainForm, "[First OSC Recieved]");
+
+                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[First OSC Recieved]");
                             heartConnect = true;
 
                         }
@@ -47,14 +62,12 @@ namespace OSCVRCWiz
                             globalAverageTrackerBattery = battery;
                             if (VoiceWizardWindow.BPMSpamLog == true)
                             {
-                              //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + messageReceived.Arguments[0].ToString() + "]");
-                              //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + Convert.ToInt32(averageTrackerBattery) + "]");
-                                ot.outputLog(MainForm, "[Average Tracker Battery: " + battery + "%]");
+                                //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + messageReceived.Arguments[0].ToString() + "]");
+                                //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + Convert.ToInt32(averageTrackerBattery) + "]");
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Average Tracker Battery: " + battery + "%]");
                             }
-                         /*   if ((battery == 20 || battery == 15 || battery == 10) && MainForm.rjToggleButtonChatBox.Checked == true)
-                            {
-                                ot.outputVRChatSpeechBubbles(MainForm, "Warning: Trackers are getting low, their average battery life is " + battery + "%", "tts");
-                            }*/
+                        
+                   
 
                         }
                         if (messageReceived.Address == "/avatar/parameters/leftControllerBattery")
@@ -64,13 +77,10 @@ namespace OSCVRCWiz
                             globalLeftControllerBattery = battery;
                             if (VoiceWizardWindow.BPMSpamLog == true)
                             {
-                               
-                                ot.outputLog(MainForm, "[Left Controller Battery: " + battery + "%]");
+
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Left Controller Battery: " + battery + "%]");
                             }
-                          /*  if (battery <= 20 && MainForm.rjToggleButtonChatBox.Checked == true)
-                            {
-                             //   ot.outputVRChatSpeechBubbles(MainForm, "Warning: Left Controller is getting low, its battery life is" + battery + "%", "tts");
-                            }*/
+                         
                         }
                         if (messageReceived.Address == "/avatar/parameters/rightControllerBattery")
                         {
@@ -79,13 +89,10 @@ namespace OSCVRCWiz
                             globalRightControllerBattery = battery;
                             if (VoiceWizardWindow.BPMSpamLog == true)
                             {
-                                
-                                ot.outputLog(MainForm, "[Right Controller Battery: " + battery + "%]");
+
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Right Controller Battery: " + battery + "%]");
                             }
-                          /*  if (battery > 20 && MainForm.rjToggleButtonChatBox.Checked == true)
-                            {
-                               // ot.outputVRChatSpeechBubbles(MainForm, "Warning: Right Controller is getting low, its battery life is" + battery + "%", "tts");
-                            }*/
+                         
                         }
                         if (messageReceived.Address == "/avatar/parameters/averageControllerBattery")
                         {
@@ -94,18 +101,13 @@ namespace OSCVRCWiz
                             globalAverageControllerBattery = battery;
                             if (VoiceWizardWindow.BPMSpamLog == true)
                             {
-                                
-                                ot.outputLog(MainForm, "[Average Controller Battery: " + battery + "%]");
+
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Average Controller Battery: " + battery + "%]");
                                 
                             }
-                          /*  if((battery == 20|| battery == 15|| battery == 10) && MainForm.rjToggleButtonChatBox.Checked == true)
-                            {
-                                ot.outputVRChatSpeechBubbles(MainForm, "Warning: Controllers are getting low, their average battery life is" + battery + "%","tts");
-                            }*/
+                       
                          
                         }
-
-
 
                         if (messageReceived.Address == "/avatar/parameters/HR" && VoiceWizardWindow.pauseBPM == false )
                         {
@@ -125,22 +127,22 @@ namespace OSCVRCWiz
                                    // var ot = new OutputText();
                                     if (VoiceWizardWindow.BPMSpamLog == true)
                                     {
-                                        ot.outputLog(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
+                                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
 
                                     }
                                     if (MainForm.rjToggleButton3.Checked == true && MainForm.rjToggleButtonOSC.Checked == true)
                                     {
-                                        ot.outputVRChat(MainForm, "ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
+                                        VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, "ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
 
                                     }
                                     if (MainForm.rjToggleButton3.Checked == false && MainForm.rjToggleButtonOSC.Checked == true)
                                     {
-                                        ot.outputVRChat(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+                                        VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
 
                                     }
                                     if (MainForm.rjToggleButtonChatBox.Checked == true)
                                     {
-                                        Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
+                                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, "Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
 
 
                                     }
@@ -151,9 +153,6 @@ namespace OSCVRCWiz
                             }
 
                         }
-
-
-
                     }
                     catch
                     {
@@ -165,7 +164,9 @@ namespace OSCVRCWiz
             };
 
             var listener = new UDPListener(VoiceWizardWindow.heartRatePort, callback);
-
+            var service = new OSCQueryService("TTS Voice Wizard - Beta", 4026, VoiceWizardWindow.heartRatePort); //beta testing VRCHAT (default TCP=8080, default OSC=9000 vrchats sending port)
+            
+          //  System.Diagnostics.Debug.WriteLine("TTS Voice Wizard - Beta listening on "+ VoiceWizardWindow.heartRatePort);
             //  System.Diagnostics.Debug.WriteLine("****-------*****--------Press enter to stop");
             //  Console.ReadLine();
             // listener.Close();

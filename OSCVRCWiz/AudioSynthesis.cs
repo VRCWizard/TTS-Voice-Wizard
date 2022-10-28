@@ -36,7 +36,7 @@ namespace OSCVRCWiz
                     var ts = new TextSynthesis();
                     //   var language = ts.toLanguageID(fromLanguageFullname);
 
-                    List<string> localList = new List<string>();
+                    List<string> localList = new List<string>();  //keep commented voices and release if they are widely requested (idea with new releasing all voices is to reduce load time)
                     switch (fromLanguageFullname)
                     {
                         case "Arabic [ar]":
@@ -105,6 +105,7 @@ namespace OSCVRCWiz
                             break;
 
                         case "Hindi [hi]": localList.Add("hi-IN"); break;
+                        case "Hungarian [hu]": localList.Add("hu-HU"); break;
                         case "Irish [ga]": localList.Add("ga-IE"); break;
                         case "Italian [it]": localList.Add("it-IT"); break;
                         case "Japanese [ja]": localList.Add("ja-JP"); break;
@@ -146,6 +147,7 @@ namespace OSCVRCWiz
                         case "Thai [th]": localList.Add("th-TH"); break;
                         case "Ukrainian [uk]": localList.Add("uk-UA"); break;
                         case "Vietnamese [vi]": localList.Add("vi-VN"); break;
+                        
 
                         default: localList.Add("en-US"); break; // if translation to english happens something is wrong
                     }
@@ -215,13 +217,8 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.firstVoiceLoad = false;
                 
             }
-
-           
-
            
         }
-
-
 
         public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
         {
@@ -233,8 +230,6 @@ namespace OSCVRCWiz
                 // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
 
-
-
              //   config.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
 
                 // Note: if only language is set, the default voice of that language is chosen.
@@ -245,11 +240,6 @@ namespace OSCVRCWiz
                 // config.SpeechSynthesisVoiceName = "en-US-SaraNeural";
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
-
-                //  Dictionary<string, string> myExpressions = new Dictionary<string, string>(); //update code to use dictionaries to make it more clean and easier to add more voices etc.
-                //  myExpressions.Add("", "");
-                //   Dictionary<string, string> myVoices =new Dictionary<string, string>();
-
 
                 string ratexslow = "<prosody rate=\"x-slow\">"; //1
                 string rateslow = "<prosody rate=\"slow\">"; //2
@@ -268,11 +258,7 @@ namespace OSCVRCWiz
                 string volumemedium = "<prosody volume=\"medium\">"; //3
                 string volumehigh = "<prosody volume=\"loud\">"; //4
                 string volumexhigh = "<prosody volume=\"x-loud\">"; //5
-
-
-             
-                
-
+    
                 System.Diagnostics.Debug.WriteLine("rate: " + rate);
                 System.Diagnostics.Debug.WriteLine("pitch: " + pitch);
                 System.Diagnostics.Debug.WriteLine("volume: " + volume);
@@ -287,20 +273,20 @@ namespace OSCVRCWiz
 
                 }
                 var ot = new OutputText();
-            ///  if (synthesizerVoice != null &&MainForm.rjToggleButtonCancelAudio.Checked==true)
-            //    {
-                  
-             //       ot.outputLog(MainForm, "[Begining Speech Stopped]");
-             //       await synthesizerVoice.StopSpeakingAsync();
-             //       synthesizerVoice = null;
-                    
-                
-                   
-                   
-                   // synthesizerVoice.Dispose();
-                 //   synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
-              //     ot.outputLog(MainForm, "[Speech Stopped]");
-             //   }
+                ///  if (synthesizerVoice != null &&MainForm.rjToggleButtonCancelAudio.Checked==true) // using cancellation tokens caused more issue then for how helpful it could be.
+                //    {
+
+                //       ot.outputLog(MainForm, "[Begining Speech Stopped]");
+                //       await synthesizerVoice.StopSpeakingAsync();
+                //       synthesizerVoice = null;
+
+
+
+
+                // synthesizerVoice.Dispose();
+                //   synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
+                //     ot.outputLog(MainForm, "[Speech Stopped]");
+                //   }
 
                 var synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
 
@@ -355,7 +341,7 @@ namespace OSCVRCWiz
                 ssml0 += "</speak>";
 
                 System.Diagnostics.Debug.WriteLine(ssml0);
-                //  if (cancelToken.IsCancellationRequested)
+                //  if (cancelToken.IsCancellationRequested) // using cancellation tokens caused more issue then for how helpful it could be.
                 //  {
 
                 //  }
@@ -371,11 +357,33 @@ namespace OSCVRCWiz
 
                 //     };
                 //   await synthesizerVoice.SpeakSsmlAsync(ssml0);
-                synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+                var result = await synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+                if (result.Reason == ResultReason.SynthesizingAudioCompleted)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
+                    ot.outputLog(MainForm, $"[Speech synthesized]");
+                }
+                else if (result.Reason == ResultReason.Canceled)
+                {
+                    var cancellation = SpeechSynthesisCancellationDetails.FromResult(result);
+                    System.Diagnostics.Debug.WriteLine($"[CANCELED: Reason={cancellation.Reason}]");
+                    ot.outputLog(MainForm, $"[CANCELED: Reason={cancellation.Reason}]");
+
+                    if (cancellation.Reason == CancellationReason.Error)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"[CANCELED: ErrorCode={cancellation.ErrorCode}]");
+                        ot.outputLog(MainForm, $"[CANCELED: ErrorCode={cancellation.ErrorCode}]");
+                        System.Diagnostics.Debug.WriteLine($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]");
+                        ot.outputLog(MainForm, $"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]");
+                        System.Diagnostics.Debug.WriteLine($"[CANCELED: Did you update the subscription info?]");
+                        ot.outputLog(MainForm, $"[CANCELED: Did you update the subscription info?]");
+                    }
+                }
 
 
-            
-             //   ct.Register(async () => await synthesizerVoice.StopSpeakingAsync());
+
+
+                //   ct.Register(async () => await synthesizerVoice.StopSpeakingAsync()); // using cancellation tokens caused more issue then for how helpful it could be.
                 //  synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
 
                 // ct.Register(async () => await synthesizer.StopSpeakingAsync());

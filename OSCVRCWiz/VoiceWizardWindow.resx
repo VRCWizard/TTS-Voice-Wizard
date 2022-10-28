@@ -57,14 +57,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox2.Text" xml:space="preserve">
-    <value>Use TTS Voice Wizard's accessibility features to improve your gaming experience!
-  - You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.
-  - You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText!
-  - You can translate what you say in one language to one of over 20 other support languages!
-  - There are over 50 different voices with various customization options so you can pick a voice that best suits you!
-  - Need help? Have suggestion? Just wanna chat with other users? Join the Discord!!!</value>
-  </data>
   <data name="label76.Text" xml:space="preserve">
     <value>Warning: "There is a 5 messages per 5 seconds limit for 
 the VRChat Chatbox, if you cross that you will incur a 
@@ -4785,7 +4777,7 @@ Heartrate or, Spotify every second)
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>56</value>
+    <value>25</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

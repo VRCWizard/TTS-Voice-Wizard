@@ -8,7 +8,7 @@ using System.Speech.Recognition;
 
 namespace OSCVRCWiz
 {
-    public class VoiceActivation
+    public class VoiceActivation //this class is no long used by the program
     {
         private VoiceWizardWindow MainForm;
         SpeechRecognitionEngine recognizer;
