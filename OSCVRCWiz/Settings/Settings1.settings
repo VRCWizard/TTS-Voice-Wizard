@@ -159,7 +159,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SpotifyCustomSetting" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Listening to '{title}' by '{artist}' {progressMinutes}/{durationMinutes} on Spotify</Value>
+      <Value Profile="(Default)">'{title}' - '{artist}'</Value>
     </Setting>
     <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -190,6 +190,39 @@
     </Setting>
     <Setting Name="rememberPort" Type="System.String" Scope="User">
       <Value Profile="(Default)">9000</Value>
+    </Setting>
+    <Setting Name="saveUseAzure" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="saveUseSystem" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="chatBoxSpotifyOnly" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SpotifyNoUseKat" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SpotifyNoUseChatbox" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="chatBoxSpotifyOnly4VRC" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="heartrateOutput" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="enableMedia" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ttsMode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">System Speech</Value>
+    </Setting>
+    <Setting Name="approvedSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Spotify.exe,</Value>
+    </Setting>
+    <Setting Name="StopOnPause" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

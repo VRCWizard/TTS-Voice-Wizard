@@ -49,7 +49,7 @@ namespace OSCVRCWiz
             Settings1.Default.rateSetting = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex;
             Settings1.Default.STTTSContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked;
             Settings1.Default.useBuiltInSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked;
-            Settings1.Default.BuiltInVoiceSetting = VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex;
+           // Settings1.Default.BuiltInVoiceSetting = VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex;
             Settings1.Default.BuiltInOutputSetting = VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem.ToString();
 
             Settings1.Default.SpotifyPeriodicallySetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked;
@@ -57,7 +57,7 @@ namespace OSCVRCWiz
             Settings1.Default.SpotifyTimerIntervalSetting = VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text.ToString();
 
             Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked;
-            Settings1.Default.cultureInfoSetting = VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text.ToString();
+           // Settings1.Default.cultureInfoSetting = VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text.ToString();
 
             Settings1.Default.bannerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked;
 
@@ -79,14 +79,32 @@ namespace OSCVRCWiz
 
             Settings1.Default.VRCUseDelay = VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBoxUseDelay.Checked;
 
-            Settings1.Default.WebcaptionerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
+           
 
             Settings1.Default.activateOSCStart = VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked;
 
-            Settings1.Default.independentSpotifyText = VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked;
+          //  Settings1.Default.independentSpotifyText = VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked;
 
 
+            Settings1.Default.WebcaptionerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
+            Settings1.Default.saveUseAzure = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked;
+           // Settings1.Default.saveUseSystem = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked;
 
+            Settings1.Default.chatBoxSpotifyOnly = VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked;
+            Settings1.Default.chatBoxSpotifyOnly4VRC = VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked;
+
+            Settings1.Default.SpotifyNoUseChatbox = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked;
+            Settings1.Default.SpotifyNoUseKat = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked;
+
+             Settings1.Default.heartrateOutput = VoiceWizardWindow.MainFormGlobal.rjToggleButton1.Checked;
+
+            Settings1.Default.enableMedia = VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked;
+
+            Settings1.Default.ttsMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString();
+
+            Settings1.Default.approvedSource = VoiceWizardWindow.MainFormGlobal.richTextBox11.Text.ToString();
+
+            Settings1.Default.StopOnPause = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked;
 
             emojiSettings.Default.emoji1 = VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text.ToString();
             emojiSettings.Default.emoji2 = VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text.ToString();
