@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using CoreOSC;
 
 namespace OSCVRCWiz
 {
@@ -12,6 +13,7 @@ namespace OSCVRCWiz
         static string previousRequestType = "";
         bool currentlyPrinting = false;
         static DateTime lastDateTime =DateTime.Now;
+        public static string lastKatString="";
         public async void outputLog(VoiceWizardWindow MainForm, string textstring)
         {
             //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
@@ -66,31 +68,43 @@ namespace OSCVRCWiz
         public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring, string type)
         {
 
-     
            
 
+           // byte[] bytes = Encoding.Default.GetBytes(textstring);
+           // textstring = Encoding.UTF8.GetString(bytes);
 
-            var typingbubble = new SharpOSC.OscMessage("/chatbox/typing",false);//this is turned on as soon as you press the STTTS button and turned off here
-          var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, true,false);
+
+            System.Diagnostics.Debug.WriteLine("Encoded UTF-8: "+ textstring);
+
+
+            var typingbubble = new OscMessage("/chatbox/typing",false);//this is turned on as soon as you press the STTTS button and turned off here
+          var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true,false);
         //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
       //testing if error message appears /what value is defaulted to if not specified
             if(MainForm.rjToggleButtonShowKeyboard.Checked==true)
             {
-                messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, false,false);
+                messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false,false);
 
             }
             if (type == "tts" && MainForm.rjToggleSoundNotification.Checked==true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
             {
-                 messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, true, true);
+                 messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, true);
    
                 if (MainForm.rjToggleButtonShowKeyboard.Checked == true)
                 {
-                    messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring, false, true); 
+                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true); 
                 }
             }
-
-            MainForm.sender3.Send(typingbubble);
-            MainForm.sender3.Send(messageSpeechBubble);
+        //    try
+       //     {
+                MainForm.sender3.Send(typingbubble);
+                MainForm.sender3.Send(messageSpeechBubble);
+       //     }
+         //   catch(Exception ex)
+        //    {
+               // outputLog(MainForm, "Characters do not support UTF8: "+ ex.Message.ToString());
+       //     }
+           
             if(MainForm.rjToggleButtonOSC.Checked==false)
             {
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
@@ -136,13 +150,20 @@ namespace OSCVRCWiz
         }
         public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
         {
+            if(type == "tts" || type == "tttAdd")
+            {
+                lastKatString = textstringbefore;
+            }
+            
+            var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+            MainForm.sender3.Send(message0);
 
 
             // currentlyPrinting = true;
 
             //MainForm.sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
 
-            if(MainForm.rjToggleButton3.Checked==true)
+            if (MainForm.rjToggleButton3.Checked==true)
             {
               
                 textstringbefore = textstringbefore.Replace("<3", "ぬ");
@@ -176,12 +197,12 @@ namespace OSCVRCWiz
         
 
 
-            System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
+            System.Diagnostics.Debug.WriteLine("*KAT String Splitting*");
 
             string textstring = SplitToLines(textstringbefore, 32);
 
-            System.Diagnostics.Debug.WriteLine("perfectString= " + textstring);
-            System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
+           // System.Diagnostics.Debug.WriteLine("perfectString= " + textstring);
+          //  System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
 
             //textstring = textstring.ToLower();  // no more lowercase
 
@@ -270,72 +291,6 @@ namespace OSCVRCWiz
                 default: ; break;
             }
 
-
-
-
-            /*
-                    if (stringleng % 8 == 1)
-            {
-                textstring += "   ";
-                if (MainForm.numKATSyncParameters == "8")
-                {
-                    textstring += "    ";
-
-
-                }
-
-            }
-            if (stringleng % 8 == 2)
-            {
-                textstring += "  ";
-                if (MainForm.numKATSyncParameters == "8")
-                {
-                    textstring += "    ";
-
-
-                }
-
-            }
-            if (stringleng % 8 == 3)
-            {
-                textstring += " ";
-                if (MainForm.numKATSyncParameters == "8")
-               {
-                    textstring += "    ";
-
-
-                }
-            }
-                if (stringleng % 8 == 4)
-                {
-                    textstring += "";
-                    if (MainForm.numKATSyncParameters == "8")
-                    {
-                        textstring += "    ";
-
-
-                    }
-
-                }
-            if (stringleng % 8 == 5)
-            {
-
-                    textstring += "   ";
-
-            }
-            if (stringleng % 8 == 6)
-            {
-
-                    textstring += "  ";
-
-            }
-            if (stringleng % 8 == 7)
-            {
-
-                    textstring += " ";
-
-            }
-            */
             float letter = 0.0F;
             int charCounter = 0;
             int stringPoint = 1;
@@ -359,28 +314,28 @@ namespace OSCVRCWiz
             float letterFloat14 = 0;//16 mode
             float letterFloat15 = 0;//16 mode
 
-            var message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
-            var message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-            var message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-            var message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-            var message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+            var message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+            var message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+            var message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+            var message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+            var message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
-            var message6 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
-            var message7 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
-            var message8 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
-            var message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+            var message6 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+            var message7 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+            var message8 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+            var message9 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
 
-            var message10 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat8);
-            var message11 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat9);
-            var message12 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat10);
-            var message13 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat11);
-            var message14 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat12);
-            var message15 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat13);
-            var message16 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat14);
-            var message17 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat15);
+            var message10 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat8);
+            var message11 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat9);
+            var message12 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat10);
+            var message13 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat11);
+            var message14 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat12);
+            var message15 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat13);
+            var message16 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat14);
+            var message17 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat15);
 
 
-            var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+          //  var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
 
             //   string testingthis = (DateTime.Now - lastDateTime).ToString("ss");
@@ -445,11 +400,11 @@ namespace OSCVRCWiz
 
 
             previousRequestType = type;
-            Task.Delay(50).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
-            MainForm.sender3.Send(message0);
+           // Task.Delay(50).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
+          //  MainForm.sender3.Send(message0);
 
 
-            message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 1);
+            message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 1);
 
             foreach (char c in textstring)
             {
@@ -835,12 +790,12 @@ namespace OSCVRCWiz
                         {
                             Task.Delay(MainForm.debugDelayValue).Wait();
                             letterFloat3 = letter;
-                            message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
-                            message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-                            message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-                            message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-                            message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
-                            message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+                            message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                            message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                            message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                            message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                            message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                            message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
                             MainForm.sender3.Send(message1);
                             MainForm.sender3.Send(message2);
@@ -879,17 +834,17 @@ namespace OSCVRCWiz
                         {
                             Task.Delay(MainForm.debugDelayValue).Wait();
                             letterFloat7 = letter;
-                            message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
-                            message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-                            message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-                            message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-                            message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                            message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                            message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                            message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                            message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                            message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
-                            message6 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
-                            message7 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
-                            message8 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
-                            message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
-                            message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+                            message6 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+                            message7 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+                            message8 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+                            message9 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+                            message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
                             MainForm.sender3.Send(message1);
                             MainForm.sender3.Send(message2);
@@ -948,27 +903,27 @@ namespace OSCVRCWiz
                     case 15:
                         Task.Delay(MainForm.debugDelayValue).Wait();
                         letterFloat15 = letter;
-                        message1 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
-                        message2 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-                        message3 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-                        message4 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-                        message5 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                        message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                        message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                        message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                        message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                        message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
-                        message6 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
-                        message7 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
-                        message8 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
-                        message9 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+                        message6 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+                        message7 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+                        message8 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+                        message9 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
 
-                        message10 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync8", letterFloat8);
-                        message11 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync9", letterFloat9);
-                        message12 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync10", letterFloat10);
-                        message13 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync11", letterFloat11);
+                        message10 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync8", letterFloat8);
+                        message11 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync9", letterFloat9);
+                        message12 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync10", letterFloat10);
+                        message13 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync11", letterFloat11);
 
-                        message14 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync12", letterFloat12);
-                        message15 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync13", letterFloat13);
-                        message16 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync14", letterFloat14);
-                        message17 = new SharpOSC.OscMessage("/avatar/parameters/KAT_CharSync15", letterFloat15);
-                        message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+                        message14 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync12", letterFloat12);
+                        message15 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync13", letterFloat13);
+                        message16 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync14", letterFloat14);
+                        message17 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync15", letterFloat15);
+                        message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
                         MainForm.sender3.Send(message1);
 
@@ -1037,23 +992,15 @@ namespace OSCVRCWiz
             if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
             {
                 //make timer function start here or be reset here
-                System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished");
+                System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished. Begun scheduled hide text timer");
 
-                System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
+             //   System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
 
-                System.Diagnostics.Debug.WriteLine("restart/start timer");
+              //  System.Diagnostics.Debug.WriteLine("restart/start timer");
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
 
             }
-           
-
-
-
-
-
-
-
-
+          
 
 
         }

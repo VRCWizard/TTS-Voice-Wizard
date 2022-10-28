@@ -12,6 +12,7 @@ using CSCore;
 using CSCore.MediaFoundation;
 using CSCore.SoundOut;
 using DeepL_Translation;
+//using VRC.OSCQuery; // Beta Testing dll (added the project references)
 
 
 namespace OSCVRCWiz
@@ -19,14 +20,9 @@ namespace OSCVRCWiz
 
     public class HttpServer
     {
-        // This example requires the System and System.Net namespaces.
-      
-
             public int Port = 8080;
             public static string recievedString ="";
-
             private HttpListener _listener;
-
             public void Start()
             {
                 _listener = new HttpListener();
@@ -82,7 +78,7 @@ namespace OSCVRCWiz
                     //    System.Diagnostics.Debug.WriteLine("End of data:");
                         reader.Close();
                         body.Close();
-                        var ot = new OutputText();
+                        //var ot = new OutputText();
                     //   ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);
                     //  ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, s,"tts");
 
@@ -98,65 +94,114 @@ namespace OSCVRCWiz
 
                              }
                              });*/
-
-
-
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
                     {
-                        ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);
                     }
-                    //Send Text to TTS
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked == true)
-                    {
-                        SetDefaultTTS.SetVoicePresets();
-                        AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, s, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice); //turning off TTS for now
-                    }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked == true)
-                    {
-                        VoiceWizardWindow.MainFormGlobal.stream = new MemoryStream();
-                        VoiceWizardWindow.MainFormGlobal.synthesizerLite.SetOutputToWaveStream(VoiceWizardWindow.MainFormGlobal.stream);
-                        VoiceWizardWindow.MainFormGlobal.synthesizerLite.Speak(s);
-                        var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) }; //StreamReader closes the underlying stream automatically when being disposed of. The using statement does this automatically.
-                        var waveSource = new MediaFoundationDecoder(VoiceWizardWindow.MainFormGlobal.stream);
-                        waveOut.Initialize(waveSource);
-                        waveOut.Play();
-                        waveOut.WaitForStopped();
-                    }
-
+                
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
-                    {
-                       
-
+                    {                     
                             VoiceWizardWindow.pauseBPM = true;
                             VoiceWizardWindow.pauseSpotify = true;
-                            Task.Run(() => ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, s,"tts"));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, s,"tts"));
 
                        
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                    {
-                        VoiceWizardWindow.pauseBPM = true;                                          
+                    {//
+                       // VoiceWizardWindow.pauseBPM = true;                                          
                             VoiceWizardWindow.pauseBPM = true;
                             VoiceWizardWindow.pauseSpotify = true;
-                            Task.Run(() => ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, s, "tts"));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, s, "tts"));
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked == true)
                     {
-                        Task.Run(() => ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, s, "tts")); //original
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, s, "tts")); //original
 
                     }
+                    //Send Text to TTS
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked == true)//azure new is incorrect now means any tts
+                    {
+                        string ttsModeNow = VoiceWizardWindow.TTSModeSaved;
 
+                        switch (ttsModeNow)
+                        {
+                            case "FonixTalk":
+                                var fx = new FonixTalkTTS();
+                                Task.Run(() => fx.FonixTTS(s));
+                                break;
+                               
 
+                            case "System Speech":
+                                var sys = new WindowsBuiltInSTTTS();
+                                Task.Run(() => sys.systemTTSAction(s));
 
+                                break;
+                            case "Azure":
+                                SetDefaultTTS.SetVoicePresets();
+                                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, s, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                break;
+                            default:
+
+                                break;
+                        }
+                    }
+                 
+                
                 }
                     Stop();
                     Start();
 
-                   // Task.Run(() => Receive());
-                    
-
                 }
             }
+        //VRChat OSCQuery Test Code
+      /*  public async void VRChatTesting()
+        {
+            int randomInt = new Random().Next();
+            var service = new OSCQueryService("TTS Voice Wizard - Beta", 8081, 9000); //beta testing VRCHAT (default TCP=8080, default OSC=9000 vrchats sending port)
+                                                                                      //You should now be able to visit http://localhost:8081 in a browser and see raw JSON describing an empty root node.
+                                                                                      //You can also visit http://localhost:tcpPort?HOST_INFO to get information about the supported attributes of this OSCQuery Server.
+                                                                                      // service.AddEndpoint()
+
+            string path = "/avatar/parameters/Testing";
+          
+            //   string path = $"/{name}";
+            service.AddEndpoint<int>(path,Attributes.AccessValues.ReadOnly,randomInt.ToString());//this is how the information is being set
+            //  Response String Test: { "DESCRIPTION":"","FULL_PATH":"/avatar/parameters/AngularY","ACCESS":1,"TYPE":"i","VALUE":"525619974"}
+
+
+
+            var response = await new HttpClient().GetAsync($"http://localhost:{9001}{path}"); //this is how we are getting the information 
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine("Response String Test:"+responseString);
+           //  var responseObject = JObject.Parse(responseString);
+
+           //  Assert.That(responseObject[Attributes.VALUE]!.Value<int>(), Is.EqualTo(randomInt));
+
+           service.Dispose();
+
+        }
+        public async void VRChatTestingUpdate()
+        {
+            var path = "/avatar/parameters/GestureLeft";
+            var response = await new HttpClient().GetAsync($"http://localhost:{9001}{path}"); //this is how we are getting the information 
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            System.Diagnostics.Debug.WriteLine("Response String Test:" + responseString);
+
+            
+
+        } */
+
+        
+
+
+      
+      
+
+
+
         }
     }
   

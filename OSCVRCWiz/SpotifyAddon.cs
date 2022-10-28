@@ -70,8 +70,8 @@ namespace OSCVRCWiz
 
                         if (spotifyConnect == false)
                         {
-                            var ot = new OutputText();
-                            ot.outputLog(MainForm, "[Spotify Connected]");
+                            // var ot = new OutputText();
+                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Spotify Connected]");
                             spotifyConnect = true;
 
                         }
@@ -150,26 +150,27 @@ namespace OSCVRCWiz
                         theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
                         theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
 
-                        if (fullSongPauseCheck != progress)//stop outputting periodically is song paused
-                        {
+                       if ((fullSongPauseCheck != progress && MainForm.rjToggleButtonPlayPaused.Checked == true)|| (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
+                       {
 
 
-                            var ot = new OutputText();
+                          //  var ot = new OutputText();
                             if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                             {
-                                  Task.Run(() => ot.outputLog(MainForm, theString));
+                                  Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));
 
                             }
-                            if (MainForm.rjToggleButtonOSC.Checked == true)
+                            if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonSpotifyKatDisable.Checked == false)
                             {
-                                Task.Run(() => ot.outputVRChat(MainForm, theString, "spotify"));
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, theString, "spotify"));
                             }
-                            if (MainForm.rjToggleButtonChatBox.Checked == true)
+                            if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                             {
-                                Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
 
                             }
                         }
+                        
                         // lastSong = title;
                         MainForm.justShowTheSong = false;
                         fullSongPauseCheck = progress;
@@ -186,10 +187,10 @@ namespace OSCVRCWiz
 
                 System.Diagnostics.Debug.WriteLine("Spotify Feature timed out for: "+e.RetryAfter.ToString());
 
-                var ot = new OutputText();
+               // var ot = new OutputText();
                 if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                 {
-                    Task.Run(() => ot.outputLog(MainForm, "Spotify Feature timed out for: " + e.RetryAfter.ToString()));
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "Spotify Feature timed out for: " + e.RetryAfter.ToString()));
                 }
 
             }
@@ -197,38 +198,92 @@ namespace OSCVRCWiz
         }
         public static async Task getCurrentDataInfo(VoiceWizardWindow MainForm)
         {
-            if (VoiceWizardWindow.pauseBPM == false)
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)  //10 periodic // 9 media mode
+            {
+                if (VoiceWizardWindow.pauseBPM == false)
+                {
+
+
+                    var theString = "";
+                    theString = MainForm.textBoxCustomSpot.Text.ToString();
+
+                    theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
+                    theString = theString.Replace("{averageTrackerBattery}", HeartbeatAddon.globalAverageTrackerBattery.ToString());
+                    theString = theString.Replace("{leftControllerBattery}", HeartbeatAddon.globalLeftControllerBattery.ToString());
+                    theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
+                    theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
+                    theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
+                    theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
+                    theString = theString.Replace("{source}", WindowsMedia.mediaSource);
+
+
+
+
+                    //  var ot = new OutputText();
+                    if ((MainForm.rjToggleButtonPlayPaused.Checked == true && WindowsMedia.mediaStatus!="Paused") || (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
+                    {
+                        if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));
+
+                        }
+                        if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonSpotifyKatDisable.Checked == false)
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, theString, "bpm"));
+                        }
+                        if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonSpotifyChatboxDisable.Checked == false)
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, theString, "bpm")); //original
+
+                        }
+                    }
+
+                }
+            }
+        }
+
+        public static async Task getCurrentMediaInfo(VoiceWizardWindow MainForm)
+        {
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked==false)  //10 periodic // 9 media mode
             {
 
 
-                var theString = "";
-                theString = MainForm.textBoxCustomSpot.Text.ToString();
-
-                theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
-                theString = theString.Replace("{averageTrackerBattery}", HeartbeatAddon.globalAverageTrackerBattery.ToString());
-                theString = theString.Replace("{leftControllerBattery}", HeartbeatAddon.globalLeftControllerBattery.ToString());
-                theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
-                theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
-
-
-
-
-                var ot = new OutputText();
-                if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                if (VoiceWizardWindow.pauseBPM == false)
                 {
-                    Task.Run(() => ot.outputLog(MainForm, theString));
+
+
+                    var theString = "";
+                    theString = MainForm.textBoxCustomSpot.Text.ToString();
+
+                    theString = theString.Replace("{bpm}", HeartbeatAddon.globalBPM);
+                    theString = theString.Replace("{averageTrackerBattery}", HeartbeatAddon.globalAverageTrackerBattery.ToString());
+                    theString = theString.Replace("{leftControllerBattery}", HeartbeatAddon.globalLeftControllerBattery.ToString());
+                    theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
+                    theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
+                    theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
+                    theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
+                    theString = theString.Replace("{source}", WindowsMedia.mediaSource);
+
+
+
+
+                 //   var ot = new OutputText();
+                    if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));
+
+                    }
+                    if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonSpotifyKatDisable.Checked == false)
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, theString, "bpm"));
+                    }
+                    if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonSpotifyChatboxDisable.Checked == false)
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, theString, "bpm")); //original
+
+                    }
 
                 }
-                if (MainForm.rjToggleButtonOSC.Checked == true)
-                {
-                    Task.Run(() => ot.outputVRChat(MainForm, theString, "bpm"));
-                }
-                if (MainForm.rjToggleButtonChatBox.Checked == true)
-                {
-                    Task.Run(() => ot.outputVRChatSpeechBubbles(MainForm, theString, "bpm")); //original
-
-                }
-
             }
         }
 

@@ -58,6 +58,8 @@ namespace OSCVRCWiz
 
             // comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
             // comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+           // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
+            VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
             VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
             VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
             VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
@@ -68,8 +70,9 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
             VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
+           
 
-            VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
+            // VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
             VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked = Settings1.Default.bannerSetting;
@@ -101,7 +104,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked = Settings1.Default.AudioCancelSetting;
 
-            VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
+          //  VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
 
             VoiceWizardWindow.MainFormGlobal.textBoxSpotKey.Text = Settings1.Default.SpotifyKey;
             VoiceWizardWindow.MainFormGlobal.rjToggleSpotLegacy.Checked = Settings1.Default.SpotifyLegacySetting;
@@ -125,7 +128,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBoxUseDelay.Checked = Settings1.Default.VRCUseDelay;
 
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.WebcaptionerSetting;
+            
 
 
             VoiceWizardWindow.MainFormGlobal.textBoxOSCAddress.Text = Settings1.Default.rememberAddress;
@@ -133,8 +136,29 @@ namespace OSCVRCWiz
 
              VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked= Settings1.Default.activateOSCStart;
 
-             VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked= Settings1.Default.independentSpotifyText;
+           //  VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked= Settings1.Default.independentSpotifyText;
 
+
+            // VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.WebcaptionerSetting; //already saves
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked = Settings1.Default.saveUseAzure;
+           // VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked = Settings1.Default.saveUseSystem;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked = Settings1.Default.chatBoxSpotifyOnly;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked = Settings1.Default.chatBoxSpotifyOnly4VRC;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked = Settings1.Default.SpotifyNoUseChatbox;
+             VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked = Settings1.Default.SpotifyNoUseKat;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton1.Checked = Settings1.Default.heartrateOutput;
+
+             VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked= Settings1.Default.enableMedia;
+
+            VoiceWizardWindow.MainFormGlobal.richTextBox11.Text = Settings1.Default.approvedSource;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked = Settings1.Default.StopOnPause;
 
 
             VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;

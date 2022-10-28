@@ -649,8 +649,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Listening to \'{title}\' by \'{artist}\' {progressMinutes}/{durationMinutes} on Spoti" +
-            "fy")]
+        [global::System.Configuration.DefaultSettingValueAttribute("\'{title}\' - \'{artist}\'")]
         public string SpotifyCustomSetting {
             get {
                 return ((string)(this["SpotifyCustomSetting"]));
@@ -777,6 +776,138 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["rememberPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveUseAzure {
+            get {
+                return ((bool)(this["saveUseAzure"]));
+            }
+            set {
+                this["saveUseAzure"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveUseSystem {
+            get {
+                return ((bool)(this["saveUseSystem"]));
+            }
+            set {
+                this["saveUseSystem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool chatBoxSpotifyOnly {
+            get {
+                return ((bool)(this["chatBoxSpotifyOnly"]));
+            }
+            set {
+                this["chatBoxSpotifyOnly"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SpotifyNoUseKat {
+            get {
+                return ((bool)(this["SpotifyNoUseKat"]));
+            }
+            set {
+                this["SpotifyNoUseKat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SpotifyNoUseChatbox {
+            get {
+                return ((bool)(this["SpotifyNoUseChatbox"]));
+            }
+            set {
+                this["SpotifyNoUseChatbox"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool chatBoxSpotifyOnly4VRC {
+            get {
+                return ((bool)(this["chatBoxSpotifyOnly4VRC"]));
+            }
+            set {
+                this["chatBoxSpotifyOnly4VRC"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool heartrateOutput {
+            get {
+                return ((bool)(this["heartrateOutput"]));
+            }
+            set {
+                this["heartrateOutput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enableMedia {
+            get {
+                return ((bool)(this["enableMedia"]));
+            }
+            set {
+                this["enableMedia"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("System Speech")]
+        public string ttsMode {
+            get {
+                return ((string)(this["ttsMode"]));
+            }
+            set {
+                this["ttsMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Spotify.exe,")]
+        public string approvedSource {
+            get {
+                return ((string)(this["approvedSource"]));
+            }
+            set {
+                this["approvedSource"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StopOnPause {
+            get {
+                return ((bool)(this["StopOnPause"]));
+            }
+            set {
+                this["StopOnPause"] = value;
             }
         }
     }
