@@ -1,12 +1,18 @@
 # How to get Text in VRChat
+- Both text output options are on by default in TTS Voice Wizard > Settings > Text Ouput 
+    - So you don't have to mess with this
+![image](https://user-images.githubusercontent.com/101527472/198512265-3c8c51a6-2715-4abd-893b-4cdd6152e844.png)
 
-## VRChat Chatbox
+## Option 1: VRChat Chatbox
 - You can now use the new VRChat Chatboxes by default <br />
     -  Make sure to turn on OSC from the VRChat radial menu <br />
 ![EnableOSC (1)](https://user-images.githubusercontent.com/101527472/189733533-957f6e92-ebba-4c67-b857-f1abac9d0eb3.gif)
+- Example image of chatbox
+![image](https://user-images.githubusercontent.com/101527472/198512098-ea1b84a5-4ca9-4aac-84cb-46f86d1683e2.png)
+
 
     
- ## KAT
+ ## Option 2: KAT
 - Another method which has text output on your avatar in VRChat is [Killfrenzy96's Avatar Text Displayer](https://github.com/killfrenzy96/KillFrenzyAvatarText/) <br />
 **Download KillFrenzy Avatar Text (KAT) latest release (supports 4, 8, or 16 sync parameters currently)**
     - Make sure to turn on "Send Text to VRChat with KAT" in TTSVoiceWizard Settings > Text Output 
