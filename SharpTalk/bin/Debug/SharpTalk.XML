@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpTalk</name>
+    </assembly>
+    <members>
+        <member name="T:SharpTalk.FonixTalkEngine">
+            <summary>
+            Wraps the functions contained in the FonixTalk TTS engine.
+            </summary>
+        </member>
+        <member name="E:SharpTalk.FonixTalkEngine.Phoneme">
+            <summary>
+            Fired when a phoneme event is invoked by the engine.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.FonixTalkEngine.DefaultRate">
+            <summary>
+            The default speaking rate assigned to new instances of the engine.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.FonixTalkEngine.DefaultSpeaker">
+            <summary>
+            The default voice assigned to new instances of the engine.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the engine.
+            </summary>
+            <param name="language">The language to load.</param>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.#ctor">
+            <summary>
+            Initializes a new instance of the engine in US English.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.#ctor(System.String,System.UInt32,SharpTalk.TtsVoice)">
+            <summary>
+            Initialize a new instance of the engine with the specified language, rate, and speaker voice.
+            </summary>
+            <param name="language">The language ID.</param>
+            <param name="rate">The speaking rate to set.</param>
+            <param name="speaker">The speaker voice to set.</param>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.#ctor(System.UInt32,SharpTalk.TtsVoice)">
+            <summary>
+            Initializes a new instance of the engine in US English with the specified rate and speaker voice.
+            </summary>
+            <param name="rate">The speaking rate to set.</param>
+            <param name="speaker">The speaker voice to set.</param>
+        </member>
+        <member name="P:SharpTalk.FonixTalkEngine.Voice">
+            <summary>
+            Gets or sets the voice currently assigned to the engine.
+            </summary>
+        </member>
+        <member name="P:SharpTalk.FonixTalkEngine.Rate">
+            <summary>
+            Gets or sets the current speaking rate of the TTS voice.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.SpeakToMemory(System.String)">
+            <summary>
+            Writes speech data to an internal buffer and returns it as a byte array containing 16-bit 11025Hz mono PCM data.
+            </summary>
+            <param name="input">The input text to process.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.SpeakToStream(System.IO.Stream,System.String)">
+            <summary>
+            Writes speech data to the specified stream as 16-bit 11025Hz mono PCM data.
+            </summary>
+            <param name="stream">The stream to write to.</param>
+            <param name="input">The input text to process.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.SpeakToWavFile(System.String,System.String)">
+            <summary>
+            Writes speech data to a PCM WAV file.
+            </summary>
+            <param name="path">The path to the file.</param>
+            <param name="input">The input text to process.</param>
+        </member>
+        <member name="P:SharpTalk.FonixTalkEngine.SpeakerParams">
+            <summary>
+            Gets or sets the current speaker parameters.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Pause">
+            <summary>
+            Pauses TTS audio output.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Resume">
+            <summary>
+            Resumes previously paused TTS audio output.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Reset">
+            <summary>
+            Flushes all previously queued text from the TTS system and stops any audio output.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Sync">
+            <summary>
+            Blocks until all previously queued text is processed.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Speak(System.String)">
+            <summary>
+            Causes the engine to begin asynchronously speaking a specified phrase. If the engine is in the middle of speaking, the message passed will be queued.
+            </summary>
+            <param name="msg">The phrase for the engine to speak.</param>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Finalize">
+            <summary>
+            Releases all resources used by this instance.
+            </summary>
+        </member>
+        <member name="M:SharpTalk.FonixTalkEngine.Dispose">
+            <summary>
+            Releases all resources used by this instance.
+            </summary>
+        </member>
+        <member name="T:SharpTalk.FonixTalkException">
+            <summary>
+            Contains information related to errors thrown by the TTS engine.
+            </summary>
+        </member>
+        <member name="T:SharpTalk.LanguageCode">
+            <summary>
+            Common language codes used for loading DECtalk dictionaries.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.EnglishUS">
+            <summary>
+            United States English
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.EnglishUK">
+            <summary>
+            United Kingdom English
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.SpanishCastilian">
+            <summary>
+            Castilian Spanish
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.SpanishLatinAmerican">
+            <summary>
+            Latin-American Spanish
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.German">
+            <summary>
+            German
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.French">
+            <summary>
+            French
+            </summary>
+        </member>
+        <member name="F:SharpTalk.LanguageCode.None">
+            <summary>
+            A special language code that tells SharpTalk not to load any language files.
+            </summary>
+        </member>
+        <member name="T:SharpTalk.PhonemeEventArgs">
+            <summary>
+            Holds information about phoneme events fired by the TTS engine.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.PhonemeEventArgs.Phoneme">
+            <summary>
+            Indicates the phoneme being spoken.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.PhonemeEventArgs.Duration">
+            <summary>
+            The duration of the phoneme in milliseconds.
+            </summary>
+        </member>
+        <member name="T:SharpTalk.TtsVoice">
+            <summary>
+            Enumerates the available voices for DECtalk.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Paul">
+            <summary>
+            Default (male) voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Betty">
+            <summary>
+            Full female voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Harry">
+            <summary>
+            Full male voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Frank">
+            <summary>
+            Aged male voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Dennis">
+            <summary>
+            Male voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Kit">
+            <summary>
+            Child's voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Ursula">
+            <summary>
+            Aged female voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Rita">
+            <summary>
+            Female voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.TtsVoice.Wendy">
+            <summary>
+            Whispering female voice.
+            </summary>
+        </member>
+        <member name="T:SharpTalk.SpeakerParams">
+            <summary>
+            Contains parameters used to modify the sound of a TTS voice.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Sex">
+            <summary>
+            The sex of the speaker
+            Design voice alias: sx
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Smoothness">
+            <summary>
+            Smoothness, in %
+            Design voice alias: sm
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Assertiveness">
+            <summary>
+            Assertiveness, in %
+            Design voice alias: as
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.AveragePitch">
+            <summary>
+            Average pitch, in Hz
+            Design voice alias: ap
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Breathiness">
+            <summary>
+            Breathiness, in decibels (dB)
+            Design voice alias: br
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Richness">
+            <summary>
+            Richness, in %
+            Design voice alias: ri
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.NumFixedSampOG">
+            <summary>
+            Number of fixed samples of open glottis
+            Design voice alias: nf
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Laryngealization">
+            <summary>
+            Laryngealization, in %
+            Design voice alias: la
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.HeadSize">
+            <summary>
+            Head size, in %
+            Design voice alias: hs
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Formant4ResFreq">
+            <summary>
+            Fourth formant resonance frequency, in Hz
+            Design voice alias: f4
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Formant4Bandwidth">
+            <summary>
+            Fourth formant bandwidth, in Hz
+            Design voice alias: b4
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Formant5ResFreq">
+            <summary>
+            Fifth formant resonance frequency, in Hz
+            Design voice alias: f5
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Formant5Bandwidth">
+            <summary>
+            Fifth formant bandwidth, in Hz
+            Design voice alias: b5
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Parallel4Freq">
+            <summary>
+            Parallel fourth formant frequency, in Hz
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Parallel5Freq">
+            <summary>
+            Parallel fifth formant frequency, in Hz
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainFrication">
+            <summary>
+            Gain of frication source, in dB
+            Design voice alias: gf
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainAspiration">
+            <summary>
+            Gain of aspiration source, in dB
+            Design voice alias: gh
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainVoicing">
+            <summary>
+            Gain of voicing source, in dB
+            Design voice alias: gv
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainNasalization">
+            <summary>
+            Gain of nasalization, in dB
+            Design voice alias: gn
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainCFR1">
+            <summary>
+            Gain of cascade formant resonator 1, in dB
+            Design voice alias: g1
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainCFR2">
+            <summary>
+            Gain of cascade formant resonator 2, in dB
+            Design voice alias: g2
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainCFR3">
+            <summary>
+            Gain of cascade formant resonator 3, in dB
+            Design voice alias: g3
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GainCFR4">
+            <summary>
+            Gain of cascade formant resonator 4, in dB
+            Design voice alias: g4
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Loudness">
+            <summary>
+            Loudness, gain input to cascade 1st formant in dB
+            Design voice alias: g5
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.SpectralTilt">
+            <summary>
+            Not the slightest clue what this does.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.BaselineFall">
+            <summary>
+            Baseline fall, in Hz
+            Design voice alias: bf
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.LaxBreathiness">
+            <summary>
+            Lax breathiness, in %
+            Design voice alias: lx
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.Quickness">
+            <summary>
+            Quickness, in %
+            Design voice alias: qu
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.HatRise">
+            <summary>
+            Hat rise, in Hz
+            Design voice alias: hr
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.StressRise">
+            <summary>
+            Stress rise, in Hz
+            Design voice alias: sr
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.GlottalSpeed">
+            <summary>
+            Glottal speed
+            </summary>
+        </member>
+        <member name="F:SharpTalk.SpeakerParams.OutputGainMultiplier">
+            <summary>
+            Output gain multiplier for FVTM
+            </summary>
+        </member>
+        <member name="T:SharpTalk.Sex">
+            <summary>
+            Provides gender selection options for SpeakerParams.
+            </summary>
+        </member>
+        <member name="F:SharpTalk.Sex.Female">
+            <summary>
+            Indicates a female voice.
+            Design voice value: 0 
+            </summary>
+        </member>
+        <member name="F:SharpTalk.Sex.Male">
+            <summary>
+            Indicates a male voice.
+            Design voice value: 1
+            </summary>
+        </member>
+    </members>
+</doc>
