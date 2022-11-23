@@ -14,6 +14,7 @@ namespace OSCVRCWiz
         public static string mediaSource = "";
         public static string mediaArtist = "";
         public static string mediaStatus = "Paused";
+        public static string mediaSourceNew = "";
         public static bool pauseMedia = false;
         private readonly static object _lock = new();
 
@@ -35,8 +36,10 @@ namespace OSCVRCWiz
             string info = "[Windows Media New Source: " + session.Id+"]";
          //   var ot = new OutputText();
             Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, info));
+            mediaSourceNew = session.Id;
 
-    
+
+
         }
         private static void MediaManager_OnAnySessionClosed(MediaManager.MediaSession session)
         {

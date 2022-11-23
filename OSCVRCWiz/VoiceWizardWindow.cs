@@ -30,8 +30,8 @@ namespace OSCVRCWiz
 {
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.8.4";
-        string releaseDate = "October 27, 2022";
+        string currentVersion = "0.8.6";
+        string releaseDate = "November 23, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -68,6 +68,7 @@ namespace OSCVRCWiz
         public static string TTSLiteText = "";
         public static bool typingBox = false;
         public static bool firstVoiceLoad = true;
+        
         public WaveIn waveSource = null;
         public WaveFileWriter waveFile = null;
 
@@ -587,35 +588,17 @@ namespace OSCVRCWiz
         }
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
-
+            Task.Run(() => doSpeechTTS());
+         
+        }
+        private void doSpeechTTS()
+        {
             if (rjToggleButtonChatBox.Checked == true)
             {
                 var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                 sender3.Send(typingbubble);
 
             }
-
-
-            if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
-            {
-                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
-            }
-          
-
-                if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
-                {
-                    var lite = new WindowsBuiltInSTTTS();
-                    Task.Run(() => lite.speechTTSButtonLiteClick(this));
-                }
-                else
-                {
-                    Task.Run(() => doSpeechTTS());
-                }
-
-         
-        }
-        private void doSpeechTTS()
-        {
             if (rjToggleButtonMedia.Checked == true)
             {
                 try
@@ -628,27 +611,44 @@ namespace OSCVRCWiz
                     MessageBox.Show(ex.Message);
                 }
             }
-            var ts = new TextSynthesis();
-            this.Invoke((MethodInvoker)delegate ()
+
+            if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
             {
-                if (comboBox3.Text.ToString() == "No Translation (Default)")
+                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
+            }
+
+
+            if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
+            {
+                var lite = new WindowsBuiltInSTTTS();
+                Task.Run(() => lite.speechTTSButtonLiteClick(this));
+            }
+            else
+            {
+                var ts = new TextSynthesis();
+                this.Invoke((MethodInvoker)delegate ()
                 {
-                    ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
-                    System.Diagnostics.Debug.WriteLine("<speechSetup change>");
+                    if (comboBox3.Text.ToString() == "No Translation (Default)")
+                    {
+                        ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                        System.Diagnostics.Debug.WriteLine("<speechSetup change>");
 
-                    ts.speechTTTS(this, comboBox4.Text.ToString());
+                        ts.speechTTTS(this, comboBox4.Text.ToString());
 
-                }
-                else
-                {
-                    ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
-                    System.Diagnostics.Debug.WriteLine("<speechSetup change>");
+                    }
+                    else
+                    {
+                        ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                        System.Diagnostics.Debug.WriteLine("<speechSetup change>");
 
 
-                    ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
+                        ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
 
-                }
-            });
+                    }
+                });
+
+            }
+           
 
         }
         private void doTTSOnly()
@@ -1429,23 +1429,23 @@ namespace OSCVRCWiz
 
         private void iconButton28_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Web%20Captioner%20Setup.md");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner");
         }
 
         private void iconButton31_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Spotify%20Setup.md");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
         
         }
 
         private void iconButton29_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Azure%20Setup.md");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service");
         }
 
         private void iconButton30_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/System%20Speech%20Setup.md");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/System-Speech");
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -1465,7 +1465,7 @@ namespace OSCVRCWiz
 
         private void iconButton32_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/blob/main/Extra%20Guides/Emoji%20Setup.md");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Emoji-Setup");
         }
 
         private void iconButton33_Click(object sender, EventArgs e)
@@ -1589,6 +1589,8 @@ namespace OSCVRCWiz
             switch(richboxsmall)
             {
                 case true:
+                    //int boxWidth = richTextBox3.Bounds.Width;
+                    //int boxHeight = richTextBox3.Bounds.Width;
 
                     richTextBox3.SetBounds(28, 51, 471, 211);
                     ttsTrash.SetBounds(455, 226, 35, 29);
@@ -1611,7 +1613,83 @@ namespace OSCVRCWiz
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            ot.outputVRChat(this, OutputText.lastKatString, "tts");
+            ot.outputVRChat(this, OutputText.lastKatString, "tttAdd");
+        }
+
+      //  private void button18_Click(object sender, EventArgs e)
+     //  {
+      //      string currentText = richTextBox11.Text.ToString();
+      //      currentText = currentText + ", " + WindowsMedia.mediaSourceNew+", ";
+      //      richTextBox11.Text = currentText;
+      //  }
+
+       // private void button22_Click(object sender, EventArgs e)
+        //{
+       //     string currentText = textBoxCustomSpot.Text.ToString();
+      //      currentText = currentText + "♫ {title} - {artist} ♫ ";
+      //      textBoxCustomSpot.Text = currentText;
+
+    //    }
+
+       /* private void button21_Click(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "『{progressMinutes}/{durationMinutes}』 ";
+            textBoxCustomSpot.Text = currentText;
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "『🎮{averageControllerBattery}%』『🪫{averageTrackerBattery}%』 ";
+            textBoxCustomSpot.Text = currentText;
+
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "『💓{bpm}』 ";
+            textBoxCustomSpot.Text = currentText;
+
+        }*/
+
+        private void button18_Click_1(object sender, EventArgs e)
+        {
+            string currentText = richTextBox11.Text.ToString();
+            currentText = currentText + ", " + WindowsMedia.mediaSourceNew + ", ";
+            richTextBox11.Text = currentText;
+        }
+
+        private void button20_Click_1(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "♫ {title} - {artist} ♫ ";
+            textBoxCustomSpot.Text = currentText;
+        }
+
+        private void button21_Click_1(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "『{progressMinutes}/{durationMinutes}』 ";
+            textBoxCustomSpot.Text = currentText;
+
+        }
+
+        private void button23_Click_1(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "『🎮{averageControllerBattery}%』『🪫{averageTrackerBattery}%』 ";
+            textBoxCustomSpot.Text = currentText;
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "『💓{bpm}』 ";
+            textBoxCustomSpot.Text = currentText;
         }
     }
 

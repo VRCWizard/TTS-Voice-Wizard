@@ -105,7 +105,7 @@ namespace OSCVRCWiz
                // outputLog(MainForm, "Characters do not support UTF8: "+ ex.Message.ToString());
        //     }
            
-            if(MainForm.rjToggleButtonOSC.Checked==false)
+            if(MainForm.rjToggleButtonOSC.Checked==false)//why is this here?
             {
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
             }
@@ -122,6 +122,13 @@ namespace OSCVRCWiz
             {
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
 
+            }
+            else
+            {
+                //this else is meant as a crude fix to output breaking when hide text delay is turned off
+                //hide tet delay is recommened with media output
+                VoiceWizardWindow.pauseBPM = false;
+                VoiceWizardWindow.pauseSpotify = false;
             }
 
         }
@@ -142,6 +149,13 @@ namespace OSCVRCWiz
                 {
                     MainForm.testtimer.Change(MainForm.eraseDelay, 0);
 
+                }
+                else
+                {
+                    //this else is meant as a crude fix to output breaking when hide text delay is turned off
+                    //hide tet delay is recommened with media output
+                    VoiceWizardWindow.pauseBPM = false;
+                    VoiceWizardWindow.pauseSpotify = false;
                 }
 
             });
@@ -999,6 +1013,13 @@ namespace OSCVRCWiz
               //  System.Diagnostics.Debug.WriteLine("restart/start timer");
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
 
+            }
+            else
+            {
+                //this else is meant as a crude fix to output breaking when hide text delay is turned off
+                //hide tet delay is recommened with media output
+                VoiceWizardWindow.pauseBPM = false;
+                VoiceWizardWindow.pauseSpotify = false;
             }
           
 

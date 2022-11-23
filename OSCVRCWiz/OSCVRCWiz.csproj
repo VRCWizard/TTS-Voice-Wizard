@@ -10,7 +10,7 @@
     <AssemblyName>TTSVoiceWizard</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x86</Platforms>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,9 +45,6 @@
   <ItemGroup>
     <Reference Include="CoreOSC">
       <HintPath>..\..\..\..\Downloads\CoreOSC-master\CoreOSC-master\CoreOSC\bin\Debug\netstandard2.0\CoreOSC.dll</HintPath>
-    </Reference>
-    <Reference Include="vrc-oscquery-lib">
-      <HintPath>..\..\..\..\OneDrive\Desktop\vrc osc query dll\vrc-oscquery-lib.dll</HintPath>
     </Reference>
   </ItemGroup>
 

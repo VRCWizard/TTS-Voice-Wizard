@@ -346,6 +346,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.button18 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -2215,6 +2220,11 @@
             // tabSpotify
             // 
             this.tabSpotify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabSpotify.Controls.Add(this.button22);
+            this.tabSpotify.Controls.Add(this.button23);
+            this.tabSpotify.Controls.Add(this.button21);
+            this.tabSpotify.Controls.Add(this.button20);
+            this.tabSpotify.Controls.Add(this.button18);
             this.tabSpotify.Controls.Add(this.label60);
             this.tabSpotify.Controls.Add(this.rjToggleButtonPlayPaused);
             this.tabSpotify.Controls.Add(this.label49);
@@ -4773,6 +4783,80 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.ForeColor = System.Drawing.Color.Snow;
+            this.button18.Location = new System.Drawing.Point(519, 298);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(211, 29);
+            this.button18.TabIndex = 132;
+            this.button18.Text = "Add Newest Media Source";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click_1);
+            // 
+            // button20
+            // 
+            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button20.FlatAppearance.BorderSize = 0;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.ForeColor = System.Drawing.Color.Snow;
+            this.button20.Location = new System.Drawing.Point(824, 417);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(30, 30);
+            this.button20.TabIndex = 133;
+            this.button20.Text = "♫";
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click_1);
+            // 
+            // button21
+            // 
+            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button21.FlatAppearance.BorderSize = 0;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.ForeColor = System.Drawing.Color.Snow;
+            this.button21.Location = new System.Drawing.Point(860, 417);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(30, 30);
+            this.button21.TabIndex = 134;
+            this.button21.Text = "⏰";
+            this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click_1);
+            // 
+            // button22
+            // 
+            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button22.FlatAppearance.BorderSize = 0;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button22.ForeColor = System.Drawing.Color.Snow;
+            this.button22.Location = new System.Drawing.Point(931, 417);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(30, 30);
+            this.button22.TabIndex = 136;
+            this.button22.Text = "💓";
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.ForeColor = System.Drawing.Color.Snow;
+            this.button23.Location = new System.Drawing.Point(895, 417);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(30, 30);
+            this.button23.TabIndex = 135;
+            this.button23.Text = "🔋";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click_1);
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -5144,5 +5228,10 @@
         private TabPage EmojisNew;
         private FontAwesome.Sharp.IconButton iconButton25;
         private Button button2;
+        private Button button18;
+        private Button button20;
+        private Button button22;
+        private Button button23;
+        private Button button21;
     }
 }
