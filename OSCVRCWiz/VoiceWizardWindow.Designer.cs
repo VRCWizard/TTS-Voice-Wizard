@@ -108,6 +108,7 @@
             this.EmojisNew = new System.Windows.Forms.TabPage();
             this.label72 = new System.Windows.Forms.Label();
             this.translucentPanel1 = new OSCVRCWiz.RJControls.TranslucentPanel();
+            this.iconButton27 = new FontAwesome.Sharp.IconButton();
             this.iconButton11 = new FontAwesome.Sharp.IconButton();
             this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
@@ -159,6 +160,11 @@
             this.label43 = new System.Windows.Forms.Label();
             this.rjToggleButton3 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabSpotify = new System.Windows.Forms.TabPage();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.label60 = new System.Windows.Forms.Label();
             this.rjToggleButtonPlayPaused = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label49 = new System.Windows.Forms.Label();
@@ -331,6 +337,21 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label141 = new System.Windows.Forms.Label();
+            this.buttonRemoveVoiceCommand = new System.Windows.Forms.Button();
+            this.label138 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label140 = new System.Windows.Forms.Label();
+            this.richTextBox13 = new System.Windows.Forms.RichTextBox();
+            this.label139 = new System.Windows.Forms.Label();
+            this.buttonAddVoiceCommand = new System.Windows.Forms.Button();
+            this.label108 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
+            this.label115 = new System.Windows.Forms.Label();
+            this.label131 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.iconButton12 = new FontAwesome.Sharp.IconButton();
@@ -346,11 +367,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.button18 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -370,6 +387,7 @@
             this.TextOut.SuspendLayout();
             this.AzureSet.SuspendLayout();
             this.SystemSet.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -707,6 +725,7 @@
             this.tabControl1.Controls.Add(this.TextOut);
             this.tabControl1.Controls.Add(this.AzureSet);
             this.tabControl1.Controls.Add(this.SystemSet);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(220, 0);
             this.tabControl1.Name = "tabControl1";
@@ -1657,6 +1676,7 @@
             // translucentPanel1
             // 
             this.translucentPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.translucentPanel1.Controls.Add(this.iconButton27);
             this.translucentPanel1.Controls.Add(this.iconButton11);
             this.translucentPanel1.Controls.Add(this.iconButton10);
             this.translucentPanel1.Controls.Add(this.iconButton9);
@@ -1664,6 +1684,26 @@
             this.translucentPanel1.Name = "translucentPanel1";
             this.translucentPanel1.Size = new System.Drawing.Size(303, 552);
             this.translucentPanel1.TabIndex = 0;
+            // 
+            // iconButton27
+            // 
+            this.iconButton27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton27.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton27.FlatAppearance.BorderSize = 0;
+            this.iconButton27.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton27.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
+            this.iconButton27.IconColor = System.Drawing.Color.White;
+            this.iconButton27.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton27.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton27.Location = new System.Drawing.Point(0, 300);
+            this.iconButton27.Name = "iconButton27";
+            this.iconButton27.Size = new System.Drawing.Size(303, 100);
+            this.iconButton27.TabIndex = 12;
+            this.iconButton27.Text = "Voice Commands";
+            this.iconButton27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton27.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton27.UseVisualStyleBackColor = false;
+            this.iconButton27.Click += new System.EventHandler(this.iconButton27_Click_1);
             // 
             // iconButton11
             // 
@@ -2269,6 +2309,80 @@
             this.tabSpotify.Size = new System.Drawing.Size(976, 690);
             this.tabSpotify.TabIndex = 6;
             this.tabSpotify.Text = "Spotify";
+            // 
+            // button22
+            // 
+            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button22.FlatAppearance.BorderSize = 0;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button22.ForeColor = System.Drawing.Color.Snow;
+            this.button22.Location = new System.Drawing.Point(931, 417);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(30, 30);
+            this.button22.TabIndex = 136;
+            this.button22.Text = "💓";
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.ForeColor = System.Drawing.Color.Snow;
+            this.button23.Location = new System.Drawing.Point(895, 417);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(30, 30);
+            this.button23.TabIndex = 135;
+            this.button23.Text = "🔋";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click_1);
+            // 
+            // button21
+            // 
+            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button21.FlatAppearance.BorderSize = 0;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.ForeColor = System.Drawing.Color.Snow;
+            this.button21.Location = new System.Drawing.Point(860, 417);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(30, 30);
+            this.button21.TabIndex = 134;
+            this.button21.Text = "⏰";
+            this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click_1);
+            // 
+            // button20
+            // 
+            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button20.FlatAppearance.BorderSize = 0;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.ForeColor = System.Drawing.Color.Snow;
+            this.button20.Location = new System.Drawing.Point(824, 417);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(30, 30);
+            this.button20.TabIndex = 133;
+            this.button20.Text = "♫";
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click_1);
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.ForeColor = System.Drawing.Color.Snow;
+            this.button18.Location = new System.Drawing.Point(519, 298);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(211, 29);
+            this.button18.TabIndex = 132;
+            this.button18.Text = "Add Newest Media Source";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click_1);
             // 
             // label60
             // 
@@ -4529,6 +4643,189 @@
             this.label50.TabIndex = 41;
             this.label50.Text = "Windows Built-In System Speech";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage2.Controls.Add(this.button24);
+            this.tabPage2.Controls.Add(this.label141);
+            this.tabPage2.Controls.Add(this.buttonRemoveVoiceCommand);
+            this.tabPage2.Controls.Add(this.label138);
+            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.label140);
+            this.tabPage2.Controls.Add(this.richTextBox13);
+            this.tabPage2.Controls.Add(this.label139);
+            this.tabPage2.Controls.Add(this.buttonAddVoiceCommand);
+            this.tabPage2.Controls.Add(this.label108);
+            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.label65);
+            this.tabPage2.Controls.Add(this.richTextBox12);
+            this.tabPage2.Controls.Add(this.label115);
+            this.tabPage2.Controls.Add(this.label131);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(976, 690);
+            this.tabPage2.TabIndex = 13;
+            this.tabPage2.Text = "tabPage2";
+            // 
+            // label141
+            // 
+            this.label141.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label141.AutoSize = true;
+            this.label141.ForeColor = System.Drawing.Color.Snow;
+            this.label141.Location = new System.Drawing.Point(20, 611);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(281, 20);
+            this.label141.TabIndex = 140;
+            this.label141.Text = "Type ID of command you wish to remove";
+            // 
+            // buttonRemoveVoiceCommand
+            // 
+            this.buttonRemoveVoiceCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonRemoveVoiceCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonRemoveVoiceCommand.FlatAppearance.BorderSize = 0;
+            this.buttonRemoveVoiceCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRemoveVoiceCommand.ForeColor = System.Drawing.Color.Snow;
+            this.buttonRemoveVoiceCommand.Location = new System.Drawing.Point(305, 574);
+            this.buttonRemoveVoiceCommand.Name = "buttonRemoveVoiceCommand";
+            this.buttonRemoveVoiceCommand.Size = new System.Drawing.Size(86, 29);
+            this.buttonRemoveVoiceCommand.TabIndex = 139;
+            this.buttonRemoveVoiceCommand.Text = "Remove";
+            this.buttonRemoveVoiceCommand.UseVisualStyleBackColor = false;
+            this.buttonRemoveVoiceCommand.Click += new System.EventHandler(this.buttonRemoveVoiceCommand_Click);
+            // 
+            // label138
+            // 
+            this.label138.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label138.AutoSize = true;
+            this.label138.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label138.ForeColor = System.Drawing.Color.Snow;
+            this.label138.Location = new System.Drawing.Point(20, 551);
+            this.label138.Name = "label138";
+            this.label138.Size = new System.Drawing.Size(176, 20);
+            this.label138.TabIndex = 138;
+            this.label138.Text = "Remove Voice Command";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox5.Location = new System.Drawing.Point(20, 574);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(279, 27);
+            this.textBox5.TabIndex = 137;
+            // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label140.ForeColor = System.Drawing.Color.Snow;
+            this.label140.Location = new System.Drawing.Point(20, 162);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(132, 20);
+            this.label140.TabIndex = 136;
+            this.label140.Text = "Stored Commands";
+            // 
+            // richTextBox13
+            // 
+            this.richTextBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox13.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox13.Location = new System.Drawing.Point(20, 185);
+            this.richTextBox13.Name = "richTextBox13";
+            this.richTextBox13.Size = new System.Drawing.Size(524, 354);
+            this.richTextBox13.TabIndex = 135;
+            this.richTextBox13.Text = "template ID: | Phrase: | Address: | Data Type: | Value:";
+            // 
+            // label139
+            // 
+            this.label139.AutoSize = true;
+            this.label139.ForeColor = System.Drawing.Color.Snow;
+            this.label139.Location = new System.Drawing.Point(20, 123);
+            this.label139.Name = "label139";
+            this.label139.Size = new System.Drawing.Size(411, 20);
+            this.label139.TabIndex = 134;
+            this.label139.Text = "Structure: <spoken phrase>,<address>,<data type>,<value>;";
+            // 
+            // buttonAddVoiceCommand
+            // 
+            this.buttonAddVoiceCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonAddVoiceCommand.FlatAppearance.BorderSize = 0;
+            this.buttonAddVoiceCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddVoiceCommand.ForeColor = System.Drawing.Color.Snow;
+            this.buttonAddVoiceCommand.Location = new System.Drawing.Point(458, 91);
+            this.buttonAddVoiceCommand.Name = "buttonAddVoiceCommand";
+            this.buttonAddVoiceCommand.Size = new System.Drawing.Size(86, 29);
+            this.buttonAddVoiceCommand.TabIndex = 133;
+            this.buttonAddVoiceCommand.Text = "Add";
+            this.buttonAddVoiceCommand.UseVisualStyleBackColor = false;
+            this.buttonAddVoiceCommand.Click += new System.EventHandler(this.buttonAddVoiceCommand_Click);
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label108.ForeColor = System.Drawing.Color.Snow;
+            this.label108.Location = new System.Drawing.Point(20, 70);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(184, 20);
+            this.label108.TabIndex = 101;
+            this.label108.Text = "Add New Voice Command";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(20, 93);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(432, 27);
+            this.textBox1.TabIndex = 100;
+            this.textBox1.Text = "okay,/input/randomaddressname,bool,true;";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label65.ForeColor = System.Drawing.Color.Snow;
+            this.label65.Location = new System.Drawing.Point(579, 3);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(34, 20);
+            this.label65.TabIndex = 99;
+            this.label65.Text = "Log";
+            // 
+            // richTextBox12
+            // 
+            this.richTextBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox12.Location = new System.Drawing.Point(579, 26);
+            this.richTextBox12.Name = "richTextBox12";
+            this.richTextBox12.ReadOnly = true;
+            this.richTextBox12.Size = new System.Drawing.Size(378, 613);
+            this.richTextBox12.TabIndex = 98;
+            this.richTextBox12.Text = "";
+            this.richTextBox12.TextChanged += new System.EventHandler(this.richTextBox12_TextChanged);
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label115.ForeColor = System.Drawing.Color.Snow;
+            this.label115.Location = new System.Drawing.Point(20, 20);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(151, 25);
+            this.label115.TabIndex = 78;
+            this.label115.Text = "Voice Commands";
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.ForeColor = System.Drawing.Color.Snow;
+            this.label131.Location = new System.Drawing.Point(201, 25);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(225, 20);
+            this.label131.TabIndex = 79;
+            this.label131.Text = "Send parameters with your voice";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -4783,79 +5080,20 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // button18
+            // button24
             // 
-            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.ForeColor = System.Drawing.Color.Snow;
-            this.button18.Location = new System.Drawing.Point(519, 298);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(211, 29);
-            this.button18.TabIndex = 132;
-            this.button18.Text = "Add Newest Media Source";
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click_1);
-            // 
-            // button20
-            // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.ForeColor = System.Drawing.Color.Snow;
-            this.button20.Location = new System.Drawing.Point(824, 417);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(30, 30);
-            this.button20.TabIndex = 133;
-            this.button20.Text = "♫";
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click_1);
-            // 
-            // button21
-            // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.ForeColor = System.Drawing.Color.Snow;
-            this.button21.Location = new System.Drawing.Point(860, 417);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(30, 30);
-            this.button21.TabIndex = 134;
-            this.button21.Text = "⏰";
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click_1);
-            // 
-            // button22
-            // 
-            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button22.FlatAppearance.BorderSize = 0;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.ForeColor = System.Drawing.Color.Snow;
-            this.button22.Location = new System.Drawing.Point(931, 417);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(30, 30);
-            this.button22.TabIndex = 136;
-            this.button22.Text = "💓";
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
-            // 
-            // button23
-            // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.ForeColor = System.Drawing.Color.Snow;
-            this.button23.Location = new System.Drawing.Point(895, 417);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(30, 30);
-            this.button23.TabIndex = 135;
-            this.button23.Text = "🔋";
-            this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click_1);
+            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button24.FlatAppearance.BorderSize = 0;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.ForeColor = System.Drawing.Color.Snow;
+            this.button24.Location = new System.Drawing.Point(458, 574);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(86, 29);
+            this.button24.TabIndex = 141;
+            this.button24.Text = "Clear All";
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // VoiceWizardWindow
             // 
@@ -4903,6 +5141,8 @@
             this.AzureSet.PerformLayout();
             this.SystemSet.ResumeLayout(false);
             this.SystemSet.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -5233,5 +5473,22 @@
         private Button button22;
         private Button button23;
         private Button button21;
+        private TabPage tabPage2;
+        private Label label115;
+        private Label label131;
+        private FontAwesome.Sharp.IconButton iconButton27;
+        private Label label65;
+        private RichTextBox richTextBox12;
+        private Label label140;
+        public RichTextBox richTextBox13;
+        private Label label139;
+        private Button buttonAddVoiceCommand;
+        private Label label108;
+        private TextBox textBox1;
+        private Label label141;
+        private Button buttonRemoveVoiceCommand;
+        private Label label138;
+        private TextBox textBox5;
+        private Button button24;
     }
 }

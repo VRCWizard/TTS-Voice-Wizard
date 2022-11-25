@@ -78,7 +78,7 @@ namespace OSCVRCWiz
                     //    System.Diagnostics.Debug.WriteLine("End of data:");
                         reader.Close();
                         body.Close();
-                        //var ot = new OutputText();
+                    //var ot = new OutputText();
                     //   ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);
                     //  ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, s,"tts");
 
@@ -94,6 +94,10 @@ namespace OSCVRCWiz
 
                              }
                              });*/
+                    //VoiceCommand task
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(s));
+
+
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
                     {
                         VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);

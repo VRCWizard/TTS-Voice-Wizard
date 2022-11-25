@@ -140,6 +140,8 @@ namespace OSCVRCWiz
                     translationRecognizer1 = new TranslationRecognizer(translationConfig, audioConfig);
                     speechRecognizer1 = new Microsoft.CognitiveServices.Speech.SpeechRecognizer(speechConfig, audioConfig);
                 }
+
+                //THESE SUBSCRIPTIONS ARE FOR CONTINUOUS LISTENING (I DO NEED TO REMOVE REDUNDENCY)
                 translationRecognizer1.Canceled += (sender, eventArgs) =>
                 {
                     Console.WriteLine(eventArgs.Result.Text);
@@ -155,7 +157,11 @@ namespace OSCVRCWiz
 
 
                         MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
-                        string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string
+                        string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string tranlated
+
+                        //i probably need to add a setting for which language activates the voice command.....(only english for now)
+                        //VoiceCommand task
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(MainForm.dictationString));
 
                         SetDefaultTTS.SetVoicePresets();
 
@@ -275,6 +281,10 @@ namespace OSCVRCWiz
                     if (MainForm.rjToggleButton4.Checked == true)
                     {
                         MainForm.dictationString = eventArgs.Result.Text; //Dictation string
+
+                        //VoiceCommand task
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(MainForm.dictationString));
+
                         SetDefaultTTS.SetVoicePresets();
                     //    var ot = new OutputText();
                         if (MainForm.rjToggleButtonLog.Checked == true)
@@ -373,6 +383,10 @@ namespace OSCVRCWiz
                     
                     //OutputSpeechRecognitionResult(speechRecognitionResult);
                     MainForm.dictationString = speechRecognitionResult.Text; //Dictation string
+
+
+                    //VoiceCommand task
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(MainForm.dictationString));
 
                     SetDefaultTTS.SetVoicePresets();
                   //  var ot = new OutputText();
@@ -500,6 +514,13 @@ namespace OSCVRCWiz
 
                     MainForm.dictationString = speechRecognitionResult.Text; //Dictation string; Global string used to keep track of result text for default azure speech to text
                     string translatedString = speechRecognitionResult.Translations[toLanguage]; //Global string used to keep track of result text for translation azure speech to text
+
+
+                    //i probably need to add a setting for which language activates the voice command.....(only english for now)
+                    //VoiceCommand task
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(MainForm.dictationString));
+
+
                     SetDefaultTTS.SetVoicePresets();
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {

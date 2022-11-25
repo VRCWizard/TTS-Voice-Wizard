@@ -28,9 +28,10 @@ using System.Diagnostics;
 
 namespace OSCVRCWiz
 {
+
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.8.6";
+        string currentVersion = "0.8.6.5";
         string releaseDate = "November 23, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
@@ -86,6 +87,12 @@ namespace OSCVRCWiz
         static bool richboxsmall = false;
         List<string> systemSpeechVoiceList = new List<string>();
         public static List<string> approvedMediaSourceList = new List<string>();
+
+        public static List<string> VCPhrase = new List<string>();
+        public static List<string> VCAddress = new List<string>();
+        public static List<string> VCType = new List<string>();
+        public static List<string> VCValue = new List<string>();
+        public static string voiceCommandsStored = "";
 
         HttpServer httpServer;
         public OutputText ot;
@@ -481,9 +488,11 @@ namespace OSCVRCWiz
                 webCapOn();
             }
             WindowsMedia.getWindowsMedia();
+            var vc = new VoiceCommands();
+            vc.refreshCommandList();
             //Construct a new OSCQuery service with new OSCQueryService(), optionally passing in the name, TCP port to use for serving HTTP, UDP port that you're using for OSC, and an ILogger if you want logs.
-         
-          //  httpServer.VRChatTesting(); //used for testing VRC OSCQuery lib
+
+            //  httpServer.VRChatTesting(); //used for testing VRC OSCQuery lib
 
 
         }
@@ -1014,6 +1023,7 @@ namespace OSCVRCWiz
             richTextBox7.Text = richTextBox1.Text;
             richTextBox8.Text = richTextBox1.Text;
             richTextBox10.Text = richTextBox1.Text;
+            richTextBox12.Text = richTextBox1.Text;
         }
 
         private void iconButton12_Click(object sender, EventArgs e)
@@ -1036,7 +1046,13 @@ namespace OSCVRCWiz
         {
             System.Diagnostics.Debug.WriteLine("Recognized text: " + e.Result.Text);
             string text = e.Result.Text.ToString();
-           // var ot = new OutputText();
+
+
+            //VoiceCommand task
+            Task.Run(() => doVoiceCommand(text));
+
+
+            // var ot = new OutputText();
             //Send Text to Vrchat
             if (rjToggleButtonLog.Checked == true)
             {
@@ -1084,6 +1100,24 @@ namespace OSCVRCWiz
 
             }
         }
+        
+        public void doVoiceCommand(string text)
+        {
+            
+            int index = 0;
+            foreach (string x in VoiceWizardWindow.VCPhrase)
+            {
+                System.Diagnostics.Debug.WriteLine("checking " + x);
+                if (text.Contains(x, StringComparison.OrdinalIgnoreCase))
+                {
+                    System.Diagnostics.Debug.WriteLine("it contains " + x);
+                    var vc = new VoiceCommands();
+                    vc.phraseFound(index);
+                }
+                index++;
+            }
+        }
+
 
         private void richTextBox3_TextChanged(object sender, EventArgs e)
         {
@@ -1322,7 +1356,7 @@ namespace OSCVRCWiz
         {
             if (typingBox == false)
             {
-                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);
+                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);//this is what spams osc
                 sender3.Send(typingbubble);
             }
             if (typingBox == true)
@@ -1690,6 +1724,67 @@ namespace OSCVRCWiz
             string currentText = textBoxCustomSpot.Text.ToString();
             currentText = currentText + "『💓{bpm}』 ";
             textBoxCustomSpot.Text = currentText;
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+          
+
+
+        }
+     
+
+        private void iconButton27_Click_1(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(tabPage2);//voiceCommands
+        }
+
+        private void richTextBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddVoiceCommand_Click(object sender, EventArgs e)
+        {
+             VCAddress.Clear();
+              VCPhrase.Clear();
+              VCValue.Clear();
+              VCType.Clear();
+            voiceCommandsStored += textBox1.Text.ToString();
+            var vc = new VoiceCommands();
+            vc.voiceCommands();
+            vc.refreshCommandList();
+
+
+        }
+
+        private void buttonRemoveVoiceCommand_Click(object sender, EventArgs e)
+        {
+            int index = Int32.Parse(textBox5.Text.ToString()) - 1;
+            VCAddress.RemoveAt(index);
+            VCPhrase.RemoveAt(index);
+            VCValue.RemoveAt(index);
+            VCType.RemoveAt(index);
+            var vc = new VoiceCommands();
+            vc.refreshCommandList();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            VCAddress.Clear();
+            VCPhrase.Clear();
+            VCValue.Clear();
+            VCType.Clear();
+            var vc = new VoiceCommands();
+            vc.refreshCommandList();
+
+        }
+    }
+    public static class StringExtensions//method to make .contains case insensitive
+    {
+        public static bool Contains(this string source, string toCheck, StringComparison comp)
+        {
+            return source?.IndexOf(toCheck, comp) >= 0;
         }
     }
 
