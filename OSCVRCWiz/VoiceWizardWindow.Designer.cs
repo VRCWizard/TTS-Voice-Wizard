@@ -63,6 +63,8 @@
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.iconButton37 = new FontAwesome.Sharp.IconButton();
+            this.iconButton36 = new FontAwesome.Sharp.IconButton();
             this.button2 = new System.Windows.Forms.Button();
             this.iconButton25 = new FontAwesome.Sharp.IconButton();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
@@ -338,6 +340,7 @@
             this.label53 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button24 = new System.Windows.Forms.Button();
             this.label141 = new System.Windows.Forms.Label();
             this.buttonRemoveVoiceCommand = new System.Windows.Forms.Button();
             this.label138 = new System.Windows.Forms.Label();
@@ -367,7 +370,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.button24 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -416,9 +418,9 @@
             this.speechTTSButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speechTTSButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.speechTTSButton.ForeColor = System.Drawing.Color.Snow;
-            this.speechTTSButton.Location = new System.Drawing.Point(247, 291);
+            this.speechTTSButton.Location = new System.Drawing.Point(234, 273);
             this.speechTTSButton.Name = "speechTTSButton";
-            this.speechTTSButton.Size = new System.Drawing.Size(329, 60);
+            this.speechTTSButton.Size = new System.Drawing.Size(342, 98);
             this.speechTTSButton.TabIndex = 5;
             this.speechTTSButton.Text = "Speech To Text To Speech";
             this.speechTTSButton.UseVisualStyleBackColor = false;
@@ -985,6 +987,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage1.Controls.Add(this.iconButton37);
+            this.tabPage1.Controls.Add(this.iconButton36);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.iconButton25);
             this.tabPage1.Controls.Add(this.comboBox6);
@@ -1023,6 +1027,46 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
             // 
+            // iconButton37
+            // 
+            this.iconButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iconButton37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton37.FlatAppearance.BorderSize = 0;
+            this.iconButton37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton37.ForeColor = System.Drawing.Color.White;
+            this.iconButton37.IconChar = FontAwesome.Sharp.IconChar.ArrowDown;
+            this.iconButton37.IconColor = System.Drawing.Color.White;
+            this.iconButton37.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton37.IconSize = 15;
+            this.iconButton37.Location = new System.Drawing.Point(505, 235);
+            this.iconButton37.Name = "iconButton37";
+            this.iconButton37.Size = new System.Drawing.Size(71, 27);
+            this.iconButton37.TabIndex = 105;
+            this.iconButton37.Text = "🗛";
+            this.iconButton37.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton37.UseVisualStyleBackColor = false;
+            this.iconButton37.Click += new System.EventHandler(this.iconButton37_Click);
+            // 
+            // iconButton36
+            // 
+            this.iconButton36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iconButton36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton36.FlatAppearance.BorderSize = 0;
+            this.iconButton36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton36.ForeColor = System.Drawing.Color.White;
+            this.iconButton36.IconChar = FontAwesome.Sharp.IconChar.ArrowUp;
+            this.iconButton36.IconColor = System.Drawing.Color.White;
+            this.iconButton36.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton36.IconSize = 15;
+            this.iconButton36.Location = new System.Drawing.Point(505, 204);
+            this.iconButton36.Name = "iconButton36";
+            this.iconButton36.Size = new System.Drawing.Size(71, 27);
+            this.iconButton36.TabIndex = 104;
+            this.iconButton36.Text = "🗚";
+            this.iconButton36.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton36.UseVisualStyleBackColor = false;
+            this.iconButton36.Click += new System.EventHandler(this.iconButton36_Click);
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -1054,6 +1098,7 @@
             this.iconButton25.Size = new System.Drawing.Size(35, 29);
             this.iconButton25.TabIndex = 102;
             this.iconButton25.UseVisualStyleBackColor = false;
+            this.iconButton25.Visible = false;
             this.iconButton25.Click += new System.EventHandler(this.iconButton25_Click_1);
             // 
             // comboBox6
@@ -4668,6 +4713,21 @@
             this.tabPage2.TabIndex = 13;
             this.tabPage2.Text = "tabPage2";
             // 
+            // button24
+            // 
+            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button24.FlatAppearance.BorderSize = 0;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.ForeColor = System.Drawing.Color.Snow;
+            this.button24.Location = new System.Drawing.Point(458, 574);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(86, 29);
+            this.button24.TabIndex = 141;
+            this.button24.Text = "Clear All";
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
             // label141
             // 
             this.label141.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -5080,21 +5140,6 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // button24
-            // 
-            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.ForeColor = System.Drawing.Color.Snow;
-            this.button24.Location = new System.Drawing.Point(458, 574);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(86, 29);
-            this.button24.TabIndex = 141;
-            this.button24.Text = "Clear All";
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -5490,5 +5535,7 @@
         private Label label138;
         private TextBox textBox5;
         private Button button24;
+        private FontAwesome.Sharp.IconButton iconButton37;
+        private FontAwesome.Sharp.IconButton iconButton36;
     }
 }

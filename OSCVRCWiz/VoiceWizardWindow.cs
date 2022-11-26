@@ -32,7 +32,7 @@ namespace OSCVRCWiz
     public partial class VoiceWizardWindow : Form
     {
         string currentVersion = "0.8.6.5";
-        string releaseDate = "November 23, 2022";
+        string releaseDate = "November 25, 2022";//bruh, why don't i just automatically get date
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -558,23 +558,24 @@ namespace OSCVRCWiz
                     var ftts = new FonixTalkTTS();
                     var text = richTextBox3.Text.ToString();
                     ftts.FonixTTS(text);
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
+                    if (rjToggleButtonLog.Checked == true)
                     {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, text);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
                     }
 
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
+                    if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
                     {
 
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text, "tts"));
 
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
+                    if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
                     {
 
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text, "tts"));
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked == true)
+                    if (rjToggleButtonGreenScreen.Checked == true)
                     {
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text, "tts"));
 
@@ -674,6 +675,7 @@ namespace OSCVRCWiz
                 if (rjToggleButtonLog.Checked == true)
             {
                 ot.outputLog(this, text);
+                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
@@ -1057,6 +1059,7 @@ namespace OSCVRCWiz
             if (rjToggleButtonLog.Checked == true)
             {
                 ot.outputLog(this, text);
+                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
 
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
@@ -1777,6 +1780,22 @@ namespace OSCVRCWiz
             VCType.Clear();
             var vc = new VoiceCommands();
             vc.refreshCommandList();
+
+        }
+
+        private void iconButton36_Click(object sender, EventArgs e)
+        {
+            richTextBox3.Font = new Font("Segoe UI", Int32.Parse(richTextBox3.Font.Size.ToString())+1);
+
+        }
+
+        private void iconButton37_Click(object sender, EventArgs e)
+        {
+            if (Int32.Parse(richTextBox3.Font.Size.ToString())>=1)
+            {
+                richTextBox3.Font = new Font("Segoe UI", Int32.Parse(richTextBox3.Font.Size.ToString()) - 1);
+            }
+           
 
         }
     }

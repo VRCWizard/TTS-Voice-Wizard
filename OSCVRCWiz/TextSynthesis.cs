@@ -169,6 +169,7 @@ namespace OSCVRCWiz
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
                             VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
+                            VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, translatedString);
                         }
                         //Send Text to TTS
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
@@ -290,6 +291,7 @@ namespace OSCVRCWiz
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
                             VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString);
+                            VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, MainForm.dictationString);
                         }
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                         {
@@ -393,6 +395,7 @@ namespace OSCVRCWiz
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {
                         VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, MainForm.dictationString);
                     }
                     if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                     {
@@ -525,6 +528,7 @@ namespace OSCVRCWiz
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {
                         VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
+                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, translatedString);
                     }
                     //Send Text to TTS
                     if (MainForm.rjToggleButtonDisableTTS2.Checked == false)

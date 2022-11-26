@@ -101,6 +101,7 @@ namespace OSCVRCWiz
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
                     {
                         VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(VoiceWizardWindow.MainFormGlobal, s);
                     }
                 
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)

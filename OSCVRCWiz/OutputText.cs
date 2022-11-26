@@ -64,8 +64,12 @@ namespace OSCVRCWiz
 
 
         }
-    
-        public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring, string type)
+        public async void outputTextFile(VoiceWizardWindow MainForm, string textstring)
+        {
+            await File.WriteAllTextAsync("Text4OBS.txt", textstring);
+        }
+
+            public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring, string type)
         {
 
            

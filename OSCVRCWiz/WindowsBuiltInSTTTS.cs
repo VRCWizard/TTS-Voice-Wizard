@@ -38,6 +38,7 @@ namespace OSCVRCWiz
                 if (MainForm.rjToggleButtonLog.Checked == true)
                 {
                 VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, text);
+                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, text);
                 }
                 if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
                 {
