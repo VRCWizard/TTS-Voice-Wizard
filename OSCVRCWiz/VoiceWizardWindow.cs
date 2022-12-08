@@ -456,7 +456,7 @@ namespace OSCVRCWiz
                 else
                 {
                     //This local Version and the Version on GitHub are equal.
-                    ot.outputLog(this, "[The current version (" + currentVersion + ") and the version on GitHub (" + releaseText + ") are equal. You're program is up to date]");
+                    ot.outputLog(this, "[The current version (" + currentVersion + ") and the version on GitHub (" + releaseText + ") are equal. Your program is up to date]");
                 }
                 richTextBox5.Text = "Current Version: v"+currentVersion+" - "+releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
             }
