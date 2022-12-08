@@ -44,7 +44,7 @@
 
   <ItemGroup>
     <Reference Include="CoreOSC">
-      <HintPath>..\..\..\..\Downloads\CoreOSC-master\CoreOSC-master\CoreOSC\bin\Debug\netstandard2.0\CoreOSC.dll</HintPath>
+      <HintPath>CoreOSC.dll</HintPath>
     </Reference>
   </ItemGroup>
 
