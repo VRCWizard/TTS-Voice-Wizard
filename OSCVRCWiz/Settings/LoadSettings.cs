@@ -160,6 +160,11 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked = Settings1.Default.StopOnPause;
 
+            VoiceWizardWindow.voiceCommandsStored = Settings1.Default.voiceCommandList;
+
+            VoiceWizardWindow.MainFormGlobal.comboBox3Type.SelectedIndex = 0;
+
+
 
             VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
             VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;

@@ -181,6 +181,10 @@ namespace OSCVRCWiz
                                     var fx = new FonixTalkTTS();
                                     Task.Run(() => fx.FonixTTS(translatedString));
                                     break;
+                                case "TikTok":
+
+                                    Task.Run(() => TikTok.TikTokTextAsSpeech(translatedString));
+                                    break;
 
                                 case "System Speech":
                                     var sys = new WindowsBuiltInSTTTS();
@@ -302,6 +306,10 @@ namespace OSCVRCWiz
                                     var fx = new FonixTalkTTS();
                                     Task.Run(() => fx.FonixTTS(MainForm.dictationString));
                                     break;
+                                case "TikTok":
+
+                                    Task.Run(() => TikTok.TikTokTextAsSpeech(MainForm.dictationString));
+                                    break;
 
                                 case "System Speech":
                                     var sys = new WindowsBuiltInSTTTS();
@@ -405,6 +413,10 @@ namespace OSCVRCWiz
                             case "FonixTalk":               
                                 var fx = new FonixTalkTTS();
                                 Task.Run(() => fx.FonixTTS(MainForm.dictationString));
+                                break;
+                            case "TikTok":
+
+                                Task.Run(() => TikTok.TikTokTextAsSpeech(MainForm.dictationString));
                                 break;
 
                             case "System Speech":
@@ -541,6 +553,10 @@ namespace OSCVRCWiz
                                 
                                 var fx = new FonixTalkTTS();
                                 Task.Run(() => fx.FonixTTS(translatedString));
+                                break;
+                            case "TikTok":
+
+                                Task.Run(() => TikTok.TikTokTextAsSpeech(translatedString));
                                 break;
 
                             case "System Speech":

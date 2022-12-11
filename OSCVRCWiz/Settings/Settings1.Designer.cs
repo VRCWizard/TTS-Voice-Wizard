@@ -649,7 +649,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\'{title}\' - \'{artist}\'")]
+        [global::System.Configuration.DefaultSettingValueAttribute("♫ {title} - {artist} ♫ ")]
         public string SpotifyCustomSetting {
             get {
                 return ((string)(this["SpotifyCustomSetting"]));
@@ -908,6 +908,18 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["StopOnPause"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string voiceCommandList {
+            get {
+                return ((string)(this["voiceCommandList"]));
+            }
+            set {
+                this["voiceCommandList"] = value;
             }
         }
     }

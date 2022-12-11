@@ -23,7 +23,8 @@ namespace OSCVRCWiz
             public int Port = 8080;
             public static string recievedString ="";
             private HttpListener _listener;
-            public void Start()
+            
+        public void Start()
             {
                 _listener = new HttpListener();
             // _listener.Prefixes.Add("http://*:" + Port.ToString() + "/");//MUST RUN AS ADMIN //http://127.0.0.1:8080/
@@ -46,16 +47,15 @@ namespace OSCVRCWiz
 
             private void ListenerCallback(IAsyncResult result)
             {
-              //  System.Diagnostics.Debug.WriteLine("testing if this still works");
-                if (_listener.IsListening)
+            System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            //  System.Diagnostics.Debug.WriteLine("testing if this still works");
+           // watch.Start();
+            if (_listener.IsListening)
                 {
                     var context = _listener.EndGetContext(result);
                     var request = context.Request;
 
-                    // do something with the request
-              //      System.Diagnostics.Debug.WriteLine($"{request.Url}");
-                    //  System.Diagnostics.Debug.WriteLine($"{request.Url.OriginalString}");
-              //      System.Diagnostics.Debug.WriteLine($"{request.HttpMethod} {request.Url}");
+
 
                     if (request.HasEntityBody)
                     {
@@ -78,22 +78,9 @@ namespace OSCVRCWiz
                     //    System.Diagnostics.Debug.WriteLine("End of data:");
                         reader.Close();
                         body.Close();
-                    //var ot = new OutputText();
-                    //   ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Web Captioner]: "+s);
-                    //  ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, s,"tts");
+                 //   watch.Stop();
+                    System.Diagnostics.Debug.WriteLine($"web cap string processing time: {watch.ElapsedMilliseconds} ms");
 
-                    /*          VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate () //DEEPL TRANSLATION 
-                             {
-
-                            if (VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString() != "No Translation (Default)")
-                             {
-                                 var deep = new DeepLC();
-                                 deep.translateTextDeepL(s);
-                                     s = DeepLC.DeepLTranslationText;
-
-
-                             }
-                             });*/
                     //VoiceCommand task
                     Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(s));
 
@@ -135,7 +122,12 @@ namespace OSCVRCWiz
                                 var fx = new FonixTalkTTS();
                                 Task.Run(() => fx.FonixTTS(s));
                                 break;
+
+                            case "TikTok":
                                
+                                Task.Run(() => TikTok.TikTokTextAsSpeech(s));
+                                break;
+
 
                             case "System Speech":
                                 var sys = new WindowsBuiltInSTTTS();

@@ -205,7 +205,7 @@ namespace OSCVRCWiz
             }
             if (VoiceWizardWindow.firstVoiceLoad == false)
             {
-                ot.outputLog(MainForm, "[DEBUG: setting to voice]");
+                ot.outputLog(MainForm, "[DEBUG: setting voice]");
                 MainForm.comboBox2.SelectedIndex = 0;
             }
 
