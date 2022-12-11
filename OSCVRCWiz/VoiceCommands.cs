@@ -60,14 +60,18 @@ namespace OSCVRCWiz
         }
         public void phraseFound(int index)
         {
+            if (VoiceWizardWindow.MainFormGlobal.checkedListBox1.GetItemChecked(index) == true)
+            {
+
+            
             // int index = VCPhrase.FindIndex(a => a.Contains(phrase));
             string address = VoiceWizardWindow.VCAddress[index];
             string type = VoiceWizardWindow.VCType[index];
             var VCMessage = new OscMessage(address, true);
-            
+
             switch (type)
             {
-                case "bool":   
+                case "bool":
                     if (string.Equals(VoiceWizardWindow.VCValue[index], "true", StringComparison.InvariantCultureIgnoreCase))
                     {
                         VCMessage = new OscMessage(address, true);
@@ -92,29 +96,40 @@ namespace OSCVRCWiz
                     break;
             }
 
-            
+
 
             VoiceWizardWindow.MainFormGlobal.sender3.Send(VCMessage);
+            VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[OSC message sent with voice command '" + VoiceWizardWindow.VCPhrase[index] + "']");
+            }
+
 
 
         }
         public void refreshCommandList()
         {
-            VoiceWizardWindow.MainFormGlobal.richTextBox13.Clear();
-            for(var index =0; index <VoiceWizardWindow.VCAddress.Count;index++)
+            // VoiceWizardWindow.MainFormGlobal.richTextBox13.Clear();
+            VoiceWizardWindow.MainFormGlobal.checkedListBox1.Items.Clear();
+            VoiceWizardWindow.voiceCommandsStored = "";
+            for (var index =0; index <VoiceWizardWindow.VCAddress.Count;index++)
             {
                 commandListHelper($"ID: {index+1} | Phrase: {VoiceWizardWindow.VCPhrase[index]} | Address: {VoiceWizardWindow.VCAddress[index]} | Data Type: {VoiceWizardWindow.VCType[index]} | Value: {VoiceWizardWindow.VCValue[index]}");
+                VoiceWizardWindow.voiceCommandsStored += $"{VoiceWizardWindow.VCPhrase[index]},{VoiceWizardWindow.VCAddress[index]},{VoiceWizardWindow.VCType[index]},{VoiceWizardWindow.VCValue[index]};";
+
             }
         }
         public void commandListHelper(string line)
         {
-            if (VoiceWizardWindow.MainFormGlobal.InvokeRequired)
-            {
-                VoiceWizardWindow.MainFormGlobal.Invoke(new Action<string>(commandListHelper), new object[] { line });
-                return;
-            }
-            VoiceWizardWindow.MainFormGlobal.richTextBox13.Select(0, 0);
-            VoiceWizardWindow.MainFormGlobal.richTextBox13.SelectedText = line + "\r\n";
+          //  if (VoiceWizardWindow.MainFormGlobal.InvokeRequired)
+          //  {
+            //    VoiceWizardWindow.MainFormGlobal.Invoke(new Action<string>(commandListHelper), new object[] { line });
+           //     return;
+          //  }
+          //  VoiceWizardWindow.MainFormGlobal.richTextBox13.Select(0, 0);
+          //  VoiceWizardWindow.MainFormGlobal.richTextBox13.SelectedText = line + "\r\n";
+
+           // VoiceWizardWindow.MainFormGlobal.checkedListBox1.Items.Clear();
+            VoiceWizardWindow.MainFormGlobal.checkedListBox1.Items.Add(line,true);
+
         }
     }
 }

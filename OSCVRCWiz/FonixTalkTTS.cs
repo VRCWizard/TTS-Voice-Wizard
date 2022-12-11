@@ -6,6 +6,7 @@ using CSCore;
 using CSCore.MediaFoundation;
 using CSCore.SoundOut;
 using System.Media;
+using CSCore.CoreAudioAPI;
 
 
 namespace OSCVRCWiz
@@ -45,11 +46,23 @@ namespace OSCVRCWiz
         public void PlayAudioHelper()
         {
             var stream = new MemoryStream(File.ReadAllBytes("MEMEspeech.wav"));
-            var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) };
+        //    var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) };
             var waveSource = new MediaFoundationDecoder(stream);
-            waveOut.Initialize(waveSource);
-            waveOut.Play();
-            waveOut.WaitForStopped();
+            //  waveOut.Initialize(waveSource);
+            //  waveOut.Play();
+            //  waveOut.WaitForStopped();
+            var testOut = new WasapiOut();
+            var enumerator = new MMDeviceEnumerator();
+            foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
+            {
+                if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
+                {
+                    testOut.Device = endpoint;
+                }
+            }
+            testOut.Initialize(waveSource);
+            testOut.Play();
+            testOut.WaitForStopped();
 
         }
 

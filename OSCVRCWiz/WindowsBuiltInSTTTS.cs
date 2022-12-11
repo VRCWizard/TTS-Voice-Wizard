@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Recognition;//free Windows
+
 using System.Speech;//free windows
 
 using System.Speech.Synthesis;//free windows
 using CSCore;
 using CSCore.MediaFoundation;
 using CSCore.SoundOut;
+using CSCore.SoundIn;
+using CSCore.CoreAudioAPI;
+using NAudio.Wave;
+//using NAudio.Wave;
 
 namespace OSCVRCWiz
 {
@@ -19,10 +24,11 @@ namespace OSCVRCWiz
         static bool listeningCurrently = false;
         SpeechRecognitionEngine recognizer;
         private static bool _userRequestedAbort = false;
+        public SpeechStreamer _stream = new(12800);
 
 
 
-            public void TTSButtonLiteClick(VoiceWizardWindow MainForm)//TTS
+        public void TTSButtonLiteClick(VoiceWizardWindow MainForm)//TTS
             {
                 // synthesizer = new SpeechSynthesizer();
                 //synthesizer.SelectVoice("Microsoft Zira Desktop");
@@ -70,18 +76,29 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.stream = new MemoryStream();
             VoiceWizardWindow.MainFormGlobal.synthesizerLite.SetOutputToWaveStream(VoiceWizardWindow.MainFormGlobal.stream);
             VoiceWizardWindow.MainFormGlobal.synthesizerLite.Speak(text);
-            var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) }; //StreamReader closes the underlying stream automatically when being disposed of. The using statement does this automatically.
+      //      var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) }; //StreamReader closes the underlying stream automatically when being disposed of. The using statement does this automatically.
             var waveSource = new MediaFoundationDecoder(VoiceWizardWindow.MainFormGlobal.stream);
-            waveOut.Initialize(waveSource);
-            waveOut.Play();
-            waveOut.WaitForStopped();
-            //MainForm.stream.SetLength(0);
-            // sw.Flush(); //Site tip
-            //Site tip
-            // MainForm.stream.Flush();
-            // MainForm.stream.Dispose();
+            //  waveOut.Initialize(waveSource);
+            //  waveOut.Play();
+            //  waveOut.WaitForStopped();
 
-        }
+            var testOut = new CSCore.SoundOut.WasapiOut();
+            var enumerator = new MMDeviceEnumerator();
+            foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
+            {
+                if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
+                {
+                    testOut.Device = endpoint;
+                }
+            }
+            testOut.Initialize(waveSource);
+            testOut.Play();
+            testOut.WaitForStopped();
+        
+
+
+
+    }
         public void startListeningNow(VoiceWizardWindow MainForm)
             {
                 string cultureHere = "en-US";
@@ -102,8 +119,43 @@ namespace OSCVRCWiz
 
                         // Configure input to the speech recognizer.  
                         recognizer.SetInputToDefaultAudioDevice();
+                   // var enumerator = new MMDeviceEnumerator();
 
-                        bool completed = false;
+                  //  NAudio.Wave.WaveIn soundIn = new NAudio.Wave.WaveIn();
+                    
+                    //  soundIn.DataAvailable += async (s, a) =>
+                    //  {
+                    //     await _stream.Write(a.Data);
+                    //  };
+                 //   soundIn.DataAvailable += OnDataAvailable;
+                 //   foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Capture, DeviceState.Active))
+                 //   {
+                      //  if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
+                     //  {
+                         //  soundIn.DeviceNumber = 0;
+                     //   }
+                  // }
+
+                  //  soundIn.StartRecording();
+                 // soundIn.
+                    
+                    
+
+                 //   recognizer.SetInputToAudioStream(_stream, new(16000, System.Speech.AudioFormat.AudioBitsPerSample.Sixteen, System.Speech.AudioFormat.AudioChannel.Mono));
+                 //   recognizer.RecognizeAsync(RecognizeMode.Multiple);
+                   
+                    //  WaveFormat = new(16000, 1)
+
+
+                    //  var instream = new SpeechStreamer();
+                    // recognizer.SetInputToAudioStream(soundIn., formatInfo);
+
+                    //  WaveInProxy _microphone = new();
+                    // recognizer.SetInputToAudioStream
+                    // recognizer.SetInputToAudioStream( _convertStream, new SpeechAudioFormatInfo(EncodingFormat.Pcm, 16000, 16, 1, 32000, 2, null));
+                    //   _speechEngine.RecognizeAsync(RecognizeMode.Multiple);
+
+                    bool completed = false;
 
                         // Attach event handlers.
                         recognizer.RecognizeCompleted += (o, e) =>
@@ -188,8 +240,117 @@ namespace OSCVRCWiz
 
 
             }
+        public void OnDataAvailable(object? sender, WaveInEventArgs e)=> _stream.Write(e.Buffer, 0, e.BytesRecorded);
 
-        
+
+
+
+    }
+}
+public class SpeechStreamer : Stream
+{
+    private AutoResetEvent _writeEvent;
+    private List<byte> _buffer;
+    private int _buffersize;
+    private int _readposition;
+    private int _writeposition;
+    private bool _reset;
+
+    public SpeechStreamer(int bufferSize)
+    {
+        _writeEvent = new AutoResetEvent(false);
+        _buffersize = bufferSize;
+        _buffer = new List<byte>(_buffersize);
+        for (int i = 0; i < _buffersize; i++)
+            _buffer.Add(new byte());
+        _readposition = 0;
+        _writeposition = 0;
+    }
+
+    public override bool CanRead
+    {
+        get { return true; }
+    }
+
+    public override bool CanSeek
+    {
+        get { return false; }
+    }
+
+    public override bool CanWrite
+    {
+        get { return true; }
+    }
+
+    public override long Length
+    {
+        get { return -1L; }
+    }
+
+    public override long Position
+    {
+        get { return 0L; }
+        set { }
+    }
+
+    public override long Seek(long offset, SeekOrigin origin)
+    {
+        return 0L;
+    }
+
+    public override void SetLength(long value)
+    {
+
+    }
+
+    public override int Read(byte[] buffer, int offset, int count)
+    {
+        int i = 0;
+        while (i < count && _writeEvent != null)
+        {
+            if (!_reset && _readposition >= _writeposition)
+            {
+                _writeEvent.WaitOne(100, true);
+                continue;
+            }
+            buffer[i] = _buffer[_readposition + offset];
+            _readposition++;
+            if (_readposition == _buffersize)
+            {
+                _readposition = 0;
+                _reset = false;
+            }
+            i++;
+        }
+
+        return count;
+    }
+
+    public override void Write(byte[] buffer, int offset, int count)
+    {
+        for (int i = offset; i < offset + count; i++)
+        {
+            _buffer[_writeposition] = buffer[i];
+            _writeposition++;
+            if (_writeposition == _buffersize)
+            {
+                _writeposition = 0;
+                _reset = true;
+            }
+        }
+        _writeEvent.Set();
+
+    }
+
+    public override void Close()
+    {
+        _writeEvent.Close();
+        _writeEvent = null;
+        base.Close();
+    }
+
+    public override void Flush()
+    {
 
     }
 }
