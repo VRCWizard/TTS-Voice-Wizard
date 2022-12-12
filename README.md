@@ -34,8 +34,9 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 <a href='https://ko-fi.com/ttsvoicewizard' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /> <br />
 
 ## Credits
-- [Sharptalk](https://github.com/whatsecretproject/SharpTalk) - .NET wrapper for the FonixTalk TTS engine.
 - [CoreOSC](https://github.com/dastevens/CoreOSC) - Sending / recieving OSC data (modified for sending UTF8)
 - [octokit.net](https://github.com/octokit/octokit.net) - Github Update Notifier
+- [Sharptalk](https://github.com/whatsecretproject/SharpTalk) - .NET wrapper for the FonixTalk TTS engine.
+- [tiktok-tts](https://github.com/Weilbyte/tiktok-tts) - Tiktok voices made possible by Weilbyte's Tiktok TTS endpoint
 
 
