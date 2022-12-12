@@ -4420,6 +4420,7 @@
             this.comboBoxOutput.Name = "comboBoxOutput";
             this.comboBoxOutput.Size = new System.Drawing.Size(322, 28);
             this.comboBoxOutput.TabIndex = 128;
+            this.comboBoxOutput.SelectedIndexChanged += new System.EventHandler(this.comboBoxOutput_SelectedIndexChanged_1);
             // 
             // comboBoxInput
             // 
@@ -4430,6 +4431,7 @@
             this.comboBoxInput.Name = "comboBoxInput";
             this.comboBoxInput.Size = new System.Drawing.Size(322, 28);
             this.comboBoxInput.TabIndex = 127;
+            this.comboBoxInput.SelectedIndexChanged += new System.EventHandler(this.comboBoxInput_SelectedIndexChanged_1);
             // 
             // label144
             // 
@@ -4466,6 +4468,7 @@
             this.rjToggleButtonMedia.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonMedia.TabIndex = 125;
             this.rjToggleButtonMedia.UseVisualStyleBackColor = true;
+            this.rjToggleButtonMedia.CheckedChanged += new System.EventHandler(this.rjToggleButtonMedia_CheckedChanged);
             // 
             // label24
             // 
@@ -4491,6 +4494,7 @@
             this.rjToggleButtonDisableTTS2.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonDisableTTS2.TabIndex = 123;
             this.rjToggleButtonDisableTTS2.UseVisualStyleBackColor = true;
+            this.rjToggleButtonDisableTTS2.CheckedChanged += new System.EventHandler(this.rjToggleButtonDisableTTS2_CheckedChanged);
             // 
             // iconButton28
             // 
@@ -4510,6 +4514,7 @@
             this.iconButton28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton28.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton28.UseVisualStyleBackColor = true;
+            this.iconButton28.Click += new System.EventHandler(this.iconButton28_Click_1);
             // 
             // label111
             // 
@@ -4536,6 +4541,7 @@
             this.button11.TabIndex = 119;
             this.button11.Text = "Connect Web Captioner";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label114
             // 
@@ -4573,6 +4579,7 @@
             this.rjToggleButton7.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButton7.TabIndex = 117;
             this.rjToggleButton7.UseVisualStyleBackColor = true;
+            this.rjToggleButton7.CheckedChanged += new System.EventHandler(this.rjToggleButton7_CheckedChanged);
             // 
             // label17
             // 
@@ -4599,6 +4606,7 @@
             this.rjToggleButtonWebCapAzure.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonWebCapAzure.TabIndex = 114;
             this.rjToggleButtonWebCapAzure.UseVisualStyleBackColor = true;
+            this.rjToggleButtonWebCapAzure.CheckedChanged += new System.EventHandler(this.rjToggleButtonWebCapAzure_CheckedChanged);
             // 
             // button19
             // 

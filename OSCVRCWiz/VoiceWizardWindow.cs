@@ -31,8 +31,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.8.8.5";
-        string releaseDate = "December 11, 2022";//bruh, why don't i just automatically get date
+        string currentVersion = "0.8.8.6";
+        string releaseDate = "December 12, 2022";//bruh, why don't i just automatically get date
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -851,7 +851,7 @@ namespace OSCVRCWiz
             });
 
         }
-        private void comboBoxInput_SelectedIndexChanged(object sender, EventArgs e)
+       /* private void comboBoxInput_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentInputDevice = micIDs[comboBoxInput.SelectedIndex];
             currentInputDeviceName = comboBoxInput.SelectedItem.ToString();
@@ -864,7 +864,7 @@ namespace OSCVRCWiz
             currentOutputDevice = speakerIDs[comboBoxOutput.SelectedIndex];
             currentOutputDeviceName = comboBoxOutput.SelectedItem.ToString();
             System.Diagnostics.Debug.WriteLine("speaker changed");
-        }
+        }*/
         private void buttonSpotify_Click(object sender, EventArgs e)
         {
             var sa = new SpotifyAddon();
@@ -1478,10 +1478,10 @@ namespace OSCVRCWiz
         
         }
 
-        private void iconButton28_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner");
-        }
+       // private void iconButton28_Click(object sender, EventArgs e)
+       // {
+         //   System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner");
+       // }
 
         private void iconButton31_Click(object sender, EventArgs e)
         {
@@ -1955,6 +1955,46 @@ namespace OSCVRCWiz
 
             }
            
+        }
+
+        private void rjToggleButton7_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjToggleButtonWebCapAzure_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjToggleButtonDisableTTS2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjToggleButtonMedia_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxInput_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            currentInputDevice = micIDs[comboBoxInput.SelectedIndex];
+            currentInputDeviceName = comboBoxInput.SelectedItem.ToString();
+            System.Diagnostics.Debug.WriteLine("mic changed", currentInputDevice);
+        }
+
+        private void comboBoxOutput_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            currentOutputDevice = speakerIDs[comboBoxOutput.SelectedIndex];
+            currentOutputDeviceName = comboBoxOutput.SelectedItem.ToString();
+            System.Diagnostics.Debug.WriteLine("speaker changed");
+        }
+
+        private void iconButton28_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner");
+
         }
     }
     public static class StringExtensions//method to make .contains case insensitive
