@@ -31,7 +31,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.8.8.6";
+        string currentVersion = "0.8.8.8";
         string releaseDate = "December 12, 2022";//bruh, why don't i just automatically get date
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
