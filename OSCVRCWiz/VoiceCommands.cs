@@ -69,9 +69,15 @@ namespace OSCVRCWiz
             string type = VoiceWizardWindow.VCType[index];
             var VCMessage = new OscMessage(address, true);
 
-            switch (type)
+         //    System.Diagnostics.Debug.WriteLine("THE VALUE WAS: "+ VoiceWizardWindow.VCValue[index]);
+           //    Console.WriteLine("THE VALUE WAS: " + VoiceWizardWindow.VCValue[index]);
+               // VoiceWizardWindow.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "THE VALUE WAS: " + VoiceWizardWindow.VCValue[index]);
+
+
+
+                switch (type)
             {
-                case "bool":
+                case "Bool":
                     if (string.Equals(VoiceWizardWindow.VCValue[index], "true", StringComparison.InvariantCultureIgnoreCase))
                     {
                         VCMessage = new OscMessage(address, true);
@@ -83,11 +89,11 @@ namespace OSCVRCWiz
                     break;
 
 
-                case "float":
+                case "Float":
                     float value1 = float.Parse(VoiceWizardWindow.VCValue[index]);
                     VCMessage = new OscMessage(address, value1);
                     break;
-                case "int":
+                case "Int":
                     int value2 = int.Parse(VoiceWizardWindow.VCValue[index]);
                     VCMessage = new OscMessage(address, value2);
                     break;
@@ -99,7 +105,7 @@ namespace OSCVRCWiz
 
 
             VoiceWizardWindow.MainFormGlobal.sender3.Send(VCMessage);
-            VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[OSC message sent with voice command '" + VoiceWizardWindow.VCPhrase[index] + "']");
+            VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[OSC message sent with voice command '" + VoiceWizardWindow.VCPhrase[index] + "' " + "Value: " + VoiceWizardWindow.VCValue[index] + "]");
             }
 
 
