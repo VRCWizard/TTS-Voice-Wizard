@@ -101,16 +101,9 @@ namespace OSCVRCWiz
                     messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true); 
                 }
             }
-        //    try
-       //     {
                 MainForm.sender3.Send(typingbubble);
                 MainForm.sender3.Send(messageSpeechBubble);
-       //     }
-         //   catch(Exception ex)
-        //    {
-               // outputLog(MainForm, "Characters do not support UTF8: "+ ex.Message.ToString());
-       //     }
-           
+
             if(MainForm.rjToggleButtonOSC.Checked==false)//why is this here?
             {
                 MainForm.testtimer.Change(MainForm.eraseDelay, 0);
@@ -142,15 +135,9 @@ namespace OSCVRCWiz
         {
             MainForm.Invoke((MethodInvoker)delegate ()
             {
-               // MainForm.pf.customrtb1.Text = "";
-             //   MainForm.pf.customrtb1.Font = new Font("Calibri", Int32.Parse(MainForm.textBoxFont.Text.ToString()));
                 MainForm.pf.customrtb1.Text= textstring;
                 MainForm.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
-                //  MainForm.pf.customrtb1.Font = new Font("Calibri", Int32.Parse(MainForm.textBoxFont.Text.ToString()));
 
-                //    Font currentFont = MainForm.pf.customrtb1.SelectionFont;
-                //  FontStyle newFontStyle = (FontStyle)(currentFont.Style | FontStyle.Regular);
-                //  MainForm.pf.customrtb1.SelectionFont = new Font(currentFont.FontFamily, 10, newFontStyle);
                 if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
                 {
                     MainForm.testtimer.Change(MainForm.eraseDelay, 0);
@@ -178,11 +165,6 @@ namespace OSCVRCWiz
             var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
             MainForm.sender3.Send(message0);
 
-
-            // currentlyPrinting = true;
-
-            //MainForm.sender3 = new SharpOSC.UDPSender("127.0.0.1", 9000);
-
             if (MainForm.rjToggleButton3.Checked==true)
             {
               
@@ -208,9 +190,6 @@ namespace OSCVRCWiz
                 textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox18.Text.ToString(), "さそ", RegexOptions.IgnoreCase);
                 textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox19.Text.ToString(), "ひこ", RegexOptions.IgnoreCase);
                 textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox20.Text.ToString(), "みも", RegexOptions.IgnoreCase);
-
-
-             
             }
    
              

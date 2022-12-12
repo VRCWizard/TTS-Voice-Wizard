@@ -374,10 +374,6 @@ namespace OSCVRCWiz
 
             }
 
-              
-
-
-
         }
         public static string Base64Encode(string plainText)
         {

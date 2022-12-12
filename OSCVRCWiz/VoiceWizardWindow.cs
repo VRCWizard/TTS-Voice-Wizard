@@ -31,8 +31,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.8.8";
-        string releaseDate = "December 10, 2022";//bruh, why don't i just automatically get date
+        string currentVersion = "0.8.8.5";
+        string releaseDate = "December 11, 2022";//bruh, why don't i just automatically get date
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -69,16 +69,12 @@ namespace OSCVRCWiz
         public static string TTSLiteText = "";
         public static bool typingBox = false;
         public static bool firstVoiceLoad = true;
-        
         public WaveIn waveSource = null;
         public WaveFileWriter waveFile = null;
-
-
         public string CultureSelected = "en-US";//free
         public System.Speech.Synthesis.SpeechSynthesizer synthesizerLite;//free
         public MemoryStream stream;
-
-       public static string emotion = "Normal";
+        public static string emotion = "Normal";
         public static string rate = "default";
         public static string pitch = "default";
         public static string volume = "default";
@@ -87,23 +83,14 @@ namespace OSCVRCWiz
         static bool richboxsmall = false;
         List<string> systemSpeechVoiceList = new List<string>();
         public static List<string> approvedMediaSourceList = new List<string>();
-
         public static List<string> VCPhrase = new List<string>();
         public static List<string> VCAddress = new List<string>();
         public static List<string> VCType = new List<string>();
         public static List<string> VCValue = new List<string>();
         public static string voiceCommandsStored = "";
-
         HttpServer httpServer;
         public OutputText ot;
-
-        //  private PerformanceCounter cpuCounter;
-        // private PerformanceCounter ramCounter;
-
-
-
         public PopupForm pf;
-
         public static VoiceWizardWindow MainFormGlobal;
        
        
@@ -210,19 +197,6 @@ namespace OSCVRCWiz
             }
 
         }
-
-
-        ///
-
-      /*  public string getCurrentCpuUsage()    //ram and cpu counters this idea was scrapped because this information adds no value and is pointless to display
-        {
-            return cpuCounter.NextValue() + "%";
-        }
-
-        public string getAvailableRAM()
-        {
-            return ramCounter.NextValue() + "MB";
-        }*/
 
 
         protected override void WndProc(ref Message m)
@@ -553,7 +527,7 @@ namespace OSCVRCWiz
             if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false && comboBoxTTSMode.Text.ToString()=="Azure")
             {
               //  var ot = new OutputText();
-                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
+                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
             }
             switch(comboBoxTTSMode.Text.ToString())
             {
@@ -1804,44 +1778,6 @@ namespace OSCVRCWiz
             ot.outputVRChat(this, OutputText.lastKatString, "tttAdd");
         }
 
-      //  private void button18_Click(object sender, EventArgs e)
-     //  {
-      //      string currentText = richTextBox11.Text.ToString();
-      //      currentText = currentText + ", " + WindowsMedia.mediaSourceNew+", ";
-      //      richTextBox11.Text = currentText;
-      //  }
-
-       // private void button22_Click(object sender, EventArgs e)
-        //{
-       //     string currentText = textBoxCustomSpot.Text.ToString();
-      //      currentText = currentText + "♫ {title} - {artist} ♫ ";
-      //      textBoxCustomSpot.Text = currentText;
-
-    //    }
-
-       /* private void button21_Click(object sender, EventArgs e)
-        {
-            string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "『{progressMinutes}/{durationMinutes}』 ";
-            textBoxCustomSpot.Text = currentText;
-
-        }
-
-        private void button20_Click(object sender, EventArgs e)
-        {
-            string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "『🎮{averageControllerBattery}%』『🪫{averageTrackerBattery}%』 ";
-            textBoxCustomSpot.Text = currentText;
-
-        }
-
-        private void button23_Click(object sender, EventArgs e)
-        {
-            string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "『💓{bpm}』 ";
-            textBoxCustomSpot.Text = currentText;
-
-        }*/
 
         private void button18_Click_1(object sender, EventArgs e)
         {
@@ -1880,23 +1816,12 @@ namespace OSCVRCWiz
             textBoxCustomSpot.Text = currentText;
         }
 
-        private void richTextBox2_TextChanged(object sender, EventArgs e)
-        {
-          
-
-
-        }
-     
 
         private void iconButton27_Click_1(object sender, EventArgs e)
         {
             tabControl1.SelectTab(tabPage2);//voiceCommands
         }
 
-        private void richTextBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonAddVoiceCommand_Click(object sender, EventArgs e)
         {
@@ -1904,7 +1829,7 @@ namespace OSCVRCWiz
               VCPhrase.Clear();
               VCValue.Clear();
               VCType.Clear();
-            voiceCommandsStored += $"{textBox1Spoken.Text.ToString()},{textBox2Address.Text.ToString()},{comboBox3Type.SelectedItem.ToString()},{textBox4Value.Text.ToString()};";
+            voiceCommandsStored += $"{textBox1Spoken.Text.ToString()}:{textBox2Address.Text.ToString()}:{comboBox3Type.SelectedItem.ToString()}:{textBox4Value.Text.ToString()};";
             var vc = new VoiceCommands();
             vc.voiceCommands();
             vc.refreshCommandList();
@@ -1953,19 +1878,7 @@ namespace OSCVRCWiz
 
         private void checkedListBox1_DoubleClick(object sender, EventArgs e)
         {
-            try
-            {
-                VCAddress.RemoveAt(checkedListBox1.SelectedIndex);
-                VCPhrase.RemoveAt(checkedListBox1.SelectedIndex);
-                VCValue.RemoveAt(checkedListBox1.SelectedIndex);
-                VCType.RemoveAt(checkedListBox1.SelectedIndex);
-                var vc = new VoiceCommands();
-                vc.refreshCommandList();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+           
             
         }
 
@@ -1995,9 +1908,53 @@ namespace OSCVRCWiz
             }
         }
 
-        private void SystemSet_Click(object sender, EventArgs e)
+        private void iconButton38_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service");
+
+
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(AzureSet);//settings
+        }
+
+        private void iconButton39_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener");
+        }
+
+        private void iconButton40_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Voice-Commands");
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkedListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(deleteCommandsToggle.Checked==true)
+            {
+                try
+                {
+                    VCAddress.RemoveAt(checkedListBox1.SelectedIndex);
+                    VCPhrase.RemoveAt(checkedListBox1.SelectedIndex);
+                    VCValue.RemoveAt(checkedListBox1.SelectedIndex);
+                    VCType.RemoveAt(checkedListBox1.SelectedIndex);
+                    var vc = new VoiceCommands();
+                    vc.refreshCommandList();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+
+            }
+           
         }
     }
     public static class StringExtensions//method to make .contains case insensitive

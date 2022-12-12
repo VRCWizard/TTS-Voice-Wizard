@@ -23,7 +23,7 @@ namespace OSCVRCWiz
                     string words2 = s;
                     int count = 1;
 
-                    string[] split2 = words2.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] split2 = words2.Split(new Char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string s2 in split2)
                     {
 
@@ -113,7 +113,7 @@ namespace OSCVRCWiz
             for (var index =0; index <VoiceWizardWindow.VCAddress.Count;index++)
             {
                 commandListHelper($"ID: {index+1} | Phrase: {VoiceWizardWindow.VCPhrase[index]} | Address: {VoiceWizardWindow.VCAddress[index]} | Data Type: {VoiceWizardWindow.VCType[index]} | Value: {VoiceWizardWindow.VCValue[index]}");
-                VoiceWizardWindow.voiceCommandsStored += $"{VoiceWizardWindow.VCPhrase[index]},{VoiceWizardWindow.VCAddress[index]},{VoiceWizardWindow.VCType[index]},{VoiceWizardWindow.VCValue[index]};";
+                VoiceWizardWindow.voiceCommandsStored += $"{VoiceWizardWindow.VCPhrase[index]}:{VoiceWizardWindow.VCAddress[index]}:{VoiceWizardWindow.VCType[index]}:{VoiceWizardWindow.VCValue[index]};";
 
             }
         }

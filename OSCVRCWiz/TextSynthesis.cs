@@ -193,27 +193,6 @@ namespace OSCVRCWiz
                                     break;
                                 case "Azure":
                                     SetDefaultTTS.SetVoicePresets();
-                                  /*  var maybeStyle = Regex.Match(translatedString, @"^([\w\-]+)");
-                                    string useThisEmotion = VoiceWizardWindow.emotion;
-                                    switch (maybeStyle.Value)
-                                    {
-                                        case "Normal": break;
-                                        case "Angry": break;
-                                        case "Cheerful": break;
-                                        case "Excited": break;
-                                        case "Friendly": break;
-                                        case "Hopeful": break;
-                                        case "Sad": break;
-                                        case "Shouting": break;
-                                        case "Terrified": break;
-                                        case "Unfriendly": break;
-                                        case "Whispering": break;
-                                        case "Assistant": break;
-                                        case "Chat": break;
-                                       // case "Customer Service": break;
-                                        case "Newscast": break;
-                                        default: break;
-                                    }*/
 
                                     Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
                                     break;
@@ -272,8 +251,6 @@ namespace OSCVRCWiz
 
                     }
 
-
-
                 };
                 speechRecognizer1.Canceled += (sender, eventArgs) =>
                 {
@@ -291,7 +268,6 @@ namespace OSCVRCWiz
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(MainForm.dictationString));
 
                         SetDefaultTTS.SetVoicePresets();
-                    //    var ot = new OutputText();
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
                             VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString);
@@ -426,30 +402,6 @@ namespace OSCVRCWiz
                                 break;
                             case "Azure":
                                 SetDefaultTTS.SetVoicePresets();
-                                /*  var maybeStyle = Regex.Match(MainForm.dictationString, @"^([\w\-]+)");
-                                   string useThisEmotion = VoiceWizardWindow.emotion;
-                                string useThisString = MainForm.dictationString;
-                                   switch (maybeStyle.Value)
-                                   {
-                                       case "Normal": useThisEmotion = "normal"; break;
-                                        
-                                       case "Angry": useThisEmotion = "angry"; break;c
-                                       case "Cheerful": useThisEmotion = "cheerful"; break;
-                                       case "Excited": useThisEmotion = "excited"; break;
-                                       case "Friendly": useThisEmotion = "friendly"; break;
-                                       case "Hopeful": useThisEmotion = "hopeful"; break;
-                                       case "Sad": useThisEmotion = "sad"; break;
-                                       case "Shouting": useThisEmotion = "shouting"; break;
-                                       case "Terrified": useThisEmotion = "terrified"; break;
-                                       case "Unfriendly": useThisEmotion = "unfriendly"; break;
-                                       case "Whispering": useThisEmotion = "whispering"; break;
-                                       case "Assistant": useThisEmotion = "assistant"; break;
-                                       case "Chat": useThisEmotion = "chat"; break;
-                                      // case "Customer Service": break;
-                                       case "Newscast": useThisEmotion = "normal"; break;
-                                       default: useThisEmotion = VoiceWizardWindow.emotion; break;
-                                   }*/
-                               // MainForm.dictationString = Regex.Replace(MainForm.dictationString, useThisEmotion, ""); break;
                                 Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, MainForm.dictationString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
                                 break;
                             default:
@@ -663,8 +615,6 @@ namespace OSCVRCWiz
 
                 await translationRecognizer1.StopContinuousRecognitionAsync();
                 await speechRecognizer1.StopContinuousRecognitionAsync();
-                //   speechRecognizer1.Dispose();
-                //  var ot = new OutputText();
                 VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Azure Continuous Listening Disabled (Any)]");
             }
         }

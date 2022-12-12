@@ -23,7 +23,6 @@ namespace OSCVRCWiz
     public class TikTok
     {
 
-       
             public static async Task TikTokTextAsSpeech(string text)
             {
             
@@ -122,19 +121,5 @@ namespace OSCVRCWiz
     }
    
 
-    /*public class TextToSpeechOperation
-        {
-            public int ID { get; set; }
-            public string Text { get; set; }
-            public string Date { get; set; }
-            public string Voice { get; set; }
-            public string Path { get; set; }
 
-            public TextToSpeechOperation()
-            {
-                Date = System.DateTime.Now.ToString("HH:mm:ss, dd.MM.yyyy");
-            }
-
-        
-    }*/
 }
