@@ -2896,7 +2896,7 @@
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(90, 20);
             this.label46.TabIndex = 64;
-            this.label46.Text = "Recieve Port";
+            this.label46.Text = "Receive Port";
             // 
             // button8
             // 
