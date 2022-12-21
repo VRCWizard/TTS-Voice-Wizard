@@ -106,8 +106,11 @@ namespace OSCVRCWiz
 
                         case "Hindi [hi]": localList.Add("hi-IN"); break;
                         case "Hungarian [hu]": localList.Add("hu-HU"); break;
+                        case "Indonesian [id]": localList.Add("id-ID"); break;
+                       
                         case "Irish [ga]": localList.Add("ga-IE"); break;
                         case "Italian [it]": localList.Add("it-IT"); break;
+
                         case "Japanese [ja]": localList.Add("ja-JP"); break;
                         case "Korean [ko]": localList.Add("ko-KR"); break;
                         case "Norwegian [nb]": localList.Add("nb-NO"); break;

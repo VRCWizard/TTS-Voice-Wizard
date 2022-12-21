@@ -83,6 +83,12 @@
     <None Update="ftalk_us.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="KAT Emoji Texture Sheet\KAT_CharTiles Emojis3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="KAT Emoji Texture Sheet\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Settings\Settings1.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
@@ -91,6 +97,12 @@
     <None Update="Settings\emojiSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>emojiSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="sounds\speechButton.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="sounds\TTSButton.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

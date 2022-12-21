@@ -42,6 +42,7 @@ namespace OSCVRCWiz
                 case "German [de-DE]": fromLanguage = "de-DE"; break;
                 case "Hindi [hi-IN]": fromLanguage = "hi-IN"; break;
                 case "Hungarian [hu-HU]": fromLanguage = "hu-HU"; break;
+                case "Indonesian [id-ID]": fromLanguage = "id-ID"; break;
                 case "Irish [ga-IE]": fromLanguage = "ga-IE"; break;
                 case "Italian [it-IT]": fromLanguage = "it-IT"; break;
                 case "Japanese [ja-JP]": fromLanguage = "ja-JP"; break;
@@ -81,6 +82,7 @@ namespace OSCVRCWiz
                 case "German [de]": toLanguage = "de"; break;
                 case "Hindi [hi]": toLanguage = "hi"; break;
                 case "Hungarian [hu]": toLanguage = "hu"; break;
+                case "Indonesian [id]": toLanguage = "id"; break;
                 case "Irish [ga]": toLanguage = "ga"; break;
                 case "Italian [it]": toLanguage = "it"; break;
                 case "Japanese [ja]": toLanguage = "ja"; break;
@@ -194,7 +196,14 @@ namespace OSCVRCWiz
                                 case "Azure":
                                     SetDefaultTTS.SetVoicePresets();
 
-                                    Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                    if (MainForm.rjToggleButtonVoiceWhatLang.Checked == true)
+                                    {
+                                        Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                    }
+                                    else
+                                    {
+                                        Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, MainForm.dictationString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                    }
                                     break;
                                 default:
                                   
@@ -518,7 +527,16 @@ namespace OSCVRCWiz
                                 break;
                             case "Azure":
                                 SetDefaultTTS.SetVoicePresets();
-                                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                if(MainForm.rjToggleButtonVoiceWhatLang.Checked == true)
+                                {
+                                    Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, translatedString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                }
+                                else
+                                {
+                                    Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, MainForm.dictationString, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                }
+                                
+
                                 break;
 
                             default:

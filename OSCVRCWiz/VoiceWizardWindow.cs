@@ -31,8 +31,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.8.8.8";
-        string releaseDate = "December 12, 2022";//bruh, why don't i just automatically get date
+        string currentVersion = "0.9.0";
+        string releaseDate = "December 21, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -360,20 +360,28 @@ namespace OSCVRCWiz
                     string phrase = comboBox2.Text.ToString();
                     string[] words = phrase.Split('|');
                     int counter = 1;
-                    foreach (var word in words)
+                    try
                     {
-                        if (counter == 1)
+                        foreach (var word in words)
                         {
-                            synthesizerLite.SelectVoice(word);
-                            System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
+                            if (counter == 1)
+                            {
+                                synthesizerLite.SelectVoice(word);
+                                System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
 
+                            }
+                            if (counter == 2)
+                            {
+                                CultureSelected = word;
+                                System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
+                            }
+                            counter++;
                         }
-                        if (counter == 2)
-                        {
-                            CultureSelected = word;
-                            System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
-                        }
-                        counter++;
+                    }
+                    catch (Exception ex) 
+                    {
+                        MessageBox.Show("Unable to load System Speech Voices (use a different option instead): " + ex.Message);
+
                     }
 
                     break;
