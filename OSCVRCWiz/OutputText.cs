@@ -131,7 +131,7 @@ namespace OSCVRCWiz
             }
 
         }
-        public async void outputGreenScreen(VoiceWizardWindow MainForm, string textstring, string type)
+        public async Task outputGreenScreen(VoiceWizardWindow MainForm, string textstring, string type)
         {
             MainForm.Invoke((MethodInvoker)delegate ()
             {
