@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using EmbedIO.Sessions;
 using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz
@@ -68,12 +69,12 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
             VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
             VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
-            VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
+           // VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
+            //VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
            
 
             // VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
-            VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
+           // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked = Settings1.Default.bannerSetting;
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked == true)
@@ -85,12 +86,12 @@ namespace OSCVRCWiz
 
             try
             {
-                VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem = Settings1.Default.BuiltInOutputSetting;
+               // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem = Settings1.Default.BuiltInOutputSetting;
 
             }
             catch (Exception ex)
             {
-                VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
+               // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
 
             }
 
@@ -141,8 +142,8 @@ namespace OSCVRCWiz
 
             // VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.WebcaptionerSetting; //already saves
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked = Settings1.Default.saveUseAzure;
+          //  VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.WebcaptionerSetting; //already saves
+          //  VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked = Settings1.Default.saveUseAzure;
            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked = Settings1.Default.saveUseSystem;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked = Settings1.Default.chatBoxSpotifyOnly;
@@ -156,14 +157,32 @@ namespace OSCVRCWiz
 
              VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked= Settings1.Default.enableMedia;
 
-            VoiceWizardWindow.MainFormGlobal.richTextBox11.Text = Settings1.Default.approvedSource;
+          //  VoiceWizardWindow.MainFormGlobal.richTextBox11.Text = Settings1.Default.approvedSource;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked = Settings1.Default.StopOnPause;
 
             VoiceWizardWindow.voiceCommandsStored = Settings1.Default.voiceCommandList;
 
             VoiceWizardWindow.MainFormGlobal.comboBox3Type.SelectedIndex = 0;
+            VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedIndex = 0;
 
+              
+        
+
+           
+              string[] split = Settings1.Default.approvedSource.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+               foreach (string s in split)
+                {
+                  string trimmed = s.Trim();
+                  if (trimmed != "")
+                   {
+                    VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Add(trimmed,true);
+                }
+                  
+              }
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.saveDarkMode;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked = Settings1.Default.saveVoiceActStyle;
 
 
             VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;

@@ -575,27 +575,27 @@ namespace OSCVRCWiz
                     case 'に': letter = 148; break;//emoji 10
                     case 'ら': letter = 149; break;//emoji 10
 
-                    case 'せ': letter = 150; break;
-                    case 'ち': letter = 151; break;
-                    case 'と': letter = 152; break;
-                    case 'し': letter = 153; break;
-                    case 'は': letter = 154; break;
-                    case 'き': letter = 155; break;
-                    case 'く': letter = 156; break;
-                    case 'ま': letter = 157; break;
-                    case 'の': letter = 158; break;
-                    case 'り': letter = 159; break;
+                    case 'せ': letter = 150; break;//11
+                    case 'ち': letter = 151; break;//11
+                    case 'と': letter = 152; break;//12
+                    case 'し': letter = 153; break;//12
+                    case 'は': letter = 154; break;//13
+                    case 'き': letter = 155; break;//13
+                    case 'く': letter = 156; break;//14
+                    case 'ま': letter = 157; break;//14
+                    case 'の': letter = 158; break;//15
+                    case 'り': letter = 159; break;//15
 
-                    case 'れ': letter = 160; break;
-                    case 'け': letter = 161; break;
-                    case 'む': letter = 162; break;
-                    case 'つ': letter = 163; break;
-                    case 'さ': letter = 164; break;
-                    case 'そ': letter = 165; break;
-                    case 'ひ': letter = 166; break;
-                    case 'こ': letter = 167; break;
-                    case 'み': letter = 168; break;
-                    case 'も': letter = 169; break;
+                    case 'れ': letter = 160; break;//16
+                    case 'け': letter = 161; break;//16
+                    case 'む': letter = 162; break;//17
+                    case 'つ': letter = 163; break;//17
+                    case 'さ': letter = 164; break;//18
+                    case 'そ': letter = 165; break;//18
+                    case 'ひ': letter = 166; break;//19
+                    case 'こ': letter = 167; break;//19
+                    case 'み': letter = 168; break;//20
+                    case 'も': letter = 169; break;//20
 
                     case 'ね': letter = 170; break;
                     case 'る': letter = 171; break;
@@ -606,7 +606,7 @@ namespace OSCVRCWiz
                     case 'ぷ': letter = 176; break;
                     case 'ぼ': letter = 177; break;
                     case 'ぽ': letter = 178; break;
-                    case 'べ': letter = 179; break;
+                    case 'べ': letter = 179; break;//25
 
                     case 'ぺ': letter = 180; break;
                     case 'だ': letter = 181; break;
@@ -617,7 +617,7 @@ namespace OSCVRCWiz
                     case 'ぢ': letter = 186; break;
                     case 'ど': letter = 187; break;
                     case 'じ': letter = 188; break;
-                    case 'ば': letter = 189; break;
+                    case 'ば': letter = 189; break;//30
 
                     case 'ぱ': letter = 190; break;
                     case 'ぎ': letter = 191; break;
@@ -628,7 +628,7 @@ namespace OSCVRCWiz
                     case 'ぞ': letter = 196; break;
                     case 'び': letter = 197; break;
                     case 'ぴ': letter = 198; break;
-                    case 'ご': letter = 199; break;
+                    case 'ご': letter = 199; break;//35
 
                     case 'ぁ': letter = 200; break;
                     case 'ぃ': letter = 201; break;
@@ -639,7 +639,7 @@ namespace OSCVRCWiz
                     case 'ゅ': letter = 206; break;
                     case 'ょ': letter = 207; break;
                     case 'ヌ': letter = 208; break;
-                    case 'フ': letter = 209; break;
+                    case 'フ': letter = 209; break;//40
 
                     case 'ア': letter = 210; break;
                     case 'ウ': letter = 211; break;
@@ -650,7 +650,7 @@ namespace OSCVRCWiz
                     case 'ヨ': letter = 216; break;
                     case 'ワ': letter = 217; break;
                     case 'ヲ': letter = 218; break;
-                    case 'ホ': letter = 219; break;
+                    case 'ホ': letter = 219; break;//45
 
                     case 'ヘ': letter = 220; break;
                     case 'タ': letter = 221; break;
@@ -661,7 +661,7 @@ namespace OSCVRCWiz
                     case 'ン': letter = 226; break;
                     case 'ナ': letter = 227; break;
                     case 'ニ': letter = 228; break;
-                    case 'ラ': letter = 229; break;
+                    case 'ラ': letter = 229; break;//50
 
                     case 'セ': letter = 230; break;
                     case 'チ': letter = 231; break;
@@ -672,7 +672,7 @@ namespace OSCVRCWiz
                     case 'ク': letter = 236; break;
                     case 'マ': letter = 237; break;
                     case 'ノ': letter = 238; break;
-                    case 'リ': letter = 239; break;
+                    case 'リ': letter = 239; break;//55
 
                     case 'レ': letter = 240; break;
                     case 'ケ': letter = 241; break;
@@ -683,14 +683,14 @@ namespace OSCVRCWiz
                     case 'ヒ': letter = 246; break;
                     case 'コ': letter = 247; break;
                     case 'ミ': letter = 248; break;
-                    case 'モ': letter = 249; break;
+                    case 'モ': letter = 249; break;//60
 
                     case 'ネ': letter = 250; break;
                     case 'ル': letter = 251; break;
                     case 'メ': letter = 252; break;
                     case 'ロ': letter = 253; break;
                     case '〝': letter = 254; break;
-                    case '°': letter = 255; break;
+                    case '°': letter = 255; break;//63
 
 
                     case '¿': letter = 31; break;

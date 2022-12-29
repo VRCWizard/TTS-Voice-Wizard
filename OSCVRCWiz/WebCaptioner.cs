@@ -112,8 +112,8 @@ namespace OSCVRCWiz
 
                     }
                     //Send Text to TTS
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked == true)//azure new is incorrect now means any tts
-                    {
+                  //  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked == true)//azure new is incorrect now means any tts
+                  //  {
                         string ttsModeNow = VoiceWizardWindow.TTSModeSaved;
 
                         switch (ttsModeNow)
@@ -142,7 +142,7 @@ namespace OSCVRCWiz
 
                                 break;
                         }
-                    }
+                 //   }
                  
                 
                 }

@@ -12,7 +12,7 @@ namespace OSCVRCWiz.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class Settings1 : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings1 defaultInstance = ((Settings1)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings1())));
@@ -649,7 +649,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("♫ {title} - {artist} ♫ ")]
+        [global::System.Configuration.DefaultSettingValueAttribute("{pause} {title} - {artist} ")]
         public string SpotifyCustomSetting {
             get {
                 return ((string)(this["SpotifyCustomSetting"]));
@@ -889,7 +889,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Spotify.exe,")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string approvedSource {
             get {
                 return ((string)(this["approvedSource"]));
@@ -920,6 +920,30 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["voiceCommandList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveDarkMode {
+            get {
+                return ((bool)(this["saveDarkMode"]));
+            }
+            set {
+                this["saveDarkMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveVoiceActStyle {
+            get {
+                return ((bool)(this["saveVoiceActStyle"]));
+            }
+            set {
+                this["saveVoiceActStyle"] = value;
             }
         }
     }

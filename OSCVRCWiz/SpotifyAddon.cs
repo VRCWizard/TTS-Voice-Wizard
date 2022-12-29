@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SpotifyAPI.Web.Auth;
 using SpotifyAPI.Web;
 using OSCVRCWiz.Settings;
+using System.Diagnostics;
 
 
 namespace OSCVRCWiz
@@ -26,6 +27,7 @@ namespace OSCVRCWiz
         public static string spotifyurllink = "https://open.spotify.com/";
         public static bool legacyState = false;
         static string fullSongPauseCheck="";
+        public static string spotifyPausedIndicator = "▶️";
 
 
 
@@ -125,9 +127,19 @@ namespace OSCVRCWiz
                     }
                     if ((lastSong != title || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked == true) && (!string.IsNullOrWhiteSpace(title) && title != "" && VoiceWizardWindow.pauseSpotify != true))
                     {
-                       // VoiceWizardWindow.pauseBPM = true; pause removed to fix with spotify 
+                        // VoiceWizardWindow.pauseBPM = true; pause removed to fix with spotify 
                         // lastSong = title;
-                        System.Diagnostics.Debug.WriteLine(title);
+
+                        if (fullSongPauseCheck != progress)
+                        {
+                            spotifyPausedIndicator = "▶️";
+                        }
+                        else
+                        {
+                            spotifyPausedIndicator = "⏸️";
+                        }
+
+                            System.Diagnostics.Debug.WriteLine(title);
                         System.Diagnostics.Debug.WriteLine(artist);
                         System.Diagnostics.Debug.WriteLine(duration);
 
@@ -149,8 +161,9 @@ namespace OSCVRCWiz
                         theString = theString.Replace("{leftControllerBattery}", HeartbeatAddon.globalLeftControllerBattery.ToString());
                         theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
                         theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
+                        theString = theString.Replace("{pause}", spotifyPausedIndicator);
 
-                       if ((fullSongPauseCheck != progress && MainForm.rjToggleButtonPlayPaused.Checked == true)|| (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
+                        if ((fullSongPauseCheck != progress && MainForm.rjToggleButtonPlayPaused.Checked == true)|| (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
                        {
 
 
@@ -202,7 +215,14 @@ namespace OSCVRCWiz
             {
                 if (VoiceWizardWindow.pauseBPM == false)
                 {
-
+                    if (WindowsMedia.mediaStatus != "Paused")
+                    {
+                        spotifyPausedIndicator = "▶️";
+                    }
+                    else
+                    {
+                        spotifyPausedIndicator = "⏸️";
+                    }
 
                     var theString = "";
                     theString = MainForm.textBoxCustomSpot.Text.ToString();
@@ -215,6 +235,7 @@ namespace OSCVRCWiz
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
+                    theString = theString.Replace("{pause}", spotifyPausedIndicator);
 
 
 
@@ -250,7 +271,14 @@ namespace OSCVRCWiz
 
                 if (VoiceWizardWindow.pauseBPM == false)
                 {
-
+                    if (WindowsMedia.mediaStatus != "Paused")
+                    {
+                        spotifyPausedIndicator = "▶️";
+                    }
+                    else
+                    {
+                        spotifyPausedIndicator = "⏸️";
+                    }
 
                     var theString = "";
                     theString = MainForm.textBoxCustomSpot.Text.ToString();
@@ -263,11 +291,12 @@ namespace OSCVRCWiz
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
+                    theString = theString.Replace("{pause}", spotifyPausedIndicator);
 
 
 
 
-                 //   var ot = new OutputText();
+                    //   var ot = new OutputText();
                     if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                     {
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));

@@ -31,8 +31,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.0";
-        string releaseDate = "December 21, 2022";
+        string currentVersion = "0.9.2";
+        string releaseDate = "December 28, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -92,6 +92,7 @@ namespace OSCVRCWiz
         public OutputText ot;
         public PopupForm pf;
         public static VoiceWizardWindow MainFormGlobal;
+        public static bool webCapEnabled = false;
        
        
 
@@ -156,10 +157,10 @@ namespace OSCVRCWiz
                 foreach (var device in WaveOutDevice.EnumerateDevices())
                 {
                     System.Diagnostics.Debug.WriteLine("{0}: {1}", device.DeviceId, device.Name);
-                    comboLiteOutput.Items.Add(device.Name);
+                    //comboLiteOutput.Items.Add(device.Name);
                 }
                 synthesizerLite.SetOutputToWaveStream(stream);
-                comboLiteInput.Items.Add("Default");
+              //  comboLiteInput.Items.Add("Default");
                 //--------------------------------------------
 
                 textBox2.PasswordChar = '*';
@@ -175,6 +176,7 @@ namespace OSCVRCWiz
                 //  typetimer.Change(Timeout.Infinite, Timeout.Infinite);
                 typetimer.Change(1500, 0);
 
+                listView1.View = View.List;
 
                 
                 foreach (var voice in synthesizerLite.GetInstalledVoices())
@@ -255,6 +257,22 @@ namespace OSCVRCWiz
             richTextBox1.Select(0, 0);
             richTextBox1.SelectedText = line + "\r\n";
         }
+       /* public void logLine(string line, Color color) //add colors
+        {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string, Color>(logLine), new object[] { line, color });
+                return;
+            }
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                richTextBox1.Select(0, 0);
+                richTextBox1.SelectionColor = color;
+                richTextBox1.SelectedText = line + "\r\n";
+
+            });
+
+        }*/
 
 
         public void AppendTextBox(string value)
@@ -466,10 +484,10 @@ namespace OSCVRCWiz
                 button7.Enabled = false;
 
             }
-            if (rjToggleButton7.Checked == true)
-            {
-                webCapOn();
-            }
+          //  if (rjToggleButton7.Checked == true)
+          //  {
+           //     webCapOn();
+          //  }
             WindowsMedia.getWindowsMedia();
             var vc = new VoiceCommands();
             vc.voiceCommands();
@@ -532,7 +550,7 @@ namespace OSCVRCWiz
                     MessageBox.Show(ex.Message);
                 }
             }
-            if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false && comboBoxTTSMode.Text.ToString()=="Azure")
+            if (YourSubscriptionKey == ""  && comboBoxTTSMode.Text.ToString()=="Azure")
             {
               //  var ot = new OutputText();
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
@@ -634,46 +652,79 @@ namespace OSCVRCWiz
                 }
             }
 
-            if (YourSubscriptionKey == "" && rjToggleButtonLiteMode.Checked == false)
+            this.Invoke((MethodInvoker)delegate ()
             {
-                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
-            }
-
-
-            if (rjToggleButtonLiteMode.Checked == true || YourSubscriptionKey == "")
+                switch (comboBoxSTT.SelectedItem.ToString())
             {
-                
-                var lite = new WindowsBuiltInSTTTS();
-                Task.Run(() => lite.speechTTSButtonLiteClick(this));
-               // WindowsBuiltInSTTTS._stream.
-
-            }
-            else
-            {
-                var ts = new TextSynthesis();
-                this.Invoke((MethodInvoker)delegate ()
-                {
-                    if (comboBox3.Text.ToString() == "No Translation (Default)")
+                case "Web Captioner":
+                    if(webCapEnabled==false)
                     {
-                        ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
-                        System.Diagnostics.Debug.WriteLine("<speechSetup change>");
-                        ot.outputLog(this, "[Azure Listening]");
-                        ts.speechTTTS(this, comboBox4.Text.ToString());
-
+                        webCapOn();
+                        webCapEnabled = true;
                     }
                     else
                     {
-                        ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
-                        System.Diagnostics.Debug.WriteLine("<speechSetup change>");
-
-                        ot.outputLog(this, "[Azure Translation Listening]");
-                        ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
+                        webCapOff();
+                        webCapEnabled = false;
 
                     }
-                });
+                    
 
+                    break;
+
+                case "System Speech":
+                    var lite = new WindowsBuiltInSTTTS();
+                    Task.Run(() => lite.speechTTSButtonLiteClick(this));
+
+                    break;
+                case "Azure":
+                    if (YourSubscriptionKey == "")
+                    {
+                        ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
+                    }
+                    if (YourSubscriptionKey != "")
+                    {
+                        var ts = new TextSynthesis();
+                      
+                            if (comboBox3.Text.ToString() == "No Translation (Default)")
+                            {
+                                ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                                System.Diagnostics.Debug.WriteLine("<speechSetup change>");
+                                if (rjToggleButton4.Checked == false)
+                                {
+                                    //TODO: this is redundent, can remove check for button4 (continuous check) inside speechTTS and translation TTS
+                                    ot.outputLog(this, "[Azure Listening]");
+                                    ts.speechTTTS(this, comboBox4.Text.ToString());
+                                }
+
+                            }
+                            else
+                            {
+                                ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                                System.Diagnostics.Debug.WriteLine("<speechSetup change>");
+                                if (rjToggleButton4.Checked == false)
+                                {
+                                    //TODO: this is redundent, can remove check for button4 (continuous check) inside speechTTS and translation TTS
+                                    ot.outputLog(this, "[Azure Translation Listening]");
+                                    ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
+                                }
+
+                            }
+                        
+                    }
+                    break;
+
+                default:
+
+                    break;
             }
-           
+            });
+
+
+
+
+
+
 
         }
         private void doTTSOnly()
@@ -820,7 +871,7 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton5.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(SettingsNew);//settings
+            tabControl1.SelectTab(General);//settings
             webView21.Hide();
         }
 
@@ -1039,7 +1090,7 @@ namespace OSCVRCWiz
             //copies main log text to addon logs
             richTextBox7.Text = richTextBox1.Text;
             richTextBox8.Text = richTextBox1.Text;
-            richTextBox10.Text = richTextBox1.Text;
+            //richTextBox10.Text = richTextBox1.Text;
             richTextBox12.Text = richTextBox1.Text;
         }
 
@@ -1140,6 +1191,26 @@ namespace OSCVRCWiz
                 }
                 index++;
             }
+            this.Invoke((MethodInvoker)delegate ()
+            {
+
+            if (comboBoxTTSMode.SelectedItem.ToString()=="Azure" & rjToggleButtonStyle.Checked==true)
+            {
+                foreach (var x in comboBox1.Items)
+                {
+                    System.Diagnostics.Debug.WriteLine("checking " + x.ToString());
+                    if (text.Contains(x.ToString(), StringComparison.OrdinalIgnoreCase))
+                    {
+                        System.Diagnostics.Debug.WriteLine("it contains " + x.ToString());
+                        comboBox1.SelectedItem= x.ToString();
+                       // var vc = new VoiceCommands();
+                        //vc.phraseFound(index);
+                    }
+                    index++;
+                }
+            }
+
+            });
         }
 
 
@@ -1157,7 +1228,7 @@ namespace OSCVRCWiz
 
         private void comboLiteOutput_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentOutputDeviceLite = comboLiteOutput.SelectedIndex;
+         //   currentOutputDeviceLite = comboLiteOutput.SelectedIndex;
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -1241,21 +1312,12 @@ namespace OSCVRCWiz
             tabControl1.SelectTab(General);//settings
         }
 
-        private void iconButton19_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectTab(TextOut);//settings
-        }
-
+ 
         private void iconButton18_Click_1(object sender, EventArgs e)
         {
             tabControl1.SelectTab(AzureSet);//settings
         }
 
-        private void iconButton21_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectTab(SystemSet);//settings
-
-        }
 
         private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
         {
@@ -1449,7 +1511,7 @@ namespace OSCVRCWiz
 
         private void iconButton24_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(tabWebCap);//sttts
+           // tabControl1.SelectTab(tabWebCap);//sttts
         }
 
 
@@ -1515,12 +1577,22 @@ namespace OSCVRCWiz
         private void webCapOn()
         {
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");
-            var httpServer = new HttpServer();
+           // var httpServer = new HttpServer();
             Task.Run(() => httpServer.Start());
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
             ot.outputLog(this, "[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
-            button11.Enabled = false;
+            //button11.Enabled = false;
         }
+        private void webCapOff()
+        {
+            System.Diagnostics.Debug.WriteLine("Stopping HTTP listener...");
+          //  var httpServer = new HttpServer();
+            Task.Run(() => httpServer.Stop());
+            System.Diagnostics.Debug.WriteLine("Stopped HTTP listener");
+            ot.outputLog(this, "[HTTP listener for Web Captioner Stopped.]");
+           // button11.Enabled = false;
+        }
+
 
         private void iconButton32_Click(object sender, EventArgs e)
         {
@@ -1745,11 +1817,11 @@ namespace OSCVRCWiz
 
         private void button19_Click(object sender, EventArgs e)
         {
-            comboLiteOutput.Items.Clear();
+            //comboLiteOutput.Items.Clear();
             foreach (var device in WaveOutDevice.EnumerateDevices())
             {
                 System.Diagnostics.Debug.WriteLine("{0}: {1}", device.DeviceId, device.Name);
-                comboLiteOutput.Items.Add(device.Name);
+             //   comboLiteOutput.Items.Add(device.Name);
             }
             ot.outputLog(this, "[System Speech / FonixTalk Output Devices Reloaded]");
         }
@@ -1787,17 +1859,17 @@ namespace OSCVRCWiz
         }
 
 
-        private void button18_Click_1(object sender, EventArgs e)
-        {
-            string currentText = richTextBox11.Text.ToString();
-            currentText = currentText + ", " + WindowsMedia.mediaSourceNew + ", ";
-            richTextBox11.Text = currentText;
-        }
+      //  private void button18_Click_1(object sender, EventArgs e)
+      //  {
+       //     string currentText = richTextBox11.Text.ToString();
+       //     currentText = currentText + ", " + WindowsMedia.mediaSourceNew + ", ";
+       //     richTextBox11.Text = currentText;
+      //  }
 
         private void button20_Click_1(object sender, EventArgs e)
         {
             string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "♫ {title} - {artist} ♫ ";
+            currentText = currentText + "{pause} {title} - {artist} ";
             textBoxCustomSpot.Text = currentText;
         }
 
@@ -1892,28 +1964,7 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonLiteMode_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButtonLiteMode.Checked==true)
-            {
-                ot.outputLog(this, "[Input device for System Speech is forced to default device, you can either change your default deivce in Control Panel > Sound or change this apps device specifically in Windows Settings > Sound]");
-                comboBoxInput.SelectedIndex = 0;
-                comboBoxInput.Enabled = false;
-
-            }
-            if (rjToggleButtonLiteMode.Checked == false)
-            {
-                comboBoxInput.Enabled = true;
-                try
-                {
-                    comboBoxInput.SelectedItem = Settings1.Default.MicName;
-                }
-                catch(Exception ex)
-                {
-
-                }
-
-                
-
-            }
+          
         }
 
         private void iconButton38_Click(object sender, EventArgs e)
@@ -2004,7 +2055,174 @@ namespace OSCVRCWiz
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner");
 
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label53_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label59_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSTT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+            if (comboBoxTTSMode.Text.ToString() == "System Speech")
+            {
+                ot.outputLog(this, "[Input device for System Speech is forced to default device, you can either change your default deivce in Control Panel > Sound or change this apps device specifically in Windows Settings > Sound]");
+                comboBoxInput.SelectedIndex = 0;
+                comboBoxInput.Enabled = false;
+
+            }
+            if (comboBoxTTSMode.Text.ToString() != "System Speech")
+            {
+                comboBoxInput.Enabled = true;
+                try
+                {
+                    comboBoxInput.SelectedItem = Settings1.Default.MicName;
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+
+            }
+        }
+
+        private void iconButton41_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#speech-to-text-and-tts");
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconButton28_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(AzureSet);//settings
+        }
+
+        private void rjToggleButton7_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+           if (rjToggleButton7.Checked== true)//dark mode
+            {
+                DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
+                foreach (var thisControl in GetAllChildren(this).OfType<TextBox>())
+                {
+                    thisControl.BackColor = Color.FromArgb(31, 30, 68);
+                    thisControl.ForeColor = Color.White;
+                }
+                foreach (var thisControl in GetAllChildren(this).OfType<RichTextBox>())
+                {
+                    thisControl.BackColor = Color.FromArgb(31, 30, 68);
+                    thisControl.ForeColor = Color.White;
+                }
+                foreach (var thisControl in GetAllChildren(this).OfType<ComboBox>())
+                {
+                    thisControl.BackColor = Color.FromArgb(31, 30, 68);
+                    thisControl.ForeColor = Color.White;
+                }
+                foreach (var thisControl in GetAllChildren(this).OfType<CheckedListBox>())
+                {
+                    thisControl.BackColor = Color.FromArgb(31, 30, 68);
+                    thisControl.ForeColor = Color.White;
+                }
+                labelCharCount.BackColor= Color.FromArgb(31, 30, 68);
+                ttsTrash.BackColor = Color.FromArgb(31, 30, 68);
+                logTrash.BackColor = Color.FromArgb(31, 30, 68);
+                iconButton22.BackColor = Color.FromArgb(31, 30, 68);
+
+            labelCharCount.ForeColor = Color.White;
+            ttsTrash.IconColor = Color.White;
+            logTrash.IconColor = Color.White;
+            iconButton22.IconColor = Color.White;
+
+              }
+            if (rjToggleButton7.Checked == false)//light mode
+            {
+                DarkTitleBarClass.UseImmersiveDarkMode(Handle, false);
+                foreach (var thisControl in GetAllChildren(this).OfType<TextBox>())
+                {
+                    thisControl.BackColor = Color.White;
+                    thisControl.ForeColor = Color.Black;
+                }
+                foreach (var thisControl in GetAllChildren(this).OfType<RichTextBox>())
+                {
+                    thisControl.BackColor = Color.White;
+                    thisControl.ForeColor = Color.Black;
+                }
+                foreach (var thisControl in GetAllChildren(this).OfType<ComboBox>())
+                {
+                    thisControl.BackColor = Color.White;
+                    thisControl.ForeColor = Color.Black;
+                }
+                foreach (var thisControl in GetAllChildren(this).OfType<CheckedListBox>())
+                {
+                    thisControl.BackColor = Color.White;
+                    thisControl.ForeColor = Color.Black;
+                }
+                labelCharCount.BackColor = Color.White;
+                ttsTrash.BackColor = Color.White;
+                logTrash.BackColor = Color.White;
+                iconButton22.BackColor = Color.White;
+
+                labelCharCount.ForeColor = Color.FromArgb(68, 72, 111);
+                ttsTrash.IconColor = Color.FromArgb(68, 72, 111);
+                logTrash.IconColor = Color.FromArgb(68, 72, 111);
+                iconButton22.IconColor = Color.FromArgb(68, 72, 111);
+
+            }
+        }
+        public static IEnumerable<Control> GetAllChildren(Control root)
+        {
+            var stack = new Stack<Control>();
+            stack.Push(root);
+
+            while (stack.Any())
+            {
+                var next = stack.Pop();
+                foreach (Control child in next.Controls)
+                    stack.Push(child);
+                yield return next;
+            }
+        }
+
+        private void groupBox12_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBoxApproved_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void checkedListBoxApproved_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+          //  approvedMediaSourceList.Clear();
+           // foreach (object Item in checkedListBoxApproved.CheckedItems)
+          //  {
+           //     approvedMediaSourceList.Add(Item.ToString());
+           //     System.Diagnostics.Debug.WriteLine(Item.ToString());
+          //  }
+
+        }
     }
+
     public static class StringExtensions//method to make .contains case insensitive
     {
         public static bool Contains(this string source, string toCheck, StringComparison comp)

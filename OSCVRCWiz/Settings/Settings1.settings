@@ -159,7 +159,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SpotifyCustomSetting" Type="System.String" Scope="User">
-      <Value Profile="(Default)">♫ {title} - {artist} ♫ </Value>
+      <Value Profile="(Default)">{pause} {title} - {artist} </Value>
     </Setting>
     <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -219,13 +219,19 @@
       <Value Profile="(Default)">System Speech</Value>
     </Setting>
     <Setting Name="approvedSource" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Spotify.exe,</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="StopOnPause" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="voiceCommandList" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="saveDarkMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="saveVoiceActStyle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

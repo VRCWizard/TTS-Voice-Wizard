@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using EmbedIO.Sessions;
 using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz
@@ -48,9 +49,9 @@ namespace OSCVRCWiz
             Settings1.Default.volumeSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex;
             Settings1.Default.rateSetting = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex;
             Settings1.Default.STTTSContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked;
-            Settings1.Default.useBuiltInSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked;
+           // Settings1.Default.useBuiltInSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked;
            // Settings1.Default.BuiltInVoiceSetting = VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex;
-            Settings1.Default.BuiltInOutputSetting = VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem.ToString();
+           // Settings1.Default.BuiltInOutputSetting = VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem.ToString();
 
             Settings1.Default.SpotifyPeriodicallySetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked;
             Settings1.Default.SpotifySpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked;
@@ -86,8 +87,8 @@ namespace OSCVRCWiz
           //  Settings1.Default.independentSpotifyText = VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked;
 
 
-            Settings1.Default.WebcaptionerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
-            Settings1.Default.saveUseAzure = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked;
+            //Settings1.Default.WebcaptionerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
+           // Settings1.Default.saveUseAzure = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked;
            // Settings1.Default.saveUseSystem = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked;
 
             Settings1.Default.chatBoxSpotifyOnly = VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked;
@@ -102,11 +103,26 @@ namespace OSCVRCWiz
 
             Settings1.Default.ttsMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString();
 
-            Settings1.Default.approvedSource = VoiceWizardWindow.MainFormGlobal.richTextBox11.Text.ToString();
-
+          //  Settings1.Default.approvedSource = VoiceWizardWindow.MainFormGlobal.richTextBox11.Text.ToString();
+           
             Settings1.Default.StopOnPause = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked;
 
              Settings1.Default.voiceCommandList= VoiceWizardWindow.voiceCommandsStored;
+
+            string approvedString = "";
+            foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
+            {
+                approvedString += Item.ToString()+",";
+                
+            }
+            Settings1.Default.approvedSource = approvedString;
+
+
+            Settings1.Default.saveDarkMode = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
+            Settings1.Default.saveVoiceActStyle = VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked;
+
+
+
 
             emojiSettings.Default.emoji1 = VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text.ToString();
             emojiSettings.Default.emoji2 = VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text.ToString();

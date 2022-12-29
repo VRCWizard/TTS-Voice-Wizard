@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OSCVRCWiz.Settings;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,25 @@ namespace OSCVRCWiz
          //   var ot = new OutputText();
             Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, info));
             mediaSourceNew = session.Id;
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                bool inThere = false;
+                for(int i = 0;i< VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Count;i++)
+                {
+                    
+                    if(VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items[i].ToString()== session.Id.ToString())
+                    {
+                        inThere = true;
+                    }
+                }
+                
+                if (inThere==false)
+                {
+                    VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Add(session.Id.ToString());
+                }
+               
+            });
+           
 
 
 
@@ -46,11 +66,15 @@ namespace OSCVRCWiz
             string info = "[Windows Media Removed Source: " + session.Id + "]";
           //  var ot = new OutputText();
             Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, info));
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+               // VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Remove(session.Id.ToString());
+            });
         }
 
         private static void MediaManager_OnAnyPlaybackStateChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionPlaybackInfo args)
         {
-           if (VoiceWizardWindow.approvedMediaSourceList.Contains(sender.Id) == true)
+           if (VoiceWizardWindow.approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
             {
                 string info = $"[{sender.Id} is now {args.PlaybackStatus}]"; //use this info to disable media output perioidically like the spotify feature. (like spotifyPause and heartratePause)
                if(VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true)
@@ -67,28 +91,35 @@ namespace OSCVRCWiz
 
         private static void MediaManager_OnAnyMediaPropertyChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionMediaProperties args)
         {
-           
-                //used to gather the approved soruce list and split/store entries in actual list for later.
-                string words = "";
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    words = VoiceWizardWindow.MainFormGlobal.richTextBox11.Text.ToString();
 
-                });
+          //  //used to gather the approved soruce list and split/store entries in actual list for later.
+         //     string words = "";
+            //    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            //  {
+             //  words = VoiceWizardWindow.MainFormGlobal.richTextBox11.Text.ToString();
 
-                VoiceWizardWindow.approvedMediaSourceList.Clear();
-                string[] split = words.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string s in split)
-                {
-                    string trimmed = s.Trim();
-                    if (trimmed != "")
-                    {
-                        VoiceWizardWindow.approvedMediaSourceList.Add(trimmed);
-                    }
-                    System.Diagnostics.Debug.WriteLine(trimmed);
-                }
+            // });
 
-                if (VoiceWizardWindow.approvedMediaSourceList.Contains(sender.Id) == true)
+            //  VoiceWizardWindow.approvedMediaSourceList.Clear();
+            //  string[] split = words.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            //   foreach (string s in split)
+            //    {
+            //       string trimmed = s.Trim();
+            //       if (trimmed != "")
+            //       {
+            //           VoiceWizardWindow.approvedMediaSourceList.Add(trimmed);
+            //       }
+            //       System.Diagnostics.Debug.WriteLine(trimmed);
+            //    }
+            //   System.Diagnostics.Debug.WriteLine(VoiceWizardWindow.approvedMediaSourceList.Count);
+            VoiceWizardWindow.approvedMediaSourceList.Clear();
+            foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
+            {
+                VoiceWizardWindow.approvedMediaSourceList.Add(Item.ToString());
+                System.Diagnostics.Debug.WriteLine(Item.ToString());
+            }
+
+            if (VoiceWizardWindow.approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
                 {
 
                     string info = $"[{sender.Id} is now playing {args.Title} {(String.IsNullOrEmpty(args.Artist) ? "" : $"by {args.Artist}")}]";
@@ -105,6 +136,8 @@ namespace OSCVRCWiz
                         mediaTitle = args.Title;
                         mediaArtist = args.Artist;
                         mediaSource = sender.Id;
+                    //mediaStatus = "Playing";
+
 
                     }
                 if (args.Title != previousTitle)
