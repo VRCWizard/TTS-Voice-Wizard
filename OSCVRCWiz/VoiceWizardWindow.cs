@@ -669,12 +669,12 @@ namespace OSCVRCWiz
 
                         if (voskEnabled == false)
                         {
-                            Vosk.doVosk();
+                            Task.Run(() =>  Vosk.doVosk());
                             voskEnabled = true;
                         }
                         else
                         {
-                            Vosk.stopVosk();
+                            Task.Run(() => Vosk.stopVosk());
                             voskEnabled = false;
 
                         }

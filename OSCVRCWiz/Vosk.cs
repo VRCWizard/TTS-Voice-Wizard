@@ -24,6 +24,7 @@ namespace OSCVRCWiz
         {
             try
             {
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Starting Up Vosk...]");
                 PortAudio.LoadNativeLibrary();
                 PortAudio.Initialize();
 
