@@ -86,24 +86,37 @@ namespace OSCVRCWiz
                     }
                     FullTrack m_currentTrack;
                     CurrentlyPlaying m_currentlyPlaying;
+                    
                     m_currentlyPlaying = await myClient.Player.GetCurrentlyPlaying(new PlayerCurrentlyPlayingRequest());
+                    var m_testing = await myClient.Player.GetAvailableDevices();
                     title = "";
                     var artist = "";
                     var duration = "";
                     var progress = "";
                     var durationHours = "";
                     var progressHours = "";
+                  //  var deviceType = "";
+                    var deviceVolume = "";
                     if (m_currentlyPlaying != null)
                     {
                         IPlayableItem currentlyPlayingItem = m_currentlyPlaying.Item;
                         m_currentTrack = currentlyPlayingItem as FullTrack;
-                        // System.Diagnostics.Debug.WriteLine(m_currentTrack.Name);
+                       
 
                         if (m_currentTrack != null)
                         {
                             //spotifyurllink = m_currentTrack.PreviewUrl; //does not seem to work correctly
                             title = m_currentTrack.Name;
+                            try
+                            {
+                               // deviceType = m_testing.Devices[0].Type;
+                                deviceVolume = m_testing.Devices[0].VolumePercent.ToString();
+                            }
+                            catch
+                            {
 
+                            }
+                            
 
                             string currentArtists = string.Empty;
                             int counter = 0;
@@ -162,6 +175,8 @@ namespace OSCVRCWiz
                         theString = theString.Replace("{rightControllerBattery}", HeartbeatAddon.globalRightControllerBattery.ToString());
                         theString = theString.Replace("{averageControllerBattery}", HeartbeatAddon.globalAverageControllerBattery.ToString());
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
+                        //theString = theString.Replace("{deviceType}", deviceType);
+                        theString = theString.Replace("{spotifyVolume}", deviceVolume);
 
                         if ((fullSongPauseCheck != progress && MainForm.rjToggleButtonPlayPaused.Checked == true)|| (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
                        {
@@ -356,7 +371,7 @@ namespace OSCVRCWiz
                 {
                     CodeChallengeMethod = "S256",
                     CodeChallenge = challenge,
-                    Scope = new[] { Scopes.UserReadCurrentlyPlaying }
+                    Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
                 };
                 BrowserUtil.Open(loginRequest.ToUri());
 
@@ -368,7 +383,7 @@ namespace OSCVRCWiz
                 {
                     CodeChallengeMethod = "S256",
                     CodeChallenge = challenge,
-                    Scope = new[] { Scopes.UserReadCurrentlyPlaying }
+                    Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
                 };
                 BrowserUtil.Open(loginRequest.ToUri());
 

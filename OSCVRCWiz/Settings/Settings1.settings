@@ -233,5 +233,8 @@
     <Setting Name="saveVoiceActStyle" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="STTModeSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)">System Speech</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

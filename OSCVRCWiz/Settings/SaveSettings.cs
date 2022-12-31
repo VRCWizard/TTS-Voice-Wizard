@@ -120,6 +120,7 @@ namespace OSCVRCWiz
 
             Settings1.Default.saveDarkMode = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
             Settings1.Default.saveVoiceActStyle = VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked;
+            Settings1.Default.STTModeSave = VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem.ToString();
 
 
 

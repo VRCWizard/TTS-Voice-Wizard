@@ -170,7 +170,7 @@ namespace OSCVRCWiz
                       //  var ot = new OutputText();
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
-                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
+                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Azure Translate]: " + MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
                             VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, translatedString);
                         }
                         //Send Text to TTS
@@ -279,7 +279,7 @@ namespace OSCVRCWiz
                         SetDefaultTTS.SetVoicePresets();
                         if (MainForm.rjToggleButtonLog.Checked == true)
                         {
-                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString);
+                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Azure]: " + MainForm.dictationString);
                             VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, MainForm.dictationString);
                         }
                         if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
@@ -387,7 +387,7 @@ namespace OSCVRCWiz
                   //  var ot = new OutputText();
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Azure]: " + MainForm.dictationString);
                         VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, MainForm.dictationString);
                     }
                     if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
@@ -500,7 +500,7 @@ namespace OSCVRCWiz
                     SetDefaultTTS.SetVoicePresets();
                     if (MainForm.rjToggleButtonLog.Checked == true)
                     {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Azure Translate]: " + MainForm.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
                         VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, translatedString);
                     }
                     //Send Text to TTS

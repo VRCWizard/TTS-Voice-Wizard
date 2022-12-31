@@ -183,6 +183,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.saveDarkMode;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked = Settings1.Default.saveVoiceActStyle;
+            VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
 
 
             VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;

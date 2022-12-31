@@ -23,6 +23,8 @@ using OSCVRCWiz.Settings;
 using Octokit;
 using System.Linq;
 using System.Diagnostics;
+
+
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
 
 
@@ -31,8 +33,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.2";
-        string releaseDate = "December 28, 2022";
+        string currentVersion = "0.9.3";
+        string releaseDate = "December 31, 2022";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -69,7 +71,7 @@ namespace OSCVRCWiz
         public static string TTSLiteText = "";
         public static bool typingBox = false;
         public static bool firstVoiceLoad = true;
-        public WaveIn waveSource = null;
+        public CSCore.SoundIn.WaveIn waveSource = null;
         public WaveFileWriter waveFile = null;
         public string CultureSelected = "en-US";//free
         public System.Speech.Synthesis.SpeechSynthesizer synthesizerLite;//free
@@ -93,8 +95,11 @@ namespace OSCVRCWiz
         public PopupForm pf;
         public static VoiceWizardWindow MainFormGlobal;
         public static bool webCapEnabled = false;
-       
-       
+        public static bool voskEnabled = false;
+
+
+
+
 
         enum KeyModifier
         {
@@ -190,6 +195,9 @@ namespace OSCVRCWiz
 
                 int id = 0;// The id of the hotkey. 
                 RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+
+
+            
 
 
             }
@@ -656,6 +664,22 @@ namespace OSCVRCWiz
             {
                 switch (comboBoxSTT.SelectedItem.ToString())
             {
+
+                    case "Vosk":
+
+                        if (voskEnabled == false)
+                        {
+                            Vosk.doVosk();
+                            voskEnabled = true;
+                        }
+                        else
+                        {
+                            Vosk.stopVosk();
+                            voskEnabled = false;
+
+                        }
+
+                        break;
                 case "Web Captioner":
                     if(webCapEnabled==false)
                     {
@@ -690,24 +714,20 @@ namespace OSCVRCWiz
                             {
                                 ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
                                 System.Diagnostics.Debug.WriteLine("<speechSetup change>");
-                                if (rjToggleButton4.Checked == false)
-                                {
-                                    //TODO: this is redundent, can remove check for button4 (continuous check) inside speechTTS and translation TTS
+                               
                                     ot.outputLog(this, "[Azure Listening]");
                                     ts.speechTTTS(this, comboBox4.Text.ToString());
-                                }
+                                
 
                             }
                             else
                             {
                                 ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
                                 System.Diagnostics.Debug.WriteLine("<speechSetup change>");
-                                if (rjToggleButton4.Checked == false)
-                                {
-                                    //TODO: this is redundent, can remove check for button4 (continuous check) inside speechTTS and translation TTS
+                                                           
                                     ot.outputLog(this, "[Azure Translation Listening]");
                                     ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
-                                }
+                                
 
                             }
                         
@@ -1130,9 +1150,12 @@ namespace OSCVRCWiz
             if (rjToggleButtonLog.Checked == true)
             {
                 ot.outputLog(this, text);
-                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
+                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, "[System Speech]: " + text);
 
             }
+            this.Invoke((MethodInvoker)delegate ()
+            {
+
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
                 switch (comboBoxTTSMode.Text.ToString())
@@ -1158,6 +1181,7 @@ namespace OSCVRCWiz
                 }   
 
             }
+            });
 
             if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
             {
@@ -2075,14 +2099,14 @@ namespace OSCVRCWiz
         {
             
 
-            if (comboBoxTTSMode.Text.ToString() == "System Speech")
+            if (comboBoxSTT.SelectedItem.ToString() == "System Speech" || comboBoxSTT.SelectedItem.ToString() == "Vosk")
             {
-                ot.outputLog(this, "[Input device for System Speech is forced to default device, you can either change your default deivce in Control Panel > Sound or change this apps device specifically in Windows Settings > Sound]");
+                ot.outputLog(this, "[Input device for System Speech / Vosk is forced to default device, you can either change your default deivce in Control Panel > Sound or change this apps device specifically in Windows Settings > Sound]");
                 comboBoxInput.SelectedIndex = 0;
                 comboBoxInput.Enabled = false;
 
             }
-            if (comboBoxTTSMode.Text.ToString() != "System Speech")
+            if (comboBoxSTT.SelectedItem.ToString() != "System Speech" && comboBoxSTT.SelectedItem.ToString() != "Vosk")
             {
                 comboBoxInput.Enabled = true;
                 try
@@ -2145,7 +2169,18 @@ namespace OSCVRCWiz
                 logTrash.BackColor = Color.FromArgb(31, 30, 68);
                 iconButton22.BackColor = Color.FromArgb(31, 30, 68);
 
-            labelCharCount.ForeColor = Color.White;
+                iconButton13.BackColor = Color.FromArgb(31, 30, 68);//dashboard buttons
+                iconButton14.BackColor = Color.FromArgb(31, 30, 68);
+                iconButton15.BackColor = Color.FromArgb(31, 30, 68);
+                iconButton16.BackColor = Color.FromArgb(31, 30, 68);
+                iconButton17.BackColor = Color.FromArgb(31, 30, 68);
+                iconButton26.BackColor = Color.FromArgb(31, 30, 68);
+
+              
+
+
+
+                labelCharCount.ForeColor = Color.White;
             ttsTrash.IconColor = Color.White;
             logTrash.IconColor = Color.White;
             iconButton22.IconColor = Color.White;
@@ -2179,10 +2214,24 @@ namespace OSCVRCWiz
                 logTrash.BackColor = Color.White;
                 iconButton22.BackColor = Color.White;
 
+                iconButton13.BackColor = Color.FromArgb(68, 72, 111);//dashboard buttons
+                iconButton14.BackColor = Color.FromArgb(68, 72, 111);
+                iconButton15.BackColor = Color.FromArgb(68, 72, 111);
+                iconButton16.BackColor = Color.FromArgb(68, 72, 111);
+                iconButton17.BackColor = Color.FromArgb(68, 72, 111);
+                iconButton26.BackColor = Color.FromArgb(68, 72, 111);
+
                 labelCharCount.ForeColor = Color.FromArgb(68, 72, 111);
                 ttsTrash.IconColor = Color.FromArgb(68, 72, 111);
                 logTrash.IconColor = Color.FromArgb(68, 72, 111);
                 iconButton22.IconColor = Color.FromArgb(68, 72, 111);
+
+                richTextBox4.BackColor = Color.FromArgb(68, 72, 111);
+                richTextBox4.ForeColor = Color.White;
+
+                richTextBox5.BackColor = Color.FromArgb(31, 30, 68);
+                richTextBox5.ForeColor = Color.White;
+
 
             }
         }
@@ -2221,6 +2270,7 @@ namespace OSCVRCWiz
           //  }
 
         }
+
     }
 
     public static class StringExtensions//method to make .contains case insensitive

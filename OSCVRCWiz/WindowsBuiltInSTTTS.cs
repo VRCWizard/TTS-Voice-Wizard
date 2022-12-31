@@ -194,7 +194,7 @@ namespace OSCVRCWiz
                 // recognizer.RecognizeAsyncStop();
                 ///  waveIn.StopRecording();
                 //    var ot = new OutputText();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[System Speech Stop Listening]");
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[System Speech Stopped Listening]");
                     listeningCurrently = false;
                 }
 

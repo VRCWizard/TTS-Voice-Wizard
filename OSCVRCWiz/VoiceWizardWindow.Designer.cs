@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "entry 1",
             "1"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("emoji 2");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("ku");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("oilloi");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("olol");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("emoji 2");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("ku");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("oilloi");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("olol");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.speechTTSButton = new System.Windows.Forms.Button();
@@ -324,21 +324,24 @@
             this.rjToggleButtonCancelAudio = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.button24 = new System.Windows.Forms.Button();
             this.label117 = new System.Windows.Forms.Label();
             this.deleteCommandsToggle = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.iconButton40 = new FontAwesome.Sharp.IconButton();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label143 = new System.Windows.Forms.Label();
             this.label141 = new System.Windows.Forms.Label();
             this.label138 = new System.Windows.Forms.Label();
             this.textBox4Value = new System.Windows.Forms.TextBox();
             this.comboBox3Type = new System.Windows.Forms.ComboBox();
             this.textBox2Address = new System.Windows.Forms.TextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button24 = new System.Windows.Forms.Button();
             this.label139 = new System.Windows.Forms.Label();
             this.buttonAddVoiceCommand = new System.Windows.Forms.Button();
             this.textBox1Spoken = new System.Windows.Forms.TextBox();
-            this.richTextBox12 = new System.Windows.Forms.RichTextBox();
+            this.iconButton40 = new FontAwesome.Sharp.IconButton();
             this.label115 = new System.Windows.Forms.Label();
             this.label131 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -356,9 +359,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -394,12 +394,12 @@
             this.groupBox12.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox23.SuspendLayout();
+            this.groupBox22.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox15.SuspendLayout();
-            this.groupBox22.SuspendLayout();
-            this.groupBox23.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -1638,11 +1638,11 @@
             // 
             this.listView1.HoverSelection = true;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5});
             this.listView1.LabelEdit = true;
             this.listView1.Location = new System.Drawing.Point(660, 89);
             this.listView1.MultiSelect = false;
@@ -3627,7 +3627,8 @@
             this.comboBoxSTT.Items.AddRange(new object[] {
             "System Speech",
             "Azure",
-            "Web Captioner"});
+            "Web Captioner",
+            "Vosk"});
             this.comboBoxSTT.Location = new System.Drawing.Point(6, 65);
             this.comboBoxSTT.Name = "comboBoxSTT";
             this.comboBoxSTT.Size = new System.Drawing.Size(212, 28);
@@ -4211,7 +4212,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label20.ForeColor = System.Drawing.Color.Snow;
-            this.label20.Location = new System.Drawing.Point(64, 232);
+            this.label20.Location = new System.Drawing.Point(63, 232);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(229, 20);
             this.label20.TabIndex = 48;
@@ -4223,7 +4224,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label16.ForeColor = System.Drawing.Color.Snow;
-            this.label16.Location = new System.Drawing.Point(64, 269);
+            this.label16.Location = new System.Drawing.Point(63, 269);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(193, 20);
             this.label16.TabIndex = 34;
@@ -4248,7 +4249,7 @@
             // 
             this.rjToggleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rjToggleButton4.AutoSize = true;
-            this.rjToggleButton4.Location = new System.Drawing.Point(9, 391);
+            this.rjToggleButton4.Location = new System.Drawing.Point(6, 391);
             this.rjToggleButton4.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButton4.Name = "rjToggleButton4";
             this.rjToggleButton4.OffBackColor = System.Drawing.Color.Gray;
@@ -4266,7 +4267,7 @@
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label36.ForeColor = System.Drawing.Color.Snow;
-            this.label36.Location = new System.Drawing.Point(60, 393);
+            this.label36.Location = new System.Drawing.Point(61, 391);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(219, 20);
             this.label36.TabIndex = 82;
@@ -4472,6 +4473,77 @@
             this.tabPage2.TabIndex = 13;
             this.tabPage2.Text = "tabPage2";
             // 
+            // groupBox23
+            // 
+            this.groupBox23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox23.Controls.Add(this.richTextBox12);
+            this.groupBox23.ForeColor = System.Drawing.Color.White;
+            this.groupBox23.Location = new System.Drawing.Point(12, 527);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(878, 189);
+            this.groupBox23.TabIndex = 155;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "Log";
+            // 
+            // richTextBox12
+            // 
+            this.richTextBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox12.Location = new System.Drawing.Point(6, 26);
+            this.richTextBox12.Name = "richTextBox12";
+            this.richTextBox12.ReadOnly = true;
+            this.richTextBox12.Size = new System.Drawing.Size(866, 157);
+            this.richTextBox12.TabIndex = 98;
+            this.richTextBox12.Text = "";
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox22.Controls.Add(this.checkedListBox1);
+            this.groupBox22.Controls.Add(this.button24);
+            this.groupBox22.Controls.Add(this.label117);
+            this.groupBox22.Controls.Add(this.deleteCommandsToggle);
+            this.groupBox22.ForeColor = System.Drawing.Color.White;
+            this.groupBox22.Location = new System.Drawing.Point(12, 165);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(878, 343);
+            this.groupBox22.TabIndex = 154;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "Stored Commands";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBox1.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(8, 26);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(864, 256);
+            this.checkedListBox1.TabIndex = 142;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.checkedListBox1.DoubleClick += new System.EventHandler(this.checkedListBox1_DoubleClick);
+            this.checkedListBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseDoubleClick);
+            // 
+            // button24
+            // 
+            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.ForeColor = System.Drawing.Color.Snow;
+            this.button24.Location = new System.Drawing.Point(786, 308);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(86, 29);
+            this.button24.TabIndex = 141;
+            this.button24.Text = "Clear All";
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
             // label117
             // 
             this.label117.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -4499,24 +4571,26 @@
             this.deleteCommandsToggle.TabIndex = 152;
             this.deleteCommandsToggle.UseVisualStyleBackColor = true;
             // 
-            // iconButton40
+            // groupBox15
             // 
-            this.iconButton40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton40.FlatAppearance.BorderSize = 0;
-            this.iconButton40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton40.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton40.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.iconButton40.IconColor = System.Drawing.Color.White;
-            this.iconButton40.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton40.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton40.Location = new System.Drawing.Point(920, 3);
-            this.iconButton40.Name = "iconButton40";
-            this.iconButton40.Size = new System.Drawing.Size(50, 50);
-            this.iconButton40.TabIndex = 150;
-            this.iconButton40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton40.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton40.UseVisualStyleBackColor = true;
-            this.iconButton40.Click += new System.EventHandler(this.iconButton40_Click);
+            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox15.Controls.Add(this.label143);
+            this.groupBox15.Controls.Add(this.label141);
+            this.groupBox15.Controls.Add(this.label138);
+            this.groupBox15.Controls.Add(this.textBox4Value);
+            this.groupBox15.Controls.Add(this.comboBox3Type);
+            this.groupBox15.Controls.Add(this.textBox2Address);
+            this.groupBox15.Controls.Add(this.label139);
+            this.groupBox15.Controls.Add(this.buttonAddVoiceCommand);
+            this.groupBox15.Controls.Add(this.textBox1Spoken);
+            this.groupBox15.ForeColor = System.Drawing.Color.White;
+            this.groupBox15.Location = new System.Drawing.Point(12, 52);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(878, 108);
+            this.groupBox15.TabIndex = 153;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Add New Voice Command";
             // 
             // label143
             // 
@@ -4578,35 +4652,6 @@
             this.textBox2Address.TabIndex = 144;
             this.textBox2Address.Text = "/avatar/parameters/ParameterName";
             // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkedListBox1.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(8, 26);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(864, 256);
-            this.checkedListBox1.TabIndex = 142;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
-            this.checkedListBox1.DoubleClick += new System.EventHandler(this.checkedListBox1_DoubleClick);
-            this.checkedListBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseDoubleClick);
-            // 
-            // button24
-            // 
-            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.ForeColor = System.Drawing.Color.Snow;
-            this.button24.Location = new System.Drawing.Point(786, 308);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(86, 29);
-            this.button24.TabIndex = 141;
-            this.button24.Text = "Clear All";
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
             // label139
             // 
             this.label139.AutoSize = true;
@@ -4638,17 +4683,24 @@
             this.textBox1Spoken.TabIndex = 100;
             this.textBox1Spoken.Text = "the phase I will say";
             // 
-            // richTextBox12
+            // iconButton40
             // 
-            this.richTextBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox12.Location = new System.Drawing.Point(6, 26);
-            this.richTextBox12.Name = "richTextBox12";
-            this.richTextBox12.ReadOnly = true;
-            this.richTextBox12.Size = new System.Drawing.Size(866, 157);
-            this.richTextBox12.TabIndex = 98;
-            this.richTextBox12.Text = "";
+            this.iconButton40.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton40.FlatAppearance.BorderSize = 0;
+            this.iconButton40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton40.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton40.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton40.IconColor = System.Drawing.Color.White;
+            this.iconButton40.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton40.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton40.Location = new System.Drawing.Point(920, 3);
+            this.iconButton40.Name = "iconButton40";
+            this.iconButton40.Size = new System.Drawing.Size(50, 50);
+            this.iconButton40.TabIndex = 150;
+            this.iconButton40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton40.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton40.UseVisualStyleBackColor = true;
+            this.iconButton40.Click += new System.EventHandler(this.iconButton40_Click);
             // 
             // label115
             // 
@@ -4926,57 +4978,6 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // groupBox15
-            // 
-            this.groupBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox15.Controls.Add(this.label143);
-            this.groupBox15.Controls.Add(this.label141);
-            this.groupBox15.Controls.Add(this.label138);
-            this.groupBox15.Controls.Add(this.textBox4Value);
-            this.groupBox15.Controls.Add(this.comboBox3Type);
-            this.groupBox15.Controls.Add(this.textBox2Address);
-            this.groupBox15.Controls.Add(this.label139);
-            this.groupBox15.Controls.Add(this.buttonAddVoiceCommand);
-            this.groupBox15.Controls.Add(this.textBox1Spoken);
-            this.groupBox15.ForeColor = System.Drawing.Color.White;
-            this.groupBox15.Location = new System.Drawing.Point(12, 52);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(878, 108);
-            this.groupBox15.TabIndex = 153;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Add New Voice Command";
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox22.Controls.Add(this.checkedListBox1);
-            this.groupBox22.Controls.Add(this.button24);
-            this.groupBox22.Controls.Add(this.label117);
-            this.groupBox22.Controls.Add(this.deleteCommandsToggle);
-            this.groupBox22.ForeColor = System.Drawing.Color.White;
-            this.groupBox22.Location = new System.Drawing.Point(12, 165);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(878, 343);
-            this.groupBox22.TabIndex = 154;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Stored Commands";
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox23.Controls.Add(this.richTextBox12);
-            this.groupBox23.ForeColor = System.Drawing.Color.White;
-            this.groupBox23.Location = new System.Drawing.Point(12, 527);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(878, 189);
-            this.groupBox23.TabIndex = 155;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "Log";
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -5050,14 +5051,14 @@
             this.groupBox11.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox22.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
-            this.groupBox23.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

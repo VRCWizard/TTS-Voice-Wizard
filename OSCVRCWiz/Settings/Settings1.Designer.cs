@@ -946,5 +946,17 @@ namespace OSCVRCWiz.Settings {
                 this["saveVoiceActStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("System Speech")]
+        public string STTModeSave {
+            get {
+                return ((string)(this["STTModeSave"]));
+            }
+            set {
+                this["STTModeSave"] = value;
+            }
+        }
     }
 }

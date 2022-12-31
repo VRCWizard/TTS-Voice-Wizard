@@ -364,7 +364,7 @@ namespace OSCVRCWiz
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {
                     System.Diagnostics.Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
-                    ot.outputLog(MainForm, $"[Speech synthesized]");
+                    ot.outputLog(MainForm, $"[Azure Speech synthesized]");
                 }
                 else if (result.Reason == ResultReason.Canceled)
                 {
