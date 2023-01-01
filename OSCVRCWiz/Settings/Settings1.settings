@@ -236,5 +236,8 @@
     <Setting Name="STTModeSave" Type="System.String" Scope="User">
       <Value Profile="(Default)">System Speech</Value>
     </Setting>
+    <Setting Name="modelnamesave" Type="System.String" Scope="User">
+      <Value Profile="(Default)">no folder selected</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -166,11 +166,13 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.comboBox3Type.SelectedIndex = 0;
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedIndex = 0;
 
-              
-        
+            VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
 
-           
-              string[] split = Settings1.Default.approvedSource.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+
+
+
+            string[] split = Settings1.Default.approvedSource.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                foreach (string s in split)
                 {
                   string trimmed = s.Trim();

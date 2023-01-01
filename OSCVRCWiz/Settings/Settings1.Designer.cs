@@ -958,5 +958,17 @@ namespace OSCVRCWiz.Settings {
                 this["STTModeSave"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("no folder selected")]
+        public string modelnamesave {
+            get {
+                return ((string)(this["modelnamesave"]));
+            }
+            set {
+                this["modelnamesave"] = value;
+            }
+        }
     }
 }

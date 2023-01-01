@@ -8,105 +8,66 @@ using PortAudioSharp;
 using Vosk;
 using Swan.Formatters;
 using Newtonsoft.Json.Linq;
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
+using System.Windows.Threading;
+using CSCore.SoundIn;
 
 namespace OSCVRCWiz
 {
     public class Vosk
     {
 
-        //VOSK C# implementation modified from https://github.com/juliengabryelewicz/MicrophoneVosk
-        static StreamParameters oParams;
-        static Model model = new Model("model");
-        static VoskRecognizer rec = new VoskRecognizer(model, 16000.0f);
-        public static PortAudioSharp.Stream voskStream;
 
+        static Model model;
+        static VoskRecognizer rec;
+        static WaveInEvent waveIn;
         public static void doVosk()
         {
             try
             {
                 VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Starting Up Vosk...]");
-                PortAudio.LoadNativeLibrary();
-                PortAudio.Initialize();
+                model = new Model(VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString());
+                    rec = new VoskRecognizer(model, 48000f);
 
-                oParams.device = PortAudio.DefaultInputDevice;
-                if (oParams.device == PortAudio.NoDevice)
-                    throw new Exception("No default audio input device available");
-
-                oParams.channelCount = 1;
-                oParams.sampleFormat = SampleFormat.Int16;
-                oParams.hostApiSpecificStreamInfo = IntPtr.Zero;
-
-                var callbackData = new VoskCallbackData()
-                {
-                    textResult = String.Empty
-                };
-
-                voskStream = new PortAudioSharp.Stream(
-                    oParams,
-                    null,
-                    16000,
-                    8192,
-                    StreamFlags.ClipOff,
-                    playCallback,
-                    callbackData
-                );
-
-                voskStream.Start();
+                    //  WaveInEvent waveIn = new WaveInEvent(44100, 1);
+                    waveIn = new WaveInEvent();
+                    waveIn.WaveFormat = new WaveFormat(48000, 1);
+                    waveIn.DataAvailable += WaveInOnDataAvailable;
+                    waveIn?.StartRecording();
                 VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Vosk Listening]");
+
+
             }
-            catch( Exception e )
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(ex.Message);
             }
+
+
 
 
         }
-        public static void stopVosk()
+        private static void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
         {
             try
             {
-                voskStream.Stop();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Vosk Stopped Listening]");
-            }
-            catch( Exception e )
-            {
-                MessageBox.Show(e.Message);
-            }
-        }
 
-
-        class VoskCallbackData
-        {
-            public String textResult { get; set; }
-        }
-
-        private static StreamCallbackResult playCallback(
-            IntPtr input, IntPtr output,
-            System.UInt32 frameCount,
-            ref StreamCallbackTimeInfo timeInfo,
-            StreamCallbackFlags statusFlags,
-            IntPtr dataPtr
-        )
-        {
-            byte[] buffer = new byte[frameCount];
-            Marshal.Copy(input, buffer, 0, buffer.Length);
-            System.IO.Stream streamInput = new MemoryStream(buffer);
-            using (System.IO.Stream source = streamInput)
-            {
-                byte[] bufferRead = new byte[frameCount];
-                int bytesRead;
-                while ((bytesRead = source.Read(bufferRead, 0, bufferRead.Length)) > 0)
+                try
                 {
-                    if (rec.AcceptWaveform(bufferRead, bytesRead))
+                    if (rec.AcceptWaveform(e.Buffer, e.BytesRecorded))
                     {
+
                         // System.Diagnostics.Debug.WriteLine(rec.Result());
                         string json = rec.Result();
                         var s = JObject.Parse(json)["text"].ToString();
-                        System.Diagnostics.Debug.WriteLine("Vosk: "+s);
+                        System.Diagnostics.Debug.WriteLine("Vosk: " + s);
+                        if (s != "")//only does stuff if the string is nothing silence
+                        {
 
 
 
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(s));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(s));
 
 
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
@@ -139,39 +100,67 @@ namespace OSCVRCWiz
                         //  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked == true)//azure new is incorrect now means any tts
                         //  {
                         string ttsModeNow = VoiceWizardWindow.TTSModeSaved;
-
-                        switch (ttsModeNow)
-                        {
-                            case "FonixTalk":
-                                var fx = new FonixTalkTTS();
-                                Task.Run(() => fx.FonixTTS(s));
-                                break;
-
-                            case "TikTok":
-
-                                Task.Run(() => TikTok.TikTokTextAsSpeech(s));
-                                break;
+                        
 
 
-                            case "System Speech":
-                                var sys = new WindowsBuiltInSTTTS();
-                                Task.Run(() => sys.systemTTSAction(s));
+                            switch (ttsModeNow)
+                            {
+                                case "FonixTalk":
+                                    var fx = new FonixTalkTTS();
+                                    Task.Run(() => fx.FonixTTS(s));
+                                    break;
 
-                                break;
-                            case "Azure":
-                                SetDefaultTTS.SetVoicePresets();
-                                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, s, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
-                                break;
-                            default:
+                                case "TikTok":
 
-                                break;
+                                    Task.Run(() => TikTok.TikTokTextAsSpeech(s));
+                                    break;
+
+
+                                case "System Speech":
+                                    var sys = new WindowsBuiltInSTTTS();
+                                    Task.Run(() => sys.systemTTSAction(s));
+
+                                    break;
+                                case "Azure":
+                                    SetDefaultTTS.SetVoicePresets();
+                                    Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, s, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                                    break;
+                                default:
+
+                                    break;
+                            }
                         }
 
+
+                    }
+                    else
+                    {
+                        //  VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, rec.PartialResult());
                     }
                 }
+                catch (Exception exception)
+                {
+                }
+
+            }
+            catch (Exception exception)
+            {
+            }
+        }
+
+        public static void stopVosk()
+        {
+            try
+            {
+                waveIn.StopRecording();
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Vosk Stopped Listening]");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
-            return StreamCallbackResult.Continue;
+
 
         }
     }

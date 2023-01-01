@@ -33,8 +33,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.3";
-        string releaseDate = "December 31, 2022";
+        string currentVersion = "0.9.3.5";
+        string releaseDate = "January 1, 2023";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -666,17 +666,23 @@ namespace OSCVRCWiz
             {
 
                     case "Vosk":
-
-                        if (voskEnabled == false)
+                        if (VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString() != "no folder selected")
                         {
-                            Task.Run(() =>  Vosk.doVosk());
-                            voskEnabled = true;
+                            if (voskEnabled == false)
+                            {
+                                Task.Run(() => Vosk.doVosk());
+                                voskEnabled = true;
+                            }
+                            else
+                            {
+                                Task.Run(() => Vosk.stopVosk());
+                                voskEnabled = false;
+
+                            }
                         }
                         else
                         {
-                            Task.Run(() => Vosk.stopVosk());
-                            voskEnabled = false;
-
+                            MessageBox.Show("No vosk model folder selected. Please note that if the folder you select is not a valid model the program will close!");
                         }
 
                         break;
@@ -2271,6 +2277,13 @@ namespace OSCVRCWiz
 
         }
 
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                modelTextBox.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
     }
 
     public static class StringExtensions//method to make .contains case insensitive

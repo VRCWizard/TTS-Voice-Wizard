@@ -222,6 +222,10 @@
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
             this.iconButton20 = new FontAwesome.Sharp.IconButton();
             this.General = new System.Windows.Forms.TabPage();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.modelTextBox = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.label106 = new System.Windows.Forms.Label();
             this.rjToggleButtonChatBoxUseDelay = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -359,6 +363,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -383,6 +388,7 @@
             this.SettingsNew.SuspendLayout();
             this.translucentPanel2.SuspendLayout();
             this.General.SuspendLayout();
+            this.groupBox24.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox19.SuspendLayout();
@@ -436,6 +442,8 @@
             // 
             // TTSButton
             // 
+            this.TTSButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.TTSButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.TTSButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TTSButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -450,7 +458,8 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox1.BackColor = System.Drawing.Color.White;
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -469,7 +478,8 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Snow;
             this.label1.Location = new System.Drawing.Point(346, 112);
@@ -480,7 +490,8 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Snow;
             this.label2.Location = new System.Drawing.Point(21, 112);
@@ -491,7 +502,8 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox2.BackColor = System.Drawing.Color.White;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -607,7 +619,8 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Snow;
             this.label4.Location = new System.Drawing.Point(346, 336);
@@ -618,7 +631,8 @@
             // 
             // comboBoxRate
             // 
-            this.comboBoxRate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxRate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxRate.BackColor = System.Drawing.Color.White;
             this.comboBoxRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -639,7 +653,8 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Snow;
             this.label5.Location = new System.Drawing.Point(346, 181);
@@ -650,7 +665,8 @@
             // 
             // comboBoxPitch
             // 
-            this.comboBoxPitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxPitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxPitch.BackColor = System.Drawing.Color.White;
             this.comboBoxPitch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPitch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -671,7 +687,8 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Snow;
             this.label6.Location = new System.Drawing.Point(346, 258);
@@ -682,7 +699,8 @@
             // 
             // comboBoxVolume
             // 
-            this.comboBoxVolume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxVolume.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxVolume.BackColor = System.Drawing.Color.White;
             this.comboBoxVolume.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxVolume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1051,7 +1069,8 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox8.Controls.Add(this.comboBoxTTSMode);
             this.groupBox8.Controls.Add(this.label52);
             this.groupBox8.Controls.Add(this.label109);
@@ -1080,7 +1099,8 @@
             // 
             // comboBoxTTSMode
             // 
-            this.comboBoxTTSMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBoxTTSMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBoxTTSMode.BackColor = System.Drawing.Color.White;
             this.comboBoxTTSMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTTSMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1101,7 +1121,8 @@
             // 
             // label52
             // 
-            this.label52.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label52.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label52.ForeColor = System.Drawing.Color.Snow;
@@ -1113,7 +1134,8 @@
             // 
             // label109
             // 
-            this.label109.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label109.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label109.AutoSize = true;
             this.label109.ForeColor = System.Drawing.Color.Snow;
             this.label109.Location = new System.Drawing.Point(21, 181);
@@ -1124,7 +1146,8 @@
             // 
             // comboBox5
             // 
-            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox5.BackColor = System.Drawing.Color.White;
             this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1167,7 +1190,8 @@
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Snow;
             this.label14.Location = new System.Drawing.Point(21, 258);
@@ -1178,7 +1202,8 @@
             // 
             // comboBox4
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox4.BackColor = System.Drawing.Color.White;
             this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1221,7 +1246,8 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Snow;
             this.label3.Location = new System.Drawing.Point(21, 336);
@@ -1232,7 +1258,8 @@
             // 
             // comboBox3
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox3.BackColor = System.Drawing.Color.White;
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1276,8 +1303,6 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox7.Controls.Add(this.labelCharCount);
             this.groupBox7.Controls.Add(this.iconButton37);
             this.groupBox7.Controls.Add(this.iconButton36);
@@ -1308,7 +1333,8 @@
             // 
             // iconButton37
             // 
-            this.iconButton37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iconButton37.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.iconButton37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.iconButton37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton37.ForeColor = System.Drawing.Color.White;
@@ -1327,7 +1353,8 @@
             // 
             // iconButton36
             // 
-            this.iconButton36.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.iconButton36.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.iconButton36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.iconButton36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton36.ForeColor = System.Drawing.Color.White;
@@ -3095,6 +3122,7 @@
             // General
             // 
             this.General.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.General.Controls.Add(this.groupBox24);
             this.General.Controls.Add(this.groupBox17);
             this.General.Controls.Add(this.groupBox18);
             this.General.Controls.Add(this.groupBox19);
@@ -3107,6 +3135,55 @@
             this.General.Size = new System.Drawing.Size(976, 753);
             this.General.TabIndex = 9;
             this.General.Text = "General";
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.Controls.Add(this.label31);
+            this.groupBox24.Controls.Add(this.button11);
+            this.groupBox24.Controls.Add(this.modelTextBox);
+            this.groupBox24.ForeColor = System.Drawing.Color.White;
+            this.groupBox24.Location = new System.Drawing.Point(324, 444);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(632, 87);
+            this.groupBox24.TabIndex = 138;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "Vosk";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label31.ForeColor = System.Drawing.Color.Snow;
+            this.label31.Location = new System.Drawing.Point(10, 23);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(98, 20);
+            this.label31.TabIndex = 102;
+            this.label31.Text = "Model Folder";
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.Color.Snow;
+            this.button11.Location = new System.Drawing.Point(550, 43);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(76, 29);
+            this.button11.TabIndex = 103;
+            this.button11.Text = "Browse";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // modelTextBox
+            // 
+            this.modelTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.modelTextBox.Location = new System.Drawing.Point(14, 46);
+            this.modelTextBox.Name = "modelTextBox";
+            this.modelTextBox.ReadOnly = true;
+            this.modelTextBox.Size = new System.Drawing.Size(530, 27);
+            this.modelTextBox.TabIndex = 101;
+            this.modelTextBox.Text = "no folder selected";
             // 
             // groupBox17
             // 
@@ -3121,7 +3198,7 @@
             this.groupBox17.ForeColor = System.Drawing.Color.White;
             this.groupBox17.Location = new System.Drawing.Point(324, 36);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(389, 202);
+            this.groupBox17.Size = new System.Drawing.Size(389, 149);
             this.groupBox17.TabIndex = 119;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Chatbox";
@@ -3132,7 +3209,7 @@
             this.label106.AutoSize = true;
             this.label106.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label106.ForeColor = System.Drawing.Color.Snow;
-            this.label106.Location = new System.Drawing.Point(69, 160);
+            this.label106.Location = new System.Drawing.Point(69, 110);
             this.label106.Name = "label106";
             this.label106.Size = new System.Drawing.Size(142, 20);
             this.label106.TabIndex = 109;
@@ -3142,7 +3219,7 @@
             // 
             this.rjToggleButtonChatBoxUseDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rjToggleButtonChatBoxUseDelay.AutoSize = true;
-            this.rjToggleButtonChatBoxUseDelay.Location = new System.Drawing.Point(14, 160);
+            this.rjToggleButtonChatBoxUseDelay.Location = new System.Drawing.Point(14, 110);
             this.rjToggleButtonChatBoxUseDelay.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonChatBoxUseDelay.Name = "rjToggleButtonChatBoxUseDelay";
             this.rjToggleButtonChatBoxUseDelay.OffBackColor = System.Drawing.Color.Gray;
@@ -3159,7 +3236,7 @@
             this.label78.AutoSize = true;
             this.label78.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label78.ForeColor = System.Drawing.Color.Snow;
-            this.label78.Location = new System.Drawing.Point(69, 116);
+            this.label78.Location = new System.Drawing.Point(69, 82);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(223, 20);
             this.label78.TabIndex = 105;
@@ -3169,7 +3246,7 @@
             // 
             this.rjToggleSoundNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rjToggleSoundNotification.AutoSize = true;
-            this.rjToggleSoundNotification.Location = new System.Drawing.Point(14, 116);
+            this.rjToggleSoundNotification.Location = new System.Drawing.Point(14, 82);
             this.rjToggleSoundNotification.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleSoundNotification.Name = "rjToggleSoundNotification";
             this.rjToggleSoundNotification.OffBackColor = System.Drawing.Color.Gray;
@@ -3186,7 +3263,7 @@
             this.label69.AutoSize = true;
             this.label69.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label69.ForeColor = System.Drawing.Color.Snow;
-            this.label69.Location = new System.Drawing.Point(69, 69);
+            this.label69.Location = new System.Drawing.Point(69, 54);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(281, 20);
             this.label69.TabIndex = 92;
@@ -3225,7 +3302,7 @@
             // 
             this.rjToggleButtonShowKeyboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rjToggleButtonShowKeyboard.AutoSize = true;
-            this.rjToggleButtonShowKeyboard.Location = new System.Drawing.Point(14, 69);
+            this.rjToggleButtonShowKeyboard.Location = new System.Drawing.Point(14, 54);
             this.rjToggleButtonShowKeyboard.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonShowKeyboard.Name = "rjToggleButtonShowKeyboard";
             this.rjToggleButtonShowKeyboard.OffBackColor = System.Drawing.Color.Gray;
@@ -3244,7 +3321,7 @@
             this.groupBox18.Controls.Add(this.label79);
             this.groupBox18.Controls.Add(this.rjToggleButtonGreenScreen);
             this.groupBox18.ForeColor = System.Drawing.Color.White;
-            this.groupBox18.Location = new System.Drawing.Point(730, 194);
+            this.groupBox18.Location = new System.Drawing.Point(730, 191);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(232, 147);
             this.groupBox18.TabIndex = 120;
@@ -3329,7 +3406,7 @@
             this.groupBox19.Controls.Add(this.button1);
             this.groupBox19.Controls.Add(this.textBoxErase);
             this.groupBox19.ForeColor = System.Drawing.Color.White;
-            this.groupBox19.Location = new System.Drawing.Point(324, 265);
+            this.groupBox19.Location = new System.Drawing.Point(324, 198);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(389, 231);
             this.groupBox19.TabIndex = 121;
@@ -3479,7 +3556,7 @@
             this.groupBox20.Controls.Add(this.buttonDelayHere);
             this.groupBox20.Controls.Add(this.textBoxDelay);
             this.groupBox20.ForeColor = System.Drawing.Color.White;
-            this.groupBox20.Location = new System.Drawing.Point(324, 521);
+            this.groupBox20.Location = new System.Drawing.Point(324, 546);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(586, 190);
             this.groupBox20.TabIndex = 122;
@@ -3579,9 +3656,9 @@
             this.groupBox13.Controls.Add(this.label24);
             this.groupBox13.Controls.Add(this.rjToggleButtonDisableTTS2);
             this.groupBox13.ForeColor = System.Drawing.Color.White;
-            this.groupBox13.Location = new System.Drawing.Point(24, 398);
+            this.groupBox13.Location = new System.Drawing.Point(24, 326);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(286, 338);
+            this.groupBox13.Size = new System.Drawing.Size(286, 349);
             this.groupBox13.TabIndex = 134;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Audio";
@@ -3740,7 +3817,7 @@
             this.groupBox16.Controls.Add(this.iconButton28);
             this.groupBox16.Controls.Add(this.iconButton38);
             this.groupBox16.ForeColor = System.Drawing.Color.White;
-            this.groupBox16.Location = new System.Drawing.Point(730, 51);
+            this.groupBox16.Location = new System.Drawing.Point(730, 36);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(232, 134);
             this.groupBox16.TabIndex = 137;
@@ -3806,7 +3883,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(24, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(286, 367);
+            this.groupBox1.Size = new System.Drawing.Size(286, 292);
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
@@ -3842,7 +3919,7 @@
             this.label104.AutoSize = true;
             this.label104.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label104.ForeColor = System.Drawing.Color.Snow;
-            this.label104.Location = new System.Drawing.Point(61, 256);
+            this.label104.Location = new System.Drawing.Point(61, 194);
             this.label104.Name = "label104";
             this.label104.Size = new System.Drawing.Size(170, 20);
             this.label104.TabIndex = 98;
@@ -3851,7 +3928,7 @@
             // rjToggleButtonSystemTray
             // 
             this.rjToggleButtonSystemTray.AutoSize = true;
-            this.rjToggleButtonSystemTray.Location = new System.Drawing.Point(6, 256);
+            this.rjToggleButtonSystemTray.Location = new System.Drawing.Point(6, 194);
             this.rjToggleButtonSystemTray.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonSystemTray.Name = "rjToggleButtonSystemTray";
             this.rjToggleButtonSystemTray.OffBackColor = System.Drawing.Color.Gray;
@@ -3867,7 +3944,7 @@
             this.label77.AutoSize = true;
             this.label77.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label77.ForeColor = System.Drawing.Color.Snow;
-            this.label77.Location = new System.Drawing.Point(61, 216);
+            this.label77.Location = new System.Drawing.Point(61, 166);
             this.label77.Name = "label77";
             this.label77.Size = new System.Drawing.Size(130, 20);
             this.label77.TabIndex = 96;
@@ -3876,7 +3953,7 @@
             // rjToggleButton6
             // 
             this.rjToggleButton6.AutoSize = true;
-            this.rjToggleButton6.Location = new System.Drawing.Point(6, 216);
+            this.rjToggleButton6.Location = new System.Drawing.Point(6, 166);
             this.rjToggleButton6.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButton6.Name = "rjToggleButton6";
             this.rjToggleButton6.OffBackColor = System.Drawing.Color.Gray;
@@ -3891,7 +3968,7 @@
             // rjToggleButtonClear
             // 
             this.rjToggleButtonClear.AutoSize = true;
-            this.rjToggleButtonClear.Location = new System.Drawing.Point(6, 182);
+            this.rjToggleButtonClear.Location = new System.Drawing.Point(6, 138);
             this.rjToggleButtonClear.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonClear.Name = "rjToggleButtonClear";
             this.rjToggleButtonClear.OffBackColor = System.Drawing.Color.Gray;
@@ -3907,7 +3984,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label25.ForeColor = System.Drawing.Color.Snow;
-            this.label25.Location = new System.Drawing.Point(61, 61);
+            this.label25.Location = new System.Drawing.Point(61, 56);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(105, 20);
             this.label25.TabIndex = 56;
@@ -3918,7 +3995,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label21.ForeColor = System.Drawing.Color.Snow;
-            this.label21.Location = new System.Drawing.Point(61, 140);
+            this.label21.Location = new System.Drawing.Point(61, 110);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(168, 20);
             this.label21.TabIndex = 50;
@@ -3929,7 +4006,7 @@
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label66.ForeColor = System.Drawing.Color.Snow;
-            this.label66.Location = new System.Drawing.Point(61, 100);
+            this.label66.Location = new System.Drawing.Point(61, 84);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(221, 20);
             this.label66.TabIndex = 88;
@@ -3940,7 +4017,7 @@
             this.rjToggleButtonLog.AutoSize = true;
             this.rjToggleButtonLog.Checked = true;
             this.rjToggleButtonLog.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonLog.Location = new System.Drawing.Point(6, 140);
+            this.rjToggleButtonLog.Location = new System.Drawing.Point(6, 110);
             this.rjToggleButtonLog.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonLog.Name = "rjToggleButtonLog";
             this.rjToggleButtonLog.OffBackColor = System.Drawing.Color.Gray;
@@ -3954,7 +4031,7 @@
             // rjToggleButton5
             // 
             this.rjToggleButton5.AutoSize = true;
-            this.rjToggleButton5.Location = new System.Drawing.Point(6, 98);
+            this.rjToggleButton5.Location = new System.Drawing.Point(6, 82);
             this.rjToggleButton5.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButton5.Name = "rjToggleButton5";
             this.rjToggleButton5.OffBackColor = System.Drawing.Color.Gray;
@@ -3968,7 +4045,7 @@
             // rjToggleButtonOnTop2
             // 
             this.rjToggleButtonOnTop2.AutoSize = true;
-            this.rjToggleButtonOnTop2.Location = new System.Drawing.Point(6, 59);
+            this.rjToggleButtonOnTop2.Location = new System.Drawing.Point(6, 54);
             this.rjToggleButtonOnTop2.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonOnTop2.Name = "rjToggleButtonOnTop2";
             this.rjToggleButtonOnTop2.OffBackColor = System.Drawing.Color.Gray;
@@ -3982,7 +4059,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(10, 319);
+            this.textBox4.Location = new System.Drawing.Point(10, 249);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(125, 27);
@@ -3993,7 +4070,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(141, 322);
+            this.label12.Location = new System.Drawing.Point(141, 252);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(104, 20);
             this.label12.TabIndex = 28;
@@ -4004,7 +4081,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label22.ForeColor = System.Drawing.Color.Snow;
-            this.label22.Location = new System.Drawing.Point(61, 182);
+            this.label22.Location = new System.Drawing.Point(61, 138);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(203, 20);
             this.label22.TabIndex = 54;
@@ -4015,7 +4092,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(6, 296);
+            this.label11.Location = new System.Drawing.Point(6, 226);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 20);
             this.label11.TabIndex = 27;
@@ -5030,6 +5107,8 @@
             this.SettingsNew.PerformLayout();
             this.translucentPanel2.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.groupBox18.ResumeLayout(false);
@@ -5387,5 +5466,10 @@
         private GroupBox groupBox23;
         private GroupBox groupBox22;
         private GroupBox groupBox15;
+        private GroupBox groupBox24;
+        private Label label31;
+        private Button button11;
+        public TextBox modelTextBox;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }

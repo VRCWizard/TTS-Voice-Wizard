@@ -109,8 +109,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="model\" />
-  </ItemGroup>
-
 </Project>
