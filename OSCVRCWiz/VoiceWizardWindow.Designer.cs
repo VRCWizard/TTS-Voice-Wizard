@@ -1461,6 +1461,7 @@
             // 
             // iconButton22
             // 
+            this.iconButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton22.BackColor = System.Drawing.Color.White;
             this.iconButton22.FlatAppearance.BorderSize = 0;
             this.iconButton22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1478,6 +1479,9 @@
             // 
             // richTextBox9
             // 
+            this.richTextBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox9.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richTextBox9.Location = new System.Drawing.Point(11, 62);
@@ -4548,7 +4552,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(976, 753);
             this.tabPage2.TabIndex = 13;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "VoiceCommandsTab";
             // 
             // groupBox23
             // 

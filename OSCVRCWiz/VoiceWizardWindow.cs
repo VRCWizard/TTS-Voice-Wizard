@@ -33,7 +33,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.3.5";
+        string currentVersion = "0.9.3.6";
         string releaseDate = "January 1, 2023";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
@@ -563,11 +563,12 @@ namespace OSCVRCWiz
               //  var ot = new OutputText();
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
             }
-            switch(comboBoxTTSMode.Text.ToString())
+            var text = richTextBox3.Text.ToString();
+            switch (comboBoxTTSMode.Text.ToString())
             {
                 case "FonixTalk":
                     var ftts = new FonixTalkTTS();
-                    var text = richTextBox3.Text.ToString();
+                   
                     ftts.FonixTTS(text);
                     if (rjToggleButtonLog.Checked == true)
                     {
@@ -602,34 +603,58 @@ namespace OSCVRCWiz
                     break;
                 case "TikTok":
                    
-                    var text2 = richTextBox3.Text.ToString();
-                    Task.Run(() => TikTok.TikTokTextAsSpeech(text2));
+                   // var text2 = richTextBox3.Text.ToString();
+                    Task.Run(() => TikTok.TikTokTextAsSpeech(text));
                     if (rjToggleButtonLog.Checked == true)
                     {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text2);
-                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text2);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
                     }
 
                     if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
                     {
 
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text2, "tts"));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text, "tts"));
 
                     }
                     if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
                     {
 
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text2, "tts"));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text, "tts"));
                     }
                     if (rjToggleButtonGreenScreen.Checked == true)
                     {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text2, "tts"));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text, "tts"));
 
                     }
                     break;
 
-                default: 
-                       break;
+                default:
+                 //   var text3 = richTextBox3.Text.ToString();
+
+                    if (rjToggleButtonLog.Checked == true)
+                    {
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text);
+                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
+                    }
+
+                    if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
+                    {
+
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text, "tts"));
+
+                    }
+                    if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
+                    {
+
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text, "tts"));
+                    }
+                    if (rjToggleButtonGreenScreen.Checked == true)
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text, "tts"));
+
+                    }
+                    break;
             }
  
           
@@ -1094,6 +1119,7 @@ namespace OSCVRCWiz
 
         private void iconButton9_Click(object sender, EventArgs e)
         {
+            richTextBox7.Text = richTextBox1.Text;
             tabControl1.SelectTab(tabSpotify);
 
 
@@ -1101,6 +1127,7 @@ namespace OSCVRCWiz
 
         private void iconButton10_Click(object sender, EventArgs e)
         {
+            richTextBox8.Text = richTextBox1.Text;
             tabControl1.SelectTab(tabHeartBeat);
 
         }
@@ -1113,11 +1140,25 @@ namespace OSCVRCWiz
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
+            if(richTextBox1.Lines.Count()>=2000)
+            {
+                ClearTextBox();
+                ot.outputLog(this,"Log exceeded limit and was automatically cleared");
+            }
             //copies main log text to addon logs
-            richTextBox7.Text = richTextBox1.Text;
-            richTextBox8.Text = richTextBox1.Text;
+            if (tabControl1.SelectedTab.Text.ToString() == "Spotify")
+            {
+                richTextBox7.Text = richTextBox1.Text;
+            }
+            if (tabControl1.SelectedTab.Text.ToString() == "Heartbeat")
+            {
+                richTextBox8.Text = richTextBox1.Text;
+            }
             //richTextBox10.Text = richTextBox1.Text;
-            richTextBox12.Text = richTextBox1.Text;
+            if (tabControl1.SelectedTab.Text.ToString() == "VoiceCommandsTab")
+            {
+                richTextBox12.Text = richTextBox1.Text;
+            }
         }
 
         private void iconButton12_Click(object sender, EventArgs e)
@@ -1929,6 +1970,7 @@ namespace OSCVRCWiz
 
         private void iconButton27_Click_1(object sender, EventArgs e)
         {
+            richTextBox12.Text = richTextBox1.Text;
             tabControl1.SelectTab(tabPage2);//voiceCommands
         }
 
@@ -2284,6 +2326,8 @@ namespace OSCVRCWiz
                 modelTextBox.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+
+
     }
 
     public static class StringExtensions//method to make .contains case insensitive
