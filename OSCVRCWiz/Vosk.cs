@@ -177,6 +177,7 @@ namespace OSCVRCWiz
             {
                 waveIn.StopRecording();
                 rec.Dispose();
+                model.Dispose();
                 VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Vosk Stopped Listening]");
             }
             catch (Exception ex)
