@@ -222,6 +222,9 @@
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
             this.iconButton20 = new FontAwesome.Sharp.IconButton();
             this.General = new System.Windows.Forms.TabPage();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.iconButton30 = new FontAwesome.Sharp.IconButton();
+            this.iconButton42 = new FontAwesome.Sharp.IconButton();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.label31 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
@@ -348,6 +351,13 @@
             this.iconButton40 = new FontAwesome.Sharp.IconButton();
             this.label115 = new System.Windows.Forms.Label();
             this.label131 = new System.Windows.Forms.Label();
+            this.DeepLTab = new System.Windows.Forms.TabPage();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.iconButton43 = new FontAwesome.Sharp.IconButton();
+            this.button18 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.iconButton12 = new FontAwesome.Sharp.IconButton();
@@ -388,6 +398,7 @@
             this.SettingsNew.SuspendLayout();
             this.translucentPanel2.SuspendLayout();
             this.General.SuspendLayout();
+            this.groupBox25.SuspendLayout();
             this.groupBox24.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -403,6 +414,8 @@
             this.groupBox23.SuspendLayout();
             this.groupBox22.SuspendLayout();
             this.groupBox15.SuspendLayout();
+            this.DeepLTab.SuspendLayout();
+            this.groupBox26.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -764,6 +777,7 @@
             this.tabControl1.Controls.Add(this.General);
             this.tabControl1.Controls.Add(this.AzureSet);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.DeepLTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(220, 0);
             this.tabControl1.Name = "tabControl1";
@@ -3126,6 +3140,7 @@
             // General
             // 
             this.General.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.General.Controls.Add(this.groupBox25);
             this.General.Controls.Add(this.groupBox24);
             this.General.Controls.Add(this.groupBox17);
             this.General.Controls.Add(this.groupBox18);
@@ -3139,6 +3154,55 @@
             this.General.Size = new System.Drawing.Size(976, 753);
             this.General.TabIndex = 9;
             this.General.Text = "General";
+            // 
+            // groupBox25
+            // 
+            this.groupBox25.Controls.Add(this.iconButton30);
+            this.groupBox25.Controls.Add(this.iconButton42);
+            this.groupBox25.ForeColor = System.Drawing.Color.White;
+            this.groupBox25.Location = new System.Drawing.Point(730, 315);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(232, 104);
+            this.groupBox25.TabIndex = 139;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "DeepL Text Translations";
+            // 
+            // iconButton30
+            // 
+            this.iconButton30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton30.IconChar = FontAwesome.Sharp.IconChar.Windows;
+            this.iconButton30.IconColor = System.Drawing.Color.White;
+            this.iconButton30.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton30.Location = new System.Drawing.Point(6, 30);
+            this.iconButton30.Name = "iconButton30";
+            this.iconButton30.Size = new System.Drawing.Size(170, 50);
+            this.iconButton30.TabIndex = 134;
+            this.iconButton30.Text = "DeepL Settings";
+            this.iconButton30.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton30.UseVisualStyleBackColor = false;
+            this.iconButton30.Click += new System.EventHandler(this.iconButton30_Click_2);
+            // 
+            // iconButton42
+            // 
+            this.iconButton42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton42.FlatAppearance.BorderSize = 0;
+            this.iconButton42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton42.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton42.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton42.IconColor = System.Drawing.Color.White;
+            this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton42.IconSize = 40;
+            this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton42.Location = new System.Drawing.Point(176, 36);
+            this.iconButton42.Name = "iconButton42";
+            this.iconButton42.Size = new System.Drawing.Size(50, 40);
+            this.iconButton42.TabIndex = 132;
+            this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton42.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton42.UseVisualStyleBackColor = true;
+            this.iconButton42.Click += new System.EventHandler(this.iconButton42_Click_1);
             // 
             // groupBox24
             // 
@@ -3325,7 +3389,7 @@
             this.groupBox18.Controls.Add(this.label79);
             this.groupBox18.Controls.Add(this.rjToggleButtonGreenScreen);
             this.groupBox18.ForeColor = System.Drawing.Color.White;
-            this.groupBox18.Location = new System.Drawing.Point(730, 191);
+            this.groupBox18.Location = new System.Drawing.Point(730, 150);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(232, 147);
             this.groupBox18.TabIndex = 120;
@@ -3823,7 +3887,7 @@
             this.groupBox16.ForeColor = System.Drawing.Color.White;
             this.groupBox16.Location = new System.Drawing.Point(730, 36);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(232, 134);
+            this.groupBox16.Size = new System.Drawing.Size(232, 104);
             this.groupBox16.TabIndex = 137;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Azure Cognitive Speech Service";
@@ -3836,7 +3900,7 @@
             this.iconButton28.IconColor = System.Drawing.Color.White;
             this.iconButton28.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton28.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton28.Location = new System.Drawing.Point(6, 44);
+            this.iconButton28.Location = new System.Drawing.Point(6, 30);
             this.iconButton28.Name = "iconButton28";
             this.iconButton28.Size = new System.Drawing.Size(170, 50);
             this.iconButton28.TabIndex = 134;
@@ -3856,7 +3920,7 @@
             this.iconButton38.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton38.IconSize = 40;
             this.iconButton38.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton38.Location = new System.Drawing.Point(176, 49);
+            this.iconButton38.Location = new System.Drawing.Point(176, 35);
             this.iconButton38.Name = "iconButton38";
             this.iconButton38.Size = new System.Drawing.Size(50, 40);
             this.iconButton38.TabIndex = 132;
@@ -4804,6 +4868,93 @@
             this.label131.TabIndex = 79;
             this.label131.Text = "Send OSC parameters with your voice";
             // 
+            // DeepLTab
+            // 
+            this.DeepLTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.DeepLTab.Controls.Add(this.groupBox26);
+            this.DeepLTab.Controls.Add(this.label53);
+            this.DeepLTab.Location = new System.Drawing.Point(4, 29);
+            this.DeepLTab.Name = "DeepLTab";
+            this.DeepLTab.Padding = new System.Windows.Forms.Padding(3);
+            this.DeepLTab.Size = new System.Drawing.Size(976, 753);
+            this.DeepLTab.TabIndex = 14;
+            this.DeepLTab.Text = "DeepLTab";
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.Controls.Add(this.label51);
+            this.groupBox26.Controls.Add(this.iconButton43);
+            this.groupBox26.Controls.Add(this.button18);
+            this.groupBox26.Controls.Add(this.textBox5);
+            this.groupBox26.ForeColor = System.Drawing.Color.White;
+            this.groupBox26.Location = new System.Drawing.Point(13, 72);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(557, 99);
+            this.groupBox26.TabIndex = 111;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "DeepL Settings";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.ForeColor = System.Drawing.Color.Snow;
+            this.label51.Location = new System.Drawing.Point(10, 23);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(33, 20);
+            this.label51.TabIndex = 28;
+            this.label51.Text = "Key";
+            // 
+            // iconButton43
+            // 
+            this.iconButton43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton43.FlatAppearance.BorderSize = 0;
+            this.iconButton43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton43.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton43.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton43.IconColor = System.Drawing.Color.White;
+            this.iconButton43.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton43.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton43.Location = new System.Drawing.Point(489, 33);
+            this.iconButton43.Name = "iconButton43";
+            this.iconButton43.Size = new System.Drawing.Size(50, 50);
+            this.iconButton43.TabIndex = 110;
+            this.iconButton43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton43.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton43.UseVisualStyleBackColor = true;
+            this.iconButton43.Click += new System.EventHandler(this.iconButton43_Click);
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.ForeColor = System.Drawing.Color.Snow;
+            this.button18.Location = new System.Drawing.Point(376, 44);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(64, 29);
+            this.button18.TabIndex = 29;
+            this.button18.Text = "Apply";
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click_1);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(14, 46);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.PasswordChar = '*';
+            this.textBox5.Size = new System.Drawing.Size(356, 27);
+            this.textBox5.TabIndex = 27;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label53.ForeColor = System.Drawing.Color.Snow;
+            this.label53.Location = new System.Drawing.Point(13, 17);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(183, 25);
+            this.label53.TabIndex = 109;
+            this.label53.Text = "DeepL Translation API";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -5111,6 +5262,7 @@
             this.SettingsNew.PerformLayout();
             this.translucentPanel2.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.groupBox25.ResumeLayout(false);
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
             this.groupBox17.ResumeLayout(false);
@@ -5139,6 +5291,10 @@
             this.groupBox22.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
+            this.DeepLTab.ResumeLayout(false);
+            this.DeepLTab.PerformLayout();
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -5475,5 +5631,15 @@
         private Button button11;
         public TextBox modelTextBox;
         private FolderBrowserDialog folderBrowserDialog1;
+        private GroupBox groupBox25;
+        private FontAwesome.Sharp.IconButton iconButton30;
+        private FontAwesome.Sharp.IconButton iconButton42;
+        private TabPage DeepLTab;
+        private GroupBox groupBox26;
+        private Label label51;
+        private FontAwesome.Sharp.IconButton iconButton43;
+        private Button button18;
+        public TextBox textBox5;
+        private Label label53;
     }
 }

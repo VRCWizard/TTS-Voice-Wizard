@@ -559,13 +559,15 @@ namespace OSCVRCWiz
                     MessageBox.Show(ex.Message);
                 }
             }
+            var text = richTextBox3.Text.ToString();
+
+
             if (YourSubscriptionKey == ""  && comboBoxTTSMode.Text.ToString()=="Azure")
             {
               //  var ot = new OutputText();
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
             }
-            var text = richTextBox3.Text.ToString();
-        
+            
             if (VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString() != "No Translation (Default)")
            {
                var DL = new DeepLC();
@@ -2344,15 +2346,16 @@ namespace OSCVRCWiz
             }
         }
 
-        private void iconButton42_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API");
-        
-        }
 
-        private void iconButton30_Click_1(object sender, EventArgs e)
+
+        private void iconButton30_Click_2(object sender, EventArgs e)
         {
             tabControl1.SelectTab(DeepLTab);
+        }
+
+        private void iconButton42_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API");
         }
 
         private void iconButton43_Click(object sender, EventArgs e)
@@ -2360,7 +2363,7 @@ namespace OSCVRCWiz
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API");
         }
 
-        private void button18_Click(object sender, EventArgs e)
+        private void button18_Click_1(object sender, EventArgs e)
         {
             DeepLC.DeepLKey = textBox5.Text.ToString();
         }
