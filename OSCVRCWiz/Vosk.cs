@@ -12,6 +12,8 @@ using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using System.Windows.Threading;
 using CSCore.SoundIn;
+using DeepL_Translation;
+using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz
 {
@@ -48,13 +50,13 @@ namespace OSCVRCWiz
 
 
         }
-        private static void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
+        private static async void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
         {
             try
             {
 
-                try
-                {
+               // try
+              //  {
                     if (rec.AcceptWaveform(e.Buffer, e.BytesRecorded))
                     {
 
@@ -68,6 +70,25 @@ namespace OSCVRCWiz
 
 
                             Task.Run(() => VoiceWizardWindow.MainFormGlobal.doVoiceCommand(s));
+
+                        var translation = "";
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            translation = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
+                        });
+
+
+
+
+
+                        if (translation != "No Translation (Default)")
+                            {
+                                var DL = new DeepLC();
+                                s = await DL.translateTextDeepL(s);
+                                // text = VoiceWizardWindow.MainFormGlobal.deepLString;
+                            }
+
+                       
 
 
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
@@ -137,14 +158,16 @@ namespace OSCVRCWiz
                     {
                         //  VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, rec.PartialResult());
                     }
-                }
-                catch (Exception exception)
-                {
-                }
+
+              //  }
+             //   catch (Exception exception)
+             //   {
+             //   }
 
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -153,6 +176,7 @@ namespace OSCVRCWiz
             try
             {
                 waveIn.StopRecording();
+                rec.Dispose();
                 VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[Vosk Stopped Listening]");
             }
             catch (Exception ex)

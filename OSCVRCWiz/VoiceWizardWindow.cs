@@ -23,6 +23,7 @@ using OSCVRCWiz.Settings;
 using Octokit;
 using System.Linq;
 using System.Diagnostics;
+using DeepL_Translation;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -33,8 +34,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.3.6";
-        string releaseDate = "January 1, 2023";
+        string currentVersion = "0.9.4.1";
+        string releaseDate = "January 2, 2023";
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
         public string dictationString = "";
@@ -564,6 +565,15 @@ namespace OSCVRCWiz
                 ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
             }
             var text = richTextBox3.Text.ToString();
+        
+            if (VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString() != "No Translation (Default)")
+           {
+               var DL = new DeepLC();
+              text = await DL.translateTextDeepL(text);
+               // text = VoiceWizardWindow.MainFormGlobal.deepLString;
+            }
+           
+            
             switch (comboBoxTTSMode.Text.ToString())
             {
                 case "FonixTalk":
@@ -596,10 +606,10 @@ namespace OSCVRCWiz
 
                 case "System Speech":
                     var lite = new WindowsBuiltInSTTTS();
-                    Task.Run(() => lite.TTSButtonLiteClick(this)); 
+                    Task.Run(() => lite.TTSButtonLiteClick(this,text)); 
                     break;
                 case "Azure":
-                    Task.Run(() => doTTSOnly());
+                    Task.Run(() => doTTSOnly(text));
                     break;
                 case "TikTok":
                    
@@ -778,17 +788,17 @@ namespace OSCVRCWiz
 
 
         }
-        private void doTTSOnly()
+        private void doTTSOnly(string text)
         {
        
-            string text = "";
+           // string text = "";
             SetDefaultTTS.SetVoicePresets();
           //  var ot = new OutputText();
             //Send Text to Vrchat
-            this.Invoke((MethodInvoker)delegate ()
-            {
-                text = richTextBox3.Text.ToString();
-            });
+          //  this.Invoke((MethodInvoker)delegate ()
+           // {
+         //       text = richTextBox3.Text.ToString();
+         //   });
                 if (rjToggleButtonLog.Checked == true)
             {
                 ot.outputLog(this, text);
@@ -1177,7 +1187,7 @@ namespace OSCVRCWiz
             heartRatePort = Convert.ToInt32(textBoxHRPort.Text.ToString());
 
         }
-        public void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)//lite version, WindowsBuiltInSTTTS Help
+        public async void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)//lite version, WindowsBuiltInSTTTS Help
         {
            // this.Invoke((MethodInvoker)delegate ()
          //   {
@@ -1190,6 +1200,13 @@ namespace OSCVRCWiz
 
             //VoiceCommand task
             Task.Run(() => doVoiceCommand(text));
+
+            if (VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString() != "No Translation (Default)")
+            {
+                var DL = new DeepLC();
+                text = await DL.translateTextDeepL(text);
+                // text = VoiceWizardWindow.MainFormGlobal.deepLString;
+            }
 
 
             // var ot = new OutputText();
@@ -1728,7 +1745,7 @@ namespace OSCVRCWiz
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = true;
-                    comboBox3.Enabled = false;
+                    comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
                     comboBoxPitch.Enabled = false;
                     comboBoxVolume.Enabled = false;
@@ -1803,7 +1820,7 @@ namespace OSCVRCWiz
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = true;
-                    comboBox3.Enabled = false;
+                    comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
                     comboBoxPitch.Enabled = false;
                     comboBoxVolume.Enabled = false;
@@ -1834,7 +1851,7 @@ namespace OSCVRCWiz
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = true;
-                    comboBox3.Enabled = false;
+                    comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
                     comboBoxPitch.Enabled = false;
                     comboBoxVolume.Enabled = false;
@@ -1875,7 +1892,7 @@ namespace OSCVRCWiz
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = false;
-                    comboBox3.Enabled = false;
+                    comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
                     comboBoxPitch.Enabled = false;
                     comboBoxVolume.Enabled = false;
@@ -2327,7 +2344,26 @@ namespace OSCVRCWiz
             }
         }
 
+        private void iconButton42_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API");
+        
+        }
 
+        private void iconButton30_Click_1(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(DeepLTab);
+        }
+
+        private void iconButton43_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API");
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            DeepLC.DeepLKey = textBox5.Text.ToString();
+        }
     }
 
     public static class StringExtensions//method to make .contains case insensitive
