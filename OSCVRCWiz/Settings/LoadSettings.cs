@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DeepL_Translation;
 using EmbedIO.Sessions;
 using OSCVRCWiz.Settings;
 
@@ -167,6 +168,9 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedIndex = 0;
 
             VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
+
+            DeepLC.DeepLKey = Settings1.Default.deepLKeysave;
+            VoiceWizardWindow.MainFormGlobal.textBox5.Text= Settings1.Default.deepLKeysave;
 
 
 

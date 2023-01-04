@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DeepL_Translation;
 using EmbedIO.Sessions;
 using OSCVRCWiz.Settings;
 
@@ -122,6 +123,9 @@ namespace OSCVRCWiz
             Settings1.Default.saveVoiceActStyle = VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked;
             Settings1.Default.STTModeSave = VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem.ToString();
             Settings1.Default.modelnamesave = VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString();
+
+            Settings1.Default.deepLKeysave= DeepLC.DeepLKey;
+            
 
 
 

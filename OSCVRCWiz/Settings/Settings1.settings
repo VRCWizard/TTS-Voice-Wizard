@@ -239,5 +239,8 @@
     <Setting Name="modelnamesave" Type="System.String" Scope="User">
       <Value Profile="(Default)">no folder selected</Value>
     </Setting>
+    <Setting Name="deepLKeysave" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
