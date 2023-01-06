@@ -10,7 +10,8 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 * You can even let others know what you are listening to on Spotify by having a songs title, artist and progress appear above you! <br />
 * Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look
 
-<img src="https://user-images.githubusercontent.com/101527472/167462899-f954be86-4914-4d23-a38c-9b2b4259cffb.png" width="800" height="400" /> <br />
+
+![image](https://user-images.githubusercontent.com/101527472/210952551-2faf767d-0eb0-458e-8769-b60e43476e45.png)
 
 ## Quickstart Guide
 -  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard
