@@ -5,58 +5,66 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using CoreOSC;
+using OSCVRCWiz.Addons;
 
-
-
-namespace OSCVRCWiz
+namespace OSCVRCWiz.Text
 {
     public class OutputText
     {
         static string previousRequestType = "";
         bool currentlyPrinting = false;
-        static DateTime lastDateTime =DateTime.Now;
-        public static string lastKatString="";
-        public async void outputLog(VoiceWizardWindow MainForm, string textstring)
+        static DateTime lastDateTime = DateTime.Now;
+        public static string lastKatString = "";
+        public async void outputLog(string textstring, Color? color= null)
         {
             //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
-            MainForm.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]" + ": " + textstring);
+            if(color ==null)
+            {
+                VoiceWizardWindow.MainFormGlobal.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]" + ": " + textstring);
+            }
+            else
+            {
+                VoiceWizardWindow.MainFormGlobal.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]" + ": " + textstring, color);
+            }
+            
 
         }
         private static string SplitToLines(string value, int maximumLineLength)
         {
-            try {
-            string perfectString = "";
-            var words = value.Split(' ');
-            var line = new StringBuilder();
-
-            foreach (var word in words)
+            try
             {
-                //if (word.Length > maximumLineLength)
-                //{
-                //    perfectString += word.ToString();
-                //  }
-                if ((line.Length + word.Length) >= maximumLineLength)
-                {
-                    System.Diagnostics.Debug.WriteLine(line.ToString());
-                    if (line.ToString().Length <= 32)
-                    {
-                        perfectString += line.ToString();
-                        int spacesToAdd = 32 - line.ToString().Length;
-                        for (int i = 0; i < spacesToAdd; i++)
-                        {
-                            perfectString += " ";
-                        }
+                string perfectString = "";
+                var words = value.Split(' ');
+                var line = new StringBuilder();
 
+                foreach (var word in words)
+                {
+                    //if (word.Length > maximumLineLength)
+                    //{
+                    //    perfectString += word.ToString();
+                    //  }
+                    if (line.Length + word.Length >= maximumLineLength)
+                    {
+                        System.Diagnostics.Debug.WriteLine(line.ToString());
+                        if (line.ToString().Length <= 32)
+                        {
+                            perfectString += line.ToString();
+                            int spacesToAdd = 32 - line.ToString().Length;
+                            for (int i = 0; i < spacesToAdd; i++)
+                            {
+                                perfectString += " ";
+                            }
+
+                        }
+                        line = new StringBuilder();
                     }
-                    line = new StringBuilder();
+
+                    line.AppendFormat("{0}{1}", line.Length > 0 ? " " : "", word);
                 }
 
-                line.AppendFormat("{0}{1}", (line.Length > 0) ? " " : "", word);
-            }
-
-            System.Diagnostics.Debug.WriteLine(line.ToString());
-            perfectString += line.ToString();
-            return perfectString;
+                System.Diagnostics.Debug.WriteLine(line.ToString());
+                perfectString += line.ToString();
+                return perfectString;
             }
             catch (Exception ex)
             {
@@ -66,60 +74,60 @@ namespace OSCVRCWiz
 
 
         }
-        public async void outputTextFile(VoiceWizardWindow MainForm, string textstring)
+        public async void outputTextFile(string textstring)
         {
             await File.WriteAllTextAsync("Text4OBS.txt", textstring);
         }
 
-            public async void outputVRChatSpeechBubbles(VoiceWizardWindow MainForm, string textstring, string type)
+        public async void outputVRChatSpeechBubbles(string textstring, string type)
         {
 
-           
-
-           // byte[] bytes = Encoding.Default.GetBytes(textstring);
-           // textstring = Encoding.UTF8.GetString(bytes);
 
 
-            System.Diagnostics.Debug.WriteLine("Encoded UTF-8: "+ textstring);
+            // byte[] bytes = Encoding.Default.GetBytes(textstring);
+            // textstring = Encoding.UTF8.GetString(bytes);
 
 
-            var typingbubble = new OscMessage("/chatbox/typing",false);//this is turned on as soon as you press the STTTS button and turned off here
-          var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true,false);
-        //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
-      //testing if error message appears /what value is defaulted to if not specified
-            if(MainForm.rjToggleButtonShowKeyboard.Checked==true)
+            System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
+
+
+            var typingbubble = new OscMessage("/chatbox/typing", false);//this is turned on as soon as you press the STTTS button and turned off here
+            var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, false);
+            //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
+            //testing if error message appears /what value is defaulted to if not specified
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
             {
-                messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false,false);
+                messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, false);
 
             }
-            if (type == "tts" && MainForm.rjToggleSoundNotification.Checked==true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
+            if (type == "tts" && VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked == true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
             {
-                 messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, true);
-   
-                if (MainForm.rjToggleButtonShowKeyboard.Checked == true)
+                messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, true);
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
                 {
-                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true); 
+                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true);
                 }
             }
-                MainForm.sender3.Send(typingbubble);
-                MainForm.sender3.Send(messageSpeechBubble);
+            VoiceWizardWindow.MainFormGlobal.sender3.Send(typingbubble);
+            VoiceWizardWindow.MainFormGlobal.sender3.Send(messageSpeechBubble);
 
-            if(MainForm.rjToggleButtonOSC.Checked==false)//why is this here?
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)//why is this here?
             {
-                MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+                VoiceWizardWindow.MainFormGlobal.testtimer.Change(VoiceWizardWindow.MainFormGlobal.eraseDelay, 0);
             }
 
             if (type == "spotify")
             {
-                if (MainForm.rjToggleButtonOSC.Checked==false)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)
                 {
                     SpotifyAddon.lastSong = SpotifyAddon.title;
                 }
-                
+
             }
-            if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
             {
-                MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+                VoiceWizardWindow.MainFormGlobal.testtimer.Change(VoiceWizardWindow.MainFormGlobal.eraseDelay, 0);
 
             }
             else
@@ -131,16 +139,16 @@ namespace OSCVRCWiz
             }
 
         }
-        public async Task outputGreenScreen(VoiceWizardWindow MainForm, string textstring, string type)
+        public async Task outputGreenScreen(string textstring, string type)
         {
-            MainForm.Invoke((MethodInvoker)delegate ()
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
-                MainForm.pf.customrtb1.Text= textstring;
-                MainForm.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
+                VoiceWizardWindow.MainFormGlobal.pf.customrtb1.Text = textstring;
+                VoiceWizardWindow.MainFormGlobal.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
 
-                if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
                 {
-                    MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+                    VoiceWizardWindow.MainFormGlobal.testtimer.Change(VoiceWizardWindow.MainFormGlobal.eraseDelay, 0);
 
                 }
                 else
@@ -152,60 +160,60 @@ namespace OSCVRCWiz
                 }
 
             });
-           
-         
+
+
         }
-        public async void outputVRChat(VoiceWizardWindow MainForm, string textstringbefore, string type)
+        public async void outputVRChat(string textstringbefore, string type)
         {
-            if(type == "tts" || type == "tttAdd")
+            if (type == "tts" || type == "tttAdd")
             {
                 lastKatString = textstringbefore;
             }
-            
-            var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
-            MainForm.sender3.Send(message0);
 
-            if (MainForm.rjToggleButton3.Checked==true)
+            var message0 = new OscMessage("/avatar/parameters/KAT_Visible", true);
+            VoiceWizardWindow.MainFormGlobal.sender3.Send(message0);
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == true)
             {
-              
+
                 textstringbefore = textstringbefore.Replace("<3", "ぬ");
-                textstringbefore =Regex.Replace(textstringbefore, MainForm.EmojiBox1.Text.ToString(), "あう", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox2.Text.ToString(), "えお", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox3.Text.ToString(), "やゆ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox4.Text.ToString(), "よわ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox5.Text.ToString(), "をほ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox6.Text.ToString(), "へた", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox7.Text.ToString(), "てい", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox8.Text.ToString(), "すか", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox9.Text.ToString(), "んな", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox10.Text.ToString(), "にら", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text.ToString(), "あう", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text.ToString(), "えお", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text.ToString(), "やゆ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox4.Text.ToString(), "よわ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox5.Text.ToString(), "をほ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox6.Text.ToString(), "へた", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox7.Text.ToString(), "てい", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox8.Text.ToString(), "すか", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox9.Text.ToString(), "んな", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox10.Text.ToString(), "にら", RegexOptions.IgnoreCase);
                 //////////////
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox11.Text.ToString(), "せち", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox12.Text.ToString(), "とし", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox13.Text.ToString(), "はき", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox14.Text.ToString(), "くま", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox15.Text.ToString(), "のり", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox16.Text.ToString(), "れけ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox17.Text.ToString(), "むつ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox18.Text.ToString(), "さそ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox19.Text.ToString(), "ひこ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, MainForm.EmojiBox20.Text.ToString(), "みも", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox11.Text.ToString(), "せち", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox12.Text.ToString(), "とし", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox13.Text.ToString(), "はき", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox14.Text.ToString(), "くま", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox15.Text.ToString(), "のり", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox16.Text.ToString(), "れけ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text.ToString(), "むつ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text.ToString(), "さそ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text.ToString(), "ひこ", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text.ToString(), "みも", RegexOptions.IgnoreCase);
             }
-   
-             
-        
+
+
+
 
 
             System.Diagnostics.Debug.WriteLine("*KAT String Splitting*");
 
             string textstring = SplitToLines(textstringbefore, 32);
 
-           // System.Diagnostics.Debug.WriteLine("perfectString= " + textstring);
-          //  System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
+            // System.Diagnostics.Debug.WriteLine("perfectString= " + textstring);
+            //  System.Diagnostics.Debug.WriteLine("broken lines==========================================================");
 
             //textstring = textstring.ToLower();  // no more lowercase
 
-            
+
 
 
             int stringleng = 0;
@@ -219,13 +227,13 @@ namespace OSCVRCWiz
 
             switch (sentenceLength)
             {
-                case 1: 
+                case 1:
                     textstring += "   ";
-                    if (MainForm.numKATSyncParameters == "8" || MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "8" || VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "    ";
                     };
-                    if (MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     };
@@ -233,61 +241,64 @@ namespace OSCVRCWiz
 
                 case 2:
                     textstring += "  ";
-                    if (MainForm.numKATSyncParameters == "8"|| MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "8" || VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "    ";
                     }
-                    if (MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     };
                     break;
                 case 3:
                     textstring += " ";
-                    if (MainForm.numKATSyncParameters == "8"|| MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "8" || VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "    ";
                     }
-                    if (MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     };
                     break;
                 case 4:
                     textstring += "";
-                    if (MainForm.numKATSyncParameters == "8"|| MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "8" || VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "    ";
                     }
-                    if (MainForm.numKATSyncParameters == "16")
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     };
                     break;
-                case 5: textstring += "   ";
-                    if (MainForm.numKATSyncParameters == "16")
+                case 5:
+                    textstring += "   ";
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     }; break;
-                case 6: textstring += "  ";
-                    if (MainForm.numKATSyncParameters == "16")
+                case 6:
+                    textstring += "  ";
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     }; break;
-                case 7: textstring += " ";
-                    if (MainForm.numKATSyncParameters == "16")
+                case 7:
+                    textstring += " ";
+                    if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                     {
                         textstring += "        ";
                     }; break;
-                 case 8: textstring += "        "; break; //16 mode
-                 case 9: textstring += "       "; break; //16 mode
+                case 8: textstring += "        "; break; //16 mode
+                case 9: textstring += "       "; break; //16 mode
                 case 10: textstring += "      "; break; //16 mode
                 case 11: textstring += "     "; break; //16 mode
                 case 12: textstring += "    "; break; //16 mode
                 case 13: textstring += "   "; break; //16 mode
                 case 14: textstring += "  "; break; //16 mode
                 case 15: textstring += " "; break; //16 mode
-                default: ; break;
+                default:; break;
             }
 
             float letter = 0.0F;
@@ -313,40 +324,40 @@ namespace OSCVRCWiz
             float letterFloat14 = 0;//16 mode
             float letterFloat15 = 0;//16 mode
 
-            var message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
-            var message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-            var message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-            var message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-            var message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+            var message1 = new OscMessage("/avatar/parameters/KAT_Pointer", 255);
+            var message2 = new OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+            var message3 = new OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+            var message4 = new OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+            var message5 = new OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
-            var message6 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
-            var message7 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
-            var message8 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
-            var message9 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+            var message6 = new OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+            var message7 = new OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+            var message8 = new OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+            var message9 = new OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
 
-            var message10 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat8);
-            var message11 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat9);
-            var message12 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat10);
-            var message13 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat11);
-            var message14 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat12);
-            var message15 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat13);
-            var message16 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat14);
-            var message17 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat15);
+            var message10 = new OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat8);
+            var message11 = new OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat9);
+            var message12 = new OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat10);
+            var message13 = new OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat11);
+            var message14 = new OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat12);
+            var message15 = new OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat13);
+            var message16 = new OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat14);
+            var message17 = new OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat15);
 
 
-          //  var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+            //  var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
 
 
             //   string testingthis = (DateTime.Now - lastDateTime).ToString("ss");
 
             //  ot.outputLog(MainForm, testingthis);
-          
 
-            if ((DateTime.Now-lastDateTime).Seconds<=1)
+
+            if ((DateTime.Now - lastDateTime).Seconds <= 1)
             {
-              //  var ot = new OutputText();
-              //  ot.outputLog(MainForm, "collision");
-               
+                //  var ot = new OutputText();
+                //  ot.outputLog(MainForm, "collision");
+
                 Task.Delay(1555).Wait();
             }
             lastDateTime = DateTime.Now;
@@ -361,7 +372,7 @@ namespace OSCVRCWiz
                     }
                     else
                     {
-                        MainForm.sender3.Send(message1);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
                     }
                     break;
                 case "spotify":
@@ -372,26 +383,26 @@ namespace OSCVRCWiz
                         {
                             System.Diagnostics.Debug.WriteLine("spotify case ran");
                             Task.Delay(50).Wait();
-                           //  MainForm.sender3.Send(message1);//remove after testing
+                            //  MainForm.sender3.Send(message1);//remove after testing
                         }
                         else
                         {
-                            MainForm.sender3.Send(message1);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
                         }
 
                     }
                     else
                     {
-                        MainForm.sender3.Send(message1);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
                     }
                     SpotifyAddon.lastSong = SpotifyAddon.title;
                     break;
                 case "tttAdd":
 
-        
+
                     break;
                 default:
-                    MainForm.sender3.Send(message1);
+                    VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
 
                     break;
 
@@ -399,11 +410,11 @@ namespace OSCVRCWiz
 
 
             previousRequestType = type;
-           // Task.Delay(50).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
-          //  MainForm.sender3.Send(message0);
+            // Task.Delay(50).Wait(); // this delay is to fix text box showing your previous message for a brief second (turned off for now because hide text replaced with clear text)    
+            //  MainForm.sender3.Send(message0);
 
 
-            message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 1);
+            message1 = new OscMessage("/avatar/parameters/KAT_Pointer", 1);
 
             foreach (char c in textstring)
             {
@@ -514,8 +525,8 @@ namespace OSCVRCWiz
                     case '}': letter = 93; break;
                     case '~': letter = 94; break;
                     case '€': letter = 95; break;
-                    
-                   /// case '非': letter = 96; break;//trying to map
+
+                    /// case '非': letter = 96; break;//trying to map
                     // case '常': letter = 97; break;//trying to map
                     // case '': letter = 98; break;
                     //case '': letter = 99; break;
@@ -749,7 +760,7 @@ namespace OSCVRCWiz
                     case 'ö': letter = 79; break;
 
 
-                    default:letter = 31;break;
+                    default: letter = 31; break;
 
 
 
@@ -758,10 +769,10 @@ namespace OSCVRCWiz
 
                 }
                 // 7display send letter (no implemented)
-               // var messageDislay7 = new SharpOSC.OscMessage("/avatar/parameters/7Display", letter);
-               // MainForm.sender3.Send(messageDislay7);
+                // var messageDislay7 = new SharpOSC.OscMessage("/avatar/parameters/7Display", letter);
+                // MainForm.sender3.Send(messageDislay7);
                 //var messageDislay7Enter = new SharpOSC.OscMessage("/avatar/parameters/7Display", 10);
-              //  MainForm.sender3.Send(messageDislay7Enter);
+                //  MainForm.sender3.Send(messageDislay7Enter);
 
 
 
@@ -772,7 +783,7 @@ namespace OSCVRCWiz
                 }
                 letter = letter / 127;
 
-            
+
                 switch (charCounter)
                 {
                     case 0:
@@ -785,23 +796,23 @@ namespace OSCVRCWiz
                         letterFloat2 = letter;
                         break;
                     case 3:
-                        if (MainForm.numKATSyncParameters == "4")
+                        if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "4")
                         {
-                            Task.Delay(MainForm.debugDelayValue).Wait();
+                            Task.Delay(VoiceWizardWindow.MainFormGlobal.debugDelayValue).Wait();
                             letterFloat3 = letter;
-                            message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
-                            message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-                            message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-                            message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-                            message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
-                            message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+                            message1 = new OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                            message2 = new OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                            message3 = new OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                            message4 = new OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                            message5 = new OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                            message0 = new OscMessage("/avatar/parameters/KAT_Visible", true);
 
-                            MainForm.sender3.Send(message1);
-                            MainForm.sender3.Send(message2);
-                            MainForm.sender3.Send(message3);
-                            MainForm.sender3.Send(message4);
-                            MainForm.sender3.Send(message5);
-                            MainForm.sender3.Send(message0);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message2);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message3);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message4);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message5);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message0);
 
 
                             stringPoint += 1;
@@ -810,10 +821,10 @@ namespace OSCVRCWiz
                             letterFloat1 = 0;
                             letterFloat2 = 0;
                             letterFloat3 = 0;
-                            
+
 
                         }
-                        if (MainForm.numKATSyncParameters == "8" || MainForm.numKATSyncParameters == "16")
+                        if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "8" || VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                         {
                             letterFloat3 = letter;
 
@@ -829,34 +840,34 @@ namespace OSCVRCWiz
                         letterFloat6 = letter;
                         break;
                     case 7:
-                        if (MainForm.numKATSyncParameters == "8")
+                        if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "8")
                         {
-                            Task.Delay(MainForm.debugDelayValue).Wait();
+                            Task.Delay(VoiceWizardWindow.MainFormGlobal.debugDelayValue).Wait();
                             letterFloat7 = letter;
-                            message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
-                            message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-                            message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-                            message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-                            message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                            message1 = new OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                            message2 = new OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                            message3 = new OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                            message4 = new OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                            message5 = new OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
-                            message6 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
-                            message7 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
-                            message8 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
-                            message9 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
-                            message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+                            message6 = new OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+                            message7 = new OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+                            message8 = new OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+                            message9 = new OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+                            message0 = new OscMessage("/avatar/parameters/KAT_Visible", true);
 
-                            MainForm.sender3.Send(message1);
-                            MainForm.sender3.Send(message2);
-                            MainForm.sender3.Send(message3);
-                            MainForm.sender3.Send(message4);
-                            MainForm.sender3.Send(message5);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message2);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message3);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message4);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message5);
 
-                            MainForm.sender3.Send(message6);
-                            MainForm.sender3.Send(message7);
-                            MainForm.sender3.Send(message8);
-                            MainForm.sender3.Send(message9);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message6);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message7);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message8);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message9);
 
-                            MainForm.sender3.Send(message0);
+                            VoiceWizardWindow.MainFormGlobal.sender3.Send(message0);
 
 
                             stringPoint += 1;
@@ -871,7 +882,7 @@ namespace OSCVRCWiz
                             letterFloat6 = 0;
                             letterFloat7 = 0;
                         }
-                        if (MainForm.numKATSyncParameters == "16")
+                        if (VoiceWizardWindow.MainFormGlobal.numKATSyncParameters == "16")
                         {
                             letterFloat7 = letter;
 
@@ -900,53 +911,53 @@ namespace OSCVRCWiz
                         letterFloat14 = letter;
                         break;
                     case 15:
-                        Task.Delay(MainForm.debugDelayValue).Wait();
+                        Task.Delay(VoiceWizardWindow.MainFormGlobal.debugDelayValue).Wait();
                         letterFloat15 = letter;
-                        message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
-                        message2 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
-                        message3 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
-                        message4 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
-                        message5 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
+                        message1 = new OscMessage("/avatar/parameters/KAT_Pointer", stringPoint);
+                        message2 = new OscMessage("/avatar/parameters/KAT_CharSync0", letterFloat0);
+                        message3 = new OscMessage("/avatar/parameters/KAT_CharSync1", letterFloat1);
+                        message4 = new OscMessage("/avatar/parameters/KAT_CharSync2", letterFloat2);
+                        message5 = new OscMessage("/avatar/parameters/KAT_CharSync3", letterFloat3);
 
-                        message6 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
-                        message7 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
-                        message8 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
-                        message9 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
+                        message6 = new OscMessage("/avatar/parameters/KAT_CharSync4", letterFloat4);
+                        message7 = new OscMessage("/avatar/parameters/KAT_CharSync5", letterFloat5);
+                        message8 = new OscMessage("/avatar/parameters/KAT_CharSync6", letterFloat6);
+                        message9 = new OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
 
-                        message10 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync8", letterFloat8);
-                        message11 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync9", letterFloat9);
-                        message12 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync10", letterFloat10);
-                        message13 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync11", letterFloat11);
+                        message10 = new OscMessage("/avatar/parameters/KAT_CharSync8", letterFloat8);
+                        message11 = new OscMessage("/avatar/parameters/KAT_CharSync9", letterFloat9);
+                        message12 = new OscMessage("/avatar/parameters/KAT_CharSync10", letterFloat10);
+                        message13 = new OscMessage("/avatar/parameters/KAT_CharSync11", letterFloat11);
 
-                        message14 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync12", letterFloat12);
-                        message15 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync13", letterFloat13);
-                        message16 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync14", letterFloat14);
-                        message17 = new CoreOSC.OscMessage("/avatar/parameters/KAT_CharSync15", letterFloat15);
-                        message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", true);
+                        message14 = new OscMessage("/avatar/parameters/KAT_CharSync12", letterFloat12);
+                        message15 = new OscMessage("/avatar/parameters/KAT_CharSync13", letterFloat13);
+                        message16 = new OscMessage("/avatar/parameters/KAT_CharSync14", letterFloat14);
+                        message17 = new OscMessage("/avatar/parameters/KAT_CharSync15", letterFloat15);
+                        message0 = new OscMessage("/avatar/parameters/KAT_Visible", true);
 
-                        MainForm.sender3.Send(message1);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message1);
 
-                        MainForm.sender3.Send(message2);
-                        MainForm.sender3.Send(message3);
-                        MainForm.sender3.Send(message4);
-                        MainForm.sender3.Send(message5);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message2);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message3);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message4);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message5);
 
-                        MainForm.sender3.Send(message6);
-                        MainForm.sender3.Send(message7);
-                        MainForm.sender3.Send(message8);
-                        MainForm.sender3.Send(message9);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message6);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message7);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message8);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message9);
 
-                        MainForm.sender3.Send(message10);
-                        MainForm.sender3.Send(message11);
-                        MainForm.sender3.Send(message12);
-                        MainForm.sender3.Send(message13);
-                        MainForm.sender3.Send(message14);
-                        MainForm.sender3.Send(message15);
-                        MainForm.sender3.Send(message16);
-                        MainForm.sender3.Send(message17);
-    
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message10);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message11);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message12);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message13);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message14);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message15);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message16);
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message17);
 
-                        MainForm.sender3.Send(message0);
+
+                        VoiceWizardWindow.MainFormGlobal.sender3.Send(message0);
 
 
                         stringPoint += 1;
@@ -980,23 +991,23 @@ namespace OSCVRCWiz
                 //  currentlyPrinting = true;
 
 
-                if (stringPoint >=33)
+                if (stringPoint >= 33)
                 {
                     break;
-                    
+
                 }
 
             }
 
-            if (MainForm.rjToggleButtonHideDelay2.Checked) //inactive hide
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
             {
                 //make timer function start here or be reset here
                 System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished. Begun scheduled hide text timer");
 
-             //   System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
+                //   System.Diagnostics.Debug.WriteLine("Begun scheduled hide text");
 
-              //  System.Diagnostics.Debug.WriteLine("restart/start timer");
-                MainForm.testtimer.Change(MainForm.eraseDelay, 0);
+                //  System.Diagnostics.Debug.WriteLine("restart/start timer");
+                VoiceWizardWindow.MainFormGlobal.testtimer.Change(VoiceWizardWindow.MainFormGlobal.eraseDelay, 0);
 
             }
             else
@@ -1006,7 +1017,7 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.pauseBPM = false;
                 VoiceWizardWindow.pauseSpotify = false;
             }
-          
+
 
 
         }

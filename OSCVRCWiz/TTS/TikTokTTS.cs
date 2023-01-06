@@ -18,14 +18,14 @@ using CSCore.CoreAudioAPI;
 
 
 
-namespace OSCVRCWiz
+namespace OSCVRCWiz.TTS
 {
-    public class TikTok
+    public class TikTokTTS
     {
 
-            public static async Task TikTokTextAsSpeech(string text)
-            {
-            
+        public static async Task TikTokTextAsSpeech(string text)
+        {
+
             // if ("tiktokvoice.mp3" == null)
             //   throw new NullReferenceException("Output path is null");
             //text = FormatInputText(text);
@@ -43,15 +43,15 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[TikTok TTS Error: " + ex.Message + "]");
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
 
             }
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
         }
 
-            public static async Task<byte[]> CallTikTokAPIAsync(string text,string voice)
-            {
-     
+        public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
+        {
+
 
             var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
 
@@ -60,7 +60,7 @@ namespace OSCVRCWiz
 
             httpRequest.ContentType = "application/json";
 
-            var data = "{\"text\":\""+text+"\",\"voice\":\""+voice+"\"}";
+            var data = "{\"text\":\"" + text + "\",\"voice\":\"" + voice + "\"}";
 
             using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
             {
@@ -74,18 +74,18 @@ namespace OSCVRCWiz
                 var result = streamReader.ReadToEnd();
                 var dataHere = JObject.Parse(result.ToString()).SelectToken("data").ToString();
                 audioInBase64 = dataHere.ToString();
-               
+
                 System.Diagnostics.Debug.WriteLine(result);
             }
 
             System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
 
 
-            
+
             System.Diagnostics.Debug.WriteLine(audioInBase64);
             return Convert.FromBase64String(audioInBase64);
 
-            }
+        }
 
 
         public static void PlayAudioHelper()
@@ -93,20 +93,20 @@ namespace OSCVRCWiz
             try
             {
                 var stream = new MemoryStream(File.ReadAllBytes("TikTokSpeech.wav"));
-                var testOut = new WasapiOut();       
+                var testOut = new WasapiOut();
                 var enumerator = new MMDeviceEnumerator();
                 foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
                 {
-                    if(endpoint.DeviceID== VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
+                    if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
                     {
                         testOut.Device = endpoint;
-                    }          
+                    }
                 }
                 // var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) };
-               // var waveSource = new MediaFoundationDecoder(stream);
-               // testOut.Initialize(waveSource);
-               // testOut.Play();
-              //  testOut.WaitForStopped();
+                // var waveSource = new MediaFoundationDecoder(stream);
+                // testOut.Initialize(waveSource);
+                // testOut.Play();
+                //  testOut.WaitForStopped();
                 var waveSource = new MediaFoundationDecoder(stream);
                 testOut.Initialize(waveSource);
                 testOut.Play();
@@ -114,12 +114,12 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[TikTok TTS Error: "+ex.Message+"]");
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog( "[TikTok TTS Error: " + ex.Message + "]");
             }
 
         }
     }
-   
+
 
 
 }

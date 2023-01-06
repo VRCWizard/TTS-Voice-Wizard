@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OSCVRCWiz
 {
-    public partial class PopupForm : Form
+    public partial class GreenScreen : Form
     {
-        public PopupForm()
+        public GreenScreen()
         {
             InitializeComponent();
            // customrtb1.SelectAll();

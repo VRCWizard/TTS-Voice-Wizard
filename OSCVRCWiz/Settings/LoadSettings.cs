@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DeepL_Translation;
 using EmbedIO.Sessions;
+using OSCVRCWiz.Addons;
+using OSCVRCWiz.TranslationAPIs;
 using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz
@@ -21,13 +22,6 @@ namespace OSCVRCWiz
             //rjToggleButtonActivation.Checked = Settings1.Default.recognition; //activation phrase off
             //textBoxActivationWord.Text = Settings1.Default.activationWord;
             VoiceWizardWindow.MainFormGlobal.activationWord = Settings1.Default.activationWord;
-            if (Settings1.Default.recognition == true)
-            {
-                var va = new VoiceActivation();
-
-                va.loadSpeechRecognition(VoiceWizardWindow.MainFormGlobal);
-                MessageBox.Show("[STTTS Voice Activation Initiated]");
-            }
             VoiceWizardWindow.MainFormGlobal.textBox2.Text = Settings1.Default.yourKey;
             VoiceWizardWindow.MainFormGlobal.textBox3.Text = Settings1.Default.yourRegion;
             VoiceWizardWindow.YourSubscriptionKey = Settings1.Default.yourKey;
@@ -39,7 +33,6 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked = Settings1.Default.sendOSCSetting;//on
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonClear.Checked = Settings1.Default.clearTTSWindowSetting;//off
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonOnTop2.Checked = Settings1.Default.alwaysTopSetting;//off
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonDisableTTS2.Checked = Settings1.Default.disableTTSSetting; //off
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAsTranslated2.Checked = Settings1.Default.wordsTranslateVRCSetting;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked = Settings1.Default.hideDelaySetting;//off
             VoiceWizardWindow.MainFormGlobal.textBoxErase.Text = Settings1.Default.hideDelayValue;
@@ -169,7 +162,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
 
-            DeepLC.DeepLKey = Settings1.Default.deepLKeysave;
+            DeepLTranslate.DeepLKey= Settings1.Default.deepLKeysave;
             VoiceWizardWindow.MainFormGlobal.textBox5.Text= Settings1.Default.deepLKeysave;
 
 
@@ -187,7 +180,7 @@ namespace OSCVRCWiz
                   
               }
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.saveDarkMode;
+            VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked = Settings1.Default.saveVoiceActStyle;
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
 

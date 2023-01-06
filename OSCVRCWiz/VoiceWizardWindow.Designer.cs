@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "entry 1",
             "1"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("emoji 2");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("ku");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("oilloi");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("olol");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("emoji 2");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("ku");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("oilloi");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("olol");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.speechTTSButton = new System.Windows.Forms.Button();
@@ -274,14 +274,12 @@
             this.comboBoxInput = new System.Windows.Forms.ComboBox();
             this.label105 = new System.Windows.Forms.Label();
             this.rjToggleButtonMedia = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.label24 = new System.Windows.Forms.Label();
-            this.rjToggleButtonDisableTTS2 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.iconButton28 = new FontAwesome.Sharp.IconButton();
             this.iconButton38 = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.rjToggleButton7 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleDarkMode = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label104 = new System.Windows.Forms.Label();
             this.rjToggleButtonSystemTray = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label77 = new System.Windows.Forms.Label();
@@ -1046,7 +1044,6 @@
             this.tabPage1.Size = new System.Drawing.Size(976, 753);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main Menu";
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // groupBox9
             // 
@@ -1683,11 +1680,11 @@
             // 
             this.listView1.HoverSelection = true;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5});
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
             this.listView1.LabelEdit = true;
             this.listView1.Location = new System.Drawing.Point(660, 89);
             this.listView1.MultiSelect = false;
@@ -1696,7 +1693,6 @@
             this.listView1.TabIndex = 111;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.Visible = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // iconButton32
             // 
@@ -2629,8 +2625,6 @@
             this.checkedListBoxApproved.Size = new System.Drawing.Size(418, 136);
             this.checkedListBoxApproved.TabIndex = 133;
             this.checkedListBoxApproved.Tag = "this is the tag";
-            this.checkedListBoxApproved.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxApproved_ItemCheck);
-            this.checkedListBoxApproved.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxApproved_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -3171,7 +3165,7 @@
             // 
             this.iconButton30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.iconButton30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton30.IconChar = FontAwesome.Sharp.IconChar.Windows;
+            this.iconButton30.IconChar = FontAwesome.Sharp.IconChar.Globe;
             this.iconButton30.IconColor = System.Drawing.Color.White;
             this.iconButton30.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3721,12 +3715,10 @@
             this.groupBox13.Controls.Add(this.comboBoxInput);
             this.groupBox13.Controls.Add(this.label105);
             this.groupBox13.Controls.Add(this.rjToggleButtonMedia);
-            this.groupBox13.Controls.Add(this.label24);
-            this.groupBox13.Controls.Add(this.rjToggleButtonDisableTTS2);
             this.groupBox13.ForeColor = System.Drawing.Color.White;
             this.groupBox13.Location = new System.Drawing.Point(24, 326);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(286, 349);
+            this.groupBox13.Size = new System.Drawing.Size(286, 304);
             this.groupBox13.TabIndex = 134;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Audio";
@@ -3786,7 +3778,7 @@
             this.label145.AutoSize = true;
             this.label145.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label145.ForeColor = System.Drawing.Color.Snow;
-            this.label145.Location = new System.Drawing.Point(6, 207);
+            this.label145.Location = new System.Drawing.Point(6, 161);
             this.label145.Name = "label145";
             this.label145.Size = new System.Drawing.Size(92, 20);
             this.label145.TabIndex = 130;
@@ -3798,7 +3790,7 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label29.ForeColor = System.Drawing.Color.Snow;
-            this.label29.Location = new System.Drawing.Point(6, 271);
+            this.label29.Location = new System.Drawing.Point(6, 225);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(104, 20);
             this.label29.TabIndex = 129;
@@ -3810,7 +3802,7 @@
             this.comboBoxOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxOutput.FormattingEnabled = true;
-            this.comboBoxOutput.Location = new System.Drawing.Point(10, 294);
+            this.comboBoxOutput.Location = new System.Drawing.Point(10, 248);
             this.comboBoxOutput.Name = "comboBoxOutput";
             this.comboBoxOutput.Size = new System.Drawing.Size(255, 28);
             this.comboBoxOutput.TabIndex = 128;
@@ -3822,7 +3814,7 @@
             this.comboBoxInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxInput.FormattingEnabled = true;
-            this.comboBoxInput.Location = new System.Drawing.Point(10, 230);
+            this.comboBoxInput.Location = new System.Drawing.Point(10, 184);
             this.comboBoxInput.Name = "comboBoxInput";
             this.comboBoxInput.Size = new System.Drawing.Size(255, 28);
             this.comboBoxInput.TabIndex = 127;
@@ -3833,7 +3825,7 @@
             this.label105.AutoSize = true;
             this.label105.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label105.ForeColor = System.Drawing.Color.Snow;
-            this.label105.Location = new System.Drawing.Point(61, 149);
+            this.label105.Location = new System.Drawing.Point(61, 118);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(105, 20);
             this.label105.TabIndex = 124;
@@ -3842,7 +3834,7 @@
             // rjToggleButtonMedia
             // 
             this.rjToggleButtonMedia.AutoSize = true;
-            this.rjToggleButtonMedia.Location = new System.Drawing.Point(6, 149);
+            this.rjToggleButtonMedia.Location = new System.Drawing.Point(6, 118);
             this.rjToggleButtonMedia.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonMedia.Name = "rjToggleButtonMedia";
             this.rjToggleButtonMedia.OffBackColor = System.Drawing.Color.Gray;
@@ -3852,33 +3844,6 @@
             this.rjToggleButtonMedia.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonMedia.TabIndex = 125;
             this.rjToggleButtonMedia.UseVisualStyleBackColor = true;
-            this.rjToggleButtonMedia.CheckedChanged += new System.EventHandler(this.rjToggleButtonMedia_CheckedChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label24.ForeColor = System.Drawing.Color.Snow;
-            this.label24.Location = new System.Drawing.Point(61, 111);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(149, 20);
-            this.label24.TabIndex = 122;
-            this.label24.Text = "Force Disable All TTS";
-            // 
-            // rjToggleButtonDisableTTS2
-            // 
-            this.rjToggleButtonDisableTTS2.AutoSize = true;
-            this.rjToggleButtonDisableTTS2.Location = new System.Drawing.Point(6, 111);
-            this.rjToggleButtonDisableTTS2.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonDisableTTS2.Name = "rjToggleButtonDisableTTS2";
-            this.rjToggleButtonDisableTTS2.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonDisableTTS2.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonDisableTTS2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonDisableTTS2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonDisableTTS2.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonDisableTTS2.TabIndex = 123;
-            this.rjToggleButtonDisableTTS2.UseVisualStyleBackColor = true;
-            this.rjToggleButtonDisableTTS2.CheckedChanged += new System.EventHandler(this.rjToggleButtonDisableTTS2_CheckedChanged);
             // 
             // groupBox16
             // 
@@ -3932,7 +3897,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label27);
-            this.groupBox1.Controls.Add(this.rjToggleButton7);
+            this.groupBox1.Controls.Add(this.rjToggleDarkMode);
             this.groupBox1.Controls.Add(this.label104);
             this.groupBox1.Controls.Add(this.rjToggleButtonSystemTray);
             this.groupBox1.Controls.Add(this.label77);
@@ -3967,20 +3932,20 @@
             this.label27.TabIndex = 100;
             this.label27.Text = "Dark Mode";
             // 
-            // rjToggleButton7
+            // rjToggleDarkMode
             // 
-            this.rjToggleButton7.AutoSize = true;
-            this.rjToggleButton7.Location = new System.Drawing.Point(6, 26);
-            this.rjToggleButton7.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton7.Name = "rjToggleButton7";
-            this.rjToggleButton7.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton7.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton7.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton7.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton7.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton7.TabIndex = 101;
-            this.rjToggleButton7.UseVisualStyleBackColor = true;
-            this.rjToggleButton7.CheckedChanged += new System.EventHandler(this.rjToggleButton7_CheckedChanged_1);
+            this.rjToggleDarkMode.AutoSize = true;
+            this.rjToggleDarkMode.Location = new System.Drawing.Point(6, 26);
+            this.rjToggleDarkMode.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleDarkMode.Name = "rjToggleDarkMode";
+            this.rjToggleDarkMode.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleDarkMode.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleDarkMode.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleDarkMode.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleDarkMode.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleDarkMode.TabIndex = 101;
+            this.rjToggleDarkMode.UseVisualStyleBackColor = true;
+            this.rjToggleDarkMode.CheckedChanged += new System.EventHandler(this.rjToggleButton7_CheckedChanged_1);
             // 
             // label104
             // 
@@ -5584,8 +5549,6 @@
         public ComboBox comboBoxInput;
         private Label label105;
         public RJControls.RJToggleButton rjToggleButtonMedia;
-        private Label label24;
-        public RJControls.RJToggleButton rjToggleButtonDisableTTS2;
         private FontAwesome.Sharp.IconButton iconButton38;
         private FontAwesome.Sharp.IconButton iconButton39;
         private FontAwesome.Sharp.IconButton iconButton40;
@@ -5619,7 +5582,7 @@
         private GroupBox groupBox14;
         private FontAwesome.Sharp.IconButton iconButton28;
         private Label label27;
-        public RJControls.RJToggleButton rjToggleButton7;
+        public RJControls.RJToggleButton rjToggleDarkMode;
         public RJControls.RJToggleButton rjToggleButtonStyle;
         private Label label30;
         public CheckedListBox checkedListBoxApproved;

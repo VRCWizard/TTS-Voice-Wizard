@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using DeepL;
-using OSCVRCWiz;
 
-namespace DeepL_Translation
+namespace OSCVRCWiz.TranslationAPIs
 {
-    public class DeepLC
+    public class DeepLTranslate
     {
-       // private LanguageCode fromLanguage = LanguageCode.English;
-     //   private LanguageCode toLanguage = "en";
+        // private LanguageCode fromLanguage = LanguageCode.English;
+        //   private LanguageCode toLanguage = "en";
         //public static string DeepLTranslationText="";
         public static string DeepLKey = "";
 
-        public async Task<string> translateTextDeepL(string text)
+        public static async Task<string> translateTextDeepL(string text)
         {
             try
             {
@@ -34,29 +33,29 @@ namespace DeepL_Translation
                 System.Diagnostics.Debug.WriteLine(translatedText);
                 //System.Diagnostics.Debug.WriteLine(LanguageCode.English);
                 // System.Diagnostics.Debug.WriteLine(LanguageCode.French);
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "[DeepL Input Text]: "+ text);
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DeepL Input Text]: " + text);
                 return translatedText.ToString();
-              //  System.Diagnostics.Debug.WriteLine("DeepL: " + VoiceWizardWindow.MainFormGlobal.deepLString);
+                //  System.Diagnostics.Debug.WriteLine("DeepL: " + VoiceWizardWindow.MainFormGlobal.deepLString);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("DeepL Translation Error: "+ ex.Message);
+                MessageBox.Show("DeepL Translation Error: " + ex.Message);
                 return "";
             }
         }
-        private string fromLanguageIDDeepL(string fullname)
+        private static string fromLanguageIDDeepL(string fullname)
         {
             var fromLanguage = "en";
             switch (fullname)
             {
-             //   case "Arabic [ar-EG]": fromLanguage = Lan; break;
+                //   case "Arabic [ar-EG]": fromLanguage = Lan; break;
                 case "Chinese [zh-CN]": fromLanguage = LanguageCode.Chinese; break;
                 case "Czech [cs-CZ]": fromLanguage = LanguageCode.Czech; break;
                 case "Danish [da-DK]": fromLanguage = LanguageCode.Danish; break;
                 case "Dutch [nl-NL]": fromLanguage = LanguageCode.Dutch; break;
                 case "English [en-US] (Default)": fromLanguage = LanguageCode.English; break;
                 case "Estonian [et-EE]": fromLanguage = LanguageCode.Estonian; break;
-              //  case "Filipino [fil-PH]": fromLanguage = LanguageCode.fi; break;
+                //  case "Filipino [fil-PH]": fromLanguage = LanguageCode.fi; break;
                 case "Finnish [fi-FI]": fromLanguage = LanguageCode.Finnish; break;
                 case "French [fr-FR]": fromLanguage = LanguageCode.French; break;
                 case "German [de-DE]": fromLanguage = LanguageCode.German; break;
@@ -66,8 +65,8 @@ namespace DeepL_Translation
                 // case "Irish [ga-IE]": fromLanguage = LanguageCode.iris; break;
                 case "Italian [it-IT]": fromLanguage = LanguageCode.Italian; break;
                 case "Japanese [ja-JP]": fromLanguage = LanguageCode.Japanese; break;
-               // case "Korean [ko-KR]": fromLanguage = LanguageCode.k break;
-              //  case "Norwegian [nb-NO]": fromLanguage = LanguageCode.no break;
+                // case "Korean [ko-KR]": fromLanguage = LanguageCode.k break;
+                //  case "Norwegian [nb-NO]": fromLanguage = LanguageCode.no break;
                 case "Polish [pl-PL]": fromLanguage = LanguageCode.Polish; break;
                 case "Portuguese [pt-BR]": fromLanguage = LanguageCode.Portuguese; break;
                 //place holder^^
@@ -75,18 +74,19 @@ namespace DeepL_Translation
                 case "Spanish [es-MX]": fromLanguage = LanguageCode.Spanish; break;
                 //place holder^^
                 case "Swedish [sv-SE]": fromLanguage = LanguageCode.Swedish; break;
-             //   case "Thai [th-TH]": fromLanguage = LanguageCode. break;
+                //   case "Thai [th-TH]": fromLanguage = LanguageCode. break;
                 case "Ukrainian [uk-UA]": fromLanguage = LanguageCode.Ukrainian; break;
-              //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
-                default: fromLanguage = LanguageCode.English;
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "This language does not support text translations with DeepL");
+                //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
+                default:
+                    fromLanguage = LanguageCode.English;
+                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("This language does not support text translations with DeepL");
                     break; // if translation to english happens something is wrong
             }
-              return fromLanguage;
+            return fromLanguage;
 
         }
 
-        private string toLanguageIDDeepL(string fullname)
+        private static string toLanguageIDDeepL(string fullname)
         {
             var toLanguage = "en-US";
 
@@ -123,10 +123,10 @@ namespace DeepL_Translation
                 //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
                 default:
                     toLanguage = LanguageCode.EnglishAmerican;
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, "This language does not support text translations with DeepL");
+                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("This language does not support text translations with DeepL");
                     break; // if translation to english happens something is wrong
             }
             return toLanguage;
-        } 
+        }
     }
 }

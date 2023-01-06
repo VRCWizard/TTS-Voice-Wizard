@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>WizardPic.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\WizardPic.ico</ApplicationIcon>
     <AssemblyName>TTSVoiceWizard</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x86</Platforms>
@@ -14,7 +14,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="WizardPic.ico" />
+    <Content Include="Resources\WizardPic.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\WizardPic.ico" />
   </ItemGroup>
   
    <ItemGroup>
@@ -35,6 +39,7 @@
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="Octokit" Version="3.0.0" />
     <PackageReference Include="PortAudioSharp" Version="0.3.0" />
+    <PackageReference Include="Siticone.Desktop.UI" Version="2.1.1" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />
     <PackageReference Include="System.Speech" Version="7.0.0-preview.2.22152.2" />
@@ -77,13 +82,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="FonixTalk.dll">
+    <None Update="lib\FonixTalk.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ftalk_us.dic">
+    <None Update="lib\ftalk_us.dic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ftalk_us.dll">
+    <None Update="lib\ftalk_us.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="KAT Emoji Texture Sheet\KAT_CharTiles Emojis3.png">
@@ -107,6 +112,22 @@
     <None Update="sounds\TTSButton.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libgcc_s_seh-1.dll" Link="lib\libgcc_s_seh-1.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libstdc++-6.dll" Link="lib\libstdc++-6.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libvosk.dll" Link="lib\libvosk.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libwinpthread-1.dll" Link="lib\libwinpthread-1.dll" />
   </ItemGroup>
 
 </Project>

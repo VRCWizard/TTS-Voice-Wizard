@@ -1,6 +1,6 @@
 ﻿namespace OSCVRCWiz
 {
-    partial class PopupForm
+    partial class GreenScreen
     {
         /// <summary>
         /// Required designer variable.

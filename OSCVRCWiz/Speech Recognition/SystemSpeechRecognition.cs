@@ -5,97 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Recognition;//free Windows
 
-using System.Speech;//free windows
 
-using System.Speech.Synthesis;//free windows
-using CSCore;
-using CSCore.MediaFoundation;
-using CSCore.SoundOut;
-using CSCore.SoundIn;
-using CSCore.CoreAudioAPI;
-using NAudio.Wave;
 //using NAudio.Wave;
 
 namespace OSCVRCWiz
 {
-    public class WindowsBuiltInSTTTS
+    public class SystemSpeechRecognition
     {
         //public static SpeechSynthesizer synthesizer;
         static bool listeningCurrently = false;
-        SpeechRecognitionEngine recognizer;
+        static SpeechRecognitionEngine recognizer;
         private static bool _userRequestedAbort = false;
         
 
 
 
-        public void TTSButtonLiteClick(VoiceWizardWindow MainForm)//TTS
-            {
-
-                string text = "";
-
-               text = VoiceWizardWindow.TTSLiteText;
-
-             //   var ot = new OutputText();
-                //Send Text to Vrchat
-                if (MainForm.rjToggleButtonLog.Checked == true)
-                {
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, text);
-                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(MainForm, text);
-                }
-                if (MainForm.rjToggleButtonDisableTTS2.Checked == false)
-                {
-
-                Task.Run(() => systemTTSAction(text));
-
-
-            }
-               
-
-                if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonNoTTSKAT.Checked == false)
-                {
-
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, text,"tts")); //original
-                                                                 // ot.outputVRChat(this, text);//new
-                }
-                if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonNoTTSChat.Checked == false)
-                {
-
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, text, "tts")); //original
-                                                                            // ot.outputVRChat(this, text);//new
-                }
-
-
-
-        }
-        public void systemTTSAction(string text)
-        {
-            VoiceWizardWindow.MainFormGlobal.stream = new MemoryStream();
-            VoiceWizardWindow.MainFormGlobal.synthesizerLite.SetOutputToWaveStream(VoiceWizardWindow.MainFormGlobal.stream);
-            VoiceWizardWindow.MainFormGlobal.synthesizerLite.Speak(text);
-      //      var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) }; //StreamReader closes the underlying stream automatically when being disposed of. The using statement does this automatically.
-            var waveSource = new MediaFoundationDecoder(VoiceWizardWindow.MainFormGlobal.stream);
-            //  waveOut.Initialize(waveSource);
-            //  waveOut.Play();
-            //  waveOut.WaitForStopped();
-
-            var testOut = new CSCore.SoundOut.WasapiOut();
-            var enumerator = new MMDeviceEnumerator();
-            foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
-            {
-                if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
-                {
-                    testOut.Device = endpoint;
-                }
-            }
-            testOut.Initialize(waveSource);
-            testOut.Play();
-            testOut.WaitForStopped();
-        
-
-
-
-    }
-        public void startListeningNow(VoiceWizardWindow MainForm)
+      
+        public static void startListeningNow()
             {
                 string cultureHere = "en-US";
 
@@ -111,7 +37,7 @@ namespace OSCVRCWiz
 
                         // Add a handler for the speech recognized event.  
                         recognizer.SpeechRecognized +=
-                          new EventHandler<SpeechRecognizedEventArgs>(MainForm.recognizer_SpeechRecognized);
+                          new EventHandler<SpeechRecognizedEventArgs>(VoiceWizardWindow.MainFormGlobal.recognizer_SpeechRecognized);
 
                         // Configure input to the speech recognizer.  
                         recognizer.SetInputToDefaultAudioDevice();
@@ -176,16 +102,16 @@ namespace OSCVRCWiz
 
             }
 
-            public void speechTTSButtonLiteClick(VoiceWizardWindow MainForm)
+            public static void speechTTSButtonLiteClick()
             {
 
                 if (listeningCurrently == false)
                 {
                     _userRequestedAbort = false;
-                    Task.Run(() => startListeningNow(MainForm));
+                    Task.Run(() => startListeningNow());
                 //  waveIn.StartRecording();
                 // var ot = new OutputText();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[System Speech Started Listening]");
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[System Speech Started Listening]");
                     listeningCurrently = true;
                 }
                 else
@@ -194,7 +120,7 @@ namespace OSCVRCWiz
                 // recognizer.RecognizeAsyncStop();
                 ///  waveIn.StopRecording();
                 //    var ot = new OutputText();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[System Speech Stopped Listening]");
+                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[System Speech Stopped Listening]");
                     listeningCurrently = false;
                 }
 

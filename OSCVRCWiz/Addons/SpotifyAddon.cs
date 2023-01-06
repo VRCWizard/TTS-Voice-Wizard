@@ -8,17 +8,16 @@ using SpotifyAPI.Web;
 using OSCVRCWiz.Settings;
 using System.Diagnostics;
 
-
-namespace OSCVRCWiz
+namespace OSCVRCWiz.Addons
 {
- 
-    public class SpotifyAddon 
+
+    public class SpotifyAddon
 
     {
         private static string clientIdLegacy = "8ed3657eca864590843f45a659ec2976"; //TTSVoiceWizard Spotify Client ID
         //private static string clientIdLegacy = "8ed3657eca864590843f45a659ec2976"; //TTSVoiceWizard Spotify Client ID
         private static EmbedIOAuthServer _server;
-        private static SpotifyClient myClient =null;
+        private static SpotifyClient myClient = null;
         private static PKCETokenResponse myPKCEToken = null;
         public static string lastSong = "";
         private static string globalVerifier = "";
@@ -26,7 +25,7 @@ namespace OSCVRCWiz
         public static string title = "";
         public static string spotifyurllink = "https://open.spotify.com/";
         public static bool legacyState = false;
-        static string fullSongPauseCheck="";
+        static string fullSongPauseCheck = "";
         public static string spotifyPausedIndicator = "▶️";
 
 
@@ -47,33 +46,33 @@ namespace OSCVRCWiz
                     {
                         if (legacyState == true)
                         {
-                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
+                            Debug.WriteLine("----Spotify token refreshed Attempt-----");
                             PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientIdLegacy, Settings1.Default.PKCERefreshToken);
                             PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
                             myClient = new SpotifyClient(refreshResponse.AccessToken);
                             Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
                             Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
                             Settings1.Default.Save();
-                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+                            Debug.WriteLine("----Spotify token refreshed Successful-----");
                         }
                         else
                         {
                             string clientId = Settings1.Default.SpotifyKey;
-                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Attempt-----");
+                            Debug.WriteLine("----Spotify token refreshed Attempt-----");
                             PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
                             PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
                             myClient = new SpotifyClient(refreshResponse.AccessToken);
                             Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
                             Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
                             Settings1.Default.Save();
-                            System.Diagnostics.Debug.WriteLine("----Spotify token refreshed Successful-----");
+                            Debug.WriteLine("----Spotify token refreshed Successful-----");
 
                         }
 
                         if (spotifyConnect == false)
                         {
                             // var ot = new OutputText();
-                            VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "[Spotify Connected]");
+                            VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Spotify Connected]",Color.Green);
                             spotifyConnect = true;
 
                         }
@@ -81,12 +80,12 @@ namespace OSCVRCWiz
 
                     catch (APIException ex)
                     {
-                        System.Diagnostics.Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
+                        Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
 
                     }
                     FullTrack m_currentTrack;
                     CurrentlyPlaying m_currentlyPlaying;
-                    
+
                     m_currentlyPlaying = await myClient.Player.GetCurrentlyPlaying(new PlayerCurrentlyPlayingRequest());
                     var m_testing = await myClient.Player.GetAvailableDevices();
                     title = "";
@@ -95,13 +94,13 @@ namespace OSCVRCWiz
                     var progress = "";
                     var durationHours = "";
                     var progressHours = "";
-                  //  var deviceType = "";
+                    //  var deviceType = "";
                     var deviceVolume = "";
                     if (m_currentlyPlaying != null)
                     {
                         IPlayableItem currentlyPlayingItem = m_currentlyPlaying.Item;
                         m_currentTrack = currentlyPlayingItem as FullTrack;
-                       
+
 
                         if (m_currentTrack != null)
                         {
@@ -109,14 +108,14 @@ namespace OSCVRCWiz
                             title = m_currentTrack.Name;
                             try
                             {
-                               // deviceType = m_testing.Devices[0].Type;
+                                // deviceType = m_testing.Devices[0].Type;
                                 deviceVolume = m_testing.Devices[0].VolumePercent.ToString();
                             }
                             catch
                             {
 
                             }
-                            
+
 
                             string currentArtists = string.Empty;
                             int counter = 0;
@@ -138,7 +137,7 @@ namespace OSCVRCWiz
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
                         }
                     }
-                    if ((lastSong != title || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked == true) && (!string.IsNullOrWhiteSpace(title) && title != "" && VoiceWizardWindow.pauseSpotify != true))
+                    if ((lastSong != title || MainForm.justShowTheSong == true || MainForm.rjToggleButtonPeriodic.Checked == true) && !string.IsNullOrWhiteSpace(title) && title != "" && VoiceWizardWindow.pauseSpotify != true)
                     {
                         // VoiceWizardWindow.pauseBPM = true; pause removed to fix with spotify 
                         // lastSong = title;
@@ -152,9 +151,9 @@ namespace OSCVRCWiz
                             spotifyPausedIndicator = "⏸️";
                         }
 
-                            System.Diagnostics.Debug.WriteLine(title);
-                        System.Diagnostics.Debug.WriteLine(artist);
-                        System.Diagnostics.Debug.WriteLine(duration);
+                        Debug.WriteLine(title);
+                        Debug.WriteLine(artist);
+                        Debug.WriteLine(duration);
 
                         var spotifySymbol = "ふ";
                         var theString = "Listening to '" + title + "' by '" + artist + "' " + progress + "/" + duration + " on Spotify";
@@ -178,27 +177,27 @@ namespace OSCVRCWiz
                         //theString = theString.Replace("{deviceType}", deviceType);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
 
-                        if ((fullSongPauseCheck != progress && MainForm.rjToggleButtonPlayPaused.Checked == true)|| (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
-                       {
+                        if (fullSongPauseCheck != progress && MainForm.rjToggleButtonPlayPaused.Checked == true || MainForm.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
+                        {
 
 
-                          //  var ot = new OutputText();
+                            //  var ot = new OutputText();
                             if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                             {
-                                  Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(theString));
 
                             }
                             if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonSpotifyKatDisable.Checked == false)
                             {
-                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, theString, "spotify"));
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(theString, "spotify"));
                             }
                             if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                             {
-                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, theString, "spotify")); //original
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(theString, "spotify")); //original
 
                             }
                         }
-                        
+
                         // lastSong = title;
                         MainForm.justShowTheSong = false;
                         fullSongPauseCheck = progress;
@@ -213,12 +212,12 @@ namespace OSCVRCWiz
             {
 
 
-                System.Diagnostics.Debug.WriteLine("Spotify Feature timed out for: "+e.RetryAfter.ToString());
+                Debug.WriteLine("Spotify Feature timed out for: " + e.RetryAfter.ToString());
 
-               // var ot = new OutputText();
+                // var ot = new OutputText();
                 if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                 {
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, "Spotify Feature timed out for: " + e.RetryAfter.ToString()));
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog("Spotify Feature timed out for: " + e.RetryAfter.ToString()));
                 }
 
             }
@@ -256,20 +255,20 @@ namespace OSCVRCWiz
 
 
                     //  var ot = new OutputText();
-                    if ((MainForm.rjToggleButtonPlayPaused.Checked == true && WindowsMedia.mediaStatus!="Paused") || (MainForm.rjToggleButtonPlayPaused.Checked == false))//stop outputting periodically if song paused
+                    if (MainForm.rjToggleButtonPlayPaused.Checked == true && WindowsMedia.mediaStatus != "Paused" || MainForm.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                     {
                         if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                         {
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(theString));
 
                         }
                         if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonSpotifyKatDisable.Checked == false)
                         {
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, theString, "bpm"));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(theString, "bpm"));
                         }
                         if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                         {
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, theString, "bpm")); //original
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(theString, "bpm")); //original
 
                         }
                     }
@@ -280,7 +279,7 @@ namespace OSCVRCWiz
 
         public static async Task getCurrentMediaInfo(VoiceWizardWindow MainForm)
         {
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked==false)  //10 periodic // 9 media mode
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == false)  //10 periodic // 9 media mode
             {
 
 
@@ -314,16 +313,16 @@ namespace OSCVRCWiz
                     //   var ot = new OutputText();
                     if (MainForm.rjToggleButtonSpotifySpam.Checked == true)
                     {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(MainForm, theString));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(theString));
 
                     }
                     if (MainForm.rjToggleButtonOSC.Checked == true && MainForm.rjToggleButtonSpotifyKatDisable.Checked == false)
                     {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(MainForm, theString, "bpm"));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(theString, "bpm"));
                     }
                     if (MainForm.rjToggleButtonChatBox.Checked == true && MainForm.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                     {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(MainForm, theString, "bpm")); //original
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(theString, "bpm")); //original
 
                     }
 
@@ -335,7 +334,7 @@ namespace OSCVRCWiz
 
 
         private static async Task OnErrorReceived(object sender, string error, string state)
-       {
+        {
             Console.WriteLine($"Aborting authorization, error received: {error}");
             await _server.Stop();
         }
@@ -343,9 +342,9 @@ namespace OSCVRCWiz
 
         public async Task SpotifyConnect(VoiceWizardWindow MainForm)
         {
-          MainForm.getSpotify = true;
-            
-            System.Diagnostics.Debug.WriteLine("Connect spotify");
+            MainForm.getSpotify = true;
+
+            Debug.WriteLine("Connect spotify");
             /*
 
                // Make sure "http://localhost:5000/callback" is in your spotify application as redirect uri!
@@ -364,8 +363,8 @@ namespace OSCVRCWiz
             var (verifier, challenge) = PKCEUtil.GenerateCodes();
             globalVerifier = verifier;
 
-          //  var loginRequest = new LoginRequest(_server.BaseUri, clientId,LoginRequest.ResponseType.Code)
-                if(legacyState==true)
+            //  var loginRequest = new LoginRequest(_server.BaseUri, clientId,LoginRequest.ResponseType.Code)
+            if (legacyState == true)
             {
                 var loginRequest = new LoginRequest(_server.BaseUri, clientIdLegacy, LoginRequest.ResponseType.Code)
                 {
@@ -389,18 +388,18 @@ namespace OSCVRCWiz
 
             }
 
-          
+
         }
 
         // This method should be called from your web-server when the user visits "http://localhost:5000/callback"
         public static async Task GetCallback(object sender, AuthorizationCodeResponse response)
         {
-            System.Diagnostics.Debug.WriteLine("Getcallback code: " + response.Code.ToString());
+            Debug.WriteLine("Getcallback code: " + response.Code.ToString());
             // Note that we use the verifier calculated above!
             // var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientIdLegacy, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
-           // var vw = new VoiceWizardWindow();
+            // var vw = new VoiceWizardWindow();
 
-            if (legacyState== true)
+            if (legacyState == true)
             {
                 var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientIdLegacy, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
                 Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
@@ -421,13 +420,13 @@ namespace OSCVRCWiz
         }
         public static string Base64Encode(string plainText)
         {
-            var plainTextBytes = System.Text.Encoding.ASCII.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
+            var plainTextBytes = Encoding.ASCII.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
         }
         public static string Base64Decode(string base64EncodedData)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.ASCII.GetString(base64EncodedBytes);
+            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            return Encoding.ASCII.GetString(base64EncodedBytes);
         }
 
 

@@ -23,7 +23,11 @@ using OSCVRCWiz.Settings;
 using Octokit;
 using System.Linq;
 using System.Diagnostics;
-using DeepL_Translation;
+using OSCVRCWiz.TTS;
+using OSCVRCWiz.Addons;
+using TTS;
+using OSCVRCWiz.Text;
+using OSCVRCWiz.TranslationAPIs;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -93,7 +97,7 @@ namespace OSCVRCWiz
         public static string voiceCommandsStored = "";
         HttpServer httpServer;
         public OutputText ot;
-        public PopupForm pf;
+        public GreenScreen pf;
         public static VoiceWizardWindow MainFormGlobal;
         public static bool webCapEnabled = false;
         public static bool voskEnabled = false;
@@ -228,7 +232,7 @@ namespace OSCVRCWiz
 
                 System.Diagnostics.Debug.WriteLine("-------------get key press id: " + key.ToString());
 
-                Task.Run(() => doSpeechTTS());
+                Task.Run(() => MainDoSpeechTTS());
 
             }
 
@@ -256,14 +260,19 @@ namespace OSCVRCWiz
             });
         }
 
-        public void logLine(string line)
+        public void logLine(string line, Color? color = null)
         {
+            
+            
             if (InvokeRequired)
             {
-                this.Invoke(new Action<string>(logLine), new object[] { line });
+                this.Invoke(new Action<string,Color?>(logLine), new object[] { line,color });
                 return;
             }
             richTextBox1.Select(0, 0);
+            if (rjToggleDarkMode.Checked == true) { richTextBox1.SelectionColor = color.GetValueOrDefault(Color.White); }
+            else { richTextBox1.SelectionColor = color.GetValueOrDefault(Color.Black); }
+            
             richTextBox1.SelectedText = line + "\r\n";
         }
        /* public void logLine(string line, Color color) //add colors
@@ -415,7 +424,7 @@ namespace OSCVRCWiz
                 case "Azure":
                     comboBox1.Items.Clear();
                     comboBox1.Items.Add("normal");
-                    foreach (string style in AudioSynthesis.AllVoices4Language[comboBox2.Text.ToString()])
+                    foreach (string style in AzureTTS.AllVoices4Language[comboBox2.Text.ToString()])
                     {
                         comboBox1.Items.Add(style);
                     }
@@ -454,19 +463,19 @@ namespace OSCVRCWiz
                 if (versionComparison < 0)
                 {
                     //The version on GitHub is more up to date than this local release.
-                    ot.outputLog(this, "[The version on GitHub (" + releaseText + ") is more up to date than the current version (" + currentVersion + "). Grab the new release from the Github https://github.com/VRCWizard/TTS-Voice-Wizard/releases ]");
+                    ot.outputLog("[The version on GitHub (" + releaseText + ") is more up to date than the current version (" + currentVersion + "). Grab the new release from the Github https://github.com/VRCWizard/TTS-Voice-Wizard/releases ]");
                     iconButton8.Visible = true;
                     //  ot.outputLog(this, "[After downloading the updated version you may want to copy your config settings over by replacing the new config file with the old one. Config files are stored in AppData/Local/TTSVoiceWizard]");
                 }
                 else if (versionComparison > 0)
                 {
                     //This local version is greater than the release version on GitHub.
-                    ot.outputLog(this, "[The current version (" + currentVersion + ") is greater than the release version on GitHub (" + releaseText + "). You are on a pre-release/development build]");
+                    ot.outputLog("[The current version (" + currentVersion + ") is greater than the release version on GitHub (" + releaseText + "). You are on a pre-release/development build]");
                 }
                 else
                 {
                     //This local Version and the Version on GitHub are equal.
-                    ot.outputLog(this, "[The current version (" + currentVersion + ") and the version on GitHub (" + releaseText + ") are equal. Your program is up to date]");
+                    ot.outputLog("[The current version (" + currentVersion + ") and the version on GitHub (" + releaseText + ") are equal. Your program is up to date]");
                 }
                 richTextBox5.Text = "Current Version: v"+currentVersion+" - "+releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
             }
@@ -498,9 +507,9 @@ namespace OSCVRCWiz
            //     webCapOn();
           //  }
             WindowsMedia.getWindowsMedia();
-            var vc = new VoiceCommands();
-            vc.voiceCommands();
-            vc.refreshCommandList();
+            //  var vc = new VoiceCommands();
+            VoiceCommands.voiceCommands();
+            VoiceCommands.refreshCommandList();
 
             //Construct a new OSCQuery service with new OSCQueryService(), optionally passing in the name, TCP port to use for serving HTTP, UDP port that you're using for OSC, and an ILogger if you want logs.
 
@@ -560,130 +569,12 @@ namespace OSCVRCWiz
                 }
             }
             var text = richTextBox3.Text.ToString();
+            Task.Run(() => MainDoTTS(text));
 
 
-            if (YourSubscriptionKey == ""  && comboBoxTTSMode.Text.ToString()=="Azure")
-            {
-              //  var ot = new OutputText();
-                ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
-            }
-            
-            if (VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString() != "No Translation (Default)")
-           {
-               var DL = new DeepLC();
-              text = await DL.translateTextDeepL(text);
-               // text = VoiceWizardWindow.MainFormGlobal.deepLString;
-            }
-           
-            
-            switch (comboBoxTTSMode.Text.ToString())
-            {
-                case "FonixTalk":
-                    var ftts = new FonixTalkTTS();
-                   
-                    ftts.FonixTTS(text);
-                    if (rjToggleButtonLog.Checked == true)
-                    {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text);
-                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
-                    }
-
-                    if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-
-                    }
-                    if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-                    }
-                    if (rjToggleButtonGreenScreen.Checked == true)
-                    {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-
-                    }
-                    break;
-
-                case "System Speech":
-                    var lite = new WindowsBuiltInSTTTS();
-                    Task.Run(() => lite.TTSButtonLiteClick(this,text)); 
-                    break;
-                case "Azure":
-                    Task.Run(() => doTTSOnly(text));
-                    break;
-                case "TikTok":
-                   
-                   // var text2 = richTextBox3.Text.ToString();
-                    Task.Run(() => TikTok.TikTokTextAsSpeech(text));
-                    if (rjToggleButtonLog.Checked == true)
-                    {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text);
-                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
-                    }
-
-                    if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-
-                    }
-                    if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-                    }
-                    if (rjToggleButtonGreenScreen.Checked == true)
-                    {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-
-                    }
-                    break;
-
-                default:
-                 //   var text3 = richTextBox3.Text.ToString();
-
-                    if (rjToggleButtonLog.Checked == true)
-                    {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog(this, text);
-                        VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
-                    }
-
-                    if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChat(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-
-                    }
-                    if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-                    }
-                    if (rjToggleButtonGreenScreen.Checked == true)
-                    {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputGreenScreen(VoiceWizardWindow.MainFormGlobal, text, "tts"));
-
-                    }
-                    break;
-            }
- 
-          
         }
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
-            Task.Run(() => doSpeechTTS());
-         
-        }
-        private void doSpeechTTS()
-        {
-            if (rjToggleButtonChatBox.Checked == true)
-            {
-                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
-                sender3.Send(typingbubble);
-
-            }
             if (rjToggleButtonMedia.Checked == true)
             {
                 try
@@ -696,6 +587,88 @@ namespace OSCVRCWiz
                     MessageBox.Show(ex.Message);
                 }
             }
+            Task.Run(() => MainDoSpeechTTS());
+         
+        }
+        public async void MainDoTTS(string text)
+        {
+            var language = "";
+            this.Invoke((MethodInvoker)delegate () 
+            {
+
+           language = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
+        });
+
+                string selectedTTSMode = VoiceWizardWindow.TTSModeSaved;
+                //VoiceCommand task
+
+                if (YourSubscriptionKey == "" && comboBoxTTSMode.Text.ToString() == "Azure")
+                {
+                    //  var ot = new OutputText();
+                    ot.outputLog("[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
+                }
+                Task.Run(() => doVoiceCommand(text));
+
+                if (language != "No Translation (Default)")
+                {
+                   // var DL = new DeepL();
+                    text = await DeepLTranslate.translateTextDeepL(text);
+                }
+                    switch (selectedTTSMode)
+                    {
+                        case "FonixTalk":
+                            Task.Run(() => FonixTalkTTS.FonixTTS(text));
+                            break;
+                        case "System Speech":
+                            Task.Run(() => SystemSpeechTTS.systemTTSAction(text));
+                            break;
+                        case "Azure":
+                            SetDefaultTTS.SetVoicePresets();
+                            Task.Run(() => AzureTTS.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, text, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
+                            break;
+                        case "TikTok":
+                            Task.Run(() => TikTokTTS.TikTokTextAsSpeech(text));
+                            break;
+
+                        default:
+
+                            break;
+                    }
+
+
+            if (rjToggleButtonLog.Checked == true)
+            {
+                ot.outputLog("[" + selectedTTSMode + "]: " + text);
+                ot.outputTextFile(text);
+
+            }
+            if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
+                {
+                    Task.Run(() => ot.outputVRChat(text, "tts"));
+                }
+                if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
+                {
+                    Task.Run(() => ot.outputVRChatSpeechBubbles(text, "tts")); //original
+
+                }
+                if (rjToggleButtonGreenScreen.Checked == true)
+                {
+                    Task.Run(() => ot.outputGreenScreen(text, "tts")); //original
+
+                }
+
+
+            
+        }
+        private void MainDoSpeechTTS()
+        {
+            if (rjToggleButtonChatBox.Checked == true)
+            {
+                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
+                sender3.Send(typingbubble);
+
+            }
+           
 
             this.Invoke((MethodInvoker)delegate ()
             {
@@ -707,12 +680,12 @@ namespace OSCVRCWiz
                         {
                             if (voskEnabled == false)
                             {
-                                Task.Run(() => Vosk.doVosk());
+                                Task.Run(() => VoskRecognition.doVosk());
                                 voskEnabled = true;
                             }
                             else
                             {
-                                Task.Run(() => Vosk.stopVosk());
+                                Task.Run(() => VoskRecognition.stopVosk());
                                 voskEnabled = false;
 
                             }
@@ -740,36 +713,36 @@ namespace OSCVRCWiz
                     break;
 
                 case "System Speech":
-                    var lite = new WindowsBuiltInSTTTS();
-                    Task.Run(() => lite.speechTTSButtonLiteClick(this));
+                   
+                    Task.Run(() => SystemSpeechRecognition.speechTTSButtonLiteClick());
 
                     break;
                 case "Azure":
                     if (YourSubscriptionKey == "")
                     {
-                        ot.outputLog(this, "[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
+                        ot.outputLog("[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech. You can also change the Windows Built-In System Speech 'Output Device' and 'Voice' in the 'Settings > System Speech' tab]");
                     }
                     if (YourSubscriptionKey != "")
                     {
-                        var ts = new TextSynthesis();
+                      //  var azureRec = new AzureRecognition();
                       
                             if (comboBox3.Text.ToString() == "No Translation (Default)")
                             {
-                                ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                                AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
                                 System.Diagnostics.Debug.WriteLine("<speechSetup change>");
                                
-                                    ot.outputLog(this, "[Azure Listening]");
-                                    ts.speechTTTS(this, comboBox4.Text.ToString());
+                                    ot.outputLog("[Azure Listening]");
+                                AzureRecognition.speechTTTS(comboBox4.Text.ToString());
                                 
 
                             }
                             else
                             {
-                                ts.speechSetup(this, comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                                AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
                                 System.Diagnostics.Debug.WriteLine("<speechSetup change>");
                                                            
-                                    ot.outputLog(this, "[Azure Translation Listening]");
-                                    ts.translationSTTTS(this, comboBox3.Text.ToString(), comboBox4.Text.ToString());
+                                    ot.outputLog("[Azure Translation Listening]");
+                                AzureRecognition.translationSTTTS(comboBox3.Text.ToString(), comboBox4.Text.ToString());
                                 
 
                             }
@@ -790,7 +763,7 @@ namespace OSCVRCWiz
 
 
         }
-        private void doTTSOnly(string text)
+      /*  private void doTTSOnly(string text)
         {
        
            // string text = "";
@@ -804,11 +777,11 @@ namespace OSCVRCWiz
                 if (rjToggleButtonLog.Checked == true)
             {
                 ot.outputLog(this, text);
-                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, text);
+                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(text);
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-                Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));
+                Task.Run(() => AzureTTS.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice));
             }
             if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
             {
@@ -816,7 +789,7 @@ namespace OSCVRCWiz
 
                 VoiceWizardWindow.pauseBPM = true;
                 VoiceWizardWindow.pauseSpotify = true;
-                Task.Run(() => ot.outputVRChat(this, text, "tts")); //original
+                Task.Run(() => ot.outputVRChat(text, "tts")); //original
                                                                     // ot.outputVRChat(this, text);//new
             }
             if (rjToggleButtonChatBox.Checked == true &&rjToggleButtonNoTTSChat.Checked==false)
@@ -851,7 +824,7 @@ namespace OSCVRCWiz
             }
             if (rjToggleButtonDisableTTS2.Checked == false)
             {
-                AudioSynthesis.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice);
+                AzureTTS.SynthesizeAudioAsync(this, text, emotion, rate, pitch, volume, voice);
             }
             if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
             {
@@ -879,7 +852,7 @@ namespace OSCVRCWiz
             {
                 richTextBox3.Clear();
             }
-        }
+        } */
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
             if (rjToggleButtonOnTop2.Checked == true)
@@ -1155,7 +1128,7 @@ namespace OSCVRCWiz
             if(richTextBox1.Lines.Count()>=2000)
             {
                 ClearTextBox();
-                ot.outputLog(this,"Log exceeded limit and was automatically cleared");
+                ot.outputLog("Log exceeded limit and was automatically cleared");
             }
             //copies main log text to addon logs
             if (tabControl1.SelectedTab.Text.ToString() == "Spotify")
@@ -1189,6 +1162,7 @@ namespace OSCVRCWiz
             heartRatePort = Convert.ToInt32(textBoxHRPort.Text.ToString());
 
         }
+      
         public async void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)//lite version, WindowsBuiltInSTTTS Help
         {
            // this.Invoke((MethodInvoker)delegate ()
@@ -1200,69 +1174,7 @@ namespace OSCVRCWiz
             string text = e.Result.Text.ToString();
 
 
-            //VoiceCommand task
-            Task.Run(() => doVoiceCommand(text));
 
-            if (VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString() != "No Translation (Default)")
-            {
-                var DL = new DeepLC();
-                text = await DL.translateTextDeepL(text);
-                // text = VoiceWizardWindow.MainFormGlobal.deepLString;
-            }
-
-
-            // var ot = new OutputText();
-            //Send Text to Vrchat
-            if (rjToggleButtonLog.Checked == true)
-            {
-                ot.outputLog(this, text);
-                VoiceWizardWindow.MainFormGlobal.ot.outputTextFile(this, "[System Speech]: " + text);
-
-            }
-            this.Invoke((MethodInvoker)delegate ()
-            {
-
-            if (rjToggleButtonDisableTTS2.Checked == false)
-            {
-                switch (comboBoxTTSMode.Text.ToString())
-                {
-                    case "FonixTalk":
-                        var fx = new FonixTalkTTS();
-                        Task.Run(() => fx.FonixTTS(text));
-                        break;
-
-                    case "System Speech":
-                        var sys = new WindowsBuiltInSTTTS();
-                        Task.Run(() => sys.systemTTSAction(text));
-
-                        break;
-                    case "Azure":
-                        SetDefaultTTS.SetVoicePresets();
-                        Task.Run(() => AudioSynthesis.SynthesizeAudioAsync(VoiceWizardWindow.MainFormGlobal, text, VoiceWizardWindow.emotion, VoiceWizardWindow.rate, VoiceWizardWindow.pitch, VoiceWizardWindow.volume, VoiceWizardWindow.voice)); //turning off TTS for now
-                        break;
-
-                    default:
-                      
-                break;
-                }   
-
-            }
-            });
-
-            if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
-            {
-                Task.Run(() => ot.outputVRChat(this, text, "tts"));
-            }
-            if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
-            {
-                Task.Run(() => ot.outputVRChatSpeechBubbles(this, text, "tts")); //original
-
-            }
-            if (rjToggleButtonGreenScreen.Checked == true)
-            {
-                Task.Run(() => ot.outputGreenScreen(this, text, "tts")); //original
-
-            }
           //  });
         }
         
@@ -1276,8 +1188,7 @@ namespace OSCVRCWiz
                 if (text.Contains(x, StringComparison.OrdinalIgnoreCase))
                 {
                     System.Diagnostics.Debug.WriteLine("it contains " + x);
-                    var vc = new VoiceCommands();
-                    vc.phraseFound(index);
+                    VoiceCommands.phraseFound(index);
                 }
                 index++;
             }
@@ -1300,7 +1211,7 @@ namespace OSCVRCWiz
                 }
             }
 
-            });
+           });
         }
 
 
@@ -1411,8 +1322,8 @@ namespace OSCVRCWiz
 
         private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
         {
-            var ts = new TextSynthesis();
-            ts.stopContinuousListeningNow(this);
+            //var ts = new AzureRecognition();
+            AzureRecognition.stopContinuousListeningNow(this);
         }
 
         private void rjToggleButton6_CheckedChanged(object sender, EventArgs e)
@@ -1457,7 +1368,7 @@ namespace OSCVRCWiz
         {
             if (rjToggleButtonGreenScreen.Checked == true)
             {
-                pf = new PopupForm();
+                pf = new GreenScreen();
                 pf.BackColor = Color.LimeGreen;
                 pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
                 pf.Show(this);
@@ -1550,7 +1461,7 @@ namespace OSCVRCWiz
                 {
                     VoiceWizardWindow.pauseBPM = true;
                     VoiceWizardWindow.pauseSpotify = true;
-                    Task.Run(() => ot.outputVRChatSpeechBubbles(this, theString, "ttt")); //original
+                    Task.Run(() => ot.outputVRChatSpeechBubbles(theString, "ttt")); //original
 
 
                 }
@@ -1558,7 +1469,7 @@ namespace OSCVRCWiz
                 {
                     VoiceWizardWindow.pauseBPM = true;
                     VoiceWizardWindow.pauseSpotify = true;
-                    Task.Run(() => ot.outputVRChat(this, theString, "tttAdd")); //original     
+                    Task.Run(() => ot.outputVRChat(theString, "tttAdd")); //original     
                 }
             }
             typingBox = false;
@@ -1586,7 +1497,7 @@ namespace OSCVRCWiz
         {
             if(TTSModeSaved=="Azure")
             {
-                AudioSynthesis.SynthesisGetAvailableVoicesAsync(this, comboBox5.Text.ToString());
+                AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
 
             }
          
@@ -1595,7 +1506,7 @@ namespace OSCVRCWiz
 
         private void button13_Click(object sender, EventArgs e)
         {
-            AudioSynthesis.SynthesisGetAvailableVoicesAsync(this, comboBox5.Text.ToString());
+            AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
 
         }
 
@@ -1670,7 +1581,7 @@ namespace OSCVRCWiz
            // var httpServer = new HttpServer();
             Task.Run(() => httpServer.Start());
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
-            ot.outputLog(this, "[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
+            ot.outputLog("[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
             //button11.Enabled = false;
         }
         private void webCapOff()
@@ -1679,7 +1590,7 @@ namespace OSCVRCWiz
           //  var httpServer = new HttpServer();
             Task.Run(() => httpServer.Stop());
             System.Diagnostics.Debug.WriteLine("Stopped HTTP listener");
-            ot.outputLog(this, "[HTTP listener for Web Captioner Stopped.]");
+            ot.outputLog("[HTTP listener for Web Captioner Stopped.]");
            // button11.Enabled = false;
         }
 
@@ -1755,12 +1666,12 @@ namespace OSCVRCWiz
                     TTSModeSaved = "FonixTalk";
                     if (VoiceWizardWindow.firstVoiceLoad == false)
                     {
-                        ot.outputLog(this, "[DEBUG: setting voice]");
+                        ot.outputLog("[DEBUG: setting voice]");
                         comboBox2.SelectedIndex = 0;
                     }
                     if (VoiceWizardWindow.firstVoiceLoad == true)
                     {
-                        ot.outputLog(this, "[DEBUG: setting voice to saved value]");
+                        ot.outputLog("[DEBUG: setting voice to saved value]");
                         comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                         VoiceWizardWindow.firstVoiceLoad = false;
                     }
@@ -1830,12 +1741,12 @@ namespace OSCVRCWiz
                     TTSModeSaved = "TikTok";
                     if (VoiceWizardWindow.firstVoiceLoad == false)
                     {
-                        ot.outputLog(this, "[DEBUG: setting voice]");
+                        ot.outputLog("[DEBUG: setting voice]");
                         comboBox2.SelectedIndex = 0;
                     }
                     if (VoiceWizardWindow.firstVoiceLoad == true)
                     {
-                        ot.outputLog(this, "[DEBUG: setting voice to saved value]");
+                        ot.outputLog("[DEBUG: setting voice to saved value]");
                         comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                         VoiceWizardWindow.firstVoiceLoad = false;
                     }
@@ -1861,18 +1772,18 @@ namespace OSCVRCWiz
                     TTSModeSaved = "System Speech";
                     if (VoiceWizardWindow.firstVoiceLoad == false)
                     {
-                        ot.outputLog(this, "[DEBUG: setting voice]");
+                        ot.outputLog("[DEBUG: setting voice]");
                         comboBox2.SelectedIndex = 0;
                     }
                     if (VoiceWizardWindow.firstVoiceLoad == true)
                     {
-                        ot.outputLog(this, "[DEBUG: setting voice to saved value]");
+                        ot.outputLog("[DEBUG: setting voice to saved value]");
                         comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                         VoiceWizardWindow.firstVoiceLoad = false;
                     }
                     break;
                 case "Azure":
-                    AudioSynthesis.SynthesisGetAvailableVoicesAsync(this, comboBox5.Text.ToString());
+                    AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
                    // comboBox2.SelectedIndex = 0;
                     comboBox1.Enabled = true;
                     comboBox2.Enabled = true;
@@ -1905,16 +1816,16 @@ namespace OSCVRCWiz
 
 
 
-        private void button19_Click(object sender, EventArgs e)
-        {
+     //   private void button19_Click(object sender, EventArgs e)
+      //  {
             //comboLiteOutput.Items.Clear();
-            foreach (var device in WaveOutDevice.EnumerateDevices())
-            {
-                System.Diagnostics.Debug.WriteLine("{0}: {1}", device.DeviceId, device.Name);
+        //    foreach (var device in WaveOutDevice.EnumerateDevices())
+        //    {
+         //       System.Diagnostics.Debug.WriteLine("{0}: {1}", device.DeviceId, device.Name);
              //   comboLiteOutput.Items.Add(device.Name);
-            }
-            ot.outputLog(this, "[System Speech / FonixTalk Output Devices Reloaded]");
-        }
+         //   }
+         //   ot.outputLog("[System Speech / FonixTalk Output Devices Reloaded]");
+      //  }
         
         private void iconButton25_Click_1(object sender, EventArgs e)
         {
@@ -1945,7 +1856,7 @@ namespace OSCVRCWiz
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            ot.outputVRChat(this, OutputText.lastKatString, "tttAdd");
+            ot.outputVRChat(OutputText.lastKatString, "tttAdd");
         }
 
 
@@ -2001,9 +1912,9 @@ namespace OSCVRCWiz
               VCValue.Clear();
               VCType.Clear();
             voiceCommandsStored += $"{textBox1Spoken.Text.ToString()}:{textBox2Address.Text.ToString()}:{comboBox3Type.SelectedItem.ToString()}:{textBox4Value.Text.ToString()};";
-            var vc = new VoiceCommands();
-            vc.voiceCommands();
-            vc.refreshCommandList();
+            
+            VoiceCommands.voiceCommands();
+            VoiceCommands.refreshCommandList();
 
 
         }
@@ -2015,8 +1926,7 @@ namespace OSCVRCWiz
             VCPhrase.RemoveAt(index);
             VCValue.RemoveAt(index);
             VCType.RemoveAt(index);
-            var vc = new VoiceCommands();
-            vc.refreshCommandList();
+            VoiceCommands.refreshCommandList();
         }
 
         private void button24_Click(object sender, EventArgs e)
@@ -2025,8 +1935,7 @@ namespace OSCVRCWiz
             VCPhrase.Clear();
             VCValue.Clear();
             VCType.Clear();
-            var vc = new VoiceCommands();
-            vc.refreshCommandList();
+            VoiceCommands.refreshCommandList();
 
         }
 
@@ -2095,8 +2004,7 @@ namespace OSCVRCWiz
                     VCPhrase.RemoveAt(checkedListBox1.SelectedIndex);
                     VCValue.RemoveAt(checkedListBox1.SelectedIndex);
                     VCType.RemoveAt(checkedListBox1.SelectedIndex);
-                    var vc = new VoiceCommands();
-                    vc.refreshCommandList();
+                    VoiceCommands.refreshCommandList();
                 }
                 catch (Exception ex)
                 {
@@ -2107,25 +2015,7 @@ namespace OSCVRCWiz
            
         }
 
-        private void rjToggleButton7_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void rjToggleButtonWebCapAzure_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjToggleButtonDisableTTS2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjToggleButtonMedia_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void comboBoxInput_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -2147,20 +2037,6 @@ namespace OSCVRCWiz
 
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label53_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label59_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void comboBoxSTT_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2168,7 +2044,7 @@ namespace OSCVRCWiz
 
             if (comboBoxSTT.SelectedItem.ToString() == "System Speech" || comboBoxSTT.SelectedItem.ToString() == "Vosk")
             {
-                ot.outputLog(this, "[Input device for System Speech / Vosk is forced to default device, you can either change your default deivce in Control Panel > Sound or change this apps device specifically in Windows Settings > Sound]");
+                ot.outputLog("[Input device for System Speech / Vosk is forced to default device, you can either change your default deivce in Control Panel > Sound or change this apps device specifically in Windows Settings > Sound]");
                 comboBoxInput.SelectedIndex = 0;
                 comboBoxInput.Enabled = false;
 
@@ -2195,10 +2071,7 @@ namespace OSCVRCWiz
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#speech-to-text-and-tts");
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void iconButton28_Click(object sender, EventArgs e)
         {
@@ -2208,7 +2081,7 @@ namespace OSCVRCWiz
         private void rjToggleButton7_CheckedChanged_1(object sender, EventArgs e)
         {
 
-           if (rjToggleButton7.Checked== true)//dark mode
+           if (rjToggleDarkMode.Checked== true)//dark mode
             {
                 DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
                 foreach (var thisControl in GetAllChildren(this).OfType<TextBox>())
@@ -2253,7 +2126,7 @@ namespace OSCVRCWiz
             iconButton22.IconColor = Color.White;
 
               }
-            if (rjToggleButton7.Checked == false)//light mode
+            if (rjToggleDarkMode.Checked == false)//light mode
             {
                 DarkTitleBarClass.UseImmersiveDarkMode(Handle, false);
                 foreach (var thisControl in GetAllChildren(this).OfType<TextBox>())
@@ -2316,27 +2189,7 @@ namespace OSCVRCWiz
             }
         }
 
-        private void groupBox12_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void checkedListBoxApproved_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void checkedListBoxApproved_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            
-          //  approvedMediaSourceList.Clear();
-           // foreach (object Item in checkedListBoxApproved.CheckedItems)
-          //  {
-           //     approvedMediaSourceList.Add(Item.ToString());
-           //     System.Diagnostics.Debug.WriteLine(Item.ToString());
-          //  }
-
-        }
 
         private void button11_Click_1(object sender, EventArgs e)
         {
@@ -2365,7 +2218,7 @@ namespace OSCVRCWiz
 
         private void button18_Click_1(object sender, EventArgs e)
         {
-            DeepLC.DeepLKey = textBox5.Text.ToString();
+            DeepLTranslate.DeepLKey = textBox5.Text.ToString();
         }
     }
 

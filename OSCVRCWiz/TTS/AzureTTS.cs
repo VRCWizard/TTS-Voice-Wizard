@@ -8,23 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using OSCVRCWiz.Settings;
 
-namespace OSCVRCWiz
+namespace OSCVRCWiz.TTS
 {
-    public class AudioSynthesis
+    public class AzureTTS
     {
         // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
 
         //TTS
-        public static Dictionary<string, string[]> AllVoices4Language =new Dictionary<string, string[]>();
+        public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
         public static Dictionary<string, string[]> RememberLanguageVoices = new Dictionary<string, string[]>();
 
-        public static async Task SynthesisGetAvailableVoicesAsync(VoiceWizardWindow MainForm,string fromLanguageFullname)
+        public static async Task SynthesisGetAvailableVoicesAsync(string fromLanguageFullname)
         {
             // Creates an instance of a speech config with specified subscription key and service region.
             // Replace with your own subscription key and service region (e.g., "westus").
             // The default language is "en-us".
-            MainForm.comboBox2.Items.Clear();
-           var ot = new OutputText();
+            VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Clear();
+          //  var ot = new OutputText();
 
             if (!RememberLanguageVoices.ContainsKey(fromLanguageFullname))
             {
@@ -33,32 +33,32 @@ namespace OSCVRCWiz
                 // Creates a speech synthesizer
                 using (var synthesizer = new SpeechSynthesizer(config, null as AudioConfig))
                 {
-                    var ts = new TextSynthesis();
+                    var ts = new AzureRecognition();
                     //   var language = ts.toLanguageID(fromLanguageFullname);
 
                     List<string> localList = new List<string>();  //keep commented voices and release if they are widely requested (idea with new releasing all voices is to reduce load time)
                     switch (fromLanguageFullname)
                     {
                         case "Arabic [ar]":
-                         //   localList.Add("ar-AE");
-                         
-                          //  localList.Add("ar-BH");
+                            //   localList.Add("ar-AE");
+
+                            //  localList.Add("ar-BH");
                             localList.Add("ar-DZ");
                             localList.Add("ar-EG");
-                          //  localList.Add("ar-IL");
+                            //  localList.Add("ar-IL");
                             localList.Add("ar-IQ");
-                          //  localList.Add("ar-JO");
-                         //   localList.Add("ar-KW");
-                          //  localList.Add("ar-LB");
-                          //  localList.Add("ar-LY");
-                          //  localList.Add("ar-MA");
-                          //  localList.Add("ar-OM");
-                          //  localList.Add("ar-PS");
-                          //  localList.Add("ar-QA");
-                          //  localList.Add("ar-SA");
-                           // localList.Add("ar-SY");
-                          //  localList.Add("ar-TN");
-                          //  localList.Add("ar-YE");
+                            //  localList.Add("ar-JO");
+                            //   localList.Add("ar-KW");
+                            //  localList.Add("ar-LB");
+                            //  localList.Add("ar-LY");
+                            //  localList.Add("ar-MA");
+                            //  localList.Add("ar-OM");
+                            //  localList.Add("ar-PS");
+                            //  localList.Add("ar-QA");
+                            //  localList.Add("ar-SA");
+                            // localList.Add("ar-SY");
+                            //  localList.Add("ar-TN");
+                            //  localList.Add("ar-YE");
                             break;
 
                         case "Chinese [zh]":
@@ -68,7 +68,8 @@ namespace OSCVRCWiz
                             localList.Add("zh-TW"); break;
                         case "Czech [cs]": localList.Add("cs-CZ"); break;
                         case "Danish [da]": localList.Add("da-DK"); break;
-                        case "Dutch [nl]": localList.Add("nl-BE"); 
+                        case "Dutch [nl]":
+                            localList.Add("nl-BE");
                             localList.Add("nl-NL"); break;
                         case "English [en]":
                             localList.Add("en-US");
@@ -76,16 +77,16 @@ namespace OSCVRCWiz
                             localList.Add("en-AU");
                             localList.Add("en-CA");
 
-                           // localList.Add("en-GH");
-                         //   localList.Add("en-HK");
-                         //   localList.Add("en-IE");
-                         //   localList.Add("en-IN");
-                         //   localList.Add("en-KE");
-                        //    localList.Add("en-NZ");
-                         //   localList.Add("en-PH");
-                        //    localList.Add("en-SG");
-                         //   localList.Add("en-TZ");
-                         //   localList.Add("en-ZA");
+                            // localList.Add("en-GH");
+                            //   localList.Add("en-HK");
+                            //   localList.Add("en-IE");
+                            //   localList.Add("en-IN");
+                            //   localList.Add("en-KE");
+                            //    localList.Add("en-NZ");
+                            //   localList.Add("en-PH");
+                            //    localList.Add("en-SG");
+                            //   localList.Add("en-TZ");
+                            //   localList.Add("en-ZA");
 
                             break;
                         case "Estonian [et]": localList.Add("et-EE"); break;
@@ -96,7 +97,7 @@ namespace OSCVRCWiz
                             localList.Add("fr-BE");
                             localList.Add("fr-CA");
                             localList.Add("fr-CH");
-                            
+
                             break;
                         case "German [de]":
                             localList.Add("de-AT");
@@ -107,7 +108,7 @@ namespace OSCVRCWiz
                         case "Hindi [hi]": localList.Add("hi-IN"); break;
                         case "Hungarian [hu]": localList.Add("hu-HU"); break;
                         case "Indonesian [id]": localList.Add("id-ID"); break;
-                       
+
                         case "Irish [ga]": localList.Add("ga-IE"); break;
                         case "Italian [it]": localList.Add("it-IT"); break;
 
@@ -123,34 +124,34 @@ namespace OSCVRCWiz
                             localList.Add("es-MX");
                             localList.Add("es-ES");
                             localList.Add("es-US");
-                          //  localList.Add("es-AR");
-                           // localList.Add("es-BO");
-                           // localList.Add("es-CL");
+                            //  localList.Add("es-AR");
+                            // localList.Add("es-BO");
+                            // localList.Add("es-CL");
                             //localList.Add("es-CO");
-                           // localList.Add("es-CR");
-                           // localList.Add("es-CU");
-                           // localList.Add("es-DO");
-                           // localList.Add("es-EC");
+                            // localList.Add("es-CR");
+                            // localList.Add("es-CU");
+                            // localList.Add("es-DO");
+                            // localList.Add("es-EC");
 
-                          //  //localList.Add("es-GQ");
-                           // localList.Add("es-GT");
-                          //  localList.Add("es-HN");
+                            //  //localList.Add("es-GQ");
+                            // localList.Add("es-GT");
+                            //  localList.Add("es-HN");
 
-                          //  localList.Add("es-PE");
-                         //   localList.Add("es-PR");
-                          //  localList.Add("es-PY");
-                          //  localList.Add("es-SV");
+                            //  localList.Add("es-PE");
+                            //   localList.Add("es-PR");
+                            //  localList.Add("es-PY");
+                            //  localList.Add("es-SV");
 
-                         //   localList.Add("es-UY");
-                         //   localList.Add("es-VE");
-                          //  localList.Add("es-AR");
-                           // 
-                           break;
+                            //   localList.Add("es-UY");
+                            //   localList.Add("es-VE");
+                            //  localList.Add("es-AR");
+                            // 
+                            break;
                         case "Swedish [sv]": localList.Add("sv-SE"); break;
                         case "Thai [th]": localList.Add("th-TH"); break;
                         case "Ukrainian [uk]": localList.Add("uk-UA"); break;
                         case "Vietnamese [vi]": localList.Add("vi-VN"); break;
-                        
+
 
                         default: localList.Add("en-US"); break; // if translation to english happens something is wrong
                     }
@@ -161,7 +162,7 @@ namespace OSCVRCWiz
                         {
                             if (result.Reason == ResultReason.VoicesListRetrieved)
                             {
-                                ot.outputLog(MainForm, "[Voices successfully retrieved from Azure]");
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Voices successfully retrieved from Azure]", Color.Green);
 
 
                                 foreach (var voice in result.Voices)
@@ -169,7 +170,7 @@ namespace OSCVRCWiz
 
                                     //  ot.outputLog(MainForm,voice.LocalName);
                                     AllVoices4Language.Add(voice.ShortName, voice.StyleList);
-                                    MainForm.comboBox2.Items.Add(voice.ShortName);
+                                    VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice.ShortName);
                                     voiceList.Add(voice.ShortName);
                                     //   foreach (KeyValuePair<string, string[]> kvp in AllVoices4Language)
                                     //  {
@@ -189,8 +190,8 @@ namespace OSCVRCWiz
                             }
                             else if (result.Reason == ResultReason.Canceled)
                             {
-                                ot.outputLog(MainForm, $"CANCELED: ErrorDetails=[{result.ErrorDetails}]");
-                                ot.outputLog(MainForm, $"CANCELED: Did you update the Azure subscription info?");
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog($"CANCELED: ErrorDetails=[{result.ErrorDetails}]", Color.Red);
+                                VoiceWizardWindow.MainFormGlobal.ot.outputLog($"CANCELED: Did you update the Azure subscription info?", Color.Red);
                             }
                         }
                     }
@@ -200,27 +201,27 @@ namespace OSCVRCWiz
             }
             else
             {
-                ot.outputLog(MainForm, "[DEBUG: Voices successfully reloaded locally]");
+              //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: Voices successfully reloaded locally]");
                 foreach (string voice in RememberLanguageVoices[fromLanguageFullname])
                 {
-                    MainForm.comboBox2.Items.Add(voice);
+                    VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice);
                 }
             }
             if (VoiceWizardWindow.firstVoiceLoad == false)
             {
-                ot.outputLog(MainForm, "[DEBUG: setting voice]");
-                MainForm.comboBox2.SelectedIndex = 0;
+              //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: setting voice]");
+                VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex = 0;
             }
 
             if (VoiceWizardWindow.firstVoiceLoad == true)
             {
-                ot.outputLog(MainForm, "[DEBUG: setting voice and style to saved values]");
-                MainForm.comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
-                MainForm.comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+              //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: setting voice and style to saved values]");
+                VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
+                VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
                 VoiceWizardWindow.firstVoiceLoad = false;
-                
+
             }
-           
+
         }
 
         public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
@@ -228,12 +229,12 @@ namespace OSCVRCWiz
             try
             {
 
-                
+
                 var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
                 // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
 
-             //   config.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
+                //   config.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
 
                 // Note: if only language is set, the default voice of that language is chosen.
                 // config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
@@ -261,13 +262,13 @@ namespace OSCVRCWiz
                 string volumemedium = "<prosody volume=\"medium\">"; //3
                 string volumehigh = "<prosody volume=\"loud\">"; //4
                 string volumexhigh = "<prosody volume=\"x-loud\">"; //5
-    
-                System.Diagnostics.Debug.WriteLine("rate: " + rate);
-                System.Diagnostics.Debug.WriteLine("pitch: " + pitch);
-                System.Diagnostics.Debug.WriteLine("volume: " + volume);
-                System.Diagnostics.Debug.WriteLine("voice: " + voice);
-                System.Diagnostics.Debug.WriteLine("style: " + style);
-                System.Diagnostics.Debug.WriteLine("text: " + text);
+
+                Debug.WriteLine("rate: " + rate);
+                Debug.WriteLine("pitch: " + pitch);
+                Debug.WriteLine("volume: " + volume);
+                Debug.WriteLine("voice: " + voice);
+                Debug.WriteLine("style: " + style);
+                Debug.WriteLine("text: " + text);
 
                 var audioConfig = AudioConfig.FromSpeakerOutput(MainForm.currentOutputDevice);
                 if (MainForm.currentOutputDeviceName == "Default")
@@ -275,23 +276,9 @@ namespace OSCVRCWiz
                     audioConfig = AudioConfig.FromDefaultSpeakerOutput();
 
                 }
-                var ot = new OutputText();
-                ///  if (synthesizerVoice != null &&MainForm.rjToggleButtonCancelAudio.Checked==true) // using cancellation tokens caused more issue then for how helpful it could be.
-                //    {
+               
 
-                //       ot.outputLog(MainForm, "[Begining Speech Stopped]");
-                //       await synthesizerVoice.StopSpeakingAsync();
-                //       synthesizerVoice = null;
-
-
-
-
-                // synthesizerVoice.Dispose();
-                //   synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
-                //     ot.outputLog(MainForm, "[Speech Stopped]");
-                //   }
-
-                var synthesizerVoice = new Microsoft.CognitiveServices.Speech.SpeechSynthesizer(config, audioConfig);
+                var synthesizerVoice = new SpeechSynthesizer(config, audioConfig);
 
 
                 string ssml0 = "<speak version=\"1.0\"";
@@ -299,13 +286,13 @@ namespace OSCVRCWiz
                 if (style != "normal") { ssml0 += " xmlns:mstts=\"https://www.w3.org/2001/mstts\""; }
                 ssml0 += " xml:lang=\"en-US\">";
 
-                string thisVoice = "<voice name=\""+voice+"\">";//
-                   ssml0 += thisVoice;
-                   
+                string thisVoice = "<voice name=\"" + voice + "\">";//
+                ssml0 += thisVoice;
+
 
                 if (style != "normal")
                 {
-                    ssml0 += "<mstts:express-as style=\""+style+"\">";
+                    ssml0 += "<mstts:express-as style=\"" + style + "\">";
 
                 }
                 if (rate != "default")
@@ -343,53 +330,32 @@ namespace OSCVRCWiz
                 ssml0 += "</voice>";
                 ssml0 += "</speak>";
 
-                System.Diagnostics.Debug.WriteLine(ssml0);
-                //  if (cancelToken.IsCancellationRequested) // using cancellation tokens caused more issue then for how helpful it could be.
-                //  {
+                Debug.WriteLine(ssml0);
 
-                //  }
-                // synthesizerVoice.StopSpeakingAsync();
-                //  synthesizerVoice.SynthesisCompleted += (sender, eventArgs) =>
-                //  {
-                //     if (synthesizerVoice != null)
-                //      {
-                //   synthesizerVoice = null;
-                //   ot.outputLog(MainForm, "synthesizer reset to null");
-
-                //     }
-
-                //     };
-                //   await synthesizerVoice.SpeakSsmlAsync(ssml0);
                 var result = await synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {
-                    System.Diagnostics.Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
-                   // ot.outputLog(MainForm, $"[Azure Speech Synthesized]");
+                    Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
+                    // ot.outputLog(MainForm, $"[Azure Speech Synthesized]");
                 }
                 else if (result.Reason == ResultReason.Canceled)
                 {
                     var cancellation = SpeechSynthesisCancellationDetails.FromResult(result);
-                    System.Diagnostics.Debug.WriteLine($"[CANCELED: Reason={cancellation.Reason}]");
-                    ot.outputLog(MainForm, $"[CANCELED: Reason={cancellation.Reason}]");
+                    Debug.WriteLine($"[CANCELED: Reason={cancellation.Reason}]");
+                    VoiceWizardWindow.MainFormGlobal.ot.outputLog($"[CANCELED: Reason={cancellation.Reason}]", Color.Red);
 
                     if (cancellation.Reason == CancellationReason.Error)
                     {
-                        System.Diagnostics.Debug.WriteLine($"[CANCELED: ErrorCode={cancellation.ErrorCode}]");
-                        ot.outputLog(MainForm, $"[CANCELED: ErrorCode={cancellation.ErrorCode}]");
-                        System.Diagnostics.Debug.WriteLine($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]");
-                        ot.outputLog(MainForm, $"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]");
-                        System.Diagnostics.Debug.WriteLine($"[CANCELED: Did you update the subscription info?]");
-                        ot.outputLog(MainForm, $"[CANCELED: Did you update the subscription info?]");
+                        Debug.WriteLine($"[CANCELED: ErrorCode={cancellation.ErrorCode}]");
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog($"[CANCELED: ErrorCode={cancellation.ErrorCode}]", Color.Red);
+                        Debug.WriteLine($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]");
+                        VoiceWizardWindow.MainFormGlobal. ot.outputLog($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]", Color.Red);
+                        Debug.WriteLine($"[CANCELED: Did you update the subscription info?]");
+                        VoiceWizardWindow.MainFormGlobal.ot.outputLog($"[CANCELED: Did you update the subscription info?]", Color.Red);
                     }
                 }
 
 
-
-
-                //   ct.Register(async () => await synthesizerVoice.StopSpeakingAsync()); // using cancellation tokens caused more issue then for how helpful it could be.
-                //  synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
-
-                // ct.Register(async () => await synthesizer.StopSpeakingAsync());
 
             }
             catch (Exception ex)
