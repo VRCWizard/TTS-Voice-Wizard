@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using OSCVRCWiz.TTS;
 using TTS;
+using OSCVRCWiz.Text;
+using Resources;
 
 namespace OSCVRCWiz
 {
@@ -23,7 +25,11 @@ namespace OSCVRCWiz
         public static string toLanguage = "en";
         public static bool continuousListening = false;
         public static bool continuousListeningTranslate = false;
-       // public static CancellationTokenSource SpeechCt = new(); // using cancellation tokens caused more issue then for how helpful it could be.
+        public static bool profanityFilter = true;
+
+        public static string YourSubscriptionKey;
+        public static string YourServiceRegion;
+        
 
         public static void fromLanguageID(string fullname)
         {
@@ -109,8 +115,8 @@ namespace OSCVRCWiz
             //Since Setup is still run at the begining of TTS still i can comment out all other occurences of speechSetup
             try
             {
-                speechConfig = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
-                translationConfig = SpeechTranslationConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+                speechConfig = SpeechConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
+                translationConfig = SpeechTranslationConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
                // speechConfig.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt"); //This line of code was the cause for an outstanding bug, if the log file becomes too full it causes issue. Further testing required before adding logging back as a feature.
 
                 fromLanguageID(fromLanguageFullname); //Convert information from selected spoken language and sets fromLanuage to the ID
@@ -119,21 +125,21 @@ namespace OSCVRCWiz
 
                 speechConfig.SpeechRecognitionLanguage = fromLanguage;
 
-                if (VoiceWizardWindow.MainFormGlobal.profanityFilter == false)
+                if (profanityFilter == false)
                 {
                     translationConfig.SetProfanity(ProfanityOption.Raw);
                     speechConfig.SetProfanity(ProfanityOption.Raw);
                 }
-                if (VoiceWizardWindow.MainFormGlobal.profanityFilter == true)
+                if (profanityFilter == true)
                 {
                     translationConfig.SetProfanity(ProfanityOption.Masked);
                     speechConfig.SetProfanity(ProfanityOption.Masked);
                 }
                 translationConfig.SpeechRecognitionLanguage = fromLanguage;
                 translationConfig.AddTargetLanguage(toLanguage);
-                var audioConfig = AudioConfig.FromMicrophoneInput(VoiceWizardWindow.MainFormGlobal.currentInputDevice);
+                var audioConfig = AudioConfig.FromMicrophoneInput(AudioDevices.currentInputDevice); 
 
-                if (VoiceWizardWindow.MainFormGlobal.currentInputDeviceName == "Default")
+                if (AudioDevices.currentInputDeviceName == "Default")
                 {
                     audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 
@@ -149,7 +155,7 @@ namespace OSCVRCWiz
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                    // var ot = new OutputText(); 
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
+                    Task.Run(() => OutputText.outputLog("[Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
                 };
 
                 translationRecognizer1.Recognized += (sender, eventArgs) =>
@@ -159,22 +165,11 @@ namespace OSCVRCWiz
                         var speechRecognitionResult = eventArgs.Result;
 
 
-                        VoiceWizardWindow.MainFormGlobal.dictationString = speechRecognitionResult.Text; //Dictation string
+                        var text = speechRecognitionResult.Text; //Dictation string
                         string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string tranlated
 
 
-                        SetDefaultTTS.SetVoicePresets();
-
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
-                        {
-                            VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Translate]: " + VoiceWizardWindow.MainFormGlobal.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
-                        }
-                        var text = VoiceWizardWindow.MainFormGlobal.dictationString;
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked == true)
-                        {
-                            text = translatedString;
-                        }
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
 
                     }
 
@@ -183,16 +178,16 @@ namespace OSCVRCWiz
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                    // var ot = new OutputText();
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
+                    Task.Run(() => OutputText.outputLog("[Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
                 };
                 speechRecognizer1.Recognized += (sender, eventArgs) =>
                 {
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true)
                     {
-                        VoiceWizardWindow.MainFormGlobal.dictationString = eventArgs.Result.Text; //Dictation string
+                        var text = eventArgs.Result.Text; //Dictation string
 
-                        SetDefaultTTS.SetVoicePresets();
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(VoiceWizardWindow.MainFormGlobal.dictationString));
+                        
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
 
 
 
@@ -238,10 +233,9 @@ namespace OSCVRCWiz
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
                     var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
-                    VoiceWizardWindow.MainFormGlobal.dictationString = speechRecognitionResult.Text; //Dictation string
+                    var text = speechRecognitionResult.Text; //Dictation string
 
-                    SetDefaultTTS.SetVoicePresets();
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(VoiceWizardWindow.MainFormGlobal.dictationString));
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
 
                 }
 
@@ -251,7 +245,7 @@ namespace OSCVRCWiz
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
                     //  var ot = new OutputText();
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Continuous Listening Enabled]");
+                    OutputText.outputLog("[Azure Continuous Listening Enabled]");
 
                     await speechRecognizer1.StartContinuousRecognitionAsync();
                 }
@@ -261,7 +255,7 @@ namespace OSCVRCWiz
                     // Make the following call at some point to stop recognition:
                     System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
                     await speechRecognizer1.StopContinuousRecognitionAsync();
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Continuous Listening Disabled]");
+                    OutputText.outputLog("[Azure Continuous Listening Disabled]");
                 }
 
             }
@@ -291,21 +285,10 @@ namespace OSCVRCWiz
                         System.Diagnostics.Debug.WriteLine($"Translated into '{toLanguage}': {speechRecognitionResult.Translations[toLanguage]}");
                     }
 
-                    VoiceWizardWindow.MainFormGlobal.dictationString = speechRecognitionResult.Text; //Dictation string; Global string used to keep track of result text for default azure speech to text
+                    var text = speechRecognitionResult.Text; //Dictation string; Global string used to keep track of result text for default azure speech to text
                     string translatedString = speechRecognitionResult.Translations[toLanguage]; //Global string used to keep track of result text for translation azure speech to text
 
-                    SetDefaultTTS.SetVoicePresets();
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
-                    {
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Translate]: " + VoiceWizardWindow.MainFormGlobal.dictationString + " [" + fromLanguage + ">" + toLanguage + "]: " + "[" + translatedString + "]");
-
-                    }
-                    var text = VoiceWizardWindow.MainFormGlobal.dictationString;
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked == true)
-                    {
-                        text = translatedString;
-                    }
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(VoiceWizardWindow.MainFormGlobal.dictationString));
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
 
 
                 }
@@ -314,7 +297,7 @@ namespace OSCVRCWiz
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
 
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Continuous Listening Enabled (Translating)]");
+                    OutputText.outputLog("[Azure Continuous Listening Enabled (Translating)]");
 
                     await translationRecognizer1.StartContinuousRecognitionAsync();
 
@@ -328,7 +311,7 @@ namespace OSCVRCWiz
                     await translationRecognizer1.StopContinuousRecognitionAsync();
                     //   speechRecognizer1.Dispose();
                     //  var ot = new OutputText();
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Continuous Listening Disabled (Translating)]");
+                    OutputText.outputLog("[Azure Continuous Listening Disabled (Translating)]");
                 }
 
             }
@@ -348,7 +331,7 @@ namespace OSCVRCWiz
 
                 await translationRecognizer1.StopContinuousRecognitionAsync();
                 await speechRecognizer1.StopContinuousRecognitionAsync();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Azure Continuous Listening Disabled (Any)]");
+                OutputText.outputLog("[Azure Continuous Listening Disabled (Any)]");
             }
         }
 

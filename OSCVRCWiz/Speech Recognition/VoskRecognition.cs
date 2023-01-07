@@ -11,10 +11,12 @@ using Newtonsoft.Json.Linq;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using System.Windows.Threading;
-using CSCore.SoundIn;
+//using CSCore.SoundIn;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.TTS;
 using TTS;
+using OSCVRCWiz.Text;
+using Resources;
 
 namespace OSCVRCWiz
 {
@@ -25,20 +27,65 @@ namespace OSCVRCWiz
         static Model model;
         static VoskRecognizer rec;
         static WaveInEvent waveIn;
+        static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
+        static bool voskEnabled = false;
+
+
+        public static void toggleVosk()
+        {
+            if (VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString() != "no folder selected")
+            {
+                if (voskEnabled == false)
+                {
+                    Task.Run(() => VoskRecognition.doVosk());
+                    voskEnabled = true;
+                }
+                else
+                {
+                    Task.Run(() => VoskRecognition.stopVosk());
+                    voskEnabled = false;
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No vosk model folder selected. Please note that if the folder you select is not a valid model the program will close!");
+            }
+        }
         public static void doVosk()
         {
             try
             {
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Starting Up Vosk...]");
+                OutputText.outputLog("[Starting Up Vosk...]");
                 model = new Model(VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString());
-                    rec = new VoskRecognizer(model, 48000f);
+                rec = new VoskRecognizer(model, 48000f);
 
-                    //  WaveInEvent waveIn = new WaveInEvent(44100, 1);
-                    waveIn = new WaveInEvent();
+
+                // Setting to Correct Input Device
+                int waveInDevices = WaveIn.DeviceCount;
+                AlternateInputDevices.Clear();
+                for (int waveInDevice = 0; waveInDevice < waveInDevices; waveInDevice++)
+                {
+                    WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
+                    AlternateInputDevices.Add(deviceInfo.ProductName, waveInDevice);
+                }
+                waveIn = new WaveInEvent();
+                waveIn.DeviceNumber = 0;
+                foreach (var kvp in AlternateInputDevices)
+                {
+                    if (AudioDevices.currentInputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                    {
+                        waveIn.DeviceNumber = kvp.Value;
+                        System.Diagnostics.Debug.WriteLine("Input device worked" + kvp.Key);
+                    }                 
+                }
+
+
+                //Start Listening
                     waveIn.WaveFormat = new WaveFormat(48000, 1);
                     waveIn.DataAvailable += WaveInOnDataAvailable;
                     waveIn?.StartRecording();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Vosk Listening]");
+                OutputText.outputLog("[Vosk Listening]");
 
 
             }
@@ -46,16 +93,11 @@ namespace OSCVRCWiz
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
-
         }
         private static async void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
         {
             try
             {
-
                     if (rec.AcceptWaveform(e.Buffer, e.BytesRecorded))
                     {
 
@@ -63,20 +105,15 @@ namespace OSCVRCWiz
                         string json = rec.Result();
                         var text = JObject.Parse(json)["text"].ToString();
                         System.Diagnostics.Debug.WriteLine("Vosk: " + text);
-                    if (text != "")//only does stuff if the string is nothing silence
-                    {
-
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text));
-
-                    }
-
-
+                        if (text != "")//only does stuff if the string is nothing silence
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text));
+                        }
                     }
                     else
                     {
                         //  VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, rec.PartialResult());
                     }
-
             }
             catch (Exception ex)
             {
@@ -91,7 +128,7 @@ namespace OSCVRCWiz
                 waveIn.StopRecording();
                 rec.Dispose();
                 model.Dispose();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Vosk Stopped Listening]");
+                OutputText.outputLog("[Vosk Stopped Listening]");
             }
             catch (Exception ex)
             {

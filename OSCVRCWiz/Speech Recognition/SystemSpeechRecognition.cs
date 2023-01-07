@@ -4,6 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Recognition;//free Windows
+using NAudio.Wave;
+//using CSCore.SoundIn;
+using CSCore.XAudio2;
+using Resources;
+using System.Collections;
+using System.Linq;
+using OSCVRCWiz.Addons;
+using static System.Net.Mime.MediaTypeNames;
+using System.Reflection;
+using OSCVRCWiz.Text;
 
 
 //using NAudio.Wave;
@@ -12,126 +22,88 @@ namespace OSCVRCWiz
 {
     public class SystemSpeechRecognition
     {
-        //public static SpeechSynthesizer synthesizer;
         static bool listeningCurrently = false;
-        static SpeechRecognitionEngine recognizer;
-        private static bool _userRequestedAbort = false;
-        
+        static WaveInEvent waveIn;
+        static SpeechStreamer audioStream = new(12800);
+        static SpeechRecognitionEngine rec;
+        static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
 
 
 
-      
         public static void startListeningNow()
+        {
+                string cultureHere = "en-US";// system speech only for en-us, it's not worth using over alternatives
+            //  cultureHere = MainForm.CultureSelected;
+
+
+            rec = new SpeechRecognitionEngine(new System.Globalization.CultureInfo(cultureHere));
+                 
+            // Create and load a dictation grammar.  
+            rec.LoadGrammar(new DictationGrammar());
+             // Add a handler for the speech recognized event.  
+            rec.SpeechRecognized +=new EventHandler<SpeechRecognizedEventArgs>(recognizer_SpeechRecognized);
+
+            // Setting to Correct Input Device
+            int waveInDevices = WaveIn.DeviceCount;
+            AlternateInputDevices.Clear();
+            for (int waveInDevice = 0; waveInDevice < waveInDevices; waveInDevice++)
             {
-                string cultureHere = "en-US";
-
-              //  cultureHere = MainForm.CultureSelected;
-            
-
-                try
+                WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
+                AlternateInputDevices.Add(deviceInfo.ProductName, waveInDevice);
+            }
+            waveIn = new WaveInEvent();
+            waveIn.DeviceNumber = 0;
+            foreach (var kvp in AlternateInputDevices)
+            {
+                if (AudioDevices.currentInputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
                 {
-                    using (recognizer = new SpeechRecognitionEngine(new System.Globalization.CultureInfo(cultureHere)))
-                    {
-                        // Create and load a dictation grammar.  
-                        recognizer.LoadGrammar(new DictationGrammar());
-
-                        // Add a handler for the speech recognized event.  
-                        recognizer.SpeechRecognized +=
-                          new EventHandler<SpeechRecognizedEventArgs>(VoiceWizardWindow.MainFormGlobal.recognizer_SpeechRecognized);
-
-                        // Configure input to the speech recognizer.  
-                        recognizer.SetInputToDefaultAudioDevice();
-
-
-                    bool completed = false;
-
-                        // Attach event handlers.
-                        recognizer.RecognizeCompleted += (o, e) =>
-                        {
-                            if (e.Error != null)
-                            {
-                                System.Diagnostics.Debug.WriteLine("Error occurred during recognition: {0}", e.Error);
-                            }
-                            else if (e.InitialSilenceTimeout)
-                            {
-                                System.Diagnostics.Debug.WriteLine("Detected silence");
-                            }
-                            else if (e.BabbleTimeout)
-                            {
-                                System.Diagnostics.Debug.WriteLine("Detected babbling");
-                            }
-                            else if (e.InputStreamEnded)
-                            {
-                                System.Diagnostics.Debug.WriteLine("Input stream ended early");
-                            }
-                            else if (e.Result != null)
-                            {
-                                System.Diagnostics.Debug.WriteLine("Grammar = {0}; Text = {1}; Confidence = {2}", e.Result.Grammar.Name, e.Result.Text, e.Result.Confidence);
-                            }
-                            else
-                            {
-                                System.Diagnostics.Debug.WriteLine("No result");
-                            }
-
-                            completed = true;
-                        };
-                        // Start asynchronous, continuous speech recognition.  
-                        recognizer.RecognizeAsync(RecognizeMode.Multiple);
-
-
-                        while (!completed)
-                        {
-                            if (_userRequestedAbort)
-                            {
-                                recognizer.RecognizeAsyncCancel();
-                                break;
-                            }
-
-                            Thread.Sleep(333);
-                        }
-
-                        Console.WriteLine("Done.");
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("System Speech STT error:" + ex.Message.ToString()+" | (Most likely you are trying to use a language that is not installed on your PC, therefore you must add that language for more info check the FAQ in the discord)");
-
-                }
-
+                    waveIn.DeviceNumber = kvp.Value;
+                    System.Diagnostics.Debug.WriteLine("Input device worked"+kvp.Key);
+                } 
             }
 
-            public static void speechTTSButtonLiteClick()
-            {
+            // Start Listening
+            waveIn.WaveFormat = new WaveFormat(48000, 1);
+            waveIn.DataAvailable += WaveInOnDataAvailable;
+            waveIn?.StartRecording();
+            rec.SetInputToAudioStream(audioStream, new(48000, System.Speech.AudioFormat.AudioBitsPerSample.Sixteen, System.Speech.AudioFormat.AudioChannel.Mono));
+            rec.RecognizeAsync(RecognizeMode.Multiple);
+
+        }
+        public static void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)//lite version, WindowsBuiltInSTTTS Help
+        {
+            System.Diagnostics.Debug.WriteLine("Recognized text: " + e.Result.Text);
+            string text = e.Result.Text.ToString();
+            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "System Speech"));
+        }
+
+        private static void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
+        {
+            audioStream.Write(e.Buffer, 0, e.BytesRecorded);
+
+        }
+
+        public static void speechTTSButtonLiteClick()
+        {
 
                 if (listeningCurrently == false)
                 {
-                    _userRequestedAbort = false;
-                    Task.Run(() => startListeningNow());
-                //  waveIn.StartRecording();
-                // var ot = new OutputText();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[System Speech Started Listening]");
-                    listeningCurrently = true;
+                OutputText.outputLog("[System Speech Started Listening]");
+                listeningCurrently = true;
+                Task.Run(() => startListeningNow());
+
                 }
                 else
                 {
-                    _userRequestedAbort = true;
-                // recognizer.RecognizeAsyncStop();
-                ///  waveIn.StopRecording();
-                //    var ot = new OutputText();
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[System Speech Stopped Listening]");
-                    listeningCurrently = false;
+                OutputText.outputLog("[System Speech Stopped Listening]");
+                listeningCurrently = false;
+                waveIn.StopRecording();
+                rec.RecognizeAsyncStop();             
                 }
 
 
 
 
-            }
-       // public void OnDataAvailable(object? sender, WaveInEventArgs e)=> _stream.Write(e.Buffer, 0, e.BytesRecorded);
-
-
-
-
+        }
     }
 }
