@@ -2,16 +2,76 @@
 using System.Collections.Generic;
 using System.Text;
 using CoreOSC;
+using OSCVRCWiz.Resources;
+using OSCVRCWiz.Text;
 
 namespace OSCVRCWiz.Addons
 {
     public class VoiceCommands
     {
+        static List<string> VCPhrase = new List<string>();
+        static List<string> VCAddress = new List<string>();
+        static List<string> VCType = new List<string>();
+        static List<string> VCValue = new List<string>();
+        public static string voiceCommandsStored = "";
+
+
+        public static void MainDoVoiceCommand(string text)
+        {
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                int index = 0;
+                foreach (string x in VCPhrase)
+                {
+                    System.Diagnostics.Debug.WriteLine("checking " + x);
+                    if (text.Contains(x, StringComparison.OrdinalIgnoreCase))
+                    {
+                        System.Diagnostics.Debug.WriteLine("it contains " + x);
+                        VoiceCommands.phraseFound(index);
+                    }
+                    index++;
+                }
+           
+
+                if (VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString() == "Azure" & VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked == true)
+                {
+                    foreach (var x in VoiceWizardWindow.MainFormGlobal.comboBox1.Items)
+                    {
+                        System.Diagnostics.Debug.WriteLine("checking " + x.ToString());
+                        if (text.Contains(x.ToString(), StringComparison.OrdinalIgnoreCase))
+                        {
+                            System.Diagnostics.Debug.WriteLine("it contains " + x.ToString());
+                            VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem = x.ToString();
+                            // var vc = new VoiceCommands();
+                            //vc.phraseFound(index);
+                        }
+                        index++;
+                    }
+                }
+
+            });
+        }
+
+        public static void clearVoiceCommands()
+        {
+            VCAddress.Clear();
+            VCPhrase.Clear();
+            VCValue.Clear();
+            VCType.Clear();
+        }
+        public static void removeVoiceCommandsAt(int index)
+        {
+            VCAddress.RemoveAt(index);
+            VCPhrase.RemoveAt(index);
+            VCValue.RemoveAt(index);
+            VCType.RemoveAt(index);
+        }
+
 
         public static void voiceCommands()
         {
             //  string words = VoiceWizardWindow.MainFormGlobal.richTextBox2.Text.ToString();
-            string words = VoiceWizardWindow.voiceCommandsStored;
+            string words = voiceCommandsStored;
 
             string[] split = words.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string s in split)
@@ -31,25 +91,25 @@ namespace OSCVRCWiz.Addons
                         // {
                         if (count == 1)
                         {
-                            VoiceWizardWindow.VCPhrase.Add(s2);
+                            VCPhrase.Add(s2);
                             System.Diagnostics.Debug.WriteLine("Phrase Added: " + s2);
 
                         }
                         if (count == 2)
                         {
-                            VoiceWizardWindow.VCAddress.Add(s2);
+                            VCAddress.Add(s2);
                             System.Diagnostics.Debug.WriteLine("address added: " + s2);
 
                         }
                         if (count == 3)
                         {
-                            VoiceWizardWindow.VCType.Add(s2);
+                            VCType.Add(s2);
                             System.Diagnostics.Debug.WriteLine("typeadded: " + s2);
 
                         }
                         if (count == 4)
                         {
-                            VoiceWizardWindow.VCValue.Add(s2);
+                            VCValue.Add(s2);
                             System.Diagnostics.Debug.WriteLine("value added: " + s2);
 
                         }
@@ -65,8 +125,8 @@ namespace OSCVRCWiz.Addons
 
 
                 // int index = VCPhrase.FindIndex(a => a.Contains(phrase));
-                string address = VoiceWizardWindow.VCAddress[index];
-                string type = VoiceWizardWindow.VCType[index];
+                string address = VCAddress[index];
+                string type = VCType[index];
                 var VCMessage = new OscMessage(address, true);
 
                 //    System.Diagnostics.Debug.WriteLine("THE VALUE WAS: "+ VoiceWizardWindow.VCValue[index]);
@@ -78,11 +138,11 @@ namespace OSCVRCWiz.Addons
                 switch (type)
                 {
                     case "Bool":
-                        if (string.Equals(VoiceWizardWindow.VCValue[index], "true", StringComparison.InvariantCultureIgnoreCase))
+                        if (string.Equals(VCValue[index], "true", StringComparison.InvariantCultureIgnoreCase))
                         {
                             VCMessage = new OscMessage(address, true);
                         }
-                        if (string.Equals(VoiceWizardWindow.VCValue[index], "false", StringComparison.InvariantCultureIgnoreCase))
+                        if (string.Equals(VCValue[index], "false", StringComparison.InvariantCultureIgnoreCase))
                         {
                             VCMessage = new OscMessage(address, false);
                         }
@@ -90,11 +150,11 @@ namespace OSCVRCWiz.Addons
 
 
                     case "Float":
-                        float value1 = float.Parse(VoiceWizardWindow.VCValue[index]);
+                        float value1 = float.Parse(VCValue[index]);
                         VCMessage = new OscMessage(address, value1);
                         break;
                     case "Int":
-                        int value2 = int.Parse(VoiceWizardWindow.VCValue[index]);
+                        int value2 = int.Parse(VCValue[index]);
                         VCMessage = new OscMessage(address, value2);
                         break;
                     default:
@@ -104,8 +164,8 @@ namespace OSCVRCWiz.Addons
 
 
 
-                VoiceWizardWindow.MainFormGlobal.sender3.Send(VCMessage);
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[OSC message sent with voice command '" + VoiceWizardWindow.VCPhrase[index] + "' " + "Value: " + VoiceWizardWindow.VCValue[index] + "]");
+                OSC.OSCSender.Send(VCMessage);
+                OutputText.outputLog("[OSC message sent with voice command '" + VCPhrase[index] + "' " + "Value: " + VCValue[index] + "]");
             }
 
 
@@ -115,11 +175,11 @@ namespace OSCVRCWiz.Addons
         {
             // VoiceWizardWindow.MainFormGlobal.richTextBox13.Clear();
             VoiceWizardWindow.MainFormGlobal.checkedListBox1.Items.Clear();
-            VoiceWizardWindow.voiceCommandsStored = "";
-            for (var index = 0; index < VoiceWizardWindow.VCAddress.Count; index++)
+            voiceCommandsStored = "";
+            for (var index = 0; index < VCAddress.Count; index++)
             {
-                commandListHelper($"ID: {index + 1} | Phrase: {VoiceWizardWindow.VCPhrase[index]} | Address: {VoiceWizardWindow.VCAddress[index]} | Data Type: {VoiceWizardWindow.VCType[index]} | Value: {VoiceWizardWindow.VCValue[index]}");
-                VoiceWizardWindow.voiceCommandsStored += $"{VoiceWizardWindow.VCPhrase[index]}:{VoiceWizardWindow.VCAddress[index]}:{VoiceWizardWindow.VCType[index]}:{VoiceWizardWindow.VCValue[index]};";
+                commandListHelper($"ID: {index + 1} | Phrase: {VCPhrase[index]} | Address: {VCAddress[index]} | Data Type: {VCType[index]} | Value: {VCValue[index]}");
+                voiceCommandsStored += $"{VCPhrase[index]}:{VCAddress[index]}:{VCType[index]}:{VCValue[index]};";
 
             }
         }

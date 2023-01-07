@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Media.Control;
 using WindowsMediaController;
+using OSCVRCWiz.Text;
+
+
 namespace OSCVRCWiz.Addons
 {
     public class WindowsMedia
@@ -18,6 +21,7 @@ namespace OSCVRCWiz.Addons
         public static string mediaSourceNew = "";
         public static bool pauseMedia = false;
         private readonly static object _lock = new();
+        static List<string> approvedMediaSourceList = new List<string>();
 
         public static async Task getWindowsMedia()
         {
@@ -37,7 +41,7 @@ namespace OSCVRCWiz.Addons
         {
             string info = "[Windows Media New Source: " + session.Id + "]";
             //   var ot = new OutputText();
-            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(info));
+            Task.Run(() => OutputText.outputLog(info));
             mediaSourceNew = session.Id;
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
@@ -66,7 +70,7 @@ namespace OSCVRCWiz.Addons
         {
             string info = "[Windows Media Removed Source: " + session.Id + "]";
             //  var ot = new OutputText();
-            Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(info));
+            Task.Run(() => OutputText.outputLog(info));
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
                 // VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Remove(session.Id.ToString());
@@ -75,12 +79,12 @@ namespace OSCVRCWiz.Addons
 
         private static void MediaManager_OnAnyPlaybackStateChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionPlaybackInfo args)
         {
-            if (VoiceWizardWindow.approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
+            if (approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
             {
                 string info = $"[{sender.Id} is now {args.PlaybackStatus}]"; //use this info to disable media output perioidically like the spotify feature. (like spotifyPause and heartratePause)
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true)
                 {
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(info));
+                    Task.Run(() => OutputText.outputLog(info));
                 }//var ot = new OutputText();
 
                 mediaStatus = args.PlaybackStatus.ToString();
@@ -113,14 +117,14 @@ namespace OSCVRCWiz.Addons
             //       System.Diagnostics.Debug.WriteLine(trimmed);
             //    }
             //   System.Diagnostics.Debug.WriteLine(VoiceWizardWindow.approvedMediaSourceList.Count);
-            VoiceWizardWindow.approvedMediaSourceList.Clear();
+            approvedMediaSourceList.Clear();
             foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
             {
-                VoiceWizardWindow.approvedMediaSourceList.Add(Item.ToString());
+                approvedMediaSourceList.Add(Item.ToString());
                 System.Diagnostics.Debug.WriteLine(Item.ToString());
             }
 
-            if (VoiceWizardWindow.approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
+            if (approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
             {
 
                 string info = $"[{sender.Id} is now playing {args.Title} {(string.IsNullOrEmpty(args.Artist) ? "" : $"by {args.Artist}")}]";
@@ -128,7 +132,7 @@ namespace OSCVRCWiz.Addons
                 if (args.Title != previousTitle && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true)
                 {
 
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(info));
+                    Task.Run(() => OutputText.outputLog(info));
 
 
                 }
@@ -144,7 +148,7 @@ namespace OSCVRCWiz.Addons
                 if (args.Title != previousTitle)
                 {
                     var sp = new SpotifyAddon();
-                    Task.Run(() => SpotifyAddon.getCurrentMediaInfo(VoiceWizardWindow.MainFormGlobal));
+                    Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                 }
                 previousTitle = args.Title;
 

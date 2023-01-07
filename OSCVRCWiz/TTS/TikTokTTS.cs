@@ -14,6 +14,8 @@ using CSCore.SoundOut;
 using System.Media;
 using System.Net;
 using CSCore.CoreAudioAPI;
+using OSCVRCWiz.Text;
+using Resources;
 //using NAudio.CoreAudioApi;
 
 
@@ -43,7 +45,7 @@ namespace OSCVRCWiz.TTS
             }
             catch (Exception ex)
             {
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
 
             }
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
@@ -97,7 +99,7 @@ namespace OSCVRCWiz.TTS
                 var enumerator = new MMDeviceEnumerator();
                 foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
                 {
-                    if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
+                    if (endpoint.DeviceID == AudioDevices.currentOutputDevice)
                     {
                         testOut.Device = endpoint;
                     }
@@ -114,7 +116,7 @@ namespace OSCVRCWiz.TTS
             }
             catch (Exception ex)
             {
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog( "[TikTok TTS Error: " + ex.Message + "]");
+                OutputText.outputLog( "[TikTok TTS Error: " + ex.Message + "]");
             }
 
         }
