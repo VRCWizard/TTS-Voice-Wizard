@@ -85,7 +85,6 @@
             this.labelCharCount = new System.Windows.Forms.Label();
             this.iconButton37 = new FontAwesome.Sharp.IconButton();
             this.iconButton36 = new FontAwesome.Sharp.IconButton();
-            this.iconButton25 = new FontAwesome.Sharp.IconButton();
             this.ttsTrash = new FontAwesome.Sharp.IconButton();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -224,7 +223,6 @@
             this.General = new System.Windows.Forms.TabPage();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.iconButton30 = new FontAwesome.Sharp.IconButton();
-            this.iconButton42 = new FontAwesome.Sharp.IconButton();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.label31 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
@@ -301,16 +299,12 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label113 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.rjToggleButtonVoiceWhatLang = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label47 = new System.Windows.Forms.Label();
             this.rjToggleButtonPhraseList2 = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.label118 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.richTextBox6 = new System.Windows.Forms.RichTextBox();
             this.rjToggleButtonProfan = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label20 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.rjToggleButtonAsTranslated2 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButton4 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -325,8 +319,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.iconButton29 = new FontAwesome.Sharp.IconButton();
             this.label28 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.rjToggleButtonCancelAudio = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
@@ -350,6 +342,12 @@
             this.label115 = new System.Windows.Forms.Label();
             this.label131 = new System.Windows.Forms.Label();
             this.DeepLTab = new System.Windows.Forms.TabPage();
+            this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.rjToggleButtonAsTranslated2 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label118 = new System.Windows.Forms.Label();
+            this.rjToggleButtonVoiceWhatLang = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
             this.label51 = new System.Windows.Forms.Label();
             this.iconButton43 = new FontAwesome.Sharp.IconButton();
@@ -369,9 +367,9 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button14 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -413,6 +411,7 @@
             this.groupBox22.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.DeepLTab.SuspendLayout();
+            this.groupBox27.SuspendLayout();
             this.groupBox26.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
@@ -1071,7 +1070,7 @@
             this.logTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.logTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.logTrash.IconSize = 15;
-            this.logTrash.Location = new System.Drawing.Point(319, 679);
+            this.logTrash.Location = new System.Drawing.Point(298, 679);
             this.logTrash.Name = "logTrash";
             this.logTrash.Size = new System.Drawing.Size(35, 29);
             this.logTrash.TabIndex = 32;
@@ -1317,7 +1316,6 @@
             this.groupBox7.Controls.Add(this.labelCharCount);
             this.groupBox7.Controls.Add(this.iconButton37);
             this.groupBox7.Controls.Add(this.iconButton36);
-            this.groupBox7.Controls.Add(this.iconButton25);
             this.groupBox7.Controls.Add(this.ttsTrash);
             this.groupBox7.Controls.Add(this.richTextBox3);
             this.groupBox7.Controls.Add(this.speechTTSButton);
@@ -1381,25 +1379,6 @@
             this.iconButton36.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton36.UseVisualStyleBackColor = false;
             this.iconButton36.Click += new System.EventHandler(this.iconButton36_Click);
-            // 
-            // iconButton25
-            // 
-            this.iconButton25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.iconButton25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton25.FlatAppearance.BorderSize = 0;
-            this.iconButton25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.iconButton25.IconChar = FontAwesome.Sharp.IconChar.ArrowsAltV;
-            this.iconButton25.IconColor = System.Drawing.Color.White;
-            this.iconButton25.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton25.IconSize = 15;
-            this.iconButton25.Location = new System.Drawing.Point(397, 176);
-            this.iconButton25.Name = "iconButton25";
-            this.iconButton25.Size = new System.Drawing.Size(35, 29);
-            this.iconButton25.TabIndex = 102;
-            this.iconButton25.UseVisualStyleBackColor = false;
-            this.iconButton25.Visible = false;
-            this.iconButton25.Click += new System.EventHandler(this.iconButton25_Click_1);
             // 
             // ttsTrash
             // 
@@ -2164,6 +2143,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button14);
             this.groupBox5.Controls.Add(this.groupBox4);
             this.groupBox5.Controls.Add(this.button22);
             this.groupBox5.Controls.Add(this.button23);
@@ -2344,7 +2324,7 @@
             this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.ForeColor = System.Drawing.Color.Snow;
-            this.button21.Location = new System.Drawing.Point(824, 96);
+            this.button21.Location = new System.Drawing.Point(786, 96);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(30, 30);
             this.button21.TabIndex = 134;
@@ -2358,7 +2338,7 @@
             this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.ForeColor = System.Drawing.Color.Snow;
-            this.button20.Location = new System.Drawing.Point(788, 96);
+            this.button20.Location = new System.Drawing.Point(750, 96);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(30, 30);
             this.button20.TabIndex = 133;
@@ -3051,7 +3031,6 @@
             this.iconButton24.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton24.UseVisualStyleBackColor = false;
             this.iconButton24.Visible = false;
-            this.iconButton24.Click += new System.EventHandler(this.iconButton24_Click);
             // 
             // iconButton18
             // 
@@ -3152,14 +3131,13 @@
             // groupBox25
             // 
             this.groupBox25.Controls.Add(this.iconButton30);
-            this.groupBox25.Controls.Add(this.iconButton42);
             this.groupBox25.ForeColor = System.Drawing.Color.White;
             this.groupBox25.Location = new System.Drawing.Point(730, 315);
             this.groupBox25.Name = "groupBox25";
             this.groupBox25.Size = new System.Drawing.Size(232, 104);
             this.groupBox25.TabIndex = 139;
             this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "DeepL Text Translations";
+            this.groupBox25.Text = "Translation Settings";
             // 
             // iconButton30
             // 
@@ -3171,32 +3149,12 @@
             this.iconButton30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton30.Location = new System.Drawing.Point(6, 30);
             this.iconButton30.Name = "iconButton30";
-            this.iconButton30.Size = new System.Drawing.Size(170, 50);
+            this.iconButton30.Size = new System.Drawing.Size(214, 50);
             this.iconButton30.TabIndex = 134;
-            this.iconButton30.Text = "DeepL Settings";
+            this.iconButton30.Text = "Translation Settings";
             this.iconButton30.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton30.UseVisualStyleBackColor = false;
             this.iconButton30.Click += new System.EventHandler(this.iconButton30_Click_2);
-            // 
-            // iconButton42
-            // 
-            this.iconButton42.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton42.FlatAppearance.BorderSize = 0;
-            this.iconButton42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton42.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton42.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.iconButton42.IconColor = System.Drawing.Color.White;
-            this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton42.IconSize = 40;
-            this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton42.Location = new System.Drawing.Point(176, 36);
-            this.iconButton42.Name = "iconButton42";
-            this.iconButton42.Size = new System.Drawing.Size(50, 40);
-            this.iconButton42.TabIndex = 132;
-            this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton42.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton42.UseVisualStyleBackColor = true;
-            this.iconButton42.Click += new System.EventHandler(this.iconButton42_Click_1);
             // 
             // groupBox24
             // 
@@ -4138,8 +4096,6 @@
             this.AzureSet.Controls.Add(this.groupBox11);
             this.AzureSet.Controls.Add(this.iconButton29);
             this.AzureSet.Controls.Add(this.label28);
-            this.AzureSet.Controls.Add(this.label58);
-            this.AzureSet.Controls.Add(this.rjToggleButtonCancelAudio);
             this.AzureSet.Controls.Add(this.label10);
             this.AzureSet.Location = new System.Drawing.Point(4, 29);
             this.AzureSet.Name = "AzureSet";
@@ -4153,20 +4109,16 @@
             this.groupBox12.Controls.Add(this.label30);
             this.groupBox12.Controls.Add(this.label113);
             this.groupBox12.Controls.Add(this.label13);
-            this.groupBox12.Controls.Add(this.rjToggleButtonVoiceWhatLang);
             this.groupBox12.Controls.Add(this.label47);
             this.groupBox12.Controls.Add(this.rjToggleButtonPhraseList2);
-            this.groupBox12.Controls.Add(this.label118);
             this.groupBox12.Controls.Add(this.label48);
             this.groupBox12.Controls.Add(this.richTextBox6);
             this.groupBox12.Controls.Add(this.rjToggleButtonProfan);
             this.groupBox12.Controls.Add(this.label20);
-            this.groupBox12.Controls.Add(this.label16);
-            this.groupBox12.Controls.Add(this.rjToggleButtonAsTranslated2);
             this.groupBox12.Controls.Add(this.rjToggleButton4);
             this.groupBox12.Controls.Add(this.label36);
             this.groupBox12.ForeColor = System.Drawing.Color.White;
-            this.groupBox12.Location = new System.Drawing.Point(19, 251);
+            this.groupBox12.Location = new System.Drawing.Point(17, 265);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(708, 480);
             this.groupBox12.TabIndex = 109;
@@ -4177,7 +4129,7 @@
             // 
             this.rjToggleButtonStyle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rjToggleButtonStyle.AutoSize = true;
-            this.rjToggleButtonStyle.Location = new System.Drawing.Point(6, 350);
+            this.rjToggleButtonStyle.Location = new System.Drawing.Point(10, 277);
             this.rjToggleButtonStyle.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButtonStyle.Name = "rjToggleButtonStyle";
             this.rjToggleButtonStyle.OffBackColor = System.Drawing.Color.Gray;
@@ -4194,7 +4146,7 @@
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label30.ForeColor = System.Drawing.Color.Snow;
-            this.label30.Location = new System.Drawing.Point(61, 352);
+            this.label30.Location = new System.Drawing.Point(65, 279);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(328, 40);
             this.label30.TabIndex = 108;
@@ -4221,29 +4173,12 @@
             this.label13.TabIndex = 64;
             this.label13.Text = "Dictionary";
             // 
-            // rjToggleButtonVoiceWhatLang
-            // 
-            this.rjToggleButtonVoiceWhatLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rjToggleButtonVoiceWhatLang.AutoSize = true;
-            this.rjToggleButtonVoiceWhatLang.Checked = true;
-            this.rjToggleButtonVoiceWhatLang.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonVoiceWhatLang.Location = new System.Drawing.Point(8, 309);
-            this.rjToggleButtonVoiceWhatLang.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonVoiceWhatLang.Name = "rjToggleButtonVoiceWhatLang";
-            this.rjToggleButtonVoiceWhatLang.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonVoiceWhatLang.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonVoiceWhatLang.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonVoiceWhatLang.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonVoiceWhatLang.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonVoiceWhatLang.TabIndex = 107;
-            this.rjToggleButtonVoiceWhatLang.UseVisualStyleBackColor = true;
-            // 
             // label47
             // 
             this.label47.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label47.AutoSize = true;
             this.label47.ForeColor = System.Drawing.Color.Snow;
-            this.label47.Location = new System.Drawing.Point(6, 437);
+            this.label47.Location = new System.Drawing.Point(9, 372);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(508, 20);
             this.label47.TabIndex = 84;
@@ -4263,24 +4198,12 @@
             this.rjToggleButtonPhraseList2.TabIndex = 79;
             this.rjToggleButtonPhraseList2.UseVisualStyleBackColor = true;
             // 
-            // label118
-            // 
-            this.label118.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label118.AutoSize = true;
-            this.label118.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label118.ForeColor = System.Drawing.Color.Snow;
-            this.label118.Location = new System.Drawing.Point(63, 311);
-            this.label118.Name = "label118";
-            this.label118.Size = new System.Drawing.Size(202, 20);
-            this.label118.TabIndex = 106;
-            this.label118.Text = "Voice in Translated Language";
-            // 
             // label48
             // 
             this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label48.AutoSize = true;
             this.label48.ForeColor = System.Drawing.Color.Snow;
-            this.label48.Location = new System.Drawing.Point(6, 417);
+            this.label48.Location = new System.Drawing.Point(9, 352);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(639, 20);
             this.label48.TabIndex = 85;
@@ -4328,38 +4251,11 @@
             this.label20.TabIndex = 48;
             this.label20.Text = "Voice Recognition Profanity Filter";
             // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label16.ForeColor = System.Drawing.Color.Snow;
-            this.label16.Location = new System.Drawing.Point(63, 269);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(193, 20);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "Text in Translated Language";
-            // 
-            // rjToggleButtonAsTranslated2
-            // 
-            this.rjToggleButtonAsTranslated2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rjToggleButtonAsTranslated2.AutoSize = true;
-            this.rjToggleButtonAsTranslated2.Location = new System.Drawing.Point(9, 269);
-            this.rjToggleButtonAsTranslated2.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonAsTranslated2.Name = "rjToggleButtonAsTranslated2";
-            this.rjToggleButtonAsTranslated2.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonAsTranslated2.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonAsTranslated2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonAsTranslated2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonAsTranslated2.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonAsTranslated2.TabIndex = 77;
-            this.rjToggleButtonAsTranslated2.UseVisualStyleBackColor = true;
-            // 
             // rjToggleButton4
             // 
             this.rjToggleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rjToggleButton4.AutoSize = true;
-            this.rjToggleButton4.Location = new System.Drawing.Point(6, 391);
+            this.rjToggleButton4.Location = new System.Drawing.Point(9, 326);
             this.rjToggleButton4.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButton4.Name = "rjToggleButton4";
             this.rjToggleButton4.OffBackColor = System.Drawing.Color.Gray;
@@ -4377,7 +4273,7 @@
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label36.ForeColor = System.Drawing.Color.Snow;
-            this.label36.Location = new System.Drawing.Point(61, 391);
+            this.label36.Location = new System.Drawing.Point(64, 326);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(219, 20);
             this.label36.TabIndex = 82;
@@ -4498,6 +4394,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(14, 46);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(356, 27);
             this.textBox2.TabIndex = 27;
             // 
@@ -4526,35 +4423,6 @@
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(100, 23);
             this.label28.TabIndex = 105;
-            // 
-            // label58
-            // 
-            this.label58.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label58.ForeColor = System.Drawing.Color.Snow;
-            this.label58.Location = new System.Drawing.Point(635, 449);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(297, 20);
-            this.label58.TabIndex = 86;
-            this.label58.Text = "Stop Previous TTS When New TTS is Started";
-            this.label58.Visible = false;
-            // 
-            // rjToggleButtonCancelAudio
-            // 
-            this.rjToggleButtonCancelAudio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rjToggleButtonCancelAudio.AutoSize = true;
-            this.rjToggleButtonCancelAudio.Location = new System.Drawing.Point(580, 449);
-            this.rjToggleButtonCancelAudio.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonCancelAudio.Name = "rjToggleButtonCancelAudio";
-            this.rjToggleButtonCancelAudio.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonCancelAudio.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonCancelAudio.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonCancelAudio.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonCancelAudio.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButtonCancelAudio.TabIndex = 87;
-            this.rjToggleButtonCancelAudio.UseVisualStyleBackColor = true;
-            this.rjToggleButtonCancelAudio.Visible = false;
             // 
             // label10
             // 
@@ -4637,7 +4505,6 @@
             this.checkedListBox1.Size = new System.Drawing.Size(864, 256);
             this.checkedListBox1.TabIndex = 142;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
-            this.checkedListBox1.DoubleClick += new System.EventHandler(this.checkedListBox1_DoubleClick);
             this.checkedListBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseDoubleClick);
             // 
             // button24
@@ -4836,6 +4703,7 @@
             // DeepLTab
             // 
             this.DeepLTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.DeepLTab.Controls.Add(this.groupBox27);
             this.DeepLTab.Controls.Add(this.groupBox26);
             this.DeepLTab.Controls.Add(this.label53);
             this.DeepLTab.Location = new System.Drawing.Point(4, 29);
@@ -4844,6 +4712,86 @@
             this.DeepLTab.Size = new System.Drawing.Size(976, 753);
             this.DeepLTab.TabIndex = 14;
             this.DeepLTab.Text = "DeepLTab";
+            // 
+            // groupBox27
+            // 
+            this.groupBox27.Controls.Add(this.rjToggleButtonAsTranslated2);
+            this.groupBox27.Controls.Add(this.label16);
+            this.groupBox27.Controls.Add(this.label24);
+            this.groupBox27.Controls.Add(this.label118);
+            this.groupBox27.Controls.Add(this.rjToggleButtonVoiceWhatLang);
+            this.groupBox27.ForeColor = System.Drawing.Color.White;
+            this.groupBox27.Location = new System.Drawing.Point(13, 196);
+            this.groupBox27.Name = "groupBox27";
+            this.groupBox27.Size = new System.Drawing.Size(557, 309);
+            this.groupBox27.TabIndex = 112;
+            this.groupBox27.TabStop = false;
+            this.groupBox27.Text = "General Translation Settings";
+            // 
+            // rjToggleButtonAsTranslated2
+            // 
+            this.rjToggleButtonAsTranslated2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rjToggleButtonAsTranslated2.AutoSize = true;
+            this.rjToggleButtonAsTranslated2.Location = new System.Drawing.Point(25, 189);
+            this.rjToggleButtonAsTranslated2.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonAsTranslated2.Name = "rjToggleButtonAsTranslated2";
+            this.rjToggleButtonAsTranslated2.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonAsTranslated2.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonAsTranslated2.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonAsTranslated2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonAsTranslated2.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonAsTranslated2.TabIndex = 77;
+            this.rjToggleButtonAsTranslated2.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label16.ForeColor = System.Drawing.Color.Snow;
+            this.label16.Location = new System.Drawing.Point(79, 189);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(193, 20);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "Text in Translated Language";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(16, 33);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(354, 20);
+            this.label24.TabIndex = 111;
+            this.label24.Text = "Settings apply to both Azure and DeepL translations";
+            // 
+            // label118
+            // 
+            this.label118.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label118.AutoSize = true;
+            this.label118.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label118.ForeColor = System.Drawing.Color.Snow;
+            this.label118.Location = new System.Drawing.Point(79, 231);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(230, 20);
+            this.label118.TabIndex = 106;
+            this.label118.Text = "TTS Voice in Translated Language";
+            // 
+            // rjToggleButtonVoiceWhatLang
+            // 
+            this.rjToggleButtonVoiceWhatLang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rjToggleButtonVoiceWhatLang.AutoSize = true;
+            this.rjToggleButtonVoiceWhatLang.Checked = true;
+            this.rjToggleButtonVoiceWhatLang.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonVoiceWhatLang.Location = new System.Drawing.Point(24, 229);
+            this.rjToggleButtonVoiceWhatLang.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonVoiceWhatLang.Name = "rjToggleButtonVoiceWhatLang";
+            this.rjToggleButtonVoiceWhatLang.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonVoiceWhatLang.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonVoiceWhatLang.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonVoiceWhatLang.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonVoiceWhatLang.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonVoiceWhatLang.TabIndex = 107;
+            this.rjToggleButtonVoiceWhatLang.UseVisualStyleBackColor = true;
             // 
             // groupBox26
             // 
@@ -4916,9 +4864,9 @@
             this.label53.ForeColor = System.Drawing.Color.Snow;
             this.label53.Location = new System.Drawing.Point(13, 17);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(183, 25);
+            this.label53.Size = new System.Drawing.Size(136, 25);
             this.label53.TabIndex = 109;
-            this.label53.Text = "DeepL Translation API";
+            this.label53.Text = "Translation APIs";
             // 
             // panel1
             // 
@@ -5163,17 +5111,25 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timerSpotify_Tick);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // button14
+            // 
+            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.Color.Snow;
+            this.button14.Location = new System.Drawing.Point(822, 96);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(30, 30);
+            this.button14.TabIndex = 140;
+            this.button14.Text = "🔊";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // VoiceWizardWindow
             // 
@@ -5258,6 +5214,8 @@
             this.groupBox15.PerformLayout();
             this.DeepLTab.ResumeLayout(false);
             this.DeepLTab.PerformLayout();
+            this.groupBox27.ResumeLayout(false);
+            this.groupBox27.PerformLayout();
             this.groupBox26.ResumeLayout(false);
             this.groupBox26.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -5382,8 +5340,6 @@
         private FontAwesome.Sharp.IconButton iconButton15;
         private FontAwesome.Sharp.IconButton iconButton14;
         private FontAwesome.Sharp.IconButton iconButton13;
-        public RJControls.RJToggleButton rjToggleButtonCancelAudio;
-        private Label label58;
         public RJControls.RJToggleButton rjToggleButton5;
         private Label label66;
         private Label label68;
@@ -5477,7 +5433,6 @@
         public Button button10;
         public Button button9;
         public RJControls.RJToggleButton rjToggleButtonClear;
-        public System.Windows.Forms.Timer timer1;
         public TextBox textBoxSpotifyTime;
         public NotifyIcon notifyIcon1;
         public TextBox textBoxErase;
@@ -5518,7 +5473,6 @@
         private Label label49;
         private Label label60;
         public RJControls.RJToggleButton rjToggleButtonPlayPaused;
-        private FontAwesome.Sharp.IconButton iconButton25;
         private Button button2;
         private Button button20;
         private Button button22;
@@ -5596,7 +5550,6 @@
         private FolderBrowserDialog folderBrowserDialog1;
         private GroupBox groupBox25;
         private FontAwesome.Sharp.IconButton iconButton30;
-        private FontAwesome.Sharp.IconButton iconButton42;
         private TabPage DeepLTab;
         private GroupBox groupBox26;
         private Label label51;
@@ -5604,5 +5557,8 @@
         private Button button18;
         public TextBox textBox5;
         private Label label53;
+        private GroupBox groupBox27;
+        private Label label24;
+        private Button button14;
     }
 }

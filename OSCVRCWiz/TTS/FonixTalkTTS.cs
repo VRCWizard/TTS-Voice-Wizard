@@ -7,6 +7,7 @@ using CSCore.MediaFoundation;
 using CSCore.SoundOut;
 using System.Media;
 using CSCore.CoreAudioAPI;
+using Resources;
 
 
 namespace OSCVRCWiz.TTS
@@ -55,7 +56,7 @@ namespace OSCVRCWiz.TTS
             var enumerator = new MMDeviceEnumerator();
             foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
             {
-                if (endpoint.DeviceID == VoiceWizardWindow.MainFormGlobal.currentOutputDevice)
+                if (endpoint.DeviceID == AudioDevices.currentOutputDevice)
                 {
                     testOut.Device = endpoint;
                 }

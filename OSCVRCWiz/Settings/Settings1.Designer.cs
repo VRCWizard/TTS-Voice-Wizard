@@ -982,5 +982,29 @@ namespace OSCVRCWiz.Settings {
                 this["deepLKeysave"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string OSCAddress {
+            get {
+                return ((string)(this["OSCAddress"]));
+            }
+            set {
+                this["OSCAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9000")]
+        public string OSCPort {
+            get {
+                return ((string)(this["OSCPort"]));
+            }
+            set {
+                this["OSCPort"] = value;
+            }
+        }
     }
 }

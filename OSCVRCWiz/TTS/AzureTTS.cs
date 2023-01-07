@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OSCVRCWiz.Settings;
+using OSCVRCWiz.Text;
+using Resources;
 
 namespace OSCVRCWiz.TTS
 {
@@ -17,6 +19,7 @@ namespace OSCVRCWiz.TTS
         //TTS
         public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
         public static Dictionary<string, string[]> RememberLanguageVoices = new Dictionary<string, string[]>();
+        public static bool firstVoiceLoad = true;
 
         public static async Task SynthesisGetAvailableVoicesAsync(string fromLanguageFullname)
         {
@@ -28,7 +31,7 @@ namespace OSCVRCWiz.TTS
 
             if (!RememberLanguageVoices.ContainsKey(fromLanguageFullname))
             {
-                var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+                var config = SpeechConfig.FromSubscription(AzureRecognition.YourSubscriptionKey, AzureRecognition.YourServiceRegion);
 
                 // Creates a speech synthesizer
                 using (var synthesizer = new SpeechSynthesizer(config, null as AudioConfig))
@@ -162,7 +165,7 @@ namespace OSCVRCWiz.TTS
                         {
                             if (result.Reason == ResultReason.VoicesListRetrieved)
                             {
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Voices successfully retrieved from Azure]", Color.Green);
+                                OutputText.outputLog("[Voices successfully retrieved from Azure]", Color.Green);
 
 
                                 foreach (var voice in result.Voices)
@@ -190,8 +193,8 @@ namespace OSCVRCWiz.TTS
                             }
                             else if (result.Reason == ResultReason.Canceled)
                             {
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog($"CANCELED: ErrorDetails=[{result.ErrorDetails}]", Color.Red);
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog($"CANCELED: Did you update the Azure subscription info?", Color.Red);
+                                OutputText.outputLog($"CANCELED: ErrorDetails=[{result.ErrorDetails}]", Color.Red);
+                                OutputText.outputLog($"CANCELED: Did you update the Azure subscription info?", Color.Red);
                             }
                         }
                     }
@@ -207,30 +210,45 @@ namespace OSCVRCWiz.TTS
                     VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice);
                 }
             }
-            if (VoiceWizardWindow.firstVoiceLoad == false)
+            if (firstVoiceLoad == false)
             {
               //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: setting voice]");
                 VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex = 0;
             }
 
-            if (VoiceWizardWindow.firstVoiceLoad == true)
+            if (firstVoiceLoad == true)
             {
               //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: setting voice and style to saved values]");
                 VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                 VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
-                VoiceWizardWindow.firstVoiceLoad = false;
+                firstVoiceLoad = false;
 
             }
 
         }
 
-        public static async Task SynthesizeAudioAsync(VoiceWizardWindow MainForm, string text, string style, string rate, string pitch, string volume, string voice) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(string text) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
+                string style = "normal";
+                string rate = "default";
+                string pitch = "default";
+                string volume = "default";
+                string voice = "Sara";
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString())) { style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString(); }
+                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString())) { rate = VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString(); }
+                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString())) { pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString(); }
+                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString())) { volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString(); }
+                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString())) { voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString(); }
 
 
-                var config = SpeechConfig.FromSubscription(VoiceWizardWindow.YourSubscriptionKey, VoiceWizardWindow.YourServiceRegion);
+                });
+
+
+                var config = SpeechConfig.FromSubscription(AzureRecognition.YourSubscriptionKey, AzureRecognition.YourServiceRegion);
                 // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
                 config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
 
@@ -270,8 +288,8 @@ namespace OSCVRCWiz.TTS
                 Debug.WriteLine("style: " + style);
                 Debug.WriteLine("text: " + text);
 
-                var audioConfig = AudioConfig.FromSpeakerOutput(MainForm.currentOutputDevice);
-                if (MainForm.currentOutputDeviceName == "Default")
+                var audioConfig = AudioConfig.FromSpeakerOutput(AudioDevices.currentOutputDevice);
+                if (AudioDevices.currentOutputDeviceName == "Default")
                 {
                     audioConfig = AudioConfig.FromDefaultSpeakerOutput();
 
@@ -342,16 +360,16 @@ namespace OSCVRCWiz.TTS
                 {
                     var cancellation = SpeechSynthesisCancellationDetails.FromResult(result);
                     Debug.WriteLine($"[CANCELED: Reason={cancellation.Reason}]");
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog($"[CANCELED: Reason={cancellation.Reason}]", Color.Red);
+                    OutputText.outputLog($"[CANCELED: Reason={cancellation.Reason}]", Color.Red);
 
                     if (cancellation.Reason == CancellationReason.Error)
                     {
                         Debug.WriteLine($"[CANCELED: ErrorCode={cancellation.ErrorCode}]");
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog($"[CANCELED: ErrorCode={cancellation.ErrorCode}]", Color.Red);
+                        OutputText.outputLog($"[CANCELED: ErrorCode={cancellation.ErrorCode}]", Color.Red);
                         Debug.WriteLine($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]");
-                        VoiceWizardWindow.MainFormGlobal. ot.outputLog($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]", Color.Red);
+                        OutputText.outputLog($"[CANCELED: ErrorDetails={cancellation.ErrorDetails}]", Color.Red);
                         Debug.WriteLine($"[CANCELED: Did you update the subscription info?]");
-                        VoiceWizardWindow.MainFormGlobal.ot.outputLog($"[CANCELED: Did you update the subscription info?]", Color.Red);
+                        OutputText.outputLog($"[CANCELED: Did you update the subscription info?]", Color.Red);
                     }
                 }
 

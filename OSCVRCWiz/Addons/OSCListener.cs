@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 //using SharpOSC;
 //using VRC.OSCQuery;//beta testing
 using CoreOSC;
+using OSCVRCWiz.Text;
+
 
 
 namespace OSCVRCWiz.Addons
 {
-    public class HeartbeatAddon
+    public class OSCListener
     {
         static bool heartConnect = false;
         public static string globalBPM = "0";
@@ -18,6 +20,12 @@ namespace OSCVRCWiz.Addons
         public static int globalLeftControllerBattery = 0;
         public static int globalRightControllerBattery = 0;
         public static int globalAverageControllerBattery = 0;
+        public static int OSCReceiveport = 4026;
+        public static bool OSCReceiveSpamLog = true;
+        public static int HRInternalValue = 5;
+        public static bool pauseBPM = false;
+        public static bool stopBPM = false;
+
 
         public static void OSCRecieveHeartRate(VoiceWizardWindow MainForm)
         {
@@ -25,7 +33,7 @@ namespace OSCVRCWiz.Addons
             int skipper = 0;
             // var ot = new OutputText();
             // The cabllback function
-            VoiceWizardWindow.MainFormGlobal.ot.outputLog("[OSC Listener Activated]");
+            OutputText.outputLog("[OSC Listener Activated]");
             HandleOscPacket callback = delegate (OscPacket packet)
             {
                 var messageReceived = (OscMessage)packet;
@@ -48,7 +56,7 @@ namespace OSCVRCWiz.Addons
                         if (heartConnect == false)
                         {
 
-                            VoiceWizardWindow.MainFormGlobal.ot.outputLog("[First OSC Recieved]");
+                            OutputText.outputLog("[First OSC Recieved]");
                             heartConnect = true;
 
                         }
@@ -60,11 +68,11 @@ namespace OSCVRCWiz.Addons
                             decimal averageTrackerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(averageTrackerBattery * 100);
                             globalAverageTrackerBattery = battery;
-                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            if (OSCReceiveSpamLog == true)
                             {
                                 //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + messageReceived.Arguments[0].ToString() + "]");
                                 //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + Convert.ToInt32(averageTrackerBattery) + "]");
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Average Tracker Battery: " + battery + "%]");
+                                OutputText.outputLog("[Average Tracker Battery: " + battery + "%]");
                             }
 
 
@@ -75,10 +83,10 @@ namespace OSCVRCWiz.Addons
                             decimal leftControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(leftControllerBattery * 100);
                             globalLeftControllerBattery = battery;
-                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            if (OSCReceiveSpamLog == true)
                             {
 
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Left Controller Battery: " + battery + "%]");
+                                OutputText.outputLog("[Left Controller Battery: " + battery + "%]");
                             }
 
                         }
@@ -87,10 +95,10 @@ namespace OSCVRCWiz.Addons
                             decimal rightControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(rightControllerBattery * 100);
                             globalRightControllerBattery = battery;
-                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            if (OSCReceiveSpamLog == true)
                             {
 
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Right Controller Battery: " + battery + "%]");
+                                OutputText.outputLog("[Right Controller Battery: " + battery + "%]");
                             }
 
                         }
@@ -99,20 +107,20 @@ namespace OSCVRCWiz.Addons
                             decimal averageControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(averageControllerBattery * 100);
                             globalAverageControllerBattery = battery;
-                            if (VoiceWizardWindow.BPMSpamLog == true)
+                            if (OSCReceiveSpamLog == true)
                             {
 
-                                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[Average Controller Battery: " + battery + "%]");
+                                OutputText.outputLog("[Average Controller Battery: " + battery + "%]");
 
                             }
 
 
                         }
 
-                        if (messageReceived.Address == "/avatar/parameters/HR" && VoiceWizardWindow.pauseBPM == false)
+                        if (messageReceived.Address == "/avatar/parameters/HR" && pauseBPM == false)
                         {
                             skipper += 1;
-                            if (skipper >= VoiceWizardWindow.HRInternalValue)
+                            if (skipper >= HRInternalValue)
                             {
                                 skipper = 0;
 
@@ -121,28 +129,28 @@ namespace OSCVRCWiz.Addons
                                 System.Diagnostics.Debug.WriteLine("OSC Received a message Argument: " + messageReceived.Arguments[0].ToString());
                                 globalBPM = messageReceived.Arguments[0].ToString();
 
-                                if (VoiceWizardWindow.stopBPM == false)
+                                if (stopBPM == false)
                                 {
 
                                     // var ot = new OutputText();
-                                    if (VoiceWizardWindow.BPMSpamLog == true)
+                                    if (OSCReceiveSpamLog == true)
                                     {
-                                        VoiceWizardWindow.MainFormGlobal.ot.outputLog("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
+                                        OutputText.outputLog("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
 
                                     }
                                     if (MainForm.rjToggleButton3.Checked == true && MainForm.rjToggleButtonOSC.Checked == true)
                                     {
-                                        VoiceWizardWindow.MainFormGlobal.ot.outputVRChat("ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
+                                        OutputText.outputVRChat("ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
 
                                     }
                                     if (MainForm.rjToggleButton3.Checked == false && MainForm.rjToggleButtonOSC.Checked == true)
                                     {
-                                        VoiceWizardWindow.MainFormGlobal.ot.outputVRChat("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+                                        OutputText.outputVRChat("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
 
                                     }
                                     if (MainForm.rjToggleButtonChatBox.Checked == true)
                                     {
-                                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputVRChatSpeechBubbles("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
+                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
 
 
                                     }
@@ -163,7 +171,7 @@ namespace OSCVRCWiz.Addons
 
             };
 
-            var listener = new UDPListener(VoiceWizardWindow.heartRatePort, callback);
+            var listener = new UDPListener(OSCReceiveport, callback);
             //   var service = new OSCQueryService("TTS Voice Wizard - Beta", 4026, VoiceWizardWindow.heartRatePort); //beta testing VRCHAT (default TCP=8080, default OSC=9000 vrchats sending port)
 
             //  System.Diagnostics.Debug.WriteLine("TTS Voice Wizard - Beta listening on "+ VoiceWizardWindow.heartRatePort);

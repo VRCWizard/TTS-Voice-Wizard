@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using DeepL;
+using OSCVRCWiz.Text;
 
 namespace OSCVRCWiz.TranslationAPIs
 {
@@ -33,7 +34,7 @@ namespace OSCVRCWiz.TranslationAPIs
                 System.Diagnostics.Debug.WriteLine(translatedText);
                 //System.Diagnostics.Debug.WriteLine(LanguageCode.English);
                 // System.Diagnostics.Debug.WriteLine(LanguageCode.French);
-                VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DeepL Input Text]: " + text);
+                //VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DeepL Input Text]: " + text);
                 return translatedText.ToString();
                 //  System.Diagnostics.Debug.WriteLine("DeepL: " + VoiceWizardWindow.MainFormGlobal.deepLString);
             }
@@ -79,7 +80,7 @@ namespace OSCVRCWiz.TranslationAPIs
                 //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
                 default:
                     fromLanguage = LanguageCode.English;
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("This language does not support text translations with DeepL");
+                    OutputText.outputLog("This language does not support text translations with DeepL");
                     break; // if translation to english happens something is wrong
             }
             return fromLanguage;
@@ -123,7 +124,7 @@ namespace OSCVRCWiz.TranslationAPIs
                 //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
                 default:
                     toLanguage = LanguageCode.EnglishAmerican;
-                    VoiceWizardWindow.MainFormGlobal.ot.outputLog("This language does not support text translations with DeepL");
+                    OutputText.outputLog("This language does not support text translations with DeepL");
                     break; // if translation to english happens something is wrong
             }
             return toLanguage;

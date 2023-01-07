@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using EmbedIO.Sessions;
+using OSCVRCWiz.Addons;
+using OSCVRCWiz.Resources;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.TranslationAPIs;
 
@@ -33,8 +35,8 @@ namespace OSCVRCWiz
             Settings1.Default.SpeakerName = VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem.ToString();
             Settings1.Default.EmojiSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked;
             Settings1.Default.SpotifyOutputSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked;
-            Settings1.Default.HRIntervalSetting = VoiceWizardWindow.HRInternalValue.ToString();
-            Settings1.Default.HRPortSetting = VoiceWizardWindow.heartRatePort.ToString();
+            Settings1.Default.HRIntervalSetting = OSCListener.HRInternalValue.ToString();
+            Settings1.Default.HRPortSetting = OSCListener.OSCReceiveport.ToString();
             Settings1.Default.BPMSpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton2.Checked;
             Settings1.Default.voiceBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex;
             Settings1.Default.styleBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedIndex;
@@ -55,9 +57,9 @@ namespace OSCVRCWiz
 
             Settings1.Default.SpotifyPeriodicallySetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked;
             Settings1.Default.SpotifySpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked;
-            Settings1.Default.SpotifyTimerIntervalSetting = VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text.ToString();
+            Settings1.Default.SpotifyTimerIntervalSetting = SpotifyAddon.spotifyInterval;
 
-            Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked;
+           // Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked;
            // Settings1.Default.cultureInfoSetting = VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text.ToString();
 
             Settings1.Default.bannerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked;
@@ -107,7 +109,7 @@ namespace OSCVRCWiz
            
             Settings1.Default.StopOnPause = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked;
 
-             Settings1.Default.voiceCommandList= VoiceWizardWindow.voiceCommandsStored;
+             Settings1.Default.voiceCommandList= VoiceCommands.voiceCommandsStored;
 
             string approvedString = "";
             foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
@@ -124,7 +126,10 @@ namespace OSCVRCWiz
             Settings1.Default.modelnamesave = VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString();
 
             Settings1.Default.deepLKeysave= DeepLTranslate.DeepLKey;
-            
+
+            Settings1.Default.OSCAddress= OSC.OSCAddress;
+            Settings1.Default.OSCPort= OSC.OSCPort;
+
 
 
 
