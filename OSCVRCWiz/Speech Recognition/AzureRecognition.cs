@@ -11,6 +11,8 @@ using OSCVRCWiz.TTS;
 using TTS;
 using OSCVRCWiz.Text;
 using Resources;
+using OSCVRCWiz.Resources;
+using OSCVRCWiz.Addons;
 
 namespace OSCVRCWiz
 {
@@ -232,6 +234,14 @@ namespace OSCVRCWiz
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        OSCListener.pauseBPM = true;
+                        SpotifyAddon.pauseSpotify = true;
+                        var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
+                        OSC.OSCSender.Send(typingbubble);
+
+                    }
                     var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
                     var text = speechRecognitionResult.Text; //Dictation string
 
@@ -276,6 +286,14 @@ namespace OSCVRCWiz
                 System.Diagnostics.Debug.WriteLine($"we'll translate into '{toLanguage}'.\n");
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        OSCListener.pauseBPM = true;
+                        SpotifyAddon.pauseSpotify = true;
+                        var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
+                        OSC.OSCSender.Send(typingbubble);
+
+                    }
 
                     var speechRecognitionResult = await translationRecognizer1.RecognizeOnceAsync();
 

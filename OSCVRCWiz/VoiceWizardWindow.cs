@@ -26,8 +26,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.4.2";
-        string releaseDate = "January 2, 2023";
+        string currentVersion = "0.9.4.6";
+        string releaseDate = "January 8, 2023";
 
        // public OutputText ot;
         public GreenScreen pf;
@@ -553,20 +553,16 @@ namespace OSCVRCWiz
                     MessageBox.Show(ex.Message);
                 }
             }
-            if (rjToggleButtonChatBox.Checked == true)
-            {
-                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
-                OSC.OSCSender.Send(typingbubble);
+            
 
-            }
-           
-
+            
             this.Invoke((MethodInvoker)delegate ()
             {
                 switch (comboBoxSTT.SelectedItem.ToString())
             {
 
                 case "Vosk":
+
                         Task.Run(() => VoskRecognition.toggleVosk());
 
                         break;
@@ -1656,7 +1652,7 @@ namespace OSCVRCWiz
 
           if (comboBoxSTT.SelectedItem.ToString() == "System Speech" || comboBoxSTT.SelectedItem.ToString() == "Vosk")
             {
-                OutputText.outputLog("[If your system's default input device changes you will have to reload this]");
+             //   OutputText.outputLog("[If your system's default input device changes you will have to reload this]");
 
             }
          
