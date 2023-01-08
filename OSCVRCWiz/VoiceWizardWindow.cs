@@ -446,7 +446,7 @@ namespace OSCVRCWiz
                 string selectedTTSMode = VoiceWizardWindow.TTSModeSaved;
                 //VoiceCommand task
 
-                if (AzureRecognition.YourSubscriptionKey == "" && comboBoxTTSMode.Text.ToString() == "Azure")
+                if (AzureRecognition.YourSubscriptionKey == "" && selectedTTSMode == "Azure")
                 {
                 //  var ot = new OutputText();
                 OutputText.outputLog("[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
