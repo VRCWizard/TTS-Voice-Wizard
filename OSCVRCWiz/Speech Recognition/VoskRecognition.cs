@@ -92,6 +92,10 @@ namespace OSCVRCWiz
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                voskEnabled = false;
+                OutputText.outputLog("[Vosk Failed to Start (only avaliable on x64 build)]");
+                
+
             }
         }
         private static async void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
