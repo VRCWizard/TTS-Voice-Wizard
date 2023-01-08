@@ -82,13 +82,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="lib\FonixTalk.dll">
+    <None Update="FonixTalk.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="lib\ftalk_us.dic">
+    <None Update="ftalk_us.dic">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="lib\ftalk_us.dll">
+    <None Update="ftalk_us.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="KAT Emoji Texture Sheet\KAT_CharTiles Emojis3.png">
