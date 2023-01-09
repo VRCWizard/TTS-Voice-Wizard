@@ -47,12 +47,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SharpTalk\SharpTalk.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="CoreOSC">
       <HintPath>CoreOSC.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTalk">
+      <HintPath>SharpTalk.dll</HintPath>
     </Reference>
   </ItemGroup>
 
