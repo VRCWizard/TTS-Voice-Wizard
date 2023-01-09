@@ -424,29 +424,38 @@ namespace OSCVRCWiz
         }
         public async void MainDoTTS(string text, string STTMode ="Text", string AzureTranslateText ="[ERROR]")
         {
-            if (rjToggleButtonMedia.Checked == true)
+            if (STTMode == "Text")
             {
-                try
+                if (rjToggleButtonMedia.Checked == true)
                 {
-                    var soundPlayer = new SoundPlayer(@"sounds\TTSButton.wav");
-                    soundPlayer.Play();
+                    try
+                    {
+                        var soundPlayer = new SoundPlayer(@"sounds\TTSButton.wav");
+                        soundPlayer.Play();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                this.Invoke((MethodInvoker)delegate ()
                 {
-                    MessageBox.Show(ex.Message);
-                }
+                    if (rjToggleButtonClear.Checked == true)
+                    {
+                        richTextBox3.Clear();
+
+                    }
+
+                });
             }
-          
-            var language = "";
+
+
+                var language = "";
             this.Invoke((MethodInvoker)delegate () 
             {
 
                 language = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
-                if (rjToggleButtonClear.Checked == true)
-                {
-                    richTextBox3.Clear();
-
-                }
+               
             });
 
                 string selectedTTSMode = VoiceWizardWindow.TTSModeSaved;
