@@ -26,7 +26,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        string currentVersion = "0.9.4.6";
+        string currentVersion = "0.9.4.7";
         string releaseDate = "January 8, 2023";
 
        // public OutputText ot;
@@ -436,12 +436,18 @@ namespace OSCVRCWiz
                     MessageBox.Show(ex.Message);
                 }
             }
+          
             var language = "";
             this.Invoke((MethodInvoker)delegate () 
             {
 
-           language = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
-        });
+                language = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
+                if (rjToggleButtonClear.Checked == true)
+                {
+                    richTextBox3.Clear();
+
+                }
+            });
 
                 string selectedTTSMode = VoiceWizardWindow.TTSModeSaved;
                 //VoiceCommand task
