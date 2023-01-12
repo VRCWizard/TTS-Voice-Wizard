@@ -1,8 +1,15 @@
-﻿using NAudio.CoreAudioApi;
+﻿
+using NAudio.CoreAudioApi;
+using NAudio.Wave;
 using OSCVRCWiz;
+using OSCVRCWiz.Text;
 using System;
 using System.Collections.Generic;
 using System.Text;
+//using NAudio.CoreAudioApi;
+
+
+
 
 namespace Resources
 {
@@ -17,17 +24,19 @@ namespace Resources
         public static string currentOutputDevice = "";
         public static string currentInputDeviceName = "Default";
         public static string currentOutputDeviceName = "Default";
-       // public static int currentOutputDeviceLite = 0;
+        // public static int currentOutputDeviceLite = 0;
+
+        
 
 
-        public static void setupInputDevices()
+        public static void NAudioSetupInputDevices()
         {
             comboIn.Add("Default");
             micIDs.Add("Default");
            
             var enumerator = new MMDeviceEnumerator();
             foreach (var endpoint in
-                     enumerator.EnumerateAudioEndPoints(DataFlow.Capture, DeviceState.Active))
+                     enumerator.EnumerateAudioEndPoints(NAudio.CoreAudioApi.DataFlow.Capture, NAudio.CoreAudioApi.DeviceState.Active))
             {
                 System.Diagnostics.Debug.WriteLine("{0} ({1})", endpoint.FriendlyName, endpoint.ID);
                 comboIn.Add(endpoint.FriendlyName);
@@ -43,13 +52,13 @@ namespace Resources
            
 
         }
-        public static void setupOutputDevices()
+        public static void NAudioSetupOutputDevices()
         {
             comboOut.Add("Default");
             speakerIDs.Add("Default");
             var enumerator = new MMDeviceEnumerator();
             foreach (var endpoint in
-                     enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active))
+                     enumerator.EnumerateAudioEndPoints(NAudio.CoreAudioApi.DataFlow.Render, NAudio.CoreAudioApi.DeviceState.Active))
             {
                 System.Diagnostics.Debug.WriteLine("{0} ({1})", endpoint.FriendlyName, endpoint.ID);
 
@@ -61,6 +70,56 @@ namespace Resources
                 VoiceWizardWindow.MainFormGlobal.comboBoxOutput.Items.Add(i);
             }
 
+           
+
         }
+        public static int getCurrentInputDevice() {
+
+            // Setting to Correct Input Device
+            int waveInDevices = WaveIn.DeviceCount;
+            //InputDevicesDict.Clear();
+           Dictionary<string, int> DevicesDict = new Dictionary<string, int>();
+            for (int waveInDevice = 0; waveInDevice < waveInDevices; waveInDevice++)
+            {
+                WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
+                DevicesDict.Add(deviceInfo.ProductName, waveInDevice);
+            }
+           
+            foreach (var kvp in DevicesDict)
+            {
+                if (AudioDevices.currentInputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                {
+                    return kvp.Value;
+                   
+                }
+            }
+            return 0;
+
+        }
+        public static int getCurrentOutputDevice()
+        {
+
+            // Setting to Correct Input Device
+            int waveDevices = WaveOut.DeviceCount;
+            //InputDevicesDict.Clear();
+            Dictionary<string, int> DevicesDict = new Dictionary<string, int>();
+            for (int waveDevice = 0; waveDevice < waveDevices; waveDevice++)
+            {
+                WaveOutCapabilities deviceInfo = WaveOut.GetCapabilities(waveDevice);
+                DevicesDict.Add(deviceInfo.ProductName, waveDevice);
+            }
+
+            foreach (var kvp in DevicesDict)
+            {
+                if (AudioDevices.currentOutputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                {
+                    return kvp.Value;
+
+                }
+            }
+            return 0;
+
+        }
+
     }
 }

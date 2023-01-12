@@ -4,11 +4,11 @@ using System.Text;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using PortAudioSharp;
+//using PortAudioSharp;
 using Vosk;
 using Swan.Formatters;
 using Newtonsoft.Json.Linq;
-using NAudio.Wave;
+//using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using System.Windows.Threading;
 //using CSCore.SoundIn;
@@ -17,6 +17,7 @@ using OSCVRCWiz.TTS;
 using TTS;
 using OSCVRCWiz.Text;
 using Resources;
+using NAudio.Wave;
 
 namespace OSCVRCWiz
 {
@@ -27,7 +28,7 @@ namespace OSCVRCWiz
         static Model model;
         static VoskRecognizer rec;
         static WaveInEvent waveIn;
-        static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
+      //  static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
         static bool voskEnabled = false;
 
 
@@ -49,7 +50,9 @@ namespace OSCVRCWiz
             }
             else
             {
-                MessageBox.Show("No vosk model folder selected. Please note that if the folder you select is not a valid model the program will close!");
+                OutputText.outputLog("[No vosk model folder selected. When selecting you model foler make sure that the folder you select DIRECTLY contains the model files or the program will close!]", Color.Red);
+                MessageBox.Show("No vosk model folder selected. When selecting you model foler make sure that the folder you select DIRECTLY contains the model files or the program will close!");
+                
             }
         }
         public static void doVosk()
@@ -61,24 +64,9 @@ namespace OSCVRCWiz
                 rec = new VoskRecognizer(model, 48000f);
 
 
-                // Setting to Correct Input Device
-                int waveInDevices = WaveIn.DeviceCount;
-                AlternateInputDevices.Clear();
-                for (int waveInDevice = 0; waveInDevice < waveInDevices; waveInDevice++)
-                {
-                    WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
-                    AlternateInputDevices.Add(deviceInfo.ProductName, waveInDevice);
-                }
+              
                 waveIn = new WaveInEvent();
-                waveIn.DeviceNumber = 0;
-                foreach (var kvp in AlternateInputDevices)
-                {
-                    if (AudioDevices.currentInputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
-                    {
-                        waveIn.DeviceNumber = kvp.Value;
-                        System.Diagnostics.Debug.WriteLine("Input device worked" + kvp.Key);
-                    }                 
-                }
+                waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
 
 
                 //Start Listening
@@ -91,10 +79,12 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 voskEnabled = false;
-                OutputText.outputLog("[Vosk Failed to Start (only avaliable on x64 build)]");
+                OutputText.outputLog("[Vosk Failed to Start]", Color.Red);
+                OutputText.outputLog("[Reminder that Vosk only works on the x64 build of TTS Voice Wizard]", Color.Red);
+                MessageBox.Show("Vosk Error: " + ex.Message);
                 
+
 
             }
         }

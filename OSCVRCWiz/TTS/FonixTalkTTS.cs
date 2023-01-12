@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using SharpTalk;
-using CSCore;
-using CSCore.MediaFoundation;
-using CSCore.SoundOut;
+//using CSCore;
+//using CSCore.MediaFoundation;
+//using CSCore.SoundOut;
 using System.Media;
-using CSCore.CoreAudioAPI;
+//using CSCore.CoreAudioAPI;
 using Resources;
-
+using OSCVRCWiz.Text;
+using NAudio.Wave;
 
 namespace OSCVRCWiz.TTS
 {
@@ -41,43 +42,29 @@ namespace OSCVRCWiz.TTS
                 }
 
                 //////////////////// //   tts.Speak(phrase); //ONLY WORKS IF PROJECT > PROPERTIES > BUILD > PLATFORM TARGET  is set to x86 due to the FonixTalk.dll being 32 bit only
-                tts.SpeakToWavFile("MEMEspeech.wav", text);
+                MemoryStream memoryStream = new MemoryStream();
+                tts.SpeakToStream(memoryStream, text);
                 tts.Dispose();
-                Task.Run(() => PlayAudioHelper());
+
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                WaveFileReader wav = new WaveFileReader(memoryStream);
+                var output = new WaveOut();
+                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                output.Init(wav);
+                output.Play();
+                //Task.Run(() => PlayAudioHelper());
             }
              catch (Exception ex)
             {
-                MessageBox.Show("FonixTalk Error: Note that FonixTalk only works on the x86 build. "+ex.Message);
+                OutputText.outputLog("[Reminder that FonixTalk only works on the x86 build of TTS Voice Wizard]", Color.Red);
+                MessageBox.Show("FonixTalk Error: "+ex.Message);
+                
             }
 
 
 
-
-
-
-        }
-        public static void PlayAudioHelper()
-        {
-            var stream = new MemoryStream(File.ReadAllBytes("MEMEspeech.wav"));
-            //    var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) };
-            var waveSource = new MediaFoundationDecoder(stream);
-            //  waveOut.Initialize(waveSource);
-            //  waveOut.Play();
-            //  waveOut.WaitForStopped();
-            var testOut = new WasapiOut();
-            var enumerator = new MMDeviceEnumerator();
-            foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
-            {
-                if (endpoint.DeviceID == AudioDevices.currentOutputDevice)
-                {
-                    testOut.Device = endpoint;
-                }
-            }
-            testOut.Initialize(waveSource);
-            testOut.Play();
-            testOut.WaitForStopped();
-
-        }
+}
 
 
 

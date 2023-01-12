@@ -1006,5 +1006,53 @@ namespace OSCVRCWiz.Settings {
                 this["OSCPort"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveToast {
+            get {
+                return ((bool)(this["saveToast"]));
+            }
+            set {
+                this["saveToast"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string presetSave {
+            get {
+                return ((string)(this["presetSave"]));
+            }
+            set {
+                this["presetSave"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/osc_discord_band")]
+        public string discordParaSave {
+            get {
+                return ((string)(this["discordParaSave"]));
+            }
+            set {
+                this["discordParaSave"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string discordTimerSave {
+            get {
+                return ((string)(this["discordTimerSave"]));
+            }
+            set {
+                this["discordTimerSave"] = value;
+            }
+        }
     }
 }

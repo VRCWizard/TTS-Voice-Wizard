@@ -4,12 +4,12 @@ using System.Text;
 //using DeepSpeechClient;
 //using DeepSpeechClient.Interfaces;
 //using DeepSpeechClient.Models;
-using NAudio.Wave;
+//using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using NAudio;
+//using NAudio;
 
 namespace OSCVRCWiz
 {

@@ -248,5 +248,17 @@
     <Setting Name="OSCPort" Type="System.String" Scope="User">
       <Value Profile="(Default)">9000</Value>
     </Setting>
+    <Setting Name="saveToast" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="presetSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="discordParaSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/osc_discord_band</Value>
+    </Setting>
+    <Setting Name="discordTimerSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

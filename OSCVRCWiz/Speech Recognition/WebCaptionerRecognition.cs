@@ -8,14 +8,19 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using CSCore;
-using CSCore.MediaFoundation;
-using CSCore.SoundOut;
+//using CSCore;
+//using CSCore.MediaFoundation;
+//using CSCore.SoundOut;
 
 using static System.Net.Mime.MediaTypeNames;
 using OSCVRCWiz.TTS;
 using Newtonsoft.Json.Linq;
 using OSCVRCWiz.Text;
+using VRC.OSCQuery;
+using CoreOSC;
+using Extensions = VRC.OSCQuery.Extensions;
+using Windows.Devices.Power;
+using Newtonsoft.Json;
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
 
 
@@ -24,7 +29,7 @@ namespace OSCVRCWiz
 
     public class WebCaptionerRecognition
     {
-            public static int Port = 8080;
+            public static int Port = 54026;
             public static string recievedString ="";
             private static HttpListener _listener;
             static bool webCapEnabled = false;
@@ -51,7 +56,7 @@ namespace OSCVRCWiz
             // var httpServer = new HttpServer();
             Task.Run(() => Start());
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
-            OutputText.outputLog("[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:8080/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
+            OutputText.outputLog("[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:54026/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
             //button11.Enabled = false;
         }
         private static void webCapOff()
@@ -116,55 +121,17 @@ namespace OSCVRCWiz
 
                 }
             }
-        //VRChat OSCQuery Test Code
-      /*  public async void VRChatTesting()
-        {
-            int randomInt = new Random().Next();
-            var service = new OSCQueryService("TTS Voice Wizard - Beta", 8081, 9000); //beta testing VRCHAT (default TCP=8080, default OSC=9000 vrchats sending port)
-                                                                                      //You should now be able to visit http://localhost:8081 in a browser and see raw JSON describing an empty root node.
-                                                                                      //You can also visit http://localhost:tcpPort?HOST_INFO to get information about the supported attributes of this OSCQuery Server.
-                                                                                      // service.AddEndpoint()
-
-            string path = "/avatar/parameters/Testing";
-          
-            //   string path = $"/{name}";
-            service.AddEndpoint<int>(path,Attributes.AccessValues.ReadOnly,randomInt.ToString());//this is how the information is being set
-            //  Response String Test: { "DESCRIPTION":"","FULL_PATH":"/avatar/parameters/AngularY","ACCESS":1,"TYPE":"i","VALUE":"525619974"}
+       
 
 
 
-            var response = await new HttpClient().GetAsync($"http://localhost:{9001}{path}"); //this is how we are getting the information 
-
-            var responseString = await response.Content.ReadAsStringAsync();
-            System.Diagnostics.Debug.WriteLine("Response String Test:"+responseString);
-           //  var responseObject = JObject.Parse(responseString);
-
-           //  Assert.That(responseObject[Attributes.VALUE]!.Value<int>(), Is.EqualTo(randomInt));
-
-           service.Dispose();
-
-        }
-        public async void VRChatTestingUpdate()
-        {
-            var path = "/avatar/parameters/GestureLeft";
-            var response = await new HttpClient().GetAsync($"http://localhost:{9001}{path}"); //this is how we are getting the information 
-
-            var responseString = await response.Content.ReadAsStringAsync();
-            System.Diagnostics.Debug.WriteLine("Response String Test:" + responseString);
-
-            
-
-        } */
-
-        
-
-
-      
-      
 
 
 
-        }
+
+
+
+    }
     }
   
 

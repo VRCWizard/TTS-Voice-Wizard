@@ -130,6 +130,15 @@ namespace OSCVRCWiz
             Settings1.Default.OSCAddress= OSC.OSCAddress;
             Settings1.Default.OSCPort= OSC.OSCPort;
 
+            Settings1.Default.saveToast= VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked;
+
+            VoiceWizardWindow.presetsSave();
+            Settings1.Default.presetSave = VoiceWizardWindow.presetsStored;
+
+            Settings1.Default.discordParaSave= VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text.ToString();
+            Settings1.Default.discordTimerSave = VoiceWizardWindow.MainFormGlobal.textBoxDiscTimer.Text.ToString();
+
+
 
 
 

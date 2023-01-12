@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using SharpOSC;
-//using VRC.OSCQuery;//beta testing
 using CoreOSC;
 using OSCVRCWiz.Text;
 
@@ -172,15 +170,6 @@ namespace OSCVRCWiz.Addons
             };
 
             var listener = new UDPListener(OSCReceiveport, callback);
-            //   var service = new OSCQueryService("TTS Voice Wizard - Beta", 4026, VoiceWizardWindow.heartRatePort); //beta testing VRCHAT (default TCP=8080, default OSC=9000 vrchats sending port)
-
-            //  System.Diagnostics.Debug.WriteLine("TTS Voice Wizard - Beta listening on "+ VoiceWizardWindow.heartRatePort);
-            //  System.Diagnostics.Debug.WriteLine("****-------*****--------Press enter to stop");
-            //  Console.ReadLine();
-            // listener.Close();
-            //NO U can't stop the connection rn, yes you must restart app to stop listening to heatbeat
-
-
 
         }
     }

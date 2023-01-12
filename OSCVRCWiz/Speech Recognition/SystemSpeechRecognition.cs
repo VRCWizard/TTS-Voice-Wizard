@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Recognition;//free Windows
-using NAudio.Wave;
+//using NAudio.Wave;
 //using CSCore.SoundIn;
-using CSCore.XAudio2;
+//using CSCore.XAudio2;
 using Resources;
 using System.Collections;
 using System.Linq;
@@ -14,6 +14,7 @@ using OSCVRCWiz.Addons;
 using static System.Net.Mime.MediaTypeNames;
 using System.Reflection;
 using OSCVRCWiz.Text;
+using NAudio.Wave;
 
 
 //using NAudio.Wave;
@@ -26,48 +27,80 @@ namespace OSCVRCWiz
         static WaveInEvent waveIn;
         static SpeechStreamer audioStream = new(12800);
         static SpeechRecognitionEngine rec;
-        static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
+      //  static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
 
+       public static void getInstalledRecogs()
+        {
+            try
+            {
+                string info;
+            foreach (RecognizerInfo ri in SpeechRecognitionEngine.InstalledRecognizers())
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxSysSpeechRecog.Items.Add(ri.Description.ToString());
+                VoiceWizardWindow.MainFormGlobal.comboBoxSysSpeechRecog.SelectedIndex = 0;
+            }
+            }
+            catch (Exception ex)
+            {
 
+                OutputText.outputLog("[System Speech Get Installed Recognizers Error: " + ex.Message + "]", Color.Red);
+            }
+
+        }
 
         public static void startListeningNow()
         {
-                string cultureHere = "en-US";// system speech only for en-us, it's not worth using over alternatives
-            //  cultureHere = MainForm.CultureSelected;
+
+            try
+            {
 
 
-            rec = new SpeechRecognitionEngine(new System.Globalization.CultureInfo(cultureHere));
+                var installRec = SpeechRecognitionEngine.InstalledRecognizers()[0];
+
+
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    foreach (RecognizerInfo ri in SpeechRecognitionEngine.InstalledRecognizers())
+                    {
+                        if (ri.Description.ToString() == VoiceWizardWindow.MainFormGlobal.comboBoxSysSpeechRecog.SelectedItem.ToString())
+                        {
+                            installRec = ri;
+                            break;
+                        }
+                    }
+                });
+
+                // Create the selected recognizer.
+                rec = new SpeechRecognitionEngine(installRec);
+         
+
+           
                  
             // Create and load a dictation grammar.  
             rec.LoadGrammar(new DictationGrammar());
              // Add a handler for the speech recognized event.  
             rec.SpeechRecognized +=new EventHandler<SpeechRecognizedEventArgs>(recognizer_SpeechRecognized);
 
-            // Setting to Correct Input Device
-            int waveInDevices = WaveIn.DeviceCount;
-            AlternateInputDevices.Clear();
-            for (int waveInDevice = 0; waveInDevice < waveInDevices; waveInDevice++)
-            {
-                WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
-                AlternateInputDevices.Add(deviceInfo.ProductName, waveInDevice);
-            }
+
             waveIn = new WaveInEvent();
-            waveIn.DeviceNumber = 0;
-            foreach (var kvp in AlternateInputDevices)
-            {
-                if (AudioDevices.currentInputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
-                {
-                    waveIn.DeviceNumber = kvp.Value;
-                    System.Diagnostics.Debug.WriteLine("Input device worked"+kvp.Key);
-                } 
-            }
+            waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
 
             // Start Listening
             waveIn.WaveFormat = new WaveFormat(48000, 1);
             waveIn.DataAvailable += WaveInOnDataAvailable;
+
+            OutputText.outputLog("[System Speech Started Listening]");
             waveIn?.StartRecording();
             rec.SetInputToAudioStream(audioStream, new(48000, System.Speech.AudioFormat.AudioBitsPerSample.Sixteen, System.Speech.AudioFormat.AudioChannel.Mono));
             rec.RecognizeAsync(RecognizeMode.Multiple);
+
+            }
+            catch (Exception ex)
+            {
+
+                OutputText.outputLog("[System Speech Recognizer Error: " + ex.Message + "]", Color.Red);
+                listeningCurrently = false;
+            }
 
         }
         public static void recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)//lite version, WindowsBuiltInSTTTS Help
@@ -88,7 +121,6 @@ namespace OSCVRCWiz
 
                 if (listeningCurrently == false)
                 {
-                OutputText.outputLog("[System Speech Started Listening]");
                 listeningCurrently = true;
                 Task.Run(() => startListeningNow());
 

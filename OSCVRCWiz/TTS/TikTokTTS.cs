@@ -8,22 +8,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using CSCore;
-using CSCore.MediaFoundation;
-using CSCore.SoundOut;
+//using CSCore;
+//using CSCore.MediaFoundation;
 using System.Media;
 using System.Net;
-using CSCore.CoreAudioAPI;
+//using CSCore.CoreAudioAPI;
 using OSCVRCWiz.Text;
 using Resources;
-//using NAudio.CoreAudioApi;
-
-
+using NAudio.Wave;
+using Microsoft.VisualBasic;
+using Windows.Storage.Streams;
+using System.Collections;
 
 namespace OSCVRCWiz.TTS
 {
     public class TikTokTTS
     {
+       
 
         public static async Task TikTokTextAsSpeech(string text)
         {
@@ -40,8 +41,19 @@ namespace OSCVRCWiz.TTS
             try
             {
                 byte[] result = await CallTikTokAPIAsync(text, voice);
-                File.WriteAllBytes("TikTokSpeech.wav", result);
-                Task.Run(() => PlayAudioHelper());
+                //  File.WriteAllBytes("TikTokTTS.mp3", result);          
+                //  Task.Run(() => PlayAudioHelper());
+
+                MemoryStream memoryStream = new MemoryStream(result);
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                Mp3FileReader wav = new Mp3FileReader(memoryStream); //it does not have a wav file header so it is mp3 formate unless systemspeech, and fonixtalk
+                var output = new WaveOut();
+                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                output.Init(wav);
+                output.Play();
+
+
             }
             catch (Exception ex)
             {
@@ -90,36 +102,8 @@ namespace OSCVRCWiz.TTS
         }
 
 
-        public static void PlayAudioHelper()
-        {
-            try
-            {
-                var stream = new MemoryStream(File.ReadAllBytes("TikTokSpeech.wav"));
-                var testOut = new WasapiOut();
-                var enumerator = new MMDeviceEnumerator();
-                foreach (var endpoint in enumerator.EnumAudioEndpoints(DataFlow.Render, DeviceState.Active))
-                {
-                    if (endpoint.DeviceID == AudioDevices.currentOutputDevice)
-                    {
-                        testOut.Device = endpoint;
-                    }
-                }
-                // var waveOut = new WaveOut { Device = new WaveOutDevice(VoiceWizardWindow.MainFormGlobal.currentOutputDeviceLite) };
-                // var waveSource = new MediaFoundationDecoder(stream);
-                // testOut.Initialize(waveSource);
-                // testOut.Play();
-                //  testOut.WaitForStopped();
-                var waveSource = new MediaFoundationDecoder(stream);
-                testOut.Initialize(waveSource);
-                testOut.Play();
-                testOut.WaitForStopped();
-            }
-            catch (Exception ex)
-            {
-                OutputText.outputLog( "[TikTok TTS Error: " + ex.Message + "]");
-            }
 
-        }
+        
     }
 
 

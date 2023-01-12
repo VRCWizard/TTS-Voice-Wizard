@@ -6,6 +6,8 @@ using OSCVRCWiz.Addons;
 using OSCVRCWiz.TranslationAPIs;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.Resources;
+using System.Printing;
+using OSCVRCWiz.Text;
 
 namespace OSCVRCWiz
 {
@@ -54,16 +56,29 @@ namespace OSCVRCWiz
 
             // comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
             // comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
-           // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
+            // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
+            VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
+
             VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
-            VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
-            VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
-            VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
-            VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex = Settings1.Default.volumeSetting;
-            VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
+                VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
+                VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
+                VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex = Settings1.Default.volumeSetting;
+                VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
+            } catch(Exception ex)
+            {
+                OutputText.outputLog("One of your TTS setttings was invalid. Setting to defaults.",Color.Red);
+                VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = "default";
+                VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = "default";
+                VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = "default";
+
+            }
             VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
             VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
             VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
+        
            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
             //VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
            
@@ -164,6 +179,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.comboBox3Type.SelectedIndex = 0;
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedIndex = 0;
+            VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = 0;
 
             VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
 
@@ -172,6 +188,14 @@ namespace OSCVRCWiz
 
             OSC.OSCAddress= Settings1.Default.OSCAddress;
             OSC.OSCPort= Settings1.Default.OSCPort;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked = Settings1.Default.saveToast;
+
+            VoiceWizardWindow.presetsStored = Settings1.Default.presetSave;
+            VoiceWizardWindow.presetsLoad();
+
+            VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text = Settings1.Default.discordParaSave;
+            VoiceWizardWindow.MainFormGlobal.textBoxDiscTimer.Text = Settings1.Default.discordTimerSave;
 
 
 
@@ -188,7 +212,7 @@ namespace OSCVRCWiz
                   
               }
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
+           
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked = Settings1.Default.saveVoiceActStyle;
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
 

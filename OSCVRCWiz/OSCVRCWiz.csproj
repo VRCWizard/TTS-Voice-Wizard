@@ -27,18 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CSCore" Version="1.2.1.2" />
     <PackageReference Include="DeepL.net" Version="1.4.0" />
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.2.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="MeaMod.DNS" Version="1.0.70" />
-    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.23.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.24.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1340-prerelease" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="Octokit" Version="3.0.0" />
-    <PackageReference Include="PortAudioSharp" Version="0.3.0" />
     <PackageReference Include="Siticone.Desktop.UI" Version="2.1.1" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />
@@ -52,6 +50,9 @@
     </Reference>
     <Reference Include="SharpTalk">
       <HintPath>SharpTalk.dll</HintPath>
+    </Reference>
+    <Reference Include="vrc-oscquery-lib">
+      <HintPath>vrc-oscquery-lib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
