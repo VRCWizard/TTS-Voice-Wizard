@@ -20,6 +20,7 @@ using NAudio.Wave;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System;
+using Settings;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -30,8 +31,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.5";
-        string releaseDate = "January 11, 2023";
+        public static string currentVersion = "0.9.6";
+        string releaseDate = "January 12, 2023";
 
        // public OutputText ot;
         public GreenScreen pf;
@@ -53,10 +54,7 @@ namespace OSCVRCWiz
         public System.Threading.Timer typeTimer;
         public static System.Threading.Timer spotifyTimer;
 
-        public int presetnum = 0;
-        private static Dictionary<string, voicePreset> presetDict = new Dictionary<string, voicePreset>();
-        static bool editingPreset = false;
-        public static string presetsStored ="";
+       
 
 
 
@@ -93,7 +91,7 @@ namespace OSCVRCWiz
                 typeTimer.Change(1500, 0);
                 toastTimer = new System.Threading.Timer(toasttimertick);
                 toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
-                listView1.View = View.List;
+                //listView1.View = View.List;
                 TTSBoxText = richTextBox3.Text.ToString();
                 labelCharCount.Text = TTSBoxText.Length.ToString();
 
@@ -498,22 +496,28 @@ namespace OSCVRCWiz
                 OutputText.outputLog("[No Azure Key detected, defaulting to Windows Built-In System Speech. Add you Azure Key in the 'Settings > Microsoft Azure Cognative Service' tab or enable Windows Built-In System Speech from 'Settings > Audio Settings'.]");
                 }
                 Task.Run(() => VoiceCommands.MainDoVoiceCommand(text));
+                 if (rjToggleReplaceBeforeTTS.Checked == true)
+                 {
+                text = WordReplacements.MainDoWordReplacement(text);
+                  }
                 var writeText = text;
-                var speechText = text;
+                  
+            var speechText = text;
                 var newText = text;
                 var translationMethod = "";
 
                 if (language != "No Translation (Default)")
                 {
                    // var DL = new DeepL();
-                   if (STTMode != "Azure Translate")  { 
+                   if (STTMode != "Azure Translate")  
+                      { 
                     newText = await DeepLTranslate.translateTextDeepL(text);
                     translationMethod = "DeepL Translation";
-                }
+                      }
                 else { 
                     newText = AzureTranslateText;
                     translationMethod = "Azure Translation";
-                }
+                     }
                     if (rjToggleButtonVoiceWhatLang.Checked == true) { 
                         speechText= newText;
 
@@ -524,7 +528,7 @@ namespace OSCVRCWiz
 
                     }
 
-            }
+                 }
            
            
 
@@ -549,12 +553,17 @@ namespace OSCVRCWiz
                             break;
                     }
 
+            if (rjToggleReplaceBeforeTTS.Checked == false)
+            {
+                writeText = WordReplacements.MainDoWordReplacement(writeText);
+            }
+
 
             if (rjToggleButtonLog.Checked == true)
             {
                 if(language == "No Translation (Default)")
                 {
-                    OutputText.outputLog($"[{STTMode} > {selectedTTSMode}]: {text}");
+                    OutputText.outputLog($"[{STTMode} > {selectedTTSMode}]: {writeText}");
                 }
                 else
                 {
@@ -1639,8 +1648,12 @@ namespace OSCVRCWiz
 
         private void button24_Click(object sender, EventArgs e)
         {
-            VoiceCommands.clearVoiceCommands();
-            VoiceCommands.refreshCommandList();
+            if(deleteCommandsToggle.Checked==true)
+            {
+                VoiceCommands.clearVoiceCommands();
+                VoiceCommands.refreshCommandList();
+            }
+            
 
         }
 
@@ -1683,10 +1696,7 @@ namespace OSCVRCWiz
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Voice-Commands");
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void checkedListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1898,86 +1908,23 @@ namespace OSCVRCWiz
 
         private void button15_Click(object sender, EventArgs e)
         {
-            if (editingPreset == false)
-            {
-                presetnum++;
-                voicePreset saveThisPreset = new voicePreset();
-                string nameToCheck = "preset " + presetnum;
-                
-                while(comboBoxPreset.Items.Contains(nameToCheck))
-                {
-                    presetnum++;
-                    nameToCheck = "preset " + presetnum;
-                    
-                }
-                saveThisPreset.PresetName = nameToCheck;
-               saveThisPreset.TTSMode = comboBoxTTSMode.SelectedItem.ToString();
-                saveThisPreset.Voice = comboBox2.SelectedItem.ToString();
-                saveThisPreset.Accent = comboBox5.SelectedItem.ToString();
-                saveThisPreset.SpokenLang = comboBox4.SelectedItem.ToString();
-                saveThisPreset.TranslateLang = comboBox3.SelectedItem.ToString();
-                saveThisPreset.Style = comboBox1.SelectedItem.ToString();
-                saveThisPreset.Pitch = comboBoxPitch.SelectedItem.ToString();
-                saveThisPreset.Volume = comboBoxVolume.SelectedItem.ToString();
-                saveThisPreset.Speed = comboBoxRate.SelectedItem.ToString();
 
-                comboBoxPreset.Items.Add(saveThisPreset.PresetName);
-
-                presetDict.Add(saveThisPreset.PresetName, saveThisPreset);
-            }
-            else // edit true
-            {
-                presetDict.Remove(comboBoxPreset.SelectedItem.ToString());
-               // comboBoxPreset.Items.Remove();
-                
-                voicePreset saveThisPreset = new voicePreset();
-                string nameToCheck = textBoxRename.Text.ToString();
-                int counter = 0;
-                while (comboBoxPreset.Items.Contains(nameToCheck))
-                {
-                    counter++;
-                    nameToCheck = textBoxRename.Text.ToString()+" "+ counter;
-
-                }
-                saveThisPreset.PresetName = nameToCheck;
-                saveThisPreset.TTSMode = comboBoxTTSMode.SelectedItem.ToString();
-                saveThisPreset.Voice = comboBox2.SelectedItem.ToString();
-                saveThisPreset.Accent = comboBox5.SelectedItem.ToString();
-                saveThisPreset.SpokenLang = comboBox4.SelectedItem.ToString();
-                saveThisPreset.TranslateLang = comboBox3.SelectedItem.ToString();
-                saveThisPreset.Style = comboBox1.SelectedItem.ToString();
-                saveThisPreset.Pitch = comboBoxPitch.SelectedItem.ToString();
-                saveThisPreset.Volume = comboBoxVolume.SelectedItem.ToString();
-                saveThisPreset.Speed = comboBoxRate.SelectedItem.ToString();
-
-                comboBoxPreset.Items.Remove(comboBoxPreset.SelectedItem.ToString());
-
-                comboBoxPreset.Items.Add(saveThisPreset.PresetName);
-                presetDict.Add(saveThisPreset.PresetName, saveThisPreset);
-
-                textBoxRename.Visible = false;
-                comboBoxPreset.Enabled = true;
-                button19.Enabled = true;
-                editingPreset = false;
-
-            }
-            comboBoxPreset.SelectedIndex = comboBoxPreset.Items.Count-1;
-
+            VoicePresets.presetSaveButton();
 
         }
 
-        private void comboBoxPreset_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPreset_SelectedIndexChanged(object sender, EventArgs e)//preset selected
         {
             if(comboBoxPreset.SelectedIndex==0)
             {
-                button19.Enabled = false;
-                button25.Enabled = false;
+                buttonEditPreset.Enabled = false;
+                buttonDeletePreset.Enabled = false;
             }
             else
             {
-                button19.Enabled = true;
-                button25.Enabled = true;
-                Task.Run(() => setPreset());
+                buttonEditPreset.Enabled = true;
+                buttonDeletePreset.Enabled = true;
+                Task.Run(() => VoicePresets.setPreset());
 
 
             }
@@ -1986,168 +1933,21 @@ namespace OSCVRCWiz
             
             
         }
-        private void setPreset()
-        {
-            this.Invoke((MethodInvoker)delegate ()
-            {
-              
-
-
-                    foreach (var kvp in presetDict)
-                    {
-                        if (comboBoxPreset.SelectedItem.ToString() == kvp.Key)
-                        {
-                            comboBoxTTSMode.SelectedItem = kvp.Value.TTSMode;
-                           // Thread.Sleep(500);
-                            comboBox2.SelectedItem = kvp.Value.Voice;
-                           // Thread.Sleep(500);
-                            comboBox5.SelectedItem = kvp.Value.Accent;
-                            comboBox4.SelectedItem = kvp.Value.SpokenLang;
-                            comboBox3.SelectedItem = kvp.Value.TranslateLang;
-                            comboBox1.SelectedItem = kvp.Value.Style;
-                            comboBoxPitch.SelectedItem = kvp.Value.Pitch;
-                            comboBoxVolume.SelectedItem = kvp.Value.Volume;
-                            comboBoxRate.SelectedItem = kvp.Value.Speed;
-                        if (kvp.Value.TTSMode=="Azure")
-                        {
-                            OutputText.outputLog("If Azure Voice Accent/Language is being loading for the first time this session then preset will not select Voice properly. Simply re-select the preset to fix this.", Color.Yellow);
-                        }
-                        }
-                    }
-               
-            });
-        }
+      
 
         private void button19_Click(object sender, EventArgs e)
         {
-            textBoxRename.Visible = true;
-            comboBoxPreset.Enabled = false;
-            button19.Enabled = false;
-            editingPreset = true;
-            textBoxRename.Text = comboBoxPreset.SelectedItem.ToString();
-
-
-
-
-
-
+            VoicePresets.presetEditButton();
+            
         }
 
         private void button25_Click_1(object sender, EventArgs e)
         {
-            if(comboBoxPreset.SelectedIndex !=0)
-            {
-                presetDict.Remove(comboBoxPreset.SelectedItem.ToString());
-                comboBoxPreset.Items.Remove(comboBoxPreset.SelectedItem.ToString());
-                comboBoxPreset.SelectedIndex = comboBoxPreset.Items.Count - 1;
-            }
+            VoicePresets.presetDeleteButton();
            
         }
-        public static void presetsSave()
-        {
-            presetsStored = "";
-            foreach (var kvp in presetDict)
-            {
-                
-                presetsStored += $"{kvp.Value.PresetName}:{kvp.Value.TTSMode}:{kvp.Value.Voice}:{kvp.Value.Accent}:{kvp.Value.SpokenLang}:{kvp.Value.TranslateLang}:{kvp.Value.Style}:{kvp.Value.Pitch}:{kvp.Value.Volume}:{kvp.Value.Speed};";
-            }
-        }
-        public static void presetsLoad()
-        {
-            //  string words = VoiceWizardWindow.MainFormGlobal.richTextBox2.Text.ToString();
-            string words = presetsStored;
-            string[] split = words.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (string s in split)
-            {
-                if (s.Trim() != "")
-                {
-                    string words2 = s;
-                    int count = 1;
-                    voicePreset saveThisPreset = new voicePreset();
-
-                    string[] split2 = words2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string s2 in split2)
-                    {
-                       
-                       
-
-
-                        if (count == 1)
-                        {
-                            saveThisPreset.PresetName = s2;
-                            System.Diagnostics.Debug.WriteLine("Phrase Added: " + s2);
-
-                        }
-                        if (count == 2)
-                        {
-                            saveThisPreset.TTSMode = s2;
-                            System.Diagnostics.Debug.WriteLine("address added: " + s2);
-
-                        }
-                        if (count == 3)
-                        {
-                            saveThisPreset.Voice = s2;
-                            System.Diagnostics.Debug.WriteLine("typeadded: " + s2);
-
-                        }
-                        if (count == 4)
-                        {
-                            saveThisPreset.Accent = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        if (count == 5)
-                        {
-                            saveThisPreset.SpokenLang = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        if (count == 6)
-                        {
-                            saveThisPreset.TranslateLang = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        if (count == 7)
-                        {
-                            saveThisPreset.Style = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        if (count == 8)
-                        {
-                            saveThisPreset.Pitch = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        if (count == 9)
-                        {
-                            saveThisPreset.Volume = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        if (count == 10)
-                        {
-                            saveThisPreset.Speed = s2;
-                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
-
-                        }
-                        
-                      
-                        count++;
-                    }
-                    try
-                    {
-                        VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Add(saveThisPreset.PresetName);
-                        presetDict.Add(saveThisPreset.PresetName, saveThisPreset);
-                    }
-                        catch (Exception ex)
-                    {
-                        OutputText.outputLog("Error Loading Presets / No Presets Found", Color.Yellow);
-                    }
-                }
-            }
-        }
+      
+      
 
         private void iconButton25_Click(object sender, EventArgs e)
         {
@@ -2160,6 +1960,72 @@ namespace OSCVRCWiz
         private void button15_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://shadoki.booth.pm/items/4467967");
+        }
+
+        private void buttonReplaceAdd_Click(object sender, EventArgs e)
+        {
+
+            WordReplacements.addWordReplacement(textBoxOriginalWord.Text.ToString(),textBoxReplaceWord.Text.ToString());
+        }
+
+        private void button19_Click_1(object sender, EventArgs e)
+        {
+            if (rjToggleButton7.Checked==true)
+            {
+              WordReplacements.clearWordReplacement();
+            }
+               
+            
+        }
+
+        private void checkedListBoxReplacements_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (rjToggleButton7.Checked == true)
+            {
+                try
+                {
+                    WordReplacements.removeWordReplacementAt(checkedListBoxReplacements.SelectedIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
+        private void iconButton42_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(Replacements);
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            EmojiAddon.emojiEdit(Int32.Parse(textBox7.Text.ToString()), textBox6.Text.ToString());
+        }
+
+        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = checkedListBox2.SelectedIndex + 1;
+            textBox7.Text = index.ToString();
+        }
+
+        private void iconButton44_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Discord-Integration");
+        }
+
+        private void iconButton45_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Word-Replacements");
+        }
+
+        private void button25_Click_2(object sender, EventArgs e)
+        {
+            checkedListBox2.Items.Clear();
+            EmojiAddon.ReplacePhraseList.Clear();
+            MessageBox.Show("Restart App");
+
         }
     }
 

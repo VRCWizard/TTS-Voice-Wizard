@@ -8,6 +8,8 @@ using OSCVRCWiz.Settings;
 using OSCVRCWiz.Resources;
 using System.Printing;
 using OSCVRCWiz.Text;
+using Settings;
+using Addons;
 
 namespace OSCVRCWiz
 {
@@ -191,11 +193,20 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked = Settings1.Default.saveToast;
 
-            VoiceWizardWindow.presetsStored = Settings1.Default.presetSave;
-            VoiceWizardWindow.presetsLoad();
+            VoicePresets.presetsStored = Settings1.Default.presetSave;
+            VoicePresets.presetsLoad();
+
+            WordReplacements.wordReplacemntsStored = Settings1.Default.replaceSave;
+            WordReplacements.replacementsLoad();
+
+            
+            EmojiAddon.emojiReplacemntsStored = Settings1.Default.emojiNewSave;
+            EmojiAddon.emojiReplacementsLoad();
 
             VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text = Settings1.Default.discordParaSave;
             VoiceWizardWindow.MainFormGlobal.textBoxDiscTimer.Text = Settings1.Default.discordTimerSave;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleReplaceBeforeTTS.Checked = Settings1.Default.wordReplaceBeforeTTS;
 
 
 
@@ -217,7 +228,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
 
 
-            VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
+          /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
             VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
             VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;
             VoiceWizardWindow.MainFormGlobal.EmojiBox4.Text = emojiSettings.Default.emoji4;
@@ -237,6 +248,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text = emojiSettings.Default.emoji18;
             VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text = emojiSettings.Default.emoji19;
             VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text = emojiSettings.Default.emoji20;
+          */
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;

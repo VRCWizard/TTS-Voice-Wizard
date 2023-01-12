@@ -1054,5 +1054,41 @@ namespace OSCVRCWiz.Settings {
                 this["discordTimerSave"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string replaceSave {
+            get {
+                return ((string)(this["replaceSave"]));
+            }
+            set {
+                this["replaceSave"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool wordReplaceBeforeTTS {
+            get {
+                return ((bool)(this["wordReplaceBeforeTTS"]));
+            }
+            set {
+                this["wordReplaceBeforeTTS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string emojiNewSave {
+            get {
+                return ((string)(this["emojiNewSave"]));
+            }
+            set {
+                this["emojiNewSave"] = value;
+            }
+        }
     }
 }

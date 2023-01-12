@@ -8,6 +8,7 @@ using CoreOSC;
 using OSCVRCWiz.Addons;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.Resources;
+using Addons;
 
 namespace OSCVRCWiz.Text
 {
@@ -183,8 +184,8 @@ namespace OSCVRCWiz.Text
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == true)
             {
-
-                textstringbefore = textstringbefore.Replace("<3", "ぬ");
+                textstringbefore = EmojiAddon.DoEmojiReplacement(textstringbefore);
+              /*  textstringbefore = textstringbefore.Replace("<3", "ぬ");
                 textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text.ToString(), "あう", RegexOptions.IgnoreCase);
                 textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text.ToString(), "えお", RegexOptions.IgnoreCase);
                 textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text.ToString(), "やゆ", RegexOptions.IgnoreCase);
@@ -205,7 +206,7 @@ namespace OSCVRCWiz.Text
                 textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text.ToString(), "むつ", RegexOptions.IgnoreCase);
                 textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text.ToString(), "さそ", RegexOptions.IgnoreCase);
                 textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text.ToString(), "ひこ", RegexOptions.IgnoreCase);
-                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text.ToString(), "みも", RegexOptions.IgnoreCase);
+                textstringbefore = Regex.Replace(textstringbefore, VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text.ToString(), "みも", RegexOptions.IgnoreCase);*/
             }
 
 

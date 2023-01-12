@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
-            "entry 1",
-            "1"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("emoji 2");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("ku");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("oilloi");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("olol");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.speechTTSButton = new System.Windows.Forms.Button();
@@ -73,8 +66,8 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.logTrash = new FontAwesome.Sharp.IconButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
+            this.buttonDeletePreset = new System.Windows.Forms.Button();
+            this.buttonEditPreset = new System.Windows.Forms.Button();
             this.textBoxRename = new System.Windows.Forms.TextBox();
             this.buttonSavePreset = new System.Windows.Forms.Button();
             this.comboBoxPreset = new System.Windows.Forms.ComboBox();
@@ -101,58 +94,26 @@
             this.tabAddons = new System.Windows.Forms.TabPage();
             this.label72 = new System.Windows.Forms.Label();
             this.translucentPanel1 = new OSCVRCWiz.RJControls.TranslucentPanel();
+            this.iconButton42 = new FontAwesome.Sharp.IconButton();
             this.iconButton25 = new FontAwesome.Sharp.IconButton();
             this.iconButton27 = new FontAwesome.Sharp.IconButton();
             this.iconButton11 = new FontAwesome.Sharp.IconButton();
             this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.tabEmoji = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.groupBox34 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.groupBox35 = new System.Windows.Forms.GroupBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.button26 = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.rjToggleButton3 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label43 = new System.Windows.Forms.Label();
             this.iconButton32 = new FontAwesome.Sharp.IconButton();
-            this.EmojiBox20 = new System.Windows.Forms.TextBox();
-            this.label93 = new System.Windows.Forms.Label();
-            this.EmojiBox19 = new System.Windows.Forms.TextBox();
-            this.label94 = new System.Windows.Forms.Label();
-            this.EmojiBox18 = new System.Windows.Forms.TextBox();
-            this.label95 = new System.Windows.Forms.Label();
-            this.EmojiBox17 = new System.Windows.Forms.TextBox();
-            this.label96 = new System.Windows.Forms.Label();
-            this.EmojiBox16 = new System.Windows.Forms.TextBox();
-            this.label97 = new System.Windows.Forms.Label();
-            this.EmojiBox15 = new System.Windows.Forms.TextBox();
-            this.label98 = new System.Windows.Forms.Label();
-            this.EmojiBox14 = new System.Windows.Forms.TextBox();
-            this.label99 = new System.Windows.Forms.Label();
-            this.EmojiBox13 = new System.Windows.Forms.TextBox();
-            this.label100 = new System.Windows.Forms.Label();
-            this.EmojiBox12 = new System.Windows.Forms.TextBox();
-            this.label101 = new System.Windows.Forms.Label();
-            this.EmojiBox11 = new System.Windows.Forms.TextBox();
-            this.label102 = new System.Windows.Forms.Label();
-            this.EmojiBox10 = new System.Windows.Forms.TextBox();
-            this.label92 = new System.Windows.Forms.Label();
-            this.EmojiBox9 = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.EmojiBox8 = new System.Windows.Forms.TextBox();
-            this.label90 = new System.Windows.Forms.Label();
-            this.EmojiBox7 = new System.Windows.Forms.TextBox();
-            this.label89 = new System.Windows.Forms.Label();
-            this.EmojiBox6 = new System.Windows.Forms.TextBox();
-            this.label88 = new System.Windows.Forms.Label();
-            this.EmojiBox5 = new System.Windows.Forms.TextBox();
-            this.label87 = new System.Windows.Forms.Label();
-            this.EmojiBox4 = new System.Windows.Forms.TextBox();
-            this.label86 = new System.Windows.Forms.Label();
-            this.EmojiBox3 = new System.Windows.Forms.TextBox();
-            this.label85 = new System.Windows.Forms.Label();
-            this.EmojiBox2 = new System.Windows.Forms.TextBox();
-            this.label84 = new System.Windows.Forms.Label();
-            this.EmojiBox1 = new System.Windows.Forms.TextBox();
-            this.label83 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.rjToggleButton3 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabSpotify = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.richTextBox7 = new System.Windows.Forms.RichTextBox();
@@ -364,9 +325,12 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.discordTab = new System.Windows.Forms.TabPage();
+            this.iconButton44 = new FontAwesome.Sharp.IconButton();
+            this.label59 = new System.Windows.Forms.Label();
             this.groupBox30 = new System.Windows.Forms.GroupBox();
             this.richTextBoxDiscord = new System.Windows.Forms.RichTextBox();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
@@ -374,6 +338,24 @@
             this.textBoxDiscordPara = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
             this.rjToggleDiscordToast = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.Replacements = new System.Windows.Forms.TabPage();
+            this.iconButton45 = new FontAwesome.Sharp.IconButton();
+            this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.label62 = new System.Windows.Forms.Label();
+            this.rjToggleReplaceBeforeTTS = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.checkedListBoxReplacements = new System.Windows.Forms.CheckedListBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.rjToggleButton7 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.textBoxReplaceWord = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.buttonReplaceAdd = new System.Windows.Forms.Button();
+            this.textBoxOriginalWord = new System.Windows.Forms.TextBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.iconButton12 = new FontAwesome.Sharp.IconButton();
@@ -389,8 +371,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
+            this.button25 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -403,6 +384,8 @@
             this.tabAddons.SuspendLayout();
             this.translucentPanel1.SuspendLayout();
             this.tabEmoji.SuspendLayout();
+            this.groupBox34.SuspendLayout();
+            this.groupBox35.SuspendLayout();
             this.tabSpotify.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -438,6 +421,10 @@
             this.discordTab.SuspendLayout();
             this.groupBox30.SuspendLayout();
             this.groupBox29.SuspendLayout();
+            this.Replacements.SuspendLayout();
+            this.groupBox33.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox32.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -803,6 +790,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.DeepLTab);
             this.tabControl1.Controls.Add(this.discordTab);
+            this.tabControl1.Controls.Add(this.Replacements);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(220, 0);
             this.tabControl1.Name = "tabControl1";
@@ -1109,8 +1097,8 @@
             // 
             this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox8.Controls.Add(this.button25);
-            this.groupBox8.Controls.Add(this.button19);
+            this.groupBox8.Controls.Add(this.buttonDeletePreset);
+            this.groupBox8.Controls.Add(this.buttonEditPreset);
             this.groupBox8.Controls.Add(this.textBoxRename);
             this.groupBox8.Controls.Add(this.buttonSavePreset);
             this.groupBox8.Controls.Add(this.comboBoxPreset);
@@ -1142,33 +1130,33 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Voice Customization Options";
             // 
-            // button25
+            // buttonDeletePreset
             // 
-            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button25.ForeColor = System.Drawing.Color.Snow;
-            this.button25.Location = new System.Drawing.Point(511, 381);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(71, 24);
-            this.button25.TabIndex = 105;
-            this.button25.Text = "Delete";
-            this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click_1);
+            this.buttonDeletePreset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonDeletePreset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeletePreset.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonDeletePreset.ForeColor = System.Drawing.Color.Snow;
+            this.buttonDeletePreset.Location = new System.Drawing.Point(511, 381);
+            this.buttonDeletePreset.Name = "buttonDeletePreset";
+            this.buttonDeletePreset.Size = new System.Drawing.Size(71, 24);
+            this.buttonDeletePreset.TabIndex = 105;
+            this.buttonDeletePreset.Text = "Delete";
+            this.buttonDeletePreset.UseVisualStyleBackColor = false;
+            this.buttonDeletePreset.Click += new System.EventHandler(this.button25_Click_1);
             // 
-            // button19
+            // buttonEditPreset
             // 
-            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button19.ForeColor = System.Drawing.Color.Snow;
-            this.button19.Location = new System.Drawing.Point(434, 381);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(71, 24);
-            this.button19.TabIndex = 104;
-            this.button19.Text = "Edit";
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
+            this.buttonEditPreset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonEditPreset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditPreset.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonEditPreset.ForeColor = System.Drawing.Color.Snow;
+            this.buttonEditPreset.Location = new System.Drawing.Point(434, 381);
+            this.buttonEditPreset.Name = "buttonEditPreset";
+            this.buttonEditPreset.Size = new System.Drawing.Size(71, 24);
+            this.buttonEditPreset.TabIndex = 104;
+            this.buttonEditPreset.Text = "Edit";
+            this.buttonEditPreset.UseVisualStyleBackColor = false;
+            this.buttonEditPreset.Click += new System.EventHandler(this.button19_Click);
             // 
             // textBoxRename
             // 
@@ -1629,6 +1617,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.translucentPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.translucentPanel1.Controls.Add(this.iconButton42);
             this.translucentPanel1.Controls.Add(this.iconButton25);
             this.translucentPanel1.Controls.Add(this.iconButton27);
             this.translucentPanel1.Controls.Add(this.iconButton11);
@@ -1636,8 +1625,28 @@
             this.translucentPanel1.Controls.Add(this.iconButton9);
             this.translucentPanel1.Location = new System.Drawing.Point(6, 51);
             this.translucentPanel1.Name = "translucentPanel1";
-            this.translucentPanel1.Size = new System.Drawing.Size(964, 552);
+            this.translucentPanel1.Size = new System.Drawing.Size(964, 638);
             this.translucentPanel1.TabIndex = 0;
+            // 
+            // iconButton42
+            // 
+            this.iconButton42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton42.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton42.FlatAppearance.BorderSize = 0;
+            this.iconButton42.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton42.IconChar = FontAwesome.Sharp.IconChar.Retweet;
+            this.iconButton42.IconColor = System.Drawing.Color.White;
+            this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton42.Location = new System.Drawing.Point(0, 500);
+            this.iconButton42.Name = "iconButton42";
+            this.iconButton42.Size = new System.Drawing.Size(964, 100);
+            this.iconButton42.TabIndex = 14;
+            this.iconButton42.Text = "Word Replacements";
+            this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton42.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton42.UseVisualStyleBackColor = false;
+            this.iconButton42.Click += new System.EventHandler(this.iconButton42_Click);
             // 
             // iconButton25
             // 
@@ -1742,52 +1751,11 @@
             // tabEmoji
             // 
             this.tabEmoji.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.tabEmoji.Controls.Add(this.listView1);
+            this.tabEmoji.Controls.Add(this.groupBox34);
+            this.tabEmoji.Controls.Add(this.groupBox35);
             this.tabEmoji.Controls.Add(this.iconButton32);
-            this.tabEmoji.Controls.Add(this.EmojiBox20);
-            this.tabEmoji.Controls.Add(this.label93);
-            this.tabEmoji.Controls.Add(this.EmojiBox19);
-            this.tabEmoji.Controls.Add(this.label94);
-            this.tabEmoji.Controls.Add(this.EmojiBox18);
-            this.tabEmoji.Controls.Add(this.label95);
-            this.tabEmoji.Controls.Add(this.EmojiBox17);
-            this.tabEmoji.Controls.Add(this.label96);
-            this.tabEmoji.Controls.Add(this.EmojiBox16);
-            this.tabEmoji.Controls.Add(this.label97);
-            this.tabEmoji.Controls.Add(this.EmojiBox15);
-            this.tabEmoji.Controls.Add(this.label98);
-            this.tabEmoji.Controls.Add(this.EmojiBox14);
-            this.tabEmoji.Controls.Add(this.label99);
-            this.tabEmoji.Controls.Add(this.EmojiBox13);
-            this.tabEmoji.Controls.Add(this.label100);
-            this.tabEmoji.Controls.Add(this.EmojiBox12);
-            this.tabEmoji.Controls.Add(this.label101);
-            this.tabEmoji.Controls.Add(this.EmojiBox11);
-            this.tabEmoji.Controls.Add(this.label102);
-            this.tabEmoji.Controls.Add(this.EmojiBox10);
-            this.tabEmoji.Controls.Add(this.label92);
-            this.tabEmoji.Controls.Add(this.EmojiBox9);
-            this.tabEmoji.Controls.Add(this.label91);
-            this.tabEmoji.Controls.Add(this.EmojiBox8);
-            this.tabEmoji.Controls.Add(this.label90);
-            this.tabEmoji.Controls.Add(this.EmojiBox7);
-            this.tabEmoji.Controls.Add(this.label89);
-            this.tabEmoji.Controls.Add(this.EmojiBox6);
-            this.tabEmoji.Controls.Add(this.label88);
-            this.tabEmoji.Controls.Add(this.EmojiBox5);
-            this.tabEmoji.Controls.Add(this.label87);
-            this.tabEmoji.Controls.Add(this.EmojiBox4);
-            this.tabEmoji.Controls.Add(this.label86);
-            this.tabEmoji.Controls.Add(this.EmojiBox3);
-            this.tabEmoji.Controls.Add(this.label85);
-            this.tabEmoji.Controls.Add(this.EmojiBox2);
-            this.tabEmoji.Controls.Add(this.label84);
-            this.tabEmoji.Controls.Add(this.EmojiBox1);
-            this.tabEmoji.Controls.Add(this.label83);
             this.tabEmoji.Controls.Add(this.label44);
             this.tabEmoji.Controls.Add(this.label45);
-            this.tabEmoji.Controls.Add(this.label43);
-            this.tabEmoji.Controls.Add(this.rjToggleButton3);
             this.tabEmoji.Location = new System.Drawing.Point(4, 29);
             this.tabEmoji.Name = "tabEmoji";
             this.tabEmoji.Padding = new System.Windows.Forms.Padding(3);
@@ -1795,23 +1763,124 @@
             this.tabEmoji.TabIndex = 5;
             this.tabEmoji.Text = "Emoji";
             // 
-            // listView1
+            // groupBox34
             // 
-            this.listView1.HoverSelection = true;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
-            this.listView1.LabelEdit = true;
-            this.listView1.Location = new System.Drawing.Point(660, 89);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(206, 308);
-            this.listView1.TabIndex = 111;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.Visible = false;
+            this.groupBox34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox34.Controls.Add(this.button25);
+            this.groupBox34.Controls.Add(this.checkedListBox2);
+            this.groupBox34.ForeColor = System.Drawing.Color.White;
+            this.groupBox34.Location = new System.Drawing.Point(25, 231);
+            this.groupBox34.Name = "groupBox34";
+            this.groupBox34.Size = new System.Drawing.Size(888, 514);
+            this.groupBox34.TabIndex = 156;
+            this.groupBox34.TabStop = false;
+            this.groupBox34.Text = "Stored Commands";
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBox2.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(6, 26);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(876, 436);
+            this.checkedListBox2.TabIndex = 142;
+            this.checkedListBox2.SelectedIndexChanged += new System.EventHandler(this.checkedListBox2_SelectedIndexChanged);
+            // 
+            // groupBox35
+            // 
+            this.groupBox35.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox35.Controls.Add(this.label76);
+            this.groupBox35.Controls.Add(this.textBox6);
+            this.groupBox35.Controls.Add(this.label80);
+            this.groupBox35.Controls.Add(this.button26);
+            this.groupBox35.Controls.Add(this.textBox7);
+            this.groupBox35.Controls.Add(this.rjToggleButton3);
+            this.groupBox35.Controls.Add(this.label43);
+            this.groupBox35.ForeColor = System.Drawing.Color.White;
+            this.groupBox35.Location = new System.Drawing.Point(25, 76);
+            this.groupBox35.Name = "groupBox35";
+            this.groupBox35.Size = new System.Drawing.Size(888, 132);
+            this.groupBox35.TabIndex = 155;
+            this.groupBox35.TabStop = false;
+            this.groupBox35.Text = "Add New Voice Command";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.ForeColor = System.Drawing.Color.Snow;
+            this.label76.Location = new System.Drawing.Point(161, 62);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(52, 20);
+            this.label76.TabIndex = 147;
+            this.label76.Text = "Phrase";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(161, 85);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(614, 27);
+            this.textBox6.TabIndex = 144;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.ForeColor = System.Drawing.Color.Snow;
+            this.label80.Location = new System.Drawing.Point(25, 58);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(105, 20);
+            this.label80.TabIndex = 134;
+            this.label80.Text = "Emoji Number";
+            // 
+            // button26
+            // 
+            this.button26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button26.ForeColor = System.Drawing.Color.Snow;
+            this.button26.Location = new System.Drawing.Point(786, 83);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(66, 29);
+            this.button26.TabIndex = 133;
+            this.button26.Text = "Edit";
+            this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(25, 85);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(105, 27);
+            this.textBox7.TabIndex = 100;
+            this.textBox7.Text = "1";
+            // 
+            // rjToggleButton3
+            // 
+            this.rjToggleButton3.AutoSize = true;
+            this.rjToggleButton3.Location = new System.Drawing.Point(17, 26);
+            this.rjToggleButton3.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButton3.Name = "rjToggleButton3";
+            this.rjToggleButton3.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton3.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton3.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButton3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton3.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButton3.TabIndex = 47;
+            this.rjToggleButton3.UseVisualStyleBackColor = true;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.ForeColor = System.Drawing.Color.Snow;
+            this.label43.Location = new System.Drawing.Point(68, 26);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(102, 20);
+            this.label43.TabIndex = 46;
+            this.label43.Text = "Enable Emojis";
             // 
             // iconButton32
             // 
@@ -1832,372 +1901,12 @@
             this.iconButton32.UseVisualStyleBackColor = true;
             this.iconButton32.Click += new System.EventHandler(this.iconButton32_Click);
             // 
-            // EmojiBox20
-            // 
-            this.EmojiBox20.Location = new System.Drawing.Point(437, 508);
-            this.EmojiBox20.Name = "EmojiBox20";
-            this.EmojiBox20.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox20.TabIndex = 95;
-            this.EmojiBox20.Text = "Emoji pog";
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.ForeColor = System.Drawing.Color.Snow;
-            this.label93.Location = new System.Drawing.Point(369, 511);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(70, 20);
-            this.label93.TabIndex = 94;
-            this.label93.Text = "Emoji 20:";
-            // 
-            // EmojiBox19
-            // 
-            this.EmojiBox19.Location = new System.Drawing.Point(437, 468);
-            this.EmojiBox19.Name = "EmojiBox19";
-            this.EmojiBox19.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox19.TabIndex = 93;
-            this.EmojiBox19.Text = "Emoji 9";
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.ForeColor = System.Drawing.Color.Snow;
-            this.label94.Location = new System.Drawing.Point(369, 471);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(70, 20);
-            this.label94.TabIndex = 92;
-            this.label94.Text = "Emoji 19:";
-            // 
-            // EmojiBox18
-            // 
-            this.EmojiBox18.Location = new System.Drawing.Point(437, 428);
-            this.EmojiBox18.Name = "EmojiBox18";
-            this.EmojiBox18.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox18.TabIndex = 91;
-            this.EmojiBox18.Text = "Emoji 8";
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.ForeColor = System.Drawing.Color.Snow;
-            this.label95.Location = new System.Drawing.Point(369, 431);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(70, 20);
-            this.label95.TabIndex = 90;
-            this.label95.Text = "Emoji 18:";
-            // 
-            // EmojiBox17
-            // 
-            this.EmojiBox17.Location = new System.Drawing.Point(437, 388);
-            this.EmojiBox17.Name = "EmojiBox17";
-            this.EmojiBox17.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox17.TabIndex = 89;
-            this.EmojiBox17.Text = "Emoji 7";
-            // 
-            // label96
-            // 
-            this.label96.AutoSize = true;
-            this.label96.ForeColor = System.Drawing.Color.Snow;
-            this.label96.Location = new System.Drawing.Point(369, 391);
-            this.label96.Name = "label96";
-            this.label96.Size = new System.Drawing.Size(70, 20);
-            this.label96.TabIndex = 88;
-            this.label96.Text = "Emoji 17:";
-            // 
-            // EmojiBox16
-            // 
-            this.EmojiBox16.Location = new System.Drawing.Point(437, 348);
-            this.EmojiBox16.Name = "EmojiBox16";
-            this.EmojiBox16.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox16.TabIndex = 87;
-            this.EmojiBox16.Text = "Emoji 6";
-            // 
-            // label97
-            // 
-            this.label97.AutoSize = true;
-            this.label97.ForeColor = System.Drawing.Color.Snow;
-            this.label97.Location = new System.Drawing.Point(369, 351);
-            this.label97.Name = "label97";
-            this.label97.Size = new System.Drawing.Size(70, 20);
-            this.label97.TabIndex = 86;
-            this.label97.Text = "Emoji 16:";
-            // 
-            // EmojiBox15
-            // 
-            this.EmojiBox15.Location = new System.Drawing.Point(437, 308);
-            this.EmojiBox15.Name = "EmojiBox15";
-            this.EmojiBox15.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox15.TabIndex = 85;
-            this.EmojiBox15.Text = "Emoji 5";
-            // 
-            // label98
-            // 
-            this.label98.AutoSize = true;
-            this.label98.ForeColor = System.Drawing.Color.Snow;
-            this.label98.Location = new System.Drawing.Point(369, 311);
-            this.label98.Name = "label98";
-            this.label98.Size = new System.Drawing.Size(70, 20);
-            this.label98.TabIndex = 84;
-            this.label98.Text = "Emoji 15:";
-            // 
-            // EmojiBox14
-            // 
-            this.EmojiBox14.Location = new System.Drawing.Point(437, 268);
-            this.EmojiBox14.Name = "EmojiBox14";
-            this.EmojiBox14.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox14.TabIndex = 83;
-            this.EmojiBox14.Text = "Emoji 4";
-            // 
-            // label99
-            // 
-            this.label99.AutoSize = true;
-            this.label99.ForeColor = System.Drawing.Color.Snow;
-            this.label99.Location = new System.Drawing.Point(369, 271);
-            this.label99.Name = "label99";
-            this.label99.Size = new System.Drawing.Size(70, 20);
-            this.label99.TabIndex = 82;
-            this.label99.Text = "Emoji 14:";
-            // 
-            // EmojiBox13
-            // 
-            this.EmojiBox13.Location = new System.Drawing.Point(437, 228);
-            this.EmojiBox13.Name = "EmojiBox13";
-            this.EmojiBox13.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox13.TabIndex = 81;
-            this.EmojiBox13.Text = "Emoji 3";
-            // 
-            // label100
-            // 
-            this.label100.AutoSize = true;
-            this.label100.ForeColor = System.Drawing.Color.Snow;
-            this.label100.Location = new System.Drawing.Point(369, 231);
-            this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(70, 20);
-            this.label100.TabIndex = 80;
-            this.label100.Text = "Emoji 13:";
-            // 
-            // EmojiBox12
-            // 
-            this.EmojiBox12.Location = new System.Drawing.Point(437, 188);
-            this.EmojiBox12.Name = "EmojiBox12";
-            this.EmojiBox12.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox12.TabIndex = 79;
-            this.EmojiBox12.Text = "Emoji 2";
-            // 
-            // label101
-            // 
-            this.label101.AutoSize = true;
-            this.label101.ForeColor = System.Drawing.Color.Snow;
-            this.label101.Location = new System.Drawing.Point(369, 191);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(70, 20);
-            this.label101.TabIndex = 78;
-            this.label101.Text = "Emoji 12:";
-            // 
-            // EmojiBox11
-            // 
-            this.EmojiBox11.Location = new System.Drawing.Point(437, 148);
-            this.EmojiBox11.Name = "EmojiBox11";
-            this.EmojiBox11.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox11.TabIndex = 77;
-            this.EmojiBox11.Text = "Emoji 1";
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.ForeColor = System.Drawing.Color.Snow;
-            this.label102.Location = new System.Drawing.Point(369, 151);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(70, 20);
-            this.label102.TabIndex = 76;
-            this.label102.Text = "Emoji 11:";
-            // 
-            // EmojiBox10
-            // 
-            this.EmojiBox10.Location = new System.Drawing.Point(84, 508);
-            this.EmojiBox10.Name = "EmojiBox10";
-            this.EmojiBox10.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox10.TabIndex = 75;
-            this.EmojiBox10.Text = "Emoji pog";
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.ForeColor = System.Drawing.Color.Snow;
-            this.label92.Location = new System.Drawing.Point(16, 511);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(70, 20);
-            this.label92.TabIndex = 74;
-            this.label92.Text = "Emoji 10:";
-            // 
-            // EmojiBox9
-            // 
-            this.EmojiBox9.Location = new System.Drawing.Point(84, 468);
-            this.EmojiBox9.Name = "EmojiBox9";
-            this.EmojiBox9.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox9.TabIndex = 73;
-            this.EmojiBox9.Text = "Emoji 9";
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.ForeColor = System.Drawing.Color.Snow;
-            this.label91.Location = new System.Drawing.Point(16, 471);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(62, 20);
-            this.label91.TabIndex = 72;
-            this.label91.Text = "Emoji 9:";
-            // 
-            // EmojiBox8
-            // 
-            this.EmojiBox8.Location = new System.Drawing.Point(84, 428);
-            this.EmojiBox8.Name = "EmojiBox8";
-            this.EmojiBox8.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox8.TabIndex = 71;
-            this.EmojiBox8.Text = "Emoji 8";
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.ForeColor = System.Drawing.Color.Snow;
-            this.label90.Location = new System.Drawing.Point(16, 431);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(62, 20);
-            this.label90.TabIndex = 70;
-            this.label90.Text = "Emoji 8:";
-            // 
-            // EmojiBox7
-            // 
-            this.EmojiBox7.Location = new System.Drawing.Point(84, 388);
-            this.EmojiBox7.Name = "EmojiBox7";
-            this.EmojiBox7.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox7.TabIndex = 69;
-            this.EmojiBox7.Text = "Emoji 7";
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.ForeColor = System.Drawing.Color.Snow;
-            this.label89.Location = new System.Drawing.Point(16, 391);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(62, 20);
-            this.label89.TabIndex = 68;
-            this.label89.Text = "Emoji 7:";
-            // 
-            // EmojiBox6
-            // 
-            this.EmojiBox6.Location = new System.Drawing.Point(84, 348);
-            this.EmojiBox6.Name = "EmojiBox6";
-            this.EmojiBox6.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox6.TabIndex = 67;
-            this.EmojiBox6.Text = "Emoji 6";
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.ForeColor = System.Drawing.Color.Snow;
-            this.label88.Location = new System.Drawing.Point(16, 351);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(62, 20);
-            this.label88.TabIndex = 66;
-            this.label88.Text = "Emoji 6:";
-            // 
-            // EmojiBox5
-            // 
-            this.EmojiBox5.Location = new System.Drawing.Point(84, 308);
-            this.EmojiBox5.Name = "EmojiBox5";
-            this.EmojiBox5.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox5.TabIndex = 65;
-            this.EmojiBox5.Text = "Emoji 5";
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.ForeColor = System.Drawing.Color.Snow;
-            this.label87.Location = new System.Drawing.Point(16, 311);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(62, 20);
-            this.label87.TabIndex = 64;
-            this.label87.Text = "Emoji 5:";
-            // 
-            // EmojiBox4
-            // 
-            this.EmojiBox4.Location = new System.Drawing.Point(84, 268);
-            this.EmojiBox4.Name = "EmojiBox4";
-            this.EmojiBox4.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox4.TabIndex = 63;
-            this.EmojiBox4.Text = "Emoji 4";
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.ForeColor = System.Drawing.Color.Snow;
-            this.label86.Location = new System.Drawing.Point(16, 271);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(62, 20);
-            this.label86.TabIndex = 62;
-            this.label86.Text = "Emoji 4:";
-            // 
-            // EmojiBox3
-            // 
-            this.EmojiBox3.Location = new System.Drawing.Point(84, 228);
-            this.EmojiBox3.Name = "EmojiBox3";
-            this.EmojiBox3.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox3.TabIndex = 61;
-            this.EmojiBox3.Text = "Emoji 3";
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.ForeColor = System.Drawing.Color.Snow;
-            this.label85.Location = new System.Drawing.Point(16, 231);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(62, 20);
-            this.label85.TabIndex = 60;
-            this.label85.Text = "Emoji 3:";
-            // 
-            // EmojiBox2
-            // 
-            this.EmojiBox2.Location = new System.Drawing.Point(84, 188);
-            this.EmojiBox2.Name = "EmojiBox2";
-            this.EmojiBox2.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox2.TabIndex = 59;
-            this.EmojiBox2.Text = "Emoji 2";
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.ForeColor = System.Drawing.Color.Snow;
-            this.label84.Location = new System.Drawing.Point(16, 191);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(62, 20);
-            this.label84.TabIndex = 58;
-            this.label84.Text = "Emoji 2:";
-            // 
-            // EmojiBox1
-            // 
-            this.EmojiBox1.Location = new System.Drawing.Point(84, 148);
-            this.EmojiBox1.Name = "EmojiBox1";
-            this.EmojiBox1.Size = new System.Drawing.Size(195, 27);
-            this.EmojiBox1.TabIndex = 57;
-            this.EmojiBox1.Text = "Emoji 1";
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.ForeColor = System.Drawing.Color.Snow;
-            this.label83.Location = new System.Drawing.Point(16, 151);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(62, 20);
-            this.label83.TabIndex = 50;
-            this.label83.Text = "Emoji 1:";
-            // 
             // label44
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label44.ForeColor = System.Drawing.Color.Snow;
-            this.label44.Location = new System.Drawing.Point(16, 29);
+            this.label44.Location = new System.Drawing.Point(25, 31);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(56, 25);
             this.label44.TabIndex = 48;
@@ -2207,35 +1916,11 @@
             // 
             this.label45.AutoSize = true;
             this.label45.ForeColor = System.Drawing.Color.Snow;
-            this.label45.Location = new System.Drawing.Point(84, 33);
+            this.label45.Location = new System.Drawing.Point(93, 35);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(260, 20);
             this.label45.TabIndex = 49;
             this.label45.Text = "Convert unused characters into emojis";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.ForeColor = System.Drawing.Color.Snow;
-            this.label43.Location = new System.Drawing.Point(67, 89);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(102, 20);
-            this.label43.TabIndex = 46;
-            this.label43.Text = "Enable Emojis";
-            // 
-            // rjToggleButton3
-            // 
-            this.rjToggleButton3.AutoSize = true;
-            this.rjToggleButton3.Location = new System.Drawing.Point(16, 89);
-            this.rjToggleButton3.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton3.Name = "rjToggleButton3";
-            this.rjToggleButton3.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton3.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton3.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton3.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton3.TabIndex = 47;
-            this.rjToggleButton3.UseVisualStyleBackColor = true;
             // 
             // tabSpotify
             // 
@@ -4668,7 +4353,6 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(864, 256);
             this.checkedListBox1.TabIndex = 142;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             this.checkedListBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBox1_MouseDoubleClick);
             // 
             // button24
@@ -4693,9 +4377,9 @@
             this.label117.ForeColor = System.Drawing.Color.Snow;
             this.label117.Location = new System.Drawing.Point(61, 308);
             this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(235, 20);
+            this.label117.Size = new System.Drawing.Size(421, 20);
             this.label117.TabIndex = 151;
-            this.label117.Text = "Delete Command on Double Click";
+            this.label117.Text = "Delete Command on Double Click and Enable Clear All Button";
             // 
             // deleteCommandsToggle
             // 
@@ -5035,6 +4719,7 @@
             // discordTab
             // 
             this.discordTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.discordTab.Controls.Add(this.iconButton44);
             this.discordTab.Controls.Add(this.label59);
             this.discordTab.Controls.Add(this.groupBox30);
             this.discordTab.Controls.Add(this.groupBox29);
@@ -5044,6 +4729,36 @@
             this.discordTab.Size = new System.Drawing.Size(976, 753);
             this.discordTab.TabIndex = 15;
             this.discordTab.Text = "Discord";
+            // 
+            // iconButton44
+            // 
+            this.iconButton44.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton44.FlatAppearance.BorderSize = 0;
+            this.iconButton44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton44.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton44.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton44.IconColor = System.Drawing.Color.White;
+            this.iconButton44.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton44.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton44.Location = new System.Drawing.Point(918, 6);
+            this.iconButton44.Name = "iconButton44";
+            this.iconButton44.Size = new System.Drawing.Size(50, 50);
+            this.iconButton44.TabIndex = 111;
+            this.iconButton44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton44.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton44.UseVisualStyleBackColor = true;
+            this.iconButton44.Click += new System.EventHandler(this.iconButton44_Click);
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label59.ForeColor = System.Drawing.Color.Snow;
+            this.label59.Location = new System.Drawing.Point(26, 17);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(205, 25);
+            this.label59.TabIndex = 110;
+            this.label59.Text = "Discord OSC Integration";
             // 
             // groupBox30
             // 
@@ -5061,7 +4776,8 @@
             // 
             // richTextBoxDiscord
             // 
-            this.richTextBoxDiscord.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.richTextBoxDiscord.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxDiscord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBoxDiscord.Location = new System.Drawing.Point(6, 26);
@@ -5088,6 +4804,15 @@
             this.groupBox29.TabIndex = 101;
             this.groupBox29.TabStop = false;
             this.groupBox29.Text = "Discord OSC Settings";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(6, 23);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(368, 20);
+            this.label58.TabIndex = 120;
+            this.label58.Text = "Sends bool over OSC upon recieving discord message.";
             // 
             // button15
             // 
@@ -5164,6 +4889,240 @@
             this.rjToggleDiscordToast.Size = new System.Drawing.Size(45, 22);
             this.rjToggleDiscordToast.TabIndex = 103;
             this.rjToggleDiscordToast.UseVisualStyleBackColor = true;
+            // 
+            // Replacements
+            // 
+            this.Replacements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.Replacements.Controls.Add(this.iconButton45);
+            this.Replacements.Controls.Add(this.groupBox33);
+            this.Replacements.Controls.Add(this.groupBox31);
+            this.Replacements.Controls.Add(this.groupBox32);
+            this.Replacements.Controls.Add(this.label70);
+            this.Replacements.Controls.Add(this.label71);
+            this.Replacements.Location = new System.Drawing.Point(4, 29);
+            this.Replacements.Name = "Replacements";
+            this.Replacements.Padding = new System.Windows.Forms.Padding(3);
+            this.Replacements.Size = new System.Drawing.Size(976, 753);
+            this.Replacements.TabIndex = 16;
+            this.Replacements.Text = "replacements";
+            // 
+            // iconButton45
+            // 
+            this.iconButton45.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton45.FlatAppearance.BorderSize = 0;
+            this.iconButton45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton45.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton45.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton45.IconColor = System.Drawing.Color.White;
+            this.iconButton45.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton45.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton45.Location = new System.Drawing.Point(920, 4);
+            this.iconButton45.Name = "iconButton45";
+            this.iconButton45.Size = new System.Drawing.Size(50, 50);
+            this.iconButton45.TabIndex = 160;
+            this.iconButton45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton45.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton45.UseVisualStyleBackColor = true;
+            this.iconButton45.Click += new System.EventHandler(this.iconButton45_Click);
+            // 
+            // groupBox33
+            // 
+            this.groupBox33.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox33.Controls.Add(this.label62);
+            this.groupBox33.Controls.Add(this.rjToggleReplaceBeforeTTS);
+            this.groupBox33.ForeColor = System.Drawing.Color.White;
+            this.groupBox33.Location = new System.Drawing.Point(13, 637);
+            this.groupBox33.Name = "groupBox33";
+            this.groupBox33.Size = new System.Drawing.Size(878, 108);
+            this.groupBox33.TabIndex = 159;
+            this.groupBox33.TabStop = false;
+            this.groupBox33.Text = "Word Replacement Settings";
+            // 
+            // label62
+            // 
+            this.label62.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label62.ForeColor = System.Drawing.Color.Snow;
+            this.label62.Location = new System.Drawing.Point(63, 39);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(456, 20);
+            this.label62.TabIndex = 162;
+            this.label62.Text = "Word Replacements Before TTS (Will Happen After TTS If Disabled)";
+            // 
+            // rjToggleReplaceBeforeTTS
+            // 
+            this.rjToggleReplaceBeforeTTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rjToggleReplaceBeforeTTS.AutoSize = true;
+            this.rjToggleReplaceBeforeTTS.Checked = true;
+            this.rjToggleReplaceBeforeTTS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleReplaceBeforeTTS.Location = new System.Drawing.Point(8, 39);
+            this.rjToggleReplaceBeforeTTS.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleReplaceBeforeTTS.Name = "rjToggleReplaceBeforeTTS";
+            this.rjToggleReplaceBeforeTTS.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleReplaceBeforeTTS.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleReplaceBeforeTTS.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleReplaceBeforeTTS.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleReplaceBeforeTTS.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleReplaceBeforeTTS.TabIndex = 163;
+            this.rjToggleReplaceBeforeTTS.UseVisualStyleBackColor = true;
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox31.Controls.Add(this.button19);
+            this.groupBox31.Controls.Add(this.checkedListBoxReplacements);
+            this.groupBox31.Controls.Add(this.label61);
+            this.groupBox31.Controls.Add(this.rjToggleButton7);
+            this.groupBox31.ForeColor = System.Drawing.Color.White;
+            this.groupBox31.Location = new System.Drawing.Point(13, 159);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(878, 472);
+            this.groupBox31.TabIndex = 158;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Stored Replacements";
+            // 
+            // button19
+            // 
+            this.button19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.ForeColor = System.Drawing.Color.Snow;
+            this.button19.Location = new System.Drawing.Point(788, 432);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(86, 29);
+            this.button19.TabIndex = 159;
+            this.button19.Text = "Clear All";
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click_1);
+            // 
+            // checkedListBoxReplacements
+            // 
+            this.checkedListBoxReplacements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBoxReplacements.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkedListBoxReplacements.FormattingEnabled = true;
+            this.checkedListBoxReplacements.Location = new System.Drawing.Point(8, 26);
+            this.checkedListBoxReplacements.Name = "checkedListBoxReplacements";
+            this.checkedListBoxReplacements.Size = new System.Drawing.Size(864, 382);
+            this.checkedListBoxReplacements.TabIndex = 142;
+            this.checkedListBoxReplacements.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.checkedListBoxReplacements_MouseDoubleClick);
+            // 
+            // label61
+            // 
+            this.label61.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label61.ForeColor = System.Drawing.Color.Snow;
+            this.label61.Location = new System.Drawing.Point(63, 432);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(427, 20);
+            this.label61.TabIndex = 160;
+            this.label61.Text = "Delete Commands on Double Click and Enable Clear All Button";
+            // 
+            // rjToggleButton7
+            // 
+            this.rjToggleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.rjToggleButton7.AutoSize = true;
+            this.rjToggleButton7.Location = new System.Drawing.Point(8, 432);
+            this.rjToggleButton7.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButton7.Name = "rjToggleButton7";
+            this.rjToggleButton7.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton7.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton7.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButton7.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton7.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButton7.TabIndex = 161;
+            this.rjToggleButton7.UseVisualStyleBackColor = true;
+            // 
+            // groupBox32
+            // 
+            this.groupBox32.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox32.Controls.Add(this.label64);
+            this.groupBox32.Controls.Add(this.textBoxReplaceWord);
+            this.groupBox32.Controls.Add(this.label65);
+            this.groupBox32.Controls.Add(this.buttonReplaceAdd);
+            this.groupBox32.Controls.Add(this.textBoxOriginalWord);
+            this.groupBox32.ForeColor = System.Drawing.Color.White;
+            this.groupBox32.Location = new System.Drawing.Point(13, 46);
+            this.groupBox32.Name = "groupBox32";
+            this.groupBox32.Size = new System.Drawing.Size(878, 108);
+            this.groupBox32.TabIndex = 157;
+            this.groupBox32.TabStop = false;
+            this.groupBox32.Text = "Add New Word Replacement";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.ForeColor = System.Drawing.Color.Snow;
+            this.label64.Location = new System.Drawing.Point(416, 35);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(152, 20);
+            this.label64.TabIndex = 147;
+            this.label64.Text = "Replacement Word(s)";
+            // 
+            // textBoxReplaceWord
+            // 
+            this.textBoxReplaceWord.Location = new System.Drawing.Point(416, 58);
+            this.textBoxReplaceWord.Name = "textBoxReplaceWord";
+            this.textBoxReplaceWord.Size = new System.Drawing.Size(384, 27);
+            this.textBoxReplaceWord.TabIndex = 144;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.ForeColor = System.Drawing.Color.Snow;
+            this.label65.Location = new System.Drawing.Point(8, 36);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(168, 20);
+            this.label65.TabIndex = 134;
+            this.label65.Text = "Spoken / Typed Word(s)\r\n";
+            // 
+            // buttonReplaceAdd
+            // 
+            this.buttonReplaceAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.buttonReplaceAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReplaceAdd.ForeColor = System.Drawing.Color.Snow;
+            this.buttonReplaceAdd.Location = new System.Drawing.Point(806, 58);
+            this.buttonReplaceAdd.Name = "buttonReplaceAdd";
+            this.buttonReplaceAdd.Size = new System.Drawing.Size(66, 29);
+            this.buttonReplaceAdd.TabIndex = 133;
+            this.buttonReplaceAdd.Text = "Add";
+            this.buttonReplaceAdd.UseVisualStyleBackColor = false;
+            this.buttonReplaceAdd.Click += new System.EventHandler(this.buttonReplaceAdd_Click);
+            // 
+            // textBoxOriginalWord
+            // 
+            this.textBoxOriginalWord.Location = new System.Drawing.Point(8, 58);
+            this.textBoxOriginalWord.Name = "textBoxOriginalWord";
+            this.textBoxOriginalWord.Size = new System.Drawing.Size(384, 27);
+            this.textBoxOriginalWord.TabIndex = 100;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label70.ForeColor = System.Drawing.Color.Snow;
+            this.label70.Location = new System.Drawing.Point(21, 14);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(170, 25);
+            this.label70.TabIndex = 155;
+            this.label70.Text = "Word Replacements";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.ForeColor = System.Drawing.Color.Snow;
+            this.label71.Location = new System.Drawing.Point(209, 19);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(351, 20);
+            this.label71.TabIndex = 156;
+            this.label71.Text = "Replace any typed word or phrase with another one";
             // 
             // panel1
             // 
@@ -5414,25 +5373,19 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // label58
+            // button25
             // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(6, 23);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(368, 20);
-            this.label58.TabIndex = 120;
-            this.label58.Text = "Sends bool over OSC upon recieving discord message.";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label59.ForeColor = System.Drawing.Color.Snow;
-            this.label59.Location = new System.Drawing.Point(26, 17);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(205, 25);
-            this.label59.TabIndex = 110;
-            this.label59.Text = "Discord OSC Integration";
+            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button25.ForeColor = System.Drawing.Color.Snow;
+            this.button25.Location = new System.Drawing.Point(723, 479);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(159, 29);
+            this.button25.TabIndex = 160;
+            this.button25.Text = "Debug Reset Config";
+            this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button25_Click_2);
             // 
             // VoiceWizardWindow
             // 
@@ -5466,6 +5419,9 @@
             this.translucentPanel1.ResumeLayout(false);
             this.tabEmoji.ResumeLayout(false);
             this.tabEmoji.PerformLayout();
+            this.groupBox34.ResumeLayout(false);
+            this.groupBox35.ResumeLayout(false);
+            this.groupBox35.PerformLayout();
             this.tabSpotify.ResumeLayout(false);
             this.tabSpotify.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -5527,6 +5483,14 @@
             this.groupBox30.ResumeLayout(false);
             this.groupBox29.ResumeLayout(false);
             this.groupBox29.PerformLayout();
+            this.Replacements.ResumeLayout(false);
+            this.Replacements.PerformLayout();
+            this.groupBox33.ResumeLayout(false);
+            this.groupBox33.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox32.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -5675,46 +5639,6 @@
         private Label label81;
         private Button button3;
         public TextBox textBoxFont;
-        private Label label92;
-        private Label label91;
-        private Label label90;
-        private Label label89;
-        private Label label88;
-        private Label label87;
-        private Label label86;
-        private Label label85;
-        private Label label84;
-        private Label label83;
-        public TextBox EmojiBox10;
-        public TextBox EmojiBox9;
-        public TextBox EmojiBox8;
-        public TextBox EmojiBox7;
-        public TextBox EmojiBox6;
-        public TextBox EmojiBox5;
-        public TextBox EmojiBox4;
-        public TextBox EmojiBox3;
-        public TextBox EmojiBox2;
-        public TextBox EmojiBox1;
-        public TextBox EmojiBox20;
-        private Label label93;
-        public TextBox EmojiBox19;
-        private Label label94;
-        public TextBox EmojiBox18;
-        private Label label95;
-        public TextBox EmojiBox17;
-        private Label label96;
-        public TextBox EmojiBox16;
-        private Label label97;
-        public TextBox EmojiBox15;
-        private Label label98;
-        public TextBox EmojiBox14;
-        private Label label99;
-        public TextBox EmojiBox13;
-        private Label label100;
-        public TextBox EmojiBox12;
-        private Label label101;
-        public TextBox EmojiBox11;
-        private Label label102;
         private Label label103;
         public TextBox textBoxCustomSpot;
         private Label label78;
@@ -5841,7 +5765,6 @@
         public ComboBox comboBoxSTT;
         private GroupBox groupBox21;
         private FontAwesome.Sharp.IconButton iconButton41;
-        private ListView listView1;
         private GroupBox groupBox14;
         private FontAwesome.Sharp.IconButton iconButton28;
         private Label label27;
@@ -5874,8 +5797,6 @@
         private Label label50;
         private Button buttonSavePreset;
         public TextBox textBoxRename;
-        private Button button25;
-        private Button button19;
         private GroupBox groupBox28;
         public ComboBox comboBoxSysSpeechRecog;
         private FontAwesome.Sharp.IconButton iconButton25;
@@ -5890,5 +5811,36 @@
         private RichTextBox richTextBoxDiscord;
         private Label label59;
         private Label label58;
+        public Button buttonEditPreset;
+        public Button buttonDeletePreset;
+        private TabPage Replacements;
+        private GroupBox groupBox31;
+        public CheckedListBox checkedListBoxReplacements;
+        private GroupBox groupBox32;
+        private Label label64;
+        private TextBox textBoxReplaceWord;
+        private Label label65;
+        private Button buttonReplaceAdd;
+        private TextBox textBoxOriginalWord;
+        private Label label70;
+        private Label label71;
+        private Button button19;
+        private Label label61;
+        public RJControls.RJToggleButton rjToggleButton7;
+        private FontAwesome.Sharp.IconButton iconButton42;
+        private GroupBox groupBox33;
+        private Label label62;
+        public RJControls.RJToggleButton rjToggleReplaceBeforeTTS;
+        private GroupBox groupBox34;
+        public CheckedListBox checkedListBox2;
+        private GroupBox groupBox35;
+        private Label label76;
+        private TextBox textBox6;
+        private Label label80;
+        private Button button26;
+        private TextBox textBox7;
+        private FontAwesome.Sharp.IconButton iconButton44;
+        private FontAwesome.Sharp.IconButton iconButton45;
+        private Button button25;
     }
 }

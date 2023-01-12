@@ -31,8 +31,8 @@ namespace OSCVRCWiz.Addons
                     }
                     index++;
                 }
-           
 
+                //this is for changing styles on voice command
                 if (VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString() == "Azure" & VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked == true)
                 {
                     foreach (var x in VoiceWizardWindow.MainFormGlobal.comboBox1.Items)

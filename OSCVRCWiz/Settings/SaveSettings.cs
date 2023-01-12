@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Addons;
 using EmbedIO.Sessions;
 using OSCVRCWiz.Addons;
 using OSCVRCWiz.Resources;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.TranslationAPIs;
+using Settings;
 
 namespace OSCVRCWiz
 {
@@ -132,17 +134,26 @@ namespace OSCVRCWiz
 
             Settings1.Default.saveToast= VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked;
 
-            VoiceWizardWindow.presetsSave();
-            Settings1.Default.presetSave = VoiceWizardWindow.presetsStored;
+            VoicePresets.presetsSave();
+            Settings1.Default.presetSave = VoicePresets.presetsStored;
+
+            WordReplacements.replacementSave();
+            Settings1.Default.replaceSave = WordReplacements.wordReplacemntsStored;
+
+
+            EmojiAddon.emojiReplacementsSave();
+            Settings1.Default.emojiNewSave = EmojiAddon.emojiReplacemntsStored;
 
             Settings1.Default.discordParaSave= VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text.ToString();
             Settings1.Default.discordTimerSave = VoiceWizardWindow.MainFormGlobal.textBoxDiscTimer.Text.ToString();
 
 
+            Settings1.Default.wordReplaceBeforeTTS = VoiceWizardWindow.MainFormGlobal.rjToggleReplaceBeforeTTS.Checked;
 
 
 
 
+            /*
             emojiSettings.Default.emoji1 = VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text.ToString();
             emojiSettings.Default.emoji2 = VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text.ToString();
             emojiSettings.Default.emoji3 = VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text.ToString();
@@ -162,12 +173,12 @@ namespace OSCVRCWiz
             emojiSettings.Default.emoji17 = VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text.ToString();
             emojiSettings.Default.emoji18 = VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text.ToString();
             emojiSettings.Default.emoji19 = VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text.ToString();
-            emojiSettings.Default.emoji20 = VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text.ToString();
+            emojiSettings.Default.emoji20 = VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text.ToString(); */
 
 
 
             Settings1.Default.Save();
-            emojiSettings.Default.Save();
+            //emojiSettings.Default.Save();
             VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
         }
     }
