@@ -185,8 +185,10 @@ namespace Addons
              
                         if (VoiceWizardWindow.MainFormGlobal.checkedListBox2.GetItemCheckState(index) == CheckState.Checked)
                         {
-                            text = text.Replace(phrase, EmojisTextList.ElementAt(index));
-                            
+                            //text = text.Replace(phrase, EmojisTextList.ElementAt(index));
+
+                            text = Regex.Replace(text, phrase, EmojisTextList.ElementAt(index), RegexOptions.IgnoreCase);
+
                         }
 
                     }

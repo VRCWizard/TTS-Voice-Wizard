@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Globalization;
 using OSCVRCWiz.Addons;
+using System.Text.RegularExpressions;
 
 namespace Addons
 {
@@ -27,14 +28,15 @@ namespace Addons
                 foreach (var kvp in replaceDict)
                 {
                     
-                    if (text.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                    if (text.Contains(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase))
                     {
 
                         //this implementation may be more fault proof but is more costly than using index
                         //index = replaceDict.Values.ToList().IndexOf(kvp.Key);
                         if (VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.GetItemCheckState(index) == CheckState.Checked)
                         {
-                            text = text.Replace(kvp.Key, kvp.Value);
+                            //text = text.Replace(kvp.Key.ToString(), kvp.Value.ToString());
+                            text = Regex.Replace(text, kvp.Key.ToString(), kvp.Value.ToString(), RegexOptions.IgnoreCase);
                         }
                         
                     }

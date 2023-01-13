@@ -102,6 +102,7 @@
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.tabEmoji = new System.Windows.Forms.TabPage();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
+            this.button25 = new System.Windows.Forms.Button();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
             this.label76 = new System.Windows.Forms.Label();
@@ -371,7 +372,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button25 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -1778,6 +1778,20 @@
             this.groupBox34.TabStop = false;
             this.groupBox34.Text = "Stored Commands";
             // 
+            // button25
+            // 
+            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button25.ForeColor = System.Drawing.Color.Snow;
+            this.button25.Location = new System.Drawing.Point(723, 479);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(159, 29);
+            this.button25.TabIndex = 160;
+            this.button25.Text = "Debug Reset Config";
+            this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button25_Click_2);
+            // 
             // checkedListBox2
             // 
             this.checkedListBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1814,7 +1828,7 @@
             // 
             this.label76.AutoSize = true;
             this.label76.ForeColor = System.Drawing.Color.Snow;
-            this.label76.Location = new System.Drawing.Point(161, 62);
+            this.label76.Location = new System.Drawing.Point(105, 62);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(52, 20);
             this.label76.TabIndex = 147;
@@ -1822,9 +1836,9 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(161, 85);
+            this.textBox6.Location = new System.Drawing.Point(105, 85);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(614, 27);
+            this.textBox6.Size = new System.Drawing.Size(670, 27);
             this.textBox6.TabIndex = 144;
             // 
             // label80
@@ -1833,9 +1847,9 @@
             this.label80.ForeColor = System.Drawing.Color.Snow;
             this.label80.Location = new System.Drawing.Point(25, 58);
             this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(105, 20);
+            this.label80.Size = new System.Drawing.Size(60, 20);
             this.label80.TabIndex = 134;
-            this.label80.Text = "Emoji Number";
+            this.label80.Text = "Emoji #";
             // 
             // button26
             // 
@@ -1854,7 +1868,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(25, 85);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(105, 27);
+            this.textBox7.Size = new System.Drawing.Size(60, 27);
             this.textBox7.TabIndex = 100;
             this.textBox7.Text = "1";
             // 
@@ -5372,20 +5386,6 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
-            // button25
-            // 
-            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.ForeColor = System.Drawing.Color.Snow;
-            this.button25.Location = new System.Drawing.Point(723, 479);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(159, 29);
-            this.button25.TabIndex = 160;
-            this.button25.Text = "Debug Reset Config";
-            this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click_2);
             // 
             // VoiceWizardWindow
             // 

@@ -31,7 +31,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.6";
+        public static string currentVersion = "0.9.6.1";
         string releaseDate = "January 12, 2023";
 
        // public OutputText ot;
