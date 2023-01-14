@@ -50,6 +50,18 @@ namespace OSCVRCWiz
 
             }
         }
+
+        public static void autoStopWebCap()
+        {
+            if (webCapEnabled == true)
+            {
+                webCapOff();
+                webCapEnabled = false;
+
+            }
+
+        }
+
         private static void webCapOn()
         {
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");

@@ -55,7 +55,17 @@ namespace OSCVRCWiz
                 
             }
         }
-        public static void doVosk()
+        public static void AutoStopVoskRecog()
+        {
+            if (voskEnabled == true)
+            {
+                Task.Run(() => VoskRecognition.stopVosk());
+                voskEnabled = false;
+
+            }
+
+        }
+            public static void doVosk()
         {
             try
             {

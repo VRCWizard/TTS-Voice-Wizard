@@ -54,6 +54,7 @@ namespace Settings
                 voicePreset saveThisPreset = new voicePreset();
                 string nameToCheck = VoiceWizardWindow.MainFormGlobal.textBoxRename.Text.ToString();
                 int counter = 0;
+                VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Remove(VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem.ToString());//deleting name from list first make more sense so it can have the same same as it did before
                 while (VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Contains(nameToCheck))
                 {
                     counter++;
@@ -71,7 +72,7 @@ namespace Settings
                 saveThisPreset.Volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem.ToString();
                 saveThisPreset.Speed = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem.ToString();
 
-                VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Remove(VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem.ToString());
+                
 
                 VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Add(saveThisPreset.PresetName);
                 presetDict.Add(saveThisPreset.PresetName, saveThisPreset);
@@ -79,6 +80,7 @@ namespace Settings
                 VoiceWizardWindow.MainFormGlobal.textBoxRename.Visible = false;
                 VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Enabled = true;
                 VoiceWizardWindow.MainFormGlobal.buttonEditPreset.Enabled = true;
+                VoiceWizardWindow.MainFormGlobal.buttonDeletePreset.Enabled = true;
                 editingPreset = false;
 
             }
@@ -90,6 +92,7 @@ namespace Settings
             VoiceWizardWindow.MainFormGlobal.textBoxRename.Visible = true;
             VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Enabled = false;
             VoiceWizardWindow.MainFormGlobal.buttonEditPreset.Enabled = false;
+            VoiceWizardWindow.MainFormGlobal.buttonDeletePreset.Enabled = false;
             editingPreset = true;
             VoiceWizardWindow.MainFormGlobal.textBoxRename.Text = VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem.ToString();
 

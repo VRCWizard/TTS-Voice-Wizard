@@ -339,7 +339,7 @@ namespace OSCVRCWiz
 
             }
         }
-        public static async void stopContinuousListeningNow(VoiceWizardWindow MainForm)//speech to text
+        public static async void stopContinuousListeningNow()//speech to text
         {
             if (continuousListening == true)
             {

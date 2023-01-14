@@ -28,13 +28,13 @@ namespace Addons
               if (ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
               {
                   // Listener supported!
-                  OutputText.outputLog("Toast Listener Supported", Color.Green);
+                  OutputText.outputLog("[Toast Listener Supported]", Color.Green);
               }
 
               else
               {
                   // Older version of Windows, no Listener
-                  OutputText.outputLog("Toast Listener NOT Supported",Color.Red);
+                  OutputText.outputLog("[Toast Listener NOT Supported]",Color.Red);
               }
           }
 
@@ -55,7 +55,7 @@ namespace Addons
                 case UserNotificationListenerAccessStatus.Allowed:
 
                     // Yay! Proceed as normal
-                    OutputText.outputLog("Toast Listener has Access!",Color.Green);
+                    OutputText.outputLog("[Toast Listener has Access]",Color.Green);
                     // Subscribe to foreground event
                     try
                     {
@@ -64,8 +64,8 @@ namespace Addons
                     }
                     catch(Exception ex) 
                     {
-                        OutputText.outputLog("App must be run as administrator for Toast Listener to work!", Color.Green);
-                        MessageBox.Show("Toast Notification Error: Try running as administrator " + ex.Message);
+                      //  OutputText.outputLog("[App must be run as administrator for Toast Listener to work]", Color.Green);
+                        MessageBox.Show("Toast Notification Error: " + ex.Message);
                     }
                     break;
 

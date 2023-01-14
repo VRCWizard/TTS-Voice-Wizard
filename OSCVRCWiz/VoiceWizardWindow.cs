@@ -31,8 +31,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.6.1";
-        string releaseDate = "January 12, 2023";
+        public static string currentVersion = "0.9.6.5";
+        string releaseDate = "January 14, 2023";
 
        // public OutputText ot;
         public GreenScreen pf;
@@ -1158,7 +1158,7 @@ namespace OSCVRCWiz
         private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
         {
             //var ts = new AzureRecognition();
-            AzureRecognition.stopContinuousListeningNow(this);
+            AzureRecognition.stopContinuousListeningNow();
         }
 
         private void rjToggleButton6_CheckedChanged(object sender, EventArgs e)
@@ -1739,9 +1739,21 @@ namespace OSCVRCWiz
         }
 
 
-        private void comboBoxSTT_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxSTT_SelectedIndexChanged(object sender, EventArgs e)// this is used to auto turn off other speech to text option if you switch
         {
-            
+            try
+            {
+                Task.Run(() => SystemSpeechRecognition.AutoStopSystemSpeechRecog());
+                Task.Run(() => WebCaptionerRecognition.autoStopWebCap());
+                Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
+                Task.Run(() => VoskRecognition.AutoStopVoskRecog());
+            }
+            catch
+            {
+                OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable is manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.Yellow);
+            }
+
+
 
           if (comboBoxSTT.SelectedItem.ToString() == "System Speech" || comboBoxSTT.SelectedItem.ToString() == "Vosk")
             {

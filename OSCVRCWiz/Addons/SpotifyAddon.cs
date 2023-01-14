@@ -32,6 +32,8 @@ namespace OSCVRCWiz.Addons
         public static bool pauseSpotify =false;
         public static string spotifyInterval ="1500";
 
+        public static string previousError = "";
+
 
 
         public static async Task spotifyGetCurrentSongInfo()
@@ -212,17 +214,23 @@ namespace OSCVRCWiz.Addons
 
                 }
             }
-            catch (APITooManyRequestsException e)
+            catch (Exception ex)
             {
 
 
-                Debug.WriteLine("Spotify Feature timed out for: " + e.RetryAfter.ToString());
+              //  Debug.WriteLine("Spotify Feature timed out for: " + e.RetryAfter.ToString());
 
                 // var ot = new OutputText();
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true)
+              //  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true)
+              //  {
+                    
+
+                if (previousError !="The access token expired")
                 {
-                    Task.Run(() => OutputText.outputLog("Spotify Feature timed out for: " + e.RetryAfter.ToString()));
+                    OutputText.outputLog("Spotify API Exception: " + ex.Message);
+                    previousError = ex.Message.ToString();
                 }
+             //   }
 
             }
 

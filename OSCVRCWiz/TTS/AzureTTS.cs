@@ -288,6 +288,7 @@ namespace OSCVRCWiz.TTS
                 Debug.WriteLine("style: " + style);
                 Debug.WriteLine("text: " + text);
 
+
                 var audioConfig = AudioConfig.FromSpeakerOutput(AudioDevices.currentOutputDevice);
                 if (AudioDevices.currentOutputDeviceName == "Default")
                 {
@@ -350,6 +351,7 @@ namespace OSCVRCWiz.TTS
 
                 Debug.WriteLine(ssml0);
 
+                
                 var result = await synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {

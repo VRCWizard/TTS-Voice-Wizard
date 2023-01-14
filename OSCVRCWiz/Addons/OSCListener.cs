@@ -54,7 +54,7 @@ namespace OSCVRCWiz.Addons
                         if (heartConnect == false)
                         {
 
-                            OutputText.outputLog("[First OSC Recieved]");
+                            OutputText.outputLog("[First OSC Received]");
                             heartConnect = true;
 
                         }
@@ -117,6 +117,8 @@ namespace OSCVRCWiz.Addons
 
                         if (messageReceived.Address == "/avatar/parameters/HR" && pauseBPM == false)
                         {
+
+
                             skipper += 1;
                             if (skipper >= HRInternalValue)
                             {

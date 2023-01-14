@@ -137,5 +137,15 @@ namespace OSCVRCWiz
 
 
         }
+        public static void AutoStopSystemSpeechRecog()
+        {
+            if (listeningCurrently == true)
+            {
+                OutputText.outputLog("[System Speech Stopped Listening]");
+                listeningCurrently = false;
+                waveIn.StopRecording();
+                rec.RecognizeAsyncStop();
+            }
+        }
     }
 }
