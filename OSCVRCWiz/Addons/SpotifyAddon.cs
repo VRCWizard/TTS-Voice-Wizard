@@ -217,20 +217,12 @@ namespace OSCVRCWiz.Addons
             catch (Exception ex)
             {
 
-
-              //  Debug.WriteLine("Spotify Feature timed out for: " + e.RetryAfter.ToString());
-
-                // var ot = new OutputText();
-              //  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true)
-              //  {
-                    
-
-                if (previousError !="The access token expired")
+                if (previousError !="The access token expired" && previousError != "String is empty or null (Parameter 'clientId')")//only say these once, dont spam them
                 {
                     OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
                     previousError = ex.Message.ToString();
                 }
-             //   }
+             
 
             }
 

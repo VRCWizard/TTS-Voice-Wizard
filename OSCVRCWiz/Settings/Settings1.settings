@@ -75,7 +75,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="SpotifyOutputSetting" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="HRIntervalSetting" Type="System.String" Scope="User">
       <Value Profile="(Default)">3</Value>
@@ -99,13 +99,13 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="pitchSetting" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="volumeSetting" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="rateSetting" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="STTTSContinuous" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

@@ -71,7 +71,7 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
             } catch(Exception ex)
             {
-                OutputText.outputLog("One of your TTS setttings was invalid. Setting to defaults.",Color.Red);
+                OutputText.outputLog("[One of your TTS setttings was invalid (pitch, volume or speed). Setting to defaults.]",Color.Red);
                 VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = "default";
                 VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = "default";
                 VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = "default";
