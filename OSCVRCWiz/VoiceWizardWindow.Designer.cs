@@ -3775,9 +3775,9 @@
             this.label104.ForeColor = System.Drawing.Color.Snow;
             this.label104.Location = new System.Drawing.Point(61, 194);
             this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(170, 20);
+            this.label104.Size = new System.Drawing.Size(216, 40);
             this.label104.TabIndex = 98;
-            this.label104.Text = "Minimize to System Tray";
+            this.label104.Text = "Allow Minimize to System Tray \r\n(Starts in System Tray)";
             // 
             // rjToggleButtonSystemTray
             // 

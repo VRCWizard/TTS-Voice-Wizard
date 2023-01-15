@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System;
 using Settings;
+using System.Windows.Forms;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -31,8 +32,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.6.5";
-        string releaseDate = "January 14, 2023";
+        public static string currentVersion = "0.9.7";
+        string releaseDate = "January 15, 2023";
 
        // public OutputText ot;
         public GreenScreen pf;
@@ -94,6 +95,12 @@ namespace OSCVRCWiz
                 //listView1.View = View.List;
                 TTSBoxText = richTextBox3.Text.ToString();
                 labelCharCount.Text = TTSBoxText.Length.ToString();
+
+             /*   if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
+                {
+                    MessageBox.Show("This application is already running!");
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                } */ //this will only allow one instance of tts voice wizard to run... maybe only do this if system tray on launch is active
 
             }
             catch (Exception ex)
@@ -388,6 +395,27 @@ namespace OSCVRCWiz
             VoiceCommands.voiceCommands();
             VoiceCommands.refreshCommandList();
             ToastNotification.ToastListen();
+
+            if (rjToggleButtonSystemTray.Checked == true)
+            {
+                if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
+                {
+                    MessageBox.Show("TTS Voice Wizard (System Tray Launch): This application is already running!");
+                    System.Diagnostics.Process.GetCurrentProcess().Kill();
+                }
+                
+                // bool cursorNotInBar = Screen.GetWorkingArea(this).Contains(Cursor.Position);
+                this.WindowState = FormWindowState.Minimized;
+                if (this.WindowState == FormWindowState.Minimized)
+                {
+                    this.ShowInTaskbar = false;
+                    notifyIcon1.Visible = true;
+                    this.Hide();
+                    int id = 0;
+                    RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+                }
+
+            }
 
             //CSCoreAudioDevices.CSCoreOuputDevicesGet();
             //CSCoreAudioDevices.CSCoreOuputDevicesGet();
@@ -1240,6 +1268,9 @@ namespace OSCVRCWiz
                     this.ShowInTaskbar = false;
                     notifyIcon1.Visible = true;
                     this.Hide();
+                    
+                    int id = 0;
+                    RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
                 }
 
             }
@@ -1254,8 +1285,10 @@ namespace OSCVRCWiz
                 this.ShowInTaskbar = true;
                 notifyIcon1.Visible = false;
                 this.Show();
+               
                 int id = 0;
                 RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+                this.WindowState = FormWindowState.Normal;
 
             }
 
@@ -1750,7 +1783,7 @@ namespace OSCVRCWiz
             }
             catch
             {
-                OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable is manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.Yellow);
+                OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable is manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.Orange);
             }
 
 

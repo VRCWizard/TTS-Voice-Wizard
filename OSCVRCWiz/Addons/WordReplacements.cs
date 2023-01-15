@@ -121,7 +121,7 @@ namespace Addons
                     }
                     catch (Exception ex)
                     {
-                        OutputText.outputLog("Error Loading Word Replacements / No Word Replacements Found", Color.Yellow);
+                        OutputText.outputLog("Error Loading Word Replacements / No Word Replacements Found", Color.Orange);
                     }
                 }
             }

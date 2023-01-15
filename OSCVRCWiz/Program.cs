@@ -16,6 +16,9 @@ namespace OSCVRCWiz
             ApplicationConfiguration.Initialize();
             Application.Run(new VoiceWizardWindow());
 
+          
+               
+
         }
     }
 }

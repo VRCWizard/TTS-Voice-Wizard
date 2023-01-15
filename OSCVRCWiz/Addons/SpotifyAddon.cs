@@ -227,7 +227,7 @@ namespace OSCVRCWiz.Addons
 
                 if (previousError !="The access token expired")
                 {
-                    OutputText.outputLog("Spotify API Exception: " + ex.Message);
+                    OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
                     previousError = ex.Message.ToString();
                 }
              //   }
