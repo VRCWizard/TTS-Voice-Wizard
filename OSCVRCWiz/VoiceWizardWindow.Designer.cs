@@ -1617,10 +1617,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.translucentPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.translucentPanel1.Controls.Add(this.iconButton42);
-            this.translucentPanel1.Controls.Add(this.iconButton25);
-            this.translucentPanel1.Controls.Add(this.iconButton27);
             this.translucentPanel1.Controls.Add(this.iconButton11);
+            this.translucentPanel1.Controls.Add(this.iconButton25);
+            this.translucentPanel1.Controls.Add(this.iconButton42);
+            this.translucentPanel1.Controls.Add(this.iconButton27);
             this.translucentPanel1.Controls.Add(this.iconButton10);
             this.translucentPanel1.Controls.Add(this.iconButton9);
             this.translucentPanel1.Location = new System.Drawing.Point(6, 51);
@@ -1638,7 +1638,7 @@
             this.iconButton42.IconColor = System.Drawing.Color.White;
             this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton42.Location = new System.Drawing.Point(0, 500);
+            this.iconButton42.Location = new System.Drawing.Point(0, 300);
             this.iconButton42.Name = "iconButton42";
             this.iconButton42.Size = new System.Drawing.Size(964, 100);
             this.iconButton42.TabIndex = 14;
@@ -1678,7 +1678,7 @@
             this.iconButton27.IconColor = System.Drawing.Color.White;
             this.iconButton27.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton27.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton27.Location = new System.Drawing.Point(0, 300);
+            this.iconButton27.Location = new System.Drawing.Point(0, 200);
             this.iconButton27.Name = "iconButton27";
             this.iconButton27.Size = new System.Drawing.Size(964, 100);
             this.iconButton27.TabIndex = 12;
@@ -1698,7 +1698,7 @@
             this.iconButton11.IconColor = System.Drawing.Color.White;
             this.iconButton11.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton11.Location = new System.Drawing.Point(0, 200);
+            this.iconButton11.Location = new System.Drawing.Point(0, 500);
             this.iconButton11.Name = "iconButton11";
             this.iconButton11.Size = new System.Drawing.Size(964, 100);
             this.iconButton11.TabIndex = 11;
