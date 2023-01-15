@@ -48,7 +48,7 @@ namespace OSCVRCWiz.TTS
 
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);
-                WaveFileReader wav = new WaveFileReader(memoryStream);
+                var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1)); //11000 and 16 seemed to be the closest to the original
                 var output = new WaveOut();
                 output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
                 output.Init(wav);
