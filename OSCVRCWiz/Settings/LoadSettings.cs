@@ -227,28 +227,30 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked = Settings1.Default.saveVoiceActStyle;
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked = Settings1.Default.hotketSave;
 
-          /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox4.Text = emojiSettings.Default.emoji4;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox5.Text = emojiSettings.Default.emoji5;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox6.Text = emojiSettings.Default.emoji6;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox7.Text = emojiSettings.Default.emoji7;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox8.Text = emojiSettings.Default.emoji8;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox9.Text = emojiSettings.Default.emoji9;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox10.Text = emojiSettings.Default.emoji10;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox11.Text = emojiSettings.Default.emoji11;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox12.Text = emojiSettings.Default.emoji12;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox13.Text = emojiSettings.Default.emoji13;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox14.Text = emojiSettings.Default.emoji14;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox15.Text = emojiSettings.Default.emoji15;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox16.Text = emojiSettings.Default.emoji16;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text = emojiSettings.Default.emoji17;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text = emojiSettings.Default.emoji18;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text = emojiSettings.Default.emoji19;
-            VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text = emojiSettings.Default.emoji20;
-          */
+
+            /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox4.Text = emojiSettings.Default.emoji4;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox5.Text = emojiSettings.Default.emoji5;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox6.Text = emojiSettings.Default.emoji6;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox7.Text = emojiSettings.Default.emoji7;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox8.Text = emojiSettings.Default.emoji8;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox9.Text = emojiSettings.Default.emoji9;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox10.Text = emojiSettings.Default.emoji10;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox11.Text = emojiSettings.Default.emoji11;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox12.Text = emojiSettings.Default.emoji12;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox13.Text = emojiSettings.Default.emoji13;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox14.Text = emojiSettings.Default.emoji14;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox15.Text = emojiSettings.Default.emoji15;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox16.Text = emojiSettings.Default.emoji16;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text = emojiSettings.Default.emoji17;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text = emojiSettings.Default.emoji18;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text = emojiSettings.Default.emoji19;
+              VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text = emojiSettings.Default.emoji20;
+            */
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;

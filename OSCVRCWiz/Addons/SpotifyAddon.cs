@@ -8,6 +8,7 @@ using SpotifyAPI.Web;
 using OSCVRCWiz.Settings;
 using System.Diagnostics;
 using OSCVRCWiz.Text;
+using System.Windows;
 
 namespace OSCVRCWiz.Addons
 {
@@ -254,12 +255,16 @@ namespace OSCVRCWiz.Addons
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
                     theString = theString.Replace("{pause}", spotifyPausedIndicator);
+                    theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());
+                    theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
+                    theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
+                    theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
 
 
 
 
                     //  var ot = new OutputText();
-                    if(VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
                     {
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true && WindowsMedia.mediaStatus != "Paused" || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {

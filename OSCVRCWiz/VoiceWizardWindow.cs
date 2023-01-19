@@ -2072,6 +2072,19 @@ namespace OSCVRCWiz
             MessageBox.Show("Restart App");
 
         }
+
+        private void rjToggleButton9_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButton9.Checked==true)
+            {
+                RegisterHotKey(this.Handle, 0, (int)KeyModifier.Control, Keys.G.GetHashCode());
+            }
+            if (rjToggleButton9.Checked == false)
+            {
+                UnregisterHotKey(this.Handle, 0);
+            }
+
+        }
     }
 
 

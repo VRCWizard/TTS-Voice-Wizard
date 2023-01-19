@@ -150,6 +150,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.wordReplaceBeforeTTS = VoiceWizardWindow.MainFormGlobal.rjToggleReplaceBeforeTTS.Checked;
 
+            Settings1.Default.hotketSave = VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked;
+
 
 
 

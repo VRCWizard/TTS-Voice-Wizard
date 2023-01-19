@@ -123,7 +123,7 @@ namespace OSCVRCWiz
                         var reader = new StreamReader(body, encoding);
                         string json = reader.ReadToEnd();
                         var text = JObject.Parse(json)["transcript"].ToString();   
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text));
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Web Captioner"));
 
                    
                 

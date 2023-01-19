@@ -94,10 +94,10 @@
             this.tabAddons = new System.Windows.Forms.TabPage();
             this.label72 = new System.Windows.Forms.Label();
             this.translucentPanel1 = new OSCVRCWiz.RJControls.TranslucentPanel();
-            this.iconButton42 = new FontAwesome.Sharp.IconButton();
-            this.iconButton25 = new FontAwesome.Sharp.IconButton();
-            this.iconButton27 = new FontAwesome.Sharp.IconButton();
             this.iconButton11 = new FontAwesome.Sharp.IconButton();
+            this.iconButton25 = new FontAwesome.Sharp.IconButton();
+            this.iconButton42 = new FontAwesome.Sharp.IconButton();
+            this.iconButton27 = new FontAwesome.Sharp.IconButton();
             this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.tabEmoji = new System.Windows.Forms.TabPage();
@@ -372,6 +372,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.rjToggleButton9 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -1628,25 +1629,25 @@
             this.translucentPanel1.Size = new System.Drawing.Size(964, 638);
             this.translucentPanel1.TabIndex = 0;
             // 
-            // iconButton42
+            // iconButton11
             // 
-            this.iconButton42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton42.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton42.FlatAppearance.BorderSize = 0;
-            this.iconButton42.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton42.IconChar = FontAwesome.Sharp.IconChar.Retweet;
-            this.iconButton42.IconColor = System.Drawing.Color.White;
-            this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton42.Location = new System.Drawing.Point(0, 300);
-            this.iconButton42.Name = "iconButton42";
-            this.iconButton42.Size = new System.Drawing.Size(964, 100);
-            this.iconButton42.TabIndex = 14;
-            this.iconButton42.Text = "Word Replacements";
-            this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton42.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton42.UseVisualStyleBackColor = false;
-            this.iconButton42.Click += new System.EventHandler(this.iconButton42_Click);
+            this.iconButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton11.FlatAppearance.BorderSize = 0;
+            this.iconButton11.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton11.IconChar = FontAwesome.Sharp.IconChar.SmileWink;
+            this.iconButton11.IconColor = System.Drawing.Color.White;
+            this.iconButton11.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton11.Location = new System.Drawing.Point(0, 500);
+            this.iconButton11.Name = "iconButton11";
+            this.iconButton11.Size = new System.Drawing.Size(964, 100);
+            this.iconButton11.TabIndex = 11;
+            this.iconButton11.Text = "Emojis";
+            this.iconButton11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton11.UseVisualStyleBackColor = false;
+            this.iconButton11.Click += new System.EventHandler(this.iconButton11_Click);
             // 
             // iconButton25
             // 
@@ -1668,6 +1669,26 @@
             this.iconButton25.UseVisualStyleBackColor = false;
             this.iconButton25.Click += new System.EventHandler(this.iconButton25_Click);
             // 
+            // iconButton42
+            // 
+            this.iconButton42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton42.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton42.FlatAppearance.BorderSize = 0;
+            this.iconButton42.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton42.IconChar = FontAwesome.Sharp.IconChar.Retweet;
+            this.iconButton42.IconColor = System.Drawing.Color.White;
+            this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton42.Location = new System.Drawing.Point(0, 300);
+            this.iconButton42.Name = "iconButton42";
+            this.iconButton42.Size = new System.Drawing.Size(964, 100);
+            this.iconButton42.TabIndex = 14;
+            this.iconButton42.Text = "Word Replacements";
+            this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton42.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton42.UseVisualStyleBackColor = false;
+            this.iconButton42.Click += new System.EventHandler(this.iconButton42_Click);
+            // 
             // iconButton27
             // 
             this.iconButton27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -1687,26 +1708,6 @@
             this.iconButton27.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton27.UseVisualStyleBackColor = false;
             this.iconButton27.Click += new System.EventHandler(this.iconButton27_Click_1);
-            // 
-            // iconButton11
-            // 
-            this.iconButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton11.FlatAppearance.BorderSize = 0;
-            this.iconButton11.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton11.IconChar = FontAwesome.Sharp.IconChar.SmileWink;
-            this.iconButton11.IconColor = System.Drawing.Color.White;
-            this.iconButton11.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton11.Location = new System.Drawing.Point(0, 500);
-            this.iconButton11.Name = "iconButton11";
-            this.iconButton11.Size = new System.Drawing.Size(964, 100);
-            this.iconButton11.TabIndex = 11;
-            this.iconButton11.Text = "Emojis";
-            this.iconButton11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton11.UseVisualStyleBackColor = false;
-            this.iconButton11.Click += new System.EventHandler(this.iconButton11_Click);
             // 
             // iconButton10
             // 
@@ -3717,6 +3718,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rjToggleButton9);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.rjToggleDarkMode);
             this.groupBox1.Controls.Add(this.label104);
@@ -3946,7 +3948,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(6, 274);
+            this.label11.Location = new System.Drawing.Point(61, 269);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 20);
             this.label11.TabIndex = 27;
@@ -5387,6 +5389,23 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // rjToggleButton9
+            // 
+            this.rjToggleButton9.AutoSize = true;
+            this.rjToggleButton9.Checked = true;
+            this.rjToggleButton9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButton9.Location = new System.Drawing.Point(10, 269);
+            this.rjToggleButton9.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButton9.Name = "rjToggleButton9";
+            this.rjToggleButton9.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton9.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton9.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButton9.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton9.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButton9.TabIndex = 102;
+            this.rjToggleButton9.UseVisualStyleBackColor = true;
+            this.rjToggleButton9.CheckedChanged += new System.EventHandler(this.rjToggleButton9_CheckedChanged);
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -5842,5 +5861,6 @@
         private FontAwesome.Sharp.IconButton iconButton44;
         private FontAwesome.Sharp.IconButton iconButton45;
         private Button button25;
+        public RJControls.RJToggleButton rjToggleButton9;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.Media.Control;
 using WindowsMediaController;
 using OSCVRCWiz.Text;
-
+using static WindowsMediaController.MediaManager; //allows for getting session
 
 namespace OSCVRCWiz.Addons
 {
@@ -22,6 +22,7 @@ namespace OSCVRCWiz.Addons
         public static bool pauseMedia = false;
         private readonly static object _lock = new();
         static List<string> approvedMediaSourceList = new List<string>();
+        private static MediaSession getSession;
 
         public static async Task getWindowsMedia()
         {
@@ -31,14 +32,52 @@ namespace OSCVRCWiz.Addons
             mediaManager.OnAnySessionClosed += MediaManager_OnAnySessionClosed;
             mediaManager.OnAnyPlaybackStateChanged += MediaManager_OnAnyPlaybackStateChanged;
             mediaManager.OnAnyMediaPropertyChanged += MediaManager_OnAnyMediaPropertyChanged;
+           
 
             mediaManager.Start();
 
             //  mediaManager.Dispose(); // should dispose manually if nessicary, for instance if I want to stop media completely
 
         }
-        private static void MediaManager_OnAnySessionOpened(MediaManager.MediaSession session)
+        public static string getMediaProgress()
         {
+            try
+            {
+                return getSession.ControlSession.GetTimelineProperties().Position.ToString(@"mm\:ss").ToString();
+            }
+            catch (Exception ex) { }
+            return "#";
+        }
+        public static string getMediaDuration()
+        {
+            try
+            {
+                return getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"mm\:ss").ToString();
+            }
+            catch (Exception ex) { }
+            return "#";
+        }
+        public static string getMediaProgressHours()
+        {
+            try
+            {
+                return getSession.ControlSession.GetTimelineProperties().Position.ToString(@"hh\:mm\:ss").ToString();
+            }
+            catch (Exception ex) { }
+            return "#";
+        }
+        public static string getMediaDurationHours()
+        {
+            try
+            {
+                return getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"hh\:mm\:ss").ToString();
+            }
+            catch (Exception ex) { }
+            return "#";
+        }
+        public static void MediaManager_OnAnySessionOpened(MediaManager.MediaSession session)
+        {
+            getSession= session;
             string info = "[Windows Media New Source: " + session.Id + "]";
             //   var ot = new OutputText();
             Task.Run(() => OutputText.outputLog(info));

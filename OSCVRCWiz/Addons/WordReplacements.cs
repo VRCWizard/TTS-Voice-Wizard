@@ -53,8 +53,9 @@ namespace Addons
 
             try
             {
+                
+                replaceDict.Add(wordKey, wordValue);//it is important to catch the thing that will actually break first in this case*** (fixes but with phantom entry after error occurs)
                 VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.Items.Add($"{VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.Items.Count + 1} | {wordKey} ---> {wordValue}", true);
-                replaceDict.Add(wordKey, wordValue);
             }
             catch(Exception ex)
             {

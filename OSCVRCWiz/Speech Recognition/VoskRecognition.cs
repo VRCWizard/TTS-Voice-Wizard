@@ -111,7 +111,7 @@ namespace OSCVRCWiz
                         System.Diagnostics.Debug.WriteLine("Vosk: " + text);
                         if (text != "")//only does stuff if the string is nothing silence
                         {
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Vosk"));
                         }
                     }
                     else
@@ -129,7 +129,7 @@ namespace OSCVRCWiz
         {
             try
             {
-                waveIn.StopRecording();
+                waveIn.StopRecording();                
                 rec.Dispose();
                 model.Dispose();
                 OutputText.outputLog("[Vosk Stopped Listening]");

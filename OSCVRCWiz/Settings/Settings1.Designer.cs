@@ -1090,5 +1090,17 @@ namespace OSCVRCWiz.Settings {
                 this["emojiNewSave"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool hotketSave {
+            get {
+                return ((bool)(this["hotketSave"]));
+            }
+            set {
+                this["hotketSave"] = value;
+            }
+        }
     }
 }
