@@ -18,6 +18,7 @@ using TTS;
 using OSCVRCWiz.Text;
 using Resources;
 using NAudio.Wave;
+using System.Windows.Shapes;
 
 namespace OSCVRCWiz
 {
@@ -67,23 +68,29 @@ namespace OSCVRCWiz
         }
             public static void doVosk()
         {
+
+            var path = VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString();
             try
             {
-                OutputText.outputLog("[Starting Up Vosk...]");
-                model = new Model(VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString());
-                rec = new VoskRecognizer(model, 48000f);
-
-
-              
-                waveIn = new WaveInEvent();
-                waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
-
-
-                //Start Listening
-                    waveIn.WaveFormat = new WaveFormat(48000, 1);
-                    waveIn.DataAvailable += WaveInOnDataAvailable;
-                    waveIn?.StartRecording();
-                OutputText.outputLog("[Vosk Listening]");
+                if (!Directory.Exists(path + "\\graph"))//simiple check before crashing to let user know why.
+                {
+                    // MessageBox.Show("It seems that the folder you have selected may not be a valid vosk model. The most common mistake is picking the outer folder when you should select the folder that contains the 'readme' and 'graph' folder etc.");
+                    if (MessageBox.Show("Are you sure this is a valid vosk model? If the selected folder is not valid TTS Voice Wizard will crash. (The most common mistake is picking the outer folder when you should select the folder that contains the 'readme' and 'graph' folder etc.) ", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        // user clicked yes
+                        Task.Run(() => runVoskNow(path));
+                    }
+                    else
+                    {
+                        // user clicked no
+                        OutputText.outputLog("[Vosk Failed to Start]", Color.Red);
+                        voskEnabled = false;
+                    }
+                }
+                else
+                {
+                    Task.Run(() => runVoskNow(path));
+                }
 
 
             }
@@ -98,10 +105,30 @@ namespace OSCVRCWiz
 
             }
         }
+        private static void runVoskNow(string path)
+        {
+            OutputText.outputLog("[Starting Up Vosk...]");
+            model = new Model(path);
+            rec = new VoskRecognizer(model, 48000f);
+
+
+
+            waveIn = new WaveInEvent();
+            waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
+
+
+            //Start Listening
+            waveIn.WaveFormat = new WaveFormat(48000, 1);
+            waveIn.DataAvailable += WaveInOnDataAvailable;
+            waveIn?.StartRecording();
+            OutputText.outputLog("[Vosk Listening]");
+        }
         private static async void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
         {
             try
             {
+                if (rec != null)
+                {
                     if (rec.AcceptWaveform(e.Buffer, e.BytesRecorded))
                     {
 
@@ -111,13 +138,14 @@ namespace OSCVRCWiz
                         System.Diagnostics.Debug.WriteLine("Vosk: " + text);
                         if (text != "")//only does stuff if the string is nothing silence
                         {
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Vosk"));
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Vosk"));
                         }
                     }
                     else
                     {
                         //  VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, rec.PartialResult());
                     }
+                }
             }
             catch (Exception ex)
             {
@@ -129,9 +157,11 @@ namespace OSCVRCWiz
         {
             try
             {
-                waveIn.StopRecording();                
-                rec.Dispose();
-                model.Dispose();
+                waveIn.StopRecording();
+               // model = null;
+                rec = null;
+                rec?.Dispose();
+                model?.Dispose();
                 OutputText.outputLog("[Vosk Stopped Listening]");
             }
             catch (Exception ex)
