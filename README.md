@@ -3,15 +3,24 @@
 ![downloads](https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Downloads) <br />
 ## Features
 Use TTS Voice Wizard's accessibility features to improve your VRChat experience (**it works outside of VRChat too!**)<br />
-* You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS.<br />
-* You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText or VRChats Chatbox!<br />
-* You can translate what you say in one language to one of **20+ other support languages!** (Have a language you want added? Join the discord linked below and let me know!) <br />
-* There are **100+ different** voices with various customization options so you can pick a voice that best suits you! <br />
-* You can even let others know what you are listening to on Spotify by having a songs title, artist and progress appear above you! <br />
-* Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look
 
+🎙️ You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS! <br />
 
-![image](https://user-images.githubusercontent.com/101527472/210952551-2faf767d-0eb0-458e-8769-b60e43476e45.png)
+💬 You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText or VRChats Chatbox! <br />
+
+🌐 You can translate what you say in one language to one of **20+ other support languages!** <br />
+
+🔊 There are **100+ different** voices with various customization options so you can pick a voice that best suits you <br />
+
+🎵 Display what song you are listening to on Spotify or via your browser <br />
+
+🔋 Display tracker and controller battery life in conjunction with XSOverlay <br />
+
+❤️ Display Heartrate in chatbox in conjunction with HRtoVRChat_OSC <br />
+
+📹 Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look
+
+<img src="https://user-images.githubusercontent.com/101527472/210952551-2faf767d-0eb0-458e-8769-b60e43476e45.png" width="800" height="524" />
 
 ## Quickstart Guide
 -  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard
