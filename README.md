@@ -46,7 +46,10 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 ## Credits
 - [CoreOSC](https://github.com/dastevens/CoreOSC) - Sending / recieving OSC data (modified for sending UTF8)
 - [octokit.net](https://github.com/octokit/octokit.net) - Github Update Notifier
+- [AutoUpdater.NET](https://github.com/ravibpatel/AutoUpdater.NET) - Auto Updater for .NET applications
 - [Sharptalk](https://github.com/whatsecretproject/SharpTalk) - .NET wrapper for the FonixTalk TTS engine.
 - [tiktok-tts](https://github.com/Weilbyte/tiktok-tts) - Tiktok voices made possible by Weilbyte's Tiktok TTS endpoint
+- [KillFrenzyAvatarText (KAT)](https://github.com/killfrenzy96/KillFrenzyAvatarText) - A text display system designed to be used on VRChat Avatars
+- [Frosty's Billboard](https://github.com/Frosty704/Billboard) - Frosty's billboard is a container for the KAT allowing you to have a speech bubble in your hand
 
 
