@@ -22,6 +22,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using Settings;
 using System.Windows.Forms;
+using AutoUpdaterDotNET;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -32,10 +33,17 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.7.3";
-        string releaseDate = "January 20, 2023";
+        public static string currentVersion = "0.9.8.0";
+        string releaseDate = "January 25, 2023";
+        string versionBuild = "x64"; //update when converting to x86/x64
+        //string versionBuild = "x86"; //update when converting to x86/x64
+        string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
+      //  string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x86.xml"; //update when converting to x86/x64
+        //update build
 
-       // public OutputText ot;
+
+
+        // public OutputText ot;
         public GreenScreen pf;
         public static VoiceWizardWindow MainFormGlobal;
 
@@ -53,6 +61,7 @@ namespace OSCVRCWiz
         public System.Threading.Timer hideTimer;
         public System.Threading.Timer toastTimer;
         public System.Threading.Timer typeTimer;
+
         public static System.Threading.Timer spotifyTimer;
 
        
@@ -352,7 +361,7 @@ namespace OSCVRCWiz
                 if (versionComparison < 0)
                 {
                     //The version on GitHub is more up to date than this local release.
-                    OutputText.outputLog("[The version on GitHub (" + releaseText + ") is more up to date than the current version (" + currentVersion + "). Grab the new release from the Github https://github.com/VRCWizard/TTS-Voice-Wizard/releases ]");
+                    OutputText.outputLog("[The version on GitHub (" + releaseText + ") is more up to date than the current version (" + currentVersion + "). Click the yellow update button to auto update or grab the new release from the Github https://github.com/VRCWizard/TTS-Voice-Wizard/releases ]");
                     iconButton8.Visible = true;
                     //  ot.outputLog(this, "[After downloading the updated version you may want to copy your config settings over by replacing the new config file with the old one. Config files are stored in AppData/Local/TTSVoiceWizard]");
                 }
@@ -366,7 +375,7 @@ namespace OSCVRCWiz
                     //This local Version and the Version on GitHub are equal.
                     OutputText.outputLog("[The current version (" + currentVersion + ") and the version on GitHub (" + releaseText + ") are equal. Your program is up to date]");
                 }
-                richTextBox5.Text = "Current Version: v"+currentVersion+" - "+releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
+                richTextBox5.Text = "Current Version: v"+currentVersion+ "-"+versionBuild + " - " + releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
             }
             catch (Exception ex)
             {
@@ -419,7 +428,19 @@ namespace OSCVRCWiz
 
             //CSCoreAudioDevices.CSCoreOuputDevicesGet();
             //CSCoreAudioDevices.CSCoreOuputDevicesGet();
-            //CSCoreAudioDevices.CSCoreOuputDevicesGet();
+            //CSCoreAudioDevices.CSCoreOuputDevicesGet()
+
+            try
+            {
+                File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
+            }
+            catch(Exception ex)
+            {
+                OutputText.outputLog("[OBSText File Error: " + ex.Message + "]", Color.Red);
+            }
+            
+
+
 
 
 
@@ -574,7 +595,10 @@ namespace OSCVRCWiz
                         case "TikTok":
                             Task.Run(() => TikTokTTS.TikTokTextAsSpeech(speechText));
                             break;
-                       
+                        case "Glados":
+                            Task.Run(() => GladosTTS.GladosTextAsSpeech(speechText));
+                            break;
+
 
                 default:
 
@@ -858,9 +882,16 @@ namespace OSCVRCWiz
 
             OSCListener.pauseBPM = false;
             SpotifyAddon.pauseSpotify = false;
+            OutputText.EraserRunning = false;
 
             if (rjToggleButtonOSC.Checked == true)
             {
+                if(VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked == true)
+                {
+                    Task.Delay(2500).Wait();
+
+                }
+                
                 var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
                 OSC.OSCSender.Send(message0);
                 var message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
@@ -1356,7 +1387,11 @@ namespace OSCVRCWiz
 
         private void iconButton8_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/releases");
+            // System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/releases");
+            AutoUpdater.Start(updateXMLName);
+            AutoUpdater.InstalledVersion = new Version(currentVersion);
+            AutoUpdater.DownloadPath = @"updates";
+
         }
 
         private void iconButton26_Click(object sender, EventArgs e)
@@ -1588,7 +1623,25 @@ namespace OSCVRCWiz
                     TTSModeSaved = "Azure";
                     break;
 
-              
+                case "Glados":
+
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.Add("Glados");
+                    comboBox2.SelectedIndex = 0;
+
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = false;
+                    comboBoxPitch.Enabled = false;
+                    comboBoxVolume.Enabled = false;
+                    comboBoxRate.Enabled = false;
+                    TTSModeSaved = "Glados";
+
+                    break;
+
+
 
                 default:
                     TTSModeSaved = "No TTS";

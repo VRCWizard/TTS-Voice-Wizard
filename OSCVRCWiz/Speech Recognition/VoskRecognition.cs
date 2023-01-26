@@ -32,6 +32,11 @@ namespace OSCVRCWiz
       //  static Dictionary<string, int> AlternateInputDevices = new Dictionary<string, int>();
         static bool voskEnabled = false;
 
+        static bool voskPause = false;
+
+       // static bool voskMute = false;
+
+
 
         public static void toggleVosk()
         {
@@ -39,12 +44,27 @@ namespace OSCVRCWiz
             {
                 if (voskEnabled == false)
                 {
-                    Task.Run(() => VoskRecognition.doVosk());
-                    voskEnabled = true;
+                   
+
+                    if(voskPause==false)
+                    {
+                        Task.Run(() => VoskRecognition.doVosk());
+                        voskPause= true;
+                    }
+                    else
+                    {
+                        Task.Run(() => VoskRecognition.unpauseVosk());
+                    }
+                       
+                        voskEnabled = true;
+                       // voskPaused= true;
+                 
                 }
                 else
                 {
-                    Task.Run(() => VoskRecognition.stopVosk());
+                    Task.Run(() => VoskRecognition.pauseVosk());
+
+
                     voskEnabled = false;
 
                 }
@@ -62,6 +82,7 @@ namespace OSCVRCWiz
             {
                 Task.Run(() => VoskRecognition.stopVosk());
                 voskEnabled = false;
+                voskPause= false;
 
             }
 
@@ -163,6 +184,46 @@ namespace OSCVRCWiz
                 rec?.Dispose();
                 model?.Dispose();
                 OutputText.outputLog("[Vosk Stopped Listening]");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+        }
+        public static void pauseVosk()
+        {
+            try
+            {
+                waveIn.StopRecording();
+                // model = null;
+                //  rec = null;
+                //   rec?.Dispose();
+                //   model?.Dispose();
+              //  voskPaused = true;
+                OutputText.outputLog("[Vosk Muted, to free resources switch speech to text mode]");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+
+        }
+        public static void unpauseVosk()
+        {
+            try
+            {
+                waveIn.StartRecording();
+                // model = null;
+                //  rec = null;
+                //   rec?.Dispose();
+                //   model?.Dispose();
+               // voskPaused = false;
+                OutputText.outputLog("[Vosk Unmuted]");
             }
             catch (Exception ex)
             {

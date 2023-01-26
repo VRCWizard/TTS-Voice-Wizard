@@ -28,7 +28,7 @@ namespace OSCVRCWiz.Addons
         public static string spotifyurllink = "https://open.spotify.com/";
         public static bool legacyState = false;
         static string fullSongPauseCheck = "";
-        public static string spotifyPausedIndicator = "▶️";
+       // public static string spotifyPausedIndicator = "▶️";
 
         public static bool pauseSpotify =false;
         public static string spotifyInterval ="1500";
@@ -148,6 +148,7 @@ namespace OSCVRCWiz.Addons
                     {
                         // VoiceWizardWindow.pauseBPM = true; pause removed to fix with spotify 
                         // lastSong = title;
+                        var spotifyPausedIndicator = "▶️";
 
                         if (fullSongPauseCheck != progress)
                         {
@@ -218,7 +219,7 @@ namespace OSCVRCWiz.Addons
             catch (Exception ex)
             {
 
-                if (previousError !="The access token expired" && previousError != "String is empty or null (Parameter 'clientId')")//only say these once, dont spam them
+                if (previousError !="The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APITooManyRequestsException' was thrown.")//only say these once, dont spam them
                 {
                     OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
                     previousError = ex.Message.ToString();
@@ -230,6 +231,7 @@ namespace OSCVRCWiz.Addons
         }
         public static async Task windowsMediaGetSongInfo()
         {
+            var spotifyPausedIndicator = "▶️";
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true )  //10 media mode
             {
                 if (pauseSpotify== false)
@@ -243,6 +245,7 @@ namespace OSCVRCWiz.Addons
                         spotifyPausedIndicator = "⏸️";
                     }
 
+                    var spotifySymbol = "ふ";
                     var theString = "";
                     theString = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString();
 
@@ -259,6 +262,8 @@ namespace OSCVRCWiz.Addons
                     theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
                     theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
                     theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+                    theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+
 
 
 
@@ -268,6 +273,7 @@ namespace OSCVRCWiz.Addons
                     {
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true && WindowsMedia.mediaStatus != "Paused" || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
+                            theString = theString.Replace("{pause}", "▶️");
                             MediaOutput(theString);
                         }
 

@@ -685,7 +685,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool playMediaSetting {
             get {
                 return ((bool)(this["playMediaSetting"]));
@@ -1100,6 +1100,18 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["hotketSave"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveAutoRefreshKat {
+            get {
+                return ((bool)(this["saveAutoRefreshKat"]));
+            }
+            set {
+                this["saveAutoRefreshKat"] = value;
             }
         }
     }

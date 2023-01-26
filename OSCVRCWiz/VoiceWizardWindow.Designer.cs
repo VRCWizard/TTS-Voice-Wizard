@@ -227,6 +227,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxErase = new System.Windows.Forms.TextBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.rjToggleButtonAutoRefreshKAT = new OSCVRCWiz.RJControls.RJToggleButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -247,6 +249,7 @@
             this.iconButton28 = new FontAwesome.Sharp.IconButton();
             this.iconButton38 = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rjToggleButton9 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label27 = new System.Windows.Forms.Label();
             this.rjToggleDarkMode = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label104 = new System.Windows.Forms.Label();
@@ -372,7 +375,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.rjToggleButton9 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -634,9 +636,9 @@
             this.hideVRCTextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideVRCTextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.hideVRCTextButton.ForeColor = System.Drawing.Color.Snow;
-            this.hideVRCTextButton.Location = new System.Drawing.Point(348, 77);
+            this.hideVRCTextButton.Location = new System.Drawing.Point(442, 77);
             this.hideVRCTextButton.Name = "hideVRCTextButton";
-            this.hideVRCTextButton.Size = new System.Drawing.Size(278, 47);
+            this.hideVRCTextButton.Size = new System.Drawing.Size(184, 47);
             this.hideVRCTextButton.TabIndex = 16;
             this.hideVRCTextButton.Text = "Hide KAT";
             this.hideVRCTextButton.UseVisualStyleBackColor = false;
@@ -746,9 +748,9 @@
             // 
             // textBoxDelay
             // 
-            this.textBoxDelay.Location = new System.Drawing.Point(14, 147);
+            this.textBoxDelay.Location = new System.Drawing.Point(198, 128);
             this.textBoxDelay.Name = "textBoxDelay";
-            this.textBoxDelay.Size = new System.Drawing.Size(125, 27);
+            this.textBoxDelay.Size = new System.Drawing.Size(94, 27);
             this.textBoxDelay.TabIndex = 24;
             this.textBoxDelay.Text = "250";
             // 
@@ -757,7 +759,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.Snow;
-            this.label7.Location = new System.Drawing.Point(10, 124);
+            this.label7.Location = new System.Drawing.Point(198, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 25;
@@ -768,7 +770,7 @@
             this.buttonDelayHere.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.buttonDelayHere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDelayHere.ForeColor = System.Drawing.Color.Snow;
-            this.buttonDelayHere.Location = new System.Drawing.Point(145, 145);
+            this.buttonDelayHere.Location = new System.Drawing.Point(298, 127);
             this.buttonDelayHere.Name = "buttonDelayHere";
             this.buttonDelayHere.Size = new System.Drawing.Size(66, 29);
             this.buttonDelayHere.TabIndex = 26;
@@ -1229,6 +1231,7 @@
             "TikTok",
             "FonixTalk",
             "Azure",
+            "Glados",
             "No TTS"});
             this.comboBoxTTSMode.Location = new System.Drawing.Point(21, 61);
             this.comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -3429,6 +3432,8 @@
             // 
             // groupBox20
             // 
+            this.groupBox20.Controls.Add(this.label63);
+            this.groupBox20.Controls.Add(this.rjToggleButtonAutoRefreshKAT);
             this.groupBox20.Controls.Add(this.button2);
             this.groupBox20.Controls.Add(this.button12);
             this.groupBox20.Controls.Add(this.hideVRCTextButton);
@@ -3442,10 +3447,35 @@
             this.groupBox20.ForeColor = System.Drawing.Color.White;
             this.groupBox20.Location = new System.Drawing.Point(324, 549);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(638, 190);
+            this.groupBox20.Size = new System.Drawing.Size(638, 196);
             this.groupBox20.TabIndex = 122;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "KillFrenzy Avatar Text (KAT)";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label63.ForeColor = System.Drawing.Color.Snow;
+            this.label63.Location = new System.Drawing.Point(66, 62);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(120, 20);
+            this.label63.TabIndex = 109;
+            this.label63.Text = "Auto Replay KAT";
+            // 
+            // rjToggleButtonAutoRefreshKAT
+            // 
+            this.rjToggleButtonAutoRefreshKAT.AutoSize = true;
+            this.rjToggleButtonAutoRefreshKAT.Location = new System.Drawing.Point(11, 62);
+            this.rjToggleButtonAutoRefreshKAT.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonAutoRefreshKAT.Name = "rjToggleButtonAutoRefreshKAT";
+            this.rjToggleButtonAutoRefreshKAT.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonAutoRefreshKAT.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonAutoRefreshKAT.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonAutoRefreshKAT.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonAutoRefreshKAT.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonAutoRefreshKAT.TabIndex = 110;
+            this.rjToggleButtonAutoRefreshKAT.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -3453,9 +3483,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.Snow;
-            this.button2.Location = new System.Drawing.Point(348, 18);
+            this.button2.Location = new System.Drawing.Point(442, 18);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(278, 47);
+            this.button2.Size = new System.Drawing.Size(184, 47);
             this.button2.TabIndex = 103;
             this.button2.Text = "Replay KAT";
             this.button2.UseVisualStyleBackColor = false;
@@ -3467,9 +3497,9 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button12.ForeColor = System.Drawing.Color.Snow;
-            this.button12.Location = new System.Drawing.Point(348, 136);
+            this.button12.Location = new System.Drawing.Point(442, 136);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(278, 47);
+            this.button12.Size = new System.Drawing.Size(184, 47);
             this.button12.TabIndex = 108;
             this.button12.Text = "Clear KAT";
             this.button12.UseVisualStyleBackColor = false;
@@ -3480,11 +3510,11 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label15.ForeColor = System.Drawing.Color.Snow;
-            this.label15.Location = new System.Drawing.Point(10, 64);
+            this.label15.Location = new System.Drawing.Point(8, 104);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(186, 20);
+            this.label15.Size = new System.Drawing.Size(146, 20);
             this.label15.TabIndex = 66;
-            this.label15.Text = "KAT Sync Parameter Speed";
+            this.label15.Text = "KAT Sync Parameters";
             // 
             // label23
             // 
@@ -3520,9 +3550,9 @@
             "4",
             "8",
             "16"});
-            this.comboBoxPara.Location = new System.Drawing.Point(14, 87);
+            this.comboBoxPara.Location = new System.Drawing.Point(12, 127);
             this.comboBoxPara.Name = "comboBoxPara";
-            this.comboBoxPara.Size = new System.Drawing.Size(182, 28);
+            this.comboBoxPara.Size = new System.Drawing.Size(142, 28);
             this.comboBoxPara.TabIndex = 31;
             this.comboBoxPara.SelectedIndexChanged += new System.EventHandler(this.comboBoxPara_SelectedIndexChanged);
             // 
@@ -3743,6 +3773,23 @@
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // rjToggleButton9
+            // 
+            this.rjToggleButton9.AutoSize = true;
+            this.rjToggleButton9.Checked = true;
+            this.rjToggleButton9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButton9.Location = new System.Drawing.Point(10, 269);
+            this.rjToggleButton9.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButton9.Name = "rjToggleButton9";
+            this.rjToggleButton9.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton9.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton9.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButton9.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton9.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButton9.TabIndex = 102;
+            this.rjToggleButton9.UseVisualStyleBackColor = true;
+            this.rjToggleButton9.CheckedChanged += new System.EventHandler(this.rjToggleButton9_CheckedChanged);
             // 
             // label27
             // 
@@ -5389,23 +5436,6 @@
             this.notifyIcon1.Text = "TTS Voice Wizard";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
-            // rjToggleButton9
-            // 
-            this.rjToggleButton9.AutoSize = true;
-            this.rjToggleButton9.Checked = true;
-            this.rjToggleButton9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton9.Location = new System.Drawing.Point(10, 269);
-            this.rjToggleButton9.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjToggleButton9.Name = "rjToggleButton9";
-            this.rjToggleButton9.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton9.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton9.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton9.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton9.Size = new System.Drawing.Size(45, 22);
-            this.rjToggleButton9.TabIndex = 102;
-            this.rjToggleButton9.UseVisualStyleBackColor = true;
-            this.rjToggleButton9.CheckedChanged += new System.EventHandler(this.rjToggleButton9_CheckedChanged);
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -5862,5 +5892,7 @@
         private FontAwesome.Sharp.IconButton iconButton45;
         private Button button25;
         public RJControls.RJToggleButton rjToggleButton9;
+        private Label label63;
+        public RJControls.RJToggleButton rjToggleButtonAutoRefreshKAT;
     }
 }

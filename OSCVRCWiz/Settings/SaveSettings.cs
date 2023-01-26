@@ -152,6 +152,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.hotketSave = VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked;
 
+            Settings1.Default.saveAutoRefreshKat= VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked;
+
 
 
 

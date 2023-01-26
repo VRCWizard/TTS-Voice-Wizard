@@ -21,6 +21,7 @@ namespace OSCVRCWiz.Text
         public static string numKATSyncParameters = "4";
         public static int debugDelayValue = Convert.ToInt32(Settings1.Default.delayDebugValueSetting);// Recommended delay of 250ms 
         public static int eraseDelay = Convert.ToInt32(Settings1.Default.hideDelayValue);
+        public static bool EraserRunning = false;
         public static async void outputLog(string textstring, Color? color= null)
         {
             //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
@@ -82,7 +83,7 @@ namespace OSCVRCWiz.Text
         }
         public static async void outputTextFile(string textstring)
         {
-            await File.WriteAllTextAsync("Text4OBS.txt", textstring);
+            await File.WriteAllTextAsync(@"TextOut\OBSText.txt", textstring);
         }
 
         public static async void outputVRChatSpeechBubbles(string textstring, string type)
@@ -180,7 +181,11 @@ namespace OSCVRCWiz.Text
             }
 
             var message0 = new OscMessage("/avatar/parameters/KAT_Visible", true);
-            OSC.OSCSender.Send(message0);
+
+            if (type != "tttAdd")// if adding then tttadd should already be visible
+            {
+                OSC.OSCSender.Send(message0);
+            }
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == true)
             {
@@ -406,10 +411,8 @@ namespace OSCVRCWiz.Text
                     }
                     SpotifyAddon.lastSong = SpotifyAddon.title;
                     break;
-                case "tttAdd":
-
-
-                    break;
+                case "tttAdd": break;
+                case "tttRefresh": break;
                 default:
                     OSC.OSCSender.Send(message1);
 
@@ -865,6 +868,7 @@ namespace OSCVRCWiz.Text
                             message9 = new OscMessage("/avatar/parameters/KAT_CharSync7", letterFloat7);
                             message0 = new OscMessage("/avatar/parameters/KAT_Visible", true);
 
+
                             OSC.OSCSender.Send(message1);
                             OSC.OSCSender.Send(message2);
                             OSC.OSCSender.Send(message3);
@@ -1008,7 +1012,7 @@ namespace OSCVRCWiz.Text
 
             }
 
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked && type != "tttRefresh" ) //inactive hide
             {
                 //make timer function start here or be reset here
                 System.Diagnostics.Debug.WriteLine("Outputing text to vrchat finished. Begun scheduled hide text timer");
@@ -1017,6 +1021,14 @@ namespace OSCVRCWiz.Text
 
                 //  System.Diagnostics.Debug.WriteLine("restart/start timer");
                 VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
+                EraserRunning = true;
+
+                //  for (int i = 0; i < 5; i++)
+                //   {
+                //  OutputText.outputVRChat(OutputText.lastKatString, "tttAdd");
+
+                //  }
+
 
             }
             else
@@ -1025,6 +1037,12 @@ namespace OSCVRCWiz.Text
                 //hide tet delay is recommened with media output
                OSCListener.pauseBPM = false;
                 SpotifyAddon.pauseSpotify = false;
+            }
+            if (EraserRunning == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked==true)
+            {
+                Task.Delay(2000).Wait();
+                OutputText.outputVRChat(OutputText.lastKatString, "tttRefresh");
+                
             }
 
 

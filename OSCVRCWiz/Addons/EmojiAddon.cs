@@ -202,7 +202,7 @@ namespace Addons
         public static void emojiEdit(int index,string phrase)
         {
             VoiceWizardWindow.MainFormGlobal.checkedListBox2.Items[index-1] = "Emoji "+index+": "+phrase;
-            ReplacePhraseList[index]= phrase;
+            ReplacePhraseList[index-1]= phrase;
 
         }
 

@@ -11,6 +11,8 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x86</Platforms>
     <PlatformTarget>x64</PlatformTarget>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autoupdater.NET.Official" Version="1.7.6" />
     <PackageReference Include="DeepL.net" Version="1.4.0" />
     <PackageReference Include="Dubya.WindowsMediaController" Version="2.2.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
@@ -34,7 +37,7 @@
     <PackageReference Include="MeaMod.DNS" Version="1.0.70" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.24.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1340-prerelease" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1518.46" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="Octokit" Version="3.0.0" />
     <PackageReference Include="Siticone.Desktop.UI" Version="2.1.1" />
@@ -92,16 +95,13 @@
     <None Update="KAT Emoji Texture Sheet\Readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Languages\LanguagesInfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Settings\Settings1.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="sounds\speechButton.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="sounds\TTSButton.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
@@ -119,6 +119,18 @@
 
   <ItemGroup>
     <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libwinpthread-1.dll" Link="lib\libwinpthread-1.dll" />
+    <None Update="sounds\speechButton.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="sounds\TTSButton.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextOut\OBSText.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="updates\UpdaterInfo.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

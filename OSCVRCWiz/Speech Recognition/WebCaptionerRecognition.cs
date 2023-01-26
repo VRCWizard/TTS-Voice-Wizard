@@ -68,7 +68,7 @@ namespace OSCVRCWiz
             // var httpServer = new HttpServer();
             Task.Run(() => Start());
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
-            OutputText.outputLog("[Starting HTTP listener for Web Captioner Started. Go to https://webcaptioner.com/captioner > Settings (bottom right) > Channels > Webhook > set 'http://localhost:54026/' as the Webhook URL and experiment with different chunking values (I recommend a large value so it only sends when you finish talking). Now you're all set to click 'Start Captioning' in Web Captioner]");
+            OutputText.outputLog("[Starting HTTP listener for Web Captioner Started. Webhook URL: http://localhost:54026/ ]");
             //button11.Enabled = false;
         }
         private static void webCapOff()
@@ -85,17 +85,38 @@ namespace OSCVRCWiz
 
         public static void Start()
             {
+            try
+            {
                 _listener = new HttpListener();
-            // _listener.Prefixes.Add("http://*:" + Port.ToString() + "/");//MUST RUN AS ADMIN //http://127.0.0.1:8080/
-            _listener.Prefixes.Add("http://localhost:" + Port.ToString() + "/"); //THIS IS THE EASIEST WAY TO MAKE USERS NOT HAVE TO RUN PROGRAM AS ADMINISTRATOR EVREY TIME!!! //http://localhost:8080/
-            _listener.Start();
-               
+                // _listener.Prefixes.Add("http://*:" + Port.ToString() + "/");//MUST RUN AS ADMIN //http://127.0.0.1:8080/
+                _listener.Prefixes.Add("http://localhost:" + Port.ToString() + "/"); //THIS IS THE EASIEST WAY TO MAKE USERS NOT HAVE TO RUN PROGRAM AS ADMINISTRATOR EVREY TIME!!! //http://localhost:8080/
+                _listener.Start();
+
                 Task.Run(() => Receive());
             }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[HTTP listener Unexpected Error (failed to start): " + ex.Message + "]", Color.Red);
+                webCapEnabled = false;
+
+            }
+        }
 
             public static void Stop()
             {
+            try
+            {
                 _listener.Stop();
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[HTTP listener Unexpected Error (still listening): " + ex.Message + "]", Color.Red);
+                webCapEnabled = true;
+
+            }
+
+        
+           
             }
 
             private static void Receive()
@@ -106,13 +127,20 @@ namespace OSCVRCWiz
 
             private static async void ListenerCallback(IAsyncResult result)
             {
+          
+
+
             System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
-            //  System.Diagnostics.Debug.WriteLine("testing if this still works");
-           // watch.Start();
-            if (_listener.IsListening)
+                //  System.Diagnostics.Debug.WriteLine("testing if this still works");
+                // watch.Start();
+                if (_listener.IsListening)
+                {
+                try
                 {
                     var context = _listener.EndGetContext(result);
                     var request = context.Request;
+
+               
 
 
 
@@ -122,17 +150,29 @@ namespace OSCVRCWiz
                         var encoding = request.ContentEncoding;
                         var reader = new StreamReader(body, encoding);
                         string json = reader.ReadToEnd();
-                        var text = JObject.Parse(json)["transcript"].ToString();   
+                        var text = JObject.Parse(json)["transcript"].ToString();
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Web Captioner"));
 
-                   
-                
-                }
+
+
+                    }
                     Stop();
                     Start();
 
                 }
+            catch (Exception ex)
+            {
+                    OutputText.outputLog("[HTTP listener Unexpected Error Try Again: "+ ex.Message+"]",Color.Red);
+                    
+
+                }
+
+           }
+            
+             
+
             }
+
        
 
 
@@ -144,6 +184,7 @@ namespace OSCVRCWiz
 
 
     }
+
     }
   
 
