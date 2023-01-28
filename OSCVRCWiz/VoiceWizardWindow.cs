@@ -33,8 +33,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.8.0";
-        string releaseDate = "January 25, 2023";
+        public static string currentVersion = "0.9.8.3";
+        string releaseDate = "January 26, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -64,7 +64,9 @@ namespace OSCVRCWiz
 
         public static System.Threading.Timer spotifyTimer;
 
-       
+        public System.Threading.Timer katRefreshTimer;
+
+
 
 
 
@@ -99,8 +101,11 @@ namespace OSCVRCWiz
                 hideTimer.Change(Timeout.Infinite, Timeout.Infinite);
                 typeTimer = new System.Threading.Timer(typetimertick);
                 typeTimer.Change(1500, 0);
+
                 toastTimer = new System.Threading.Timer(toasttimertick);
                 toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                katRefreshTimer = new System.Threading.Timer(katRefreshtimertick);
+                katRefreshTimer.Change(2000, 0);
                 //listView1.View = View.List;
                 TTSBoxText = richTextBox3.Text.ToString();
                 labelCharCount.Text = TTSBoxText.Length.ToString();
@@ -876,6 +881,12 @@ namespace OSCVRCWiz
             Thread t = new Thread(doToastTimerTick);
             t.Start();
         }
+        public void katRefreshtimertick(object sender)
+        {
+
+            Thread t = new Thread(doKatRefreshTimerTick);
+            t.Start();
+        }
         private void doHideTimerTick()
         {
             // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
@@ -991,12 +1002,25 @@ namespace OSCVRCWiz
 
 
         }
+        private void doKatRefreshTimerTick()
+        {
+            if (rjToggleButtonHideDelay2.Checked == false &&rjToggleButtonAutoRefreshKAT.Checked==true)
+            {
+                if (rjToggleButtonOSC.Checked == true)
+                {
+                    OutputText.outputVRChat(OutputText.lastKatString, "tttAdd");
+                }
+
+
+                katRefreshTimer.Change(2000, 0);
+            }
+        }
 
 
 
 
 
-        private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
+            private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (rjToggleButton1.Checked == true)
             {
@@ -1330,6 +1354,9 @@ namespace OSCVRCWiz
         {
            // var sender4 = new CoreOSC.UDPSender("127.0.0.1", 9000);
             var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+            OutputText.lastKatString = "";
+            
+
             OSC.OSCSender.Send(message0);
         }
 
@@ -2137,6 +2164,22 @@ namespace OSCVRCWiz
                 UnregisterHotKey(this.Handle, 0);
             }
 
+        }
+
+        private void rjToggleButtonHideDelay2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+            {
+                katRefreshTimer.Change(2000, 0);
+            }
+        }
+
+        private void rjToggleButtonAutoRefreshKAT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+            {
+                katRefreshTimer.Change(2000, 0);
+            }
         }
     }
 

@@ -220,7 +220,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Speech Setup Failed: Make sure that you have setup your Azure Key and Region in the Provider tab (click the change buttons to apply changes) Reason:" + ex.Message.ToString());
+                MessageBox.Show("Speech Setup Failed: Make sure that you have setup your Azure Key and Region in the Provider tab (click the 'apply' buttons to apply changes) Reason:" + ex.Message.ToString());
 
             }
         }
@@ -278,7 +278,7 @@ namespace OSCVRCWiz
         public static async void translationSTTTS(string toLanguageFullname, string fromLanguageFullname)//translate speech to text
         {
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
-            try
+           try
             {
 
 
@@ -303,7 +303,7 @@ namespace OSCVRCWiz
                         System.Diagnostics.Debug.WriteLine($"Translated into '{toLanguage}': {speechRecognitionResult.Translations[toLanguage]}");
                     }
 
-                    var text = speechRecognitionResult.Text; //Dictation string; Global string used to keep track of result text for default azure speech to text
+                    var text = speechRecognitionResult.Text.ToString(); //Dictation string; Global string used to keep track of result text for default azure speech to text
                     string translatedString = speechRecognitionResult.Translations[toLanguage]; //Global string used to keep track of result text for translation azure speech to text
 
                     Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
@@ -332,10 +332,10 @@ namespace OSCVRCWiz
                     OutputText.outputLog("[Azure Continuous Listening Disabled (Translating)]");
                 }
 
-            }
+           }
             catch (Exception ex)
             {
-                MessageBox.Show("Translation STTTS Failed: This error usually occurs when attempting to translate your speech while your mic is not being picked up (check input device). Reason:" + ex.Message.ToString());
+                OutputText.outputLog("Translation STTTS Failed: Most likely your voice was not picked up by your microphone. Reason: " + ex.Message.ToString());
 
             }
         }

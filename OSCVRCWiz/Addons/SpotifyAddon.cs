@@ -236,13 +236,13 @@ namespace OSCVRCWiz.Addons
             {
                 if (pauseSpotify== false)
                 {
-                    if (WindowsMedia.mediaStatus != "Paused")
+                    if (WindowsMedia.mediaStatus == "Paused")
                     {
-                        spotifyPausedIndicator = "▶️";
+                        spotifyPausedIndicator = "⏸️";
                     }
                     else
                     {
-                        spotifyPausedIndicator = "⏸️";
+                        spotifyPausedIndicator = "▶️";
                     }
 
                     var spotifySymbol = "ふ";
@@ -257,12 +257,24 @@ namespace OSCVRCWiz.Addons
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
-                    theString = theString.Replace("{pause}", spotifyPausedIndicator);
                     theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());
                     theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
                     theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
                     theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+                    /* try{theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());}
+                     catch { theString = theString.Replace("{progressMinutes}", "-"); }
+                     try { theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration()); }
+                     catch { theString = theString.Replace("{durationMinutes}", "-"); }
+                     try { theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours()); }
+                     catch { theString = theString.Replace("{progressHours}", "-"); }
+                     try { theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours()); }
+                     catch { theString = theString.Replace("{durationHours}", "-"); }*/
+
                     theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
+                    {
+                        theString = theString.Replace("{pause}", spotifyPausedIndicator);
+                    }
 
 
 
@@ -273,13 +285,14 @@ namespace OSCVRCWiz.Addons
                     {
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true && WindowsMedia.mediaStatus != "Paused" || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
-                            theString = theString.Replace("{pause}", "▶️");
+                            
                             MediaOutput(theString);
                         }
 
                     }
                     else
                     {
+                        theString = theString.Replace("{pause}", "▶️");
                         MediaOutput(theString);
                     }
                    

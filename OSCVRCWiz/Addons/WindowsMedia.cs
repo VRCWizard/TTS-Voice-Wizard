@@ -22,7 +22,7 @@ namespace OSCVRCWiz.Addons
         public static bool pauseMedia = false;
         private readonly static object _lock = new();
         static List<string> approvedMediaSourceList = new List<string>();
-        private static MediaSession getSession;
+        private static MediaSession getSession = null;
 
         public static async Task getWindowsMedia()
         {
@@ -39,41 +39,95 @@ namespace OSCVRCWiz.Addons
             //  mediaManager.Dispose(); // should dispose manually if nessicary, for instance if I want to stop media completely
 
         }
+        //if time "" then there is no session
+        // if time 00:00/00:00 could not get time
+        //if time -/- then there was an error
         public static string getMediaProgress()
         {
             try
             {
-                return getSession.ControlSession.GetTimelineProperties().Position.ToString(@"mm\:ss").ToString();
+                var time = "";
+                if (getSession != null)
+                {
+                    if (getSession.ControlSession != null)
+                    {
+ 
+                            time = getSession.ControlSession.GetTimelineProperties().Position.ToString(@"mm\:ss").ToString();
+                       
+                    }
+                }
+                return time;
             }
-            catch (Exception ex) { }
-            return "#";
+            catch (Exception ex) {
+                OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
+            }
+            return "-:-";
         }
         public static string getMediaDuration()
         {
             try
             {
-                return getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"mm\:ss").ToString();
+               
+                var time = "";
+                if (getSession != null)
+                {
+                    if (getSession.ControlSession != null)
+                    {
+  
+                            time = getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"mm\:ss").ToString();
+  
+                    }
+                }
+                return time;
             }
-            catch (Exception ex) { }
-            return "#";
+            catch (Exception ex) {
+                OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
+            }
+            return "-:-";
         }
         public static string getMediaProgressHours()
         {
             try
             {
-                return getSession.ControlSession.GetTimelineProperties().Position.ToString(@"hh\:mm\:ss").ToString();
+                  var time = "";
+                if (getSession != null)
+                {
+                    if (getSession.ControlSession != null)
+                    {
+ 
+                            time = getSession.ControlSession.GetTimelineProperties().Position.ToString(@"hh\:mm\:ss").ToString();
+    
+                    }
+                }
+                return time;
+                
             }
-            catch (Exception ex) { }
-            return "#";
+            catch (Exception ex) {
+                OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
+            }
+            return "-:-";
         }
         public static string getMediaDurationHours()
         {
             try
             {
-                return getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"hh\:mm\:ss").ToString();
+                var time = "";
+                if (getSession != null)
+                {
+                    if (getSession.ControlSession != null)
+                    {
+    
+                            time = getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"hh\:mm\:ss").ToString();
+     
+                    }
+                }
+                return time;
+                
             }
-            catch (Exception ex) { }
-            return "#";
+            catch (Exception ex) {
+                OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
+            }
+            return "-:-";
         }
         public static void MediaManager_OnAnySessionOpened(MediaManager.MediaSession session)
         {

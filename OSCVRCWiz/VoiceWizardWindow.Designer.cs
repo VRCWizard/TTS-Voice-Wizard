@@ -3408,6 +3408,7 @@
             this.rjToggleButtonHideDelay2.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonHideDelay2.TabIndex = 78;
             this.rjToggleButtonHideDelay2.UseVisualStyleBackColor = true;
+            this.rjToggleButtonHideDelay2.CheckedChanged += new System.EventHandler(this.rjToggleButtonHideDelay2_CheckedChanged);
             // 
             // button1
             // 
@@ -3476,6 +3477,7 @@
             this.rjToggleButtonAutoRefreshKAT.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonAutoRefreshKAT.TabIndex = 110;
             this.rjToggleButtonAutoRefreshKAT.UseVisualStyleBackColor = true;
+            this.rjToggleButtonAutoRefreshKAT.CheckedChanged += new System.EventHandler(this.rjToggleButtonAutoRefreshKAT_CheckedChanged);
             // 
             // button2
             // 
