@@ -18,7 +18,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ❤️ Display Heartrate in chatbox in conjunction with HRtoVRChat_OSC <br />
 
-📹 Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look
+📹 Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look (a bit outdated)
 
 ## Quickstart Guide
 
