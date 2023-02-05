@@ -249,6 +249,10 @@
             this.iconButton28 = new FontAwesome.Sharp.IconButton();
             this.iconButton38 = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
             this.rjToggleButton9 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label27 = new System.Windows.Forms.Label();
             this.rjToggleDarkMode = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -264,7 +268,6 @@
             this.rjToggleButton5 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonOnTop2 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.AzureSet = new System.Windows.Forms.TabPage();
@@ -3750,6 +3753,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.button28);
+            this.groupBox1.Controls.Add(this.button27);
             this.groupBox1.Controls.Add(this.rjToggleButton9);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.rjToggleDarkMode);
@@ -3765,7 +3772,6 @@
             this.groupBox1.Controls.Add(this.rjToggleButton5);
             this.groupBox1.Controls.Add(this.rjToggleButtonOnTop2);
             this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
@@ -3776,12 +3782,60 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.Snow;
+            this.label12.Location = new System.Drawing.Point(76, 283);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(19, 20);
+            this.label12.TabIndex = 122;
+            this.label12.Text = "+";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(104, 280);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(60, 27);
+            this.textBox1.TabIndex = 121;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            // 
+            // button28
+            // 
+            this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button28.ForeColor = System.Drawing.Color.Snow;
+            this.button28.Location = new System.Drawing.Point(170, 279);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(59, 29);
+            this.button28.TabIndex = 120;
+            this.button28.Text = "Edit";
+            this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // button27
+            // 
+            this.button27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button27.Enabled = false;
+            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button27.ForeColor = System.Drawing.Color.Snow;
+            this.button27.Location = new System.Drawing.Point(231, 279);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(51, 29);
+            this.button27.TabIndex = 119;
+            this.button27.Text = "Save";
+            this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
             // rjToggleButton9
             // 
             this.rjToggleButton9.AutoSize = true;
             this.rjToggleButton9.Checked = true;
             this.rjToggleButton9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton9.Location = new System.Drawing.Point(10, 269);
+            this.rjToggleButton9.Location = new System.Drawing.Point(10, 253);
             this.rjToggleButton9.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButton9.Name = "rjToggleButton9";
             this.rjToggleButton9.OffBackColor = System.Drawing.Color.Gray;
@@ -3964,22 +4018,15 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(10, 297);
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(10, 281);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(125, 27);
+            this.textBox4.Size = new System.Drawing.Size(60, 27);
             this.textBox4.TabIndex = 33;
-            this.textBox4.Text = "Ctrl + G";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(141, 300);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(104, 20);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Unchangeable";
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // label22
             // 
@@ -3997,7 +4044,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(61, 269);
+            this.label11.Location = new System.Drawing.Point(61, 253);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 20);
             this.label11.TabIndex = 27;
@@ -5569,8 +5616,6 @@
         private Label label9;
         private Button button6;
         private Label label11;
-        private Label label12;
-        private TextBox textBox4;
         public Button speechTTSButton;
         private Button button1;
         private Label label3;
@@ -5896,5 +5941,10 @@
         public RJControls.RJToggleButton rjToggleButton9;
         private Label label63;
         public RJControls.RJToggleButton rjToggleButtonAutoRefreshKAT;
+        private Button button28;
+        private Button button27;
+        private Label label12;
+        public TextBox textBox4;
+        public TextBox textBox1;
     }
 }

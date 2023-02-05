@@ -1114,5 +1114,29 @@ namespace OSCVRCWiz.Settings {
                 this["saveAutoRefreshKat"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("G")]
+        public string normalHotKey {
+            get {
+                return ((string)(this["normalHotKey"]));
+            }
+            set {
+                this["normalHotKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public string modHotKey {
+            get {
+                return ((string)(this["modHotKey"]));
+            }
+            set {
+                this["modHotKey"] = value;
+            }
+        }
     }
 }

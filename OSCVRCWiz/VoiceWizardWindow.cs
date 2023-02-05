@@ -33,8 +33,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.8.3";
-        string releaseDate = "January 26, 2023";
+        public static string currentVersion = "0.9.8.5";
+        string releaseDate = "February 5, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -66,6 +66,9 @@ namespace OSCVRCWiz
 
         public System.Threading.Timer katRefreshTimer;
 
+        public static string modifierKey = "Control";
+        public static string normalKey = "G";
+
 
 
 
@@ -81,40 +84,40 @@ namespace OSCVRCWiz
             //    ramCounter = new PerformanceCounter("Memory", "Available MBytes");
                 MainFormGlobal = this;
 
-                int id = 0;// The id of the hotkey. 
-                RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
-                AudioDevices.NAudioSetupInputDevices();
-                AudioDevices.NAudioSetupOutputDevices();
-               // AudioDevices.OuputDeviceGet();
-                SystemSpeechTTS.getVoices();
-                SystemSpeechRecognition.getInstalledRecogs();
-                OSC.Start();
-                
+
+                CUSTOMRegisterHotKey();
+               AudioDevices.NAudioSetupInputDevices();
+               AudioDevices.NAudioSetupOutputDevices();
+              // AudioDevices.OuputDeviceGet();
+               SystemSpeechTTS.getVoices();
+               SystemSpeechRecognition.getInstalledRecogs();
+               OSC.Start();
 
 
-                // Startup Changes
-                tabControl1.Dock = DockStyle.Fill;
-                tabControl1.Appearance = TabAppearance.FlatButtons;
-                tabControl1.ItemSize = new Size(0, 1);
-                tabControl1.SizeMode = TabSizeMode.Fixed;
-                hideTimer = new System.Threading.Timer(hidetimertick);
-                hideTimer.Change(Timeout.Infinite, Timeout.Infinite);
-                typeTimer = new System.Threading.Timer(typetimertick);
-                typeTimer.Change(1500, 0);
 
-                toastTimer = new System.Threading.Timer(toasttimertick);
-                toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
-                katRefreshTimer = new System.Threading.Timer(katRefreshtimertick);
-                katRefreshTimer.Change(2000, 0);
-                //listView1.View = View.List;
-                TTSBoxText = richTextBox3.Text.ToString();
-                labelCharCount.Text = TTSBoxText.Length.ToString();
+               // Startup Changes
+               tabControl1.Dock = DockStyle.Fill;
+               tabControl1.Appearance = TabAppearance.FlatButtons;
+               tabControl1.ItemSize = new Size(0, 1);
+               tabControl1.SizeMode = TabSizeMode.Fixed;
+               hideTimer = new System.Threading.Timer(hidetimertick);
+               hideTimer.Change(Timeout.Infinite, Timeout.Infinite);
+               typeTimer = new System.Threading.Timer(typetimertick);
+               typeTimer.Change(1500, 0);
 
-             /*   if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
-                {
-                    MessageBox.Show("This application is already running!");
-                    System.Diagnostics.Process.GetCurrentProcess().Kill();
-                } */ //this will only allow one instance of tts voice wizard to run... maybe only do this if system tray on launch is active
+               toastTimer = new System.Threading.Timer(toasttimertick);
+               toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
+               katRefreshTimer = new System.Threading.Timer(katRefreshtimertick);
+               katRefreshTimer.Change(2000, 0);
+               //listView1.View = View.List;
+               TTSBoxText = richTextBox3.Text.ToString();
+               labelCharCount.Text = TTSBoxText.Length.ToString();
+
+            /*   if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
+               {
+                   MessageBox.Show("This application is already running!");
+                   System.Diagnostics.Process.GetCurrentProcess().Kill();
+               } */ //this will only allow one instance of tts voice wizard to run... maybe only do this if system tray on launch is active
 
             }
             catch (Exception ex)
@@ -144,6 +147,17 @@ namespace OSCVRCWiz
             public string Pitch;
             public string Volume;
             public string Speed;
+        }
+        public static void CUSTOMRegisterHotKey()
+        {
+            int id = 0;// The id of the hotkey. 
+            KeyModifier modkey;
+            Enum.TryParse(modifierKey, out modkey);
+
+            Keys normKey;
+            Enum.TryParse(normalKey, out normKey);
+
+            RegisterHotKey(MainFormGlobal.Handle, id, (int)modkey, normKey.GetHashCode());
         }
         protected override void WndProc(ref Message m)
         {
@@ -426,7 +440,7 @@ namespace OSCVRCWiz
                     notifyIcon1.Visible = true;
                     this.Hide();
                     int id = 0;
-                    RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+                    CUSTOMRegisterHotKey();
                 }
 
             }
@@ -1324,8 +1338,8 @@ namespace OSCVRCWiz
                     notifyIcon1.Visible = true;
                     this.Hide();
                     
-                    int id = 0;
-                    RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+                   
+                    CUSTOMRegisterHotKey();
                 }
 
             }
@@ -1341,8 +1355,8 @@ namespace OSCVRCWiz
                 notifyIcon1.Visible = false;
                 this.Show();
                
-                int id = 0;
-                RegisterHotKey(this.Handle, id, (int)KeyModifier.Control, Keys.G.GetHashCode());
+                
+                CUSTOMRegisterHotKey();
                 this.WindowState = FormWindowState.Normal;
 
             }
@@ -2157,7 +2171,7 @@ namespace OSCVRCWiz
         {
             if(rjToggleButton9.Checked==true)
             {
-                RegisterHotKey(this.Handle, 0, (int)KeyModifier.Control, Keys.G.GetHashCode());
+                CUSTOMRegisterHotKey();
             }
             if (rjToggleButton9.Checked == false)
             {
@@ -2180,6 +2194,81 @@ namespace OSCVRCWiz
             {
                 katRefreshTimer.Change(2000, 0);
             }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (textBox4.Enabled == true)
+            {
+                Keys modifierKeys = e.Modifiers;
+
+                //  Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
+
+                //do stuff with pressed and modifier keys
+                //  var converter = new KeysConverter();
+
+                textBox4.Text = modifierKeys.ToString();
+
+
+                /*   Keys key;
+                   Enum.TryParse(modifierKeys.ToString(), out key);
+                   Debug.WriteLine(key.ToString());*/
+            }
+        }
+
+        private void button28_Click(object sender, EventArgs e)//edit key
+        {
+            textBox4.Clear();
+            textBox1.Clear();
+            button27.Enabled = true;
+            button28.Enabled = false;
+            textBox1.Enabled= true;
+            textBox4.Enabled = true;
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           /* string text = e.KeyChar.ToString();
+            textBox4.Text += text;*/
+        }
+
+        private void button27_Click(object sender, EventArgs e)//save key
+        {
+            textBox1.Enabled = false;
+            textBox4.Enabled = false;
+            button27.Enabled = false;
+            button28.Enabled = true;
+            modifierKey = textBox4.Text.ToString();
+            normalKey = textBox1.Text.ToString();
+            UnregisterHotKey(this.Handle, 0);
+            CUSTOMRegisterHotKey();
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (textBox1.Enabled == true)
+            {
+                Keys modifierKeys = e.Modifiers;
+
+                Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
+
+                //do stuff with pressed and modifier keys
+                var converter = new KeysConverter();
+
+                textBox1.Text = converter.ConvertToString(pressedKey);
+
+
+
+                /*Keys key;
+                Enum.TryParse(pressedKey.ToString(), out key);
+                Debug.WriteLine(key.ToString());*/
+            }
+
         }
     }
 

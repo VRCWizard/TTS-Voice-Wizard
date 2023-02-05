@@ -154,6 +154,13 @@ namespace OSCVRCWiz
 
             Settings1.Default.saveAutoRefreshKat= VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked;
 
+            Settings1.Default.modHotKey = VoiceWizardWindow.modifierKey;
+          //  VoiceWizardWindow.MainFormGlobal.textBox4.Text= VoiceWizardWindow.modifierKey;
+            Settings1.Default.normalHotKey = VoiceWizardWindow.normalKey;
+          //  VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKey;
+
+
+
 
 
 

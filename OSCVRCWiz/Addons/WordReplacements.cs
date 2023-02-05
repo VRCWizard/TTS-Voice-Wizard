@@ -117,7 +117,7 @@ namespace Addons
                     try
                     {
                         //VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Add(saveThisPreset.PresetName);
-                        VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.Items.Add($"{wordKey} ---> {wordValue}", true);
+                        VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.Items.Add($"{VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.Items.Count + 1} | {wordKey} ---> {wordValue}", true);
                         replaceDict.Add(wordKey, wordValue);
                     }
                     catch (Exception ex)

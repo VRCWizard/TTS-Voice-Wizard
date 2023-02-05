@@ -218,13 +218,46 @@ namespace OSCVRCWiz.Addons
             }
             catch (Exception ex)
             {
+                /*   if (ex.InnerException is APITooManyRequestsException)
+                   {
 
-                if (previousError !="The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APITooManyRequestsException' was thrown.")//only say these once, dont spam them
+
+
+                       var APIException = (APITooManyRequestsException)ex.InnerException;
+                       OutputText.outputLog("Spotify Feature timed out for: "+ APIException.RetryAfter, Color.Red);
+
+                   }
+                   else
+                   {
+
+                       if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APITooManyRequestsException' was thrown.")//only say these once, dont spam them
+                       {
+                           OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
+                           previousError = ex.Message.ToString();
+                       }
+                   } */
+
+                if (ex.Message== "Exception of type 'SpotifyAPI.Web.APITooManyRequestsException' was thrown.")//this will not work if they are translating their winform to a different language
                 {
-                    OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
-                    previousError = ex.Message.ToString();
+
+
+
+                    var APIException = (APITooManyRequestsException)ex.InnerException;
+                    OutputText.outputLog("Spotify APITooManyRequests Exception:  timed out for: " + APIException.RetryAfter, Color.Red);
+
                 }
-             
+                else
+                {
+
+                    if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')")//only say these once, dont spam them
+                    {
+                        OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
+                        previousError = ex.Message.ToString();
+                    }
+                }
+                
+
+
 
             }
 
