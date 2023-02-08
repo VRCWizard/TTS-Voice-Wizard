@@ -181,20 +181,15 @@
             this.iconButton39 = new FontAwesome.Sharp.IconButton();
             this.label42 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.SettingsNew = new System.Windows.Forms.TabPage();
+            this.APIs = new System.Windows.Forms.TabPage();
             this.label73 = new System.Windows.Forms.Label();
             this.translucentPanel2 = new OSCVRCWiz.RJControls.TranslucentPanel();
-            this.iconButton35 = new FontAwesome.Sharp.IconButton();
-            this.iconButton24 = new FontAwesome.Sharp.IconButton();
-            this.iconButton18 = new FontAwesome.Sharp.IconButton();
             this.iconButton21 = new FontAwesome.Sharp.IconButton();
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
             this.iconButton20 = new FontAwesome.Sharp.IconButton();
             this.General = new System.Windows.Forms.TabPage();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
             this.comboBoxSysSpeechRecog = new System.Windows.Forms.ComboBox();
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.iconButton30 = new FontAwesome.Sharp.IconButton();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
             this.modelTextBox = new System.Windows.Forms.TextBox();
@@ -245,9 +240,6 @@
             this.comboBoxInput = new System.Windows.Forms.ComboBox();
             this.label105 = new System.Windows.Forms.Label();
             this.rjToggleButtonMedia = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.iconButton28 = new FontAwesome.Sharp.IconButton();
-            this.iconButton38 = new FontAwesome.Sharp.IconButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -363,14 +355,27 @@
             this.textBoxOriginalWord = new System.Windows.Forms.TextBox();
             this.label70 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
+            this.AmazonPolly = new System.Windows.Forms.TabPage();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.iconButton18 = new FontAwesome.Sharp.IconButton();
+            this.button29 = new System.Windows.Forms.Button();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.button30 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.button31 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label83 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.iconButton12 = new FontAwesome.Sharp.IconButton();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton23 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
@@ -401,18 +406,16 @@
             this.tabHeartBeat.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox21.SuspendLayout();
-            this.SettingsNew.SuspendLayout();
+            this.APIs.SuspendLayout();
             this.translucentPanel2.SuspendLayout();
             this.General.SuspendLayout();
             this.groupBox28.SuspendLayout();
-            this.groupBox25.SuspendLayout();
             this.groupBox24.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox20.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            this.groupBox16.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.AzureSet.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -431,6 +434,8 @@
             this.groupBox33.SuspendLayout();
             this.groupBox31.SuspendLayout();
             this.groupBox32.SuspendLayout();
+            this.AmazonPolly.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -790,13 +795,14 @@
             this.tabControl1.Controls.Add(this.tabEmoji);
             this.tabControl1.Controls.Add(this.tabSpotify);
             this.tabControl1.Controls.Add(this.tabHeartBeat);
-            this.tabControl1.Controls.Add(this.SettingsNew);
+            this.tabControl1.Controls.Add(this.APIs);
             this.tabControl1.Controls.Add(this.General);
             this.tabControl1.Controls.Add(this.AzureSet);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.DeepLTab);
             this.tabControl1.Controls.Add(this.discordTab);
             this.tabControl1.Controls.Add(this.Replacements);
+            this.tabControl1.Controls.Add(this.AmazonPolly);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(220, 0);
             this.tabControl1.Name = "tabControl1";
@@ -1234,6 +1240,7 @@
             "TikTok",
             "FonixTalk",
             "Azure",
+            "Amazon Polly",
             "Glados",
             "No TTS"});
             this.comboBoxTTSMode.Location = new System.Drawing.Point(21, 61);
@@ -2815,17 +2822,17 @@
             this.label35.TabIndex = 46;
             this.label35.Text = "OSC Listener";
             // 
-            // SettingsNew
+            // APIs
             // 
-            this.SettingsNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.SettingsNew.Controls.Add(this.label73);
-            this.SettingsNew.Controls.Add(this.translucentPanel2);
-            this.SettingsNew.Location = new System.Drawing.Point(4, 29);
-            this.SettingsNew.Name = "SettingsNew";
-            this.SettingsNew.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingsNew.Size = new System.Drawing.Size(976, 753);
-            this.SettingsNew.TabIndex = 8;
-            this.SettingsNew.Text = "SettingsNew";
+            this.APIs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.APIs.Controls.Add(this.label73);
+            this.APIs.Controls.Add(this.translucentPanel2);
+            this.APIs.Location = new System.Drawing.Point(4, 29);
+            this.APIs.Name = "APIs";
+            this.APIs.Padding = new System.Windows.Forms.Padding(3);
+            this.APIs.Size = new System.Drawing.Size(976, 753);
+            this.APIs.TabIndex = 8;
+            this.APIs.Text = "APIs";
             // 
             // label73
             // 
@@ -2841,76 +2848,13 @@
             // translucentPanel2
             // 
             this.translucentPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.translucentPanel2.Controls.Add(this.iconButton35);
-            this.translucentPanel2.Controls.Add(this.iconButton24);
-            this.translucentPanel2.Controls.Add(this.iconButton18);
             this.translucentPanel2.Controls.Add(this.iconButton21);
             this.translucentPanel2.Controls.Add(this.iconButton19);
             this.translucentPanel2.Controls.Add(this.iconButton20);
             this.translucentPanel2.Location = new System.Drawing.Point(6, 54);
             this.translucentPanel2.Name = "translucentPanel2";
-            this.translucentPanel2.Size = new System.Drawing.Size(303, 626);
+            this.translucentPanel2.Size = new System.Drawing.Size(964, 626);
             this.translucentPanel2.TabIndex = 1;
-            // 
-            // iconButton35
-            // 
-            this.iconButton35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton35.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton35.FlatAppearance.BorderSize = 0;
-            this.iconButton35.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton35.IconChar = FontAwesome.Sharp.IconChar.SpaceShuttle;
-            this.iconButton35.IconColor = System.Drawing.Color.White;
-            this.iconButton35.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton35.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton35.Location = new System.Drawing.Point(0, 500);
-            this.iconButton35.Name = "iconButton35";
-            this.iconButton35.Size = new System.Drawing.Size(303, 100);
-            this.iconButton35.TabIndex = 14;
-            this.iconButton35.Text = "FonixTalk (TTS)";
-            this.iconButton35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton35.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton35.UseVisualStyleBackColor = false;
-            this.iconButton35.Visible = false;
-            // 
-            // iconButton24
-            // 
-            this.iconButton24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton24.FlatAppearance.BorderSize = 0;
-            this.iconButton24.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton24.IconChar = FontAwesome.Sharp.IconChar.ClosedCaptioning;
-            this.iconButton24.IconColor = System.Drawing.Color.White;
-            this.iconButton24.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton24.Location = new System.Drawing.Point(0, 400);
-            this.iconButton24.Name = "iconButton24";
-            this.iconButton24.Size = new System.Drawing.Size(303, 100);
-            this.iconButton24.TabIndex = 13;
-            this.iconButton24.Text = "Web Captioner Webhook (STT)";
-            this.iconButton24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton24.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton24.UseVisualStyleBackColor = false;
-            this.iconButton24.Visible = false;
-            // 
-            // iconButton18
-            // 
-            this.iconButton18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton18.FlatAppearance.BorderSize = 0;
-            this.iconButton18.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton18.IconChar = FontAwesome.Sharp.IconChar.Windows;
-            this.iconButton18.IconColor = System.Drawing.Color.White;
-            this.iconButton18.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton18.Location = new System.Drawing.Point(0, 300);
-            this.iconButton18.Name = "iconButton18";
-            this.iconButton18.Size = new System.Drawing.Size(303, 100);
-            this.iconButton18.TabIndex = 11;
-            this.iconButton18.Text = "Azure Settings";
-            this.iconButton18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton18.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton18.UseVisualStyleBackColor = false;
-            this.iconButton18.Click += new System.EventHandler(this.iconButton18_Click_1);
             // 
             // iconButton21
             // 
@@ -2918,18 +2862,19 @@
             this.iconButton21.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton21.FlatAppearance.BorderSize = 0;
             this.iconButton21.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton21.IconChar = FontAwesome.Sharp.IconChar.VolumeUp;
+            this.iconButton21.IconChar = FontAwesome.Sharp.IconChar.Globe;
             this.iconButton21.IconColor = System.Drawing.Color.White;
             this.iconButton21.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton21.Location = new System.Drawing.Point(0, 200);
             this.iconButton21.Name = "iconButton21";
-            this.iconButton21.Size = new System.Drawing.Size(303, 100);
+            this.iconButton21.Size = new System.Drawing.Size(964, 100);
             this.iconButton21.TabIndex = 12;
-            this.iconButton21.Text = "Audio Settings";
+            this.iconButton21.Text = "Translation";
             this.iconButton21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton21.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton21.UseVisualStyleBackColor = false;
+            this.iconButton21.Click += new System.EventHandler(this.iconButton21_Click);
             // 
             // iconButton19
             // 
@@ -2937,18 +2882,19 @@
             this.iconButton19.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton19.FlatAppearance.BorderSize = 0;
             this.iconButton19.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton19.IconChar = FontAwesome.Sharp.IconChar.Comment;
+            this.iconButton19.IconChar = FontAwesome.Sharp.IconChar.Amazon;
             this.iconButton19.IconColor = System.Drawing.Color.White;
             this.iconButton19.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton19.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton19.Location = new System.Drawing.Point(0, 100);
             this.iconButton19.Name = "iconButton19";
-            this.iconButton19.Size = new System.Drawing.Size(303, 100);
+            this.iconButton19.Size = new System.Drawing.Size(964, 100);
             this.iconButton19.TabIndex = 10;
-            this.iconButton19.Text = "Text Settings";
+            this.iconButton19.Text = "Amazon Polly";
             this.iconButton19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton19.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton19.UseVisualStyleBackColor = false;
+            this.iconButton19.Click += new System.EventHandler(this.iconButton19_Click);
             // 
             // iconButton20
             // 
@@ -2956,15 +2902,15 @@
             this.iconButton20.Dock = System.Windows.Forms.DockStyle.Top;
             this.iconButton20.FlatAppearance.BorderSize = 0;
             this.iconButton20.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton20.IconChar = FontAwesome.Sharp.IconChar.Tasks;
+            this.iconButton20.IconChar = FontAwesome.Sharp.IconChar.Windows;
             this.iconButton20.IconColor = System.Drawing.Color.White;
             this.iconButton20.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton20.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton20.Location = new System.Drawing.Point(0, 0);
             this.iconButton20.Name = "iconButton20";
-            this.iconButton20.Size = new System.Drawing.Size(303, 100);
+            this.iconButton20.Size = new System.Drawing.Size(964, 100);
             this.iconButton20.TabIndex = 9;
-            this.iconButton20.Text = "General Settings";
+            this.iconButton20.Text = "Azure Cognitive Services";
             this.iconButton20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton20.UseVisualStyleBackColor = false;
@@ -2974,14 +2920,12 @@
             // 
             this.General.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.General.Controls.Add(this.groupBox28);
-            this.General.Controls.Add(this.groupBox25);
             this.General.Controls.Add(this.groupBox24);
             this.General.Controls.Add(this.groupBox17);
             this.General.Controls.Add(this.groupBox18);
             this.General.Controls.Add(this.groupBox19);
             this.General.Controls.Add(this.groupBox20);
             this.General.Controls.Add(this.groupBox13);
-            this.General.Controls.Add(this.groupBox16);
             this.General.Controls.Add(this.groupBox1);
             this.General.Location = new System.Drawing.Point(4, 29);
             this.General.Name = "General";
@@ -3010,34 +2954,6 @@
             this.comboBoxSysSpeechRecog.Name = "comboBoxSysSpeechRecog";
             this.comboBoxSysSpeechRecog.Size = new System.Drawing.Size(612, 28);
             this.comboBoxSysSpeechRecog.TabIndex = 132;
-            // 
-            // groupBox25
-            // 
-            this.groupBox25.Controls.Add(this.iconButton30);
-            this.groupBox25.ForeColor = System.Drawing.Color.White;
-            this.groupBox25.Location = new System.Drawing.Point(730, 307);
-            this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(226, 96);
-            this.groupBox25.TabIndex = 139;
-            this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "Translation Settings";
-            // 
-            // iconButton30
-            // 
-            this.iconButton30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton30.IconChar = FontAwesome.Sharp.IconChar.Globe;
-            this.iconButton30.IconColor = System.Drawing.Color.White;
-            this.iconButton30.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton30.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton30.Location = new System.Drawing.Point(6, 30);
-            this.iconButton30.Name = "iconButton30";
-            this.iconButton30.Size = new System.Drawing.Size(214, 50);
-            this.iconButton30.TabIndex = 134;
-            this.iconButton30.Text = "Translation Settings";
-            this.iconButton30.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton30.UseVisualStyleBackColor = false;
-            this.iconButton30.Click += new System.EventHandler(this.iconButton30_Click_2);
             // 
             // groupBox24
             // 
@@ -3211,7 +3127,7 @@
             this.groupBox18.Controls.Add(this.label79);
             this.groupBox18.Controls.Add(this.rjToggleButtonGreenScreen);
             this.groupBox18.ForeColor = System.Drawing.Color.White;
-            this.groupBox18.Location = new System.Drawing.Point(730, 150);
+            this.groupBox18.Location = new System.Drawing.Point(724, 36);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(232, 147);
             this.groupBox18.TabIndex = 120;
@@ -3701,55 +3617,6 @@
             this.rjToggleButtonMedia.Size = new System.Drawing.Size(45, 22);
             this.rjToggleButtonMedia.TabIndex = 125;
             this.rjToggleButtonMedia.UseVisualStyleBackColor = true;
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.iconButton28);
-            this.groupBox16.Controls.Add(this.iconButton38);
-            this.groupBox16.ForeColor = System.Drawing.Color.White;
-            this.groupBox16.Location = new System.Drawing.Point(730, 36);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(232, 104);
-            this.groupBox16.TabIndex = 137;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Azure Cognitive Speech Service";
-            // 
-            // iconButton28
-            // 
-            this.iconButton28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton28.IconChar = FontAwesome.Sharp.IconChar.Windows;
-            this.iconButton28.IconColor = System.Drawing.Color.White;
-            this.iconButton28.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton28.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton28.Location = new System.Drawing.Point(6, 30);
-            this.iconButton28.Name = "iconButton28";
-            this.iconButton28.Size = new System.Drawing.Size(170, 50);
-            this.iconButton28.TabIndex = 134;
-            this.iconButton28.Text = "Azure Settings";
-            this.iconButton28.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton28.UseVisualStyleBackColor = false;
-            this.iconButton28.Click += new System.EventHandler(this.iconButton28_Click);
-            // 
-            // iconButton38
-            // 
-            this.iconButton38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton38.FlatAppearance.BorderSize = 0;
-            this.iconButton38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton38.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton38.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.iconButton38.IconColor = System.Drawing.Color.White;
-            this.iconButton38.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton38.IconSize = 40;
-            this.iconButton38.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton38.Location = new System.Drawing.Point(176, 35);
-            this.iconButton38.Name = "iconButton38";
-            this.iconButton38.Size = new System.Drawing.Size(50, 40);
-            this.iconButton38.TabIndex = 132;
-            this.iconButton38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton38.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton38.UseVisualStyleBackColor = true;
-            this.iconButton38.Click += new System.EventHandler(this.iconButton38_Click);
             // 
             // groupBox1
             // 
@@ -5236,6 +5103,160 @@
             this.label71.TabIndex = 156;
             this.label71.Text = "Replace any typed word or phrase with another one";
             // 
+            // AmazonPolly
+            // 
+            this.AmazonPolly.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.AmazonPolly.Controls.Add(this.groupBox16);
+            this.AmazonPolly.Controls.Add(this.label83);
+            this.AmazonPolly.Location = new System.Drawing.Point(4, 29);
+            this.AmazonPolly.Name = "AmazonPolly";
+            this.AmazonPolly.Padding = new System.Windows.Forms.Padding(3);
+            this.AmazonPolly.Size = new System.Drawing.Size(976, 753);
+            this.AmazonPolly.TabIndex = 17;
+            this.AmazonPolly.Text = "Polly";
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.label74);
+            this.groupBox16.Controls.Add(this.iconButton18);
+            this.groupBox16.Controls.Add(this.button29);
+            this.groupBox16.Controls.Add(this.textBox10);
+            this.groupBox16.Controls.Add(this.label75);
+            this.groupBox16.Controls.Add(this.button30);
+            this.groupBox16.Controls.Add(this.textBox8);
+            this.groupBox16.Controls.Add(this.label82);
+            this.groupBox16.Controls.Add(this.button31);
+            this.groupBox16.Controls.Add(this.textBox9);
+            this.groupBox16.ForeColor = System.Drawing.Color.White;
+            this.groupBox16.Location = new System.Drawing.Point(15, 56);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(560, 248);
+            this.groupBox16.TabIndex = 111;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Amazon Polly Setup";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.ForeColor = System.Drawing.Color.Snow;
+            this.label74.Location = new System.Drawing.Point(10, 95);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(126, 20);
+            this.label74.TabIndex = 34;
+            this.label74.Text = "Secret Access Key";
+            // 
+            // iconButton18
+            // 
+            this.iconButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton18.FlatAppearance.BorderSize = 0;
+            this.iconButton18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton18.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton18.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton18.IconColor = System.Drawing.Color.White;
+            this.iconButton18.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton18.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton18.Location = new System.Drawing.Point(492, 23);
+            this.iconButton18.Name = "iconButton18";
+            this.iconButton18.Size = new System.Drawing.Size(50, 50);
+            this.iconButton18.TabIndex = 110;
+            this.iconButton18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton18.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton18.UseVisualStyleBackColor = true;
+            this.iconButton18.Click += new System.EventHandler(this.iconButton18_Click_1);
+            // 
+            // button29
+            // 
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.ForeColor = System.Drawing.Color.Snow;
+            this.button29.Location = new System.Drawing.Point(376, 116);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(64, 29);
+            this.button29.TabIndex = 35;
+            this.button29.Text = "Apply";
+            this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(14, 118);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.PasswordChar = '*';
+            this.textBox10.Size = new System.Drawing.Size(356, 27);
+            this.textBox10.TabIndex = 33;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.ForeColor = System.Drawing.Color.Snow;
+            this.label75.Location = new System.Drawing.Point(10, 166);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(56, 20);
+            this.label75.TabIndex = 31;
+            this.label75.Text = "Region";
+            // 
+            // button30
+            // 
+            this.button30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button30.ForeColor = System.Drawing.Color.Snow;
+            this.button30.Location = new System.Drawing.Point(376, 187);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(64, 29);
+            this.button30.TabIndex = 32;
+            this.button30.Text = "Apply";
+            this.button30.UseVisualStyleBackColor = false;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(14, 189);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(356, 27);
+            this.textBox8.TabIndex = 30;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.ForeColor = System.Drawing.Color.Snow;
+            this.label82.Location = new System.Drawing.Point(10, 23);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(81, 20);
+            this.label82.TabIndex = 28;
+            this.label82.Text = "Access Key";
+            // 
+            // button31
+            // 
+            this.button31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button31.ForeColor = System.Drawing.Color.Snow;
+            this.button31.Location = new System.Drawing.Point(376, 44);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(64, 29);
+            this.button31.TabIndex = 29;
+            this.button31.Text = "Apply";
+            this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(14, 46);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.PasswordChar = '*';
+            this.textBox9.Size = new System.Drawing.Size(356, 27);
+            this.textBox9.TabIndex = 27;
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label83.ForeColor = System.Drawing.Color.Snow;
+            this.label83.Location = new System.Drawing.Point(17, 28);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(120, 25);
+            this.label83.TabIndex = 109;
+            this.label83.Text = "Amazon Polly";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -5243,9 +5264,9 @@
             this.panel1.Controls.Add(this.iconButton12);
             this.panel1.Controls.Add(this.iconButton7);
             this.panel1.Controls.Add(this.iconButton6);
+            this.panel1.Controls.Add(this.iconButton4);
             this.panel1.Controls.Add(this.iconButton3);
             this.panel1.Controls.Add(this.iconButton5);
-            this.panel1.Controls.Add(this.iconButton4);
             this.panel1.Controls.Add(this.iconButton23);
             this.panel1.Controls.Add(this.iconButton2);
             this.panel1.Controls.Add(this.iconButton1);
@@ -5337,6 +5358,26 @@
             this.iconButton6.UseVisualStyleBackColor = true;
             this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
             // 
+            // iconButton4
+            // 
+            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            this.iconButton4.IconColor = System.Drawing.Color.Snow;
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.Location = new System.Drawing.Point(0, 440);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Size = new System.Drawing.Size(220, 60);
+            this.iconButton4.TabIndex = 0;
+            this.iconButton4.Text = "APIs";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = true;
+            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
+            // 
             // iconButton3
             // 
             this.iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -5347,7 +5388,7 @@
             this.iconButton3.IconColor = System.Drawing.Color.Snow;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 440);
+            this.iconButton3.Location = new System.Drawing.Point(0, 380);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Size = new System.Drawing.Size(220, 60);
             this.iconButton3.TabIndex = 9;
@@ -5367,7 +5408,7 @@
             this.iconButton5.IconColor = System.Drawing.Color.Snow;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 380);
+            this.iconButton5.Location = new System.Drawing.Point(0, 320);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(220, 60);
             this.iconButton5.TabIndex = 1;
@@ -5376,27 +5417,6 @@
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton5.UseVisualStyleBackColor = true;
             this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
-            this.iconButton4.IconColor = System.Drawing.Color.Snow;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 320);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(220, 60);
-            this.iconButton4.TabIndex = 0;
-            this.iconButton4.Text = "Speech Provider";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = true;
-            this.iconButton4.Visible = false;
-            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
             // 
             // iconButton23
             // 
@@ -5536,12 +5556,11 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
-            this.SettingsNew.ResumeLayout(false);
-            this.SettingsNew.PerformLayout();
+            this.APIs.ResumeLayout(false);
+            this.APIs.PerformLayout();
             this.translucentPanel2.ResumeLayout(false);
             this.General.ResumeLayout(false);
             this.groupBox28.ResumeLayout(false);
-            this.groupBox25.ResumeLayout(false);
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
             this.groupBox17.ResumeLayout(false);
@@ -5554,7 +5573,6 @@
             this.groupBox20.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.AzureSet.ResumeLayout(false);
@@ -5589,6 +5607,10 @@
             this.groupBox31.PerformLayout();
             this.groupBox32.ResumeLayout(false);
             this.groupBox32.PerformLayout();
+            this.AmazonPolly.ResumeLayout(false);
+            this.AmazonPolly.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -5718,10 +5740,9 @@
         private Label label32;
         public RJControls.RJToggleButton rjToggleButtonShowKeyboard;
         private Label label69;
-        private TabPage SettingsNew;
+        private TabPage APIs;
         private RJControls.TranslucentPanel translucentPanel2;
         private FontAwesome.Sharp.IconButton iconButton21;
-        private FontAwesome.Sharp.IconButton iconButton18;
         private FontAwesome.Sharp.IconButton iconButton19;
         private FontAwesome.Sharp.IconButton iconButton20;
         private TabPage General;
@@ -5750,7 +5771,6 @@
         private Label label109;
         public ComboBox comboBox5;
         private Button button13;
-        private FontAwesome.Sharp.IconButton iconButton24;
         public RJControls.RJToggleButton rjToggleButtonOnTop2;
         public RJControls.RJToggleButton rjToggleButtonProfan;
         public RJControls.RJToggleButton rjToggleButtonKeyRegion2;
@@ -5793,7 +5813,6 @@
         public RJControls.RJToggleButton rjToggleButtonSpotifyKatDisable;
         private Label label136;
         public RJControls.RJToggleButton rjToggleButtonNoTTSChat;
-        private FontAwesome.Sharp.IconButton iconButton35;
         private Label label137;
         public RJControls.RJToggleButton rjToggleButton10;
         public ComboBox comboBoxTTSMode;
@@ -5832,7 +5851,6 @@
         public ComboBox comboBoxInput;
         private Label label105;
         public RJControls.RJToggleButton rjToggleButtonMedia;
-        private FontAwesome.Sharp.IconButton iconButton38;
         private FontAwesome.Sharp.IconButton iconButton39;
         private FontAwesome.Sharp.IconButton iconButton40;
         private Label label117;
@@ -5851,7 +5869,6 @@
         private GroupBox groupBox10;
         private GroupBox groupBox12;
         private GroupBox groupBox11;
-        private GroupBox groupBox16;
         private GroupBox groupBox13;
         private GroupBox groupBox20;
         private GroupBox groupBox19;
@@ -5862,7 +5879,6 @@
         private GroupBox groupBox21;
         private FontAwesome.Sharp.IconButton iconButton41;
         private GroupBox groupBox14;
-        private FontAwesome.Sharp.IconButton iconButton28;
         private Label label27;
         public RJControls.RJToggleButton rjToggleDarkMode;
         public RJControls.RJToggleButton rjToggleButtonStyle;
@@ -5875,8 +5891,6 @@
         private Button button11;
         public TextBox modelTextBox;
         private FolderBrowserDialog folderBrowserDialog1;
-        private GroupBox groupBox25;
-        private FontAwesome.Sharp.IconButton iconButton30;
         private TabPage DeepLTab;
         private GroupBox groupBox26;
         private Label label51;
@@ -5946,5 +5960,18 @@
         private Label label12;
         public TextBox textBox4;
         public TextBox textBox1;
+        private TabPage AmazonPolly;
+        private GroupBox groupBox16;
+        private Label label74;
+        private FontAwesome.Sharp.IconButton iconButton18;
+        private Button button29;
+        public TextBox textBox10;
+        private Label label75;
+        private Button button30;
+        public TextBox textBox8;
+        private Label label82;
+        private Button button31;
+        public TextBox textBox9;
+        private Label label83;
     }
 }

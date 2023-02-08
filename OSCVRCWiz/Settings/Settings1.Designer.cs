@@ -1138,5 +1138,41 @@ namespace OSCVRCWiz.Settings {
                 this["modHotKey"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string yourAWSKey {
+            get {
+                return ((string)(this["yourAWSKey"]));
+            }
+            set {
+                this["yourAWSKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string yourAWSSecret {
+            get {
+                return ((string)(this["yourAWSSecret"]));
+            }
+            set {
+                this["yourAWSSecret"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("us-east-1")]
+        public string yourAWSRegion {
+            get {
+                return ((string)(this["yourAWSRegion"]));
+            }
+            set {
+                this["yourAWSRegion"] = value;
+            }
+        }
     }
 }

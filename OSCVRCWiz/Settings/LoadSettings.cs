@@ -237,6 +237,10 @@ namespace OSCVRCWiz
               VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKey;
 
 
+            VoiceWizardWindow.MainFormGlobal.textBox9.Text = Settings1.Default.yourAWSKey;
+            VoiceWizardWindow.MainFormGlobal.textBox10.Text = Settings1.Default.yourAWSSecret;
+            VoiceWizardWindow.MainFormGlobal.textBox8.Text = Settings1.Default.yourAWSRegion;
+
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
               VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
               VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;

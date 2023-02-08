@@ -33,8 +33,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.8.5";
-        string releaseDate = "February 5, 2023";
+        public static string currentVersion = "0.9.9.0";
+        string releaseDate = "February 8, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -617,6 +617,9 @@ namespace OSCVRCWiz
                         case "Glados":
                             Task.Run(() => GladosTTS.GladosTextAsSpeech(speechText));
                             break;
+                        case "Amazon Polly":
+                            Task.Run(() => AmazonPollyTTS.PollyTTS(speechText));
+                            break;
 
 
                 default:
@@ -793,7 +796,7 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton4.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(tabPage3);//provider
+            tabControl1.SelectTab(APIs);//provider
             webView21.Hide();
         }
 
@@ -1242,14 +1245,14 @@ namespace OSCVRCWiz
 
         private void iconButton20_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(General);//settings
+            tabControl1.SelectTab(AzureSet);//settings
         }
 
  
-        private void iconButton18_Click_1(object sender, EventArgs e)
-        {
-            tabControl1.SelectTab(AzureSet);//settings
-        }
+      //  private void iconButton18_Click_1(object sender, EventArgs e)
+      //  {
+      //      tabControl1.SelectTab(AzureSet);//settings
+      //  }
 
 
         private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
@@ -1682,6 +1685,53 @@ namespace OSCVRCWiz
 
                     break;
 
+                case "Amazon Polly":
+
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.Add("Salli");
+                    comboBox2.Items.Add("Kimberly");
+                    comboBox2.Items.Add("Kendra");
+                    comboBox2.Items.Add("Joanna");
+                    comboBox2.Items.Add("Ivy");
+                    comboBox2.Items.Add("Ruth ($Neural)");
+                    comboBox2.Items.Add("Kevin ($Neural)");
+                    comboBox2.Items.Add("Matthew");
+                    comboBox2.Items.Add("Justin");
+                    comboBox2.Items.Add("Joey");
+                    comboBox2.Items.Add("Stephen ($Neural)");
+
+                    comboBox2.Items.Add("Nicole");
+                    comboBox2.Items.Add("Olivia ($Neural)");
+                    comboBox2.Items.Add("Russell");
+
+                    comboBox2.Items.Add("Amy");
+                    comboBox2.Items.Add("Emma");
+                    comboBox2.Items.Add("Brian");
+                    comboBox2.Items.Add("Arthur ($Neural)");
+
+                    comboBox2.Items.Add("Aditi");
+                 //   comboBox2.Items.Add("Reveena");
+                    comboBox2.Items.Add("Kajal ($Neural)");
+
+                    comboBox2.Items.Add("Aria ($Neural)");
+
+                    comboBox2.Items.Add("Ayanda ($Neural)");
+
+                    comboBox2.Items.Add("Geraint");
+                    comboBox2.SelectedIndex = 0;
+
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = false;
+                    comboBoxPitch.Enabled = false;
+                    comboBoxVolume.Enabled = false;
+                    comboBoxRate.Enabled = false;
+                    TTSModeSaved = "Amazon Polly";
+
+                    break;
+
 
 
                 default:
@@ -1899,7 +1949,7 @@ namespace OSCVRCWiz
 
         private void iconButton28_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(AzureSet);//settings
+           
         }
 
         private void rjToggleButton7_CheckedChanged_1(object sender, EventArgs e)
@@ -2027,7 +2077,7 @@ namespace OSCVRCWiz
 
         private void iconButton30_Click_2(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(DeepLTab);
+           
         }
 
         private void iconButton42_Click_1(object sender, EventArgs e)
@@ -2269,6 +2319,56 @@ namespace OSCVRCWiz
                 Debug.WriteLine(key.ToString());*/
             }
 
+        }
+
+        private void iconButton21_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(DeepLTab);
+        }
+
+        private void iconButton19_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(AmazonPolly);
+        }
+
+        private void button31_Click(object sender, EventArgs e)//access key
+        {
+           
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                var text = textBox9.Text.ToString();
+                Settings1.Default.yourAWSKey = text;
+                Settings1.Default.Save();
+                
+            });
+        }
+
+        private void button29_Click(object sender, EventArgs e)//secret key
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                var text = textBox10.Text.ToString();
+                Settings1.Default.yourAWSSecret = text;
+                Settings1.Default.Save();
+
+            });
+
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                var text = textBox8.Text.ToString();
+                Settings1.Default.yourAWSRegion = text;
+                Settings1.Default.Save();
+
+            });
+        }
+
+        private void iconButton18_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly");
         }
     }
 

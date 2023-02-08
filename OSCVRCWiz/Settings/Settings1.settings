@@ -281,5 +281,14 @@
     <Setting Name="modHotKey" Type="System.String" Scope="User">
       <Value Profile="(Default)">Control</Value>
     </Setting>
+    <Setting Name="yourAWSKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="yourAWSSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="yourAWSRegion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">us-east-1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
