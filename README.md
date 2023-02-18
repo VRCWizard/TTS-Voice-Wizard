@@ -4,11 +4,11 @@
 ## Features
 Use TTS Voice Wizard's accessibility features to improve your VRChat experience (**it works outside of VRChat too!**)<br />
 
-🎙️ You can convert your Speech to Text and back to Speech through Microsoft Azure Voice Recognition and TTS! <br />
+🎙️ You can convert your Speech to Text and back to Speech through various Speech Recognition and TTS! <br />
 
 💬 You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText or VRChats Chatbox! <br />
 
-🌐 You can translate what you say in one language to one of **20+ other support languages!** <br />
+🌐 The app can translate your speech from one language to over **20 other support languages!** <br />
 
 🔊 There are **100+ different** voices with various customization options so you can pick a voice that best suits you <br />
 
@@ -16,15 +16,17 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 🔋 Display tracker and controller battery life in conjunction with XSOverlay <br />
 
-❤️ Display Heartrate in chatbox in conjunction with HRtoVRChat_OSC <br />
+❤️ Use in conjuntion with HRtoVRChat_OSC to enable you to display your heartrate in VRChat's Chatbox <br />
 
-📹 Check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) for a more in-depth look (a bit outdated)
+📹 For a more detailed look at the app's features, check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) (although it's a bit outdated)
 
-## Quickstart Guide
+## GETTING STARTED
+
+-  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard. The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
 
 [![Getting Started with TTS Voice Wizard](https://user-images.githubusercontent.com/101527472/216428051-e7dda4a2-cb5c-48ab-b04f-73dd12bad23a.png)](https://youtu.be/n5nLnacVGu4 "Getting Started with TTS Voice Wizard") 
 
--  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard. The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
+
 
 
 
