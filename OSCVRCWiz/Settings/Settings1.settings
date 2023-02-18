@@ -290,5 +290,59 @@
     <Setting Name="yourAWSRegion" Type="System.String" Scope="User">
       <Value Profile="(Default)">us-east-1</Value>
     </Setting>
+    <Setting Name="elevenLabsAPIKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="whisperModel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">no model selected</Value>
+    </Setting>
+    <Setting Name="VRCListemOnStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="VRCSpamLog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="VRCAFK" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="VRCPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9001</Value>
+    </Setting>
+    <Setting Name="AFKMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Out for Lunch 🥪</Value>
+    </Setting>
+    <Setting Name="Counter1Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Boop</Value>
+    </Setting>
+    <Setting Name="Counter2Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/HighFive</Value>
+    </Setting>
+    <Setting Name="Counter3Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Bonk</Value>
+    </Setting>
+    <Setting Name="Counter4Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Slap</Value>
+    </Setting>
+    <Setting Name="Counter1Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Times Booped: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter2Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">HighFive Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter3Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Times Bonked: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter4Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Times Slapped: {counter}</Value>
+    </Setting>
+    <Setting Name="VRCOnRecieve" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OBS4Media" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="OBSTextFile" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

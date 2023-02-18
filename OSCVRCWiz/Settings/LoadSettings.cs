@@ -224,7 +224,7 @@ namespace OSCVRCWiz
               }
 
            
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked = Settings1.Default.saveVoiceActStyle;
+            
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked = Settings1.Default.hotketSave;
@@ -240,6 +240,32 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBox9.Text = Settings1.Default.yourAWSKey;
             VoiceWizardWindow.MainFormGlobal.textBox10.Text = Settings1.Default.yourAWSSecret;
             VoiceWizardWindow.MainFormGlobal.textBox8.Text = Settings1.Default.yourAWSRegion;
+            VoiceWizardWindow.MainFormGlobal.textBox12.Text = Settings1.Default.elevenLabsAPIKey;
+
+            VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text = Settings1.Default.whisperModel;
+
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked = Settings1.Default.VRCOnRecieve;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked = Settings1.Default.VRCAFK;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked = Settings1.Default.VRCListemOnStart;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked = Settings1.Default.VRCSpamLog;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text = Settings1.Default.AFKMsg;
+            VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.VRCPort;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text = Settings1.Default.Counter1Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter2.Text = Settings1.Default.Counter2Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter3.Text = Settings1.Default.Counter3Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter4.Text = Settings1.Default.Counter4Para;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text = Settings1.Default.Counter1Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text = Settings1.Default.Counter2Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text = Settings1.Default.Counter3Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text = Settings1.Default.Counter4Msg;
+
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked = Settings1.Default.OBSTextFile;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked = Settings1.Default.OBS4Media;
 
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
               VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;

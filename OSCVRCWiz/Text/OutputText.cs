@@ -83,7 +83,17 @@ namespace OSCVRCWiz.Text
         }
         public static async void outputTextFile(string textstring)
         {
-            await File.WriteAllTextAsync(@"TextOut\OBSText.txt", textstring);
+            try
+            {
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true)
+                {
+                    await File.WriteAllTextAsync(@"TextOut\OBSText.txt", textstring);
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[OBSText File Error: " + ex.Message + ". Try moving folder location.]", Color.Red);
+            }
         }
 
         public static async void outputVRChatSpeechBubbles(string textstring, string type)
@@ -151,7 +161,7 @@ namespace OSCVRCWiz.Text
         }
         public static async Task outputGreenScreen(string textstring, string type)
         {
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+           /* VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
                 VoiceWizardWindow.MainFormGlobal.pf.customrtb1.Text = textstring;
                 VoiceWizardWindow.MainFormGlobal.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
@@ -169,7 +179,7 @@ namespace OSCVRCWiz.Text
                     SpotifyAddon.pauseSpotify = false;
                 }
 
-            });
+            });*/
 
 
         }

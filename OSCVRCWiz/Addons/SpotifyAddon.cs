@@ -9,6 +9,7 @@ using OSCVRCWiz.Settings;
 using System.Diagnostics;
 using OSCVRCWiz.Text;
 using System.Windows;
+using OSCVRCWiz.Resources;
 
 namespace OSCVRCWiz.Addons
 {
@@ -185,6 +186,11 @@ namespace OSCVRCWiz.Addons
                         //theString = theString.Replace("{deviceType}", deviceType);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
 
+                        theString = theString.Replace("{counter1}", OSC.counter1.ToString());
+                        theString = theString.Replace("{counter2}", OSC.counter2.ToString());
+                        theString = theString.Replace("{counter3}", OSC.counter3.ToString());
+                        theString = theString.Replace("{counter4}", OSC.counter4.ToString());
+
                         if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
 
@@ -203,6 +209,10 @@ namespace OSCVRCWiz.Addons
                             {
                                 Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "spotify")); //original
 
+                            }
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
+                            {
+                                OutputText.outputTextFile(theString);
                             }
                         }
 
@@ -304,6 +314,11 @@ namespace OSCVRCWiz.Addons
                      catch { theString = theString.Replace("{durationHours}", "-"); }*/
 
                     theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+
+                    theString = theString.Replace("{counter1}", OSC.counter1.ToString());
+                    theString = theString.Replace("{counter2}", OSC.counter2.ToString());
+                    theString = theString.Replace("{counter3}", OSC.counter3.ToString());
+                    theString = theString.Replace("{counter4}", OSC.counter4.ToString());
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
                     {
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
@@ -349,6 +364,10 @@ namespace OSCVRCWiz.Addons
             {
                 Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, "media")); //original
 
+            }
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
+            {
+                OutputText.outputTextFile(text);
             }
 
         }

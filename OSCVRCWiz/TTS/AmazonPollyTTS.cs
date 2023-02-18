@@ -180,7 +180,7 @@ namespace OSCVRCWiz.TTS
         /// call to the SynthesizeSpeechAsync method.</param>
         /// <param name="outputFileName">The full path to the file in which to
         /// save the audio stream.</param>
-        private static void WriteSpeechToStream(Stream audioStream, MemoryStream output)
+        public static void WriteSpeechToStream(Stream audioStream, MemoryStream output)
         {
             
             byte[] buffer = new byte[2 * 1024];

@@ -127,6 +127,8 @@ namespace OSCVRCWiz
             Settings1.Default.STTModeSave = VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem.ToString();
             Settings1.Default.modelnamesave = VoiceWizardWindow.MainFormGlobal.modelTextBox.Text.ToString();
 
+            Settings1.Default.whisperModel = VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text.ToString();
+
             Settings1.Default.deepLKeysave= DeepLTranslate.DeepLKey;
 
             Settings1.Default.OSCAddress= OSC.OSCAddress;
@@ -157,11 +159,29 @@ namespace OSCVRCWiz
             Settings1.Default.modHotKey = VoiceWizardWindow.modifierKey;
           //  VoiceWizardWindow.MainFormGlobal.textBox4.Text= VoiceWizardWindow.modifierKey;
             Settings1.Default.normalHotKey = VoiceWizardWindow.normalKey;
-          //  VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKey;
+            //  VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKey;
 
 
+            Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked;
+            Settings1.Default.VRCAFK = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked;
+            Settings1.Default.VRCListemOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked;
+            Settings1.Default.VRCSpamLog = VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked;
 
+            Settings1.Default.AFKMsg = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
+            Settings1.Default.VRCPort = VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text.ToString();
 
+            Settings1.Default.Counter1Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text.ToString();
+            Settings1.Default.Counter2Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter2.Text.ToString();
+            Settings1.Default.Counter3Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter3.Text.ToString();
+            Settings1.Default.Counter4Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter4.Text.ToString();
+
+            Settings1.Default.Counter1Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+            Settings1.Default.Counter2Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text.ToString();
+            Settings1.Default.Counter3Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text.ToString();
+            Settings1.Default.Counter4Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text.ToString();
+
+            Settings1.Default.OBSTextFile = VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked;
+            Settings1.Default.OBS4Media = VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked;
 
 
             /*

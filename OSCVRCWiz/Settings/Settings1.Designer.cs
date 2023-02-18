@@ -1174,5 +1174,221 @@ namespace OSCVRCWiz.Settings {
                 this["yourAWSRegion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string elevenLabsAPIKey {
+            get {
+                return ((string)(this["elevenLabsAPIKey"]));
+            }
+            set {
+                this["elevenLabsAPIKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("no model selected")]
+        public string whisperModel {
+            get {
+                return ((string)(this["whisperModel"]));
+            }
+            set {
+                this["whisperModel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VRCListemOnStart {
+            get {
+                return ((bool)(this["VRCListemOnStart"]));
+            }
+            set {
+                this["VRCListemOnStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool VRCSpamLog {
+            get {
+                return ((bool)(this["VRCSpamLog"]));
+            }
+            set {
+                this["VRCSpamLog"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VRCAFK {
+            get {
+                return ((bool)(this["VRCAFK"]));
+            }
+            set {
+                this["VRCAFK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9001")]
+        public string VRCPort {
+            get {
+                return ((string)(this["VRCPort"]));
+            }
+            set {
+                this["VRCPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Out for Lunch 🥪")]
+        public string AFKMsg {
+            get {
+                return ((string)(this["AFKMsg"]));
+            }
+            set {
+                this["AFKMsg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Boop")]
+        public string Counter1Para {
+            get {
+                return ((string)(this["Counter1Para"]));
+            }
+            set {
+                this["Counter1Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/HighFive")]
+        public string Counter2Para {
+            get {
+                return ((string)(this["Counter2Para"]));
+            }
+            set {
+                this["Counter2Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Bonk")]
+        public string Counter3Para {
+            get {
+                return ((string)(this["Counter3Para"]));
+            }
+            set {
+                this["Counter3Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Slap")]
+        public string Counter4Para {
+            get {
+                return ((string)(this["Counter4Para"]));
+            }
+            set {
+                this["Counter4Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Times Booped: {counter}")]
+        public string Counter1Msg {
+            get {
+                return ((string)(this["Counter1Msg"]));
+            }
+            set {
+                this["Counter1Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HighFive Counter: {counter}")]
+        public string Counter2Msg {
+            get {
+                return ((string)(this["Counter2Msg"]));
+            }
+            set {
+                this["Counter2Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Times Bonked: {counter}")]
+        public string Counter3Msg {
+            get {
+                return ((string)(this["Counter3Msg"]));
+            }
+            set {
+                this["Counter3Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Times Slapped: {counter}")]
+        public string Counter4Msg {
+            get {
+                return ((string)(this["Counter4Msg"]));
+            }
+            set {
+                this["Counter4Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool VRCOnRecieve {
+            get {
+                return ((bool)(this["VRCOnRecieve"]));
+            }
+            set {
+                this["VRCOnRecieve"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OBS4Media {
+            get {
+                return ((bool)(this["OBS4Media"]));
+            }
+            set {
+                this["OBS4Media"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OBSTextFile {
+            get {
+                return ((bool)(this["OBSTextFile"]));
+            }
+            set {
+                this["OBSTextFile"] = value;
+            }
+        }
     }
 }

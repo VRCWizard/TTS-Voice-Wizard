@@ -1,24 +1,39 @@
 ﻿using CoreOSC;
 using Json.Net;
 using Newtonsoft.Json;
+using OSCVRCWiz.Addons;
 using OSCVRCWiz.Text;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using VRC.OSCQuery;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OSCVRCWiz.Resources
 {
     public class OSC
     {
         public static CoreOSC.UDPSender OSCSender;
-        public static string OSCAddress;
-        public static string OSCPort;
+        public static string OSCAddress= "127.0.0.1";
+        public static string OSCPort = "9000";
+
+        public static string FromVRChatPort = "9001";
+
+        public static bool AFKDetector = false;
+        public static int counter1 = 0;
+        public static int counter2 = 0;
+        public static int counter3 = 0;
+        public static int counter4 = 0;
+
+        public static int prevCounter1 = 0;
+        public static int prevCounter2 = 0;
+        public static int prevCounter3 = 0;
+        public static int prevCounter4 = 0;
 
         public static void Start()
         {
-            OSCSender = new CoreOSC.UDPSender("127.0.0.1", 9000);//9000
+            OSCSender = new CoreOSC.UDPSender(OSCAddress, Convert.ToInt32(OSCPort));//9000
 
         }
         public static void ChangeAddressAndPort(string address, string port)
@@ -55,24 +70,117 @@ namespace OSCVRCWiz.Resources
 
 
         }
-        private static void OSCLegacyVRChatListener()//no in use remove apon release of oscquery
+       public static void OSCLegacyVRChatListener()//no in use remove apon release of oscquery
         {
-            int port = 9001;//VRChats default UDP // ONLY ONE APP CAN LISTEN HERE
+          //  int port = 9001;//VRChats default UDP // ONLY ONE APP CAN LISTEN HERE
+            
             HandleOscPacket callback = delegate (OscPacket packet)
             {
                 var messageReceived = (OscMessage)packet;
                 if (messageReceived != null)
                 {
-                    //OSC recieved
-                    // OutputText.outputLog(messageReceived.ToString());
-                    System.Diagnostics.Debug.WriteLine("address: " + messageReceived.Address.ToString() + "argument: " + messageReceived.Arguments[0].ToString());
+                    try
+                    {
+                        //OSC recieved
+                        // OutputText.outputLog(messageReceived.ToString());
+                        //  System.Diagnostics.Debug.WriteLine("address: " + messageReceived.Address.ToString() + "argument: " + messageReceived.Arguments[0].ToString());
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true)
+                        {
+                            if (messageReceived.Address.ToString() == "/avatar/parameters/AFK")
+                            {
 
+                              //  var theString = "";
+                              //  theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
+
+
+                                if (messageReceived.Arguments[0].ToString() == "True")
+                                {
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                                    {
+                                        Task.Run(() => OutputText.outputLog("Now AFK"));
+                                    }
+                                    AFKDetector = true;
+
+                                }
+                                else
+                                {
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                                    {
+                                        Task.Run(() => OutputText.outputLog("No Longer AFK"));
+                                    }
+                                    AFKDetector = false;
+                                }
+
+
+
+                            }
+                        }
+
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text.ToString() && messageReceived.Arguments[0].ToString() =="True")
+                        {
+                            counter1++;
+                            var theString = "";
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                            theString = theString.Replace("{counter}", counter1.ToString());
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                            {
+                              Task.Run(() => OutputText.outputLog(theString));
+                            }      
+
+                        }
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter2.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
+                        {
+                            counter2++;
+                            var theString = "";
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                            theString = theString.Replace("{counter}", counter2.ToString());
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                            {
+                                Task.Run(() => OutputText.outputLog(theString));
+                            }
+
+                        }
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter3.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
+                        {
+                            counter3++;
+                            var theString = "";
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                            theString = theString.Replace("{counter}", counter3.ToString());
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                            {
+                                Task.Run(() => OutputText.outputLog(theString));
+                            }
+
+                        }
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter4.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
+                        {
+                            counter4++;
+                            var theString = "";
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                            theString = theString.Replace("{counter}", counter4.ToString());
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                            {
+                                Task.Run(() => OutputText.outputLog(theString));
+                            }
+
+                        }
+
+                    }
+                    catch (Exception ex) { }
                 }
             };
 
 
 
-            var listener = new UDPListener(port, callback);
+            var listener = new UDPListener(Convert.ToInt32(FromVRChatPort), callback);
 
         }
         private static async Task OSCQueryVRchatListener()//no in use yet

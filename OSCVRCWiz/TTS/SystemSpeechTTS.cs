@@ -62,7 +62,7 @@ namespace TTS
             }
            catch (Exception ex)
             {
-                OutputText.outputLog("[System Speech TTS *AUDIO* Error: " + ex.Message + "]",Color.Red);
+                OutputText.outputLog("[System Speech TTS *AUDIO* Error: " + ex.Message + ". Rename one of your devices in control panel > sound.]",Color.Red);
             }
 
 

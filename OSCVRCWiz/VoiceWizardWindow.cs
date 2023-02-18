@@ -23,6 +23,8 @@ using System;
 using Settings;
 using System.Windows.Forms;
 using AutoUpdaterDotNET;
+using OSCVRCWiz.Speech_Recognition;
+using static System.Net.Mime.MediaTypeNames;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -33,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "0.9.9.0";
-        string releaseDate = "February 8, 2023";
+        public static string currentVersion = "1.0.0.0";
+        string releaseDate = "February 18, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -44,7 +46,7 @@ namespace OSCVRCWiz
 
 
         // public OutputText ot;
-        public GreenScreen pf;
+        //public GreenScreen pf;
         public static VoiceWizardWindow MainFormGlobal;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -65,6 +67,10 @@ namespace OSCVRCWiz
         public static System.Threading.Timer spotifyTimer;
 
         public System.Threading.Timer katRefreshTimer;
+
+        public System.Threading.Timer VRCCounterTimer;
+
+        public static System.Threading.Timer whisperTimer;
 
         public static string modifierKey = "Control";
         public static string normalKey = "G";
@@ -109,8 +115,16 @@ namespace OSCVRCWiz
                toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
                katRefreshTimer = new System.Threading.Timer(katRefreshtimertick);
                katRefreshTimer.Change(2000, 0);
-               //listView1.View = View.List;
-               TTSBoxText = richTextBox3.Text.ToString();
+
+                VRCCounterTimer = new System.Threading.Timer(VRCCountertimertick);
+                VRCCounterTimer.Change(1600, 0);
+
+                whisperTimer = new System.Threading.Timer(whispertimertick);
+                whisperTimer.Change(Timeout.Infinite, Timeout.Infinite);
+
+
+                //listView1.View = View.List;
+                TTSBoxText = richTextBox3.Text.ToString();
                labelCharCount.Text = TTSBoxText.Length.ToString();
 
             /*   if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
@@ -306,6 +320,9 @@ namespace OSCVRCWiz
             switch (comboBoxTTSMode.Text.ToString())
             {
                 case "FonixTalk": break;
+
+                case "ElevenLabs": break;
+
                 case "TikTok":break;
                  
                 case "System Speech":
@@ -419,10 +436,21 @@ namespace OSCVRCWiz
 
             }
 
+            if (rjToggleButton11.Checked == true)//turn on osc listener on start
+            {
+                Task.Run(() => OSC.OSCLegacyVRChatListener());
+                button33.Enabled = false;
+
+            }
+
+
+           
+
             WindowsMedia.getWindowsMedia();
             VoiceCommands.voiceCommands();
             VoiceCommands.refreshCommandList();
             ToastNotification.ToastListen();
+            
 
             if (rjToggleButtonSystemTray.Checked == true)
             {
@@ -451,11 +479,14 @@ namespace OSCVRCWiz
 
             try
             {
-                File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
+                if (rjToggleButtonOBSText.Checked == true)
+                {
+                    File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
+                }
             }
             catch(Exception ex)
             {
-                OutputText.outputLog("[OBSText File Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[OBSText File Error: " + ex.Message + ". Try moving folder location.]", Color.Red);
             }
             
 
@@ -605,7 +636,10 @@ namespace OSCVRCWiz
                         case "FonixTalk":
                             Task.Run(() => FonixTalkTTS.FonixTTS(speechText));
                             break;
-                        case "System Speech":
+                        case "ElevenLabs":
+                            Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(speechText));
+                            break;
+                case "System Speech":
                             Task.Run(() => SystemSpeechTTS.systemTTSAction(speechText));
                             break;
                         case "Azure":
@@ -644,8 +678,10 @@ namespace OSCVRCWiz
                     OutputText.outputLog($"[{STTMode} > {selectedTTSMode}]: {text} [{translationMethod}]: {newText}");
                 }
 
-
-                OutputText.outputTextFile(writeText);
+                if (rjToggleButtonOBSText.Checked == true)
+                {
+                    OutputText.outputTextFile(writeText);
+                }
 
             }
             if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
@@ -697,7 +733,12 @@ namespace OSCVRCWiz
                         Task.Run(() => VoskRecognition.toggleVosk());
 
                         break;
-                case "Web Captioner":
+               case "Whisper":
+
+                        Task.Run(() => WhisperRecognition.toggleWhisper());
+
+                        break;
+               case "Web Captioner":
                         Task.Run(() => WebCaptionerRecognition.WebCapToggle());
                         break;
 
@@ -904,6 +945,18 @@ namespace OSCVRCWiz
             Thread t = new Thread(doKatRefreshTimerTick);
             t.Start();
         }
+        public void VRCCountertimertick(object sender)
+        {
+
+            Thread t = new Thread(doVRCCounterTimerTick);
+            t.Start();
+        }
+        public void whispertimertick(object sender)
+        {
+
+            Thread t = new Thread(doWhisperTimerTick);
+            t.Start();
+        }
         private void doHideTimerTick()
         {
             // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
@@ -932,14 +985,14 @@ namespace OSCVRCWiz
             }
 
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
-            if (rjToggleButtonGreenScreen.Checked == true)
+          /*  if (rjToggleButtonGreenScreen.Checked == true)
             {
                 Invoke((MethodInvoker)delegate ()
                 {
                     pf.customrtb1.Text = "";
                 });
 
-            }
+            }*/
 
         }
         private void doToastTimerTick()
@@ -957,12 +1010,20 @@ namespace OSCVRCWiz
 
             }
 
+        }
 
+        private void doWhisperTimerTick()
+        {
+            string text = WhisperRecognition.WhisperString;
 
+            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
+            WhisperRecognition.WhisperString = "";
 
 
 
         }
+
+
         private void doTypeTimerTick()
         {
             this.Invoke((MethodInvoker)delegate ()
@@ -1033,11 +1094,118 @@ namespace OSCVRCWiz
             }
         }
 
+        private void doVRCCounterTimerTick()
+        {
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector==true)
+            {
+                var theString = "";
+                theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
+                if (rjToggleButtonChatBox.Checked == true)
+                {
+                    Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                }
+                if (rjToggleButtonOSC.Checked == true)
+                {
+                    Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                }
+
+            }
+
+
+                if (rjToggleButton13.Checked == true && button33.Enabled==false)
+            {
+                
+              
+                    if(OSC.counter1 > OSC.prevCounter1)
+                    {
+                        OSC.prevCounter1 = OSC.counter1;
+                         var theString = "";
+                         theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                          theString = theString.Replace("{counter}", OSC.counter1.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString,"bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true)
+                        {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
+                    }
+                else if (OSC.counter2 > OSC.prevCounter2)
+                {
+                    OSC.prevCounter2 = OSC.counter2;
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text.ToString();
+
+                    theString = theString.Replace("{counter}", OSC.counter2.ToString());
+
+                    if (rjToggleButtonChatBox.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                    }
+                    if (rjToggleButtonOSC.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                    }
+
+
+                }
+                else if (OSC.counter3 > OSC.prevCounter3)
+                {
+                    OSC.prevCounter3 = OSC.counter3;
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text.ToString();
+
+                    theString = theString.Replace("{counter}", OSC.counter3.ToString());
+
+                    if (rjToggleButtonChatBox.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                    }
+                    if (rjToggleButtonOSC.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                    }
+
+
+                }
+                else if (OSC.counter4 > OSC.prevCounter4)
+                {
+                    OSC.prevCounter4 = OSC.counter4;
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text.ToString();
+
+                    theString = theString.Replace("{counter}", OSC.counter4.ToString());
+
+                    if (rjToggleButtonChatBox.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                    }
+                    if (rjToggleButtonOSC.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                    }
+
+
+                }
+
+
+
+            }
+                VRCCounterTimer.Change(1600, 0);
+            
+        }
 
 
 
 
-            private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
+
+        private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (rjToggleButton1.Checked == true)
             {
@@ -1301,7 +1469,7 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonGreenScreen_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButtonGreenScreen.Checked == true)
+          /*  if (rjToggleButtonGreenScreen.Checked == true)
             {
                 pf = new GreenScreen();
                 pf.BackColor = Color.LimeGreen;
@@ -1312,17 +1480,17 @@ namespace OSCVRCWiz
             {
                 pf.Dispose();
 
-            }
+            }*/
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (rjToggleButtonGreenScreen.Checked == true)
+          /*  if (rjToggleButtonGreenScreen.Checked == true)
             {
                 pf.customrtb1.Font = new Font("Calibri", Int32.Parse(textBoxFont.Text.ToString()));
 
             }
-            Settings1.Default.fontSizeSetting = textBoxFont.Text.ToString();
+            Settings1.Default.fontSizeSetting = textBoxFont.Text.ToString(); */
 
 
 
@@ -1684,6 +1852,51 @@ namespace OSCVRCWiz
                     TTSModeSaved = "Glados";
 
                     break;
+                case "ElevenLabs":
+
+                    comboBox2.Items.Clear();
+                   
+                    try
+                    {
+                        if(ElevenLabsTTS.elevenFirstLoad==true)
+                        {
+                            ElevenLabsTTS.CallElevenVoices();
+                        }
+
+                        if (ElevenLabsTTS.voiceDict != null)
+                        {
+                            foreach (KeyValuePair<string, string> kvp in ElevenLabsTTS.voiceDict)
+                            {
+                                comboBox2.Items.Add(kvp.Value);
+
+                            }
+                        }
+                        else
+                        {
+                            comboBox2.Items.Add("error");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        comboBox2.Items.Add("error");
+                        OutputText.outputLog("[ElevenLabs Load1 Error: " + ex.Message + "]", Color.Red);
+
+                    }
+
+                    comboBox2.SelectedIndex = 0;
+
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = false;
+                    comboBoxPitch.Enabled = false;
+                    comboBoxVolume.Enabled = false;
+                    comboBoxRate.Enabled = false;
+                    TTSModeSaved = "ElevenLabs";
+
+                    break;
+
 
                 case "Amazon Polly":
 
@@ -2369,6 +2582,122 @@ namespace OSCVRCWiz
         private void iconButton18_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly");
+        }
+
+        private void iconButton24_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(VRCOSC);
+        }
+
+        private void button34_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                whisperModelTextBox.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void iconButton30_Click_1(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(LocalSpeech);
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => OSC.OSCLegacyVRChatListener());
+            button33.Enabled = false;
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            OSC.FromVRChatPort = textBoxVRChatOSCPort.Text.ToString();
+        }
+
+        private void iconButton28_Click_2(object sender, EventArgs e)
+        {
+            tabControl1.SelectTab(elevenLabs);
+        }
+
+        private void button37_Click(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                var text = textBox12.Text.ToString();
+                Settings1.Default.elevenLabsAPIKey = text;
+                Settings1.Default.Save();
+
+            });
+        }
+
+        private void button35_Click(object sender, EventArgs e)
+        {
+            ElevenLabsTTS.CallElevenVoices();
+            if (comboBoxTTSMode.SelectedItem.ToString() == "ElevenLabs")
+            {
+
+                comboBox2.Items.Clear();
+
+                try
+                {
+                    if (ElevenLabsTTS.elevenFirstLoad == true)
+                    {
+                        ElevenLabsTTS.CallElevenVoices();
+                    }
+
+                    if (ElevenLabsTTS.voiceDict != null)
+                    {
+                        foreach (KeyValuePair<string, string> kvp in ElevenLabsTTS.voiceDict)
+                        {
+                            comboBox2.Items.Add(kvp.Value);
+
+                        }
+                    }
+                    else
+                    {
+                        comboBox2.Items.Add("error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    comboBox2.Items.Add("error");
+                    OutputText.outputLog("[ElevenLabs Load2 Error: " + ex.Message + "]", Color.Red);
+
+                }
+
+                comboBox2.SelectedIndex = 0;
+
+                comboBox1.SelectedIndex = 0;
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox5.Enabled = false;
+                comboBoxPitch.Enabled = false;
+                comboBoxVolume.Enabled = false;
+                comboBoxRate.Enabled = false;
+                TTSModeSaved = "ElevenLabs";
+            }
+        }
+
+        private void voskLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Vosk");
+        }
+
+        private void whisperLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper");
+
+        }
+
+        private void OBSLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#obs-text-for-streaming-and-recording-videos");
+        
+        }
+
+        private void iconButton35_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS");
         }
     }
 
