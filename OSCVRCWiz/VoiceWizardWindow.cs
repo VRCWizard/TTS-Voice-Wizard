@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.0.0";
-        string releaseDate = "February 18, 2023";
+        public static string currentVersion = "1.0.0.3";
+        string releaseDate = "February 20, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -957,6 +957,7 @@ namespace OSCVRCWiz
             Thread t = new Thread(doWhisperTimerTick);
             t.Start();
         }
+
         private void doHideTimerTick()
         {
             // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
@@ -1012,12 +1013,13 @@ namespace OSCVRCWiz
 
         }
 
-        private void doWhisperTimerTick()
+       private void doWhisperTimerTick()
         {
             string text = WhisperRecognition.WhisperString;
 
-            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
+            VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper");
             WhisperRecognition.WhisperString = "";
+
 
 
 
