@@ -9,6 +9,7 @@ using Whisper;
 using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using OSCVRCWiz.Speech_Recognition;
+using OSCVRCWiz.Text;
 
 namespace OSCVRCWiz.Resources
 {
@@ -52,33 +53,58 @@ namespace OSCVRCWiz.Resources
             
             TranscribeResult res = sender.results(resultFlags);
             ReadOnlySpan<sToken> tokens = res.tokens;
+            var testing = res.segments.Length;
+            int counter = 1;
 
             int s0 = res.segments.Length - countNew;
             if (s0 == 0)
                 Debug.WriteLine("");
-
+            string text = "";
+            string stuff = "";
             for (int i = s0; i < res.segments.Length; i++)
             {
                 sSegment seg = res.segments[i];
 
-                string text = seg.text.ToString().Trim();
+               stuff = seg.text.ToString().Trim();
 
   
-                Debug.WriteLine(text);
+                Debug.WriteLine($"segment {s0}: {stuff}");
+             //   Debug.WriteLine("countNew : " + countNew);
+             //   Debug.WriteLine("s0 : " + s0);
+             //   Debug.WriteLine("testing : " + testing);
+               
+                //counter++;
 
-                Char ch = '[';
+                //Char ch = '[';
                 //i am also want to ignore stuff starting with * ???? ill have to see after further testing/ when i release it.
                 //also since whisper can recognize laughter, i could add that as a feature.
                 //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
 
-                if (!text.StartsWith(ch))
+                if (!stuff.StartsWith('[') && stuff !="Audio" && !stuff.EndsWith(']'))
                 {
-                    WhisperRecognition.WhisperString += text + " ";
-                    VoiceWizardWindow.whisperTimer.Change(250, 0);
+                    //   WhisperRecognition.WhisperString += text + " ";
+                    //  VoiceWizardWindow.whisperTimer.Change(250, 0);
                     //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
+                    text += stuff;
+
                 }
-               // continue;
+                else
+                {
+                    OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                }
+                // continue;
+                
             }
+            if (text != "")
+            {
+                   WhisperRecognition.WhisperString += text + " ";
+                   VoiceWizardWindow.whisperTimer.Change(250, 0);
+               // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
+
+
+            }
+
+
         }
     }
 }

@@ -66,8 +66,8 @@ namespace OSCVRCWiz.TranslationAPIs
                 // case "Irish [ga-IE]": fromLanguage = LanguageCode.iris; break;
                 case "Italian [it-IT]": fromLanguage = LanguageCode.Italian; break;
                 case "Japanese [ja-JP]": fromLanguage = LanguageCode.Japanese; break;
-                // case "Korean [ko-KR]": fromLanguage = LanguageCode.k break;
-                //  case "Norwegian [nb-NO]": fromLanguage = LanguageCode.no break;
+                 case "Korean [ko-KR]": fromLanguage = LanguageCode.Korean; break;
+                 case "Norwegian [nb-NO]": fromLanguage = LanguageCode.Norwegian; break;
                 case "Polish [pl-PL]": fromLanguage = LanguageCode.Polish; break;
                 case "Portuguese [pt-BR]": fromLanguage = LanguageCode.Portuguese; break;
                 //place holder^^

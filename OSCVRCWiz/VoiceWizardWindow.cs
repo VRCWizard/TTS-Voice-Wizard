@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.0.3";
-        string releaseDate = "February 20, 2023";
+        public static string currentVersion = "1.0.1";
+        string releaseDate = "February 21, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -2166,6 +2166,8 @@ namespace OSCVRCWiz
         {
            
         }
+        Color DarkModeColor = Color.FromArgb(31, 30, 68);
+        Color LightModeColor = Color.FromArgb(68, 72, 111);
 
         private void rjToggleButton7_CheckedChanged_1(object sender, EventArgs e)
         {
@@ -2198,12 +2200,12 @@ namespace OSCVRCWiz
                 logTrash.BackColor = Color.FromArgb(31, 30, 68);
                 iconButton22.BackColor = Color.FromArgb(31, 30, 68);
 
-                iconButton13.BackColor = Color.FromArgb(31, 30, 68);//dashboard buttons
-                iconButton14.BackColor = Color.FromArgb(31, 30, 68);
-                iconButton15.BackColor = Color.FromArgb(31, 30, 68);
-                iconButton16.BackColor = Color.FromArgb(31, 30, 68);
-                iconButton17.BackColor = Color.FromArgb(31, 30, 68);
-                iconButton26.BackColor = Color.FromArgb(31, 30, 68);
+               /* iconButton13.BackColor = LightModeColor;//dashboard buttons
+                iconButton14.BackColor = LightModeColor;
+                iconButton15.BackColor = LightModeColor;
+                iconButton16.BackColor = LightModeColor;
+                iconButton17.BackColor = LightModeColor;
+                iconButton26.BackColor = LightModeColor;*/
 
               
 
@@ -2243,12 +2245,12 @@ namespace OSCVRCWiz
                 logTrash.BackColor = Color.White;
                 iconButton22.BackColor = Color.White;
 
-                iconButton13.BackColor = Color.FromArgb(68, 72, 111);//dashboard buttons
+               /* iconButton13.BackColor = Color.FromArgb(68, 72, 111);//dashboard buttons
                 iconButton14.BackColor = Color.FromArgb(68, 72, 111);
                 iconButton15.BackColor = Color.FromArgb(68, 72, 111);
                 iconButton16.BackColor = Color.FromArgb(68, 72, 111);
                 iconButton17.BackColor = Color.FromArgb(68, 72, 111);
-                iconButton26.BackColor = Color.FromArgb(68, 72, 111);
+                iconButton26.BackColor = Color.FromArgb(68, 72, 111);*/
 
                 labelCharCount.ForeColor = Color.FromArgb(68, 72, 111);
                 ttsTrash.IconColor = Color.FromArgb(68, 72, 111);
@@ -2700,6 +2702,16 @@ namespace OSCVRCWiz
         private void iconButton35_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS");
+        }
+
+        private void iconButton38_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/n5nLnacVGu4");
+        }
+
+        private void iconButton46_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide");
         }
     }
 

@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Resources\WizardPic.ico</ApplicationIcon>
+    <ApplicationIcon>TTSIconsilluoute.ico</ApplicationIcon>
     <AssemblyName>TTSVoiceWizard</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x86</Platforms>
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Resources\WizardPic.ico" />
+    <Content Include="TTSIconsilluoute.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,17 +31,16 @@
   <ItemGroup>
     <PackageReference Include="Autoupdater.NET.Official" Version="1.7.6" />
     <PackageReference Include="AWSSDK.Polly" Version="3.7.105.6" />
-    <PackageReference Include="DeepL.net" Version="1.4.0" />
-    <PackageReference Include="Dubya.WindowsMediaController" Version="2.2.0" />
+    <PackageReference Include="DeepL.net" Version="1.6.0" />
+    <PackageReference Include="Dubya.WindowsMediaController" Version="2.4.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="MeaMod.DNS" Version="1.0.70" />
-    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.24.2" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.25.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1518.46" />
     <PackageReference Include="NAudio" Version="2.1.0" />
-    <PackageReference Include="Octokit" Version="3.0.0" />
-    <PackageReference Include="Siticone.Desktop.UI" Version="2.1.1" />
+    <PackageReference Include="Octokit" Version="5.0.0" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />
     <PackageReference Include="System.Speech" Version="7.0.0-preview.2.22152.2" />

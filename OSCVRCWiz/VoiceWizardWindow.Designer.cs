@@ -49,6 +49,9 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.iconButton46 = new FontAwesome.Sharp.IconButton();
+            this.iconButton38 = new FontAwesome.Sharp.IconButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.iconButton34 = new FontAwesome.Sharp.IconButton();
             this.iconButton33 = new FontAwesome.Sharp.IconButton();
             this.iconButton26 = new FontAwesome.Sharp.IconButton();
@@ -422,6 +425,7 @@
             this.comboBoxSysSpeechRecog = new System.Windows.Forms.ComboBox();
             this.elevenLabs = new System.Windows.Forms.TabPage();
             this.groupBox39 = new System.Windows.Forms.GroupBox();
+            this.iconButton35 = new FontAwesome.Sharp.IconButton();
             this.button35 = new System.Windows.Forms.Button();
             this.label111 = new System.Windows.Forms.Label();
             this.button37 = new System.Windows.Forms.Button();
@@ -443,9 +447,9 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.iconButton35 = new FontAwesome.Sharp.IconButton();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -885,6 +889,9 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabPage4.Controls.Add(this.iconButton46);
+            this.tabPage4.Controls.Add(this.iconButton38);
+            this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.iconButton34);
             this.tabPage4.Controls.Add(this.iconButton33);
             this.tabPage4.Controls.Add(this.iconButton26);
@@ -905,6 +912,55 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dashboard";
             // 
+            // iconButton46
+            // 
+            this.iconButton46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton46.FlatAppearance.BorderSize = 0;
+            this.iconButton46.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton46.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton46.IconChar = FontAwesome.Sharp.IconChar.Book;
+            this.iconButton46.IconColor = System.Drawing.Color.White;
+            this.iconButton46.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton46.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton46.Location = new System.Drawing.Point(23, 120);
+            this.iconButton46.Name = "iconButton46";
+            this.iconButton46.Size = new System.Drawing.Size(118, 65);
+            this.iconButton46.TabIndex = 107;
+            this.iconButton46.Text = "Wiki";
+            this.iconButton46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton46.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton46.UseVisualStyleBackColor = false;
+            this.iconButton46.Click += new System.EventHandler(this.iconButton46_Click);
+            // 
+            // iconButton38
+            // 
+            this.iconButton38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton38.FlatAppearance.BorderSize = 0;
+            this.iconButton38.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.iconButton38.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton38.IconChar = FontAwesome.Sharp.IconChar.Play;
+            this.iconButton38.IconColor = System.Drawing.Color.White;
+            this.iconButton38.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton38.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton38.Location = new System.Drawing.Point(147, 120);
+            this.iconButton38.Name = "iconButton38";
+            this.iconButton38.Size = new System.Drawing.Size(206, 65);
+            this.iconButton38.TabIndex = 106;
+            this.iconButton38.Text = "Getting Started";
+            this.iconButton38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton38.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton38.UseVisualStyleBackColor = false;
+            this.iconButton38.Click += new System.EventHandler(this.iconButton38_Click_1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::OSCVRCWiz.Properties.Resources.VRChatTTSBWBannerResize;
+            this.pictureBox2.Location = new System.Drawing.Point(23, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(498, 115);
+            this.pictureBox2.TabIndex = 105;
+            this.pictureBox2.TabStop = false;
+            // 
             // iconButton34
             // 
             this.iconButton34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -915,11 +971,11 @@
             this.iconButton34.IconColor = System.Drawing.Color.White;
             this.iconButton34.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton34.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton34.Location = new System.Drawing.Point(322, 59);
+            this.iconButton34.Location = new System.Drawing.Point(556, 120);
             this.iconButton34.Name = "iconButton34";
-            this.iconButton34.Size = new System.Drawing.Size(218, 84);
+            this.iconButton34.Size = new System.Drawing.Size(125, 65);
             this.iconButton34.TabIndex = 104;
-            this.iconButton34.Text = "Watch the demo";
+            this.iconButton34.Text = "Demo";
             this.iconButton34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton34.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton34.UseVisualStyleBackColor = false;
@@ -935,11 +991,11 @@
             this.iconButton33.IconColor = System.Drawing.Color.White;
             this.iconButton33.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton33.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton33.Location = new System.Drawing.Point(23, 59);
+            this.iconButton33.Location = new System.Drawing.Point(359, 120);
             this.iconButton33.Name = "iconButton33";
-            this.iconButton33.Size = new System.Drawing.Size(291, 84);
+            this.iconButton33.Size = new System.Drawing.Size(191, 65);
             this.iconButton33.TabIndex = 103;
-            this.iconButton33.Text = "Watch the setup tutorial";
+            this.iconButton33.Text = "Setup tutorial";
             this.iconButton33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton33.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton33.UseVisualStyleBackColor = false;
@@ -953,10 +1009,10 @@
             this.iconButton26.IconChar = FontAwesome.Sharp.IconChar.Trello;
             this.iconButton26.IconColor = System.Drawing.Color.White;
             this.iconButton26.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton26.Location = new System.Drawing.Point(703, 12);
+            this.iconButton26.IconSize = 70;
+            this.iconButton26.Location = new System.Drawing.Point(903, 36);
             this.iconButton26.Name = "iconButton26";
-            this.iconButton26.Size = new System.Drawing.Size(54, 41);
+            this.iconButton26.Size = new System.Drawing.Size(70, 60);
             this.iconButton26.TabIndex = 30;
             this.iconButton26.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton26.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -971,9 +1027,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webView21.CreationProperties = null;
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.webView21.Location = new System.Drawing.Point(23, 171);
+            this.webView21.Location = new System.Drawing.Point(23, 192);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(931, 514);
+            this.webView21.Size = new System.Drawing.Size(931, 493);
             this.webView21.Source = new System.Uri("https://voicewizardsponsors.carrd.co/", System.UriKind.Absolute);
             this.webView21.TabIndex = 0;
             this.webView21.ZoomFactor = 0.9D;
@@ -986,7 +1042,7 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button10.ForeColor = System.Drawing.Color.Snow;
-            this.button10.Location = new System.Drawing.Point(916, 146);
+            this.button10.Location = new System.Drawing.Point(916, 171);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(38, 25);
             this.button10.TabIndex = 28;
@@ -1002,7 +1058,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button9.ForeColor = System.Drawing.Color.Snow;
-            this.button9.Location = new System.Drawing.Point(873, 146);
+            this.button9.Location = new System.Drawing.Point(873, 171);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(37, 25);
             this.button9.TabIndex = 27;
@@ -1018,10 +1074,10 @@
             this.iconButton17.IconChar = FontAwesome.Sharp.IconChar.Coffee;
             this.iconButton17.IconColor = System.Drawing.Color.White;
             this.iconButton17.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton17.Location = new System.Drawing.Point(631, 12);
+            this.iconButton17.IconSize = 70;
+            this.iconButton17.Location = new System.Drawing.Point(831, 36);
             this.iconButton17.Name = "iconButton17";
-            this.iconButton17.Size = new System.Drawing.Size(54, 41);
+            this.iconButton17.Size = new System.Drawing.Size(70, 60);
             this.iconButton17.TabIndex = 15;
             this.iconButton17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton17.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1036,10 +1092,10 @@
             this.iconButton16.IconChar = FontAwesome.Sharp.IconChar.Github;
             this.iconButton16.IconColor = System.Drawing.Color.White;
             this.iconButton16.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton16.Location = new System.Drawing.Point(559, 12);
+            this.iconButton16.IconSize = 70;
+            this.iconButton16.Location = new System.Drawing.Point(759, 36);
             this.iconButton16.Name = "iconButton16";
-            this.iconButton16.Size = new System.Drawing.Size(54, 41);
+            this.iconButton16.Size = new System.Drawing.Size(70, 60);
             this.iconButton16.TabIndex = 14;
             this.iconButton16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1054,10 +1110,10 @@
             this.iconButton15.IconChar = FontAwesome.Sharp.IconChar.Discord;
             this.iconButton15.IconColor = System.Drawing.Color.White;
             this.iconButton15.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton15.Location = new System.Drawing.Point(486, 12);
+            this.iconButton15.IconSize = 70;
+            this.iconButton15.Location = new System.Drawing.Point(686, 36);
             this.iconButton15.Name = "iconButton15";
-            this.iconButton15.Size = new System.Drawing.Size(54, 41);
+            this.iconButton15.Size = new System.Drawing.Size(70, 60);
             this.iconButton15.TabIndex = 13;
             this.iconButton15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1072,10 +1128,10 @@
             this.iconButton14.IconChar = FontAwesome.Sharp.IconChar.Twitter;
             this.iconButton14.IconColor = System.Drawing.Color.White;
             this.iconButton14.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton14.Location = new System.Drawing.Point(417, 12);
+            this.iconButton14.IconSize = 70;
+            this.iconButton14.Location = new System.Drawing.Point(606, 36);
             this.iconButton14.Name = "iconButton14";
-            this.iconButton14.Size = new System.Drawing.Size(54, 41);
+            this.iconButton14.Size = new System.Drawing.Size(70, 60);
             this.iconButton14.TabIndex = 12;
             this.iconButton14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1090,10 +1146,10 @@
             this.iconButton13.IconChar = FontAwesome.Sharp.IconChar.Youtube;
             this.iconButton13.IconColor = System.Drawing.Color.White;
             this.iconButton13.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton13.Location = new System.Drawing.Point(347, 12);
+            this.iconButton13.IconSize = 70;
+            this.iconButton13.Location = new System.Drawing.Point(527, 35);
             this.iconButton13.Name = "iconButton13";
-            this.iconButton13.Size = new System.Drawing.Size(54, 41);
+            this.iconButton13.Size = new System.Drawing.Size(70, 60);
             this.iconButton13.TabIndex = 11;
             this.iconButton13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1123,11 +1179,11 @@
             this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox4.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richTextBox4.ForeColor = System.Drawing.Color.White;
-            this.richTextBox4.Location = new System.Drawing.Point(23, -2);
+            this.richTextBox4.Location = new System.Drawing.Point(38, 36);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.ReadOnly = true;
             this.richTextBox4.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox4.Size = new System.Drawing.Size(793, 55);
+            this.richTextBox4.Size = new System.Drawing.Size(463, 55);
             this.richTextBox4.TabIndex = 2;
             this.richTextBox4.Text = "TTS Voice Wizard";
             // 
@@ -3531,7 +3587,7 @@
             this.groupBox20.ForeColor = System.Drawing.Color.White;
             this.groupBox20.Location = new System.Drawing.Point(324, 421);
             this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(638, 240);
+            this.groupBox20.Size = new System.Drawing.Size(638, 193);
             this.groupBox20.TabIndex = 122;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "KillFrenzy Avatar Text (KAT)";
@@ -6033,6 +6089,26 @@
             this.groupBox39.TabStop = false;
             this.groupBox39.Text = "Eleven Setup";
             // 
+            // iconButton35
+            // 
+            this.iconButton35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton35.FlatAppearance.BorderSize = 0;
+            this.iconButton35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton35.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton35.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton35.IconColor = System.Drawing.Color.White;
+            this.iconButton35.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton35.IconSize = 40;
+            this.iconButton35.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton35.Location = new System.Drawing.Point(567, 39);
+            this.iconButton35.Name = "iconButton35";
+            this.iconButton35.Size = new System.Drawing.Size(50, 40);
+            this.iconButton35.TabIndex = 164;
+            this.iconButton35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton35.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton35.UseVisualStyleBackColor = true;
+            this.iconButton35.Click += new System.EventHandler(this.iconButton35_Click);
+            // 
             // button35
             // 
             this.button35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -6322,10 +6398,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(38, 15);
+            this.pictureBox1.Image = global::OSCVRCWiz.Properties.Resources.TTSIcon;
+            this.pictureBox1.Location = new System.Drawing.Point(35, -10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(125, 125);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -6339,26 +6415,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // iconButton35
-            // 
-            this.iconButton35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton35.FlatAppearance.BorderSize = 0;
-            this.iconButton35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton35.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton35.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.iconButton35.IconColor = System.Drawing.Color.White;
-            this.iconButton35.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton35.IconSize = 40;
-            this.iconButton35.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton35.Location = new System.Drawing.Point(567, 39);
-            this.iconButton35.Name = "iconButton35";
-            this.iconButton35.Size = new System.Drawing.Size(50, 40);
-            this.iconButton35.TabIndex = 164;
-            this.iconButton35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton35.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton35.UseVisualStyleBackColor = true;
-            this.iconButton35.Click += new System.EventHandler(this.iconButton35_Click);
             // 
             // VoiceWizardWindow
             // 
@@ -6377,6 +6433,7 @@
             this.Resize += new System.EventHandler(this.VoiceWizardWindow_Resize);
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
@@ -6905,5 +6962,8 @@
         private Label label108;
         public RJControls.RJToggleButton rjToggleButtonMedia4OBS;
         private FontAwesome.Sharp.IconButton iconButton35;
+        private PictureBox pictureBox2;
+        private FontAwesome.Sharp.IconButton iconButton46;
+        private FontAwesome.Sharp.IconButton iconButton38;
     }
 }

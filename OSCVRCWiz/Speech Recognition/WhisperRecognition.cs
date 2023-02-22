@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Whisper;
-using static Siticone.Desktop.UI.Native.WinApi;
+
 
 namespace OSCVRCWiz.Speech_Recognition
 {
@@ -41,6 +41,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
             else
             {
+                WhisperString = "";
                 CaptureThread.stopWhisper();
                 WhisperEnabled = false;
                 OutputText.outputLog("[Whisper Stopped Listening]");
