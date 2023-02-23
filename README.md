@@ -22,7 +22,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## GETTING STARTED
 
--  Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide) for instructions on how to set up the basic features of TTS Voice Wizard. The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
+-  **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** for instructions on how to set up the basic features of TTS Voice Wizard. The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
 
 [![Getting Started with TTS Voice Wizard](https://user-images.githubusercontent.com/101527472/216428051-e7dda4a2-cb5c-48ab-b04f-73dd12bad23a.png)](https://youtu.be/n5nLnacVGu4 "Getting Started with TTS Voice Wizard") 
 
