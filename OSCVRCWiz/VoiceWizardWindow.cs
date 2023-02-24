@@ -35,7 +35,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.1.5";
+        public static string currentVersion = "1.0.1.6";
         string releaseDate = "February 24, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -887,8 +887,9 @@ namespace OSCVRCWiz
 
         private void buttonSpotify_Click(object sender, EventArgs e)
         {
-            var sa = new SpotifyAddon();
-            sa.SpotifyConnect(this);
+            Settings1.Default.SpotifyKey = textBoxSpotKey.Text.ToString();
+            Settings1.Default.Save();
+            SpotifyAddon.SpotifyConnect();
 
         }
 

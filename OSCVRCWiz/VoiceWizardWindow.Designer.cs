@@ -2595,6 +2595,7 @@
             // 
             this.textBoxSpotKey.Location = new System.Drawing.Point(22, 139);
             this.textBoxSpotKey.Name = "textBoxSpotKey";
+            this.textBoxSpotKey.PasswordChar = '*';
             this.textBoxSpotKey.Size = new System.Drawing.Size(300, 27);
             this.textBoxSpotKey.TabIndex = 55;
             this.textBoxSpotKey.TextChanged += new System.EventHandler(this.textBoxSpotKey_TextChanged);

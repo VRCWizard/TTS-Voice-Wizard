@@ -394,7 +394,7 @@ namespace OSCVRCWiz.Addons
         }
 
 
-        public async Task SpotifyConnect(VoiceWizardWindow MainForm)
+        public static async Task SpotifyConnect()
         {
            // MainForm.getSpotify = true;
 
