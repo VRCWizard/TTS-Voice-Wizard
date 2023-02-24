@@ -191,6 +191,8 @@ namespace OSCVRCWiz.Addons
                         theString = theString.Replace("{counter2}", OSC.counter2.ToString());
                         theString = theString.Replace("{counter3}", OSC.counter3.ToString());
                         theString = theString.Replace("{counter4}", OSC.counter4.ToString());
+                        theString = theString.Replace("{counter5}", OSC.counter5.ToString());
+                        theString = theString.Replace("{counter6}", OSC.counter6.ToString());
 
                         if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
@@ -326,6 +328,8 @@ namespace OSCVRCWiz.Addons
                     theString = theString.Replace("{counter2}", OSC.counter2.ToString());
                     theString = theString.Replace("{counter3}", OSC.counter3.ToString());
                     theString = theString.Replace("{counter4}", OSC.counter4.ToString());
+                    theString = theString.Replace("{counter5}", OSC.counter5.ToString());
+                    theString = theString.Replace("{counter6}", OSC.counter6.ToString());
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
                     {
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);

@@ -376,6 +376,17 @@
             this.label83 = new System.Windows.Forms.Label();
             this.VRCOSC = new System.Windows.Forms.TabPage();
             this.groupBox37 = new System.Windows.Forms.GroupBox();
+            this.button36 = new System.Windows.Forms.Button();
+            this.label119 = new System.Windows.Forms.Label();
+            this.textBoxCounter6 = new System.Windows.Forms.TextBox();
+            this.textBoxCounterMessage6 = new System.Windows.Forms.TextBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.label114 = new System.Windows.Forms.Label();
+            this.textBoxCounter5 = new System.Windows.Forms.TextBox();
+            this.textBoxCounterMessage5 = new System.Windows.Forms.TextBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.label112 = new System.Windows.Forms.Label();
+            this.rjToggleButtonCounterSaver = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label96 = new System.Windows.Forms.Label();
             this.textBoxCounter4 = new System.Windows.Forms.TextBox();
             this.textBoxCounterMessage4 = new System.Windows.Forms.TextBox();
@@ -5495,6 +5506,17 @@
             // 
             // groupBox37
             // 
+            this.groupBox37.Controls.Add(this.button36);
+            this.groupBox37.Controls.Add(this.label119);
+            this.groupBox37.Controls.Add(this.textBoxCounter6);
+            this.groupBox37.Controls.Add(this.textBoxCounterMessage6);
+            this.groupBox37.Controls.Add(this.label120);
+            this.groupBox37.Controls.Add(this.label114);
+            this.groupBox37.Controls.Add(this.textBoxCounter5);
+            this.groupBox37.Controls.Add(this.textBoxCounterMessage5);
+            this.groupBox37.Controls.Add(this.label116);
+            this.groupBox37.Controls.Add(this.label112);
+            this.groupBox37.Controls.Add(this.rjToggleButtonCounterSaver);
             this.groupBox37.Controls.Add(this.label96);
             this.groupBox37.Controls.Add(this.textBoxCounter4);
             this.groupBox37.Controls.Add(this.textBoxCounterMessage4);
@@ -5516,10 +5538,125 @@
             this.groupBox37.ForeColor = System.Drawing.Color.White;
             this.groupBox37.Location = new System.Drawing.Point(20, 272);
             this.groupBox37.Name = "groupBox37";
-            this.groupBox37.Size = new System.Drawing.Size(931, 334);
+            this.groupBox37.Size = new System.Drawing.Size(931, 473);
             this.groupBox37.TabIndex = 127;
             this.groupBox37.TabStop = false;
             this.groupBox37.Text = "Counters";
+            // 
+            // button36
+            // 
+            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.ForeColor = System.Drawing.Color.Snow;
+            this.button36.Location = new System.Drawing.Point(786, 429);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(120, 29);
+            this.button36.TabIndex = 145;
+            this.button36.Text = "Reset Counters";
+            this.button36.UseVisualStyleBackColor = false;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label119.ForeColor = System.Drawing.Color.Snow;
+            this.label119.Location = new System.Drawing.Point(14, 339);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(194, 20);
+            this.label119.TabIndex = 142;
+            this.label119.Text = "Counter 6: Avatar Parameter";
+            // 
+            // textBoxCounter6
+            // 
+            this.textBoxCounter6.Location = new System.Drawing.Point(14, 362);
+            this.textBoxCounter6.Name = "textBoxCounter6";
+            this.textBoxCounter6.Size = new System.Drawing.Size(239, 27);
+            this.textBoxCounter6.TabIndex = 141;
+            this.textBoxCounter6.Text = "/avatar/parameters/AnothaOne";
+            // 
+            // textBoxCounterMessage6
+            // 
+            this.textBoxCounterMessage6.Location = new System.Drawing.Point(268, 362);
+            this.textBoxCounterMessage6.Name = "textBoxCounterMessage6";
+            this.textBoxCounterMessage6.Size = new System.Drawing.Size(313, 27);
+            this.textBoxCounterMessage6.TabIndex = 143;
+            this.textBoxCounterMessage6.Text = "Counter: {counter}";
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label120.ForeColor = System.Drawing.Color.Snow;
+            this.label120.Location = new System.Drawing.Point(267, 339);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(67, 20);
+            this.label120.TabIndex = 144;
+            this.label120.Text = "Message";
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label114.ForeColor = System.Drawing.Color.Snow;
+            this.label114.Location = new System.Drawing.Point(14, 279);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(194, 20);
+            this.label114.TabIndex = 138;
+            this.label114.Text = "Counter 5: Avatar Parameter";
+            // 
+            // textBoxCounter5
+            // 
+            this.textBoxCounter5.Location = new System.Drawing.Point(14, 302);
+            this.textBoxCounter5.Name = "textBoxCounter5";
+            this.textBoxCounter5.Size = new System.Drawing.Size(239, 27);
+            this.textBoxCounter5.TabIndex = 137;
+            this.textBoxCounter5.Text = "/avatar/parameters/Something";
+            // 
+            // textBoxCounterMessage5
+            // 
+            this.textBoxCounterMessage5.Location = new System.Drawing.Point(268, 302);
+            this.textBoxCounterMessage5.Name = "textBoxCounterMessage5";
+            this.textBoxCounterMessage5.Size = new System.Drawing.Size(313, 27);
+            this.textBoxCounterMessage5.TabIndex = 139;
+            this.textBoxCounterMessage5.Text = "Counter: {counter}";
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label116.ForeColor = System.Drawing.Color.Snow;
+            this.label116.Location = new System.Drawing.Point(267, 279);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(67, 20);
+            this.label116.TabIndex = 140;
+            this.label116.Text = "Message";
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.ForeColor = System.Drawing.Color.Snow;
+            this.label112.Location = new System.Drawing.Point(57, 438);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(102, 20);
+            this.label112.TabIndex = 136;
+            this.label112.Text = "Save Counters";
+            // 
+            // rjToggleButtonCounterSaver
+            // 
+            this.rjToggleButtonCounterSaver.AutoSize = true;
+            this.rjToggleButtonCounterSaver.Checked = true;
+            this.rjToggleButtonCounterSaver.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonCounterSaver.Location = new System.Drawing.Point(6, 436);
+            this.rjToggleButtonCounterSaver.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonCounterSaver.Name = "rjToggleButtonCounterSaver";
+            this.rjToggleButtonCounterSaver.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonCounterSaver.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonCounterSaver.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonCounterSaver.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonCounterSaver.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonCounterSaver.TabIndex = 135;
+            this.rjToggleButtonCounterSaver.UseVisualStyleBackColor = true;
             // 
             // label96
             // 
@@ -5546,7 +5683,7 @@
             this.textBoxCounterMessage4.Name = "textBoxCounterMessage4";
             this.textBoxCounterMessage4.Size = new System.Drawing.Size(313, 27);
             this.textBoxCounterMessage4.TabIndex = 133;
-            this.textBoxCounterMessage4.Text = "Times Slapped: {counter}";
+            this.textBoxCounterMessage4.Text = "Slap Counter: {counter}";
             // 
             // label97
             // 
@@ -5584,13 +5721,13 @@
             this.textBoxCounterMessage3.Name = "textBoxCounterMessage3";
             this.textBoxCounterMessage3.Size = new System.Drawing.Size(313, 27);
             this.textBoxCounterMessage3.TabIndex = 129;
-            this.textBoxCounterMessage3.Text = "Times Bonked: {counter}";
+            this.textBoxCounterMessage3.Text = "Bonk Counter: {counter}";
             // 
             // label89
             // 
             this.label89.AutoSize = true;
             this.label89.ForeColor = System.Drawing.Color.Snow;
-            this.label89.Location = new System.Drawing.Point(65, 296);
+            this.label89.Location = new System.Drawing.Point(57, 401);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(535, 20);
             this.label89.TabIndex = 52;
@@ -5613,7 +5750,7 @@
             this.rjToggleButton13.AutoSize = true;
             this.rjToggleButton13.Checked = true;
             this.rjToggleButton13.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton13.Location = new System.Drawing.Point(14, 294);
+            this.rjToggleButton13.Location = new System.Drawing.Point(6, 399);
             this.rjToggleButton13.MinimumSize = new System.Drawing.Size(45, 22);
             this.rjToggleButton13.Name = "rjToggleButton13";
             this.rjToggleButton13.OffBackColor = System.Drawing.Color.Gray;
@@ -5687,7 +5824,7 @@
             this.textBoxCounterMessage1.Name = "textBoxCounterMessage1";
             this.textBoxCounterMessage1.Size = new System.Drawing.Size(313, 27);
             this.textBoxCounterMessage1.TabIndex = 121;
-            this.textBoxCounterMessage1.Text = "Times Booped: {counter}";
+            this.textBoxCounterMessage1.Text = "Boop Counter: {counter}";
             // 
             // label85
             // 
@@ -6965,5 +7102,16 @@
         private PictureBox pictureBox2;
         private FontAwesome.Sharp.IconButton iconButton46;
         private FontAwesome.Sharp.IconButton iconButton38;
+        private Button button36;
+        private Label label119;
+        public TextBox textBoxCounter6;
+        public TextBox textBoxCounterMessage6;
+        private Label label120;
+        private Label label114;
+        public TextBox textBoxCounter5;
+        public TextBox textBoxCounterMessage5;
+        private Label label116;
+        private Label label112;
+        public RJControls.RJToggleButton rjToggleButtonCounterSaver;
     }
 }

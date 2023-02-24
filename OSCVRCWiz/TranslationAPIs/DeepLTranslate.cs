@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using DeepL;
+using OSCVRCWiz.Settings;
 using OSCVRCWiz.Text;
 
 namespace OSCVRCWiz.TranslationAPIs
@@ -11,14 +12,15 @@ namespace OSCVRCWiz.TranslationAPIs
         // private LanguageCode fromLanguage = LanguageCode.English;
         //   private LanguageCode toLanguage = "en";
         //public static string DeepLTranslationText="";
-        public static string DeepLKey = "";
+      //  public static string DeepLKey = "";
+     
 
         public static async Task<string> translateTextDeepL(string text)
         {
             try
             {
 
-                var translator = new Translator(DeepLKey);
+                var translator = new Translator(Settings1.Default.deepLKeysave);
                 var fullFromLanguage = "";
                 var fullToLanguage = "";
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()

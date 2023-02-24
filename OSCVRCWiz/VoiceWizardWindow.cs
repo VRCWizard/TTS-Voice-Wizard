@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.1";
-        string releaseDate = "February 21, 2023";
+        public static string currentVersion = "1.0.1.5";
+        string releaseDate = "February 24, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -1195,6 +1195,55 @@ namespace OSCVRCWiz
 
 
                 }
+                else if (OSC.counter5 > OSC.prevCounter5)
+                {
+                    OSC.prevCounter5 = OSC.counter5;
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text.ToString();
+
+                    theString = theString.Replace("{counter}", OSC.counter5.ToString());
+
+                    if (rjToggleButtonChatBox.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                    }
+                    if (rjToggleButtonOSC.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                    }
+
+
+                }
+                else if (OSC.counter6 > OSC.prevCounter6)
+                {
+                    OSC.prevCounter6 = OSC.counter6;
+                    
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
+
+                    theString = theString.Replace("{counter}", OSC.counter6.ToString());
+
+                    if (rjToggleButtonChatBox.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                    }
+                    if (rjToggleButtonOSC.Checked == true)
+                    {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                    }
+
+
+                }
+                if (rjToggleButtonCounterSaver.Checked == true)
+                {
+                    Settings1.Default.Counter1 = OSC.counter1;
+                    Settings1.Default.Counter2 = OSC.counter2;
+                    Settings1.Default.Counter3 = OSC.counter3;
+                    Settings1.Default.Counter4 = OSC.counter4;
+                    Settings1.Default.Counter5 = OSC.counter5;
+                    Settings1.Default.Counter6 = OSC.counter6;
+                    Settings1.Default.Save();
+                }
 
 
 
@@ -1447,6 +1496,7 @@ namespace OSCVRCWiz
                 iconButton7.Text = "";
                 iconButton12.Text = "";
                 iconButton8.Text = "";
+                iconButton4.Text = "";
             }
             if (rjToggleButton6.Checked == false)
             {
@@ -1463,6 +1513,7 @@ namespace OSCVRCWiz
                 iconButton7.Text = "Github";
                 iconButton12.Text = "Donate";
                 iconButton8.Text = "Update";
+                iconButton8.Text = "Speech Provider";
 
             }
 
@@ -2309,7 +2360,8 @@ namespace OSCVRCWiz
 
         private void button18_Click_1(object sender, EventArgs e)
         {
-            DeepLTranslate.DeepLKey = textBox5.Text.ToString();
+            Settings1.Default.deepLKeysave = textBox5.Text.ToString();
+            Settings1.Default.Save();
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -2712,6 +2764,32 @@ namespace OSCVRCWiz
         private void iconButton46_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide");
+        }
+
+        private void button36_Click(object sender, EventArgs e)
+        {
+            OSC.counter1 = 0;
+            OSC.counter2 = 0;
+            OSC.counter3 = 0;
+            OSC.counter4 = 0;
+            OSC.counter5 = 0;
+            OSC.counter6 = 0;
+
+            OSC.prevCounter1 = 0;
+            OSC.prevCounter2 = 0;
+            OSC.prevCounter3 = 0;
+            OSC.prevCounter4 = 0;
+            OSC.prevCounter5 = 0;
+            OSC.prevCounter6 = 0;
+
+
+            Settings1.Default.Counter1 = OSC.counter1;
+            Settings1.Default.Counter2 = OSC.counter2;
+            Settings1.Default.Counter3 = OSC.counter3;
+            Settings1.Default.Counter4 = OSC.counter4;
+            Settings1.Default.Counter5 = OSC.counter5;
+            Settings1.Default.Counter6 = OSC.counter6;
+            Settings1.Default.Save();
         }
     }
 
