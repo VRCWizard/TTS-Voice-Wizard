@@ -185,7 +185,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
 
-            DeepLTranslate.DeepLKey= Settings1.Default.deepLKeysave;
+           // DeepLTranslate.DeepLKey= Settings1.Default.deepLKeysave;
             VoiceWizardWindow.MainFormGlobal.textBox5.Text= Settings1.Default.deepLKeysave;
 
             OSC.OSCAddress= Settings1.Default.OSCAddress;
@@ -257,15 +257,44 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxCounter2.Text = Settings1.Default.Counter2Para;
             VoiceWizardWindow.MainFormGlobal.textBoxCounter3.Text = Settings1.Default.Counter3Para;
             VoiceWizardWindow.MainFormGlobal.textBoxCounter4.Text = Settings1.Default.Counter4Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter5.Text = Settings1.Default.Counter5Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter6.Text = Settings1.Default.Counter6Para;
 
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text = Settings1.Default.Counter1Msg;
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text = Settings1.Default.Counter2Msg;
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text = Settings1.Default.Counter3Msg;
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text = Settings1.Default.Counter4Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text = Settings1.Default.Counter5Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text = Settings1.Default.Counter6Msg;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked = Settings1.Default.SaveCounter;
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked==true)
+            {
+                OSC.prevCounter1 = Settings1.Default.Counter1;
+                OSC.counter1 = Settings1.Default.Counter1;
+
+                OSC.prevCounter2 = Settings1.Default.Counter2;
+                OSC.counter2 = Settings1.Default.Counter2;
+
+                OSC.prevCounter3 = Settings1.Default.Counter3;
+                OSC.counter3 = Settings1.Default.Counter3;
+
+                OSC.prevCounter4 = Settings1.Default.Counter4;
+                OSC.counter4 = Settings1.Default.Counter4;
+
+                OSC.prevCounter5 = Settings1.Default.Counter5;
+                OSC.counter5 = Settings1.Default.Counter5;
+
+                OSC.prevCounter6 = Settings1.Default.Counter6;
+                OSC.counter6 = Settings1.Default.Counter6;
+            }
 
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked = Settings1.Default.OBSTextFile;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked = Settings1.Default.OBS4Media;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked = Settings1.Default.FilterNoiseWhisper;
 
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
               VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;

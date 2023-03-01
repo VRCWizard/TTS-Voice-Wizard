@@ -10,55 +10,104 @@ using System.Media;
 using Resources;
 using OSCVRCWiz.Text;
 using NAudio.Wave;
+using OSCVRCWiz.Settings;
+using System.Net.Http.Json;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+//using Windows.Media.Protection.PlayReady;
+//using Amazon.Polly;
 
 namespace OSCVRCWiz.TTS
 {
     public class FonixTalkTTS
     {
+        private static readonly HttpClient client = new HttpClient();
+        // private static bool Moonbase = false;
+        public static Process pro;
+
+
 
         public static void FonixTTS(string text)
         {
+            Process[] pname = Process.GetProcessesByName("MoonbaseVoices");
+            if (pname.Length == 0)
+            {
+                ProcessStartInfo psi = new ProcessStartInfo("MoonbaseVoices.exe");
+                psi.WindowStyle = ProcessWindowStyle.Minimized;
+                pro = Process.Start(psi);
+
+                
+
+                
+               // Moonbase = true;
+               // Task.Delay(2000).Wait();
+            }
+           
+        
+
+            Task<string> stringTask = MoonBase(text);
+            string audio = stringTask.Result;
+            var audiobytes = Convert.FromBase64String(audio);
+            MemoryStream memoryStream = new MemoryStream(audiobytes);
+
+            memoryStream.Flush();
+            memoryStream.Seek(0, SeekOrigin.Begin);
+
+            var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1)); //11000 and 16 seemed to be the closest to the original
+            var output = new WaveOut();
+            output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+            output.Init(wav);
+            output.Play();
+
+
+        }
+        public static async Task<string> MoonBase(string textIn)
+        {
             try
             {
-
-                var tts = new FonixTalkEngine();
                 string name = "";
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+               VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     name = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                   
                 });
-                switch (name)
+           
+
+
+                var url = $"http://localhost:54027/audio?voice={name}&text={textIn}";
+              
+
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+
+                  // request.Content = JsonContent.Create(new { voice = name, text = textIn });
+              //  request.Content = new FormUrlEncodedContent(new Dictionary<string, string> { { "voice", name }, { "text", textIn } });
+
+
+
+                HttpResponseMessage response = await client.SendAsync(request);
+
+                //   System.Diagnostics.Debug.WriteLine("Fonix:" + response.StatusCode);
+                if (response.IsSuccessStatusCode)
                 {
-                    case "Betty": tts.Voice = TtsVoice.Betty; break;
-                    case "Dennis": tts.Voice = TtsVoice.Dennis; break;
-                    case "Frank": tts.Voice = TtsVoice.Frank; break;
-                    case "Harry": tts.Voice = TtsVoice.Harry; break;
-                    case "Kit": tts.Voice = TtsVoice.Kit; break;
-                    case "Paul": tts.Voice = TtsVoice.Paul; break;
-                    case "Rita": tts.Voice = TtsVoice.Rita; break;
-                    case "Ursula": tts.Voice = TtsVoice.Ursula; break;
-                    case "Wendy": tts.Voice = TtsVoice.Wendy; break;
-                    default: break;
+                    System.Diagnostics.Debug.WriteLine("Moonbase: " + response.StatusCode);
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Moonbase: " + response.StatusCode + " " + await response.Content.ReadAsStringAsync());
+                    return "";
                 }
 
-                //////////////////// //   tts.Speak(phrase); //ONLY WORKS IF PROJECT > PROPERTIES > BUILD > PLATFORM TARGET  is set to x86 due to the FonixTalk.dll being 32 bit only
-                MemoryStream memoryStream = new MemoryStream();
-                tts.SpeakToStream(memoryStream, text);
-                tts.Dispose();
 
-                memoryStream.Flush();
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1)); //11000 and 16 seemed to be the closest to the original
-                var output = new WaveOut();
-                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                output.Init(wav);
-                output.Play();
-                //Task.Run(() => PlayAudioHelper());
+
+
+              //  return await response.Content.ReadAsStringAsync();
             }
              catch (Exception ex)
             {
-                OutputText.outputLog("[Reminder that FonixTalk only works on the x86 build of TTS Voice Wizard]", Color.Red);
-                MessageBox.Show("FonixTalk Error: "+ex.Message);
+                OutputText.outputLog("[FonixTalk Error: "+ex.Message+"]", Color.Red);
+              //  MessageBox.Show("FonixTalk Error: "+ex.Message);
+                return "";
                 
             }
 

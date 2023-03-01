@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.1.6";
-        string releaseDate = "February 24, 2023";
+        public static string currentVersion = "1.0.2";
+        string releaseDate = "February 28, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -319,7 +319,7 @@ namespace OSCVRCWiz
         {
             switch (comboBoxTTSMode.Text.ToString())
             {
-                case "FonixTalk": break;
+                case "Moonbase": break;
 
                 case "ElevenLabs": break;
 
@@ -503,6 +503,12 @@ namespace OSCVRCWiz
         {
             VoiceWizardWindow.UnregisterHotKey(this.Handle, 0);
             SaveSettings.SavingSettings();
+            try
+            {
+                FonixTalkTTS.pro.Kill();
+
+            }
+            catch { }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -563,7 +569,7 @@ namespace OSCVRCWiz
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        OutputText.outputLog("[Button Sound Error: " + ex.Message + ". This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them  ]", Color.Red);
                     }
                 }
                 this.Invoke((MethodInvoker)delegate ()
@@ -633,7 +639,7 @@ namespace OSCVRCWiz
 
             switch (selectedTTSMode)
                     {
-                        case "FonixTalk":
+                        case "Moonbase":
                             Task.Run(() => FonixTalkTTS.FonixTTS(speechText));
                             break;
                         case "ElevenLabs":
@@ -1029,41 +1035,49 @@ namespace OSCVRCWiz
 
         private void doTypeTimerTick()
         {
-            this.Invoke((MethodInvoker)delegate ()
+            try
             {
-                if (typingBox == false && tabControl1.SelectedTab == tabPage3)
+                this.Invoke((MethodInvoker)delegate ()
                 {
-                    var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);//this is what spams osc
-                    OSC.OSCSender.Send(typingbubble);
-                }
-                if (typingBox == true && tabControl1.SelectedTab == tabPage3)
-                {
-                    var theString = "";
-
-                    theString = richTextBox9.Text.ToString();
-
-
-
-
-                    if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
+                    if (typingBox == false && tabControl1.SelectedTab == tabPage3)
                     {
-                        OSCListener.pauseBPM = true;
-                        SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "ttt")); //original
-
-
+                        var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);//this is what spams osc
+                        OSC.OSCSender.Send(typingbubble);
                     }
-                    if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
+                    if (typingBox == true && tabControl1.SelectedTab == tabPage3)
                     {
-                        OSCListener.pauseBPM = true;
-                        SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChat(theString, "tttAdd")); //original     
-                    }
-                }
-                typingBox = false;
+                        var theString = "";
 
-                typeTimer.Change(2000, 0);
-            });
+                        theString = richTextBox9.Text.ToString();
+
+
+
+
+                        if (rjToggleButtonChatBox.Checked == true && rjToggleButtonNoTTSChat.Checked == false)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "ttt")); //original
+
+
+                        }
+                        if (rjToggleButtonOSC.Checked == true && rjToggleButtonNoTTSKAT.Checked == false)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChat(theString, "tttAdd")); //original     
+                        }
+                    }
+                    typingBox = false;
+
+                    typeTimer.Change(2000, 0);
+                });
+            }
+            catch
+            {
+
+                //stop errors on close
+            }
 
         }
         private void doSpotifyTimerTick()
@@ -1730,7 +1744,7 @@ namespace OSCVRCWiz
         {
             switch (comboBoxTTSMode.Text.ToString())
             {
-                case "FonixTalk":
+                case "Moonbase":
                     comboBox2.Items.Clear();
                     comboBox2.Items.Add("Betty");
                     comboBox2.Items.Add("Dennis");
@@ -1755,7 +1769,7 @@ namespace OSCVRCWiz
                     comboBoxPitch.Enabled = false;
                     comboBoxVolume.Enabled = false;
                     comboBoxRate.Enabled = false;
-                    TTSModeSaved = "FonixTalk";
+                    TTSModeSaved = "Moonbase";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
                         OutputText.outputLog("[DEBUG: setting voice]");

@@ -458,6 +458,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label121 = new System.Windows.Forms.Label();
+            this.rjToggleButtonFilterNoiseWhisper = new OSCVRCWiz.RJControls.RJToggleButton();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -1379,7 +1381,7 @@
             "Amazon Polly",
             "Azure",
             "ElevenLabs",
-            "FonixTalk",
+            "Moonbase",
             "Glados",
             "TikTok",
             "No TTS"});
@@ -6045,13 +6047,15 @@
             // 
             // groupBox38
             // 
+            this.groupBox38.Controls.Add(this.label121);
+            this.groupBox38.Controls.Add(this.rjToggleButtonFilterNoiseWhisper);
             this.groupBox38.Controls.Add(this.whisperLink);
             this.groupBox38.Controls.Add(this.button34);
             this.groupBox38.Controls.Add(this.whisperModelTextBox);
             this.groupBox38.ForeColor = System.Drawing.Color.White;
             this.groupBox38.Location = new System.Drawing.Point(30, 303);
             this.groupBox38.Name = "groupBox38";
-            this.groupBox38.Size = new System.Drawing.Size(924, 69);
+            this.groupBox38.Size = new System.Drawing.Size(924, 128);
             this.groupBox38.TabIndex = 159;
             this.groupBox38.TabStop = false;
             this.groupBox38.Text = "Whisper.cpp Model (BIN file)";
@@ -6553,6 +6557,32 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.ForeColor = System.Drawing.Color.Snow;
+            this.label121.Location = new System.Drawing.Point(57, 88);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(84, 20);
+            this.label121.TabIndex = 164;
+            this.label121.Text = "Filter Noise";
+            // 
+            // rjToggleButtonFilterNoiseWhisper
+            // 
+            this.rjToggleButtonFilterNoiseWhisper.AutoSize = true;
+            this.rjToggleButtonFilterNoiseWhisper.Checked = true;
+            this.rjToggleButtonFilterNoiseWhisper.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonFilterNoiseWhisper.Location = new System.Drawing.Point(6, 86);
+            this.rjToggleButtonFilterNoiseWhisper.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonFilterNoiseWhisper.Name = "rjToggleButtonFilterNoiseWhisper";
+            this.rjToggleButtonFilterNoiseWhisper.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonFilterNoiseWhisper.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonFilterNoiseWhisper.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonFilterNoiseWhisper.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonFilterNoiseWhisper.Size = new System.Drawing.Size(45, 22);
+            this.rjToggleButtonFilterNoiseWhisper.TabIndex = 163;
+            this.rjToggleButtonFilterNoiseWhisper.UseVisualStyleBackColor = true;
             // 
             // VoiceWizardWindow
             // 
@@ -7114,5 +7144,7 @@
         private Label label116;
         private Label label112;
         public RJControls.RJToggleButton rjToggleButtonCounterSaver;
+        private Label label121;
+        public RJControls.RJToggleButton rjToggleButtonFilterNoiseWhisper;
     }
 }

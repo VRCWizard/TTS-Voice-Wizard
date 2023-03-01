@@ -344,5 +344,41 @@
     <Setting Name="OBSTextFile" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="Counter5Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Something</Value>
+    </Setting>
+    <Setting Name="Counter6Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/AnothaOne</Value>
+    </Setting>
+    <Setting Name="Counter5Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter6Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="SaveCounter" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Counter1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter6" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="FilterNoiseWhisper" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

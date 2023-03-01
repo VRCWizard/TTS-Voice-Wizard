@@ -69,10 +69,10 @@ namespace OSCVRCWiz.Resources
 
   
                 Debug.WriteLine($"segment {s0}: {stuff}");
-             //   Debug.WriteLine("countNew : " + countNew);
-             //   Debug.WriteLine("s0 : " + s0);
-             //   Debug.WriteLine("testing : " + testing);
-               
+                //   Debug.WriteLine("countNew : " + countNew);
+                //   Debug.WriteLine("s0 : " + s0);
+                //   Debug.WriteLine("testing : " + testing);
+
                 //counter++;
 
                 //Char ch = '[';
@@ -80,19 +80,28 @@ namespace OSCVRCWiz.Resources
                 //also since whisper can recognize laughter, i could add that as a feature.
                 //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
 
-                if (!stuff.StartsWith('[') && stuff !="Audio" && !stuff.EndsWith(']'))
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
                 {
-                    //   WhisperRecognition.WhisperString += text + " ";
-                    //  VoiceWizardWindow.whisperTimer.Change(250, 0);
-                    //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
-                    text += stuff;
 
+
+                    if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.StartsWith(')'))
+                    {
+                        //   WhisperRecognition.WhisperString += text + " ";
+                        //  VoiceWizardWindow.whisperTimer.Change(250, 0);
+                        //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
+                        text += stuff;
+
+                    }
+                    else
+                    {
+                        OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                    }
+                    // continue;
                 }
                 else
                 {
-                    OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                    text += stuff;
                 }
-                // continue;
                 
             }
             if (text != "")

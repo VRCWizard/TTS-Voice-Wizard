@@ -1390,5 +1390,149 @@ namespace OSCVRCWiz.Settings {
                 this["OBSTextFile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Something")]
+        public string Counter5Para {
+            get {
+                return ((string)(this["Counter5Para"]));
+            }
+            set {
+                this["Counter5Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/AnothaOne")]
+        public string Counter6Para {
+            get {
+                return ((string)(this["Counter6Para"]));
+            }
+            set {
+                this["Counter6Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Counter: {counter}")]
+        public string Counter5Msg {
+            get {
+                return ((string)(this["Counter5Msg"]));
+            }
+            set {
+                this["Counter5Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Counter: {counter}")]
+        public string Counter6Msg {
+            get {
+                return ((string)(this["Counter6Msg"]));
+            }
+            set {
+                this["Counter6Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SaveCounter {
+            get {
+                return ((bool)(this["SaveCounter"]));
+            }
+            set {
+                this["SaveCounter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter1 {
+            get {
+                return ((int)(this["Counter1"]));
+            }
+            set {
+                this["Counter1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter2 {
+            get {
+                return ((int)(this["Counter2"]));
+            }
+            set {
+                this["Counter2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter3 {
+            get {
+                return ((int)(this["Counter3"]));
+            }
+            set {
+                this["Counter3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter4 {
+            get {
+                return ((int)(this["Counter4"]));
+            }
+            set {
+                this["Counter4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter5 {
+            get {
+                return ((int)(this["Counter5"]));
+            }
+            set {
+                this["Counter5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter6 {
+            get {
+                return ((int)(this["Counter6"]));
+            }
+            set {
+                this["Counter6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FilterNoiseWhisper {
+            get {
+                return ((bool)(this["FilterNoiseWhisper"]));
+            }
+            set {
+                this["FilterNoiseWhisper"] = value;
+            }
+        }
     }
 }

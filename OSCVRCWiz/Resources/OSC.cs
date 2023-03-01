@@ -25,11 +25,15 @@ namespace OSCVRCWiz.Resources
         public static int counter2 = 0;
         public static int counter3 = 0;
         public static int counter4 = 0;
+        public static int counter5 = 0;
+        public static int counter6= 0;
 
         public static int prevCounter1 = 0;
         public static int prevCounter2 = 0;
         public static int prevCounter3 = 0;
         public static int prevCounter4 = 0;
+        public static int prevCounter5 = 0;
+        public static int prevCounter6 = 0;
 
         public static void Start()
         {
@@ -134,7 +138,7 @@ namespace OSCVRCWiz.Resources
                         {
                             counter2++;
                             var theString = "";
-                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text.ToString();
 
                             theString = theString.Replace("{counter}", counter2.ToString());
 
@@ -148,7 +152,7 @@ namespace OSCVRCWiz.Resources
                         {
                             counter3++;
                             var theString = "";
-                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text.ToString();
 
                             theString = theString.Replace("{counter}", counter3.ToString());
 
@@ -162,9 +166,37 @@ namespace OSCVRCWiz.Resources
                         {
                             counter4++;
                             var theString = "";
-                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text.ToString();
 
                             theString = theString.Replace("{counter}", counter4.ToString());
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                            {
+                                Task.Run(() => OutputText.outputLog(theString));
+                            }
+
+                        }
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter5.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
+                        {
+                            counter5++;
+                            var theString = "";
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text.ToString();
+
+                            theString = theString.Replace("{counter}", counter5.ToString());
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
+                            {
+                                Task.Run(() => OutputText.outputLog(theString));
+                            }
+
+                        }
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter6.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
+                        {
+                            counter6++;
+                            var theString = "";
+                            theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
+
+                            theString = theString.Replace("{counter}", counter6.ToString());
 
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
                             {

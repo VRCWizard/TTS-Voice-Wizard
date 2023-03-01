@@ -119,9 +119,10 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
                 //attempted fix
-               // context.parameters.audioContextSize = 300;
-             //  context.parameters.n_max_text_ctx = 300;
-               // context.parameters.max_tokens = 300;
+                context.parameters.audioContextSize = 150;
+           //   context.parameters.n_max_text_ctx = 300;
+           //    context.parameters.max_tokens = 300;
+
                 
 
 
