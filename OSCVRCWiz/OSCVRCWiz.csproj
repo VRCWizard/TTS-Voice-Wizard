@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>TTSIconsilluoute.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\TTSIconsilluoute.ico</ApplicationIcon>
     <AssemblyName>TTSVoiceWizard</AssemblyName>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x86</Platforms>
@@ -15,14 +15,16 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <BaseOutputPath></BaseOutputPath>
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="TTSIconsilluoute.ico" />
+    <Content Remove="Resources\Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\WizardPic.ico" />
+    <Content Include="Resources\TTSIconsilluoute.ico" />
   </ItemGroup>
   
    <ItemGroup>
@@ -55,9 +57,6 @@
     <Reference Include="CoreOSC">
       <HintPath>CoreOSC.dll</HintPath>
     </Reference>
-    <Reference Include="SharpTalk">
-      <HintPath>..\..\..\..\Users\bdw10\Downloads\SharpTalk-master\SharpTalk-master\SharpTalkService\bin\Debug\SharpTalk.dll</HintPath>
-    </Reference>
     <Reference Include="vrc-oscquery-lib">
       <HintPath>vrc-oscquery-lib.dll</HintPath>
     </Reference>
@@ -84,10 +83,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="FonixTalk.dll">
+    <None Update="libgcc_s_seh-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ftalk_us.dic">
+    <None Update="libstdc++-6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libvosk.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="libwinpthread-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="CoreOSC.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="ftalk_us.dll">
@@ -99,7 +107,10 @@
     <None Update="KAT Emoji Texture Sheet\Readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Languages\LanguagesInfo.txt">
+    <None Update="SharpTalk.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="vrc-oscquery-lib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Settings\Settings1.settings">
@@ -110,19 +121,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libgcc_s_seh-1.dll" Link="lib\libgcc_s_seh-1.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libstdc++-6.dll" Link="lib\libstdc++-6.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libvosk.dll" Link="lib\libvosk.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="C:\Users\bdw10\.nuget\packages\vosk\0.3.38\build\lib\win-x64\libwinpthread-1.dll" Link="lib\libwinpthread-1.dll" />
     <None Update="sounds\speechButton.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -137,4 +135,7 @@
     </None>
   </ItemGroup>
 
+
+
+ 
 </Project>
