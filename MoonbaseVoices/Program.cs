@@ -47,11 +47,12 @@ public class Program
     const int SW_SHOWMINIMIZED = 2;
     public static void Main(string[] args)
     {
+        Console.WriteLine("Moonbase Alpha Voice Synthesizer (x86)");
         var handle = GetConsoleWindow();
         ShowWindow(handle, SW_SHOWMINIMIZED);
         CreateHostBuilder(args).Build().Run();
 
-        Console.WriteLine("Moonbase Alpha Voice Synthesizer (x86)");
+       
         
 
 
