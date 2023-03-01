@@ -34,7 +34,15 @@ namespace OSCVRCWiz.TTS
             {
                 ProcessStartInfo psi = new ProcessStartInfo("MoonbaseVoices.exe");
                 psi.WindowStyle = ProcessWindowStyle.Minimized;
-                pro = Process.Start(psi);
+                try
+                {
+                    pro = Process.Start(psi);
+                }
+                catch (Exception ex){
+
+                    OutputText.outputLog("[Moonbase Error: " + ex.Message + ". Something prevented the program from running the MoonbaseVoice.exe console app included inside the TTSVoiceWizard download folder]", Color.Red);
+
+                }
 
                 
 
@@ -105,7 +113,7 @@ namespace OSCVRCWiz.TTS
             }
              catch (Exception ex)
             {
-                OutputText.outputLog("[FonixTalk Error: "+ex.Message+"]", Color.Red);
+                OutputText.outputLog("[Moonbase Error: "+ex.Message+"]", Color.Red);
               //  MessageBox.Show("FonixTalk Error: "+ex.Message);
                 return "";
                 

@@ -505,10 +505,13 @@ namespace OSCVRCWiz
             SaveSettings.SavingSettings();
             try
             {
-                FonixTalkTTS.pro.Kill();
+                if (FonixTalkTTS.pro != null)
+                {
+                    FonixTalkTTS.pro.Kill();
+                }
 
             }
-            catch { }
+            catch (Exception ex) { }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
