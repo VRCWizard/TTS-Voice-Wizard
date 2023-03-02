@@ -81,7 +81,7 @@ namespace OSCVRCWiz.Resources
                 //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
-                {
+               {
 
 
                     if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.StartsWith(')'))
@@ -100,7 +100,7 @@ namespace OSCVRCWiz.Resources
                 }
                 else
                 {
-                    text += stuff;
+                   text += stuff;
                 }
                 
             }
