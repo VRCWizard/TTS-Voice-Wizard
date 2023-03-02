@@ -42,7 +42,7 @@ namespace OSCVRCWiz.Resources
         {
             ThreadPool.QueueUserWorkItem(readKeyCallback, this);
             thread.Join();
-            edi?.Throw();
+           edi?.Throw();
         }
 
         volatile bool shouldQuit = false;

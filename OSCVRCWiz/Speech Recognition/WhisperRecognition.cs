@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Whisper;
+using Whisper.Internal;
 
 
 namespace OSCVRCWiz.Speech_Recognition
@@ -97,7 +98,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     return 1;
                 }
                 const eLoggerFlags loggerFlags = eLoggerFlags.UseStandardError | eLoggerFlags.SkipFormatMessage;
-                Library.setLogSink(eLogLevel.Debug, loggerFlags);
+               Library.setLogSink(eLogLevel.Debug, loggerFlags);
 
                 using iMediaFoundation mf = Library.initMediaFoundation();
                 CaptureDeviceId[] devices = mf.listCaptureDevices() ??
@@ -118,8 +119,8 @@ namespace OSCVRCWiz.Speech_Recognition
                 using Whisper.Context context = model.createContext();
 
 
-                //attempted fix
-                context.parameters.audioContextSize = 150;
+                //attempted fix will break program
+              //  context.parameters.audioContextSize = 150;
            //   context.parameters.n_max_text_ctx = 300;
            //    context.parameters.max_tokens = 300;
 
