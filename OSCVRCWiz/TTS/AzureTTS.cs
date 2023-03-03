@@ -235,7 +235,7 @@ namespace OSCVRCWiz.TTS
                 string rate = "default";
                 string pitch = "default";
                 string volume = "default";
-                string voice = "Sara";
+                string voice = "blank";
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString())) { style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString(); }

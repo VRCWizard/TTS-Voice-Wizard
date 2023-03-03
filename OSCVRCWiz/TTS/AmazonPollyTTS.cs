@@ -11,13 +11,15 @@ using Amazon.Polly.Model;
 using NAudio.Wave;
 using Resources;
 using Polly.Caching;
-using SharpTalk;
+//using SharpTalk;
 using System.Xml.Linq;
 using Amazon.Internal;
 using Amazon;
 using System.Diagnostics;
 using OSCVRCWiz.Text;
 using OSCVRCWiz.Settings;
+using static OSCVRCWiz.TTS.ElevenLabsTTS;
+using System.Windows;
 
 namespace OSCVRCWiz.TTS
 {
@@ -78,16 +80,100 @@ namespace OSCVRCWiz.TTS
 
                 tts.OutputFormat = OutputFormat.Mp3;
                 tts.VoiceId = VoiceId.Joanna;
-                tts.Text = text;
+                
                 tts.Engine = Engine.Standard;
+      
+            tts.TextType = TextType.Ssml;
+            
+               
+
+
+              
+              string rate = "default";
+              string pitch = "default";
+              string volume = "default";
+              string voice = "blank";
+              VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+              {
+                
+                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString())) { rate = VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString(); }
+                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString())) { pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString(); }
+                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString())) { volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString(); }
+                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString())) { voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString(); }
+
+
+              });
+              string ratexslow = "<prosody rate=\"x-slow\">"; //1
+              string rateslow = "<prosody rate=\"slow\">"; //2
+              string ratemedium = "<prosody rate=\"medium\">"; //3
+              string ratefast = "<prosody rate=\"fast\">"; //4
+              string ratexfast = "<prosody rate=\"x-fast\">"; //5
+
+              string pitchxlow = "<prosody pitch=\"x-low\">"; //1
+              string pitchlow = "<prosody pitch=\"low\">"; //2
+              string pitchmedium = "<prosody pitch=\"medium\">"; //3
+              string pitchhigh = "<prosody pitch=\"high\">"; //4
+              string pitchxhigh = "<prosody pitch=\"x-high\">"; //5
+
+              string volumexlow = "<prosody volume=\"x-soft\">"; //1
+              string volumelow = "<prosody volume=\"soft\">"; //2
+              string volumemedium = "<prosody volume=\"medium\">"; //3
+              string volumehigh = "<prosody volume=\"loud\">"; //4
+              string volumexhigh = "<prosody volume=\"x-loud\">"; //5
+
+
+            //  string ssml0 = "<speak>";
+            string ssml0 = "<speak version=\"1.0\"";
+            ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
+            ssml0 += " xml:lang=\"en-US\">";
+
+
+            if (rate != "default")
+              {
+                  if (rate == "x-slow") { ssml0 += ratexslow; }
+                  if (rate == "slow") { ssml0 += rateslow; }
+                  if (rate == "medium") { ssml0 += ratemedium; }
+                  if (rate == "fast") { ssml0 += ratefast; }
+                  if (rate == "x-fast") { ssml0 += ratexfast; }
+
+              }
+              if (pitch != "default")
+              {
+                  if (pitch == "x-low") { ssml0 += pitchxlow; }
+                  if (pitch == "low") { ssml0 += pitchlow; }
+                  if (pitch == "medium") { ssml0 += pitchmedium; }
+                  if (pitch == "high") { ssml0 += pitchhigh; }
+                  if (pitch == "x-high") { ssml0 += pitchxhigh; }
+
+              }
+              if (volume != "default")
+              {
+                  if (volume == "x-soft") { ssml0 += volumexlow; }
+                  if (volume == "soft") { ssml0 += volumelow; }
+                  if (volume == "medium") { ssml0 += volumemedium; }
+                  if (volume == "loud") { ssml0 += volumehigh; }
+                  if (volume == "x-loud") { ssml0 += volumexhigh; }
+
+              }
+              ssml0 += text;
+              if (rate != "default") { ssml0 += "</prosody>"; }
+              if (pitch != "default") { ssml0 += "</prosody>"; }
+              if (volume != "default") { ssml0 += "</prosody>"; }
+
+              ssml0 += "</speak>";
 
 
 
-            string voice = "";
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-            {
-                voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
-            });
+
+            tts.Text = ssml0;
+
+
+
+
+
+
+
+
             switch (voice)
             {
                 case "Salli": tts.VoiceId = VoiceId.Salli; break;

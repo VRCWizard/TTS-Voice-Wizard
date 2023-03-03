@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.2.6";
-        string releaseDate = "March 2, 2023";
+        public static string currentVersion = "1.0.3";
+        string releaseDate = "March 3, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -993,6 +993,10 @@ namespace OSCVRCWiz
             {
                 var message1 = new CoreOSC.OscMessage("/chatbox/input", "", true, false);
                 OSC.OSCSender.Send(message1);
+            }
+            if (rjToggleButtonOBSText.Checked==true && rjToggleButtonHideDelay2.Checked)
+            {
+                OutputText.outputTextFile("");
             }
 
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
@@ -2009,9 +2013,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = false;
-                    comboBoxVolume.Enabled = false;
-                    comboBoxRate.Enabled = false;
+                    comboBoxPitch.Enabled = true;
+                    comboBoxVolume.Enabled = true;
+                    comboBoxRate.Enabled = true;
                     TTSModeSaved = "Amazon Polly";
 
                     break;

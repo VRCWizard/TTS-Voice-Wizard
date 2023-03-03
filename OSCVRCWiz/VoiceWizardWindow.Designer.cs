@@ -2166,7 +2166,7 @@
             this.iconButton32.Location = new System.Drawing.Point(805, 4);
             this.iconButton32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton32.Name = "iconButton32";
-            this.iconButton32.Size = new System.Drawing.Size(44, 38);
+            this.iconButton32.Size = new System.Drawing.Size(44, 56);
             this.iconButton32.TabIndex = 110;
             this.iconButton32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton32.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -2838,8 +2838,9 @@
             this.iconButton31.IconChar = FontAwesome.Sharp.IconChar.Question;
             this.iconButton31.IconColor = System.Drawing.Color.White;
             this.iconButton31.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new System.Drawing.Point(795, 3);
+            this.iconButton31.Location = new System.Drawing.Point(804, 2);
             this.iconButton31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new System.Drawing.Size(44, 38);
@@ -6402,10 +6403,10 @@
             this.whisperLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.whisperLink.IconSize = 40;
             this.whisperLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.whisperLink.Location = new System.Drawing.Point(760, 14);
+            this.whisperLink.Location = new System.Drawing.Point(760, 18);
             this.whisperLink.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.whisperLink.Name = "whisperLink";
-            this.whisperLink.Size = new System.Drawing.Size(44, 30);
+            this.whisperLink.Size = new System.Drawing.Size(44, 46);
             this.whisperLink.TabIndex = 162;
             this.whisperLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.whisperLink.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -6469,7 +6470,7 @@
             this.groupBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox24.Name = "groupBox24";
             this.groupBox24.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox24.Size = new System.Drawing.Size(808, 49);
+            this.groupBox24.Size = new System.Drawing.Size(808, 71);
             this.groupBox24.TabIndex = 138;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Vosk Model Folder";
@@ -6485,10 +6486,10 @@
             this.voskLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.voskLink.IconSize = 40;
             this.voskLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.voskLink.Location = new System.Drawing.Point(760, 14);
+            this.voskLink.Location = new System.Drawing.Point(760, 19);
             this.voskLink.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.voskLink.Name = "voskLink";
-            this.voskLink.Size = new System.Drawing.Size(44, 30);
+            this.voskLink.Size = new System.Drawing.Size(44, 42);
             this.voskLink.TabIndex = 163;
             this.voskLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.voskLink.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

@@ -14,6 +14,7 @@ using Resources;
 using OSCVRCWiz.Text;
 using NAudio.Wave;
 using System.IO;
+using NAudio.Wave.SampleProviders;
 
 namespace TTS
 {
@@ -40,8 +41,10 @@ namespace TTS
        
         public static async void systemTTSAction(string text)
         {
-          
-         
+         //   var semitone = Math.Pow(2, 1.0 / 12);
+         //   var upOneTone = semitone * semitone;
+          //  var downOneTone = 1.0 / upOneTone;
+
             try
             {
                 System.Speech.Synthesis.SpeechSynthesizer synthesizerLite = new System.Speech.Synthesis.SpeechSynthesizer();
@@ -54,7 +57,13 @@ namespace TTS
                 memoryStream.Flush();
                memoryStream.Seek(0, SeekOrigin.Begin);
                  WaveFileReader wav = new WaveFileReader(memoryStream);
-                 var output = new WaveOut();
+
+
+              //  var pitch = new SmbPitchShiftingSampleProvider(wav.ToSampleProvider());
+               // pitch.PitchFactor = (float)downOneTone;
+
+
+                var output = new WaveOut();
                 output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
                 output.Init(wav);
                  output.Play();

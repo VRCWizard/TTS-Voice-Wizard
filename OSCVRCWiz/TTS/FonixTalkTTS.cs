@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using SharpTalk;
+//using SharpTalk;
 //using CSCore;
 //using CSCore.MediaFoundation;
 //using CSCore.SoundOut;
