@@ -66,6 +66,10 @@ namespace OSCVRCWiz.TTS
                 output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
                 output.Init(wav);
                 output.Play();
+                while (output.PlaybackState == PlaybackState.Playing)
+                {
+                    Thread.Sleep(2000);
+                }
 
 
             }

@@ -49,8 +49,19 @@ namespace OSCVRCWiz.Speech_Recognition
 
             }
         }
+        public static void autoStopWhisper()
+        {
+            if (WhisperEnabled == true)
+            {
+                WhisperString = "";
+                CaptureThread.stopWhisper();
+                WhisperEnabled = false;
+                OutputText.outputLog("[Whisper Stopped Listening]");
 
-        public static int getWhisperInputDevice()
+            }
+        }
+
+            public static int getWhisperInputDevice()
         {
 
             // Setting to Correct Input Device

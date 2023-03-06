@@ -35,7 +35,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.3";
+        public static string currentVersion = "1.0.3.2";
         string releaseDate = "March 3, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -84,25 +84,60 @@ namespace OSCVRCWiz
         {
             try
             {
-                
-                InitializeComponent();                         
+
+                InitializeComponent();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Initalization Error: " + ex.Message);
+            }
+
             //    cpuCounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
             //    ramCounter = new PerformanceCounter("Memory", "Available MBytes");
-                MainFormGlobal = this;
+            MainFormGlobal = this;
 
-
+            try { 
                 CUSTOMRegisterHotKey();
-               AudioDevices.NAudioSetupInputDevices();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hotkey Startup Error: " + ex.Message);
+            }
+
+            try {
+            AudioDevices.NAudioSetupInputDevices();
                AudioDevices.NAudioSetupOutputDevices();
-              // AudioDevices.OuputDeviceGet();
-               SystemSpeechTTS.getVoices();
-               SystemSpeechRecognition.getInstalledRecogs();
-               OSC.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Audio Device Startup Error: " + ex.Message);
+            }
+            // AudioDevices.OuputDeviceGet();
 
+            try
+            {
+                SystemSpeechTTS.getVoices();
+                SystemSpeechRecognition.getInstalledRecogs();
+            
+             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("System Speech Startup Error: " + ex.Message);
+            }
 
+            try {
+           OSC.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("OSC Startup Error: "+ex.Message);
+            }
 
-               // Startup Changes
-               tabControl1.Dock = DockStyle.Fill;
+            try {
+
+            // Startup Changes
+            tabControl1.Dock = DockStyle.Fill;
                tabControl1.Appearance = TabAppearance.FlatButtons;
                tabControl1.ItemSize = new Size(0, 1);
                tabControl1.SizeMode = TabSizeMode.Fixed;
@@ -126,18 +161,18 @@ namespace OSCVRCWiz
                 //listView1.View = View.List;
                 TTSBoxText = richTextBox3.Text.ToString();
                labelCharCount.Text = TTSBoxText.Length.ToString();
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("General Startup Error: " + ex.Message);
+            }
             /*   if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
                {
                    MessageBox.Show("This application is already running!");
                    System.Diagnostics.Process.GetCurrentProcess().Kill();
                } */ //this will only allow one instance of tts voice wizard to run... maybe only do this if system tray on launch is active
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
 
         }
 
@@ -549,7 +584,7 @@ namespace OSCVRCWiz
 
             var text = richTextBox3.Text.ToString();
             //AudioDevices.CSCoreOuputDevicesGet();
-            Task.Run(() => MainDoTTS(text));
+             MainDoTTS(text);
 
 
         }
@@ -643,25 +678,25 @@ namespace OSCVRCWiz
             switch (selectedTTSMode)
                     {
                         case "Moonbase":
-                            Task.Run(() => FonixTalkTTS.FonixTTS(speechText));
+                    Task.Run(() => FonixTalkTTS.FonixTTS(speechText));
                             break;
                         case "ElevenLabs":
-                            Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(speechText));
+                    Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(speechText));
                             break;
                 case "System Speech":
-                            Task.Run(() => SystemSpeechTTS.systemTTSAction(speechText));
+                    Task.Run(() => SystemSpeechTTS.systemTTSAction(speechText));
                             break;
                         case "Azure":
-                            Task.Run(() => AzureTTS.SynthesizeAudioAsync(speechText)); //turning off TTS for now
+                    Task.Run(() => AzureTTS.SynthesizeAudioAsync(speechText)); //turning off TTS for now
                             break;
                         case "TikTok":
-                            Task.Run(() => TikTokTTS.TikTokTextAsSpeech(speechText));
+                    Task.Run(() => TikTokTTS.TikTokTextAsSpeech(speechText));
                             break;
                         case "Glados":
-                            Task.Run(() => GladosTTS.GladosTextAsSpeech(speechText));
+                    Task.Run(() => GladosTTS.GladosTextAsSpeech(speechText));
                             break;
                         case "Amazon Polly":
-                            Task.Run(() => AmazonPollyTTS.PollyTTS(speechText));
+                    Task.Run(() => AmazonPollyTTS.PollyTTS(speechText));
                             break;
 
 
@@ -2212,6 +2247,7 @@ namespace OSCVRCWiz
                 Task.Run(() => WebCaptionerRecognition.autoStopWebCap());
                 Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
                 Task.Run(() => VoskRecognition.AutoStopVoskRecog());
+                Task.Run(() => WhisperRecognition.autoStopWhisper());
             }
             catch
             {

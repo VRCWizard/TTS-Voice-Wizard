@@ -283,7 +283,7 @@ namespace OSCVRCWiz.Text
                     if (numKATSyncParameters == "16")
                     {
                         textstring += "        ";
-                    };
+                    }
                     break;
                 case 4:
                     textstring += "";
@@ -294,7 +294,7 @@ namespace OSCVRCWiz.Text
                     if (numKATSyncParameters == "16")
                     {
                         textstring += "        ";
-                    };
+                    }
                     break;
                 case 5:
                     textstring += "   ";
@@ -316,12 +316,12 @@ namespace OSCVRCWiz.Text
                     }; break;
                 case 8: textstring += "        "; break; //16 mode
                 case 9: textstring += "       "; break; //16 mode
-                case 10: textstring += "      "; break; //16 mode
-                case 11: textstring += "     "; break; //16 mode
-                case 12: textstring += "    "; break; //16 mode
-                case 13: textstring += "   "; break; //16 mode
-                case 14: textstring += "  "; break; //16 mode
-                case 15: textstring += " "; break; //16 mode
+                case 10:textstring += "      "; break; //16 mode
+                case 11:textstring += "     "; break; //16 mode
+                case 12:textstring += "    "; break; //16 mode
+                case 13:textstring += "   "; break; //16 mode
+                case 14:textstring += "  "; break; //16 mode
+                case 15:textstring += " "; break; //16 mode
                 default:; break;
             }
 
