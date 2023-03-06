@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.3.2";
-        string releaseDate = "March 3, 2023";
+        public static string currentVersion = "1.0.3.5";
+        string releaseDate = "March 6, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -651,17 +651,36 @@ namespace OSCVRCWiz
 
                 if (language != "No Translation (Default)")
                 {
-                   // var DL = new DeepL();
-                   if (STTMode != "Azure Translate")  
-                      { 
+                // var DL = new DeepL();
+
+                /*     if (STTMode != "Azure Translate"&& STTMode != "Whisper")
+                     {
+                         newText = await DeepLTranslate.translateTextDeepL(text);
+                         translationMethod = "DeepL Translation";
+                     }
+                     else if (STTMode == "Azure Translate")
+                     {
+                         newText = AzureTranslateText;
+                         translationMethod = "Azure Translation";
+                     }
+                     else if (STTMode == "Whisper"&& language == "English[en]")
+                     {
+                         newText = text;
+                         translationMethod = "Whisper English Translation";
+                     }*/
+                if (STTMode != "Azure Translate")
+                {
                     newText = await DeepLTranslate.translateTextDeepL(text);
                     translationMethod = "DeepL Translation";
-                      }
-                else { 
+                }
+                else 
+                {
                     newText = AzureTranslateText;
                     translationMethod = "Azure Translation";
-                     }
-                    if (rjToggleButtonVoiceWhatLang.Checked == true) { 
+                }
+
+
+                if (rjToggleButtonVoiceWhatLang.Checked == true) { 
                         speechText= newText;
 
                     }
