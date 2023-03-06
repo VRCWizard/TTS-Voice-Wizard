@@ -35,7 +35,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.3.5";
+        public static string currentVersion = "1.0.3.6";
         string releaseDate = "March 6, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -1083,10 +1083,23 @@ namespace OSCVRCWiz
 
        private void doWhisperTimerTick()
         {
-            string text = WhisperRecognition.WhisperString;
+          
+                string text = WhisperRecognition.WhisperString;
 
-            VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper");
-            WhisperRecognition.WhisperString = "";
+         //   if (WhisperRecognition.WhisperString != WhisperRecognition.WhisperPrevText)
+        //    {
+
+                VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper");
+
+                WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
+                WhisperRecognition.WhisperString = "";
+        //    }
+         //   else
+          //  {
+          //      OutputText.outputLog("Whisper (FILTERED REPEAT): " + text);
+          //      WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
+         //       WhisperRecognition.WhisperString = "";
+         //   }
 
 
 

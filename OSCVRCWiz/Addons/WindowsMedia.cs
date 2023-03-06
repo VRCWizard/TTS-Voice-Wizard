@@ -26,15 +26,22 @@ namespace OSCVRCWiz.Addons
 
         public static async Task getWindowsMedia()
         {
-            mediaManager = new MediaManager();
+            try
+            {
+                mediaManager = new MediaManager();
 
-            mediaManager.OnAnySessionOpened += MediaManager_OnAnySessionOpened;
-            mediaManager.OnAnySessionClosed += MediaManager_OnAnySessionClosed;
-            mediaManager.OnAnyPlaybackStateChanged += MediaManager_OnAnyPlaybackStateChanged;
-            mediaManager.OnAnyMediaPropertyChanged += MediaManager_OnAnyMediaPropertyChanged;
-           
+                mediaManager.OnAnySessionOpened += MediaManager_OnAnySessionOpened;
+                mediaManager.OnAnySessionClosed += MediaManager_OnAnySessionClosed;
+                mediaManager.OnAnyPlaybackStateChanged += MediaManager_OnAnyPlaybackStateChanged;
+                mediaManager.OnAnyMediaPropertyChanged += MediaManager_OnAnyMediaPropertyChanged;
 
-            mediaManager.Start();
+
+                mediaManager.Start();
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("Windows Media Startup Exception: " + ex.Message, Color.Red);
+            }
 
             //  mediaManager.Dispose(); // should dispose manually if nessicary, for instance if I want to stop media completely
 
@@ -131,29 +138,35 @@ namespace OSCVRCWiz.Addons
         }
         public static void MediaManager_OnAnySessionOpened(MediaManager.MediaSession session)
         {
-            getSession= session;
-            string info = "[Windows Media New Source: " + session.Id + "]";
-            //   var ot = new OutputText();
-            Task.Run(() => OutputText.outputLog(info));
-            mediaSourceNew = session.Id;
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            try
             {
-                bool inThere = false;
-                for (int i = 0; i < VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Count; i++)
+                getSession = session;
+                string info = "[Windows Media New Source: " + session.Id + "]";
+                //   var ot = new OutputText();
+                Task.Run(() => OutputText.outputLog(info));
+                mediaSourceNew = session.Id;
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-
-                    if (VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items[i].ToString() == session.Id.ToString())
+                    bool inThere = false;
+                    for (int i = 0; i < VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Count; i++)
                     {
-                        inThere = true;
+
+                        if (VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items[i].ToString() == session.Id.ToString())
+                        {
+                            inThere = true;
+                        }
                     }
-                }
 
-                if (inThere == false)
-                {
-                    VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Add(session.Id.ToString());
-                }
+                    if (inThere == false)
+                    {
+                        VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Add(session.Id.ToString());
+                    }
 
-            });
+                });
+            }
+            catch (Exception ex) {
+                OutputText.outputLog("MediaManager_OnAnySessionOpened Exception: " + ex.Message, Color.Red);
+            }
 
 
 
@@ -161,17 +174,25 @@ namespace OSCVRCWiz.Addons
         }
         private static void MediaManager_OnAnySessionClosed(MediaManager.MediaSession session)
         {
-            string info = "[Windows Media Removed Source: " + session.Id + "]";
-            //  var ot = new OutputText();
-            Task.Run(() => OutputText.outputLog(info));
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            try
             {
-                // VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Remove(session.Id.ToString());
-            });
-        }
+                string info = "[Windows Media Removed Source: " + session.Id + "]";
+                //  var ot = new OutputText();
+                Task.Run(() => OutputText.outputLog(info));
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    // VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Remove(session.Id.ToString());
+                });
+            
+             }
+            catch (Exception ex) {
+                OutputText.outputLog("MediaManager_OnAnySessionClosed Exception: " + ex.Message, Color.Red);
+            }
+}
 
         private static void MediaManager_OnAnyPlaybackStateChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionPlaybackInfo args)
         {
+            try {
             if (approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
             {
                 string info = $"[{sender.Id} is now {args.PlaybackStatus}]"; //use this info to disable media output perioidically like the spotify feature. (like spotifyPause and heartratePause)
@@ -183,7 +204,13 @@ namespace OSCVRCWiz.Addons
                 mediaStatus = args.PlaybackStatus.ToString();
                 //      Task.Run(() => VoiceWizardWindow.MainFormGlobal.ot.outputLog(VoiceWizardWindow.MainFormGlobal, mediaStatus));
             }
-            //must also make option to output when paused
+                //must also make option to output when paused
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("MediaManager_OnAnyPlaybackStateChanged Exception: " + ex.Message, Color.Red);
+            }
+
 
         }
 
@@ -210,44 +237,52 @@ namespace OSCVRCWiz.Addons
             //       System.Diagnostics.Debug.WriteLine(trimmed);
             //    }
             //   System.Diagnostics.Debug.WriteLine(VoiceWizardWindow.approvedMediaSourceList.Count);
-            approvedMediaSourceList.Clear();
-            foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
+            try
             {
-                approvedMediaSourceList.Add(Item.ToString());
-                System.Diagnostics.Debug.WriteLine(Item.ToString());
+                approvedMediaSourceList.Clear();
+                foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
+                {
+                    approvedMediaSourceList.Add(Item.ToString());
+                    System.Diagnostics.Debug.WriteLine(Item.ToString());
+                }
+
+                if (approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
+                {
+
+                    string info = $"[{sender.Id} is now playing {args.Title} {(string.IsNullOrEmpty(args.Artist) ? "" : $"by {args.Artist}")}]";
+                    //   var ot = new OutputText();
+                    if (args.Title != previousTitle && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true)
+                    {
+
+                        Task.Run(() => OutputText.outputLog(info));
+
+
+                    }
+                    if (args.Artist != null)
+                    {
+                        mediaTitle = args.Title;
+                        mediaArtist = args.Artist;
+                        mediaSource = sender.Id;
+                        //mediaStatus = "Playing";
+
+
+                    }
+                    if (args.Title != previousTitle)
+                    {
+                        var sp = new SpotifyAddon();
+                        Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                    }
+                    previousTitle = args.Title;
+
+                }
+            
+              }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("MediaManager_OnAnyMediaPropertyChanged Exception: " + ex.Message, Color.Red);
             }
 
-            if (approvedMediaSourceList.Contains(sender.Id.ToString()) == true)
-            {
-
-                string info = $"[{sender.Id} is now playing {args.Title} {(string.IsNullOrEmpty(args.Artist) ? "" : $"by {args.Artist}")}]";
-                //   var ot = new OutputText();
-                if (args.Title != previousTitle && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true)
-                {
-
-                    Task.Run(() => OutputText.outputLog(info));
-
-
-                }
-                if (args.Artist != null)
-                {
-                    mediaTitle = args.Title;
-                    mediaArtist = args.Artist;
-                    mediaSource = sender.Id;
-                    //mediaStatus = "Playing";
-
-
-                }
-                if (args.Title != previousTitle)
-                {
-                    var sp = new SpotifyAddon();
-                    Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
-                }
-                previousTitle = args.Title;
-
-            }
-
-        }
+}
     }
 
 
