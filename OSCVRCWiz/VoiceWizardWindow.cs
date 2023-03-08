@@ -35,7 +35,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.3.6";
+        public static string currentVersion = "1.0.3.8";
         string releaseDate = "March 6, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -256,49 +256,81 @@ namespace OSCVRCWiz
 
         public void logLine(string line, Color? color = null)
         {
-            
-            
-            if (InvokeRequired)
+            try
             {
-                this.Invoke(new Action<string,Color?>(logLine), new object[] { line,color });
-                return;
+
+                if (InvokeRequired)
+                {
+                    this.Invoke(new Action<string, Color?>(logLine), new object[] { line, color });
+                    return;
+                }
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    richTextBox1.Select(0, 0);
+                    if (rjToggleDarkMode.Checked == true) { richTextBox1.SelectionColor = color.GetValueOrDefault(Color.White); }
+                    else { richTextBox1.SelectionColor = color.GetValueOrDefault(Color.Black); }
+
+                    richTextBox1.SelectedText = line + "\r\n";
+                });
             }
-            richTextBox1.Select(0, 0);
-            if (rjToggleDarkMode.Checked == true) { richTextBox1.SelectionColor = color.GetValueOrDefault(Color.White); }
-            else { richTextBox1.SelectionColor = color.GetValueOrDefault(Color.Black); }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: "+line+". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
+
+            }
+
             
-            richTextBox1.SelectedText = line + "\r\n";
         }
  
         public void ClearTextBox()
         {
+            try
+            {
 
-            if (InvokeRequired)
+                if (InvokeRequired)
             {
                 this.Invoke(new Action(ClearTextBox));
                 return;
             }
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                richTextBox1.Text = "";
+            });
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[ClearTextBox Error: " + ex.Message + "]", Color.Red);
 
-            richTextBox1.Text = "";
+            }
 
-        }
+}
 
         public void ClearTextBoxTTS()
         {
+            try
+            {
 
-            if (InvokeRequired)
+                if (InvokeRequired)
             {
                 this.Invoke(new Action(ClearTextBoxTTS));
                 return;
             }
 
             richTextBox3.Text = "";
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[ClearTextBoxTTS Error: " + ex.Message + "]", Color.Red);
+
+            }
 
         }
         public void ClearTypingBox()
         {
+            try
+            {
 
-            if (InvokeRequired)
+                if (InvokeRequired)
             {
                 this.Invoke(new Action(ClearTextBox));
                 return;
@@ -310,6 +342,12 @@ namespace OSCVRCWiz
 
                 var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
                 OSC.OSCSender.Send(message0);
+            }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[ClearTypingBox Error: " + ex.Message + ". Try moving folder location.]", Color.Red);
+
             }
 
         }
