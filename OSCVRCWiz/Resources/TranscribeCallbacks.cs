@@ -14,10 +14,12 @@ using OSCVRCWiz.Text;
 namespace OSCVRCWiz.Resources
 {
     //MODIFIED FROM https://github.com/Const-me/Whisper/tree/master/Examples/MicrophoneCS
+   
     public sealed class TranscribeCallbacks : Callbacks
     {
         readonly CommandLineArgs args;
         readonly eResultFlags resultFlags;
+       
 
         public TranscribeCallbacks(CommandLineArgs args)
         {

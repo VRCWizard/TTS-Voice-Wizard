@@ -6,12 +6,15 @@ using SpotifyAPI.Web;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vosk;
 using Whisper;
 using Whisper.Internal;
+using static System.Net.WebRequestMethods;
 
 
 namespace OSCVRCWiz.Speech_Recognition
@@ -228,7 +231,10 @@ namespace OSCVRCWiz.Speech_Recognition
             {
                 // Console.WriteLine( ex.Message );
                 // Debug.WriteLine(ex.ToString());
-                OutputText.outputLog("Whisper Error: " + ex.Message.ToString(), Color.Red);
+                OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
+                OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
+
+
                 WhisperEnabled = false;
                 // return;
                 return ex.HResult;

@@ -16,7 +16,7 @@ namespace OSCVRCWiz.Resources
         public int offset_t_ms = 0;
         public int offset_n = 0;
         public int duration_ms = 0;
-         public int max_context = -1;
+         public int max_context = 0;//To prevent repeating multiple sources say that max_context should be 0. Other sources mention --entropy-thold other than the default 2.4 but this paeameter does not seem to be present.
        // public int max_context = 300;
          public int max_len = 0;
        // public int max_len = 300; //not implemented yet so changing this breaks it
@@ -57,6 +57,7 @@ namespace OSCVRCWiz.Resources
             p.thold_pt = word_thold;
             p.max_len = output_wts && max_len == 0 ? 60 : max_len;
             p.setFlag(eFullParamsFlags.SpeedupAudio, speed_up);
+            
         }
 
         public eResultFlags resultFlags()
@@ -111,7 +112,8 @@ namespace OSCVRCWiz.Resources
             if (string.IsNullOrWhiteSpace(model))
                 throw new ArgumentException("The model file is not provided in the arguments");
             if (!File.Exists(model))
-                throw new FileNotFoundException("Model not found", model);
+                throw new FileNotFoundException("Model not found. ", model);
+
         }
 
         static string cstr(bool b) => b.ToString();
