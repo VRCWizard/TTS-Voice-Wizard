@@ -231,7 +231,7 @@ namespace Addons
                         }
                         catch (Exception ex)
                         {
-                            OutputText.outputLog(ex.Message, Color.Orange);
+                            OutputText.outputLog(ex.Message, Color.DarkOrange);
                         }
                     }
                     index++;

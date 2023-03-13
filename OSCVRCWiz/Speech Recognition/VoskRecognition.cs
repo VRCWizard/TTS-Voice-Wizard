@@ -120,7 +120,7 @@ namespace OSCVRCWiz
             {
                 voskEnabled = false;
                 OutputText.outputLog("[Vosk Failed to Start]", Color.Red);
-                OutputText.outputLog("[Reminder that Vosk only works on the x64 build of TTS Voice Wizard]", Color.Red);
+              //  OutputText.outputLog("[Reminder that Vosk only works on the x64 build of TTS Voice Wizard]", Color.Red);
                 MessageBox.Show("Vosk Error: " + ex.Message);
                 
 

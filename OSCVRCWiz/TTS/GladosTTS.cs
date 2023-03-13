@@ -27,7 +27,7 @@ namespace TTS
             System.Diagnostics.Debug.WriteLine("glados speech ran " + voice);
             try
            {
-                byte[] result = await CallGladosAPIAsync(text);
+                byte[] result = await CallGladosAPIAsync(text);     
                 //  File.WriteAllBytes("TikTokTTS.mp3", result);          
                 //  Task.Run(() => PlayAudioHelper());
 
@@ -48,15 +48,17 @@ namespace TTS
             }
             catch (Exception ex)
            {
+                OutputText.outputLog("[Glados TTS Error: " + ex.Message + "]", Color.Red);
                 if (ex.Message.ToString() == "No connection could be made because the target machine actively refused it. [::ffff:127.0.0.1]:8124 (127.0.0.1:8124)")
                 {
-                    OutputText.outputLog("[You did not setup Glados TTS follow the instructions on the wiki here: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS]", Color.Red);
+                    OutputText.outputLog("[You did not setup Glados TTS follow the instructions on the wiki here: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS]", Color.DarkOrange);
                 }
-                else
+                if (ex.Message.Contains("An item with the same key has already been added"))
                 {
-                    OutputText.outputLog("[Glados TTS Error: " + ex.Message + "]", Color.Red);
+                    OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
                 }
-           }
+
+            }
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
         }
 

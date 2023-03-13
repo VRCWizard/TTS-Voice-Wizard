@@ -220,7 +220,9 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Speech Setup Failed: Make sure that you have setup your Azure Key and Region in the Provider tab (click the 'apply' buttons to apply changes) Reason:" + ex.Message.ToString());
+               // MessageBox.Show("Speech Setup Failed: Make sure that you have setup your Azure Key and Region in the Provider tab (click the 'apply' buttons to apply changes) Reason:" + ex.Message.ToString());
+                OutputText.outputLog("[Azure Speech Setup Failed: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[ Make sure that you have setup your Azure Key and Region in the Provider tab (click the 'apply' buttons to apply changes). Make sure that you have an input and output device selected in Settings > Audio]", Color.DarkOrange);
 
             }
         }

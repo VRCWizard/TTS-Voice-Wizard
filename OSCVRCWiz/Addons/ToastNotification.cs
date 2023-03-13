@@ -28,6 +28,7 @@ namespace Addons
               if (ApiInformation.IsTypePresent("Windows.UI.Notifications.Management.UserNotificationListener"))
               {
                   // Listener supported!
+                 
                   OutputText.outputLog("[Toast Listener Supported]", Color.Green);
               }
 
@@ -41,8 +42,10 @@ namespace Addons
         public async static void ToastListen()
         {
 
-
-            IsSupported();
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked == true)
+            {
+                IsSupported();
+            }
             // Get the listener
             UserNotificationListener listener = UserNotificationListener.Current;
 
@@ -55,7 +58,10 @@ namespace Addons
                 case UserNotificationListenerAccessStatus.Allowed:
 
                     // Yay! Proceed as normal
-                    OutputText.outputLog("[Toast Listener has Access]",Color.Green);
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked == true)
+                    {
+                        OutputText.outputLog("[Toast Listener has Access]", Color.Green);
+                    }
                     // Subscribe to foreground event
                     try
                     {
@@ -64,8 +70,11 @@ namespace Addons
                     }
                     catch(Exception ex) 
                     {
-                      //  OutputText.outputLog("[App must be run as administrator for Toast Listener to work]", Color.Green);
-                        MessageBox.Show("Toast Notification Error: " + ex.Message);
+                        //  OutputText.outputLog("[App must be run as administrator for Toast Listener to work]", Color.Green);
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked == true)
+                        {
+                            OutputText.outputLog("Toast Notification Error: " + ex.Message, Color.Red);
+                        }
                     }
                     break;
 

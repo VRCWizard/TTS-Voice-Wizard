@@ -42,7 +42,10 @@ namespace OSCVRCWiz.TranslationAPIs
             }
             catch (Exception ex)
             {
-                MessageBox.Show("DeepL Translation Error: " + ex.Message);
+                //MessageBox.Show("DeepL Translation Error: " + ex.Message);
+                OutputText.outputLog("[DeepL Translation API Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[You are attempting to translate from one language to another. If this is not your intent then switch 'Translation Language' back to 'No Translation (Default)'. If you are intending to translate then get a DeepL key, it's free. ]", Color.DarkOrange);
+                OutputText.outputLog("[Learn how to get a DeepL Key: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API]", Color.DarkOrange);
                 return "";
             }
         }
@@ -82,7 +85,7 @@ namespace OSCVRCWiz.TranslationAPIs
                 //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
                 default:
                     fromLanguage = LanguageCode.English;
-                    OutputText.outputLog("This language does not support text translations with DeepL");
+                    OutputText.outputLog("This language does not support text translations with DeepL", Color.Red);
                     break; // if translation to english happens something is wrong
             }
             return fromLanguage;
@@ -126,7 +129,7 @@ namespace OSCVRCWiz.TranslationAPIs
                 //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
                 default:
                     toLanguage = LanguageCode.EnglishAmerican;
-                    OutputText.outputLog("This language does not support text translations with DeepL");
+                    OutputText.outputLog("This language does not support text translations with DeepL", Color.Red);
                     break; // if translation to english happens something is wrong
             }
             return toLanguage;

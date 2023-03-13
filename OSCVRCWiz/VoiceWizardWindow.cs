@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.3.8";
-        string releaseDate = "March 6, 2023";
+        public static string currentVersion = "1.0.3.9";
+        string releaseDate = "March 11, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -561,11 +561,11 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog("[OBSText File Error: " + ex.Message + ". Try moving folder location.]", Color.Red);
             }
-            
 
 
 
 
+            OutputText.outputLog("[QuickStart Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide ]");
 
 
 
@@ -645,7 +645,8 @@ namespace OSCVRCWiz
                     }
                     catch (Exception ex)
                     {
-                        OutputText.outputLog("[Button Sound Error: " + ex.Message + ". This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them  ]", Color.Red);
+                        OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
+                        OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
                     }
                 }
                 this.Invoke((MethodInvoker)delegate ()
@@ -818,8 +819,10 @@ namespace OSCVRCWiz
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
+                    OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
                 }
+            
             }
             
 
@@ -1894,6 +1897,10 @@ namespace OSCVRCWiz
                         AzureTTS.firstVoiceLoad = false;
                     }
 
+                 
+                        OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
+                    
+
                     break;
                 case "TikTok":
                     comboBox2.Items.Clear();
@@ -2013,6 +2020,13 @@ namespace OSCVRCWiz
                     comboBoxVolume.Enabled = true;
                     comboBoxRate.Enabled = true;
                     TTSModeSaved = "Azure";
+
+                    if (textBox2.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                    }
+
+
                     break;
 
                 case "Glados":
@@ -2030,6 +2044,8 @@ namespace OSCVRCWiz
                     comboBoxVolume.Enabled = false;
                     comboBoxRate.Enabled = false;
                     TTSModeSaved = "Glados";
+
+                    OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
 
                     break;
                 case "ElevenLabs":
@@ -2074,6 +2090,11 @@ namespace OSCVRCWiz
                     comboBoxVolume.Enabled = false;
                     comboBoxRate.Enabled = false;
                     TTSModeSaved = "ElevenLabs";
+
+                    if (textBox12.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an ElevenLabs Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS ]", Color.DarkOrange);
+                    }
 
                     break;
 
@@ -2122,6 +2143,11 @@ namespace OSCVRCWiz
                     comboBoxVolume.Enabled = true;
                     comboBoxRate.Enabled = true;
                     TTSModeSaved = "Amazon Polly";
+
+                    if (textBox9.Text.ToString()=="")
+                    {
+                        OutputText.outputLog("[You appear to be missing an Amazon Polly Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly ]", Color.DarkOrange);
+                    }
 
                     break;
 
@@ -2321,16 +2347,42 @@ namespace OSCVRCWiz
             }
             catch
             {
-                OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable is manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.Orange);
+                OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable it manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.DarkOrange);
             }
 
-
-
-          if (comboBoxSTT.SelectedItem.ToString() == "System Speech" || comboBoxSTT.SelectedItem.ToString() == "Vosk")
+            switch (comboBoxSTT.Text.ToString())
             {
-             //   OutputText.outputLog("[If your system's default input device changes you will have to reload this]");
+                case "Whisper":
+                    if (whisperModelTextBox.Text.ToString() == "no model selected")
+                    {
+                        OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ]", Color.DarkOrange);
+                    }
+                        break;
 
+                case "Web Captioner": OutputText.outputLog("[Web Captioner selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner ]", Color.DarkOrange); break;
+
+                case "Vosk":
+                    if (modelTextBox.Text.ToString() == "no folder selected")
+                    {
+                        OutputText.outputLog("[Vosk selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Vosk ]", Color.DarkOrange);
+                    }
+                    break;
+
+              //  case "System Speech": OutputText.outputLog("[System Speech selected for Speech to Text (Voice Recognition).]", Color.DarkOrange); break;
+                case "Azure":
+                    if (textBox2.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[Azure selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                    }
+                    break;
+                default:
+
+                    break;
             }
+
+
+
+           
          
         }
 

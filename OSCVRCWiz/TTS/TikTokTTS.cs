@@ -19,6 +19,7 @@ using NAudio.Wave;
 using Microsoft.VisualBasic;
 using Windows.Storage.Streams;
 using System.Collections;
+using Microsoft.Extensions.Primitives;
 
 namespace OSCVRCWiz.TTS
 {
@@ -38,9 +39,21 @@ namespace OSCVRCWiz.TTS
                 voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
             });
             System.Diagnostics.Debug.WriteLine("tiktok speech ran " + voice);
+            byte[] result = null;
             try
             {
-                byte[] result = await CallTikTokAPIAsync(text, voice);
+                result = await CallTikTokAPIAsync(text, voice);
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
+             
+
+            }
+
+
+            try
+            {
                 //  File.WriteAllBytes("TikTokTTS.mp3", result);          
                 //  Task.Run(() => PlayAudioHelper());
 
@@ -61,7 +74,11 @@ namespace OSCVRCWiz.TTS
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[TikTok TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
+                if (ex.Message.Contains("An item with the same key has already been added"))
+                {
+                    OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
+                }
 
             }
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());

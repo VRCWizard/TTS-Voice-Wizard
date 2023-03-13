@@ -14,6 +14,8 @@ using OSCVRCWiz.Settings;
 using System.Net.Http.Json;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Linq.Expressions;
+using Microsoft.AspNetCore.Components.Forms;
 //using Windows.Media.Protection.PlayReady;
 //using Amazon.Polly;
 
@@ -40,7 +42,11 @@ namespace OSCVRCWiz.TTS
                 }
                 catch (Exception ex){
 
-                    OutputText.outputLog("[Moonbase Error: " + ex.Message + ". Something prevented the program from running the MoonbaseVoice.exe console app included inside the TTSVoiceWizard download folder]", Color.Red);
+                    OutputText.outputLog("[Moonbase TTS Startup Error: " + ex.Message + "]", Color.Red);
+
+                    OutputText.outputLog("[Something prevented the program from running the MoonbaseVoice.exe console app included inside the TTSVoiceWizard download folder. Make sure that 'MoonbaseVoices.exe' exists in the download folder and has not been renamed. Try running TTS Voice Wizard as Administrator]", Color.DarkOrange);
+
+                 
 
                 }
 
@@ -50,29 +56,39 @@ namespace OSCVRCWiz.TTS
                // Moonbase = true;
                // Task.Delay(2000).Wait();
             }
-           
-        
-
-            Task<string> stringTask = MoonBase(text);
-            string audio = stringTask.Result;
-            var audiobytes = Convert.FromBase64String(audio);
-            MemoryStream memoryStream = new MemoryStream(audiobytes);
-
-            memoryStream.Flush();
-            memoryStream.Seek(0, SeekOrigin.Begin);
-
-            var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1)); //11000 and 16 seemed to be the closest to the original
-            var output = new WaveOut();
-            output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-            output.Init(wav);
-            output.Play();
-            while (output.PlaybackState == PlaybackState.Playing)
+            try
             {
-                Thread.Sleep(2000);
+
+                Task<string> stringTask = MoonBase(text);
+                string audio = stringTask.Result;
+                var audiobytes = Convert.FromBase64String(audio);
+                MemoryStream memoryStream = new MemoryStream(audiobytes);
+
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);
+
+                var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1)); //11000 and 16 seemed to be the closest to the original
+                var output = new WaveOut();
+                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                output.Init(wav);
+                output.Play();
+
+                while (output.PlaybackState == PlaybackState.Playing)
+                {
+                    Thread.Sleep(2000);
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Moonbase TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
+
+                if (ex.Message.Contains("An item with the same key has already been added"))
+                {
+                    OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
+                }
             }
 
-
-        }
+         }
         public static async Task<string> MoonBase(string textIn)
         {
             try

@@ -20,6 +20,7 @@ namespace OSCVRCWiz.Speech_Recognition
 	{
        static bool WhisperEnabled = false;
         public static string WhisperString = "";
+        public static string WhisperPrevText = "";
         private static string langcode = "en";
        
         public static void toggleWhisper()
@@ -205,6 +206,7 @@ namespace OSCVRCWiz.Speech_Recognition
               //  context.parameters.audioContextSize = 150;
            //   context.parameters.n_max_text_ctx = 300;
            //    context.parameters.max_tokens = 300;
+          // context.parameters.hold
 
                 
 

@@ -98,74 +98,55 @@ namespace OSCVRCWiz.Text
 
         public static async void outputVRChatSpeechBubbles(string textstring, string type)
         {
-
-
-
-            // byte[] bytes = Encoding.Default.GetBytes(textstring);
-            // textstring = Encoding.UTF8.GetString(bytes);
-
-
-            System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
-
-
-            var typingbubble = new OscMessage("/chatbox/typing", false);//this is turned on as soon as you press the STTTS button and turned off here
-            var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, false);
-            //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
-            //testing if error message appears /what value is defaulted to if not specified
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
+            try
             {
-                messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, false);
 
-            }
-            if (type == "tts" && VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked == true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
-            {
-                messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, true);
 
+
+                // byte[] bytes = Encoding.Default.GetBytes(textstring);
+                // textstring = Encoding.UTF8.GetString(bytes);
+
+
+                System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
+
+
+                var typingbubble = new OscMessage("/chatbox/typing", false);//this is turned on as soon as you press the STTTS button and turned off here
+                var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, false);
+                //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
+                //testing if error message appears /what value is defaulted to if not specified
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
                 {
-                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true);
+                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, false);
+
                 }
-            }
-            if (type != "spotify"&& type != "bpm" && type != "media")// so in otherowrds if type is tts it disables typing indicator
-            {
-                OSC.OSCSender.Send(typingbubble);
-            }
-            OSC.OSCSender.Send(messageSpeechBubble);
-
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)//why is this here?
-            {
-                VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
-            }
-
-            if (type == "spotify")
-            {
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)
+                if (type == "tts" && VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked == true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
                 {
-                    SpotifyAddon.lastSong = SpotifyAddon.title;
+                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, true);
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
+                    {
+                        messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true);
+                    }
+                }
+                if (type != "spotify" && type != "bpm" && type != "media")// so in otherowrds if type is tts it disables typing indicator
+                {
+                    OSC.OSCSender.Send(typingbubble);
+                }
+                OSC.OSCSender.Send(messageSpeechBubble);
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)//why is this here?
+                {
+                    VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
                 }
 
-            }
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
-            {
-                VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
+                if (type == "spotify")
+                {
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)
+                    {
+                        SpotifyAddon.lastSong = SpotifyAddon.title;
+                    }
 
-            }
-            else
-            {
-                //this else is meant as a crude fix to output breaking when hide text delay is turned off
-                //hide tet delay is recommened with media output
-                OSCListener.pauseBPM = false;
-                SpotifyAddon.pauseSpotify = false;
-            }
-
-        }
-        public static async Task outputGreenScreen(string textstring, string type)
-        {
-           /* VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-            {
-                VoiceWizardWindow.MainFormGlobal.pf.customrtb1.Text = textstring;
-                VoiceWizardWindow.MainFormGlobal.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
-
+                }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
                 {
                     VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
@@ -178,13 +159,43 @@ namespace OSCVRCWiz.Text
                     OSCListener.pauseBPM = false;
                     SpotifyAddon.pauseSpotify = false;
                 }
+            }
+            catch(Exception ex)
+            {
+                OutputText.outputLog("[VRC Chatbox OSC Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[Error usually caused by VPN.]", Color.DarkOrange);
 
-            });*/
+            }
+
+        }
+        public static async Task outputGreenScreen(string textstring, string type)
+            {
+                /* VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                 {
+                     VoiceWizardWindow.MainFormGlobal.pf.customrtb1.Text = textstring;
+                     VoiceWizardWindow.MainFormGlobal.pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
+
+                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
+                     {
+                         VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
+
+                     }
+                     else
+                     {
+                         //this else is meant as a crude fix to output breaking when hide text delay is turned off
+                         //hide tet delay is recommened with media output
+                         OSCListener.pauseBPM = false;
+                         SpotifyAddon.pauseSpotify = false;
+                     }
+
+                 });*/
+            
 
 
         }
         public static async void outputVRChat(string textstringbefore, string type)
         {
+            try { 
             if (type == "tts" || type == "tttAdd")
             {
                 lastKatString = textstringbefore;
@@ -1054,6 +1065,13 @@ namespace OSCVRCWiz.Text
                 OutputText.outputVRChat(OutputText.lastKatString, "tttRefresh");
                 
             }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[VRC KAT OSC Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[Error usually caused by VPN.]", Color.DarkOrange);
+            }
+
 
 
 

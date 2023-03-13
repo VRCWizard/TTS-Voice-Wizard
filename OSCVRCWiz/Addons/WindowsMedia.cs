@@ -143,7 +143,10 @@ namespace OSCVRCWiz.Addons
                 getSession = session;
                 string info = "[Windows Media New Source: " + session.Id + "]";
                 //   var ot = new OutputText();
-                Task.Run(() => OutputText.outputLog(info));
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked == true)
+                {
+                    Task.Run(() => OutputText.outputLog(info));
+                }
                 mediaSourceNew = session.Id;
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
@@ -178,7 +181,11 @@ namespace OSCVRCWiz.Addons
             {
                 string info = "[Windows Media Removed Source: " + session.Id + "]";
                 //  var ot = new OutputText();
-                Task.Run(() => OutputText.outputLog(info));
+                if(VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked==true)
+                {
+                    Task.Run(() => OutputText.outputLog(info));
+                }
+                
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     // VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Remove(session.Id.ToString());

@@ -272,6 +272,10 @@ namespace OSCVRCWiz.Addons
 
                         }
                         catch { }
+                       // if (ex.Message.Contains("The access token expired"))
+                       // {
+                            OutputText.outputLog("[Spotify access token may be expired. Click the Connect Spotify button again.]", Color.DarkOrange);
+                       // }
                     }
                 }
                 

@@ -75,7 +75,11 @@ namespace TTS
             }
            catch (Exception ex)
             {
-                OutputText.outputLog("[System Speech TTS *AUDIO* Error: " + ex.Message + ". Rename one of your devices in control panel > sound.]",Color.Red);
+                OutputText.outputLog("[System Speech TTS *AUDIO* Error: " + ex.Message+"]",Color.Red);
+                if (ex.Message.Contains("An item with the same key has already been added"))
+                {
+                    OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
+                }
             }
 
 

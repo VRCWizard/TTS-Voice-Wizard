@@ -132,7 +132,7 @@ namespace Settings
                         VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = kvp.Value.Speed;
                         if (kvp.Value.TTSMode == "Azure")
                         {
-                            OutputText.outputLog("If Azure Voice Accent/Language is being loading for the first time this session then preset will not select Voice properly. Simply re-select the preset to fix this.", Color.Orange);
+                            OutputText.outputLog("If Azure Voice Accent/Language is being loading for the first time this session then preset will not select Voice properly. Simply re-select the preset to fix this.", Color.DarkOrange);
                         }
                     }
                 }
@@ -232,7 +232,7 @@ namespace Settings
                     }
                     catch (Exception ex)
                     {
-                        OutputText.outputLog("Error Loading Presets / No Presets Found", Color.Orange);
+                        OutputText.outputLog("Error Loading Presets / No Presets Found", Color.DarkOrange);
                     }
                 }
             }
