@@ -84,6 +84,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button38 = new System.Windows.Forms.Button();
             this.labelCharCount = new System.Windows.Forms.Label();
             this.iconButton37 = new FontAwesome.Sharp.IconButton();
             this.iconButton36 = new FontAwesome.Sharp.IconButton();
@@ -247,6 +248,15 @@
             this.label105 = new System.Windows.Forms.Label();
             this.rjToggleButtonMedia = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label123 = new System.Windows.Forms.Label();
+            this.textBoxStopTTS2 = new System.Windows.Forms.TextBox();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.rjToggleButton12 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.textBoxStopTTS1 = new System.Windows.Forms.TextBox();
+            this.label124 = new System.Windows.Forms.Label();
+            this.label122 = new System.Windows.Forms.Label();
+            this.rjToggleButtonDisableWindowsMedia = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button28 = new System.Windows.Forms.Button();
@@ -552,7 +562,7 @@
             this.speechTTSButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speechTTSButton.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.speechTTSButton.ForeColor = System.Drawing.Color.Snow;
-            this.speechTTSButton.Location = new System.Drawing.Point(10, 175);
+            this.speechTTSButton.Location = new System.Drawing.Point(10, 181);
             this.speechTTSButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.speechTTSButton.Name = "speechTTSButton";
             this.speechTTSButton.Size = new System.Drawing.Size(480, 44);
@@ -572,7 +582,7 @@
             this.TTSButton.Location = new System.Drawing.Point(430, 20);
             this.TTSButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TTSButton.Name = "TTSButton";
-            this.TTSButton.Size = new System.Drawing.Size(62, 55);
+            this.TTSButton.Size = new System.Drawing.Size(70, 52);
             this.TTSButton.TabIndex = 10;
             this.TTSButton.Text = "TTS";
             this.TTSButton.UseVisualStyleBackColor = false;
@@ -770,7 +780,9 @@
             this.comboBoxRate.Items.AddRange(new object[] {
             "x-slow",
             "slow",
+            "slightly slower",
             "default",
+            "slightly faster",
             "fast",
             "x-fast"});
             this.comboBoxRate.Location = new System.Drawing.Point(305, 243);
@@ -805,7 +817,9 @@
             this.comboBoxPitch.Items.AddRange(new object[] {
             "x-low",
             "low",
+            "slightly lower",
             "default",
+            "slightly higher",
             "high",
             "x-high"});
             this.comboBoxPitch.Location = new System.Drawing.Point(304, 145);
@@ -1625,6 +1639,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button38);
             this.groupBox7.Controls.Add(this.labelCharCount);
             this.groupBox7.Controls.Add(this.iconButton37);
             this.groupBox7.Controls.Add(this.iconButton36);
@@ -1637,10 +1652,27 @@
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Size = new System.Drawing.Size(506, 230);
+            this.groupBox7.Size = new System.Drawing.Size(506, 236);
             this.groupBox7.TabIndex = 107;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Text to Speech";
+            // 
+            // button38
+            // 
+            this.button38.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.button38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button38.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button38.ForeColor = System.Drawing.Color.Snow;
+            this.button38.Location = new System.Drawing.Point(430, 77);
+            this.button38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(70, 38);
+            this.button38.TabIndex = 107;
+            this.button38.Text = "Stop";
+            this.button38.UseVisualStyleBackColor = false;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
             // labelCharCount
             // 
@@ -1648,7 +1680,7 @@
             this.labelCharCount.AutoSize = true;
             this.labelCharCount.BackColor = System.Drawing.Color.White;
             this.labelCharCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.labelCharCount.Location = new System.Drawing.Point(19, 139);
+            this.labelCharCount.Location = new System.Drawing.Point(19, 145);
             this.labelCharCount.Name = "labelCharCount";
             this.labelCharCount.Size = new System.Drawing.Size(19, 15);
             this.labelCharCount.TabIndex = 106;
@@ -1665,10 +1697,10 @@
             this.iconButton37.IconColor = System.Drawing.Color.White;
             this.iconButton37.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton37.IconSize = 15;
-            this.iconButton37.Location = new System.Drawing.Point(429, 136);
+            this.iconButton37.Location = new System.Drawing.Point(429, 145);
             this.iconButton37.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton37.Name = "iconButton37";
-            this.iconButton37.Size = new System.Drawing.Size(60, 25);
+            this.iconButton37.Size = new System.Drawing.Size(71, 22);
             this.iconButton37.TabIndex = 105;
             this.iconButton37.Text = "🗛";
             this.iconButton37.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1686,10 +1718,10 @@
             this.iconButton36.IconColor = System.Drawing.Color.White;
             this.iconButton36.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton36.IconSize = 15;
-            this.iconButton36.Location = new System.Drawing.Point(429, 107);
+            this.iconButton36.Location = new System.Drawing.Point(429, 119);
             this.iconButton36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton36.Name = "iconButton36";
-            this.iconButton36.Size = new System.Drawing.Size(60, 25);
+            this.iconButton36.Size = new System.Drawing.Size(71, 22);
             this.iconButton36.TabIndex = 104;
             this.iconButton36.Text = "🗚";
             this.iconButton36.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -1707,7 +1739,7 @@
             this.ttsTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ttsTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ttsTrash.IconSize = 15;
-            this.ttsTrash.Location = new System.Drawing.Point(383, 132);
+            this.ttsTrash.Location = new System.Drawing.Point(383, 138);
             this.ttsTrash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ttsTrash.Name = "ttsTrash";
             this.ttsTrash.Size = new System.Drawing.Size(31, 22);
@@ -1726,7 +1758,7 @@
             this.richTextBox3.Location = new System.Drawing.Point(10, 20);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(413, 142);
+            this.richTextBox3.Size = new System.Drawing.Size(413, 148);
             this.richTextBox3.TabIndex = 30;
             this.richTextBox3.Text = "Read this aloud.";
             this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
@@ -3892,7 +3924,7 @@
             this.groupBox13.Controls.Add(this.label105);
             this.groupBox13.Controls.Add(this.rjToggleButtonMedia);
             this.groupBox13.ForeColor = System.Drawing.Color.White;
-            this.groupBox13.Location = new System.Drawing.Point(21, 290);
+            this.groupBox13.Location = new System.Drawing.Point(18, 349);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -4031,6 +4063,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label123);
+            this.groupBox1.Controls.Add(this.textBoxStopTTS2);
+            this.groupBox1.Controls.Add(this.button39);
+            this.groupBox1.Controls.Add(this.button40);
+            this.groupBox1.Controls.Add(this.rjToggleButton12);
+            this.groupBox1.Controls.Add(this.textBoxStopTTS1);
+            this.groupBox1.Controls.Add(this.label124);
+            this.groupBox1.Controls.Add(this.label122);
+            this.groupBox1.Controls.Add(this.rjToggleButtonDisableWindowsMedia);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.button28);
@@ -4057,17 +4098,135 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(250, 266);
+            this.groupBox1.Size = new System.Drawing.Size(250, 326);
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label123.ForeColor = System.Drawing.Color.Snow;
+            this.label123.Location = new System.Drawing.Point(63, 296);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(15, 15);
+            this.label123.TabIndex = 131;
+            this.label123.Text = "+";
+            // 
+            // textBoxStopTTS2
+            // 
+            this.textBoxStopTTS2.Enabled = false;
+            this.textBoxStopTTS2.Location = new System.Drawing.Point(88, 294);
+            this.textBoxStopTTS2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxStopTTS2.Name = "textBoxStopTTS2";
+            this.textBoxStopTTS2.ReadOnly = true;
+            this.textBoxStopTTS2.Size = new System.Drawing.Size(53, 23);
+            this.textBoxStopTTS2.TabIndex = 130;
+            this.textBoxStopTTS2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStopTTS2_KeyDown);
+            // 
+            // button39
+            // 
+            this.button39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button39.ForeColor = System.Drawing.Color.Snow;
+            this.button39.Location = new System.Drawing.Point(146, 293);
+            this.button39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(52, 22);
+            this.button39.TabIndex = 129;
+            this.button39.Text = "Edit";
+            this.button39.UseVisualStyleBackColor = false;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
+            // button40
+            // 
+            this.button40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button40.Enabled = false;
+            this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button40.ForeColor = System.Drawing.Color.Snow;
+            this.button40.Location = new System.Drawing.Point(199, 293);
+            this.button40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(45, 22);
+            this.button40.TabIndex = 128;
+            this.button40.Text = "Save";
+            this.button40.UseVisualStyleBackColor = false;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // rjToggleButton12
+            // 
+            this.rjToggleButton12.AutoSize = true;
+            this.rjToggleButton12.Checked = true;
+            this.rjToggleButton12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButton12.Location = new System.Drawing.Point(6, 274);
+            this.rjToggleButton12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButton12.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButton12.Name = "rjToggleButton12";
+            this.rjToggleButton12.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButton12.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButton12.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButton12.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButton12.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButton12.TabIndex = 127;
+            this.rjToggleButton12.UseVisualStyleBackColor = true;
+            this.rjToggleButton12.CheckedChanged += new System.EventHandler(this.rjToggleButton12_CheckedChanged);
+            // 
+            // textBoxStopTTS1
+            // 
+            this.textBoxStopTTS1.Enabled = false;
+            this.textBoxStopTTS1.Location = new System.Drawing.Point(6, 295);
+            this.textBoxStopTTS1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxStopTTS1.Name = "textBoxStopTTS1";
+            this.textBoxStopTTS1.ReadOnly = true;
+            this.textBoxStopTTS1.Size = new System.Drawing.Size(53, 23);
+            this.textBoxStopTTS1.TabIndex = 126;
+            this.textBoxStopTTS1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStopTTS1_KeyDown);
+            // 
+            // label124
+            // 
+            this.label124.AutoSize = true;
+            this.label124.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label124.ForeColor = System.Drawing.Color.Snow;
+            this.label124.Location = new System.Drawing.Point(50, 274);
+            this.label124.Name = "label124";
+            this.label124.Size = new System.Drawing.Size(100, 15);
+            this.label124.TabIndex = 125;
+            this.label124.Text = "Stop TTS Shortcut";
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label122.ForeColor = System.Drawing.Color.Snow;
+            this.label122.Location = new System.Drawing.Point(54, 181);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(179, 15);
+            this.label122.TabIndex = 123;
+            this.label122.Text = "Disable Windows Media (Debug)";
+            // 
+            // rjToggleButtonDisableWindowsMedia
+            // 
+            this.rjToggleButtonDisableWindowsMedia.AutoSize = true;
+            this.rjToggleButtonDisableWindowsMedia.Location = new System.Drawing.Point(6, 181);
+            this.rjToggleButtonDisableWindowsMedia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonDisableWindowsMedia.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonDisableWindowsMedia.Name = "rjToggleButtonDisableWindowsMedia";
+            this.rjToggleButtonDisableWindowsMedia.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonDisableWindowsMedia.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonDisableWindowsMedia.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonDisableWindowsMedia.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonDisableWindowsMedia.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonDisableWindowsMedia.TabIndex = 124;
+            this.rjToggleButtonDisableWindowsMedia.UseVisualStyleBackColor = true;
+            this.rjToggleButtonDisableWindowsMedia.CheckedChanged += new System.EventHandler(this.rjToggleButtonDisableWindowsMedia_CheckedChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(66, 212);
+            this.label12.Location = new System.Drawing.Point(63, 248);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(15, 15);
             this.label12.TabIndex = 122;
@@ -4076,7 +4235,7 @@
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(91, 210);
+            this.textBox1.Location = new System.Drawing.Point(88, 246);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -4089,7 +4248,7 @@
             this.button28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.ForeColor = System.Drawing.Color.Snow;
-            this.button28.Location = new System.Drawing.Point(149, 209);
+            this.button28.Location = new System.Drawing.Point(146, 245);
             this.button28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(52, 22);
@@ -4104,7 +4263,7 @@
             this.button27.Enabled = false;
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button27.ForeColor = System.Drawing.Color.Snow;
-            this.button27.Location = new System.Drawing.Point(202, 209);
+            this.button27.Location = new System.Drawing.Point(199, 245);
             this.button27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(45, 22);
@@ -4118,7 +4277,7 @@
             this.rjToggleButton9.AutoSize = true;
             this.rjToggleButton9.Checked = true;
             this.rjToggleButton9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton9.Location = new System.Drawing.Point(9, 190);
+            this.rjToggleButton9.Location = new System.Drawing.Point(6, 226);
             this.rjToggleButton9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButton9.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButton9.Name = "rjToggleButton9";
@@ -4310,15 +4469,13 @@
             // textBox4
             // 
             this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(9, 211);
+            this.textBox4.Location = new System.Drawing.Point(6, 247);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(53, 23);
             this.textBox4.TabIndex = 33;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // label22
             // 
@@ -4336,7 +4493,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(53, 190);
+            this.label11.Location = new System.Drawing.Point(50, 226);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 15);
             this.label11.TabIndex = 27;
@@ -7484,5 +7641,15 @@
         public RJControls.RJToggleButton rjToggleButtonCounterSaver;
         private Label label121;
         public RJControls.RJToggleButton rjToggleButtonFilterNoiseWhisper;
+        private Button button38;
+        private Label label123;
+        public TextBox textBoxStopTTS2;
+        private Button button39;
+        private Button button40;
+        public RJControls.RJToggleButton rjToggleButton12;
+        public TextBox textBoxStopTTS1;
+        private Label label124;
+        private Label label122;
+        public RJControls.RJToggleButton rjToggleButtonDisableWindowsMedia;
     }
 }

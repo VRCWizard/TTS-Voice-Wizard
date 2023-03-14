@@ -15,6 +15,11 @@ using OSCVRCWiz.Text;
 using NAudio.Wave;
 using System.IO;
 using NAudio.Wave.SampleProviders;
+using VarispeedDemo.SoundTouch;
+using Windows.Storage.Streams;
+using Newtonsoft.Json.Serialization;
+using System.Windows;
+using System.Windows.Forms.VisualStyles;
 
 namespace TTS
 {
@@ -23,6 +28,7 @@ namespace TTS
 
        public static List<string> systemSpeechVoiceList = new List<string>();
         public static string currentLiteVoice = "";
+        
 
         public static void getVoices()
         {
@@ -41,9 +47,9 @@ namespace TTS
        
         public static async void systemTTSAction(string text)
         {
-         //   var semitone = Math.Pow(2, 1.0 / 12);
-         //   var upOneTone = semitone * semitone;
-          //  var downOneTone = 1.0 / upOneTone;
+        //  var semitone = Math.Pow(2, 1.0/24);
+       //   var upOneTone = semitone;
+        // var downOneTone = 1.0 / upOneTone;
 
             try
             {
@@ -59,15 +65,48 @@ namespace TTS
                  WaveFileReader wav = new WaveFileReader(memoryStream);
 
 
-              //  var pitch = new SmbPitchShiftingSampleProvider(wav.ToSampleProvider());
-               // pitch.PitchFactor = (float)downOneTone;
+                var volume = "";
+                var pitch = "";
+                var volumeFloat = 1f;
+                var pitchFloat = 1f;
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString();
+                    pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString();
+                });
+                switch (volume)
+                {
+                    case "x-soft": volumeFloat = .5f; break;
+                    case "soft": volumeFloat = .75f; break;
+                    case "default": volumeFloat = 1f; break;
+                    case "loud": volumeFloat = 1.25f; break;
+                    case "x-loud": volumeFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+                switch (pitch)
+                {
+                    case "x-low": pitchFloat = .5f; break;
+                    case "low": pitchFloat = .75f; break;
+                    case "slightly lower": pitchFloat = .9f; break;
+                    case "default": pitchFloat = 1f; break;
+                    case "slightly higher": pitchFloat = 1.10f; break;
+                    case "high": pitchFloat = 1.25f; break;
+                    case "x-high": pitchFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+
+                var wave32 = new WaveChannel32(wav, volumeFloat,0f);  //1f volume is normal, keep pan at 0 for audio through both ears
+                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(false, false));
+                speedControl.PlaybackRate = pitchFloat; 
 
 
-                var output = new WaveOut();
-                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                output.Init(wav);
-                 output.Play();
-                while (output.PlaybackState == PlaybackState.Playing)
+                VoiceWizardWindow.AnyOutput = new WaveOut();
+                VoiceWizardWindow.AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                VoiceWizardWindow.AnyOutput.Init(speedControl);
+                VoiceWizardWindow.AnyOutput.Play();
+                while (VoiceWizardWindow.AnyOutput.PlaybackState == PlaybackState.Playing)
                 {
                     Thread.Sleep(2000);
                 }

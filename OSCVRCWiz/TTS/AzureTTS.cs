@@ -20,6 +20,7 @@ namespace OSCVRCWiz.TTS
         public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
         public static Dictionary<string, string[]> RememberLanguageVoices = new Dictionary<string, string[]>();
         public static bool firstVoiceLoad = true;
+        public static SpeechSynthesizer synthesizerVoice;
 
         public static async Task SynthesisGetAvailableVoicesAsync(string fromLanguageFullname)
         {
@@ -86,7 +87,7 @@ namespace OSCVRCWiz.TTS
                             //   localList.Add("en-IN");
                             //   localList.Add("en-KE");
                             //    localList.Add("en-NZ");
-                            //   localList.Add("en-PH");
+                               localList.Add("en-PH");
                             //    localList.Add("en-SG");
                             //   localList.Add("en-TZ");
                             //   localList.Add("en-ZA");
@@ -297,7 +298,7 @@ namespace OSCVRCWiz.TTS
                 }
                
 
-                var synthesizerVoice = new SpeechSynthesizer(config, audioConfig);
+                synthesizerVoice = new SpeechSynthesizer(config, audioConfig);
 
 
                 string ssml0 = "<speak version=\"1.0\"";
@@ -318,7 +319,9 @@ namespace OSCVRCWiz.TTS
                 {
                     if (rate == "x-slow") { ssml0 += ratexslow; }
                     if (rate == "slow") { ssml0 += rateslow; }
+                    if (rate == "slightly slower") { ssml0 += "<prosody rate=\"-10%\">"; }
                     if (rate == "medium") { ssml0 += ratemedium; }
+                    if (rate == "slightly faster") { ssml0 += "<prosody rate=\"10%\">"; }
                     if (rate == "fast") { ssml0 += ratefast; }
                     if (rate == "x-fast") { ssml0 += ratexfast; }
 
@@ -327,7 +330,9 @@ namespace OSCVRCWiz.TTS
                 {
                     if (pitch == "x-low") { ssml0 += pitchxlow; }
                     if (pitch == "low") { ssml0 += pitchlow; }
+                    if (pitch == "slightly lower") { ssml0 += "<prosody pitch=\"-5%\">"; }
                     if (pitch == "medium") { ssml0 += pitchmedium; }
+                    if (pitch == "slightly higher") { ssml0 += "<prosody pitch=\"5%\">"; }
                     if (pitch == "high") { ssml0 += pitchhigh; }
                     if (pitch == "x-high") { ssml0 += pitchxhigh; }
 
@@ -353,6 +358,7 @@ namespace OSCVRCWiz.TTS
 
                 
                 var result = await synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+                
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {
                     Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
@@ -380,7 +386,8 @@ namespace OSCVRCWiz.TTS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No valid subscription key given or speech service has been disabled; " + ex.Message.ToString());
+                //  MessageBox.Show("No valid subscription key given or speech service has been disabled; " + ex.Message.ToString());
+                OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
             }
         }
     }

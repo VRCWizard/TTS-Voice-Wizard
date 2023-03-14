@@ -1,6 +1,7 @@
 ﻿using Amazon.Polly.Model;
 using Amazon.Runtime.Internal;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Octokit;
@@ -17,6 +18,7 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using VarispeedDemo.SoundTouch;
 using Windows.Media.Protection.PlayReady;
 using static OSCVRCWiz.TTS.ElevenLabsTTS;
 using static SpotifyAPI.Web.SearchRequest;
@@ -61,14 +63,58 @@ namespace OSCVRCWiz.TTS
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);
                 Mp3FileReader wav = new Mp3FileReader(memoryStream); //it does not have a wav file header so it is mp3 formate unless systemspeech, and fonixtalk
-               // var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1));
-                var output = new WaveOut();
-                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                output.Init(wav);
-                output.Play();
-                while (output.PlaybackState == PlaybackState.Playing)
+                                                                     // var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1));
+
+
+
+                var volume = "";
+                var pitch = "";
+                var volumeFloat = 1f;
+                var pitchFloat = 1f;
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-                    Thread.Sleep(2000);
+                    volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString();
+                    pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString();
+                });
+                switch (volume)
+                {
+                    case "x-soft": volumeFloat = .5f; break;
+                    case "soft": volumeFloat = .75f; break;
+                    case "default": volumeFloat = 1f; break;
+                    case "loud": volumeFloat = 1.25f; break;
+                    case "x-loud": volumeFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+                switch (pitch)
+                {
+                    case "x-low": pitchFloat = .5f; break;
+                    case "low": pitchFloat = .75f; break;
+                    case "slightly lower": pitchFloat = .9f; break;
+                    case "default": pitchFloat = 1f; break;
+                    case "slightly higher": pitchFloat = 1.10f; break;
+                    case "high": pitchFloat = 1.25f; break;
+                    case "x-high": pitchFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+
+                var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
+                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(false, false));
+                speedControl.PlaybackRate = pitchFloat;
+
+
+
+
+                VoiceWizardWindow.AnyOutput = new WaveOut();
+                VoiceWizardWindow.AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                VoiceWizardWindow.AnyOutput.Init(speedControl);
+                VoiceWizardWindow.AnyOutput.Play();
+                while (VoiceWizardWindow.AnyOutput.PlaybackState == PlaybackState.Playing)
+                {
+                  
+                        Thread.Sleep(2000);
+                    
                 }
 
 
@@ -172,6 +218,7 @@ namespace OSCVRCWiz.TTS
             catch (Exception ex)
             {
                 OutputText.outputLog("[ElevenLabs Voice Load Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[You appear to be using an incorrect ElevenLabs Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS ]", Color.DarkOrange);
 
             }
 

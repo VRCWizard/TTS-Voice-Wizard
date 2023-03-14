@@ -96,6 +96,7 @@ namespace OSCVRCWiz.Addons
 
                     m_currentlyPlaying = await myClient.Player.GetCurrentlyPlaying(new PlayerCurrentlyPlayingRequest());
                     var m_testing = await myClient.Player.GetAvailableDevices();
+                  //  var m_testing2 = await myClient.Player.GetCurrentPlayback();
                     title = "";
                     var artist = "";
                     var duration = "";
@@ -144,6 +145,9 @@ namespace OSCVRCWiz.Addons
                             duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
                             progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
+
+                            var album = m_currentTrack.Album.Name.ToString();
+                            //var lyrics = m_testing2.
                         }
                     }
                     if ((lastSong != title ||  VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true) && !string.IsNullOrWhiteSpace(title) && title != "" && pauseSpotify != true)
@@ -262,7 +266,7 @@ namespace OSCVRCWiz.Addons
                 else
                 {
 
-                    if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')")//only say these once, dont spam them
+                    if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APIException' was thrown.")//only say these once, dont spam them
                     {
                         OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
                         previousError = ex.Message.ToString();

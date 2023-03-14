@@ -20,12 +20,14 @@ using Microsoft.VisualBasic;
 using Windows.Storage.Streams;
 using System.Collections;
 using Microsoft.Extensions.Primitives;
+using NAudio.Wave.SampleProviders;
+using VarispeedDemo.SoundTouch;
 
 namespace OSCVRCWiz.TTS
 {
     public class TikTokTTS
     {
-       
+       // public static WaveOut TikTokOutput=null;
 
         public static async Task TikTokTextAsSpeech(string text)
         {
@@ -61,12 +63,53 @@ namespace OSCVRCWiz.TTS
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);
                 Mp3FileReader wav = new Mp3FileReader(memoryStream); //it does not have a wav file header so it is mp3 formate unless systemspeech, and fonixtalk
-                var output = new WaveOut();
-                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                output.Init(wav);
-                output.Play();
-                while (output.PlaybackState == PlaybackState.Playing)
+
+
+                var volume = "";
+                var pitch = "";
+                var volumeFloat = 1f;
+                var pitchFloat = 1f;
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
+                    volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString();
+                    pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString();
+                });
+                switch (volume)
+                {
+                    case "x-soft": volumeFloat = .5f; break;
+                    case "soft": volumeFloat = .75f; break;
+                    case "default": volumeFloat = 1f; break;
+                    case "loud": volumeFloat = 1.25f; break;
+                    case "x-loud": volumeFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+                switch (pitch)
+                {
+                    case "x-low": pitchFloat = .5f; break;
+                    case "low": pitchFloat = .75f; break;
+                    case "slightly lower": pitchFloat = .9f; break;
+                    case "default": pitchFloat = 1f; break;
+                    case "slightly higher": pitchFloat = 1.10f; break;
+                    case "high": pitchFloat = 1.25f; break;
+                    case "x-high": pitchFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+
+                var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
+                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(false, false));
+                speedControl.PlaybackRate = pitchFloat;
+
+
+
+                VoiceWizardWindow.AnyOutput = new WaveOut();
+                VoiceWizardWindow.AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                VoiceWizardWindow.AnyOutput.Init(speedControl);
+                VoiceWizardWindow.AnyOutput.Play();
+                while (VoiceWizardWindow.AnyOutput.PlaybackState == PlaybackState.Playing)
+                {
+
                     Thread.Sleep(2000);
                 }
 

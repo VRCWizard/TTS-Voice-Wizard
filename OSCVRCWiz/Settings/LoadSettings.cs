@@ -61,7 +61,7 @@ namespace OSCVRCWiz
             // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
             VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
 
-            VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
+           
                 VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
                 VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
             try
@@ -231,17 +231,22 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked = Settings1.Default.saveAutoRefreshKat;
 
-            VoiceWizardWindow.modifierKey = Settings1.Default.modHotKey;
-              VoiceWizardWindow.MainFormGlobal.textBox4.Text= VoiceWizardWindow.modifierKey;
-            VoiceWizardWindow.normalKey = Settings1.Default.normalHotKey;
-              VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKey;
+            VoiceWizardWindow.modifierKeySTTTS = Settings1.Default.modHotKey;
+              VoiceWizardWindow.MainFormGlobal.textBox4.Text= VoiceWizardWindow.modifierKeySTTTS;
+            VoiceWizardWindow.normalKeySTTTS = Settings1.Default.normalHotKey;
+              VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKeySTTTS;
+
+            VoiceWizardWindow.modifierKeyStopTTS = Settings1.Default.modHotkeyStop;
+            VoiceWizardWindow.MainFormGlobal.textBoxStopTTS1.Text = VoiceWizardWindow.modifierKeyStopTTS;
+            VoiceWizardWindow.normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
+            VoiceWizardWindow.MainFormGlobal.textBoxStopTTS2.Text = VoiceWizardWindow.normalKeyStopTTS;
 
 
             VoiceWizardWindow.MainFormGlobal.textBox9.Text = Settings1.Default.yourAWSKey;
             VoiceWizardWindow.MainFormGlobal.textBox10.Text = Settings1.Default.yourAWSSecret;
             VoiceWizardWindow.MainFormGlobal.textBox8.Text = Settings1.Default.yourAWSRegion;
-            VoiceWizardWindow.MainFormGlobal.textBox12.Text = Settings1.Default.elevenLabsAPIKey;
 
+            VoiceWizardWindow.MainFormGlobal.textBox12.Text = Settings1.Default.elevenLabsAPIKey;
             VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text = Settings1.Default.whisperModel;
 
 
@@ -250,7 +255,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked = Settings1.Default.VRCListemOnStart;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked = Settings1.Default.VRCSpamLog;
 
-            VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
+            
 
             VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text = Settings1.Default.AFKMsg;
             VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.VRCPort;
@@ -271,6 +276,8 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text = Settings1.Default.Counter6Msg;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked = Settings1.Default.SaveCounter;
+
+
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked==true)
             {
@@ -299,6 +306,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked = Settings1.Default.FilterNoiseWhisper;
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonDisableWindowsMedia.Checked = Settings1.Default.WindowsMediaDisable;
+
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
               VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
               VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;
@@ -325,6 +334,9 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;
 
             });
+            VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
+            VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
+
         }
     }
 }

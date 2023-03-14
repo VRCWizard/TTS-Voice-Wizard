@@ -11,7 +11,7 @@ using Whisper;
 
 namespace OSCVRCWiz.Resources
 {
-    //MODIFIED FROM https://github.com/Const-me/Whisper/tree/master/Examples/MicrophoneCS
+    //MODIFIED FROM Const-me/Whisper/ example
     public sealed class CaptureThread : CaptureCallbacks
     {
         public static CaptureThread ctt =null;

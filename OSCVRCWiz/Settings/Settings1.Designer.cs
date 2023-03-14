@@ -1534,5 +1534,41 @@ namespace OSCVRCWiz.Settings {
                 this["FilterNoiseWhisper"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string modHotkeyStop {
+            get {
+                return ((string)(this["modHotkeyStop"]));
+            }
+            set {
+                this["modHotkeyStop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string normalHotkeyStop {
+            get {
+                return ((string)(this["normalHotkeyStop"]));
+            }
+            set {
+                this["normalHotkeyStop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WindowsMediaDisable {
+            get {
+                return ((bool)(this["WindowsMediaDisable"]));
+            }
+            set {
+                this["WindowsMediaDisable"] = value;
+            }
+        }
     }
 }

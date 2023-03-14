@@ -157,7 +157,7 @@ namespace OSCVRCWiz
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                    // var ot = new OutputText(); 
-                    Task.Run(() => OutputText.outputLog("[Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
+                    Task.Run(() => OutputText.outputLog("[Azure Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
                 };
 
                 translationRecognizer1.Recognized += (sender, eventArgs) =>
@@ -180,7 +180,9 @@ namespace OSCVRCWiz
                 {
                     Console.WriteLine(eventArgs.Result.Text);
                    // var ot = new OutputText();
-                    Task.Run(() => OutputText.outputLog("[Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
+                    Task.Run(() => OutputText.outputLog("[Azure Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
+                    OutputText.outputLog("[If this issue occurs often try searching the discord server. The solution has likely already been documented]", Color.DarkOrange);
+
                 };
                 speechRecognizer1.Recognized += (sender, eventArgs) =>
                 {
@@ -273,7 +275,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("STTTS Failed: " + ex.Message.ToString());
+                MessageBox.Show("Azure STTTS Failed: " + ex.Message.ToString());
 
             }
         }
@@ -337,7 +339,7 @@ namespace OSCVRCWiz
            }
             catch (Exception ex)
             {
-                OutputText.outputLog("Translation STTTS Failed: Most likely your voice was not picked up by your microphone. Reason: " + ex.Message.ToString());
+                OutputText.outputLog("Azure Translation STTTS Failed: Most likely your voice was not picked up by your microphone. Reason: " + ex.Message.ToString());
 
             }
         }

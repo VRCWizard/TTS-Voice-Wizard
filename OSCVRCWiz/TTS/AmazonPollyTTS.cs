@@ -56,7 +56,9 @@ namespace OSCVRCWiz.TTS
                   output.Play();
                 while (output.PlaybackState == PlaybackState.Playing)
                 {
-                    Thread.Sleep(2000);
+                  
+                        Thread.Sleep(2000);
+                    
                 }
 
 

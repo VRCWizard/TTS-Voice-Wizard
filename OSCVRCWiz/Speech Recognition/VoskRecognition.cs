@@ -72,8 +72,8 @@ namespace OSCVRCWiz
             }
             else
             {
-                OutputText.outputLog("[No vosk model folder selected. When selecting you model foler make sure that the folder you select DIRECTLY contains the model files or the program will close!]", Color.Red);
-                MessageBox.Show("No vosk model folder selected. When selecting you model foler make sure that the folder you select DIRECTLY contains the model files or the program will close!");
+                OutputText.outputLog("[No vosk model folder selected. When selecting you model foler make sure that the folder you select DIRECTLY contains the model files or the program will crash!]", Color.Red);
+                MessageBox.Show("No vosk model folder selected. When selecting your model folder make sure that the folder you select DIRECTLY contains the model files or the program will crash!");
                 
             }
         }

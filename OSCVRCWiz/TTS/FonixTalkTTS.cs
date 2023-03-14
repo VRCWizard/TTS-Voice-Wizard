@@ -16,6 +16,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Components.Forms;
+using NAudio.Wave.SampleProviders;
+using VarispeedDemo.SoundTouch;
 //using Windows.Media.Protection.PlayReady;
 //using Amazon.Polly;
 
@@ -68,14 +70,58 @@ namespace OSCVRCWiz.TTS
                 memoryStream.Seek(0, SeekOrigin.Begin);
 
                 var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1)); //11000 and 16 seemed to be the closest to the original
-                var output = new WaveOut();
-                output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                output.Init(wav);
-                output.Play();
 
-                while (output.PlaybackState == PlaybackState.Playing)
+
+
+                var volume = "";
+                var pitch = "";
+                var volumeFloat = 1f;
+                var pitchFloat = 1f;
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-                    Thread.Sleep(2000);
+                    volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString();
+                    pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString();
+                });
+                switch (volume)
+                {
+                    case "x-soft": volumeFloat = .5f; break;
+                    case "soft": volumeFloat = .75f; break;
+                    case "default": volumeFloat = 1f; break;
+                    case "loud": volumeFloat = 1.25f; break;
+                    case "x-loud": volumeFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+                switch (pitch)
+                {
+                    case "x-low": pitchFloat = .5f; break;
+                    case "low": pitchFloat = .75f; break;
+                    case "slightly lower": pitchFloat = .9f; break;
+                    case "default": pitchFloat = 1f; break;
+                    case "slightly higher": pitchFloat = 1.10f; break;
+                    case "high": pitchFloat = 1.25f; break;
+                    case "x-high": pitchFloat = 1.50f; break;
+                    default:
+                        break;
+                }
+
+                var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
+                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(false, false));
+                speedControl.PlaybackRate = pitchFloat;
+
+
+
+
+                VoiceWizardWindow.AnyOutput = new WaveOut();
+                VoiceWizardWindow.AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                VoiceWizardWindow.AnyOutput.Init(speedControl);
+                VoiceWizardWindow.AnyOutput.Play();
+
+                while (VoiceWizardWindow.AnyOutput.PlaybackState == PlaybackState.Playing)
+                {
+                 
+                        Thread.Sleep(2000);
+                    
                 }
             }
             catch (Exception ex)
@@ -134,7 +180,8 @@ namespace OSCVRCWiz.TTS
              catch (Exception ex)
             {
                 OutputText.outputLog("[Moonbase Error: "+ex.Message+"]", Color.Red);
-              //  MessageBox.Show("FonixTalk Error: "+ex.Message);
+                OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
+                //  MessageBox.Show("FonixTalk Error: "+ex.Message);
                 return "";
                 
             }

@@ -9,7 +9,7 @@ using Whisper;
 
 namespace OSCVRCWiz.Resources
 {
-    //MODIFIED FROM https://github.com/Const-me/Whisper/tree/master/Examples/MicrophoneCS
+    //MODIFIED FROM Const-me/Whisper/ example
     public sealed record class CommandLineArgs
     {
         public int n_threads = Environment.ProcessorCount;

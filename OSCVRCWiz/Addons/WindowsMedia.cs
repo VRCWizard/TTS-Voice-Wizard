@@ -28,15 +28,18 @@ namespace OSCVRCWiz.Addons
         {
             try
             {
-                mediaManager = new MediaManager();
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonDisableWindowsMedia.Checked == false)
+                {
+                    mediaManager = new MediaManager();
 
-                mediaManager.OnAnySessionOpened += MediaManager_OnAnySessionOpened;
-                mediaManager.OnAnySessionClosed += MediaManager_OnAnySessionClosed;
-                mediaManager.OnAnyPlaybackStateChanged += MediaManager_OnAnyPlaybackStateChanged;
-                mediaManager.OnAnyMediaPropertyChanged += MediaManager_OnAnyMediaPropertyChanged;
+                    mediaManager.OnAnySessionOpened += MediaManager_OnAnySessionOpened;
+                    mediaManager.OnAnySessionClosed += MediaManager_OnAnySessionClosed;
+                    mediaManager.OnAnyPlaybackStateChanged += MediaManager_OnAnyPlaybackStateChanged;
+                    mediaManager.OnAnyMediaPropertyChanged += MediaManager_OnAnyMediaPropertyChanged;
 
 
-                mediaManager.Start();
+                    mediaManager.Start();
+                }
             }
             catch (Exception ex)
             {

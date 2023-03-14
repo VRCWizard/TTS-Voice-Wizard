@@ -156,10 +156,14 @@ namespace OSCVRCWiz
 
             Settings1.Default.saveAutoRefreshKat= VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked;
 
-            Settings1.Default.modHotKey = VoiceWizardWindow.modifierKey;
-          //  VoiceWizardWindow.MainFormGlobal.textBox4.Text= VoiceWizardWindow.modifierKey;
-            Settings1.Default.normalHotKey = VoiceWizardWindow.normalKey;
-            //  VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKey;
+            Settings1.Default.modHotKey = VoiceWizardWindow.modifierKeySTTTS;
+
+            Settings1.Default.normalHotKey = VoiceWizardWindow.normalKeySTTTS;
+
+            Settings1.Default.modHotkeyStop = VoiceWizardWindow.modifierKeyStopTTS;
+
+            Settings1.Default.normalHotkeyStop = VoiceWizardWindow.normalKeyStopTTS;
+
 
 
             Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked;
@@ -201,6 +205,8 @@ namespace OSCVRCWiz
             Settings1.Default.OBS4Media = VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked;
 
             Settings1.Default.FilterNoiseWhisper = VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked;
+
+            Settings1.Default.WindowsMediaDisable= VoiceWizardWindow.MainFormGlobal.rjToggleButtonDisableWindowsMedia.Checked;
 
 
             /*
