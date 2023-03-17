@@ -1570,5 +1570,77 @@ namespace OSCVRCWiz.Settings {
                 this["WindowsMediaDisable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public string SpeakerName2 {
+            get {
+                return ((string)(this["SpeakerName2"]));
+            }
+            set {
+                this["SpeakerName2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int pitchNew {
+            get {
+                return ((int)(this["pitchNew"]));
+            }
+            set {
+                this["pitchNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int volumeNew {
+            get {
+                return ((int)(this["volumeNew"]));
+            }
+            set {
+                this["volumeNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int speedNew {
+            get {
+                return ((int)(this["speedNew"]));
+            }
+            set {
+                this["speedNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool use2ndDevice {
+            get {
+                return ((bool)(this["use2ndDevice"]));
+            }
+            set {
+                this["use2ndDevice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool forwardData {
+            get {
+                return ((bool)(this["forwardData"]));
+            }
+            set {
+                this["forwardData"] = value;
+            }
+        }
     }
 }

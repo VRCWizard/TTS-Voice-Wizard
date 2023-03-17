@@ -10,12 +10,13 @@ using System.Text;
 using EmbedIO;
 using NAudio.Wave.SampleProviders;
 using VarispeedDemo.SoundTouch;
+using System.Diagnostics;
 
 namespace TTS
 {
     public class GladosTTS
     {
-        public static async Task GladosTextAsSpeech(string text)
+        public static async Task GladosTextAsSpeech(string text, CancellationToken ct = default)
         {
 
             // if ("tiktokvoice.mp3" == null)
@@ -34,59 +35,100 @@ namespace TTS
                 //  Task.Run(() => PlayAudioHelper());
 
                 MemoryStream memoryStream = new MemoryStream(result);
+
+                MemoryStream memoryStream2 = new MemoryStream();
                 memoryStream.Flush();
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                WaveFileReader wav = new WaveFileReader(memoryStream); //it does not have a wav file header so it is mp3 formate unless systemspeech, and fonixtalk
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                memoryStream.CopyTo(memoryStream2);
 
 
-                var volume = "";
-                var pitch = "";
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                WaveFileReader wav = new WaveFileReader(memoryStream);
+
+
+                memoryStream2.Flush();
+                memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                WaveFileReader wav2 = new WaveFileReader(memoryStream2);
+
+
+                var volume = 5;
+                int pitch = 5;
                 var volumeFloat = 1f;
                 var pitchFloat = 1f;
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-                    volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString();
-                    pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString();
+                    volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                    pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
                 });
-                switch (volume)
-                {
-                    case "x-soft": volumeFloat = .5f; break;
-                    case "soft": volumeFloat = .75f; break;
-                    case "default": volumeFloat = 1f; break;
-                    case "loud": volumeFloat = 1.25f; break;
-                    case "x-loud": volumeFloat = 1.50f; break;
-                    default:
-                        break;
-                }
-                switch (pitch)
-                {
-                    case "x-low": pitchFloat = .5f; break;
-                    case "low": pitchFloat = .75f; break;
-                    case "slightly lower": pitchFloat = .9f; break;
-                    case "default": pitchFloat = 1f; break;
-                    case "slightly higher": pitchFloat = 1.10f; break;
-                    case "high": pitchFloat = 1.25f; break;
-                    case "x-high": pitchFloat = 1.50f; break;
-                    default:
-                        break;
-                }
+
+                volumeFloat = 0.5f + volume * 0.1f;
+                pitchFloat = 0.5f + pitch * 0.1f;
+
 
                 var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
                 VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(false, false));
                 speedControl.PlaybackRate = pitchFloat;
+               var AnyOutput = new WaveOut();
+                AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                AnyOutput.Init(speedControl);
+                AnyOutput.Play();
+                ct.Register(async () => AnyOutput.Stop());
 
-
-
-                VoiceWizardWindow.AnyOutput = new WaveOut();
-                VoiceWizardWindow.AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                VoiceWizardWindow.AnyOutput.Init(speedControl);
-                VoiceWizardWindow.AnyOutput.Play();
-                while (VoiceWizardWindow.AnyOutput.PlaybackState == PlaybackState.Playing)
+                WaveOut AnyOutput2 = null;
+                VarispeedSampleProvider speedControl_2 = null;
+                WaveChannel32 wave32_2 = null;
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
                 {
-                   
-                        Thread.Sleep(2000);
-                    
+                    wave32_2 = new WaveChannel32(wav2, volumeFloat, 0f); //output 2
+                    wave32_2.PadWithZeroes = false;
+                    speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(false, false));//output 2
+                    speedControl_2.PlaybackRate = pitchFloat;//output 2
+                    AnyOutput2 = new WaveOut();
+                    AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
+                    AnyOutput2.Init(speedControl_2);
+                    AnyOutput2.Play();
+                    ct.Register(async () => AnyOutput2.Stop());
+
                 }
+
+
+
+
+                Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
+                Thread.Sleep(500);
+
+
+
+                AnyOutput.Stop();
+                AnyOutput.Dispose();
+                AnyOutput = null;
+                speedControl.Dispose();
+                speedControl = null;
+                wave32.Dispose();
+                wave32 = null;
+                wav.Dispose();
+                wav = null;
+                memoryStream.Dispose();
+              //  synthesizerLite.Dispose();
+                memoryStream = null;
+           //     synthesizerLite = null;
+
+                if (AnyOutput2 != null)
+                {
+                    AnyOutput2.Stop();
+                    AnyOutput2.Dispose();
+                    AnyOutput2 = null;
+                    speedControl_2.Dispose();
+                    speedControl_2 = null;
+                    wave32_2.Dispose();
+                    wave32_2 = null;
+                    wav2.Dispose();
+                    wav2 = null;
+                }
+                ct = new();
+
+                Debug.WriteLine("disposed of all");
 
 
             }

@@ -66,27 +66,61 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
             try
             {
-                VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
-                VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex = Settings1.Default.volumeSetting;
-                VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
+              //  VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
+              //  VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex = Settings1.Default.volumeSetting;
+             //   VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
             } catch(Exception ex)
             {
                 OutputText.outputLog("[One of your TTS setttings was invalid (pitch, volume or speed). Setting to defaults.]",Color.Red);
-                VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = "default";
-                VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = "default";
-                VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = "default";
+             //   VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = "default";
+             //   VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = "default";
+             //   VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = "default";
 
             }
+
+            VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = Settings1.Default.pitchNew;
+            VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value = Settings1.Default.volumeNew;
+            VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value = Settings1.Default.speedNew;
+            VoiceWizardWindow.MainFormGlobal.updateAllTrackBarLabels();
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked = Settings1.Default.use2ndDevice;
+
+
             VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
-            VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
-            VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
-        
-           // VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
-            //VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
+
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
+            }
+            catch
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = "Default";
+            }
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
+            }
+            catch
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = "Default";
+            }
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = Settings1.Default.SpeakerName2;
+            }
+            catch
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = "Default";
+            }
+          
            
 
+            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
+            //VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
+
+
             // VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
-           // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
+            // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked = Settings1.Default.bannerSetting;
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked == true)
@@ -307,6 +341,8 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked = Settings1.Default.FilterNoiseWhisper;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonDisableWindowsMedia.Checked = Settings1.Default.WindowsMediaDisable;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked = Settings1.Default.forwardData;
 
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
               VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;

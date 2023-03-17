@@ -38,9 +38,12 @@ namespace Settings
                 saveThisPreset.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem.ToString();
                 saveThisPreset.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
                 saveThisPreset.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem.ToString();
-                saveThisPreset.Pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem.ToString();
-                saveThisPreset.Volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem.ToString();
-                saveThisPreset.Speed = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem.ToString();
+                saveThisPreset.Pitch = "";
+                saveThisPreset.Volume = "";
+                saveThisPreset.Speed = "";
+                saveThisPreset.PitchNew = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value; 
+                saveThisPreset.VolumeNew = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                saveThisPreset.SpeedNew = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
 
                 VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Add(saveThisPreset.PresetName);
 
@@ -68,11 +71,14 @@ namespace Settings
                 saveThisPreset.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem.ToString();
                 saveThisPreset.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
                 saveThisPreset.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem.ToString();
-                saveThisPreset.Pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem.ToString();
-                saveThisPreset.Volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem.ToString();
-                saveThisPreset.Speed = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem.ToString();
+                saveThisPreset.Pitch = "";
+                saveThisPreset.Volume = "";
+                saveThisPreset.Speed = "";
+                saveThisPreset.PitchNew = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                saveThisPreset.VolumeNew = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                saveThisPreset.SpeedNew = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
 
-                
+
 
                 VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Add(saveThisPreset.PresetName);
                 presetDict.Add(saveThisPreset.PresetName, saveThisPreset);
@@ -127,12 +133,31 @@ namespace Settings
                         VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem = kvp.Value.SpokenLang;
                         VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem = kvp.Value.TranslateLang;
                         VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem = kvp.Value.Style;
-                        VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = kvp.Value.Pitch;
-                        VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = kvp.Value.Volume;
-                        VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = kvp.Value.Speed;
+                        // VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = kvp.Value.Pitch;
+                        //  VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = kvp.Value.Volume;
+                        //  VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = kvp.Value.Speed;
+                        if (kvp.Value.Pitch == "" && kvp.Value.Volume == "" && kvp.Value.Speed == "")
+                        {
+                            VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = kvp.Value.PitchNew;
+                            VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value = kvp.Value.VolumeNew;
+                            VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value = kvp.Value.SpeedNew;
+                        }
+                        else
+                        {
+                            //legacy 
+                            VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = 5;
+                            VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value = 5;
+                            VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value = 5;
+
+                        }
+                        VoiceWizardWindow.MainFormGlobal.updateAllTrackBarLabels();
                         if (kvp.Value.TTSMode == "Azure")
                         {
-                            OutputText.outputLog("If Azure Voice Accent/Language is being loaded for the first time this session then preset will not select Voice properly. Simply re-select the preset.", Color.DarkOrange);
+                             OutputText.outputLog("If Azure Voice Accent/Language is being loaded for the first time this session then preset will not select Voice properly. Simply re-select the preset.", Color.DarkOrange);
+                           // Thread.Sleep(500);
+                          //  VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem = kvp.Value.Voice;
+                          ///  VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem = kvp.Value.Style;
+
                         }
                     }
                 }
@@ -221,6 +246,24 @@ namespace Settings
                             System.Diagnostics.Debug.WriteLine("value added: " + s2);
 
                         }
+                        if (count == 11)
+                        {
+                            saveThisPreset.PitchNew = Int32.Parse(s2);
+                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
+
+                        }
+                        if (count == 12)
+                        {
+                            saveThisPreset.VolumeNew = Int32.Parse(s2);
+                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
+
+                        }
+                        if (count == 13)
+                        {
+                            saveThisPreset.SpeedNew = Int32.Parse(s2);
+                            System.Diagnostics.Debug.WriteLine("value added: " + s2);
+
+                        }
 
 
                         count++;
@@ -243,7 +286,7 @@ namespace Settings
             foreach (var kvp in presetDict)
             {
 
-                presetsStored += $"{kvp.Value.PresetName}:{kvp.Value.TTSMode}:{kvp.Value.Voice}:{kvp.Value.Accent}:{kvp.Value.SpokenLang}:{kvp.Value.TranslateLang}:{kvp.Value.Style}:{kvp.Value.Pitch}:{kvp.Value.Volume}:{kvp.Value.Speed};";
+                presetsStored += $"{kvp.Value.PresetName}:{kvp.Value.TTSMode}:{kvp.Value.Voice}:{kvp.Value.Accent}:{kvp.Value.SpokenLang}:{kvp.Value.TranslateLang}:{kvp.Value.Style}:{kvp.Value.Pitch}:{kvp.Value.Volume}:{kvp.Value.Speed}:{kvp.Value.PitchNew}:{kvp.Value.VolumeNew}:{kvp.Value.SpeedNew};";
             }
         }
     }

@@ -63,9 +63,9 @@ namespace OSCVRCWiz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TTSIcon {
+        internal static System.Drawing.Bitmap TTSIcon1 {
             get {
-                object obj = ResourceManager.GetObject("TTSIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("TTSIcon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace OSCVRCWiz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap VRChatTTSBWBanner {
+        internal static System.Drawing.Bitmap VRChatTTSBWBanner1 {
             get {
-                object obj = ResourceManager.GetObject("VRChatTTSBWBanner", resourceCulture);
+                object obj = ResourceManager.GetObject("VRChatTTSBWBanner1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

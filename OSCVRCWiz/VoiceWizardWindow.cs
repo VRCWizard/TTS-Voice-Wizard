@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.4.1";
-        string releaseDate = "March 14, 2023";
+        public static string currentVersion = "1.0.6";
+        string releaseDate = "March 17, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -79,9 +79,12 @@ namespace OSCVRCWiz
         public static string normalKeyStopTTS = "";
 
         // public static bool StopAnyTTS = false;
-        public static WaveOut AnyOutput = null;
+        public static WaveOut AnyOutput = new();
+        public static WaveOut AnyOutput2 = new();
 
-        
+        CancellationTokenSource speechCt = new();
+
+
 
 
 
@@ -212,6 +215,9 @@ namespace OSCVRCWiz
             public string Pitch;
             public string Volume;
             public string Speed;
+            public int PitchNew;
+            public int VolumeNew;
+            public int SpeedNew;
         }
         public static void CUSTOMRegisterHotKey(int id, string modifierKey,string normalKey)
         {
@@ -762,29 +768,29 @@ namespace OSCVRCWiz
                     }
 
 
-
+                    speechCt = new();
                     switch (selectedTTSMode)
                     {
                         case "Moonbase":
-                            Task.Run(() => FonixTalkTTS.FonixTTS(speechText));
+                            Task.Run(() => FonixTalkTTS.FonixTTS(speechText, speechCt.Token));
                             break;
                         case "ElevenLabs":
-                            Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(speechText));
+                            Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(speechText, speechCt.Token));
                             break;
                         case "System Speech":
-                            Task.Run(() => SystemSpeechTTS.systemTTSAction(speechText));
+                            Task.Run(() => SystemSpeechTTS.systemTTSAction(speechText, speechCt.Token));
                             break;
                         case "Azure":
-                            Task.Run(() => AzureTTS.SynthesizeAudioAsync(speechText)); //turning off TTS for now
+                            Task.Run(() => AzureTTS.SynthesizeAudioAsync(speechText, speechCt.Token)); //turning off TTS for now
                             break;
                         case "TikTok":
-                            Task.Run(() => TikTokTTS.TikTokTextAsSpeech(speechText));
+                            Task.Run(() => TikTokTTS.TikTokTextAsSpeech(speechText, speechCt.Token));
                             break;
                         case "Glados":
-                            Task.Run(() => GladosTTS.GladosTextAsSpeech(speechText));
+                            Task.Run(() => GladosTTS.GladosTextAsSpeech(speechText, speechCt.Token));
                             break;
                         case "Amazon Polly":
-                            Task.Run(() => AmazonPollyTTS.PollyTTS(speechText));
+                            Task.Run(() => AmazonPollyTTS.PollyTTS(speechText, speechCt.Token));
                             break;
 
 
@@ -1137,14 +1143,16 @@ namespace OSCVRCWiz
             }
 
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
-          /*  if (rjToggleButtonGreenScreen.Checked == true)
-            {
-                Invoke((MethodInvoker)delegate ()
-                {
-                    pf.customrtb1.Text = "";
-                });
+            /*  if (rjToggleButtonGreenScreen.Checked == true)
+              {
+                  Invoke((MethodInvoker)delegate ()
+                  {
+                      pf.customrtb1.Text = "";
+                  });
 
-            }*/
+              }*/
+       
+            
 
         }
         private void doToastTimerTick()
@@ -1270,6 +1278,7 @@ namespace OSCVRCWiz
 
         private void doVRCCounterTimerTick()
         {
+          //  SpotifyAddon.pauseSpotify = true;
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector==true &&OSCListener.pauseBPM !=true)
             {
@@ -1421,6 +1430,8 @@ namespace OSCVRCWiz
 
             }
                 VRCCounterTimer.Change(1600, 0);
+            
+
             
         }
 
@@ -1925,9 +1936,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = false;
                     TTSModeSaved = "Moonbase";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
@@ -2006,9 +2017,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = false;
                     TTSModeSaved = "TikTok";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
@@ -2037,9 +2048,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = false;
                     TTSModeSaved = "System Speech";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
@@ -2060,9 +2071,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = true;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = true;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Azure";
 
                     if (textBox2.Text.ToString() == "")
@@ -2084,9 +2095,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = false;
                     TTSModeSaved = "Glados";
 
                     OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
@@ -2130,9 +2141,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = false;
                     TTSModeSaved = "ElevenLabs";
 
                     if (textBox12.Text.ToString() == "")
@@ -2183,9 +2194,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = true;
-                    comboBoxVolume.Enabled = true;
-                    comboBoxRate.Enabled = true;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Amazon Polly";
 
                     if (textBox9.Text.ToString()=="")
@@ -2209,9 +2220,9 @@ namespace OSCVRCWiz
                     comboBox2.Enabled = false;
                     comboBox3.Enabled = true;
                     comboBox5.Enabled = false;
-                    comboBoxPitch.Enabled = false;
-                    comboBoxVolume.Enabled = false;
-                    comboBoxRate.Enabled = false;
+                    trackBarPitch.Enabled = false;
+                    trackBarVolume.Enabled = false;
+                    trackBarSpeed.Enabled = false;
                     break;
             }
         }
@@ -2946,9 +2957,9 @@ namespace OSCVRCWiz
                 comboBox2.Enabled = true;
                 comboBox3.Enabled = true;
                 comboBox5.Enabled = false;
-                comboBoxPitch.Enabled = false;
-                comboBoxVolume.Enabled = false;
-                comboBoxRate.Enabled = false;
+                trackBarPitch.Enabled = false;
+                trackBarVolume.Enabled = false;
+                trackBarSpeed.Enabled = false;
                 TTSModeSaved = "ElevenLabs";
             }
         }
@@ -3020,23 +3031,21 @@ namespace OSCVRCWiz
         }
         private void MainDoStopTTS()
         {
+            
             // StopAnyTTS = true;
             try
             {
-                AnyOutput.Stop();
+                speechCt.Cancel();
+                speechCt.Dispose();
+                speechCt = new();
+                //AnyOutput.Stop();
+
             }
             catch (Exception ex)
             {
-                // OutputText.outputLog("[No Audio Playing]", Color.Red);
+                 OutputText.outputLog("[Stop TTS Error: "+ex.Message+"]", Color.Red);
             }
-            try
-            {
-                AzureTTS.synthesizerVoice.StopSpeakingAsync();
-            }
-            catch (Exception ex)
-            {
-                // OutputText.outputLog("[No Audio Playing]", Color.Red);
-            }
+         
 
         }
 
@@ -3103,6 +3112,44 @@ namespace OSCVRCWiz
 
             OutputText.outputLog("Restart required for changes to take effect (Disabling Windows Media may solve 'random' crashing). If you just restarted, Windows Media mode is already disabled so disregard this message.", Color.Red);
             
+
+        }
+
+        private void comboBoxOutput2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioDevices.currentOutputDevice2nd = AudioDevices.speakerIDs[comboBoxOutput2.SelectedIndex];
+            AudioDevices.currentOutputDeviceName2nd = comboBoxOutput2.SelectedItem.ToString();
+            System.Diagnostics.Debug.WriteLine("speaker changed");
+        }
+
+        private void trackBarPitch_Scroll(object sender, EventArgs e)
+        {
+            float value = 0.5f + trackBarPitch.Value * 0.1f;
+            labelPitchNum.Text = "x" + Math.Round(value, 1).ToString();
+        }
+
+        private void trackBarSpeed_Scroll(object sender, EventArgs e)
+        {
+            float value = 0.5f + trackBarSpeed.Value * 0.1f;
+            labelSpeedNum.Text = "x" + Math.Round(value,1).ToString();
+
+        }
+
+        private void trackBarVolume_Scroll(object sender, EventArgs e)
+        {
+            float value = 0.5f + trackBarVolume.Value * 0.1f;
+            labelVolumeNum.Text = "x" + Math.Round(value, 1).ToString();
+        }
+        public void updateAllTrackBarLabels()
+        {
+            float value1 = 0.5f + trackBarPitch.Value * 0.1f;
+            labelPitchNum.Text = "x" + Math.Round(value1, 1).ToString();
+
+            float value2 = 0.5f + trackBarSpeed.Value * 0.1f;
+            labelSpeedNum.Text = "x" + Math.Round(value2, 1).ToString();
+
+            float value3 = 0.5f + trackBarVolume.Value * 0.1f;
+            labelVolumeNum.Text = "x" + Math.Round(value3, 1).ToString();
 
         }
     }

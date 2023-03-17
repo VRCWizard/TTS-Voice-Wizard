@@ -20,13 +20,15 @@ using OSCVRCWiz.Text;
 using OSCVRCWiz.Settings;
 using static OSCVRCWiz.TTS.ElevenLabsTTS;
 using System.Windows;
+using NAudio.Wave.SampleProviders;
+using VarispeedDemo.SoundTouch;
 
 namespace OSCVRCWiz.TTS
 {
     public class AmazonPollyTTS
     {
        
-        public static async Task PollyTTS(string text)
+        public static async Task PollyTTS(string text, CancellationToken ct = default)
         {
             try
             {
@@ -43,22 +45,77 @@ namespace OSCVRCWiz.TTS
 
             MemoryStream memoryStream = new MemoryStream();
             WriteSpeechToStream(response.AudioStream, memoryStream);
-        
 
 
-                     memoryStream.Flush();
-                    memoryStream.Seek(0, SeekOrigin.Begin);
 
-                  Mp3FileReader wav = new Mp3FileReader(memoryStream);
-                  var output = new WaveOut();
-                  output.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                  output.Init(wav);
-                  output.Play();
-                while (output.PlaybackState == PlaybackState.Playing)
+
+                MemoryStream memoryStream2 = new MemoryStream();
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                memoryStream.CopyTo(memoryStream2);
+
+
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                Mp3FileReader wav = new Mp3FileReader(memoryStream);
+
+
+                memoryStream2.Flush();
+                memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                Mp3FileReader wav2 = new Mp3FileReader(memoryStream2);
+
+
+
+                var AnyOutput = new WaveOut();
+                AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                AnyOutput.Init(wav);
+                AnyOutput.Play();
+                ct.Register(async () => AnyOutput.Stop());
+                WaveOut AnyOutput2 = null;
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
                 {
-                  
+                    AnyOutput2 = new WaveOut();
+                    AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
+                    AnyOutput2.Init(wav2);
+                    AnyOutput2.Play();
+                    ct.Register(async () => AnyOutput2.Stop());
+                    while (AnyOutput2.PlaybackState == PlaybackState.Playing)
+                    {
                         Thread.Sleep(2000);
+                    }
+                }
+                while (AnyOutput.PlaybackState == PlaybackState.Playing)
+                {
+                    Thread.Sleep(2000);
+                }
+                if (AnyOutput.PlaybackState == PlaybackState.Stopped)
+                {
                     
+                    AnyOutput.Stop();
+                    AnyOutput.Dispose();
+                    AnyOutput = null;
+                    if (AnyOutput2 != null)
+                    {
+                        AnyOutput2.Stop();
+                        AnyOutput2.Dispose();
+                        
+                        AnyOutput2 = null;
+                    }
+                    memoryStream.Dispose();
+                    memoryStream = null;
+                    //  memoryStream2.Dispose();
+                    wav.Dispose();
+                   
+                    wav = null;
+                    wav2 = null;
+                    client.Dispose();
+                    client= null;
+                    response.Dispose();
+                    response= null;
+                    ct = new();
+
+                    Debug.WriteLine("azure dispose successful");
                 }
 
 
@@ -95,37 +152,51 @@ namespace OSCVRCWiz.TTS
 
 
               
-              string rate = "default";
-              string pitch = "default";
-              string volume = "default";
+              int rate = 5;
+              int pitch = 5;
+              int volume =5;
               string voice = "blank";
               VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
               {
-                
-                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString())) { rate = VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString(); }
-                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString())) { pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString(); }
-                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString())) { volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString(); }
+
+                  rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                  pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                  volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
                   if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString())) { voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString(); }
 
 
               });
-              string ratexslow = "<prosody rate=\"x-slow\">"; //1
-              string rateslow = "<prosody rate=\"slow\">"; //2
-              string ratemedium = "<prosody rate=\"medium\">"; //3
-              string ratefast = "<prosody rate=\"fast\">"; //4
-              string ratexfast = "<prosody rate=\"x-fast\">"; //5
+            /*   string ratexslow = "<prosody rate=\"x-slow\">"; //1
+               string rateslow = "<prosody rate=\"slow\">"; //2
+               string ratemedium = "<prosody rate=\"medium\">"; //3
+               string ratefast = "<prosody rate=\"fast\">"; //4
+               string ratexfast = "<prosody rate=\"x-fast\">"; //5
 
-              string pitchxlow = "<prosody pitch=\"x-low\">"; //1
-              string pitchlow = "<prosody pitch=\"low\">"; //2
-              string pitchmedium = "<prosody pitch=\"medium\">"; //3
-              string pitchhigh = "<prosody pitch=\"high\">"; //4
-              string pitchxhigh = "<prosody pitch=\"x-high\">"; //5
+               string pitchxlow = "<prosody pitch=\"x-low\">"; //1
+               string pitchlow = "<prosody pitch=\"low\">"; //2
+               string pitchmedium = "<prosody pitch=\"medium\">"; //3
+               string pitchhigh = "<prosody pitch=\"high\">"; //4
+               string pitchxhigh = "<prosody pitch=\"x-high\">"; //5
 
-              string volumexlow = "<prosody volume=\"x-soft\">"; //1
-              string volumelow = "<prosody volume=\"soft\">"; //2
-              string volumemedium = "<prosody volume=\"medium\">"; //3
-              string volumehigh = "<prosody volume=\"loud\">"; //4
-              string volumexhigh = "<prosody volume=\"x-loud\">"; //5
+               string volumexlow = "<prosody volume=\"x-soft\">"; //1
+               string volumelow = "<prosody volume=\"soft\">"; //2
+               string volumemedium = "<prosody volume=\"medium\">"; //3
+               string volumehigh = "<prosody volume=\"loud\">"; //4
+               string volumexhigh = "<prosody volume=\"x-loud\">"; //5*/
+
+            var ratePercent = (int)Math.Floor(((0.5f + rate * 0.1f) - 1) * 100);
+            var pitchPercent = (int)Math.Floor(((0.5f + pitch * 0.1f) - 1) * 100);
+            var volumePercent = (int)Math.Floor(((0.5f + volume * 0.1f) - 1) * 10);
+
+            string rateString = "<prosody rate=\"" + ratePercent + "%\">"; //1
+            string pitchString = "<prosody pitch=\"" + pitchPercent + "%\">"; //1
+            string volumeString = "<prosody volume=\"" + volumePercent + "dB\">"; //1
+
+            Debug.WriteLine("rate: " + ratePercent);
+            Debug.WriteLine("pitch: " + pitchPercent);
+
+            Debug.WriteLine("volume: " + volumePercent);
+            Debug.WriteLine("volume: " + volumeString);
 
 
             //  string ssml0 = "<speak>";
@@ -134,37 +205,28 @@ namespace OSCVRCWiz.TTS
             ssml0 += " xml:lang=\"en-US\">";
 
 
-            if (rate != "default")
+            if (rate != 5)//5 = default /middle of track bar
               {
-                  if (rate == "x-slow") { ssml0 += ratexslow; }
-                  if (rate == "slow") { ssml0 += rateslow; }
-                  if (rate == "medium") { ssml0 += ratemedium; }
-                  if (rate == "fast") { ssml0 += ratefast; }
-                  if (rate == "x-fast") { ssml0 += ratexfast; }
+                  ssml0 += rateString; 
+                 
 
               }
-              if (pitch != "default")
+              if (pitch != 5)
               {
-                  if (pitch == "x-low") { ssml0 += pitchxlow; }
-                  if (pitch == "low") { ssml0 += pitchlow; }
-                  if (pitch == "medium") { ssml0 += pitchmedium; }
-                  if (pitch == "high") { ssml0 += pitchhigh; }
-                  if (pitch == "x-high") { ssml0 += pitchxhigh; }
+                 ssml0 += pitchString; 
+                
 
               }
-              if (volume != "default")
+              if (volume != 5)
               {
-                  if (volume == "x-soft") { ssml0 += volumexlow; }
-                  if (volume == "soft") { ssml0 += volumelow; }
-                  if (volume == "medium") { ssml0 += volumemedium; }
-                  if (volume == "loud") { ssml0 += volumehigh; }
-                  if (volume == "x-loud") { ssml0 += volumexhigh; }
+                  ssml0 += volumeString;
+                 
 
               }
               ssml0 += text;
-              if (rate != "default") { ssml0 += "</prosody>"; }
-              if (pitch != "default") { ssml0 += "</prosody>"; }
-              if (volume != "default") { ssml0 += "</prosody>"; }
+              if (rate != 5) { ssml0 += "</prosody>"; }
+              if (pitch != 5) { ssml0 += "</prosody>"; }
+              if (volume != 5) { ssml0 += "</prosody>"; }
 
               ssml0 += "</speak>";
 

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.Text;
 using Resources;
+using NAudio.Wave;
+using System.IO;
+using Swan.Logging;
 
 namespace OSCVRCWiz.TTS
 {
@@ -20,7 +23,7 @@ namespace OSCVRCWiz.TTS
         public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
         public static Dictionary<string, string[]> RememberLanguageVoices = new Dictionary<string, string[]>();
         public static bool firstVoiceLoad = true;
-        public static SpeechSynthesizer synthesizerVoice;
+       // public static SpeechSynthesizer synthesizerVoice;
 
         public static async Task SynthesisGetAvailableVoicesAsync(string fromLanguageFullname)
         {
@@ -228,25 +231,27 @@ namespace OSCVRCWiz.TTS
 
         }
 
-        public static async Task SynthesizeAudioAsync(string text) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(string text, CancellationToken ct = default) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
                 string style = "normal";
-                string rate = "default";
-                string pitch = "default";
-                string volume = "default";
+                int rate = 5;
+                int pitch = 5;
+                int volume = 5;
                 string voice = "blank";
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString())) { style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString(); }
-                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString())) { rate = VoiceWizardWindow.MainFormGlobal.comboBoxRate.Text.ToString(); }
-                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString())) { pitch = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.Text.ToString(); }
-                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString())) { volume = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.Text.ToString(); }
+                    rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                    pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                    volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
                     if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString())) { voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString(); }
 
 
                 });
+
+             
 
 
                 var config = SpeechConfig.FromSubscription(AzureRecognition.YourSubscriptionKey, AzureRecognition.YourServiceRegion);
@@ -264,41 +269,32 @@ namespace OSCVRCWiz.TTS
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
 
-                string ratexslow = "<prosody rate=\"x-slow\">"; //1
-                string rateslow = "<prosody rate=\"slow\">"; //2
-                string ratemedium = "<prosody rate=\"medium\">"; //3
-                string ratefast = "<prosody rate=\"fast\">"; //4
-                string ratexfast = "<prosody rate=\"x-fast\">"; //5
+                var ratePercent = (int)Math.Floor(((0.5f + rate * 0.1f) - 1) * 100);
+                var pitchPercent = (int)Math.Floor(((0.5f + pitch * 0.1f) - 1) * 100);
+                var volumePercent = (int)Math.Floor(((0.5f + volume * 0.1f) - 1) * 100);
 
-                string pitchxlow = "<prosody pitch=\"x-low\">"; //1
-                string pitchlow = "<prosody pitch=\"low\">"; //2
-                string pitchmedium = "<prosody pitch=\"medium\">"; //3
-                string pitchhigh = "<prosody pitch=\"high\">"; //4
-                string pitchxhigh = "<prosody pitch=\"x-high\">"; //5
+                string rateString = "<prosody rate=\"" + ratePercent + "%\">"; //1
+                string pitchString = "<prosody pitch=\"" + pitchPercent + "%\">"; //1
+                string volumeString = "<prosody volume=\"" + volumePercent + "%\">"; //1
 
-                string volumexlow = "<prosody volume=\"x-soft\">"; //1
-                string volumelow = "<prosody volume=\"soft\">"; //2
-                string volumemedium = "<prosody volume=\"medium\">"; //3
-                string volumehigh = "<prosody volume=\"loud\">"; //4
-                string volumexhigh = "<prosody volume=\"x-loud\">"; //5
-
-                Debug.WriteLine("rate: " + rate);
-                Debug.WriteLine("pitch: " + pitch);
-                Debug.WriteLine("volume: " + volume);
+                Debug.WriteLine("rate: " + ratePercent);
+                Debug.WriteLine("pitch: " + pitchPercent);
+                Debug.WriteLine("volume: " + volumePercent);
                 Debug.WriteLine("voice: " + voice);
                 Debug.WriteLine("style: " + style);
                 Debug.WriteLine("text: " + text);
 
 
-                var audioConfig = AudioConfig.FromSpeakerOutput(AudioDevices.currentOutputDevice);
-                if (AudioDevices.currentOutputDeviceName == "Default")
-                {
-                    audioConfig = AudioConfig.FromDefaultSpeakerOutput();
-
-                }
+                //  var audioConfig = AudioConfig.FromSpeakerOutput(AudioDevices.currentOutputDevice);
+                AudioOutputStream stream = AudioOutputStream.CreatePullStream();//this allows for instant synthesis for naudio output
+                var audioConfig = AudioConfig.FromStreamOutput(stream);//this allows for instant synthesis for naudio output
+              //  if (AudioDevices.currentOutputDeviceName == "Default")
+              //  {
+              //      audioConfig = AudioConfig.FromDefaultSpeakerOutput();
+              //  }
                
 
-                synthesizerVoice = new SpeechSynthesizer(config, audioConfig);
+                var synthesizerVoice = new SpeechSynthesizer(config, audioConfig);
 
 
                 string ssml0 = "<speak version=\"1.0\"";
@@ -315,54 +311,122 @@ namespace OSCVRCWiz.TTS
                     ssml0 += "<mstts:express-as style=\"" + style + "\">";
 
                 }
-                if (rate != "default")
+                if (rate != 5)//5 = default /middle of track bar
                 {
-                    if (rate == "x-slow") { ssml0 += ratexslow; }
-                    if (rate == "slow") { ssml0 += rateslow; }
-                    if (rate == "slightly slower") { ssml0 += "<prosody rate=\"-10%\">"; }
-                    if (rate == "medium") { ssml0 += ratemedium; }
-                    if (rate == "slightly faster") { ssml0 += "<prosody rate=\"10%\">"; }
-                    if (rate == "fast") { ssml0 += ratefast; }
-                    if (rate == "x-fast") { ssml0 += ratexfast; }
+                    ssml0 += rateString;
+
 
                 }
-                if (pitch != "default")
+                if (pitch != 5)
                 {
-                    if (pitch == "x-low") { ssml0 += pitchxlow; }
-                    if (pitch == "low") { ssml0 += pitchlow; }
-                    if (pitch == "slightly lower") { ssml0 += "<prosody pitch=\"-5%\">"; }
-                    if (pitch == "medium") { ssml0 += pitchmedium; }
-                    if (pitch == "slightly higher") { ssml0 += "<prosody pitch=\"5%\">"; }
-                    if (pitch == "high") { ssml0 += pitchhigh; }
-                    if (pitch == "x-high") { ssml0 += pitchxhigh; }
+                    ssml0 += pitchString;
+
 
                 }
-                if (volume != "default")
+                if (volume != 5)
                 {
-                    if (volume == "x-soft") { ssml0 += volumexlow; }
-                    if (volume == "soft") { ssml0 += volumelow; }
-                    if (volume == "medium") { ssml0 += volumemedium; }
-                    if (volume == "loud") { ssml0 += volumehigh; }
-                    if (volume == "x-loud") { ssml0 += volumexhigh; }
+                    ssml0 += volumeString;
+
 
                 }
                 ssml0 += text;
-                if (rate != "default") { ssml0 += "</prosody>"; }
-                if (pitch != "default") { ssml0 += "</prosody>"; }
-                if (volume != "default") { ssml0 += "</prosody>"; }
+                if (rate != 5) { ssml0 += "</prosody>"; }
+                if (pitch != 5) { ssml0 += "</prosody>"; }
+                if (volume != 5) { ssml0 += "</prosody>"; }
                 if (style != "normal") { ssml0 += "</mstts:express-as>"; }
                 ssml0 += "</voice>";
                 ssml0 += "</speak>";
 
                 Debug.WriteLine(ssml0);
 
-                
-                var result = await synthesizerVoice.SpeakSsmlAsync(ssml0).ConfigureAwait(false);
+               // var result = await synthesizerVoice.
+
+                var result = await synthesizerVoice.SpeakSsmlAsync(ssml0);
                 
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {
                     Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
                     // ot.outputLog(MainForm, $"[Azure Speech Synthesized]");
+                   
+                        try
+                        {
+                        MemoryStream memoryStream = new MemoryStream(result.AudioData);
+
+                        MemoryStream memoryStream2 = new MemoryStream();
+                        memoryStream.Flush();
+                        memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                        memoryStream.CopyTo(memoryStream2);
+
+
+                        memoryStream.Flush();
+                        memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                        WaveFileReader wav = new WaveFileReader(memoryStream);
+
+
+                        memoryStream2.Flush();
+                        memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                        WaveFileReader wav2 = new WaveFileReader(memoryStream2);
+
+
+
+                        var AnyOutput = new WaveOut();
+                        AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                        AnyOutput.Init(wav);
+                        AnyOutput.Play();
+                        ct.Register(async () => AnyOutput.Stop());
+                        WaveOut AnyOutput2 = null;
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
+                        {
+                           AnyOutput2 = new WaveOut();
+                            AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
+                            AnyOutput2.Init(wav2);
+                            AnyOutput2.Play();
+                           
+                            ct.Register(async () => AnyOutput2.Stop());
+                            while (AnyOutput2.PlaybackState == PlaybackState.Playing)
+                            {
+                                Thread.Sleep(2000);
+                            }
+                        }
+                        while (AnyOutput.PlaybackState == PlaybackState.Playing)
+                        {
+                            Thread.Sleep(2000);
+                            Debug.WriteLine("does this dispose properly???");
+                        }
+                        if(AnyOutput.PlaybackState == PlaybackState.Stopped)
+                        {
+                         
+                            AnyOutput.Stop();
+                            AnyOutput.Dispose();
+                           
+                            AnyOutput = null;
+                            if (AnyOutput2 != null)
+                            {
+                                AnyOutput2.Stop();
+                                AnyOutput2.Dispose();
+                                AnyOutput2 = null;
+                            }
+                            memoryStream.Dispose();
+                            memoryStream = null;
+                          //  memoryStream2.Dispose();
+                            wav.Dispose();
+                            wav2.Dispose();
+                            wav = null;
+                            wav2 = null;
+                            synthesizerVoice.Dispose();
+                            synthesizerVoice = null;
+                            stream.Dispose();
+                            stream = null;
+
+                            ct = new();
+                            Debug.WriteLine("azure dispose successful");
+                        }
+                    }
+                        catch(Exception ex)
+                        {
+                            OutputText.outputLog("[Azure Ouput Device 2 *AUDIO* Error: " + ex.Message + "]", Color.Red);
+                        }
+                    
                 }
                 else if (result.Reason == ResultReason.Canceled)
                 {
@@ -387,7 +451,8 @@ namespace OSCVRCWiz.TTS
             catch (Exception ex)
             {
                 //  MessageBox.Show("No valid subscription key given or speech service has been disabled; " + ex.Message.ToString());
-                OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                OutputText.outputLog("[Azure Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[You may be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
             }
         }
     }

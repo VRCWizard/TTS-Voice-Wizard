@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CoreOSC;
+using OSCVRCWiz.Resources;
 using OSCVRCWiz.Text;
 
 
@@ -63,6 +64,12 @@ namespace OSCVRCWiz.Addons
                         if (messageReceived.Address == "/avatar/parameters/averageTrackerBattery")
                         {
 
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/avatar/parameters/averageTrackerBattery", (float)messageReceived.Arguments[0]);
+                                OSC.OSCSender.Send(forwardData);
+                            }
+
                             decimal averageTrackerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(averageTrackerBattery * 100);
                             globalAverageTrackerBattery = battery;
@@ -78,6 +85,13 @@ namespace OSCVRCWiz.Addons
                         }
                         if (messageReceived.Address == "/avatar/parameters/leftControllerBattery")
                         {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/avatar/parameters/leftControllerBattery", (float)messageReceived.Arguments[0]);
+                                OSC.OSCSender.Send(forwardData);
+                            }
+
+
                             decimal leftControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(leftControllerBattery * 100);
                             globalLeftControllerBattery = battery;
@@ -90,6 +104,13 @@ namespace OSCVRCWiz.Addons
                         }
                         if (messageReceived.Address == "/avatar/parameters/rightControllerBattery")
                         {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/avatar/parameters/rightControllerBattery", (float)messageReceived.Arguments[0]);
+                                OSC.OSCSender.Send(forwardData);
+                            }
+
+
                             decimal rightControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(rightControllerBattery * 100);
                             globalRightControllerBattery = battery;
@@ -102,6 +123,13 @@ namespace OSCVRCWiz.Addons
                         }
                         if (messageReceived.Address == "/avatar/parameters/averageControllerBattery")
                         {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/avatar/parameters/averageControllerBattery", (float)messageReceived.Arguments[0]);
+                                OSC.OSCSender.Send(forwardData);
+                            }
+
+
                             decimal averageControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(averageControllerBattery * 100);
                             globalAverageControllerBattery = battery;
@@ -117,7 +145,11 @@ namespace OSCVRCWiz.Addons
 
                         if (messageReceived.Address == "/avatar/parameters/HR" && pauseBPM == false)
                         {
-
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/avatar/parameters/HR", (int)messageReceived.Arguments[0]);
+                                OSC.OSCSender.Send(forwardData);
+                            }
 
                             skipper += 1;
                             if (skipper >= HRInternalValue)

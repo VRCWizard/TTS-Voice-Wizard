@@ -33,8 +33,29 @@ namespace OSCVRCWiz
             Settings1.Default.hideDelayValue = VoiceWizardWindow.MainFormGlobal.textBoxErase.Text.ToString();
             Settings1.Default.phraseListValue = VoiceWizardWindow.MainFormGlobal.richTextBox6.Text.ToString();
             Settings1.Default.phraseListBoolSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPhraseList2.Checked;
-            Settings1.Default.MicName = VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem.ToString();
-            Settings1.Default.SpeakerName = VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem.ToString();
+            try
+            {
+                Settings1.Default.MicName = VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem.ToString();
+            }
+            catch {
+
+                Settings1.Default.MicName = "Default";
+            }
+            try
+            {
+                Settings1.Default.SpeakerName = VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem.ToString();
+            } catch
+            {
+                Settings1.Default.SpeakerName = "Default";
+            }
+            try
+            {
+                Settings1.Default.SpeakerName2 = VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem.ToString();
+            }
+            catch
+            {
+                Settings1.Default.SpeakerName2 = "Default";
+            }
             Settings1.Default.EmojiSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked;
             Settings1.Default.SpotifyOutputSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked;
             Settings1.Default.HRIntervalSetting = OSCListener.HRInternalValue.ToString();
@@ -49,9 +70,17 @@ namespace OSCVRCWiz
 
 
 
-            Settings1.Default.pitchSetting = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex;
-            Settings1.Default.volumeSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex;
-            Settings1.Default.rateSetting = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex;
+            //   Settings1.Default.pitchSetting = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex;
+            //   Settings1.Default.volumeSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex;
+            //   Settings1.Default.rateSetting = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex;
+
+            Settings1.Default.pitchNew = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+              Settings1.Default.volumeNew = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+               Settings1.Default.speedNew = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+
+            Settings1.Default.use2ndDevice = VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked;
+
+
             Settings1.Default.STTTSContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked;
            // Settings1.Default.useBuiltInSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked;
            // Settings1.Default.BuiltInVoiceSetting = VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex;
@@ -207,6 +236,8 @@ namespace OSCVRCWiz
             Settings1.Default.FilterNoiseWhisper = VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked;
 
             Settings1.Default.WindowsMediaDisable= VoiceWizardWindow.MainFormGlobal.rjToggleButtonDisableWindowsMedia.Checked;
+
+            Settings1.Default.forwardData = VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked;
 
 
             /*

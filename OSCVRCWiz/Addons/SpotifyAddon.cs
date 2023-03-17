@@ -103,6 +103,7 @@ namespace OSCVRCWiz.Addons
                     var progress = "";
                     var durationHours = "";
                     var progressHours = "";
+                    var album = "";
                     //  var deviceType = "";
                     var deviceVolume = "";
                     if (m_currentlyPlaying != null)
@@ -146,7 +147,7 @@ namespace OSCVRCWiz.Addons
                             progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
 
-                            var album = m_currentTrack.Album.Name.ToString();
+                            album = m_currentTrack.Album.Name.ToString();
                             //var lyrics = m_testing2.
                         }
                     }
@@ -190,6 +191,7 @@ namespace OSCVRCWiz.Addons
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
                         //theString = theString.Replace("{deviceType}", deviceType);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
+                        theString = theString.Replace("{album}", album);
 
                         theString = theString.Replace("{counter1}", OSC.counter1.ToString());
                         theString = theString.Replace("{counter2}", OSC.counter2.ToString());
