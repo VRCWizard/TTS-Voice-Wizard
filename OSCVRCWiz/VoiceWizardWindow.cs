@@ -35,7 +35,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.6.1";
+        public static string currentVersion = "1.0.6.5";
         string releaseDate = "March 17, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -1938,7 +1938,7 @@ namespace OSCVRCWiz
                     comboBox5.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = false;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Moonbase";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
@@ -2019,7 +2019,7 @@ namespace OSCVRCWiz
                     comboBox5.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = false;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "TikTok";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
@@ -2050,7 +2050,7 @@ namespace OSCVRCWiz
                     comboBox5.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = false;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "System Speech";
                     if (AzureTTS.firstVoiceLoad == false)
                     {
@@ -2097,7 +2097,7 @@ namespace OSCVRCWiz
                     comboBox5.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = false;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Glados";
 
                     OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
@@ -2143,7 +2143,7 @@ namespace OSCVRCWiz
                     comboBox5.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = false;
+                    trackBarSpeed.Enabled = true;
                     TTSModeSaved = "ElevenLabs";
 
                     if (textBox12.Text.ToString() == "")
@@ -2225,6 +2225,7 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = false;
                     break;
             }
+            updateAllTrackBarLabels();
         }
 
 
@@ -3124,21 +3125,62 @@ namespace OSCVRCWiz
 
         private void trackBarPitch_Scroll(object sender, EventArgs e)
         {
-            float value = 0.5f + trackBarPitch.Value * 0.1f;
-            labelPitchNum.Text = "x" + Math.Round(value, 1).ToString();
+         //   float value = 0.5f + trackBarPitch.Value * 0.1f;
+         //   labelPitchNum.Text = "x" + Math.Round(value, 1).ToString();
+            if (TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly" && trackBarSpeed.Value != 5 && trackBarPitch.Value != 5)
+            {
+                OutputText.outputLog("Speed can not be used with pitch for this TTS method. Although changing pitch will alter both pitch and speed.", Color.DarkOrange);
+            }
+            if (TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly")
+            {
+                if (trackBarSpeed.Value == 5)
+                {
+                    //  trackBarPitch.Enabled = true;
+
+                }
+                else
+                {
+                    trackBarSpeed.Value = 5;
+                    //  trackBarPitch.Enabled = false;
+                }
+
+            }
+            updateAllTrackBarLabels();
         }
 
         private void trackBarSpeed_Scroll(object sender, EventArgs e)
         {
-            float value = 0.5f + trackBarSpeed.Value * 0.1f;
-            labelSpeedNum.Text = "x" + Math.Round(value,1).ToString();
+          
+          //  float value = 0.5f + trackBarSpeed.Value * 0.1f;
+           // labelSpeedNum.Text = "x" + Math.Round(value,1).ToString();
+            if(TTSModeSaved!= "Azure" && TTSModeSaved != "Amazon Polly" && trackBarSpeed.Value != 5 && trackBarPitch.Value != 5)
+            {
+                OutputText.outputLog("Speed can not be used with pitch for this TTS method. Although changing pitch will alter both pitch and speed.", Color.DarkOrange);
+            }
+            if(TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly" )
+            {
+                if (trackBarSpeed.Value == 5)
+                {
+                    //  trackBarPitch.Enabled = true;
+                    
+                }
+                else
+                {
+                    trackBarPitch.Value = 5;
+                    //  trackBarPitch.Enabled = false;
+                }
+
+            }
+            updateAllTrackBarLabels();
+
 
         }
 
         private void trackBarVolume_Scroll(object sender, EventArgs e)
         {
-            float value = 0.5f + trackBarVolume.Value * 0.1f;
-            labelVolumeNum.Text = "x" + Math.Round(value, 1).ToString();
+            // float value = 0.5f + trackBarVolume.Value * 0.1f;
+            //  labelVolumeNum.Text = "x" + Math.Round(value, 1).ToString();
+            updateAllTrackBarLabels();
         }
         public void updateAllTrackBarLabels()
         {
@@ -3150,6 +3192,8 @@ namespace OSCVRCWiz
 
             float value3 = 0.5f + trackBarVolume.Value * 0.1f;
             labelVolumeNum.Text = "x" + Math.Round(value3, 1).ToString();
+
+       
 
         }
     }

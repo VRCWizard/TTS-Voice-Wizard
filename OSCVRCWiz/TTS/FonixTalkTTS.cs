@@ -87,21 +87,33 @@ namespace OSCVRCWiz.TTS
 
 
 
+
                 var volume = 5;
                 int pitch = 5;
+                int rate = 5;
                 var volumeFloat = 1f;
                 var pitchFloat = 1f;
+                var rateFloat = 1f;
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
                     pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                    rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
                 });
 
                 volumeFloat = 0.5f + volume * 0.1f;
                 pitchFloat = 0.5f + pitch * 0.1f;
+                rateFloat = 0.5f + rate * 0.1f;
+
+                bool useTempo = false;
+                if (rate != 5)//if rate is changed will use only rate, else use pitch which also changes rate.
+                {
+                    useTempo = true;
+                    pitchFloat = rateFloat;
+                }
 
                 var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
-                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(false, false));
+                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(useTempo, false));
                 speedControl.PlaybackRate = pitchFloat;
                 var AnyOutput = new WaveOut();
                 AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
@@ -116,7 +128,7 @@ namespace OSCVRCWiz.TTS
                 {
                     wave32_2 = new WaveChannel32(wav2, volumeFloat, 0f); //output 2
                     wave32_2.PadWithZeroes = false;
-                    speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(false, false));//output 2
+                    speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(useTempo, false));//output 2
                     speedControl_2.PlaybackRate = pitchFloat;//output 2
                     AnyOutput2 = new WaveOut();
                     AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
