@@ -73,39 +73,9 @@ namespace OSCVRCWiz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TTSVoiceWizardSilluouteBanner {
-            get {
-                object obj = ResourceManager.GetObject("TTSVoiceWizardSilluouteBanner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap VRChatTTSBWBanner {
             get {
                 object obj = ResourceManager.GetObject("VRChatTTSBWBanner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap VRChatTTSBWBannerResize {
-            get {
-                object obj = ResourceManager.GetObject("VRChatTTSBWBannerResize", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Wizard_Elf_DJ {
-            get {
-                object obj = ResourceManager.GetObject("Wizard Elf DJ", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
