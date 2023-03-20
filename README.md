@@ -5,12 +5,35 @@
 </p>
 
 <p align="center">
-  Speech-to-Text and Text-to-Speech for Everyone
-</p>
+  A Voice for Everyone
+ </p>
+ 
+ <p align="center"><b>Socials</b></p>
+ 
+<p align="center">
+   <a href="https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg"><img alt="Youtube" src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white"></a>
+   <a href="https://twitter.com/Wizard_VR"><img alt="Twitter" src="https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white"></a>
+  <a href="https://discord.com/invite/YjgR9SWPnW"><img alt="Discord" src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
+  <a href="https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features"><img alt="Trello" src="https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white"></a>
+  <a href="https://ko-fi.com/ttsvoicewizard"><img alt="Ko-Fi" src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white"></a>
+  
+ 
+ </p>
+ 
+<p align="center"> <b>Repo</b></p>
 <p align="center">
  <a href="https://discord.gg/YjgR9SWPnW"><img alt="Discord" src="https://img.shields.io/discord/681732152517591048?label=Discord"></a>
  <a href=""><img alt="downloads" src="https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Download"></a>
 </p>
+  
+  
+
+
+
+
+
+
+
 
 ## Features
 Use TTS Voice Wizard's accessibility features to improve your VRChat experience (**it works outside of VRChat too!**)<br />
@@ -29,6 +52,10 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ❤️ Use in conjuntion with HRtoVRChat_OSC to enable you to display your heartrate in VRChat's Chatbox <br />
 
+👄 Control VRChat avatar parameters with voice commands
+
+🫵 Display counter for amount of times a VRChat contact receiver has been interacted with
+
 📹 For a more detailed look at the app's features, check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) (although it's a bit outdated)
 
 ## GETTING STARTED
@@ -44,7 +71,6 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 
 
-
 ## Need Help / Have Questions / Wanna make suggestions?
 -  Join the [Discord Server](https://discord.gg/YjgR9SWPnW) <br />
   
@@ -52,10 +78,6 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## What comes next?
 -  Check the [Trello](https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features) page to see what features will be coming out next!
-
-## Socials
--  Follow me on [Twitter](https://twitter.com/Wizard_VR) <br />
--  Subscribe to my [Youtube](https://www.youtube.com/channel/UC5e7eigqyhxL6JaS6U4pGvg) <br />
 
 
 ## Donate
