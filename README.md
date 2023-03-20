@@ -35,7 +35,11 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 -  **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** for instructions on how to set up the basic features of TTS Voice Wizard. The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
 
-[![Getting Started with TTS Voice Wizard](https://user-images.githubusercontent.com/101527472/216428051-e7dda4a2-cb5c-48ab-b04f-73dd12bad23a.png)](https://youtu.be/n5nLnacVGu4 "Getting Started with TTS Voice Wizard") 
+<p align="center">
+<a href="https://youtu.be/n5nLnacVGu4"><img alt="Getting Started with TTS Voice Wizard" src="https://user-images.githubusercontent.com/101527472/216428051-e7dda4a2-cb5c-48ab-b04f-73dd12bad23a.png"></a>
+  </p>
+
+
 
 
 
@@ -43,6 +47,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## Need Help / Have Questions / Wanna make suggestions?
 -  Join the [Discord Server](https://discord.gg/YjgR9SWPnW) <br />
+  
 <a href="https://discord.gg/YjgR9SWPnW"><img src="https://discordapp.com/api/guilds/681732152517591048/widget.png?style=banner2" /></a>
 
 ## What comes next?
