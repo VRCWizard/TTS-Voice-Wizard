@@ -28,7 +28,7 @@
   
   
 
-
+https://user-images.githubusercontent.com/101527472/226480895-5bd0277c-90ac-4b39-a135-9a5524b4c97d.mp4
 
 
 
@@ -38,29 +38,30 @@
 ## Features
 Use TTS Voice Wizard's accessibility features to improve your VRChat experience (**it works outside of VRChat too!**)<br />
 
-🎙️ You can convert your Speech to Text and back to Speech through various Speech Recognition and TTS methods! <br />
+🎙️ You can convert your **Speech-to-Text** and back to Speech through various Speech Recognition and **Text-to-Speech methods** <br />
 
-💬 You can send what you say as OSC messages to VRChat to be displayed on your avatar using KillFrenzyAvatarText or VRChats Chatbox! <br />
+💬 You can send what you say as OSC messages to VRChat to be displayed on your avatar using **KillFrenzyAvatarText or VRChats Chatbox** <br />
 
-🌐 The app can translate your speech from one language to over **20 other support languages!** <br />
+🌐 The app can **translate** your speech from one language to over **20 other support languages** <br />
 
-🔊 There are **100+ different** voices with various customization options so you can pick a voice that best suits you <br />
+🔊 There are **100+ different voices** with various customization options so you can pick a voice that best suits you <br />
 
-🎵 Display what song you are listening to on Spotify or via your browser <br />
+🎵 Display the **current song** you are listening to on Spotify or via your browser <br />
 
-🔋 Display tracker and controller battery life in conjunction with XSOverlay <br />
+🔋 Display **tracker and controller battery life** in conjunction with [XSOverlay](https://store.steampowered.com/app/1173510/XSOverlay/) <br />
 
-❤️ Use in conjuntion with HRtoVRChat_OSC to enable you to display your heartrate in VRChat's Chatbox <br />
+❤️ Use in conjuntion with [HRtoVRChat_OSC](https://github.com/200Tigersbloxed/HRtoVRChat_OSC) to enable you to display your **heartrate** in VRChat's Chatbox <br />
 
-👄 Control VRChat avatar parameters with voice commands
+👄 Control VRChat avatar parameters with **voice commands**
 
-🫵 Display counter for amount of times a VRChat contact receiver has been interacted with
+🫵 Display customizable and **interactive counters** for amount of times a VRChat contact receiver has been touched
 
 📹 For a more detailed look at the app's features, check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) (although it's a bit outdated)
 
 ## GETTING STARTED
 
--  **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** for instructions on how to set up the basic features of TTS Voice Wizard. The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
+-  **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** for instructions on how to set up the basic features of TTS Voice Wizard. 
+    -  The [Getting Started Video](https://youtu.be/n5nLnacVGu4) is the Quickstart Guide in video form.
 
 <p align="center">
 <a href="https://youtu.be/n5nLnacVGu4"><img alt="Getting Started with TTS Voice Wizard" src="https://user-images.githubusercontent.com/101527472/216428051-e7dda4a2-cb5c-48ab-b04f-73dd12bad23a.png"></a>
