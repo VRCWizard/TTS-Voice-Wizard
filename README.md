@@ -4,8 +4,14 @@
   <img  src="https://user-images.githubusercontent.com/101527472/221026617-daf7ced0-7390-4555-93c6-462eb92ed158.png">
 </p>
 
-[![Discord](https://img.shields.io/discord/681732152517591048?label=Discord)](https://discord.gg/YjgR9SWPnW) 
-![downloads](https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Downloads) <br />
+<p align="center">
+  Speech-to-Text and Text-to-Speech for Everyone
+</p>
+<p align="center">
+ <a href="https://discord.gg/YjgR9SWPnW"><img alt="Discord" src="https://img.shields.io/discord/681732152517591048?label=Discord"></a>
+ <a href=""><img alt="downloads" src="https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Download"></a>
+</p>
+
 ## Features
 Use TTS Voice Wizard's accessibility features to improve your VRChat experience (**it works outside of VRChat too!**)<br />
 
@@ -37,6 +43,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## Need Help / Have Questions / Wanna make suggestions?
 -  Join the [Discord Server](https://discord.gg/YjgR9SWPnW) <br />
+<a href="https://discord.gg/YjgR9SWPnW"><img src="https://discordapp.com/api/guilds/681732152517591048/widget.png?style=banner2" /></a>
 
 ## What comes next?
 -  Check the [Trello](https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features) page to see what features will be coming out next!
