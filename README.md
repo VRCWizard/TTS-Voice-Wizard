@@ -23,7 +23,7 @@
 <p align="center"> <b>Repo</b></p>
 <p align="center">
  <a href="https://discord.gg/YjgR9SWPnW"><img alt="Discord" src="https://img.shields.io/discord/681732152517591048?label=Discord"></a>
- <a href=""><img alt="downloads" src="https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Download"></a>
+ <a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases"><img alt="downloads" src="https://img.shields.io/github/downloads/VRCWizard/TTS-Voice-Wizard/total?label=Downloads"></a>
 </p>
   
   
