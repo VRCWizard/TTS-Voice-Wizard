@@ -424,7 +424,7 @@ namespace OSCVRCWiz.TTS
                     }
                         catch(Exception ex)
                         {
-                            OutputText.outputLog("[Azure Ouput Device 2 *AUDIO* Error: " + ex.Message + "]", Color.Red);
+                            OutputText.outputLog("[Azure Ouput Device *AUDIO* Error: " + ex.Message + "]", Color.Red);
                         }
                     
                 }

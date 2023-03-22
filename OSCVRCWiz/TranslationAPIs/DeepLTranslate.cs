@@ -74,7 +74,7 @@ namespace OSCVRCWiz.TranslationAPIs
                  case "Korean [ko-KR]": fromLanguage = LanguageCode.Korean; break;
                  case "Norwegian [nb-NO]": fromLanguage = LanguageCode.Norwegian; break;
                 case "Polish [pl-PL]": fromLanguage = LanguageCode.Polish; break;
-                case "Portuguese [pt-BR]": fromLanguage = LanguageCode.Portuguese; break;
+                case "Portuguese [pt-BR]": fromLanguage = LanguageCode.PortugueseBrazilian; break;
                 //place holder^^
                 case "Russian [ru-RU]": fromLanguage = LanguageCode.Russian; break;
                 case "Spanish [es-MX]": fromLanguage = LanguageCode.Spanish; break;
@@ -105,28 +105,28 @@ namespace OSCVRCWiz.TranslationAPIs
                 case "Dutch [nl]": toLanguage = LanguageCode.Dutch; break;
                 case "English [en]": toLanguage = LanguageCode.EnglishAmerican; break;
                 case "Estonian [et]": toLanguage = LanguageCode.Estonian; break;
-                //  case "Filipino [fil-PH]": fromLanguage = LanguageCode.fi; break;
+                //  case "Filipino [fil]": toLanguage = LanguageCode.fi; break;
                 case "Finnish [fi]": toLanguage = LanguageCode.Finnish; break;
                 case "French [fr]": toLanguage = LanguageCode.French; break;
                 case "German [de]": toLanguage = LanguageCode.German; break;
-                // case "Hindi [hi-IN]": fromLanguage = LanguageCode.hin; break;
+                // case "Hindi [hi]": toLanguage = LanguageCode.hin; break;
                 case "Hungarian [hu]": toLanguage = LanguageCode.Hungarian; break;
                 case "Indonesian [id]": toLanguage = LanguageCode.Indonesian; break;
-                // case "Irish [ga-IE]": fromLanguage = LanguageCode.iris; break;
+                // case "Irish [ga]": toLanguage = LanguageCode.iris; break;
                 case "Italian [it]": toLanguage = LanguageCode.Italian; break;
                 case "Japanese [ja]": toLanguage = LanguageCode.Japanese; break;
-                // case "Korean [ko-KR]": fromLanguage = LanguageCode.k break;
-                //  case "Norwegian [nb-NO]": fromLanguage = LanguageCode.no break;
+                 case "Korean [ko]": toLanguage = LanguageCode.Korean; break;
+                  case "Norwegian [nb]": toLanguage = LanguageCode.Norwegian; break;
                 case "Polish [pl]": toLanguage = LanguageCode.Polish; break;
-                case "Portuguese [pt]": toLanguage = LanguageCode.Portuguese; break;
+                case "Portuguese [pt]": toLanguage = LanguageCode.PortugueseBrazilian; break;
                 //place holder^^
                 case "Russian [ru]": toLanguage = LanguageCode.Russian; break;
                 case "Spanish [es]": toLanguage = LanguageCode.Spanish; break;
                 //place holder^^
                 case "Swedish [sv]": toLanguage = LanguageCode.Swedish; break;
-                //   case "Thai [th-TH]": fromLanguage = LanguageCode. break;
+                //   case "Thai [th-]": toLanguage = LanguageCode. break;
                 case "Ukrainian [uk]": toLanguage = LanguageCode.Ukrainian; break;
-                //  case "Vietnamese [vi-VN]": fromLanguage = LanguageCode.vie break;
+                //  case "Vietnamese [vi]": toLanguage = LanguageCode.vie break;
                 default:
                     toLanguage = LanguageCode.EnglishAmerican;
                     OutputText.outputLog("This language does not support text translations with DeepL", Color.Red);

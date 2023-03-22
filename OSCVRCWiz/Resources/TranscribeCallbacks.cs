@@ -84,9 +84,10 @@ namespace OSCVRCWiz.Resources
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
                {
+                   
 
 
-                    if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.StartsWith(')'))
+                    if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
                     {
                         //   WhisperRecognition.WhisperString += text + " ";
                         //  VoiceWizardWindow.whisperTimer.Change(250, 0);

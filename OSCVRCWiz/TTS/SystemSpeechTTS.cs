@@ -137,7 +137,7 @@ namespace TTS
            
            
 
-
+           
             Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds*2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
              Thread.Sleep(500);
 
