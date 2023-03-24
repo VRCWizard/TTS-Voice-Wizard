@@ -10,6 +10,7 @@ using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using OSCVRCWiz.Speech_Recognition;
 using OSCVRCWiz.Text;
+using System.Text.RegularExpressions;
 
 namespace OSCVRCWiz.Resources
 {
@@ -82,6 +83,9 @@ namespace OSCVRCWiz.Resources
                 //also since whisper can recognize laughter, i could add that as a feature.
                 //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
 
+            
+
+
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
                {
                    
@@ -89,6 +93,7 @@ namespace OSCVRCWiz.Resources
 
                     if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
                     {
+
                         //   WhisperRecognition.WhisperString += text + " ";
                         //  VoiceWizardWindow.whisperTimer.Change(250, 0);
                         //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
@@ -103,7 +108,15 @@ namespace OSCVRCWiz.Resources
                 }
                 else
                 {
-                   text += stuff;
+                    if (!stuff.StartsWith('[') || !stuff.EndsWith(']') || !stuff.StartsWith('(') || !stuff.EndsWith(')') || !stuff.StartsWith('*') || !stuff.EndsWith('*'))
+                    {            
+                        string pattern = @"[*()\[\]]"; // Match any of these characters
+                        stuff = Regex.Replace(stuff, pattern, "", RegexOptions.IgnoreCase);
+                        stuff = "'" + stuff + "'";
+                    }
+                 
+
+                    text += stuff;
                 }
                 
             }

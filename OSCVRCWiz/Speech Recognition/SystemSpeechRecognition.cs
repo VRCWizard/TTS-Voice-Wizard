@@ -15,6 +15,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Reflection;
 using OSCVRCWiz.Text;
 using NAudio.Wave;
+using System.Diagnostics;
 
 
 //using NAudio.Wave;
@@ -112,6 +113,7 @@ namespace OSCVRCWiz
 
         private static void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
         {
+           // Debug.WriteLine("audio found");
             audioStream.Write(e.Buffer, 0, e.BytesRecorded);
 
         }

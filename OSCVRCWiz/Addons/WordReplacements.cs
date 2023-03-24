@@ -36,6 +36,10 @@ namespace Addons
                         if (VoiceWizardWindow.MainFormGlobal.checkedListBoxReplacements.GetItemCheckState(index) == CheckState.Checked)
                         {
                             //text = text.Replace(kvp.Key.ToString(), kvp.Value.ToString());
+
+                           
+                           // string pattern = @"[*#()\[\]]"; // Match any of these characters
+                           
                             text = Regex.Replace(text, kvp.Key.ToString(), kvp.Value.ToString(), RegexOptions.IgnoreCase);
                         }
                         

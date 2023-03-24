@@ -99,7 +99,6 @@
             this.iconButton22 = new FontAwesome.Sharp.IconButton();
             this.richTextBox9 = new System.Windows.Forms.RichTextBox();
             this.tabAddons = new System.Windows.Forms.TabPage();
-            this.label72 = new System.Windows.Forms.Label();
             this.translucentPanel1 = new OSCVRCWiz.RJControls.TranslucentPanel();
             this.iconButton24 = new FontAwesome.Sharp.IconButton();
             this.iconButton11 = new FontAwesome.Sharp.IconButton();
@@ -108,6 +107,7 @@
             this.iconButton27 = new FontAwesome.Sharp.IconButton();
             this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.label72 = new System.Windows.Forms.Label();
             this.tabEmoji = new System.Windows.Forms.TabPage();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
             this.button25 = new System.Windows.Forms.Button();
@@ -194,13 +194,13 @@
             this.label42 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.APIs = new System.Windows.Forms.TabPage();
-            this.label73 = new System.Windows.Forms.Label();
             this.translucentPanel2 = new OSCVRCWiz.RJControls.TranslucentPanel();
             this.iconButton30 = new FontAwesome.Sharp.IconButton();
             this.iconButton28 = new FontAwesome.Sharp.IconButton();
             this.iconButton21 = new FontAwesome.Sharp.IconButton();
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
             this.iconButton20 = new FontAwesome.Sharp.IconButton();
+            this.label73 = new System.Windows.Forms.Label();
             this.General = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.label106 = new System.Windows.Forms.Label();
@@ -1853,8 +1853,8 @@
             // tabAddons
             // 
             this.tabAddons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.tabAddons.Controls.Add(this.label72);
             this.tabAddons.Controls.Add(this.translucentPanel1);
+            this.tabAddons.Controls.Add(this.label72);
             this.tabAddons.Location = new System.Drawing.Point(4, 24);
             this.tabAddons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAddons.Name = "tabAddons";
@@ -1863,22 +1863,8 @@
             this.tabAddons.TabIndex = 4;
             this.tabAddons.Text = "Addons";
             // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label72.ForeColor = System.Drawing.Color.Snow;
-            this.label72.Location = new System.Drawing.Point(5, 9);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(60, 20);
-            this.label72.TabIndex = 34;
-            this.label72.Text = "Addons";
-            // 
             // translucentPanel1
             // 
-            this.translucentPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.translucentPanel1.BackColor = System.Drawing.Color.Transparent;
             this.translucentPanel1.Controls.Add(this.iconButton24);
             this.translucentPanel1.Controls.Add(this.iconButton11);
@@ -1887,10 +1873,11 @@
             this.translucentPanel1.Controls.Add(this.iconButton27);
             this.translucentPanel1.Controls.Add(this.iconButton10);
             this.translucentPanel1.Controls.Add(this.iconButton9);
-            this.translucentPanel1.Location = new System.Drawing.Point(5, 38);
+            this.translucentPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translucentPanel1.Location = new System.Drawing.Point(3, 22);
             this.translucentPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.translucentPanel1.Name = "translucentPanel1";
-            this.translucentPanel1.Size = new System.Drawing.Size(844, 524);
+            this.translucentPanel1.Size = new System.Drawing.Size(847, 538);
             this.translucentPanel1.TabIndex = 0;
             // 
             // iconButton24
@@ -1906,7 +1893,7 @@
             this.iconButton24.Location = new System.Drawing.Point(0, 450);
             this.iconButton24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton24.Name = "iconButton24";
-            this.iconButton24.Size = new System.Drawing.Size(844, 75);
+            this.iconButton24.Size = new System.Drawing.Size(847, 75);
             this.iconButton24.TabIndex = 15;
             this.iconButton24.Text = "VRChat OSC Listener";
             this.iconButton24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1927,7 +1914,7 @@
             this.iconButton11.Location = new System.Drawing.Point(0, 375);
             this.iconButton11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton11.Name = "iconButton11";
-            this.iconButton11.Size = new System.Drawing.Size(844, 75);
+            this.iconButton11.Size = new System.Drawing.Size(847, 75);
             this.iconButton11.TabIndex = 11;
             this.iconButton11.Text = "Emojis";
             this.iconButton11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1948,7 +1935,7 @@
             this.iconButton25.Location = new System.Drawing.Point(0, 300);
             this.iconButton25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton25.Name = "iconButton25";
-            this.iconButton25.Size = new System.Drawing.Size(844, 75);
+            this.iconButton25.Size = new System.Drawing.Size(847, 75);
             this.iconButton25.TabIndex = 13;
             this.iconButton25.Text = "OSC Discord Integration";
             this.iconButton25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1969,7 +1956,7 @@
             this.iconButton42.Location = new System.Drawing.Point(0, 225);
             this.iconButton42.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton42.Name = "iconButton42";
-            this.iconButton42.Size = new System.Drawing.Size(844, 75);
+            this.iconButton42.Size = new System.Drawing.Size(847, 75);
             this.iconButton42.TabIndex = 14;
             this.iconButton42.Text = "Word Replacements";
             this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1990,7 +1977,7 @@
             this.iconButton27.Location = new System.Drawing.Point(0, 150);
             this.iconButton27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton27.Name = "iconButton27";
-            this.iconButton27.Size = new System.Drawing.Size(844, 75);
+            this.iconButton27.Size = new System.Drawing.Size(847, 75);
             this.iconButton27.TabIndex = 12;
             this.iconButton27.Text = "Voice Commands";
             this.iconButton27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2011,7 +1998,7 @@
             this.iconButton10.Location = new System.Drawing.Point(0, 75);
             this.iconButton10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Size = new System.Drawing.Size(844, 75);
+            this.iconButton10.Size = new System.Drawing.Size(847, 75);
             this.iconButton10.TabIndex = 10;
             this.iconButton10.Text = "OSC Listener";
             this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2032,13 +2019,25 @@
             this.iconButton9.Location = new System.Drawing.Point(0, 0);
             this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(844, 75);
+            this.iconButton9.Size = new System.Drawing.Size(847, 75);
             this.iconButton9.TabIndex = 9;
             this.iconButton9.Text = "Media Integration";
             this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton9.UseVisualStyleBackColor = false;
             this.iconButton9.Click += new System.EventHandler(this.iconButton9_Click);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label72.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label72.ForeColor = System.Drawing.Color.Snow;
+            this.label72.Location = new System.Drawing.Point(3, 2);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(60, 20);
+            this.label72.TabIndex = 34;
+            this.label72.Text = "Addons";
             // 
             // tabEmoji
             // 
@@ -3222,8 +3221,8 @@
             // APIs
             // 
             this.APIs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.APIs.Controls.Add(this.label73);
             this.APIs.Controls.Add(this.translucentPanel2);
+            this.APIs.Controls.Add(this.label73);
             this.APIs.Location = new System.Drawing.Point(4, 24);
             this.APIs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.APIs.Name = "APIs";
@@ -3231,17 +3230,6 @@
             this.APIs.Size = new System.Drawing.Size(853, 562);
             this.APIs.TabIndex = 8;
             this.APIs.Text = "APIs";
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label73.ForeColor = System.Drawing.Color.Snow;
-            this.label73.Location = new System.Drawing.Point(5, 10);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(62, 20);
-            this.label73.TabIndex = 35;
-            this.label73.Text = "Settings";
             // 
             // translucentPanel2
             // 
@@ -3251,10 +3239,11 @@
             this.translucentPanel2.Controls.Add(this.iconButton21);
             this.translucentPanel2.Controls.Add(this.iconButton19);
             this.translucentPanel2.Controls.Add(this.iconButton20);
-            this.translucentPanel2.Location = new System.Drawing.Point(5, 40);
+            this.translucentPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translucentPanel2.Location = new System.Drawing.Point(3, 22);
             this.translucentPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.translucentPanel2.Name = "translucentPanel2";
-            this.translucentPanel2.Size = new System.Drawing.Size(844, 470);
+            this.translucentPanel2.Size = new System.Drawing.Size(847, 538);
             this.translucentPanel2.TabIndex = 1;
             // 
             // iconButton30
@@ -3270,7 +3259,7 @@
             this.iconButton30.Location = new System.Drawing.Point(0, 300);
             this.iconButton30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton30.Name = "iconButton30";
-            this.iconButton30.Size = new System.Drawing.Size(844, 75);
+            this.iconButton30.Size = new System.Drawing.Size(847, 75);
             this.iconButton30.TabIndex = 14;
             this.iconButton30.Text = "Local - (System Speech, Vosk, Whisper)";
             this.iconButton30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3291,7 +3280,7 @@
             this.iconButton28.Location = new System.Drawing.Point(0, 225);
             this.iconButton28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton28.Name = "iconButton28";
-            this.iconButton28.Size = new System.Drawing.Size(844, 75);
+            this.iconButton28.Size = new System.Drawing.Size(847, 75);
             this.iconButton28.TabIndex = 13;
             this.iconButton28.Text = "ElevenLabs";
             this.iconButton28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3312,7 +3301,7 @@
             this.iconButton21.Location = new System.Drawing.Point(0, 150);
             this.iconButton21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton21.Name = "iconButton21";
-            this.iconButton21.Size = new System.Drawing.Size(844, 75);
+            this.iconButton21.Size = new System.Drawing.Size(847, 75);
             this.iconButton21.TabIndex = 12;
             this.iconButton21.Text = "Translation";
             this.iconButton21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3333,7 +3322,7 @@
             this.iconButton19.Location = new System.Drawing.Point(0, 75);
             this.iconButton19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton19.Name = "iconButton19";
-            this.iconButton19.Size = new System.Drawing.Size(844, 75);
+            this.iconButton19.Size = new System.Drawing.Size(847, 75);
             this.iconButton19.TabIndex = 10;
             this.iconButton19.Text = "Amazon Polly";
             this.iconButton19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3354,13 +3343,25 @@
             this.iconButton20.Location = new System.Drawing.Point(0, 0);
             this.iconButton20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton20.Name = "iconButton20";
-            this.iconButton20.Size = new System.Drawing.Size(844, 75);
+            this.iconButton20.Size = new System.Drawing.Size(847, 75);
             this.iconButton20.TabIndex = 9;
             this.iconButton20.Text = "Azure Cognitive Services";
             this.iconButton20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton20.UseVisualStyleBackColor = false;
             this.iconButton20.Click += new System.EventHandler(this.iconButton20_Click);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label73.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label73.ForeColor = System.Drawing.Color.Snow;
+            this.label73.Location = new System.Drawing.Point(3, 2);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(62, 20);
+            this.label73.TabIndex = 35;
+            this.label73.Text = "Settings";
             // 
             // General
             // 

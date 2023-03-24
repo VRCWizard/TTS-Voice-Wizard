@@ -21,7 +21,7 @@ using OSCVRCWiz.Settings;
 using static OSCVRCWiz.TTS.ElevenLabsTTS;
 using System.Windows;
 using NAudio.Wave.SampleProviders;
-using VarispeedDemo.SoundTouch;
+
 
 namespace OSCVRCWiz.TTS
 {

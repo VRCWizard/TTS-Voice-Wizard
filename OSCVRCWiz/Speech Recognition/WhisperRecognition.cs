@@ -61,19 +61,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
                     OutputText.outputLog("[Whisper Listening]");
                // }
-            /*    else//translate to english
-                {
-                    string[] args = {
-                "-c",UseThisMic,
-                "-m",  VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text,
-                "-l", langcode,
-                "-tr"
-              //  "-ml", "300"
-                 };
-                    Task.Run(() => doWhisper(args));
-
-                    OutputText.outputLog("[Whisper Listening]");
-                }*/
+        
                
             }
 

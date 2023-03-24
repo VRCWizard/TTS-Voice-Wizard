@@ -16,9 +16,7 @@ using static System.Net.Mime.MediaTypeNames;
 using OSCVRCWiz.TTS;
 using Newtonsoft.Json.Linq;
 using OSCVRCWiz.Text;
-using VRC.OSCQuery;
 using CoreOSC;
-using Extensions = VRC.OSCQuery.Extensions;
 using Windows.Devices.Power;
 using Newtonsoft.Json;
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
