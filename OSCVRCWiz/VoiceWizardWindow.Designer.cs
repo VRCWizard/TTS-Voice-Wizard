@@ -483,6 +483,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.groupBoxOSCtoTTS = new System.Windows.Forms.GroupBox();
+            this.labelOSCtoTTS = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -554,6 +556,7 @@
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxOSCtoTTS.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -2905,6 +2908,7 @@
             // tabHeartBeat
             // 
             this.tabHeartBeat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabHeartBeat.Controls.Add(this.groupBoxOSCtoTTS);
             this.tabHeartBeat.Controls.Add(this.groupBoxControllers);
             this.tabHeartBeat.Controls.Add(this.groupBoxHeartrate);
             this.tabHeartBeat.Controls.Add(this.groupBoxTrackers);
@@ -7222,6 +7226,26 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // groupBoxOSCtoTTS
+            // 
+            this.groupBoxOSCtoTTS.Controls.Add(this.labelOSCtoTTS);
+            this.groupBoxOSCtoTTS.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxOSCtoTTS.Location = new System.Drawing.Point(613, 67);
+            this.groupBoxOSCtoTTS.Name = "groupBoxOSCtoTTS";
+            this.groupBoxOSCtoTTS.Size = new System.Drawing.Size(186, 52);
+            this.groupBoxOSCtoTTS.TabIndex = 111;
+            this.groupBoxOSCtoTTS.TabStop = false;
+            this.groupBoxOSCtoTTS.Text = "OSC to TTS";
+            // 
+            // labelOSCtoTTS
+            // 
+            this.labelOSCtoTTS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelOSCtoTTS.Location = new System.Drawing.Point(6, 21);
+            this.labelOSCtoTTS.Name = "labelOSCtoTTS";
+            this.labelOSCtoTTS.Size = new System.Drawing.Size(172, 21);
+            this.labelOSCtoTTS.TabIndex = 0;
+            this.labelOSCtoTTS.Text = "/TTSVoiceWizard/TextToSpeech";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -7355,6 +7379,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxOSCtoTTS.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -7814,5 +7839,7 @@
         public Label ControllerLabel;
         public Button button7;
         public Button button33;
+        public GroupBox groupBoxOSCtoTTS;
+        public Label labelOSCtoTTS;
     }
 }

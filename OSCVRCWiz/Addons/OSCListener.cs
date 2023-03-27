@@ -301,6 +301,29 @@ namespace OSCVRCWiz.Addons
                             }
 
                         }
+                        if (messageReceived.Address == "/TTSVoiceWizard/TextToSpeech")//OSCListener TTS
+                        {
+                            var text = messageReceived.Arguments[0].ToString();
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/TTSVoiceWizard/TextToSpeech", text);
+                                OSC.OSCSender.Send(forwardData);
+                            }
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "OSCListener"));
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+                                if (VoiceWizardWindow.MainFormGlobal.groupBoxOSCtoTTS.ForeColor != Color.Green)
+                            {
+                                VoiceWizardWindow.MainFormGlobal.groupBoxOSCtoTTS.ForeColor = Color.Green;
+                                VoiceWizardWindow.MainFormGlobal.labelOSCtoTTS.ForeColor = Color.Green;
+                            }
+                            });
+
+
+
+
+
+                        }
                     }
                     catch
                     {
