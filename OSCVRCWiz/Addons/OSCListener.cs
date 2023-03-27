@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CoreOSC;
 using OSCVRCWiz.Resources;
+using OSCVRCWiz.Settings;
 using OSCVRCWiz.Text;
 
 
@@ -15,10 +16,22 @@ namespace OSCVRCWiz.Addons
     {
         static bool heartConnect = false;
         public static string globalBPM = "0";
+
+        public static int currentHR = 0;
+        public static int HRPrevious = 0;
+        public static string HREleveated = "";
+
+        public static string trackerCharge = "";
+        public static string controllerCharge = "";
+
+
         public static int globalAverageTrackerBattery = 0;
         public static int globalLeftControllerBattery = 0;
         public static int globalRightControllerBattery = 0;
         public static int globalAverageControllerBattery = 0;
+
+        public static int AverageTrackerPrevious= 0;
+        public static int AverageControllerPrevious = 0;
         public static int OSCReceiveport = 4026;
         public static bool OSCReceiveSpamLog = true;
         public static int HRInternalValue = 5;
@@ -32,7 +45,14 @@ namespace OSCVRCWiz.Addons
             int skipper = 0;
             // var ot = new OutputText();
             // The cabllback function
-            OutputText.outputLog("[OSC Listener Activated]");
+            OutputText.outputLog("[OSC Listener Activated]",Color.Green);
+
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                VoiceWizardWindow.MainFormGlobal.button7.Enabled = false;
+                VoiceWizardWindow.MainFormGlobal.button7.ForeColor = Color.Green;
+            });
+
             HandleOscPacket callback = delegate (OscPacket packet)
             {
                 var messageReceived = (OscMessage)packet;
@@ -73,6 +93,31 @@ namespace OSCVRCWiz.Addons
                             decimal averageTrackerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(averageTrackerBattery * 100);
                             globalAverageTrackerBattery = battery;
+
+                            var labelBattery = $"🔋 {battery}%";
+                            if (globalAverageTrackerBattery>AverageTrackerPrevious)
+                            {
+                                trackerCharge = "⚡";
+                                labelBattery += " " + controllerCharge;
+                            }
+                            else { trackerCharge = ""; }
+                            AverageTrackerPrevious = globalAverageTrackerBattery;
+
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+
+
+
+                                if (VoiceWizardWindow.MainFormGlobal.groupBoxTrackers.ForeColor != Color.Green)
+                                {
+                                    VoiceWizardWindow.MainFormGlobal.groupBoxTrackers.ForeColor = Color.Green;
+                                    VoiceWizardWindow.MainFormGlobal.TrackerLabel.ForeColor = Color.Green;
+                                }
+                            VoiceWizardWindow.MainFormGlobal.TrackerLabel.Text= labelBattery;
+                            });
+
+
+
                             if (OSCReceiveSpamLog == true)
                             {
                                 //  ot.outputLog(MainForm, "[Average Tracker Battery Debug: " + messageReceived.Arguments[0].ToString() + "]");
@@ -133,7 +178,30 @@ namespace OSCVRCWiz.Addons
                             decimal averageControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(averageControllerBattery * 100);
                             globalAverageControllerBattery = battery;
-                            if (OSCReceiveSpamLog == true)
+
+                            var labelBattery = $"🔋 {battery}%";
+                            if (globalAverageControllerBattery > AverageControllerPrevious)
+                            {
+                                controllerCharge = "⚡";
+                                labelBattery += " "+ controllerCharge;
+                            }
+                            else { controllerCharge = ""; }
+                            AverageControllerPrevious = globalAverageControllerBattery;
+
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+
+
+                                if (VoiceWizardWindow.MainFormGlobal.groupBoxControllers.ForeColor != Color.Green)
+                                {
+
+                                    VoiceWizardWindow.MainFormGlobal.groupBoxControllers.ForeColor = Color.Green;
+                                    VoiceWizardWindow.MainFormGlobal.ControllerLabel.ForeColor = Color.Green;
+                                }
+                            VoiceWizardWindow.MainFormGlobal.ControllerLabel.Text = labelBattery;
+                                 });
+
+                                 if (OSCReceiveSpamLog == true)
                             {
 
                                 OutputText.outputLog("[Average Controller Battery: " + battery + "%]");
@@ -160,6 +228,46 @@ namespace OSCVRCWiz.Addons
                                 System.Diagnostics.Debug.WriteLine("OSC Received a message Address: " + messageReceived.Address);
                                 System.Diagnostics.Debug.WriteLine("OSC Received a message Argument: " + messageReceived.Arguments[0].ToString());
                                 globalBPM = messageReceived.Arguments[0].ToString();
+
+                                currentHR = Convert.ToInt32(messageReceived.Arguments[0].ToString());
+                                var labelBattery = $"❤️ {globalBPM}";
+
+                              
+
+                               if (currentHR > HRPrevious)
+                                {
+                                    HREleveated = "🔺";
+                                    labelBattery += " "+HREleveated;
+                                }
+                                else if(currentHR < HRPrevious)
+                                {
+                                    HREleveated = "🔻";
+                                    labelBattery += " " + HREleveated;
+
+                                }
+                                else if (currentHR == HRPrevious)
+                                {
+                                    HREleveated = "";
+                                    labelBattery += " " + HREleveated;
+
+                                }
+                              
+                                HRPrevious = currentHR;
+
+                                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                                {
+
+
+
+                                    if (VoiceWizardWindow.MainFormGlobal.groupBoxHeartrate.ForeColor != Color.Green)
+                                    {
+                                        VoiceWizardWindow.MainFormGlobal.groupBoxHeartrate.ForeColor = Color.Green;
+                                        VoiceWizardWindow.MainFormGlobal.HeartrateLabel.ForeColor = Color.Green;
+                                    }
+                                VoiceWizardWindow.MainFormGlobal.HeartrateLabel.Text = labelBattery;
+                                });
+
+
 
                                 if (stopBPM == false)
                                 {

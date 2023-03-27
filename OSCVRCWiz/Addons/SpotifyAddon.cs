@@ -184,10 +184,13 @@ namespace OSCVRCWiz.Addons
                         theString = theString.Replace("{progressHours}", progressHours);
                         theString = theString.Replace("{durationHours}", durationHours);
                         theString = theString.Replace("{bpm}", OSCListener.globalBPM);
+                        theString = theString.Replace("{bpmStats}", OSCListener.HREleveated);
                         theString = theString.Replace("{averageTrackerBattery}", OSCListener.globalAverageTrackerBattery.ToString());
+                        theString = theString.Replace("{tCharge}", OSCListener.trackerCharge);
                         theString = theString.Replace("{leftControllerBattery}", OSCListener.globalLeftControllerBattery.ToString());
                         theString = theString.Replace("{rightControllerBattery}", OSCListener.globalRightControllerBattery.ToString());
                         theString = theString.Replace("{averageControllerBattery}", OSCListener.globalAverageControllerBattery.ToString());
+                        theString = theString.Replace("{cCharge}", OSCListener.controllerCharge);
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
                         //theString = theString.Replace("{deviceType}", deviceType);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
@@ -234,6 +237,13 @@ namespace OSCVRCWiz.Addons
 
 
                 }
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    if (VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor != Color.Green)
+                    {
+                        VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Green;
+                    }
+                });
             }
             catch (Exception ex)
             {
@@ -281,7 +291,17 @@ namespace OSCVRCWiz.Addons
                        // if (ex.Message.Contains("The access token expired"))
                        // {
                             OutputText.outputLog("[Spotify access token may be expired. Click the Connect Spotify button again.]", Color.DarkOrange);
-                       // }
+
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                          
+
+                        if (VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor != Color.Red)
+                        {
+                            VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Red;
+                        }
+                        });
+                        // }
                     }
                 }
                 
@@ -312,10 +332,13 @@ namespace OSCVRCWiz.Addons
                     theString = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString();
 
                     theString = theString.Replace("{bpm}", OSCListener.globalBPM);
+                    theString = theString.Replace("{bpmStats}", OSCListener.HREleveated);
                     theString = theString.Replace("{averageTrackerBattery}", OSCListener.globalAverageTrackerBattery.ToString());
+                    theString = theString.Replace("{tCharge}", OSCListener.trackerCharge);
                     theString = theString.Replace("{leftControllerBattery}", OSCListener.globalLeftControllerBattery.ToString());
                     theString = theString.Replace("{rightControllerBattery}", OSCListener.globalRightControllerBattery.ToString());
                     theString = theString.Replace("{averageControllerBattery}", OSCListener.globalAverageControllerBattery.ToString());
+                    theString = theString.Replace("{cCharge}", OSCListener.controllerCharge);
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);

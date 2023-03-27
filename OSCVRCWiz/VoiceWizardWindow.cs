@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.6.9";
-        string releaseDate = "March 22, 2023";
+        public static string currentVersion = "1.0.7.5";
+        string releaseDate = "March 26, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -888,6 +888,7 @@ namespace OSCVRCWiz
                case "Whisper":
 
                         Task.Run(() => WhisperRecognition.toggleWhisper());
+                       // Task.Run(() => WhisperRecognitionV2.Demo());
 
                         break;
                case "Web Captioner":
@@ -1043,9 +1044,12 @@ namespace OSCVRCWiz
             Settings1.Default.Save();
             SpotifyAddon.SpotifyConnect();
 
+             VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Green;
+            
+
         }
 
-     
+
 
         private void rjToggleButtonCurrentSong_CheckedChanged(object sender, EventArgs e)
         {
@@ -1053,7 +1057,10 @@ namespace OSCVRCWiz
             {
                 rjToggleButton10.Checked = false;
             }
-
+            if (rjToggleButtonCurrentSong.Checked == false)  //instead of disabling other toggle, when new toggle is used it turns off the other one
+            {
+                VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.White;
+            }
         }
 
 
@@ -1172,25 +1179,18 @@ namespace OSCVRCWiz
 
         }
 
-       private void doWhisperTimerTick()
+     private void doWhisperTimerTick()
         {
           
-                string text = WhisperRecognition.WhisperString;
+              string text = WhisperRecognition.WhisperString;
 
-         //   if (WhisperRecognition.WhisperString != WhisperRecognition.WhisperPrevText)
-        //    {
+
 
                 VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper");
 
                 WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
                 WhisperRecognition.WhisperString = "";
-        //    }
-         //   else
-          //  {
-          //      OutputText.outputLog("Whisper (FILTERED REPEAT): " + text);
-          //      WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
-         //       WhisperRecognition.WhisperString = "";
-         //   }
+ 
 
 
 
@@ -1455,7 +1455,7 @@ namespace OSCVRCWiz
         private void button7_Click(object sender, EventArgs e)
         {
             Task.Run(() => OSCListener.OSCRecieveHeartRate(this));
-            button7.Enabled = false;
+           
 
         }
         private void rjToggleButton2_CheckedChanged(object sender, EventArgs e)
@@ -2254,7 +2254,7 @@ namespace OSCVRCWiz
         private void button23_Click_1(object sender, EventArgs e)
         {
             string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "『🎮{averageControllerBattery}%』『🔋{averageTrackerBattery}%』 ";
+            currentText = currentText + "『🎮{averageControllerBattery}%{cCharge}』『🔋{averageTrackerBattery}%{tCharge}』 ";
             textBoxCustomSpot.Text = currentText;
 
         }
@@ -2262,7 +2262,7 @@ namespace OSCVRCWiz
         private void button22_Click(object sender, EventArgs e)
         {
             string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "『💓{bpm}』 ";
+            currentText = currentText + "『💓{bpm}{bpmStats}』 ";
             textBoxCustomSpot.Text = currentText;
         }
         private void button14_Click(object sender, EventArgs e)
@@ -2892,7 +2892,7 @@ namespace OSCVRCWiz
         private void button33_Click(object sender, EventArgs e)
         {
             Task.Run(() => OSC.OSCLegacyVRChatListener());
-            button33.Enabled = false;
+           
         }
 
         private void button32_Click(object sender, EventArgs e)
@@ -3194,6 +3194,11 @@ namespace OSCVRCWiz
             labelVolumeNum.Text = "x" + Math.Round(value3, 1).ToString();
 
        
+
+        }
+
+        private void label142_Click(object sender, EventArgs e)
+        {
 
         }
     }

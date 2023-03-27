@@ -99,15 +99,15 @@
             this.iconButton22 = new FontAwesome.Sharp.IconButton();
             this.richTextBox9 = new System.Windows.Forms.RichTextBox();
             this.tabAddons = new System.Windows.Forms.TabPage();
-            this.label72 = new System.Windows.Forms.Label();
             this.translucentPanel1 = new OSCVRCWiz.RJControls.TranslucentPanel();
-            this.iconButton24 = new FontAwesome.Sharp.IconButton();
             this.iconButton11 = new FontAwesome.Sharp.IconButton();
             this.iconButton25 = new FontAwesome.Sharp.IconButton();
             this.iconButton42 = new FontAwesome.Sharp.IconButton();
             this.iconButton27 = new FontAwesome.Sharp.IconButton();
+            this.iconButton24 = new FontAwesome.Sharp.IconButton();
             this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.label72 = new System.Windows.Forms.Label();
             this.tabEmoji = new System.Windows.Forms.TabPage();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
             this.button25 = new System.Windows.Forms.Button();
@@ -170,6 +170,12 @@
             this.label49 = new System.Windows.Forms.Label();
             this.iconButton31 = new FontAwesome.Sharp.IconButton();
             this.tabHeartBeat = new System.Windows.Forms.TabPage();
+            this.groupBoxControllers = new System.Windows.Forms.GroupBox();
+            this.ControllerLabel = new System.Windows.Forms.Label();
+            this.groupBoxHeartrate = new System.Windows.Forms.GroupBox();
+            this.HeartrateLabel = new System.Windows.Forms.Label();
+            this.groupBoxTrackers = new System.Windows.Forms.GroupBox();
+            this.TrackerLabel = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.richTextBox8 = new System.Windows.Forms.RichTextBox();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
@@ -183,24 +189,22 @@
             this.button7 = new System.Windows.Forms.Button();
             this.HRInterval = new System.Windows.Forms.TextBox();
             this.HRIntervalChange = new System.Windows.Forms.Button();
-            this.label41 = new System.Windows.Forms.Label();
             this.textBoxHRPort = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.rjToggleButton1 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.iconButton39 = new FontAwesome.Sharp.IconButton();
             this.label42 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.APIs = new System.Windows.Forms.TabPage();
-            this.label73 = new System.Windows.Forms.Label();
             this.translucentPanel2 = new OSCVRCWiz.RJControls.TranslucentPanel();
             this.iconButton30 = new FontAwesome.Sharp.IconButton();
             this.iconButton28 = new FontAwesome.Sharp.IconButton();
             this.iconButton21 = new FontAwesome.Sharp.IconButton();
             this.iconButton19 = new FontAwesome.Sharp.IconButton();
             this.iconButton20 = new FontAwesome.Sharp.IconButton();
+            this.label73 = new System.Windows.Forms.Label();
             this.General = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.label106 = new System.Windows.Forms.Label();
@@ -504,6 +508,9 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabHeartBeat.SuspendLayout();
+            this.groupBoxControllers.SuspendLayout();
+            this.groupBoxHeartrate.SuspendLayout();
+            this.groupBoxTrackers.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.APIs.SuspendLayout();
@@ -1853,8 +1860,8 @@
             // tabAddons
             // 
             this.tabAddons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.tabAddons.Controls.Add(this.label72);
             this.tabAddons.Controls.Add(this.translucentPanel1);
+            this.tabAddons.Controls.Add(this.label72);
             this.tabAddons.Location = new System.Drawing.Point(4, 24);
             this.tabAddons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAddons.Name = "tabAddons";
@@ -1863,56 +1870,22 @@
             this.tabAddons.TabIndex = 4;
             this.tabAddons.Text = "Addons";
             // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label72.ForeColor = System.Drawing.Color.Snow;
-            this.label72.Location = new System.Drawing.Point(5, 9);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(60, 20);
-            this.label72.TabIndex = 34;
-            this.label72.Text = "Addons";
-            // 
             // translucentPanel1
             // 
-            this.translucentPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.translucentPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.translucentPanel1.Controls.Add(this.iconButton24);
             this.translucentPanel1.Controls.Add(this.iconButton11);
             this.translucentPanel1.Controls.Add(this.iconButton25);
             this.translucentPanel1.Controls.Add(this.iconButton42);
             this.translucentPanel1.Controls.Add(this.iconButton27);
+            this.translucentPanel1.Controls.Add(this.iconButton24);
             this.translucentPanel1.Controls.Add(this.iconButton10);
             this.translucentPanel1.Controls.Add(this.iconButton9);
-            this.translucentPanel1.Location = new System.Drawing.Point(5, 38);
+            this.translucentPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translucentPanel1.Location = new System.Drawing.Point(3, 22);
             this.translucentPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.translucentPanel1.Name = "translucentPanel1";
-            this.translucentPanel1.Size = new System.Drawing.Size(844, 524);
+            this.translucentPanel1.Size = new System.Drawing.Size(847, 538);
             this.translucentPanel1.TabIndex = 0;
-            // 
-            // iconButton24
-            // 
-            this.iconButton24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton24.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton24.FlatAppearance.BorderSize = 0;
-            this.iconButton24.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton24.IconChar = FontAwesome.Sharp.IconChar.Gamepad;
-            this.iconButton24.IconColor = System.Drawing.Color.White;
-            this.iconButton24.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton24.Location = new System.Drawing.Point(0, 450);
-            this.iconButton24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton24.Name = "iconButton24";
-            this.iconButton24.Size = new System.Drawing.Size(844, 75);
-            this.iconButton24.TabIndex = 15;
-            this.iconButton24.Text = "VRChat OSC Listener";
-            this.iconButton24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton24.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton24.UseVisualStyleBackColor = false;
-            this.iconButton24.Click += new System.EventHandler(this.iconButton24_Click);
             // 
             // iconButton11
             // 
@@ -1924,10 +1897,10 @@
             this.iconButton11.IconColor = System.Drawing.Color.White;
             this.iconButton11.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton11.Location = new System.Drawing.Point(0, 375);
+            this.iconButton11.Location = new System.Drawing.Point(0, 450);
             this.iconButton11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton11.Name = "iconButton11";
-            this.iconButton11.Size = new System.Drawing.Size(844, 75);
+            this.iconButton11.Size = new System.Drawing.Size(847, 75);
             this.iconButton11.TabIndex = 11;
             this.iconButton11.Text = "Emojis";
             this.iconButton11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1945,10 +1918,10 @@
             this.iconButton25.IconColor = System.Drawing.Color.White;
             this.iconButton25.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton25.Location = new System.Drawing.Point(0, 300);
+            this.iconButton25.Location = new System.Drawing.Point(0, 375);
             this.iconButton25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton25.Name = "iconButton25";
-            this.iconButton25.Size = new System.Drawing.Size(844, 75);
+            this.iconButton25.Size = new System.Drawing.Size(847, 75);
             this.iconButton25.TabIndex = 13;
             this.iconButton25.Text = "OSC Discord Integration";
             this.iconButton25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1966,10 +1939,10 @@
             this.iconButton42.IconColor = System.Drawing.Color.White;
             this.iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton42.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton42.Location = new System.Drawing.Point(0, 225);
+            this.iconButton42.Location = new System.Drawing.Point(0, 300);
             this.iconButton42.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton42.Name = "iconButton42";
-            this.iconButton42.Size = new System.Drawing.Size(844, 75);
+            this.iconButton42.Size = new System.Drawing.Size(847, 75);
             this.iconButton42.TabIndex = 14;
             this.iconButton42.Text = "Word Replacements";
             this.iconButton42.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1987,16 +1960,37 @@
             this.iconButton27.IconColor = System.Drawing.Color.White;
             this.iconButton27.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton27.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton27.Location = new System.Drawing.Point(0, 150);
+            this.iconButton27.Location = new System.Drawing.Point(0, 225);
             this.iconButton27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton27.Name = "iconButton27";
-            this.iconButton27.Size = new System.Drawing.Size(844, 75);
+            this.iconButton27.Size = new System.Drawing.Size(847, 75);
             this.iconButton27.TabIndex = 12;
             this.iconButton27.Text = "Voice Commands";
             this.iconButton27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton27.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton27.UseVisualStyleBackColor = false;
             this.iconButton27.Click += new System.EventHandler(this.iconButton27_Click_1);
+            // 
+            // iconButton24
+            // 
+            this.iconButton24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton24.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton24.FlatAppearance.BorderSize = 0;
+            this.iconButton24.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton24.IconChar = FontAwesome.Sharp.IconChar.Gamepad;
+            this.iconButton24.IconColor = System.Drawing.Color.White;
+            this.iconButton24.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton24.Location = new System.Drawing.Point(0, 150);
+            this.iconButton24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton24.Name = "iconButton24";
+            this.iconButton24.Size = new System.Drawing.Size(847, 75);
+            this.iconButton24.TabIndex = 15;
+            this.iconButton24.Text = "VRChat - (Counters, AFK)";
+            this.iconButton24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton24.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton24.UseVisualStyleBackColor = false;
+            this.iconButton24.Click += new System.EventHandler(this.iconButton24_Click);
             // 
             // iconButton10
             // 
@@ -2011,9 +2005,9 @@
             this.iconButton10.Location = new System.Drawing.Point(0, 75);
             this.iconButton10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Size = new System.Drawing.Size(844, 75);
+            this.iconButton10.Size = new System.Drawing.Size(847, 75);
             this.iconButton10.TabIndex = 10;
-            this.iconButton10.Text = "OSC Listener";
+            this.iconButton10.Text = "OSC Listener - (Heartrate, BatteryLife)";
             this.iconButton10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton10.UseVisualStyleBackColor = false;
@@ -2032,13 +2026,25 @@
             this.iconButton9.Location = new System.Drawing.Point(0, 0);
             this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(844, 75);
+            this.iconButton9.Size = new System.Drawing.Size(847, 75);
             this.iconButton9.TabIndex = 9;
             this.iconButton9.Text = "Media Integration";
             this.iconButton9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton9.UseVisualStyleBackColor = false;
             this.iconButton9.Click += new System.EventHandler(this.iconButton9_Click);
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label72.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label72.ForeColor = System.Drawing.Color.Snow;
+            this.label72.Location = new System.Drawing.Point(3, 2);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(60, 20);
+            this.label72.TabIndex = 34;
+            this.label72.Text = "Addons";
             // 
             // tabEmoji
             // 
@@ -2899,6 +2905,9 @@
             // tabHeartBeat
             // 
             this.tabHeartBeat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabHeartBeat.Controls.Add(this.groupBoxControllers);
+            this.tabHeartBeat.Controls.Add(this.groupBoxHeartrate);
+            this.tabHeartBeat.Controls.Add(this.groupBoxTrackers);
             this.tabHeartBeat.Controls.Add(this.groupBox14);
             this.tabHeartBeat.Controls.Add(this.groupBox21);
             this.tabHeartBeat.Controls.Add(this.iconButton39);
@@ -2911,6 +2920,66 @@
             this.tabHeartBeat.TabIndex = 7;
             this.tabHeartBeat.Text = "Heartbeat";
             // 
+            // groupBoxControllers
+            // 
+            this.groupBoxControllers.Controls.Add(this.ControllerLabel);
+            this.groupBoxControllers.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxControllers.Location = new System.Drawing.Point(436, 222);
+            this.groupBoxControllers.Name = "groupBoxControllers";
+            this.groupBoxControllers.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxControllers.TabIndex = 110;
+            this.groupBoxControllers.TabStop = false;
+            this.groupBoxControllers.Text = "Controllers";
+            // 
+            // ControllerLabel
+            // 
+            this.ControllerLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ControllerLabel.Location = new System.Drawing.Point(6, 17);
+            this.ControllerLabel.Name = "ControllerLabel";
+            this.ControllerLabel.Size = new System.Drawing.Size(146, 48);
+            this.ControllerLabel.TabIndex = 1;
+            this.ControllerLabel.Text = "🔋 0%";
+            // 
+            // groupBoxHeartrate
+            // 
+            this.groupBoxHeartrate.Controls.Add(this.HeartrateLabel);
+            this.groupBoxHeartrate.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxHeartrate.Location = new System.Drawing.Point(436, 67);
+            this.groupBoxHeartrate.Name = "groupBoxHeartrate";
+            this.groupBoxHeartrate.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxHeartrate.TabIndex = 109;
+            this.groupBoxHeartrate.TabStop = false;
+            this.groupBoxHeartrate.Text = "Heartrate";
+            // 
+            // HeartrateLabel
+            // 
+            this.HeartrateLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HeartrateLabel.Location = new System.Drawing.Point(6, 20);
+            this.HeartrateLabel.Name = "HeartrateLabel";
+            this.HeartrateLabel.Size = new System.Drawing.Size(146, 40);
+            this.HeartrateLabel.TabIndex = 0;
+            this.HeartrateLabel.Text = "❤️ 0";
+            // 
+            // groupBoxTrackers
+            // 
+            this.groupBoxTrackers.Controls.Add(this.TrackerLabel);
+            this.groupBoxTrackers.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxTrackers.Location = new System.Drawing.Point(436, 143);
+            this.groupBoxTrackers.Name = "groupBoxTrackers";
+            this.groupBoxTrackers.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxTrackers.TabIndex = 108;
+            this.groupBoxTrackers.TabStop = false;
+            this.groupBoxTrackers.Text = "Trackers";
+            // 
+            // TrackerLabel
+            // 
+            this.TrackerLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TrackerLabel.Location = new System.Drawing.Point(6, 17);
+            this.TrackerLabel.Name = "TrackerLabel";
+            this.TrackerLabel.Size = new System.Drawing.Size(146, 42);
+            this.TrackerLabel.TabIndex = 1;
+            this.TrackerLabel.Text = "🔋 0%";
+            // 
             // groupBox14
             // 
             this.groupBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2918,11 +2987,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox14.Controls.Add(this.richTextBox8);
             this.groupBox14.ForeColor = System.Drawing.Color.White;
-            this.groupBox14.Location = new System.Drawing.Point(18, 296);
+            this.groupBox14.Location = new System.Drawing.Point(18, 306);
             this.groupBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox14.Size = new System.Drawing.Size(816, 255);
+            this.groupBox14.Size = new System.Drawing.Size(816, 245);
             this.groupBox14.TabIndex = 106;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Log";
@@ -2937,7 +3006,7 @@
             this.richTextBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.ReadOnly = true;
-            this.richTextBox8.Size = new System.Drawing.Size(805, 231);
+            this.richTextBox8.Size = new System.Drawing.Size(805, 221);
             this.richTextBox8.TabIndex = 62;
             this.richTextBox8.Text = "";
             // 
@@ -2953,19 +3022,17 @@
             this.groupBox21.Controls.Add(this.button7);
             this.groupBox21.Controls.Add(this.HRInterval);
             this.groupBox21.Controls.Add(this.HRIntervalChange);
-            this.groupBox21.Controls.Add(this.label41);
             this.groupBox21.Controls.Add(this.textBoxHRPort);
             this.groupBox21.Controls.Add(this.label37);
             this.groupBox21.Controls.Add(this.rjToggleButton1);
             this.groupBox21.Controls.Add(this.label39);
-            this.groupBox21.Controls.Add(this.label40);
             this.groupBox21.Controls.Add(this.label38);
             this.groupBox21.ForeColor = System.Drawing.Color.White;
             this.groupBox21.Location = new System.Drawing.Point(18, 56);
             this.groupBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox21.Size = new System.Drawing.Size(816, 220);
+            this.groupBox21.Size = new System.Drawing.Size(401, 236);
             this.groupBox21.TabIndex = 105;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Listener Settings";
@@ -2974,7 +3041,7 @@
             // 
             this.label140.AutoSize = true;
             this.label140.ForeColor = System.Drawing.Color.Snow;
-            this.label140.Location = new System.Drawing.Point(505, 195);
+            this.label140.Location = new System.Drawing.Point(62, 186);
             this.label140.Name = "label140";
             this.label140.Size = new System.Drawing.Size(171, 15);
             this.label140.TabIndex = 102;
@@ -2983,7 +3050,7 @@
             // rjToggleButtonForwardData
             // 
             this.rjToggleButtonForwardData.AutoSize = true;
-            this.rjToggleButtonForwardData.Location = new System.Drawing.Point(460, 193);
+            this.rjToggleButtonForwardData.Location = new System.Drawing.Point(17, 184);
             this.rjToggleButtonForwardData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonForwardData.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonForwardData.Name = "rjToggleButtonForwardData";
@@ -2999,7 +3066,7 @@
             // 
             this.label130.AutoSize = true;
             this.label130.ForeColor = System.Drawing.Color.Snow;
-            this.label130.Location = new System.Drawing.Point(71, 194);
+            this.label130.Location = new System.Drawing.Point(62, 158);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(164, 15);
             this.label130.TabIndex = 100;
@@ -3008,7 +3075,7 @@
             // rjToggleButton8
             // 
             this.rjToggleButton8.AutoSize = true;
-            this.rjToggleButton8.Location = new System.Drawing.Point(26, 193);
+            this.rjToggleButton8.Location = new System.Drawing.Point(17, 157);
             this.rjToggleButton8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButton8.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButton8.Name = "rjToggleButton8";
@@ -3024,7 +3091,7 @@
             // 
             this.label46.AutoSize = true;
             this.label46.ForeColor = System.Drawing.Color.Snow;
-            this.label46.Location = new System.Drawing.Point(460, 88);
+            this.label46.Location = new System.Drawing.Point(187, 70);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(72, 15);
             this.label46.TabIndex = 64;
@@ -3035,7 +3102,7 @@
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.ForeColor = System.Drawing.Color.Snow;
-            this.button8.Location = new System.Drawing.Point(598, 104);
+            this.button8.Location = new System.Drawing.Point(325, 87);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(50, 25);
@@ -3049,7 +3116,7 @@
             this.rjToggleButton2.AutoSize = true;
             this.rjToggleButton2.Checked = true;
             this.rjToggleButton2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton2.Location = new System.Drawing.Point(26, 163);
+            this.rjToggleButton2.Location = new System.Drawing.Point(17, 128);
             this.rjToggleButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButton2.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButton2.Name = "rjToggleButton2";
@@ -3066,7 +3133,7 @@
             // 
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.Color.Snow;
+            this.button7.ForeColor = System.Drawing.Color.White;
             this.button7.Location = new System.Drawing.Point(26, 26);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
@@ -3078,7 +3145,7 @@
             // 
             // HRInterval
             // 
-            this.HRInterval.Location = new System.Drawing.Point(26, 105);
+            this.HRInterval.Location = new System.Drawing.Point(187, 35);
             this.HRInterval.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HRInterval.Name = "HRInterval";
             this.HRInterval.Size = new System.Drawing.Size(129, 23);
@@ -3090,7 +3157,7 @@
             this.HRIntervalChange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.HRIntervalChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HRIntervalChange.ForeColor = System.Drawing.Color.Snow;
-            this.HRIntervalChange.Location = new System.Drawing.Point(164, 105);
+            this.HRIntervalChange.Location = new System.Drawing.Point(325, 35);
             this.HRIntervalChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HRIntervalChange.Name = "HRIntervalChange";
             this.HRIntervalChange.Size = new System.Drawing.Size(50, 25);
@@ -3099,19 +3166,9 @@
             this.HRIntervalChange.UseVisualStyleBackColor = false;
             this.HRIntervalChange.Click += new System.EventHandler(this.HRIntervalChange_Click);
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.ForeColor = System.Drawing.Color.Snow;
-            this.label41.Location = new System.Drawing.Point(177, 44);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(382, 15);
-            this.label41.TabIndex = 60;
-            this.label41.Text = "Example: If HR Interval is 1, then hide delay should be greater than 1000";
-            // 
             // textBoxHRPort
             // 
-            this.textBoxHRPort.Location = new System.Drawing.Point(460, 105);
+            this.textBoxHRPort.Location = new System.Drawing.Point(187, 87);
             this.textBoxHRPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxHRPort.Name = "textBoxHRPort";
             this.textBoxHRPort.Size = new System.Drawing.Size(129, 23);
@@ -3122,7 +3179,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.ForeColor = System.Drawing.Color.Snow;
-            this.label37.Location = new System.Drawing.Point(71, 133);
+            this.label37.Location = new System.Drawing.Point(62, 101);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(97, 15);
             this.label37.TabIndex = 52;
@@ -3133,7 +3190,7 @@
             this.rjToggleButton1.AutoSize = true;
             this.rjToggleButton1.Checked = true;
             this.rjToggleButton1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButton1.Location = new System.Drawing.Point(26, 131);
+            this.rjToggleButton1.Location = new System.Drawing.Point(17, 99);
             this.rjToggleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButton1.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButton1.Name = "rjToggleButton1";
@@ -3150,28 +3207,17 @@
             // 
             this.label39.AutoSize = true;
             this.label39.ForeColor = System.Drawing.Color.Snow;
-            this.label39.Location = new System.Drawing.Point(26, 88);
+            this.label39.Location = new System.Drawing.Point(187, 18);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(81, 15);
             this.label39.TabIndex = 57;
             this.label39.Text = "HR Interval (s)";
             // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.ForeColor = System.Drawing.Color.Snow;
-            this.label40.Location = new System.Drawing.Point(164, 27);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(490, 15);
-            this.label40.TabIndex = 59;
-            this.label40.Text = "To use with TTS or Spotify, hide text after delay must be enabled and longer than" +
-    " HR Interval";
-            // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.ForeColor = System.Drawing.Color.Snow;
-            this.label38.Location = new System.Drawing.Point(71, 164);
+            this.label38.Location = new System.Drawing.Point(62, 129);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(86, 15);
             this.label38.TabIndex = 55;
@@ -3222,8 +3268,8 @@
             // APIs
             // 
             this.APIs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
-            this.APIs.Controls.Add(this.label73);
             this.APIs.Controls.Add(this.translucentPanel2);
+            this.APIs.Controls.Add(this.label73);
             this.APIs.Location = new System.Drawing.Point(4, 24);
             this.APIs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.APIs.Name = "APIs";
@@ -3231,17 +3277,6 @@
             this.APIs.Size = new System.Drawing.Size(853, 562);
             this.APIs.TabIndex = 8;
             this.APIs.Text = "APIs";
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label73.ForeColor = System.Drawing.Color.Snow;
-            this.label73.Location = new System.Drawing.Point(5, 10);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(62, 20);
-            this.label73.TabIndex = 35;
-            this.label73.Text = "Settings";
             // 
             // translucentPanel2
             // 
@@ -3251,10 +3286,11 @@
             this.translucentPanel2.Controls.Add(this.iconButton21);
             this.translucentPanel2.Controls.Add(this.iconButton19);
             this.translucentPanel2.Controls.Add(this.iconButton20);
-            this.translucentPanel2.Location = new System.Drawing.Point(5, 40);
+            this.translucentPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.translucentPanel2.Location = new System.Drawing.Point(3, 22);
             this.translucentPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.translucentPanel2.Name = "translucentPanel2";
-            this.translucentPanel2.Size = new System.Drawing.Size(844, 470);
+            this.translucentPanel2.Size = new System.Drawing.Size(847, 538);
             this.translucentPanel2.TabIndex = 1;
             // 
             // iconButton30
@@ -3270,7 +3306,7 @@
             this.iconButton30.Location = new System.Drawing.Point(0, 300);
             this.iconButton30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton30.Name = "iconButton30";
-            this.iconButton30.Size = new System.Drawing.Size(844, 75);
+            this.iconButton30.Size = new System.Drawing.Size(847, 75);
             this.iconButton30.TabIndex = 14;
             this.iconButton30.Text = "Local - (System Speech, Vosk, Whisper)";
             this.iconButton30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3291,7 +3327,7 @@
             this.iconButton28.Location = new System.Drawing.Point(0, 225);
             this.iconButton28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton28.Name = "iconButton28";
-            this.iconButton28.Size = new System.Drawing.Size(844, 75);
+            this.iconButton28.Size = new System.Drawing.Size(847, 75);
             this.iconButton28.TabIndex = 13;
             this.iconButton28.Text = "ElevenLabs";
             this.iconButton28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3312,7 +3348,7 @@
             this.iconButton21.Location = new System.Drawing.Point(0, 150);
             this.iconButton21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton21.Name = "iconButton21";
-            this.iconButton21.Size = new System.Drawing.Size(844, 75);
+            this.iconButton21.Size = new System.Drawing.Size(847, 75);
             this.iconButton21.TabIndex = 12;
             this.iconButton21.Text = "Translation";
             this.iconButton21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3333,7 +3369,7 @@
             this.iconButton19.Location = new System.Drawing.Point(0, 75);
             this.iconButton19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton19.Name = "iconButton19";
-            this.iconButton19.Size = new System.Drawing.Size(844, 75);
+            this.iconButton19.Size = new System.Drawing.Size(847, 75);
             this.iconButton19.TabIndex = 10;
             this.iconButton19.Text = "Amazon Polly";
             this.iconButton19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3354,13 +3390,25 @@
             this.iconButton20.Location = new System.Drawing.Point(0, 0);
             this.iconButton20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton20.Name = "iconButton20";
-            this.iconButton20.Size = new System.Drawing.Size(844, 75);
+            this.iconButton20.Size = new System.Drawing.Size(847, 75);
             this.iconButton20.TabIndex = 9;
             this.iconButton20.Text = "Azure Cognitive Services";
             this.iconButton20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton20.UseVisualStyleBackColor = false;
             this.iconButton20.Click += new System.EventHandler(this.iconButton20_Click);
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label73.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label73.ForeColor = System.Drawing.Color.Snow;
+            this.label73.Location = new System.Drawing.Point(3, 2);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(62, 20);
+            this.label73.TabIndex = 35;
+            this.label73.Text = "Settings";
             // 
             // General
             // 
@@ -7227,6 +7275,9 @@
             this.groupBox2.PerformLayout();
             this.tabHeartBeat.ResumeLayout(false);
             this.tabHeartBeat.PerformLayout();
+            this.groupBoxControllers.ResumeLayout(false);
+            this.groupBoxHeartrate.ResumeLayout(false);
+            this.groupBoxTrackers.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox21.ResumeLayout(false);
             this.groupBox21.PerformLayout();
@@ -7374,14 +7425,11 @@
         public RJControls.RJToggleButton rjToggleButton1;
         private TextBox textBoxHRPort;
         private Label label35;
-        private Button button7;
         private Label label38;
         public RJControls.RJToggleButton rjToggleButton2;
         private Label label39;
         private Button HRIntervalChange;
         private TextBox HRInterval;
-        private Label label41;
-        private Label label40;
         private TabPage tabAddons;
         private FontAwesome.Sharp.IconButton iconButton8;
         private RJControls.TranslucentPanel translucentPanel1;
@@ -7691,7 +7739,6 @@
         public RJControls.RJToggleButton rjToggleButton11;
         private Label label87;
         private Button button32;
-        private Button button33;
         private Label label89;
         public RJControls.RJToggleButton rjToggleButton13;
         private Label label93;
@@ -7759,5 +7806,13 @@
         private Label labelVolumeNum;
         private Label label140;
         public RJControls.RJToggleButton rjToggleButtonForwardData;
+        public GroupBox groupBoxHeartrate;
+        public GroupBox groupBoxTrackers;
+        public Label HeartrateLabel;
+        public Label TrackerLabel;
+        public GroupBox groupBoxControllers;
+        public Label ControllerLabel;
+        public Button button7;
+        public Button button33;
     }
 }

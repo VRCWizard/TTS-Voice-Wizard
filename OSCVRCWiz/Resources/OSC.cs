@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using VRC.OSCQuery;
+//using VRC.OSCQuery;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace OSCVRCWiz.Resources
@@ -56,7 +56,7 @@ namespace OSCVRCWiz.Resources
         }
 
         //VRChat OSCQuery Test Code
-        public static void OSCQueryAdvertMyApp() //no in use yet
+     /*   public static void OSCQueryAdvertMyApp() //no in use yet
         {
 
             var OSCQueryService = new OSCQueryServiceBuilder()
@@ -73,11 +73,21 @@ namespace OSCVRCWiz.Resources
 
 
 
-        }
+        }*/
        public static void OSCLegacyVRChatListener()//no in use remove apon release of oscquery
         {
-          //  int port = 9001;//VRChats default UDP // ONLY ONE APP CAN LISTEN HERE
-            
+            //  int port = 9001;//VRChats default UDP // ONLY ONE APP CAN LISTEN HERE
+
+           
+
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                VoiceWizardWindow.MainFormGlobal.button33.Enabled = false;
+                VoiceWizardWindow.MainFormGlobal.button33.ForeColor = Color.Green;
+                OutputText.outputLog("[VRChat OSC Listener Activated]", Color.Green);
+                OutputText.outputLog($"[VRChat OSC Listener: Remember that only one program can listen on a UDP port. TTS Voice Wizard is listening on port {FromVRChatPort}.", Color.Orange);
+            });
+
             HandleOscPacket callback = delegate (OscPacket packet)
             {
                 var messageReceived = (OscMessage)packet;
@@ -215,7 +225,7 @@ namespace OSCVRCWiz.Resources
             var listener = new UDPListener(Convert.ToInt32(FromVRChatPort), callback);
 
         }
-        private static async Task OSCQueryVRchatListener()//no in use yet
+       /* private static async Task OSCQueryVRchatListener()//no in use yet
         {
             var _tcpPort = 9001;//VRChats default TCP // MANY APPS CAN LISTEN HERE
             var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/avatar/parameters");
@@ -244,7 +254,7 @@ namespace OSCVRCWiz.Resources
 
             OSCQueryVRchatListener();
 
-        }
+        }*/
 
 
        

@@ -56,9 +56,6 @@
     <Reference Include="CoreOSC">
       <HintPath>CoreOSC.dll</HintPath>
     </Reference>
-    <Reference Include="vrc-oscquery-lib">
-      <HintPath>vrc-oscquery-lib.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -82,6 +79,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="CoreOSC.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="libgcc_s_seh-1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -89,12 +89,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="libvosk.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="libwinpthread-1.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="CoreOSC.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="ftalk_us.dll">
@@ -116,9 +110,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="CrashDump\CrashReport.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="vrc-oscquery-lib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Settings\Settings1.settings">
@@ -143,7 +134,6 @@
     </None>
   </ItemGroup>
 
-
-
+ 
  
 </Project>
