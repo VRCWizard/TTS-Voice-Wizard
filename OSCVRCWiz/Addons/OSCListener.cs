@@ -288,7 +288,7 @@ namespace OSCVRCWiz.Addons
                             if (OSCReceiveSpamLog == true)
                             {
 
-                                OutputText.outputLog("[Right Controller Battery: " + battery + "%]");
+                                OutputText.outputLog("[HMD Battery: " + battery + "%]");
                             }
 
                         }
