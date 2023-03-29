@@ -218,17 +218,23 @@ namespace OSCVRCWiz
             Settings1.Default.Counter6Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
 
             Settings1.Default.SaveCounter= VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked;
+
+
+            Settings1.Default.minDuration = VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text;
+            Settings1.Default.maxDuration = VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text;
+             Settings1.Default.dropStartSilence = VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text;
+            Settings1.Default.pauseDuration = VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text;
             ///
 
-          /*  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)
-            {
-                Settings1.Default.Counter1 = OSC.counter1;
-                Settings1.Default.Counter2 = OSC.counter2;
-                Settings1.Default.Counter3 = OSC.counter3;
-                Settings1.Default.Counter4 = OSC.counter4;
-                Settings1.Default.Counter5 = OSC.counter5;
-                Settings1.Default.Counter6 = OSC.counter6;
-            }*/
+            /*  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)
+              {
+                  Settings1.Default.Counter1 = OSC.counter1;
+                  Settings1.Default.Counter2 = OSC.counter2;
+                  Settings1.Default.Counter3 = OSC.counter3;
+                  Settings1.Default.Counter4 = OSC.counter4;
+                  Settings1.Default.Counter5 = OSC.counter5;
+                  Settings1.Default.Counter6 = OSC.counter6;
+              }*/
 
             Settings1.Default.OBSTextFile = VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked;
             Settings1.Default.OBS4Media = VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked;

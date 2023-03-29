@@ -58,6 +58,8 @@ namespace OSCVRCWiz.Resources
             p.max_len = output_wts && max_len == 0 ? 60 : max_len;
             p.setFlag(eFullParamsFlags.SpeedupAudio, speed_up);
             
+            
+            
         }
 
         public eResultFlags resultFlags()

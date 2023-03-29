@@ -13,7 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Vosk;
 using Whisper;
-using Whisper.Internal;
+//using Whisper;
+//using Whisper.Internal;
 using static System.Net.WebRequestMethods;
 
 
@@ -183,8 +184,13 @@ namespace OSCVRCWiz.Speech_Recognition
                 
                 if (cla.captureDeviceIndex < 0 || cla.captureDeviceIndex >= devices.Length)
                     throw new ApplicationException($"Capture device index is out of range; the valid range is [ 0 .. {devices.Length - 1} ]");
-
+                
                 sCaptureParams cp = new sCaptureParams();
+                cp.minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString()); //1
+                cp.maxDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text.ToString()); //8
+                cp.dropStartSilence = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text.ToString());   // 250 ms
+                cp.pauseDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString());  //1
+
                 if (cla.diarize)
                     cp.flags |= eCaptureFlags.Stereo;
                 using iAudioCapture captureDev = mf.openCaptureDevice(devices[cla.captureDeviceIndex], cp);
@@ -192,6 +198,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 using iModel model = Library.loadModel(cla.model);
                 using Whisper.Context context = model.createContext();
 
+              //  context.parameters.duration_ms = 1000;
 
                 //attempted fix will break program
               //  context.parameters.audioContextSize = 150;

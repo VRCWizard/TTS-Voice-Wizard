@@ -28,6 +28,7 @@ namespace OSCVRCWiz.Resources
 
            static void readKeyCallback(object? state)
            {
+            
                ctt = (state as CaptureThread) ?? throw new ApplicationException();
               // Console.ReadKey();
              //  ct.shouldQuit = true; //this line has been making it quit automatically dumb dumb

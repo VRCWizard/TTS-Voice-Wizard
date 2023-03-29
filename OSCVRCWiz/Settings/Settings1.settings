@@ -407,5 +407,17 @@
     <Setting Name="forwardData" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="minDuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0</Value>
+    </Setting>
+    <Setting Name="maxDuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8.0</Value>
+    </Setting>
+    <Setting Name="dropStartSilence" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.25</Value>
+    </Setting>
+    <Setting Name="pauseDuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

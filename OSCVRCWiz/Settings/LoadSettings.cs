@@ -50,7 +50,9 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked = Settings1.Default.SpotifyOutputSetting;
             OSCListener.HRInternalValue = Convert.ToInt32(Settings1.Default.HRIntervalSetting);
             OSCListener.OSCReceiveport = Convert.ToInt32(Settings1.Default.HRPortSetting);
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton2.Checked = Settings1.Default.BPMSpamSetting;
+            VoiceWizardWindow.MainFormGlobal.textBoxHRPort.Text = Settings1.Default.HRPortSetting;
+
+           VoiceWizardWindow.MainFormGlobal.rjToggleButton2.Checked = Settings1.Default.BPMSpamSetting;
 
 
             VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
@@ -224,6 +226,7 @@ namespace OSCVRCWiz
 
             OSC.OSCAddress= Settings1.Default.OSCAddress;
             OSC.OSCPort= Settings1.Default.OSCPort;
+            VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.OSCPort;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked = Settings1.Default.saveToast;
 
@@ -243,6 +246,11 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleReplaceBeforeTTS.Checked = Settings1.Default.wordReplaceBeforeTTS;
 
 
+
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text = Settings1.Default.minDuration;
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = Settings1.Default.maxDuration;
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = Settings1.Default.dropStartSilence;
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = Settings1.Default.pauseDuration;
 
 
 

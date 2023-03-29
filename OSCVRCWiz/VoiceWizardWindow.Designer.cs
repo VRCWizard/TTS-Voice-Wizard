@@ -170,6 +170,8 @@
             this.label49 = new System.Windows.Forms.Label();
             this.iconButton31 = new FontAwesome.Sharp.IconButton();
             this.tabHeartBeat = new System.Windows.Forms.TabPage();
+            this.groupBoxOSCtoTTS = new System.Windows.Forms.GroupBox();
+            this.labelOSCtoTTS = new System.Windows.Forms.Label();
             this.groupBoxControllers = new System.Windows.Forms.GroupBox();
             this.ControllerLabel = new System.Windows.Forms.Label();
             this.groupBoxHeartrate = new System.Windows.Forms.GroupBox();
@@ -446,6 +448,14 @@
             this.label94 = new System.Windows.Forms.Label();
             this.LocalSpeech = new System.Windows.Forms.TabPage();
             this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.label144 = new System.Windows.Forms.Label();
+            this.textBoxWhisperPauseDuration = new System.Windows.Forms.TextBox();
+            this.label142 = new System.Windows.Forms.Label();
+            this.textBoxWhisperDropSilence = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textBoxWhisperMaxDuration = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.textBoxWhisperMinDuration = new System.Windows.Forms.TextBox();
             this.label121 = new System.Windows.Forms.Label();
             this.rjToggleButtonFilterNoiseWhisper = new OSCVRCWiz.RJControls.RJToggleButton();
             this.whisperLink = new FontAwesome.Sharp.IconButton();
@@ -483,8 +493,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.groupBoxOSCtoTTS = new System.Windows.Forms.GroupBox();
-            this.labelOSCtoTTS = new System.Windows.Forms.Label();
+            this.button41 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -510,6 +519,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabHeartBeat.SuspendLayout();
+            this.groupBoxOSCtoTTS.SuspendLayout();
             this.groupBoxControllers.SuspendLayout();
             this.groupBoxHeartrate.SuspendLayout();
             this.groupBoxTrackers.SuspendLayout();
@@ -556,7 +566,6 @@
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBoxOSCtoTTS.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -1436,6 +1445,7 @@
             "ElevenLabs",
             "Moonbase",
             "Glados",
+            "Miku",
             "TikTok",
             "No TTS"});
             this.comboBoxTTSMode.Location = new System.Drawing.Point(19, 42);
@@ -2923,6 +2933,26 @@
             this.tabHeartBeat.Size = new System.Drawing.Size(853, 562);
             this.tabHeartBeat.TabIndex = 7;
             this.tabHeartBeat.Text = "Heartbeat";
+            // 
+            // groupBoxOSCtoTTS
+            // 
+            this.groupBoxOSCtoTTS.Controls.Add(this.labelOSCtoTTS);
+            this.groupBoxOSCtoTTS.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxOSCtoTTS.Location = new System.Drawing.Point(613, 67);
+            this.groupBoxOSCtoTTS.Name = "groupBoxOSCtoTTS";
+            this.groupBoxOSCtoTTS.Size = new System.Drawing.Size(186, 52);
+            this.groupBoxOSCtoTTS.TabIndex = 111;
+            this.groupBoxOSCtoTTS.TabStop = false;
+            this.groupBoxOSCtoTTS.Text = "OSC to TTS";
+            // 
+            // labelOSCtoTTS
+            // 
+            this.labelOSCtoTTS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelOSCtoTTS.Location = new System.Drawing.Point(6, 21);
+            this.labelOSCtoTTS.Name = "labelOSCtoTTS";
+            this.labelOSCtoTTS.Size = new System.Drawing.Size(172, 21);
+            this.labelOSCtoTTS.TabIndex = 0;
+            this.labelOSCtoTTS.Text = "/TTSVoiceWizard/TextToSpeech";
             // 
             // groupBoxControllers
             // 
@@ -6655,6 +6685,15 @@
             // 
             // groupBox38
             // 
+            this.groupBox38.Controls.Add(this.button41);
+            this.groupBox38.Controls.Add(this.label144);
+            this.groupBox38.Controls.Add(this.textBoxWhisperPauseDuration);
+            this.groupBox38.Controls.Add(this.label142);
+            this.groupBox38.Controls.Add(this.textBoxWhisperDropSilence);
+            this.groupBox38.Controls.Add(this.label41);
+            this.groupBox38.Controls.Add(this.textBoxWhisperMaxDuration);
+            this.groupBox38.Controls.Add(this.label40);
+            this.groupBox38.Controls.Add(this.textBoxWhisperMinDuration);
             this.groupBox38.Controls.Add(this.label121);
             this.groupBox38.Controls.Add(this.rjToggleButtonFilterNoiseWhisper);
             this.groupBox38.Controls.Add(this.whisperLink);
@@ -6665,10 +6704,91 @@
             this.groupBox38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox38.Name = "groupBox38";
             this.groupBox38.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox38.Size = new System.Drawing.Size(808, 96);
+            this.groupBox38.Size = new System.Drawing.Size(808, 124);
             this.groupBox38.TabIndex = 159;
             this.groupBox38.TabStop = false;
             this.groupBox38.Text = "Whisper.cpp Model (BIN file)";
+            this.groupBox38.Enter += new System.EventHandler(this.groupBox38_Enter);
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label144.ForeColor = System.Drawing.Color.Snow;
+            this.label144.Location = new System.Drawing.Point(587, 66);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(103, 15);
+            this.label144.TabIndex = 172;
+            this.label144.Text = "Pause Duration (s)";
+            // 
+            // textBoxWhisperPauseDuration
+            // 
+            this.textBoxWhisperPauseDuration.Location = new System.Drawing.Point(587, 83);
+            this.textBoxWhisperPauseDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxWhisperPauseDuration.Name = "textBoxWhisperPauseDuration";
+            this.textBoxWhisperPauseDuration.Size = new System.Drawing.Size(96, 23);
+            this.textBoxWhisperPauseDuration.TabIndex = 171;
+            this.textBoxWhisperPauseDuration.Text = "1.0";
+            // 
+            // label142
+            // 
+            this.label142.AutoSize = true;
+            this.label142.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label142.ForeColor = System.Drawing.Color.Snow;
+            this.label142.Location = new System.Drawing.Point(459, 66);
+            this.label142.Name = "label142";
+            this.label142.Size = new System.Drawing.Size(116, 15);
+            this.label142.TabIndex = 170;
+            this.label142.Text = "Drop Start Silence (s)";
+            // 
+            // textBoxWhisperDropSilence
+            // 
+            this.textBoxWhisperDropSilence.Location = new System.Drawing.Point(460, 83);
+            this.textBoxWhisperDropSilence.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxWhisperDropSilence.Name = "textBoxWhisperDropSilence";
+            this.textBoxWhisperDropSilence.Size = new System.Drawing.Size(111, 23);
+            this.textBoxWhisperDropSilence.TabIndex = 169;
+            this.textBoxWhisperDropSilence.Text = "0.25";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label41.ForeColor = System.Drawing.Color.Snow;
+            this.label41.Location = new System.Drawing.Point(349, 66);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(95, 15);
+            this.label41.TabIndex = 168;
+            this.label41.Text = "Max Duration (s)";
+            // 
+            // textBoxWhisperMaxDuration
+            // 
+            this.textBoxWhisperMaxDuration.Location = new System.Drawing.Point(350, 83);
+            this.textBoxWhisperMaxDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxWhisperMaxDuration.Name = "textBoxWhisperMaxDuration";
+            this.textBoxWhisperMaxDuration.Size = new System.Drawing.Size(94, 23);
+            this.textBoxWhisperMaxDuration.TabIndex = 167;
+            this.textBoxWhisperMaxDuration.Text = "8.0";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label40.ForeColor = System.Drawing.Color.Snow;
+            this.label40.Location = new System.Drawing.Point(241, 66);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(93, 15);
+            this.label40.TabIndex = 166;
+            this.label40.Text = "Min Duration (s)";
+            // 
+            // textBoxWhisperMinDuration
+            // 
+            this.textBoxWhisperMinDuration.Location = new System.Drawing.Point(241, 83);
+            this.textBoxWhisperMinDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxWhisperMinDuration.Name = "textBoxWhisperMinDuration";
+            this.textBoxWhisperMinDuration.Size = new System.Drawing.Size(93, 23);
+            this.textBoxWhisperMinDuration.TabIndex = 165;
+            this.textBoxWhisperMinDuration.Text = "1.0";
             // 
             // label121
             // 
@@ -7226,25 +7346,19 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // groupBoxOSCtoTTS
+            // button41
             // 
-            this.groupBoxOSCtoTTS.Controls.Add(this.labelOSCtoTTS);
-            this.groupBoxOSCtoTTS.ForeColor = System.Drawing.Color.Red;
-            this.groupBoxOSCtoTTS.Location = new System.Drawing.Point(613, 67);
-            this.groupBoxOSCtoTTS.Name = "groupBoxOSCtoTTS";
-            this.groupBoxOSCtoTTS.Size = new System.Drawing.Size(186, 52);
-            this.groupBoxOSCtoTTS.TabIndex = 111;
-            this.groupBoxOSCtoTTS.TabStop = false;
-            this.groupBoxOSCtoTTS.Text = "OSC to TTS";
-            // 
-            // labelOSCtoTTS
-            // 
-            this.labelOSCtoTTS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelOSCtoTTS.Location = new System.Drawing.Point(6, 21);
-            this.labelOSCtoTTS.Name = "labelOSCtoTTS";
-            this.labelOSCtoTTS.Size = new System.Drawing.Size(172, 21);
-            this.labelOSCtoTTS.TabIndex = 0;
-            this.labelOSCtoTTS.Text = "/TTSVoiceWizard/TextToSpeech";
+            this.button41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button41.ForeColor = System.Drawing.Color.Snow;
+            this.button41.Location = new System.Drawing.Point(696, 81);
+            this.button41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(50, 25);
+            this.button41.TabIndex = 173;
+            this.button41.Text = "Reset";
+            this.button41.UseVisualStyleBackColor = false;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
             // 
             // VoiceWizardWindow
             // 
@@ -7299,6 +7413,7 @@
             this.groupBox2.PerformLayout();
             this.tabHeartBeat.ResumeLayout(false);
             this.tabHeartBeat.PerformLayout();
+            this.groupBoxOSCtoTTS.ResumeLayout(false);
             this.groupBoxControllers.ResumeLayout(false);
             this.groupBoxHeartrate.ResumeLayout(false);
             this.groupBoxTrackers.ResumeLayout(false);
@@ -7379,7 +7494,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBoxOSCtoTTS.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -7448,7 +7562,6 @@
         private FontAwesome.Sharp.IconButton logTrash;
         private Label label37;
         public RJControls.RJToggleButton rjToggleButton1;
-        private TextBox textBoxHRPort;
         private Label label35;
         private Label label38;
         public RJControls.RJToggleButton rjToggleButton2;
@@ -7841,5 +7954,15 @@
         public Button button33;
         public GroupBox groupBoxOSCtoTTS;
         public Label labelOSCtoTTS;
+        private Label label40;
+        public TextBox textBoxWhisperMinDuration;
+        private Label label144;
+        public TextBox textBoxWhisperPauseDuration;
+        private Label label142;
+        public TextBox textBoxWhisperDropSilence;
+        private Label label41;
+        public TextBox textBoxWhisperMaxDuration;
+        public TextBox textBoxHRPort;
+        private Button button41;
     }
 }

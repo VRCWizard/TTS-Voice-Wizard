@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.8";
-        string releaseDate = "March 27, 2023";
+        public static string currentVersion = "1.0.8.5";
+        string releaseDate = "March 28, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -173,7 +173,7 @@ namespace OSCVRCWiz
                 VRCCounterTimer = new System.Threading.Timer(VRCCountertimertick);
                 VRCCounterTimer.Change(1600, 0);
 
-                whisperTimer = new System.Threading.Timer(whispertimertick);
+               whisperTimer = new System.Threading.Timer(whispertimertick);
                 whisperTimer.Change(Timeout.Infinite, Timeout.Infinite);
 
 
@@ -792,6 +792,9 @@ namespace OSCVRCWiz
                         case "Amazon Polly":
                             Task.Run(() => AmazonPollyTTS.PollyTTS(speechText, speechCt.Token));
                             break;
+                        case "Miku":
+                            Task.Run(() => MikuTTS.MikuTextAsSpeech(speechText, speechCt.Token));
+                            break;
 
 
                         default:
@@ -887,8 +890,8 @@ namespace OSCVRCWiz
                         break;
                case "Whisper":
 
-                        Task.Run(() => WhisperRecognition.toggleWhisper());
-                       // Task.Run(() => WhisperRecognitionV2.Demo());
+                       Task.Run(() => WhisperRecognition.toggleWhisper());
+                     //   Task.Run(() => WhisperRecognitionV2.Demo());
 
                         break;
                case "Web Captioner":
@@ -2205,6 +2208,25 @@ namespace OSCVRCWiz
                     }
 
                     break;
+                case "Miku":
+
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.Add("Miku");
+                    comboBox2.SelectedIndex = 0;
+
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+                    TTSModeSaved = "Miku";
+
+                    OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+
+                    break;
 
 
 
@@ -3200,6 +3222,19 @@ namespace OSCVRCWiz
         private void label142_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupBox38_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text = "1.0";
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = "8.0";
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = "0.25";
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = "1.0";
         }
     }
 

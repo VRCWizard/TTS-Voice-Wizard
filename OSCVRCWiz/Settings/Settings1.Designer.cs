@@ -1642,5 +1642,53 @@ namespace OSCVRCWiz.Settings {
                 this["forwardData"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        public string minDuration {
+            get {
+                return ((string)(this["minDuration"]));
+            }
+            set {
+                this["minDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8.0")]
+        public string maxDuration {
+            get {
+                return ((string)(this["maxDuration"]));
+            }
+            set {
+                this["maxDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
+        public string dropStartSilence {
+            get {
+                return ((string)(this["dropStartSilence"]));
+            }
+            set {
+                this["dropStartSilence"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        public string pauseDuration {
+            get {
+                return ((string)(this["pauseDuration"]));
+            }
+            set {
+                this["pauseDuration"] = value;
+            }
+        }
     }
 }
