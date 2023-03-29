@@ -48,7 +48,7 @@ namespace OSCVRCWiz.Addons
 
         public static void OSCRecieveHeartRate(VoiceWizardWindow MainForm)
         {
-
+            
             int skipper = 0;
             // var ot = new OutputText();
             // The cabllback function
@@ -62,7 +62,31 @@ namespace OSCVRCWiz.Addons
 
             HandleOscPacket callback = delegate (OscPacket packet)
             {
-                var messageReceived = (OscMessage)packet;
+                OscMessage messageReceived = null;
+                OscBundle messageBundle = null;
+                try { messageReceived = (OscMessage)packet; }
+                catch //this is just the quickest why I thought of to deal with bundles without puting a loop around everything. (that implementation would probably be better)
+                {
+                    try
+                    {
+
+                        messageBundle = (OscBundle)packet;
+                        for (int i = 0; i < messageBundle.Messages.Count; i++)
+                        {
+                            var resend = messageBundle.Messages[i];
+                            OSC.OSCReSender.Send(resend);
+                        }
+                    }
+                    catch (Exception ex){
+                        OutputText.outputLog("Issue reading osc bundle: "+ ex.Message, Color.Red);
+                    }
+
+                }
+
+                
+              
+                
+                
                 if (messageReceived != null)
                 {
                     //refactor using a switch case

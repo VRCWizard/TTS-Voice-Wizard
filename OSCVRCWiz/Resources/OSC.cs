@@ -15,6 +15,7 @@ namespace OSCVRCWiz.Resources
     public class OSC
     {
         public static CoreOSC.UDPSender OSCSender;
+        public static CoreOSC.UDPSender OSCReSender;
         public static string OSCAddress= "127.0.0.1";
         public static string OSCPort = "9000";
 
@@ -38,6 +39,7 @@ namespace OSCVRCWiz.Resources
         public static void Start()
         {
             OSCSender = new CoreOSC.UDPSender(OSCAddress, Convert.ToInt32(OSCPort));//9000
+            OSCReSender = new CoreOSC.UDPSender(OSCAddress, Convert.ToInt32(OSCListener.OSCReceiveport));
 
         }
         public static void ChangeAddressAndPort(string address, string port)
