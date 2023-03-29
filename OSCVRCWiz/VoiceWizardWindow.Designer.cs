@@ -448,6 +448,7 @@
             this.label94 = new System.Windows.Forms.Label();
             this.LocalSpeech = new System.Windows.Forms.TabPage();
             this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.button41 = new System.Windows.Forms.Button();
             this.label144 = new System.Windows.Forms.Label();
             this.textBoxWhisperPauseDuration = new System.Windows.Forms.TextBox();
             this.label142 = new System.Windows.Forms.Label();
@@ -493,7 +494,10 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button41 = new System.Windows.Forms.Button();
+            this.groupBoxRight = new System.Windows.Forms.GroupBox();
+            this.labelRight = new System.Windows.Forms.Label();
+            this.groupBoxHead = new System.Windows.Forms.GroupBox();
+            this.labelHead = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -566,6 +570,8 @@
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxRight.SuspendLayout();
+            this.groupBoxHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -2918,6 +2924,8 @@
             // tabHeartBeat
             // 
             this.tabHeartBeat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabHeartBeat.Controls.Add(this.groupBoxHead);
+            this.tabHeartBeat.Controls.Add(this.groupBoxRight);
             this.tabHeartBeat.Controls.Add(this.groupBoxOSCtoTTS);
             this.tabHeartBeat.Controls.Add(this.groupBoxControllers);
             this.tabHeartBeat.Controls.Add(this.groupBoxHeartrate);
@@ -2940,7 +2948,7 @@
             this.groupBoxOSCtoTTS.ForeColor = System.Drawing.Color.Red;
             this.groupBoxOSCtoTTS.Location = new System.Drawing.Point(613, 67);
             this.groupBoxOSCtoTTS.Name = "groupBoxOSCtoTTS";
-            this.groupBoxOSCtoTTS.Size = new System.Drawing.Size(186, 52);
+            this.groupBoxOSCtoTTS.Size = new System.Drawing.Size(186, 70);
             this.groupBoxOSCtoTTS.TabIndex = 111;
             this.groupBoxOSCtoTTS.TabStop = false;
             this.groupBoxOSCtoTTS.Text = "OSC to TTS";
@@ -2948,7 +2956,7 @@
             // labelOSCtoTTS
             // 
             this.labelOSCtoTTS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelOSCtoTTS.Location = new System.Drawing.Point(6, 21);
+            this.labelOSCtoTTS.Location = new System.Drawing.Point(6, 28);
             this.labelOSCtoTTS.Name = "labelOSCtoTTS";
             this.labelOSCtoTTS.Size = new System.Drawing.Size(172, 21);
             this.labelOSCtoTTS.TabIndex = 0;
@@ -2963,7 +2971,7 @@
             this.groupBoxControllers.Size = new System.Drawing.Size(158, 70);
             this.groupBoxControllers.TabIndex = 110;
             this.groupBoxControllers.TabStop = false;
-            this.groupBoxControllers.Text = "Controllers";
+            this.groupBoxControllers.Text = "Left Controller";
             // 
             // ControllerLabel
             // 
@@ -6710,6 +6718,20 @@
             this.groupBox38.Text = "Whisper.cpp Model (BIN file)";
             this.groupBox38.Enter += new System.EventHandler(this.groupBox38_Enter);
             // 
+            // button41
+            // 
+            this.button41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button41.ForeColor = System.Drawing.Color.Snow;
+            this.button41.Location = new System.Drawing.Point(696, 81);
+            this.button41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(50, 25);
+            this.button41.TabIndex = 173;
+            this.button41.Text = "Reset";
+            this.button41.UseVisualStyleBackColor = false;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
             // label144
             // 
             this.label144.AutoSize = true;
@@ -7346,19 +7368,45 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button41
+            // groupBoxRight
             // 
-            this.button41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button41.ForeColor = System.Drawing.Color.Snow;
-            this.button41.Location = new System.Drawing.Point(696, 81);
-            this.button41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(50, 25);
-            this.button41.TabIndex = 173;
-            this.button41.Text = "Reset";
-            this.button41.UseVisualStyleBackColor = false;
-            this.button41.Click += new System.EventHandler(this.button41_Click);
+            this.groupBoxRight.Controls.Add(this.labelRight);
+            this.groupBoxRight.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxRight.Location = new System.Drawing.Point(619, 222);
+            this.groupBoxRight.Name = "groupBoxRight";
+            this.groupBoxRight.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxRight.TabIndex = 112;
+            this.groupBoxRight.TabStop = false;
+            this.groupBoxRight.Text = "Right Controller";
+            // 
+            // labelRight
+            // 
+            this.labelRight.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRight.Location = new System.Drawing.Point(6, 17);
+            this.labelRight.Name = "labelRight";
+            this.labelRight.Size = new System.Drawing.Size(146, 48);
+            this.labelRight.TabIndex = 1;
+            this.labelRight.Text = "🔋 0%";
+            // 
+            // groupBoxHead
+            // 
+            this.groupBoxHead.Controls.Add(this.labelHead);
+            this.groupBoxHead.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxHead.Location = new System.Drawing.Point(619, 143);
+            this.groupBoxHead.Name = "groupBoxHead";
+            this.groupBoxHead.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxHead.TabIndex = 113;
+            this.groupBoxHead.TabStop = false;
+            this.groupBoxHead.Text = "Headset";
+            // 
+            // labelHead
+            // 
+            this.labelHead.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelHead.Location = new System.Drawing.Point(6, 17);
+            this.labelHead.Name = "labelHead";
+            this.labelHead.Size = new System.Drawing.Size(146, 48);
+            this.labelHead.TabIndex = 1;
+            this.labelHead.Text = "🔋 0%";
             // 
             // VoiceWizardWindow
             // 
@@ -7494,6 +7542,8 @@
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxRight.ResumeLayout(false);
+            this.groupBoxHead.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -7964,5 +8014,9 @@
         public TextBox textBoxWhisperMaxDuration;
         public TextBox textBoxHRPort;
         private Button button41;
+        public GroupBox groupBoxHead;
+        public Label labelHead;
+        public GroupBox groupBoxRight;
+        public Label labelRight;
     }
 }

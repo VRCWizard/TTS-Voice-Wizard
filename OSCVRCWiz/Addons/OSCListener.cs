@@ -22,16 +22,23 @@ namespace OSCVRCWiz.Addons
         public static string HREleveated = "";
 
         public static string trackerCharge = "";
-        public static string controllerCharge = "";
+        public static string controllerChargeAVG = "";
+        public static string controllerChargeR = "";
+        public static string controllerChargeL = "";
+        public static string controllerChargeHMD = "";
 
 
         public static int globalAverageTrackerBattery = 0;
         public static int globalLeftControllerBattery = 0;
         public static int globalRightControllerBattery = 0;
+        public static int globalHMDBattery = 0;
         public static int globalAverageControllerBattery = 0;
 
         public static int AverageTrackerPrevious= 0;
-        public static int AverageControllerPrevious = 0;
+        public static int AVGControllerPrevious = 0;
+        public static int RControllerPrevious = 0;
+        public static int LControllerPrevious = 0;
+        public static int HMDControllerPrevious = 0;
         public static int OSCReceiveport = 4026;
         public static bool OSCReceiveSpamLog = true;
         public static int HRInternalValue = 5;
@@ -98,7 +105,7 @@ namespace OSCVRCWiz.Addons
                             if (globalAverageTrackerBattery>AverageTrackerPrevious)
                             {
                                 trackerCharge = "⚡";
-                                labelBattery += " " + controllerCharge;
+                                labelBattery += " " + trackerCharge;
                             }
                             else { trackerCharge = ""; }
                             AverageTrackerPrevious = globalAverageTrackerBattery;
@@ -140,6 +147,29 @@ namespace OSCVRCWiz.Addons
                             decimal leftControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(leftControllerBattery * 100);
                             globalLeftControllerBattery = battery;
+
+                            var labelBattery = $"🔋 {battery}%";
+                            if (globalLeftControllerBattery > LControllerPrevious)
+                            {
+                                controllerChargeL = "⚡";
+                                labelBattery += " " + controllerChargeL;
+                            }
+                            else { controllerChargeL = ""; }
+                            LControllerPrevious = globalLeftControllerBattery;
+
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+
+
+                                if (VoiceWizardWindow.MainFormGlobal.groupBoxControllers.ForeColor != Color.Green)
+                                {
+
+                                    VoiceWizardWindow.MainFormGlobal.groupBoxControllers.ForeColor = Color.Green;
+                                    VoiceWizardWindow.MainFormGlobal.ControllerLabel.ForeColor = Color.Green;
+                                }
+                                VoiceWizardWindow.MainFormGlobal.ControllerLabel.Text = labelBattery;
+                            });
+
                             if (OSCReceiveSpamLog == true)
                             {
 
@@ -159,6 +189,29 @@ namespace OSCVRCWiz.Addons
                             decimal rightControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
                             int battery = Convert.ToInt32(rightControllerBattery * 100);
                             globalRightControllerBattery = battery;
+
+                            var labelBattery = $"🔋 {battery}%";
+                            if (globalRightControllerBattery > RControllerPrevious)
+                            {
+                                controllerChargeR = "⚡";
+                                labelBattery += " " + controllerChargeR;
+                            }
+                            else { controllerChargeR = ""; }
+                            RControllerPrevious = globalRightControllerBattery;
+
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+
+
+                                if (VoiceWizardWindow.MainFormGlobal.groupBoxRight.ForeColor != Color.Green)
+                                {
+
+                                    VoiceWizardWindow.MainFormGlobal.groupBoxRight.ForeColor = Color.Green;
+                                    VoiceWizardWindow.MainFormGlobal.labelRight.ForeColor = Color.Green;
+                                }
+                                VoiceWizardWindow.MainFormGlobal.labelRight.Text = labelBattery;
+                            });
+
                             if (OSCReceiveSpamLog == true)
                             {
 
@@ -180,34 +233,63 @@ namespace OSCVRCWiz.Addons
                             globalAverageControllerBattery = battery;
 
                             var labelBattery = $"🔋 {battery}%";
-                            if (globalAverageControllerBattery > AverageControllerPrevious)
+                            if (globalAverageControllerBattery > AVGControllerPrevious)
                             {
-                                controllerCharge = "⚡";
-                                labelBattery += " "+ controllerCharge;
+                                controllerChargeAVG = "⚡";
+                                labelBattery += " " + controllerChargeAVG;
                             }
-                            else { controllerCharge = ""; }
-                            AverageControllerPrevious = globalAverageControllerBattery;
+                            else { controllerChargeL = ""; }
+                            AVGControllerPrevious = globalAverageControllerBattery;
 
-                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                            {
-
-
-                                if (VoiceWizardWindow.MainFormGlobal.groupBoxControllers.ForeColor != Color.Green)
-                                {
-
-                                    VoiceWizardWindow.MainFormGlobal.groupBoxControllers.ForeColor = Color.Green;
-                                    VoiceWizardWindow.MainFormGlobal.ControllerLabel.ForeColor = Color.Green;
-                                }
-                            VoiceWizardWindow.MainFormGlobal.ControllerLabel.Text = labelBattery;
-                                 });
-
-                                 if (OSCReceiveSpamLog == true)
+                            if (OSCReceiveSpamLog == true)
                             {
 
                                 OutputText.outputLog("[Average Controller Battery: " + battery + "%]");
 
                             }
 
+
+                        }
+                        if (messageReceived.Address == "/avatar/parameters/HMDBat")
+                        {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
+                            {
+                                var forwardData = new OscMessage("/avatar/parameters/HMDBat", (float)messageReceived.Arguments[0]);
+                                OSC.OSCSender.Send(forwardData);
+                            }
+
+
+                            decimal HMDControllerBattery = decimal.Parse(messageReceived.Arguments[0].ToString());
+                            int battery = Convert.ToInt32(HMDControllerBattery * 100);
+                            globalHMDBattery = battery;
+
+                            var labelBattery = $"🔋 {battery}%";
+                            if (globalHMDBattery > HMDControllerPrevious)
+                            {
+                                controllerChargeHMD = "⚡";
+                                labelBattery += " " + controllerChargeHMD;
+                            }
+                            else { controllerChargeHMD = ""; }
+                            HMDControllerPrevious = globalHMDBattery;
+
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+
+
+                                if (VoiceWizardWindow.MainFormGlobal.groupBoxHead.ForeColor != Color.Green)
+                                {
+
+                                    VoiceWizardWindow.MainFormGlobal.groupBoxHead.ForeColor = Color.Green;
+                                    VoiceWizardWindow.MainFormGlobal.labelHead.ForeColor = Color.Green;
+                                }
+                                VoiceWizardWindow.MainFormGlobal.labelHead.Text = labelBattery;
+                            });
+
+                            if (OSCReceiveSpamLog == true)
+                            {
+
+                                OutputText.outputLog("[Right Controller Battery: " + battery + "%]");
+                            }
 
                         }
 
