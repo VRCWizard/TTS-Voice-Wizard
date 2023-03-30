@@ -170,6 +170,10 @@
             this.label49 = new System.Windows.Forms.Label();
             this.iconButton31 = new FontAwesome.Sharp.IconButton();
             this.tabHeartBeat = new System.Windows.Forms.TabPage();
+            this.groupBoxHead = new System.Windows.Forms.GroupBox();
+            this.labelHead = new System.Windows.Forms.Label();
+            this.groupBoxRight = new System.Windows.Forms.GroupBox();
+            this.labelRight = new System.Windows.Forms.Label();
             this.groupBoxOSCtoTTS = new System.Windows.Forms.GroupBox();
             this.labelOSCtoTTS = new System.Windows.Forms.Label();
             this.groupBoxControllers = new System.Windows.Forms.GroupBox();
@@ -494,10 +498,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.groupBoxRight = new System.Windows.Forms.GroupBox();
-            this.labelRight = new System.Windows.Forms.Label();
-            this.groupBoxHead = new System.Windows.Forms.GroupBox();
-            this.labelHead = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -523,6 +523,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabHeartBeat.SuspendLayout();
+            this.groupBoxHead.SuspendLayout();
+            this.groupBoxRight.SuspendLayout();
             this.groupBoxOSCtoTTS.SuspendLayout();
             this.groupBoxControllers.SuspendLayout();
             this.groupBoxHeartrate.SuspendLayout();
@@ -570,8 +572,6 @@
             this.panel1.SuspendLayout();
             this.panel2Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBoxRight.SuspendLayout();
-            this.groupBoxHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -2941,6 +2941,46 @@
             this.tabHeartBeat.Size = new System.Drawing.Size(853, 562);
             this.tabHeartBeat.TabIndex = 7;
             this.tabHeartBeat.Text = "Heartbeat";
+            // 
+            // groupBoxHead
+            // 
+            this.groupBoxHead.Controls.Add(this.labelHead);
+            this.groupBoxHead.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxHead.Location = new System.Drawing.Point(619, 143);
+            this.groupBoxHead.Name = "groupBoxHead";
+            this.groupBoxHead.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxHead.TabIndex = 113;
+            this.groupBoxHead.TabStop = false;
+            this.groupBoxHead.Text = "Headset";
+            // 
+            // labelHead
+            // 
+            this.labelHead.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelHead.Location = new System.Drawing.Point(6, 17);
+            this.labelHead.Name = "labelHead";
+            this.labelHead.Size = new System.Drawing.Size(146, 48);
+            this.labelHead.TabIndex = 1;
+            this.labelHead.Text = "🔋 0%";
+            // 
+            // groupBoxRight
+            // 
+            this.groupBoxRight.Controls.Add(this.labelRight);
+            this.groupBoxRight.ForeColor = System.Drawing.Color.Red;
+            this.groupBoxRight.Location = new System.Drawing.Point(619, 222);
+            this.groupBoxRight.Name = "groupBoxRight";
+            this.groupBoxRight.Size = new System.Drawing.Size(158, 70);
+            this.groupBoxRight.TabIndex = 112;
+            this.groupBoxRight.TabStop = false;
+            this.groupBoxRight.Text = "Right Controller";
+            // 
+            // labelRight
+            // 
+            this.labelRight.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRight.Location = new System.Drawing.Point(6, 17);
+            this.labelRight.Name = "labelRight";
+            this.labelRight.Size = new System.Drawing.Size(146, 48);
+            this.labelRight.TabIndex = 1;
+            this.labelRight.Text = "🔋 0%";
             // 
             // groupBoxOSCtoTTS
             // 
@@ -7368,46 +7408,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // groupBoxRight
-            // 
-            this.groupBoxRight.Controls.Add(this.labelRight);
-            this.groupBoxRight.ForeColor = System.Drawing.Color.Red;
-            this.groupBoxRight.Location = new System.Drawing.Point(619, 222);
-            this.groupBoxRight.Name = "groupBoxRight";
-            this.groupBoxRight.Size = new System.Drawing.Size(158, 70);
-            this.groupBoxRight.TabIndex = 112;
-            this.groupBoxRight.TabStop = false;
-            this.groupBoxRight.Text = "Right Controller";
-            // 
-            // labelRight
-            // 
-            this.labelRight.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelRight.Location = new System.Drawing.Point(6, 17);
-            this.labelRight.Name = "labelRight";
-            this.labelRight.Size = new System.Drawing.Size(146, 48);
-            this.labelRight.TabIndex = 1;
-            this.labelRight.Text = "🔋 0%";
-            // 
-            // groupBoxHead
-            // 
-            this.groupBoxHead.Controls.Add(this.labelHead);
-            this.groupBoxHead.ForeColor = System.Drawing.Color.Red;
-            this.groupBoxHead.Location = new System.Drawing.Point(619, 143);
-            this.groupBoxHead.Name = "groupBoxHead";
-            this.groupBoxHead.Size = new System.Drawing.Size(158, 70);
-            this.groupBoxHead.TabIndex = 113;
-            this.groupBoxHead.TabStop = false;
-            this.groupBoxHead.Text = "Headset";
-            // 
-            // labelHead
-            // 
-            this.labelHead.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelHead.Location = new System.Drawing.Point(6, 17);
-            this.labelHead.Name = "labelHead";
-            this.labelHead.Size = new System.Drawing.Size(146, 48);
-            this.labelHead.TabIndex = 1;
-            this.labelHead.Text = "🔋 0%";
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -7461,6 +7461,8 @@
             this.groupBox2.PerformLayout();
             this.tabHeartBeat.ResumeLayout(false);
             this.tabHeartBeat.PerformLayout();
+            this.groupBoxHead.ResumeLayout(false);
+            this.groupBoxRight.ResumeLayout(false);
             this.groupBoxOSCtoTTS.ResumeLayout(false);
             this.groupBoxControllers.ResumeLayout(false);
             this.groupBoxHeartrate.ResumeLayout(false);
@@ -7542,8 +7544,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBoxRight.ResumeLayout(false);
-            this.groupBoxHead.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -26,6 +26,7 @@ namespace OSCVRCWiz.Speech_Recognition
         public static string WhisperString = "";
         public static string WhisperPrevText = "";
         private static string langcode = "en";
+        private static bool WhisperError = false;
        
         public static void toggleWhisper()
         {
@@ -72,6 +73,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 CaptureThread.stopWhisper();
                 WhisperEnabled = false;
                 OutputText.outputLog("[Whisper Stopped Listening]");
+                WhisperError = false;
 
             }
         }
@@ -83,6 +85,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 CaptureThread.stopWhisper();
                 WhisperEnabled = false;
                 OutputText.outputLog("[Whisper Stopped Listening]");
+                WhisperError = false;
 
             }
         }
@@ -155,7 +158,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
             try
-            {
+           {
                 CommandLineArgs cla;
                 try
                 {
@@ -186,10 +189,35 @@ namespace OSCVRCWiz.Speech_Recognition
                     throw new ApplicationException($"Capture device index is out of range; the valid range is [ 0 .. {devices.Length - 1} ]");
                 
                 sCaptureParams cp = new sCaptureParams();
+            try
+            {
                 cp.minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString()); //1
                 cp.maxDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text.ToString()); //8
                 cp.dropStartSilence = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text.ToString());   // 250 ms
                 cp.pauseDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString());  //1
+            }
+            catch (Exception ex)
+            {
+                    cp.minDuration = 1.0f;
+                    cp.maxDuration = 8.0f;
+                    cp.dropStartSilence = 0.25f;
+                    cp.pauseDuration = 1.0f;
+                    if (WhisperError == false)
+                    {
+                        OutputText.outputLog("[WARNING: Error Occured loading Whisper custom values. Forcing defaults]", Color.DarkOrange);
+                    }
+                    WhisperError = true;
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        
+                  
+                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text = "1.0";
+                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = "8.0";
+                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = "0.25";
+                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = "1.0";
+                    });
+
+                }
 
                 if (cla.diarize)
                     cp.flags |= eCaptureFlags.Stereo;
@@ -221,17 +249,17 @@ namespace OSCVRCWiz.Speech_Recognition
                 context.timingsPrint();
                 Debug.WriteLine("finished");
                 return 0;
-            }
+              }
             catch (Exception ex)
-            {
-                // Console.WriteLine( ex.Message );
-                // Debug.WriteLine(ex.ToString());
+            { 
+                
+               //  Debug.WriteLine(ex.ToString());
                 OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
                 OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
 
 
                 WhisperEnabled = false;
-                // return;
+              //   return;
                 return ex.HResult;
             }
         }

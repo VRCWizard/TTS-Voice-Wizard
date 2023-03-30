@@ -1,25 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-//using SharpTalk;
-//using CSCore;
-//using CSCore.MediaFoundation;
-//using CSCore.SoundOut;
 using System.Media;
-//using CSCore.CoreAudioAPI;
 using Resources;
 using OSCVRCWiz.Text;
 using NAudio.Wave;
-using OSCVRCWiz.Settings;
-using System.Net.Http.Json;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Linq.Expressions;
-using Microsoft.AspNetCore.Components.Forms;
 using NAudio.Wave.SampleProviders;
 using VarispeedDemo.SoundTouch;
-//using Windows.Media.Protection.PlayReady;
-//using Amazon.Polly;
+
 
 namespace OSCVRCWiz.TTS
 {
