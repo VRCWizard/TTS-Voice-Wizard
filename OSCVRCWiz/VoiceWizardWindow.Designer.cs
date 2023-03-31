@@ -253,6 +253,8 @@
             this.rjToggleButtonOSC = new OSCVRCWiz.RJControls.RJToggleButton();
             this.comboBoxPara = new System.Windows.Forms.ComboBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label146 = new System.Windows.Forms.Label();
+            this.rjToggleButtonAprilFools = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label135 = new System.Windows.Forms.Label();
             this.rjToggleButtonUse2ndOutput = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label125 = new System.Windows.Forms.Label();
@@ -602,7 +604,7 @@
             this.speechTTSButton.Location = new System.Drawing.Point(10, 181);
             this.speechTTSButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.speechTTSButton.Name = "speechTTSButton";
-            this.speechTTSButton.Size = new System.Drawing.Size(480, 44);
+            this.speechTTSButton.Size = new System.Drawing.Size(489, 44);
             this.speechTTSButton.TabIndex = 5;
             this.speechTTSButton.Text = "Speech To Text To Speech";
             this.speechTTSButton.UseVisualStyleBackColor = false;
@@ -1449,6 +1451,7 @@
             "Amazon Polly",
             "Azure",
             "ElevenLabs",
+            "Fart to Speech",
             "Moonbase",
             "Glados",
             "TikTok",
@@ -4084,6 +4087,8 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.label146);
+            this.groupBox13.Controls.Add(this.rjToggleButtonAprilFools);
             this.groupBox13.Controls.Add(this.label135);
             this.groupBox13.Controls.Add(this.rjToggleButtonUse2ndOutput);
             this.groupBox13.Controls.Add(this.label125);
@@ -4106,6 +4111,33 @@
             this.groupBox13.TabIndex = 134;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Audio";
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label146.ForeColor = System.Drawing.Color.Snow;
+            this.label146.Location = new System.Drawing.Point(210, 71);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(63, 15);
+            this.label146.TabIndex = 138;
+            this.label146.Text = "April Fools";
+            // 
+            // rjToggleButtonAprilFools
+            // 
+            this.rjToggleButtonAprilFools.AutoSize = true;
+            this.rjToggleButtonAprilFools.Location = new System.Drawing.Point(162, 71);
+            this.rjToggleButtonAprilFools.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonAprilFools.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonAprilFools.Name = "rjToggleButtonAprilFools";
+            this.rjToggleButtonAprilFools.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonAprilFools.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonAprilFools.OnBackColor = System.Drawing.Color.DeepPink;
+            this.rjToggleButtonAprilFools.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonAprilFools.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonAprilFools.TabIndex = 139;
+            this.rjToggleButtonAprilFools.UseVisualStyleBackColor = true;
+            this.rjToggleButtonAprilFools.CheckedChanged += new System.EventHandler(this.rjToggleButtonAprilFools_CheckedChanged);
             // 
             // label135
             // 
@@ -4274,6 +4306,8 @@
             // rjToggleButtonMedia
             // 
             this.rjToggleButtonMedia.AutoSize = true;
+            this.rjToggleButtonMedia.Checked = true;
+            this.rjToggleButtonMedia.CheckState = System.Windows.Forms.CheckState.Checked;
             this.rjToggleButtonMedia.Location = new System.Drawing.Point(20, 71);
             this.rjToggleButtonMedia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonMedia.MinimumSize = new System.Drawing.Size(39, 16);
@@ -8017,5 +8051,7 @@
         public Label labelHead;
         public GroupBox groupBoxRight;
         public Label labelRight;
+        private Label label146;
+        public RJControls.RJToggleButton rjToggleButtonAprilFools;
     }
 }
