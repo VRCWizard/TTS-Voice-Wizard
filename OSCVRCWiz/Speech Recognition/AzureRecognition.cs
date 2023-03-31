@@ -178,7 +178,7 @@ namespace OSCVRCWiz
                 };
                 speechRecognizer1.Canceled += (sender, eventArgs) =>
                 {
-                    Console.WriteLine(eventArgs.Result.Text);
+                   // Console.WriteLine(eventArgs.Result.Text);
                    // var ot = new OutputText();
                     Task.Run(() => OutputText.outputLog("[Azure Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
                     OutputText.outputLog("[If this issue occurs often try searching the discord server. The solution has likely already been documented]", Color.DarkOrange);

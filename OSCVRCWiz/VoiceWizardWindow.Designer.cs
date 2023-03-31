@@ -1451,7 +1451,6 @@
             "ElevenLabs",
             "Moonbase",
             "Glados",
-            "Miku",
             "TikTok",
             "No TTS"});
             this.comboBoxTTSMode.Location = new System.Drawing.Point(19, 42);

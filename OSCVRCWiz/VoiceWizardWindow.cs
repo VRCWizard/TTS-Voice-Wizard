@@ -35,7 +35,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.8.9";
+        public static string currentVersion = "1.0.9";
         string releaseDate = "March 30, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -793,7 +793,7 @@ namespace OSCVRCWiz
                             Task.Run(() => AmazonPollyTTS.PollyTTS(speechText, speechCt.Token));
                             break;
                         case "Miku":
-                            Task.Run(() => MikuTTS.MikuTextAsSpeech(speechText, speechCt.Token));
+                           // Task.Run(() => MikuTTS.MikuTextAsSpeech(speechText, speechCt.Token));
                             break;
 
 
