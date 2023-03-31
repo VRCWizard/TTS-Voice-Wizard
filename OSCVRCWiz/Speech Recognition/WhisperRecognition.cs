@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -157,8 +158,8 @@ namespace OSCVRCWiz.Speech_Recognition
 		{
 
 
-            try
-           {
+         //   try
+         //  {
                 CommandLineArgs cla;
                 try
                 {
@@ -191,10 +192,12 @@ namespace OSCVRCWiz.Speech_Recognition
                 sCaptureParams cp = new sCaptureParams();
             try
             {
-                cp.minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString()); //1
-                cp.maxDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text.ToString()); //8
-                cp.dropStartSilence = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text.ToString());   // 250 ms
-                cp.pauseDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString());  //1
+                
+                cp.minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString(), CultureInfo.InvariantCulture); //1
+                cp.maxDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text.ToString(), CultureInfo.InvariantCulture); //8
+                cp.dropStartSilence = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text.ToString(), CultureInfo.InvariantCulture);   // 250 ms
+                cp.pauseDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);  //1
+                //we need culture invariant or for some languages like german 8.0 will be converted to 80 because they use "," instead of "."
             }
             catch (Exception ex)
             {
@@ -249,19 +252,19 @@ namespace OSCVRCWiz.Speech_Recognition
                 context.timingsPrint();
                 Debug.WriteLine("finished");
                 return 0;
-              }
-            catch (Exception ex)
-            { 
+           //   }
+          //  catch (Exception ex)
+         //   { 
                 
-               //  Debug.WriteLine(ex.ToString());
-                OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
-                OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
+               
+            //    OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
+           //     OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
 
 
-                WhisperEnabled = false;
+           //     WhisperEnabled = false;
               //   return;
-                return ex.HResult;
-            }
+          //      return ex.HResult;
+         //   }
         }
 			
 			
