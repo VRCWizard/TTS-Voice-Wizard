@@ -35,8 +35,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.9.1";
-        string releaseDate = "March 31, 2023";
+        public static string currentVersion = "1.0.9.7";
+        string releaseDate = "April 2, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -675,7 +675,14 @@ namespace OSCVRCWiz
                         {
                             try
                             {
-                                var soundPlayer = new SoundPlayer(@"sounds\TTSButton.wav");
+
+                                
+                                string sound = @"sounds\TTSButton.wav";
+                             //   if (rjToggleButtonAprilFools.Checked == true)
+                              //  {
+                            //        sound = @"sounds\ringTone.wav";
+                            //    }
+                                var soundPlayer = new SoundPlayer(sound);
                                 soundPlayer.Play();
                             }
                             catch (Exception ex)
@@ -796,6 +803,10 @@ namespace OSCVRCWiz
                            // Task.Run(() => MikuTTS.MikuTextAsSpeech(speechText, speechCt.Token));
                             break;
 
+                        case "Fart to Speech":
+                            // Task.Run(() => FartTTS.FartTextAsSpeech(speechText, speechCt.Token)); //april fools
+                            break;
+
 
                         default:
 
@@ -865,7 +876,13 @@ namespace OSCVRCWiz
             {
                 try
                 {
-                    var soundPlayer = new SoundPlayer(@"sounds\speechButton.wav");
+                    string sound = @"sounds\speechButton.wav";
+                 //   if(rjToggleButtonAprilFools.Checked == true)
+                //    {
+                 //       sound = @"sounds\metalPipe.wav";
+               //     }
+                    var soundPlayer = new SoundPlayer(sound);
+                    
                     soundPlayer.Play();
                 }
                 catch (Exception ex)
@@ -2224,7 +2241,33 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Miku";
 
-                    OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+                 //   OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+
+                    break;
+                case "Fart to Speech":
+
+                    comboBox2.Items.Clear();  
+                    comboBox2.Items.Add("Squeaky Cheeks");
+                    comboBox2.Items.Add("Stinky Symphony");
+                    comboBox2.Items.Add("Thunder Down Under");
+                    comboBox2.Items.Add("Silent But Deadly");
+                    comboBox2.Items.Add("Pooting Plunger");
+                    comboBox2.Items.Add("Air Biscuit");
+                    comboBox2.Items.Add("Ripping Rector");
+                    comboBox2.Items.Add("Flatulent Flute");
+                    comboBox2.SelectedIndex = 0;
+
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+                    TTSModeSaved = "Fart to Speech";
+
+                   // OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
 
                     break;
 
@@ -2477,6 +2520,7 @@ namespace OSCVRCWiz
         }
         Color DarkModeColor = Color.FromArgb(31, 30, 68);
         Color LightModeColor = Color.FromArgb(68, 72, 111);
+        
 
         private void rjToggleButton7_CheckedChanged_1(object sender, EventArgs e)
         {
@@ -3235,6 +3279,28 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = "8.0";
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = "0.25";
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = "1.0";
+        }
+
+        private void rjToggleButtonAprilFools_CheckedChanged(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+
+
+
+             //   if (rjToggleButtonAprilFools.Checked == true)
+            //    {
+                //    rjToggleButtonMedia.Checked = true;
+                //    TTSButton.BackColor = Color.DeepPink;
+                //    speechTTSButton.BackColor = Color.DeepPink;
+             //   }
+             //   if (rjToggleButtonAprilFools.Checked == false)
+             //   {
+                //    TTSButton.BackColor = DarkModeColor;
+               //     speechTTSButton.BackColor = DarkModeColor;
+
+            //    }
+            });
         }
     }
 

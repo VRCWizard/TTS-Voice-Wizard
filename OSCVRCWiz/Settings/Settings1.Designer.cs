@@ -1690,5 +1690,17 @@ namespace OSCVRCWiz.Settings {
                 this["pauseDuration"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool aprilFools2023 {
+            get {
+                return ((bool)(this["aprilFools2023"]));
+            }
+            set {
+                this["aprilFools2023"] = value;
+            }
+        }
     }
 }

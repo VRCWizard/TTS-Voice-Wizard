@@ -602,7 +602,7 @@
             this.speechTTSButton.Location = new System.Drawing.Point(10, 181);
             this.speechTTSButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.speechTTSButton.Name = "speechTTSButton";
-            this.speechTTSButton.Size = new System.Drawing.Size(480, 44);
+            this.speechTTSButton.Size = new System.Drawing.Size(489, 44);
             this.speechTTSButton.TabIndex = 5;
             this.speechTTSButton.Text = "Speech To Text To Speech";
             this.speechTTSButton.UseVisualStyleBackColor = false;
@@ -4274,6 +4274,8 @@
             // rjToggleButtonMedia
             // 
             this.rjToggleButtonMedia.AutoSize = true;
+            this.rjToggleButtonMedia.Checked = true;
+            this.rjToggleButtonMedia.CheckState = System.Windows.Forms.CheckState.Checked;
             this.rjToggleButtonMedia.Location = new System.Drawing.Point(20, 71);
             this.rjToggleButtonMedia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonMedia.MinimumSize = new System.Drawing.Size(39, 16);
