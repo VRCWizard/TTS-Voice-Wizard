@@ -158,19 +158,13 @@ namespace OSCVRCWiz.Speech_Recognition
 		{
 
 
-         //   try
-         //  {
+            try
+           {
                 CommandLineArgs cla;
                 try
                 {
                     cla = new CommandLineArgs(args);
-                //cla.max_len = 300;
-                    
-                  //  cla.captureDeviceIndex = 0;
-                  //  cla.model = @"C:\Users\\bdw10\Downloads\base.en.pt";
-                    
 
-                    //i can set all the cla argument here very easily
                 }
                 catch (OperationCanceledException)
                 {
@@ -252,19 +246,19 @@ namespace OSCVRCWiz.Speech_Recognition
                 context.timingsPrint();
                 Debug.WriteLine("finished");
                 return 0;
-           //   }
-          //  catch (Exception ex)
-         //   { 
+              }
+            catch (Exception ex)
+            { 
                 
                
-            //    OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
-           //     OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
+                OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
+                OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
 
 
-           //     WhisperEnabled = false;
-              //   return;
-          //      return ex.HResult;
-         //   }
+               WhisperEnabled = false;
+                
+                return ex.HResult;
+            }
         }
 			
 			
