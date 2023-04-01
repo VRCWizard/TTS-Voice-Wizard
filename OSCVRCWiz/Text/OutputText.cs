@@ -88,6 +88,12 @@ namespace OSCVRCWiz.Text
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true)
                 {
                     await File.WriteAllTextAsync(@"TextOut\OBSText.txt", textstring);
+                   
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //hide
+                    {
+                        VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -149,6 +155,12 @@ namespace OSCVRCWiz.Text
                 }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //inactive hide
                 {
+                    if (type == "bpm")
+                    {
+                        SpotifyAddon.pauseSpotify = true;
+                        //this is for when using counters or bpm i guess too, it makes them pause spotify(media output)
+                    }
+
                     VoiceWizardWindow.MainFormGlobal.hideTimer.Change(eraseDelay, 0);
 
                 }
