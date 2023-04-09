@@ -287,8 +287,10 @@ namespace OSCVRCWiz.Addons
                         OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
                         previousError = ex.Message.ToString();
                         try {
-
-                            OutputText.outputLog("Spotify API Inner Exception: " + ex.InnerException.Message, Color.Red);
+                            if (ex.InnerException != null)
+                            {
+                                OutputText.outputLog("Spotify API Inner Exception: " + ex.InnerException.Message, Color.Red);
+                            }
 
                         }
                         catch { }

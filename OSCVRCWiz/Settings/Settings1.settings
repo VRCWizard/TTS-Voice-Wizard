@@ -234,7 +234,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="STTModeSave" Type="System.String" Scope="User">
-      <Value Profile="(Default)">System Speech</Value>
+      <Value Profile="(Default)">Whisper</Value>
     </Setting>
     <Setting Name="modelnamesave" Type="System.String" Scope="User">
       <Value Profile="(Default)">no folder selected</Value>
@@ -421,6 +421,9 @@
     </Setting>
     <Setting Name="aprilFools2023" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="modelSelected" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ggml-tiny.bin (75 MB)</Value>
     </Setting>
   </Settings>
 </SettingsFile>

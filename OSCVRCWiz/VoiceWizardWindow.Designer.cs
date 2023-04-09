@@ -452,6 +452,13 @@
             this.label94 = new System.Windows.Forms.Label();
             this.LocalSpeech = new System.Windows.Forms.TabPage();
             this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.modelLabel = new System.Windows.Forms.Label();
+            this.label148 = new System.Windows.Forms.Label();
+            this.button42 = new System.Windows.Forms.Button();
+            this.label146 = new System.Windows.Forms.Label();
+            this.rjToggleButtonWhisperToEnglish = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.label147 = new System.Windows.Forms.Label();
+            this.comboBoxWhisperModelDownload = new System.Windows.Forms.ComboBox();
             this.button41 = new System.Windows.Forms.Button();
             this.label144 = new System.Windows.Forms.Label();
             this.textBoxWhisperPauseDuration = new System.Windows.Forms.TextBox();
@@ -6734,6 +6741,13 @@
             // 
             // groupBox38
             // 
+            this.groupBox38.Controls.Add(this.modelLabel);
+            this.groupBox38.Controls.Add(this.label148);
+            this.groupBox38.Controls.Add(this.button42);
+            this.groupBox38.Controls.Add(this.label146);
+            this.groupBox38.Controls.Add(this.rjToggleButtonWhisperToEnglish);
+            this.groupBox38.Controls.Add(this.label147);
+            this.groupBox38.Controls.Add(this.comboBoxWhisperModelDownload);
             this.groupBox38.Controls.Add(this.button41);
             this.groupBox38.Controls.Add(this.label144);
             this.groupBox38.Controls.Add(this.textBoxWhisperPauseDuration);
@@ -6753,18 +6767,113 @@
             this.groupBox38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox38.Name = "groupBox38";
             this.groupBox38.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox38.Size = new System.Drawing.Size(808, 124);
+            this.groupBox38.Size = new System.Drawing.Size(808, 214);
             this.groupBox38.TabIndex = 159;
             this.groupBox38.TabStop = false;
             this.groupBox38.Text = "Whisper.cpp Model (BIN file)";
             this.groupBox38.Enter += new System.EventHandler(this.groupBox38_Enter);
+            // 
+            // modelLabel
+            // 
+            this.modelLabel.AutoSize = true;
+            this.modelLabel.ForeColor = System.Drawing.Color.Red;
+            this.modelLabel.Location = new System.Drawing.Point(302, 49);
+            this.modelLabel.Name = "modelLabel";
+            this.modelLabel.Size = new System.Drawing.Size(131, 15);
+            this.modelLabel.TabIndex = 180;
+            this.modelLabel.Text = "model not downloaded";
+            // 
+            // label148
+            // 
+            this.label148.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label148.AutoSize = true;
+            this.label148.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label148.ForeColor = System.Drawing.Color.Snow;
+            this.label148.Location = new System.Drawing.Point(6, 79);
+            this.label148.Name = "label148";
+            this.label148.Size = new System.Drawing.Size(68, 15);
+            this.label148.TabIndex = 179;
+            this.label148.Text = "Model Path";
+            // 
+            // button42
+            // 
+            this.button42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button42.ForeColor = System.Drawing.Color.Snow;
+            this.button42.Location = new System.Drawing.Point(166, 44);
+            this.button42.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(130, 25);
+            this.button42.TabIndex = 178;
+            this.button42.Text = "Download or Select";
+            this.button42.UseVisualStyleBackColor = false;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.ForeColor = System.Drawing.Color.Snow;
+            this.label146.Location = new System.Drawing.Point(52, 171);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(108, 15);
+            this.label146.TabIndex = 175;
+            this.label146.Text = "Translate to English";
+            this.label146.Visible = false;
+            // 
+            // rjToggleButtonWhisperToEnglish
+            // 
+            this.rjToggleButtonWhisperToEnglish.AutoSize = true;
+            this.rjToggleButtonWhisperToEnglish.Checked = true;
+            this.rjToggleButtonWhisperToEnglish.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonWhisperToEnglish.Location = new System.Drawing.Point(7, 169);
+            this.rjToggleButtonWhisperToEnglish.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonWhisperToEnglish.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonWhisperToEnglish.Name = "rjToggleButtonWhisperToEnglish";
+            this.rjToggleButtonWhisperToEnglish.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonWhisperToEnglish.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonWhisperToEnglish.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonWhisperToEnglish.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonWhisperToEnglish.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonWhisperToEnglish.TabIndex = 174;
+            this.rjToggleButtonWhisperToEnglish.UseVisualStyleBackColor = true;
+            this.rjToggleButtonWhisperToEnglish.Visible = false;
+            // 
+            // label147
+            // 
+            this.label147.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label147.AutoSize = true;
+            this.label147.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label147.ForeColor = System.Drawing.Color.Snow;
+            this.label147.Location = new System.Drawing.Point(7, 29);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(127, 15);
+            this.label147.TabIndex = 177;
+            this.label147.Text = "Auto Download Model";
+            // 
+            // comboBoxWhisperModelDownload
+            // 
+            this.comboBoxWhisperModelDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxWhisperModelDownload.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxWhisperModelDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxWhisperModelDownload.FormattingEnabled = true;
+            this.comboBoxWhisperModelDownload.Items.AddRange(new object[] {
+            "ggml-tiny.bin (75 MB)",
+            "ggml-base.bin (142 MB)",
+            "ggml-small.bin (466 MB)",
+            "ggml-medium.bin (1.5 GB)"});
+            this.comboBoxWhisperModelDownload.Location = new System.Drawing.Point(7, 46);
+            this.comboBoxWhisperModelDownload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxWhisperModelDownload.Name = "comboBoxWhisperModelDownload";
+            this.comboBoxWhisperModelDownload.Size = new System.Drawing.Size(153, 23);
+            this.comboBoxWhisperModelDownload.TabIndex = 176;
+            this.comboBoxWhisperModelDownload.SelectedIndexChanged += new System.EventHandler(this.comboBoxWhisperModelDownload_SelectedIndexChanged);
             // 
             // button41
             // 
             this.button41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button41.ForeColor = System.Drawing.Color.Snow;
-            this.button41.Location = new System.Drawing.Point(696, 81);
+            this.button41.Location = new System.Drawing.Point(698, 156);
             this.button41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(50, 25);
@@ -6778,7 +6887,7 @@
             this.label144.AutoSize = true;
             this.label144.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label144.ForeColor = System.Drawing.Color.Snow;
-            this.label144.Location = new System.Drawing.Point(587, 66);
+            this.label144.Location = new System.Drawing.Point(589, 141);
             this.label144.Name = "label144";
             this.label144.Size = new System.Drawing.Size(103, 15);
             this.label144.TabIndex = 172;
@@ -6786,7 +6895,7 @@
             // 
             // textBoxWhisperPauseDuration
             // 
-            this.textBoxWhisperPauseDuration.Location = new System.Drawing.Point(587, 83);
+            this.textBoxWhisperPauseDuration.Location = new System.Drawing.Point(589, 158);
             this.textBoxWhisperPauseDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxWhisperPauseDuration.Name = "textBoxWhisperPauseDuration";
             this.textBoxWhisperPauseDuration.Size = new System.Drawing.Size(96, 23);
@@ -6798,7 +6907,7 @@
             this.label142.AutoSize = true;
             this.label142.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label142.ForeColor = System.Drawing.Color.Snow;
-            this.label142.Location = new System.Drawing.Point(459, 66);
+            this.label142.Location = new System.Drawing.Point(461, 141);
             this.label142.Name = "label142";
             this.label142.Size = new System.Drawing.Size(116, 15);
             this.label142.TabIndex = 170;
@@ -6806,7 +6915,7 @@
             // 
             // textBoxWhisperDropSilence
             // 
-            this.textBoxWhisperDropSilence.Location = new System.Drawing.Point(460, 83);
+            this.textBoxWhisperDropSilence.Location = new System.Drawing.Point(462, 158);
             this.textBoxWhisperDropSilence.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxWhisperDropSilence.Name = "textBoxWhisperDropSilence";
             this.textBoxWhisperDropSilence.Size = new System.Drawing.Size(111, 23);
@@ -6818,7 +6927,7 @@
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label41.ForeColor = System.Drawing.Color.Snow;
-            this.label41.Location = new System.Drawing.Point(349, 66);
+            this.label41.Location = new System.Drawing.Point(351, 141);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(95, 15);
             this.label41.TabIndex = 168;
@@ -6826,7 +6935,7 @@
             // 
             // textBoxWhisperMaxDuration
             // 
-            this.textBoxWhisperMaxDuration.Location = new System.Drawing.Point(350, 83);
+            this.textBoxWhisperMaxDuration.Location = new System.Drawing.Point(352, 158);
             this.textBoxWhisperMaxDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxWhisperMaxDuration.Name = "textBoxWhisperMaxDuration";
             this.textBoxWhisperMaxDuration.Size = new System.Drawing.Size(94, 23);
@@ -6838,7 +6947,7 @@
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label40.ForeColor = System.Drawing.Color.Snow;
-            this.label40.Location = new System.Drawing.Point(241, 66);
+            this.label40.Location = new System.Drawing.Point(243, 141);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(93, 15);
             this.label40.TabIndex = 166;
@@ -6846,7 +6955,7 @@
             // 
             // textBoxWhisperMinDuration
             // 
-            this.textBoxWhisperMinDuration.Location = new System.Drawing.Point(241, 83);
+            this.textBoxWhisperMinDuration.Location = new System.Drawing.Point(243, 158);
             this.textBoxWhisperMinDuration.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxWhisperMinDuration.Name = "textBoxWhisperMinDuration";
             this.textBoxWhisperMinDuration.Size = new System.Drawing.Size(93, 23);
@@ -6857,7 +6966,7 @@
             // 
             this.label121.AutoSize = true;
             this.label121.ForeColor = System.Drawing.Color.Snow;
-            this.label121.Location = new System.Drawing.Point(50, 66);
+            this.label121.Location = new System.Drawing.Point(52, 141);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(66, 15);
             this.label121.TabIndex = 164;
@@ -6868,7 +6977,7 @@
             this.rjToggleButtonFilterNoiseWhisper.AutoSize = true;
             this.rjToggleButtonFilterNoiseWhisper.Checked = true;
             this.rjToggleButtonFilterNoiseWhisper.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonFilterNoiseWhisper.Location = new System.Drawing.Point(5, 64);
+            this.rjToggleButtonFilterNoiseWhisper.Location = new System.Drawing.Point(7, 139);
             this.rjToggleButtonFilterNoiseWhisper.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonFilterNoiseWhisper.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonFilterNoiseWhisper.Name = "rjToggleButtonFilterNoiseWhisper";
@@ -6907,7 +7016,7 @@
             this.button34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button34.ForeColor = System.Drawing.Color.Snow;
-            this.button34.Location = new System.Drawing.Point(688, 18);
+            this.button34.Location = new System.Drawing.Point(690, 95);
             this.button34.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(66, 22);
@@ -6919,7 +7028,7 @@
             // whisperModelTextBox
             // 
             this.whisperModelTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.whisperModelTextBox.Location = new System.Drawing.Point(5, 20);
+            this.whisperModelTextBox.Location = new System.Drawing.Point(7, 97);
             this.whisperModelTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.whisperModelTextBox.Name = "whisperModelTextBox";
             this.whisperModelTextBox.ReadOnly = true;
@@ -8019,5 +8128,12 @@
         public Label labelHead;
         public GroupBox groupBoxRight;
         public Label labelRight;
+        private Label label146;
+        public RJControls.RJToggleButton rjToggleButtonWhisperToEnglish;
+        private Label label148;
+        private Button button42;
+        private Label label147;
+        public ComboBox comboBoxWhisperModelDownload;
+        public Label modelLabel;
     }
 }

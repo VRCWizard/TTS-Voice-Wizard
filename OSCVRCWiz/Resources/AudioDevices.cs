@@ -6,6 +6,7 @@ using OSCVRCWiz.Text;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Media3D;
 using VarispeedDemo.SoundTouch;
 //using NAudio.CoreAudioApi;
 
@@ -110,48 +111,69 @@ namespace Resources
 
         public static int getCurrentOutputDevice()
         {
-
-            // Setting to Correct Input Device
-            int waveDevices = WaveOut.DeviceCount;
-            //InputDevicesDict.Clear();
-            Dictionary<string, int> DevicesDict = new Dictionary<string, int>();
-            for (int waveDevice = 0; waveDevice < waveDevices; waveDevice++)
+            try
             {
-                WaveOutCapabilities deviceInfo = WaveOut.GetCapabilities(waveDevice);
-                DevicesDict.Add(deviceInfo.ProductName, waveDevice);
-            }
-
-            foreach (var kvp in DevicesDict)
-            {
-                if (AudioDevices.currentOutputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                // Setting to Correct Input Device
+                int waveDevices = WaveOut.DeviceCount;
+                //InputDevicesDict.Clear();
+                Dictionary<string, int> DevicesDict = new Dictionary<string, int>();
+                for (int waveDevice = 0; waveDevice < waveDevices; waveDevice++)
                 {
-                    return kvp.Value;
-
+                    WaveOutCapabilities deviceInfo = WaveOut.GetCapabilities(waveDevice);
+                    DevicesDict.Add(deviceInfo.ProductName, waveDevice);
                 }
+
+                foreach (var kvp in DevicesDict)
+                {
+                    if (AudioDevices.currentOutputDeviceName.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return kvp.Value;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[" +ex.Message+"]", Color.Red);
+                OutputText.outputLog("[ For the 'An item with the same key has already been added' error go to Control Panel > Sound > right click on one of the devices with the same name > properties > rename the device.]", Color.DarkOrange);
+                OutputText.outputLog("[Defaulting to output device 0]", Color.DarkOrange);
+
+                return 0;
             }
             return 0;
 
         }
         public static int getCurrentOutputDevice2()
         {
-
-            // Setting to Correct Input Device
-            int waveDevices = WaveOut.DeviceCount;
-            //InputDevicesDict.Clear();
-            Dictionary<string, int> DevicesDict = new Dictionary<string, int>();
-            for (int waveDevice = 0; waveDevice < waveDevices; waveDevice++)
+            try
             {
-                WaveOutCapabilities deviceInfo = WaveOut.GetCapabilities(waveDevice);
-                DevicesDict.Add(deviceInfo.ProductName, waveDevice);
-            }
 
-            foreach (var kvp in DevicesDict)
-            {
-                if (AudioDevices.currentOutputDeviceName2nd.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                // Setting to Correct Input Device
+                int waveDevices = WaveOut.DeviceCount;
+                //InputDevicesDict.Clear();
+                Dictionary<string, int> DevicesDict = new Dictionary<string, int>();
+                for (int waveDevice = 0; waveDevice < waveDevices; waveDevice++)
                 {
-                    return kvp.Value;
-
+                    WaveOutCapabilities deviceInfo = WaveOut.GetCapabilities(waveDevice);
+                    DevicesDict.Add(deviceInfo.ProductName, waveDevice);
                 }
+
+                foreach (var kvp in DevicesDict)
+                {
+                    if (AudioDevices.currentOutputDeviceName2nd.Contains(kvp.Key, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return kvp.Value;
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[" + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[ For the 'An item with the same key has already been added' error go to Control Panel > Sound > right click on one of the devices with the same name > properties > rename the device.]", Color.DarkOrange);
+                OutputText.outputLog("[Defaulting to output device 0]", Color.DarkOrange);
+
+                return 0;
             }
             return 0;
 

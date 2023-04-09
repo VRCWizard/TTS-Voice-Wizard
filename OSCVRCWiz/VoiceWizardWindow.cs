@@ -25,6 +25,8 @@ using System.Windows.Forms;
 using AutoUpdaterDotNET;
 using OSCVRCWiz.Speech_Recognition;
 using static System.Net.Mime.MediaTypeNames;
+using System.ComponentModel;
+using static System.Net.WebRequestMethods;
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -35,8 +37,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.0.9.8";
-        string releaseDate = "April 2, 2023";
+        public static string currentVersion = "1.1.0";
+        string releaseDate = "April 9, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -533,15 +535,23 @@ namespace OSCVRCWiz
 
             if(rjToggleButton8.Checked == true)//turn on osc listener on start
             {
-                Task.Run(() => OSCListener.OSCRecieveHeartRate(this));
+                try
+                {
+                    Task.Run(() => OSCListener.OSCRecieveHeartRate());
+
+                }
+                catch (Exception ex) { OutputText.outputLog("[OSC Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
                 button7.Enabled = false;
 
             }
 
             if (rjToggleButton11.Checked == true)//turn on osc listener on start
             {
+                try { 
                 Task.Run(() => OSC.OSCLegacyVRChatListener());
-                button33.Enabled = false;
+            }
+                catch (Exception ex) { OutputText.outputLog("[OSC VRChat Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
+            button33.Enabled = false;
 
             }
 
@@ -584,7 +594,7 @@ namespace OSCVRCWiz
             {
                 if (rjToggleButtonOBSText.Checked == true)
                 {
-                    File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
+                    System.IO.File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
                 }
             }
             catch(Exception ex)
@@ -906,8 +916,17 @@ namespace OSCVRCWiz
 
                         break;
                case "Whisper":
+                        if( whisperModelTextBox.Text.ToString()== "no model selected")
+                        {
+                            downloadWhisperModel();
+                            OutputText.outputLog("[Auto installing default Whisper model for you, please wait. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.DarkOrange);
+                        }
+                        else 
+                        {
+                            Task.Run(() => WhisperRecognition.toggleWhisper());
+                        }
 
-                       Task.Run(() => WhisperRecognition.toggleWhisper());
+                       
                      //   Task.Run(() => WhisperRecognitionV2.Demo());
 
                         break;
@@ -1474,8 +1493,12 @@ namespace OSCVRCWiz
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            Task.Run(() => OSCListener.OSCRecieveHeartRate(this));
-           
+            try
+            {
+                Task.Run(() => OSCListener.OSCRecieveHeartRate());
+            }
+            catch (Exception ex) { OutputText.outputLog("[OSC Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
+
 
         }
         private void rjToggleButton2_CheckedChanged(object sender, EventArgs e)
@@ -2957,8 +2980,12 @@ namespace OSCVRCWiz
 
         private void button33_Click(object sender, EventArgs e)
         {
-            Task.Run(() => OSC.OSCLegacyVRChatListener());
-           
+            try
+            {
+                Task.Run(() => OSC.OSCLegacyVRChatListener());
+            }
+            catch (Exception ex) { OutputText.outputLog("[OSC VRChat Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
+
         }
 
         private void button32_Click(object sender, EventArgs e)
@@ -3302,6 +3329,141 @@ namespace OSCVRCWiz
             //    }
             });
         }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            downloadWhisperModel();
+        }
+        private static void downloadWhisperModel()
+        {
+            string address = "https://huggingface.co/datasets/ggerganov/whisper.cpp/resolve/main/";
+            string path = "models/";
+
+            
+            switch (VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Text.ToString())
+            {
+                case "ggml-tiny.bin (75 MB)":
+                    path += "ggml-tiny.bin";
+                    address += "ggml-tiny.bin";
+
+                    break;
+
+                case "ggml-base.bin (142 MB)":
+                    path += "ggml-base.bin";
+                    address += "ggml-base.bin";
+
+                    break;
+
+                case "ggml-small.bin (466 MB)":
+                    path += "ggml-small.bin";
+                    address += "ggml-small.bin";
+
+                    break;
+
+                case "ggml-medium.bin (1.5 GB)":
+                    path += "ggml-medium.bin";
+                    address += "ggml-medium.bin";
+
+                    break;
+
+                default: break;
+            }
+
+            if (!System.IO.File.Exists(path))
+            {
+                VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.DarkOrange;
+                VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model downloading... PLEASE WAIT";
+
+
+                WebClient client = new WebClient();
+                Uri uri = new Uri(address);
+
+                // Call DownloadFileCallback2 when the download completes.
+                client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCallback2);
+
+                // Specify a progress notification handler here ...
+
+                client.DownloadFileAsync(uri, path);
+            }
+            VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text = path;
+        }
+        private static void DownloadFileCallback2(object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+               // Console.WriteLine("File download cancelled.");
+                MessageBox.Show("File download cancelled");
+                OutputText.outputLog("[Whisper Model Download Cancelled: Model Download was cancelled, If this was un-intentional try manually downloading the model from here]", Color.Red);
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.Red;
+                    VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model error";
+                });
+                return;
+            }
+
+            if (e.Error != null)
+            {
+                MessageBox.Show("Error while downloading file.");
+                OutputText.outputLog("[Whisper Model Download Error: " + e.Error.Message + "]", Color.Red);
+                //Console.WriteLine(e.Error.ToString());
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.Red;
+                    VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model error";
+                });
+                return;
+            }
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.Green;
+                VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model downloaded";
+            });
+            OutputText.outputLog("[Your Whisper Model has completed downloading]", Color.Green);
+            MessageBox.Show("Your Whisper Model has completed downloading");
+
+
+
+        }
+
+        private void comboBoxWhisperModelDownload_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string path = "models/";
+            switch (comboBoxWhisperModelDownload.Text.ToString())
+            {
+                case "ggml-tiny.bin (75 MB)":
+                    path += "ggml-tiny.bin";
+                    break;
+
+                case "ggml-base.bin (142 MB)":
+                    path += "ggml-base.bin";
+                    break;
+
+                case "ggml-small.bin (466 MB)":
+                    path += "ggml-small.bin";
+                    break;
+
+                case "ggml-medium.bin (1.5 GB)":
+                    path += "ggml-medium.bin";
+                    break;
+
+                default: break;
+            }
+            if (System.IO.File.Exists(path))
+            {
+                modelLabel.ForeColor = Color.Green;
+                modelLabel.Text = "model downloaded";
+
+            }
+            else
+            {
+                modelLabel.ForeColor = Color.Red;
+                modelLabel.Text = "model not downloaded";
+
+            }
+
+
+         }
     }
 
 

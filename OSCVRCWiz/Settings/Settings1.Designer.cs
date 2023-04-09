@@ -949,7 +949,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("System Speech")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Whisper")]
         public string STTModeSave {
             get {
                 return ((string)(this["STTModeSave"]));
@@ -1700,6 +1700,18 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["aprilFools2023"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ggml-tiny.bin (75 MB)")]
+        public string modelSelected {
+            get {
+                return ((string)(this["modelSelected"]));
+            }
+            set {
+                this["modelSelected"] = value;
             }
         }
     }

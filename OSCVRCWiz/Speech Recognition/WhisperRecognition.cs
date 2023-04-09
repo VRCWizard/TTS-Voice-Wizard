@@ -57,7 +57,8 @@ namespace OSCVRCWiz.Speech_Recognition
                     string[] args = {
                 "-c",UseThisMic,
                 "-m",  VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text,
-                "-l", langcode
+                "-l", langcode,
+              //  "-tr", VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperToEnglish.Checked.ToString()
               //  "-ml", "300"
                  };
                     Task.Run(() => doWhisper(args));

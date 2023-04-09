@@ -245,7 +245,9 @@ namespace OSCVRCWiz
 
             Settings1.Default.forwardData = VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked;
 
-           // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
+            Settings1.Default.modelSelected = VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Text.ToString();
+
+            // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
 
 
             /*

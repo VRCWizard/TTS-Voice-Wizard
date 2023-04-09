@@ -46,7 +46,7 @@ namespace OSCVRCWiz.Addons
         public static bool stopBPM = false;
 
 
-        public static void OSCRecieveHeartRate(VoiceWizardWindow MainForm)
+        public static void OSCRecieveHeartRate()
         {
             
             int skipper = 0;
@@ -65,8 +65,9 @@ namespace OSCVRCWiz.Addons
                 OscMessage messageReceived = null;
                 OscBundle messageBundle = null;
                 try { messageReceived = (OscMessage)packet; }
-                catch //this is just the quickest why I thought of to deal with bundles without puting a loop around everything. (that implementation would probably be better)
+                catch(Exception exx) //this is just the quickest why I thought of to deal with bundles without puting a loop around everything. (that implementation would probably be better)
                 {
+                 //  OutputText.outputLog("TESTING: " + exx.Message, Color.Red);
                     try
                     {
 
@@ -76,6 +77,7 @@ namespace OSCVRCWiz.Addons
                             var resend = messageBundle.Messages[i];
                             OSC.OSCReSender.Send(resend);
                         }
+                        
                     }
                     catch (Exception ex){
                         OutputText.outputLog("Issue reading osc bundle: "+ ex.Message, Color.Red);
@@ -384,17 +386,17 @@ namespace OSCVRCWiz.Addons
                                         OutputText.outputLog("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
 
                                     }
-                                    if (MainForm.rjToggleButton3.Checked == true && MainForm.rjToggleButtonOSC.Checked == true)
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                                     {
                                         OutputText.outputVRChat("ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
 
                                     }
-                                    if (MainForm.rjToggleButton3.Checked == false && MainForm.rjToggleButtonOSC.Checked == true)
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == false && VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                                     {
                                         OutputText.outputVRChat("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
 
                                     }
-                                    if (MainForm.rjToggleButtonChatBox.Checked == true)
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                                     {
                                         Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
 

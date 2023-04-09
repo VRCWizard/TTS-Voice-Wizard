@@ -352,6 +352,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked = Settings1.Default.forwardData;
 
+            VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.SelectedItem = Settings1.Default.modelSelected;
+
            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
 
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
