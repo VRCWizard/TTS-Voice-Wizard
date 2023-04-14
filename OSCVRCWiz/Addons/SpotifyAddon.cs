@@ -10,6 +10,7 @@ using System.Diagnostics;
 using OSCVRCWiz.Text;
 using System.Windows;
 using OSCVRCWiz.Resources;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OSCVRCWiz.Addons
 {
@@ -209,17 +210,20 @@ namespace OSCVRCWiz.Addons
 
                         if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
+                            var textTime = theString;
+                            textTime = textTime.Replace("{time}", DateTime.Now.ToString("h:mm:ss tt"));
 
 
                             //  var ot = new OutputText();
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true)
                             {
-                                Task.Run(() => OutputText.outputLog(theString));
+                                Task.Run(() => OutputText.outputLog(textTime));
 
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
                             {
-                                Task.Run(() => OutputText.outputVRChat(theString, "spotify"));
+
+                                Task.Run(() => OutputText.outputVRChat(textTime, "spotify"));
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                             {
@@ -405,14 +409,18 @@ namespace OSCVRCWiz.Addons
 
         private static void MediaOutput(string text)
         {
+            var textTime = text;
+            textTime = textTime.Replace("{time}", DateTime.Now.ToString("h:mm:ss tt"));
+
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true)
             {
-                Task.Run(() => OutputText.outputLog(text));
+                Task.Run(() => OutputText.outputLog(textTime));
 
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
             {
-                Task.Run(() => OutputText.outputVRChat(text, "media"));
+               
+                Task.Run(() => OutputText.outputVRChat(textTime, "media"));
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {

@@ -294,13 +294,15 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked = Settings1.Default.VRCOnRecieve;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked = Settings1.Default.VRCAFK;
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked = Settings1.Default.VRCListemOnStart;
+            
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked = Settings1.Default.VRCSpamLog;
 
             
 
             VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text = Settings1.Default.AFKMsg;
             VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.VRCPort;
+            OSC.FromVRChatPort = Settings1.Default.VRCPort;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked = Settings1.Default.VRCListemOnStart;
 
 
             VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text = Settings1.Default.Counter1Para;

@@ -37,8 +37,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.1.0";
-        string releaseDate = "April 9, 2023";
+        public static string currentVersion = "1.1.2";
+        string releaseDate = "April 13, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -1884,6 +1884,8 @@ namespace OSCVRCWiz
             AutoUpdater.Start(updateXMLName);
             AutoUpdater.InstalledVersion = new Version(currentVersion);
             AutoUpdater.DownloadPath = @"updates";
+            AutoUpdater.ShowSkipButton = false;
+            AutoUpdater.ShowRemindLaterButton = false;
 
         }
 
