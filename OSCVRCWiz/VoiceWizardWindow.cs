@@ -37,8 +37,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.1.2";
-        string releaseDate = "April 13, 2023";
+        public static string currentVersion = "1.1.3";
+        string releaseDate = "April 14, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -1454,21 +1454,22 @@ namespace OSCVRCWiz
 
 
                 }
-                if (rjToggleButtonCounterSaver.Checked == true)
-                {
-                    Settings1.Default.Counter1 = OSC.counter1;
-                    Settings1.Default.Counter2 = OSC.counter2;
-                    Settings1.Default.Counter3 = OSC.counter3;
-                    Settings1.Default.Counter4 = OSC.counter4;
-                    Settings1.Default.Counter5 = OSC.counter5;
-                    Settings1.Default.Counter6 = OSC.counter6;
-                    Settings1.Default.Save();
-                }
+              
 
 
 
             }
-                VRCCounterTimer.Change(1600, 0);
+            if (rjToggleButtonCounterSaver.Checked == true)
+            {
+                Settings1.Default.Counter1 = OSC.counter1;
+                Settings1.Default.Counter2 = OSC.counter2;
+                Settings1.Default.Counter3 = OSC.counter3;
+                Settings1.Default.Counter4 = OSC.counter4;
+                Settings1.Default.Counter5 = OSC.counter5;
+                Settings1.Default.Counter6 = OSC.counter6;
+                Settings1.Default.Save();
+            }
+            VRCCounterTimer.Change(1600, 0);
             
 
             
