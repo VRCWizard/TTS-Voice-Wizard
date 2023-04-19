@@ -22,6 +22,7 @@ namespace OSCVRCWiz.Resources
         public static string FromVRChatPort = "9001";
 
         public static bool AFKDetector = false;
+        public static DateTime afkStartTime = DateTime.Now;
         public static int counter1 = 0;
         public static int counter2 = 0;
         public static int counter3 = 0;
@@ -111,11 +112,14 @@ namespace OSCVRCWiz.Resources
 
                                 if (messageReceived.Arguments[0].ToString() == "True")
                                 {
+
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
                                     {
                                         Task.Run(() => OutputText.outputLog("Now AFK"));
                                     }
                                     AFKDetector = true;
+                                    afkStartTime = DateTime.Now;
+
 
                                 }
                                 else

@@ -126,10 +126,11 @@ namespace Settings
                     if (VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem.ToString() == kvp.Key)
                     {
                         VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = kvp.Value.TTSMode;
-                        // Thread.Sleep(500);
-                        VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem = kvp.Value.Voice;
-                        // Thread.Sleep(500);
                         VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedItem = kvp.Value.Accent;
+                        Thread.Sleep(10);
+                        VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem = kvp.Value.Voice;
+                         Thread.Sleep(10);
+                        
                         VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem = kvp.Value.SpokenLang;
                         VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem = kvp.Value.TranslateLang;
                         VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem = kvp.Value.Style;
@@ -153,7 +154,7 @@ namespace Settings
                         VoiceWizardWindow.MainFormGlobal.updateAllTrackBarLabels();
                         if (kvp.Value.TTSMode == "Azure")
                         {
-                             OutputText.outputLog("If Azure Voice Accent/Language is being loaded for the first time this session then preset will not select Voice properly. Simply re-select the preset.", Color.DarkOrange);
+                            // OutputText.outputLog("If Azure Voice Accent/Language is being loaded for the first time this session then preset will not select Voice properly. Simply re-select the preset.", Color.DarkOrange);
                            // Thread.Sleep(500);
                           //  VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem = kvp.Value.Voice;
                           ///  VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem = kvp.Value.Style;

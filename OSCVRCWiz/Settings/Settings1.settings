@@ -309,7 +309,7 @@
       <Value Profile="(Default)">9001</Value>
     </Setting>
     <Setting Name="AFKMsg" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Out for Lunch 🥪</Value>
+      <Value Profile="(Default)">AFK for {time} minutes</Value>
     </Setting>
     <Setting Name="Counter1Para" Type="System.String" Scope="User">
       <Value Profile="(Default)">/avatar/parameters/Boop</Value>
