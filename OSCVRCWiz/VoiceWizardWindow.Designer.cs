@@ -1049,7 +1049,7 @@
             this.webView21.Size = new System.Drawing.Size(757, 436);
             this.webView21.Source = new System.Uri("https://voicewizardsponsors.carrd.co/", System.UriKind.Absolute);
             this.webView21.TabIndex = 0;
-            this.webView21.ZoomFactor = 0.8D;
+            this.webView21.ZoomFactor = 0.95D;
             // 
             // button10
             // 
@@ -1695,7 +1695,7 @@
             this.ttsTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ttsTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ttsTrash.IconSize = 15;
-            this.ttsTrash.Location = new System.Drawing.Point(340, 463);
+            this.ttsTrash.Location = new System.Drawing.Point(330, 466);
             this.ttsTrash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ttsTrash.Name = "ttsTrash";
             this.ttsTrash.Size = new System.Drawing.Size(31, 22);
@@ -7102,7 +7102,7 @@
             this.logTrash.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.logTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.logTrash.IconSize = 15;
-            this.logTrash.Location = new System.Drawing.Point(450, 580);
+            this.logTrash.Location = new System.Drawing.Point(233, 575);
             this.logTrash.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logTrash.Name = "logTrash";
             this.logTrash.Size = new System.Drawing.Size(31, 22);
