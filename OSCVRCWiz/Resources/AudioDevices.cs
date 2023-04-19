@@ -2,6 +2,7 @@
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using OSCVRCWiz;
+using OSCVRCWiz.Settings;
 using OSCVRCWiz.Text;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,11 @@ namespace Resources
 
         public static void NAudioSetupInputDevices()
         {
+            VoiceWizardWindow.MainFormGlobal.comboBoxInput.Items.Clear();
+            comboIn.Clear();
+            micIDs.Clear();
+
+
             comboIn.Add("Default");
             micIDs.Add("Default");
            
@@ -54,11 +60,23 @@ namespace Resources
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxInput.Items.Add(i);
             }
-           
 
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
+            }
+            catch
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = "Default";
+            }
         }
         public static void NAudioSetupOutputDevices()
         {
+            VoiceWizardWindow.MainFormGlobal.comboBoxOutput.Items.Clear();
+            comboOut.Clear();
+            speakerIDs.Clear();
+
+
             comboOut.Add("Default");
             speakerIDs.Add("Default");
             var enumerator = new MMDeviceEnumerator();
@@ -76,7 +94,25 @@ namespace Resources
                 VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.Items.Add(i);
             }
 
-           
+  
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
+            }
+            catch
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = "Default";
+            }
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = Settings1.Default.SpeakerName2;
+            }
+            catch
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = "Default";
+            }
+
+
 
         }
         public static int getCurrentInputDevice() {

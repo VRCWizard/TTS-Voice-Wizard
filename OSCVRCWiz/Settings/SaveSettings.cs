@@ -90,7 +90,7 @@ namespace OSCVRCWiz
             Settings1.Default.SpotifySpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked;
             Settings1.Default.SpotifyTimerIntervalSetting = SpotifyAddon.spotifyInterval;
 
-           // Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked;
+            Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked;
            // Settings1.Default.cultureInfoSetting = VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text.ToString();
 
             Settings1.Default.bannerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked;
@@ -102,7 +102,7 @@ namespace OSCVRCWiz
             Settings1.Default.ChatBoxKeyboardSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked;
 
             Settings1.Default.minimizeToolBarSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton6.Checked;
-            Settings1.Default.GreenScreenSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked;
+          //  Settings1.Default.GreenScreenSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked;
             Settings1.Default.SpotifyCustomSetting = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString();
 
 

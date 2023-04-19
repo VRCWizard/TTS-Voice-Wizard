@@ -420,7 +420,7 @@ namespace OSCVRCWiz.Addons
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
             {
                
-                Task.Run(() => OutputText.outputVRChat(textTime, "media"));
+                Task.Run(() => OutputText.outputVRChat(textTime, "spotify"));
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {

@@ -27,6 +27,8 @@ using OSCVRCWiz.Speech_Recognition;
 using static System.Net.Mime.MediaTypeNames;
 using System.ComponentModel;
 using static System.Net.WebRequestMethods;
+using System.IO;
+
 
 
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
@@ -37,8 +39,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.1.3";
-        string releaseDate = "April 14, 2023";
+        public static string currentVersion = "1.2.0";
+        string releaseDate = "April 19, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -85,6 +87,7 @@ namespace OSCVRCWiz
         public static WaveOut AnyOutput2 = new();
 
         CancellationTokenSource speechCt = new();
+        public bool logPanelExtended =true;
 
 
 
@@ -106,7 +109,8 @@ namespace OSCVRCWiz
             {
                 MessageBox.Show("Initalization Error: " + ex.Message);
             }
-           
+
+
 
             //    cpuCounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
             //    ramCounter = new PerformanceCounter("Memory", "Available MBytes");
@@ -158,7 +162,7 @@ namespace OSCVRCWiz
             try {
 
             // Startup Changes
-            tabControl1.Dock = DockStyle.Fill;
+           // tabControl1.Dock = DockStyle.Fill;
                tabControl1.Appearance = TabAppearance.FlatButtons;
                tabControl1.ItemSize = new Size(0, 1);
                tabControl1.SizeMode = TabSizeMode.Fixed;
@@ -515,7 +519,8 @@ namespace OSCVRCWiz
                     //This local Version and the Version on GitHub are equal.
                     OutputText.outputLog("[The current version (" + currentVersion + ") and the version on GitHub (" + releaseText + ") are equal. Your program is up to date]");
                 }
-                richTextBox5.Text = "Current Version: v"+currentVersion+ "-"+versionBuild + " - " + releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
+                //richTextBox5.Text = "Current Version: v"+currentVersion+ "-"+versionBuild + " - " + releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
+                versionLabel.Text = "v" + currentVersion;
                 }
               catch (Exception ex)
              {
@@ -783,9 +788,14 @@ namespace OSCVRCWiz
                         }
 
                     }
+                    if (rjToggleButtonStopCurrentTTS.Checked == true)
+                    {
+                        MainDoStopTTS();
+                    }
 
 
-                    speechCt = new();
+
+                        speechCt = new();
                     switch (selectedTTSMode)
                     {
                         case "Moonbase":
@@ -859,11 +869,11 @@ namespace OSCVRCWiz
                         Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, "tts")); //original
 
                     }
-                    if (rjToggleButtonGreenScreen.Checked == true)
-                    {
-                        Task.Run(() => OutputText.outputGreenScreen(writeText, "tts")); //original
+                 //   if (rjToggleButtonGreenScreen.Checked == true)
+                 //   {
+                 //       Task.Run(() => OutputText.outputGreenScreen(writeText, "tts")); //original
 
-                    }
+                //    }
 
                 }
                 else
@@ -1321,8 +1331,15 @@ namespace OSCVRCWiz
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector==true &&OSCListener.pauseBPM !=true)
             {
+                var elapsedTime = DateTime.Now - OSC.afkStartTime;
+                string elapsedMinutesSeconds = $"{elapsedTime.Hours:00}:{elapsedTime.Minutes:00}:{elapsedTime.Seconds:00}";
                 var theString = "";
                 theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
+                theString = theString.Replace("{time}", elapsedMinutesSeconds);
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)//////////////delete when done testing
+                {
+                    Task.Run(() => OutputText.outputLog(theString));
+                }////////////////////////////////////////////////////
                 if (rjToggleButtonChatBox.Checked == true)
                 {
                     Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
@@ -1530,7 +1547,7 @@ namespace OSCVRCWiz
 
         private void iconButton9_Click(object sender, EventArgs e)
         {
-            richTextBox7.Text = richTextBox1.Text;
+            //richTextBox7.Text = richTextBox1.Text;
             tabControl1.SelectTab(tabSpotify);
 
 
@@ -1538,7 +1555,7 @@ namespace OSCVRCWiz
 
         private void iconButton10_Click(object sender, EventArgs e)
         {
-            richTextBox8.Text = richTextBox1.Text;
+           // richTextBox8.Text = richTextBox1.Text;
             tabControl1.SelectTab(tabHeartBeat);
 
         }
@@ -1556,24 +1573,8 @@ namespace OSCVRCWiz
                 ClearTextBox();
                 OutputText.outputLog("Log exceeded limit and was automatically cleared");
             }
-            //copies main log text to addon logs
-            if (tabControl1.SelectedTab.Text.ToString() == "Spotify")
-            {
-                richTextBox7.Text = richTextBox1.Text;
-            }
-            if (tabControl1.SelectedTab.Text.ToString() == "Heartbeat")
-            {
-                richTextBox8.Text = richTextBox1.Text;
-            }
-            //richTextBox10.Text = richTextBox1.Text;
-            if (tabControl1.SelectedTab.Text.ToString() == "VoiceCommandsTab")
-            {
-                richTextBox12.Text = richTextBox1.Text;
-            }
-            if (tabControl1.SelectedTab.Text.ToString() == "Discord")
-            {
-                richTextBoxDiscord.Text = richTextBox1.Text;
-            }
+        
+           
         }
 
         private void iconButton12_Click(object sender, EventArgs e)
@@ -1727,13 +1728,13 @@ namespace OSCVRCWiz
             }
             if (rjToggleButton6.Checked == false)
             {
-                panel1.SetBounds(0, 0, 220, 731);
-                panel2Logo.SetBounds(0, 0, 220, 140);
-                pictureBox1.SetBounds(38, 15, 125, 125);
+                panel1.SetBounds(0, 0, 159, 731);
+                panel2Logo.SetBounds(0, 0, 192, 105);
+                pictureBox1.SetBounds(31, -9, 129, 113);
                 iconButton1.Text = "Dashboard";
                 iconButton2.Text = "Text to Speech";
                 iconButton23.Text = "Text to Text";
-                //  iconButton4.Text = "Speech Provider";
+                iconButton4.Text = "Speech Provider";
                 iconButton5.Text = "Settings";
                 iconButton3.Text = "Addon";
                 iconButton6.Text = "Discord";
@@ -1858,7 +1859,12 @@ namespace OSCVRCWiz
                 AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
 
             }
-         
+            if (TTSModeSaved == "Amazon Polly")
+            {
+                AmazonPollyTTS.SynthesisGetAvailableVoices(comboBox5.Text.ToString());
+
+            }
+
 
         }
 
@@ -2005,52 +2011,56 @@ namespace OSCVRCWiz
                     break;
                 case "TikTok":
                     comboBox2.Items.Clear();
-                    
 
-                    comboBox2.Items.Add("en_us_001");
-                    comboBox2.Items.Add("en_us_002");
-                    comboBox2.Items.Add("en_us_006");
-                    comboBox2.Items.Add("en_us_007");
-                    comboBox2.Items.Add("en_us_009");
-                    comboBox2.Items.Add("en_us_010");
-
-                    comboBox2.Items.Add("en_au_001");
-                    comboBox2.Items.Add("en_au_002");
-                    comboBox2.Items.Add("en_uk_001");
-                    comboBox2.Items.Add("en_uk_003");
-
-                    comboBox2.Items.Add("fr_001");
-                    comboBox2.Items.Add("fr_002");
-                    comboBox2.Items.Add("de_001");
-                    comboBox2.Items.Add("de_002");
-                    comboBox2.Items.Add("es_002");
-                    comboBox2.Items.Add("es_mx_002");
-                    comboBox2.Items.Add("br_001");
-                    comboBox2.Items.Add("br_003");
-                    comboBox2.Items.Add("br_004");
-                    comboBox2.Items.Add("br_005");
-                    comboBox2.Items.Add("id_001");
-                    comboBox2.Items.Add("jp_001");
-                    comboBox2.Items.Add("jp_003");
-                    comboBox2.Items.Add("jp_005");
-                    comboBox2.Items.Add("jp_006");
-                    comboBox2.Items.Add("kr_002");
-                    comboBox2.Items.Add("kr_003");
-                    comboBox2.Items.Add("kr_004");
-
-                    comboBox2.Items.Add("en_us_ghostface");
-                    comboBox2.Items.Add("en_us_chewbacca");
-                    comboBox2.Items.Add("en_us_c3po");
-                    comboBox2.Items.Add("en_us_stitch");
-                    comboBox2.Items.Add("en_us_stormtrooper");
-                    comboBox2.Items.Add("en_us_rocket");
-                    comboBox2.Items.Add("en_male_narration");
-                    comboBox2.Items.Add("en_male_funny");
-                    comboBox2.Items.Add("en_female_emotional");
-                    comboBox2.Items.Add("en_female_f08_salut_damour");
-                    comboBox2.Items.Add("en_male_m03_lobby");
-                    comboBox2.Items.Add("en_male_m03_sunshine_soon");
-                    comboBox2.Items.Add("en_female_f08_warmy_breeze");
+                    var tiktokVoices = new List<string>()
+                    {
+                    "English US Female",
+             "English US Male 1",
+              "English US Male 2",
+              "English US Male 3",
+              "English US Male 4",
+             "English UK Male 1",
+              "English UK Male 2",
+               "English AU Female",
+               "English AU Male",
+                "French Male 1",
+               "French Male 2",
+               "German Female",
+               "German Male",
+               "Spanish Male",
+             "Spanish MX Male",
+                "Portuguese BR Female 1",
+               "Portuguese BR Female 2",
+                 "Portuguese BR Male",
+                "Indonesian Female",
+                "Japanese Female 1",
+                 "Japanese Female 2",
+                "Japanese Female 3",
+                "Japanese Male",
+                "Korean Male 1",
+               "Korean Male 2",
+                 "Korean Female",
+                 "Ghostface (Scream)",
+                "Chewbacca (Star Wars)",
+               "C3PO (Star Wars)",
+                "Stitch (Lilo & Stitch)",
+      "Stormtrooper (Star Wars)",
+     "Rocket (Guardians of the Galaxy)",
+                       "Alto",
+                       "Tenor",
+                 "Sunshine Soon",
+                     "Warmy Breeze",
+                "Glorious",
+            "It Goes Up",
+             "Chipmunk",
+             "Dramatic",
+            "Funny",
+            "Narrator",
+                    };
+                    foreach (var voice in tiktokVoices)
+                    {
+                        comboBox2.Items.Add(voice);
+                    }
 
                     comboBox2.SelectedIndex = 0;
 
@@ -2111,6 +2121,46 @@ namespace OSCVRCWiz
                     }
                     break;
                 case "Azure":
+                    comboBox5.Items.Clear();
+                   // comboBox2.Items.Add("");
+
+                    var voiceAccents = new List<string>()
+                    {
+                        "Arabic [ar]",
+                        "Chinese [zh]",
+                        "Czech [cs]",
+                        "Danish [da]",
+                        "Dutch [nl]",
+                        "English [en]",
+                        "Estonian [et]",
+                        "Filipino [fil]",
+                        "Finnish [fi]",
+                        "French [fr]",
+                        "German [de]",
+                        "Hindi [hi]",
+                        "Hungarian [hu]",
+                        "Indonesian [id]",
+                        "Irish [ga]",
+                        "Italian [it]",
+                        "Japanese [ja]",
+                        "Korean [ko]",
+                        "Norwegian [nb]",
+                        "Polish [pl]",
+                        "Portuguese [pt]",
+                        "Russian [ru]",
+                        "Spanish [es]",
+                        "Swedish[ sv]",
+                        "Thai [th]",
+                        "Ukrainian [uk]",
+                        "Vietnamese [vi]"
+                    };
+                    foreach (var accent in voiceAccents)
+                    {
+                        comboBox5.Items.Add(accent);
+                    }
+                    comboBox5.SelectedIndex = 5;
+
+
                     AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
                    // comboBox2.SelectedIndex = 0;
                     comboBox1.Enabled = true;
@@ -2202,44 +2252,55 @@ namespace OSCVRCWiz
 
                 case "Amazon Polly":
 
+                    comboBox5.Items.Clear();
+                  var voiceAccentsAmazon = new List<string>()
+                    {
+                        "Arabic [ar]",
+                        "Catalan [ca]",
+                        "Chinese [zh]",                    
+                        "Danish [da]",
+                        "Dutch [nl]",
+                        "English [en]",
+                        "Finnish [fi]",
+                        "French [fr]",
+                        "German [de]",
+                        "Hindi [hi]",
+                        "Icelandic [is]",//
+                        "Italian [it]",
+                        "Japanese [ja]",
+                        "Korean [ko]",
+                        "Norwegian [nb]",
+                        "Polish [pl]",
+                        "Portuguese [pt]",
+                         "Romanian [ro]",
+                        "Russian [ru]",
+                        "Spanish [es]",
+                        "Swedish [sv]",
+                        "Welsh [cy]"
+                    };
+                    foreach (var accent in voiceAccentsAmazon)
+                    {
+                        comboBox5.Items.Add(accent);
+                    }
+                    comboBox5.SelectedIndex = 5;
+
                     comboBox2.Items.Clear();
-                    comboBox2.Items.Add("Salli");
-                    comboBox2.Items.Add("Kimberly");
-                    comboBox2.Items.Add("Kendra");
-                    comboBox2.Items.Add("Joanna");
-                    comboBox2.Items.Add("Ivy");
-                    comboBox2.Items.Add("Ruth ($Neural)");
-                    comboBox2.Items.Add("Kevin ($Neural)");
-                    comboBox2.Items.Add("Matthew");
-                    comboBox2.Items.Add("Justin");
-                    comboBox2.Items.Add("Joey");
-                    comboBox2.Items.Add("Stephen ($Neural)");
+                    AmazonPollyTTS.SynthesisGetAvailableVoices(comboBox5.Text.ToString());
 
-                    comboBox2.Items.Add("Nicole");
-                    comboBox2.Items.Add("Olivia ($Neural)");
-                    comboBox2.Items.Add("Russell");
+                  
 
-                    comboBox2.Items.Add("Amy");
-                    comboBox2.Items.Add("Emma");
-                    comboBox2.Items.Add("Brian");
-                    comboBox2.Items.Add("Arthur ($Neural)");
+                   
 
-                    comboBox2.Items.Add("Aditi");
-                 //   comboBox2.Items.Add("Reveena");
-                    comboBox2.Items.Add("Kajal ($Neural)");
 
-                    comboBox2.Items.Add("Aria ($Neural)");
 
-                    comboBox2.Items.Add("Ayanda ($Neural)");
-
-                    comboBox2.Items.Add("Geraint");
+                    comboBox2.SelectedIndex = 0;
                     comboBox2.SelectedIndex = 0;
 
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
-                    comboBox5.Enabled = false;
+                    comboBox5.Enabled = true;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
@@ -2366,7 +2427,7 @@ namespace OSCVRCWiz
 
         private void iconButton27_Click_1(object sender, EventArgs e)
         {
-            richTextBox12.Text = richTextBox1.Text;
+           // richTextBox12.Text = richTextBox1.Text;
             tabControl1.SelectTab(tabPage2);//voiceCommands
         }
 
@@ -2579,14 +2640,15 @@ namespace OSCVRCWiz
                 logTrash.BackColor = Color.FromArgb(31, 30, 68);
                 iconButton22.BackColor = Color.FromArgb(31, 30, 68);
 
-               /* iconButton13.BackColor = LightModeColor;//dashboard buttons
-                iconButton14.BackColor = LightModeColor;
-                iconButton15.BackColor = LightModeColor;
-                iconButton16.BackColor = LightModeColor;
-                iconButton17.BackColor = LightModeColor;
-                iconButton26.BackColor = LightModeColor;*/
+                /* iconButton13.BackColor = LightModeColor;//dashboard buttons
+                 iconButton14.BackColor = LightModeColor;
+                 iconButton15.BackColor = LightModeColor;
+                 iconButton16.BackColor = LightModeColor;
+                 iconButton17.BackColor = LightModeColor;
+                 iconButton26.BackColor = LightModeColor;*/
+                
 
-              
+
 
 
 
@@ -2639,8 +2701,8 @@ namespace OSCVRCWiz
                 richTextBox4.BackColor = Color.FromArgb(68, 72, 111);
                 richTextBox4.ForeColor = Color.White;
 
-                richTextBox5.BackColor = Color.FromArgb(31, 30, 68);
-                richTextBox5.ForeColor = Color.White;
+                //richTextBox5.BackColor = Color.FromArgb(31, 30, 68);
+               // richTextBox5.ForeColor = Color.White;
 
 
             }
@@ -2737,7 +2799,7 @@ namespace OSCVRCWiz
 
         private void iconButton25_Click(object sender, EventArgs e)
         {
-            richTextBoxDiscord.Text = richTextBox1.Text;
+           // richTextBoxDiscord.Text = richTextBox1.Text;
             tabControl1.SelectTab(discordTab);//discord
            
 
@@ -3467,6 +3529,86 @@ namespace OSCVRCWiz
 
 
          }
+
+        private void button43_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AudioDevices.NAudioSetupInputDevices();
+                AudioDevices.NAudioSetupOutputDevices();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Audio Device Startup Error: " + ex.Message);
+            }
+
+        }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            var currentTime = "Current Time ⏰: " + DateTime.Now.ToString("h:mm tt");
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked == true)
+            {
+                Task.Run(() => OutputText.outputLog(currentTime));
+
+            }
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
+            {
+
+                Task.Run(() => OutputText.outputVRChat(currentTime, "time"));
+            }
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
+            {
+                Task.Run(() => OutputText.outputVRChatSpeechBubbles(currentTime, "time")); //original
+
+            }
+        }
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            if(logPanelExtended==true)
+            {
+                logPanel.Size = new Size(20, logPanel.Height);
+                button45.Text = "←";
+                logPanelExtended = false;
+            }
+            else
+            {
+                logPanel.Size = new Size(300, logPanel.Height);
+                button45.Text = "→";
+                logPanelExtended = true;
+            }
+           
+        }
+
+        private void translucentPanel3_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            var appPath =Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TTSVoiceWizard");
+            Process.Start("explorer.exe", appPath);
+        }
+
+        private void button46_Click(object sender, EventArgs e)
+        {
+            var appPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace("Roaming", "LocalLow")+@"\VRChat\VRChat", "OSC");
+            Process.Start("explorer.exe", appPath);
+            Debug.WriteLine(appPath);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", "TextOut");
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 

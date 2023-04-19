@@ -661,7 +661,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool VRCSoundNotifySetting {
             get {
                 return ((bool)(this["VRCSoundNotifySetting"]));
@@ -877,7 +877,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("System Speech")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TikTok")]
         public string ttsMode {
             get {
                 return ((string)(this["ttsMode"]));
@@ -1249,7 +1249,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Out for Lunch 🥪")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AFK for {time} minutes")]
         public string AFKMsg {
             get {
                 return ((string)(this["AFKMsg"]));

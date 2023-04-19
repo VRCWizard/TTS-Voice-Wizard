@@ -162,7 +162,7 @@
       <Value Profile="(Default)">{pause} {title} - {artist} </Value>
     </Setting>
     <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SystemTraySetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -216,7 +216,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ttsMode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">System Speech</Value>
+      <Value Profile="(Default)">TikTok</Value>
     </Setting>
     <Setting Name="approvedSource" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -309,7 +309,7 @@
       <Value Profile="(Default)">9001</Value>
     </Setting>
     <Setting Name="AFKMsg" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Out for Lunch 🥪</Value>
+      <Value Profile="(Default)">AFK for {time} minutes</Value>
     </Setting>
     <Setting Name="Counter1Para" Type="System.String" Scope="User">
       <Value Profile="(Default)">/avatar/parameters/Boop</Value>

@@ -90,30 +90,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
 
-            try
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
-            }
-            catch
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = "Default";
-            }
-            try
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
-            }
-            catch
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = "Default";
-            }
-            try
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = Settings1.Default.SpeakerName2;
-            }
-            catch
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = "Default";
-            }
+         
+       
           
            
 
@@ -155,7 +133,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.spotifyTimer = new System.Threading.Timer(VoiceWizardWindow.MainFormGlobal.spotifytimertick);
             VoiceWizardWindow.spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
 
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked = Settings1.Default.AudioCancelSetting;
+             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked = Settings1.Default.AudioCancelSetting;
 
             //  VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
 
@@ -168,8 +146,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton6.Checked = Settings1.Default.minimizeToolBarSetting;
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked = Settings1.Default.GreenScreenSetting;
-            VoiceWizardWindow.MainFormGlobal.textBoxFont.Text = Settings1.Default.fontSizeSetting;
+           // VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked = Settings1.Default.GreenScreenSetting;
+         //   VoiceWizardWindow.MainFormGlobal.textBoxFont.Text = Settings1.Default.fontSizeSetting;
 
             VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text = Settings1.Default.SpotifyCustomSetting;
 

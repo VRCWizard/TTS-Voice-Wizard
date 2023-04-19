@@ -7,6 +7,8 @@ using Windows.Media.Control;
 using WindowsMediaController;
 using OSCVRCWiz.Text;
 using static WindowsMediaController.MediaManager; //allows for getting session
+using CoreOSC;
+using OSCVRCWiz.Resources;
 
 namespace OSCVRCWiz.Addons
 {
@@ -279,10 +281,11 @@ namespace OSCVRCWiz.Addons
                     }
                     if (args.Title != previousTitle)
                     {
+                       
                         var sp = new SpotifyAddon();
                         Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                     }
-                    previousTitle = args.Title;
+                   // previousTitle = args.Title;
 
                 }
             
