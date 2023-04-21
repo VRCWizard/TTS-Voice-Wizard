@@ -1249,7 +1249,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Out for Lunch 🥪")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AFK for {time} minutes")]
         public string AFKMsg {
             get {
                 return ((string)(this["AFKMsg"]));

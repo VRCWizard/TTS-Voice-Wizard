@@ -150,6 +150,7 @@ namespace OSCVRCWiz.Text
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)
                     {
                         SpotifyAddon.lastSong = SpotifyAddon.title;
+                        WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
                     }
 
                 }
@@ -405,24 +406,37 @@ namespace OSCVRCWiz.Text
 
                     if (previousRequestType == "spotify")
                     {
-                        if (SpotifyAddon.title == SpotifyAddon.lastSong)
-                        {
-                            System.Diagnostics.Debug.WriteLine("spotify case ran");
-                            Task.Delay(50).Wait();
-                            //  MainForm.sender3.Send(message1);//remove after testing
-                        }
-                        else
-                        {
-                            OSC.OSCSender.Send(message1);
-                        }
+                            if (SpotifyAddon.title == SpotifyAddon.lastSong)
+                            {
+                                System.Diagnostics.Debug.WriteLine("spotify case ran");
+                               // Task.Delay(50).Wait();
+                                //  MainForm.sender3.Send(message1);//remove after testing
+                            }
+                            else
+                            {
+                                Task.Delay(50).Wait();
+                                OSC.OSCSender.Send(message1);
+                            }
+                            if ( WindowsMedia.previousTitle == WindowsMedia.mediaTitle)
+                            {
+                                System.Diagnostics.Debug.WriteLine("spotify case ran");
+                                //Task.Delay(50).Wait();
+                                //  MainForm.sender3.Send(message1);//remove after testing
+                            }
+                            else
+                            {
+                                Task.Delay(100).Wait();
+                                OSC.OSCSender.Send(message1);
+                            }
 
-                    }
+                        }
                     else
                     {
                         OSC.OSCSender.Send(message1);
                     }
-                    SpotifyAddon.lastSong = SpotifyAddon.title;
-                    break;
+                        SpotifyAddon.lastSong = SpotifyAddon.title;
+                        WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
+                        break;
                 case "tttAdd": break;
                 case "tttRefresh": break;
                 default:

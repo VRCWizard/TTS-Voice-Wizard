@@ -253,6 +253,7 @@
             this.rjToggleButtonOSC = new OSCVRCWiz.RJControls.RJToggleButton();
             this.comboBoxPara = new System.Windows.Forms.ComboBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.button43 = new System.Windows.Forms.Button();
             this.label135 = new System.Windows.Forms.Label();
             this.rjToggleButtonUse2ndOutput = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label125 = new System.Windows.Forms.Label();
@@ -505,6 +506,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button44 = new System.Windows.Forms.Button();
+            this.label149 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -789,10 +792,10 @@
             this.hideVRCTextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideVRCTextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.hideVRCTextButton.ForeColor = System.Drawing.Color.Snow;
-            this.hideVRCTextButton.Location = new System.Drawing.Point(331, 64);
+            this.hideVRCTextButton.Location = new System.Drawing.Point(114, 135);
             this.hideVRCTextButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hideVRCTextButton.Name = "hideVRCTextButton";
-            this.hideVRCTextButton.Size = new System.Drawing.Size(161, 35);
+            this.hideVRCTextButton.Size = new System.Drawing.Size(98, 35);
             this.hideVRCTextButton.TabIndex = 16;
             this.hideVRCTextButton.Text = "Hide KAT";
             this.hideVRCTextButton.UseVisualStyleBackColor = false;
@@ -2321,6 +2324,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label149);
+            this.groupBox5.Controls.Add(this.button44);
             this.groupBox5.Controls.Add(this.button14);
             this.groupBox5.Controls.Add(this.groupBox4);
             this.groupBox5.Controls.Add(this.button22);
@@ -2663,11 +2668,11 @@
             this.label56.AutoSize = true;
             this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label56.ForeColor = System.Drawing.Color.Snow;
-            this.label56.Location = new System.Drawing.Point(65, 123);
+            this.label56.Location = new System.Drawing.Point(65, 120);
             this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(145, 15);
+            this.label56.Size = new System.Drawing.Size(229, 15);
             this.label56.TabIndex = 51;
-            this.label56.Text = "Output on Update Interval\r\n";
+            this.label56.Text = "Output Continuously (On Update Interval)";
             // 
             // rjToggleButtonPeriodic
             // 
@@ -3970,11 +3975,11 @@
             this.groupBox20.Controls.Add(this.buttonDelayHere);
             this.groupBox20.Controls.Add(this.textBoxDelay);
             this.groupBox20.ForeColor = System.Drawing.Color.White;
-            this.groupBox20.Location = new System.Drawing.Point(344, 316);
+            this.groupBox20.Location = new System.Drawing.Point(487, 342);
             this.groupBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox20.Size = new System.Drawing.Size(498, 151);
+            this.groupBox20.Size = new System.Drawing.Size(326, 189);
             this.groupBox20.TabIndex = 122;
             this.groupBox20.TabStop = false;
             this.groupBox20.Text = "KillFrenzy Avatar Text (KAT)";
@@ -4012,10 +4017,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.Snow;
-            this.button2.Location = new System.Drawing.Point(331, 20);
+            this.button2.Location = new System.Drawing.Point(7, 135);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 35);
+            this.button2.Size = new System.Drawing.Size(93, 35);
             this.button2.TabIndex = 103;
             this.button2.Text = "Replay KAT";
             this.button2.UseVisualStyleBackColor = false;
@@ -4027,10 +4032,10 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button12.ForeColor = System.Drawing.Color.Snow;
-            this.button12.Location = new System.Drawing.Point(331, 108);
+            this.button12.Location = new System.Drawing.Point(221, 135);
             this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(161, 35);
+            this.button12.Size = new System.Drawing.Size(90, 35);
             this.button12.TabIndex = 108;
             this.button12.Text = "Clear KAT";
             this.button12.UseVisualStyleBackColor = false;
@@ -4091,6 +4096,7 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.button43);
             this.groupBox13.Controls.Add(this.label135);
             this.groupBox13.Controls.Add(this.rjToggleButtonUse2ndOutput);
             this.groupBox13.Controls.Add(this.label125);
@@ -4109,17 +4115,32 @@
             this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox13.Size = new System.Drawing.Size(311, 241);
+            this.groupBox13.Size = new System.Drawing.Size(433, 241);
             this.groupBox13.TabIndex = 134;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Audio";
+            // 
+            // button43
+            // 
+            this.button43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button43.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button43.ForeColor = System.Drawing.Color.Snow;
+            this.button43.Location = new System.Drawing.Point(320, 118);
+            this.button43.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(95, 64);
+            this.button43.TabIndex = 138;
+            this.button43.Text = "Refresh Audio Devices";
+            this.button43.UseVisualStyleBackColor = false;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
             // 
             // label135
             // 
             this.label135.AutoSize = true;
             this.label135.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label135.ForeColor = System.Drawing.Color.Snow;
-            this.label135.Location = new System.Drawing.Point(272, 208);
+            this.label135.Location = new System.Drawing.Point(309, 213);
             this.label135.Name = "label135";
             this.label135.Size = new System.Drawing.Size(26, 15);
             this.label135.TabIndex = 136;
@@ -4128,7 +4149,7 @@
             // rjToggleButtonUse2ndOutput
             // 
             this.rjToggleButtonUse2ndOutput.AutoSize = true;
-            this.rjToggleButtonUse2ndOutput.Location = new System.Drawing.Point(227, 208);
+            this.rjToggleButtonUse2ndOutput.Location = new System.Drawing.Point(264, 212);
             this.rjToggleButtonUse2ndOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonUse2ndOutput.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonUse2ndOutput.Name = "rjToggleButtonUse2ndOutput";
@@ -4142,11 +4163,10 @@
             // 
             // label125
             // 
-            this.label125.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label125.AutoSize = true;
             this.label125.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label125.ForeColor = System.Drawing.Color.Snow;
-            this.label125.Location = new System.Drawing.Point(17, 188);
+            this.label125.Location = new System.Drawing.Point(22, 192);
             this.label125.Name = "label125";
             this.label125.Size = new System.Drawing.Size(222, 15);
             this.label125.TabIndex = 135;
@@ -4154,20 +4174,18 @@
             // 
             // comboBoxOutput2
             // 
-            this.comboBoxOutput2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxOutput2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOutput2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxOutput2.FormattingEnabled = true;
-            this.comboBoxOutput2.Location = new System.Drawing.Point(17, 205);
+            this.comboBoxOutput2.Location = new System.Drawing.Point(22, 209);
             this.comboBoxOutput2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxOutput2.Name = "comboBoxOutput2";
-            this.comboBoxOutput2.Size = new System.Drawing.Size(204, 23);
+            this.comboBoxOutput2.Size = new System.Drawing.Size(236, 23);
             this.comboBoxOutput2.TabIndex = 134;
             this.comboBoxOutput2.SelectedIndexChanged += new System.EventHandler(this.comboBoxOutput2_SelectedIndexChanged);
             // 
             // iconButton41
             // 
-            this.iconButton41.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconButton41.FlatAppearance.BorderSize = 0;
             this.iconButton41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton41.ForeColor = System.Drawing.Color.Snow;
@@ -4176,7 +4194,7 @@
             this.iconButton41.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton41.IconSize = 30;
             this.iconButton41.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton41.Location = new System.Drawing.Point(259, 26);
+            this.iconButton41.Location = new System.Drawing.Point(263, 29);
             this.iconButton41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton41.Name = "iconButton41";
             this.iconButton41.Size = new System.Drawing.Size(44, 30);
@@ -4188,11 +4206,10 @@
             // 
             // label17
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label17.ForeColor = System.Drawing.Color.Snow;
-            this.label17.Location = new System.Drawing.Point(16, 17);
+            this.label17.Location = new System.Drawing.Point(20, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 15);
             this.label17.TabIndex = 132;
@@ -4200,7 +4217,6 @@
             // 
             // comboBoxSTT
             // 
-            this.comboBoxSTT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSTT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxSTT.FormattingEnabled = true;
@@ -4210,7 +4226,7 @@
             "Vosk",
             "Web Captioner",
             "Whisper"});
-            this.comboBoxSTT.Location = new System.Drawing.Point(17, 34);
+            this.comboBoxSTT.Location = new System.Drawing.Point(21, 35);
             this.comboBoxSTT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSTT.Name = "comboBoxSTT";
             this.comboBoxSTT.Size = new System.Drawing.Size(237, 23);
@@ -4219,11 +4235,10 @@
             // 
             // label145
             // 
-            this.label145.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label145.AutoSize = true;
             this.label145.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label145.ForeColor = System.Drawing.Color.Snow;
-            this.label145.Location = new System.Drawing.Point(16, 97);
+            this.label145.Location = new System.Drawing.Point(21, 101);
             this.label145.Name = "label145";
             this.label145.Size = new System.Drawing.Size(176, 15);
             this.label145.TabIndex = 130;
@@ -4231,11 +4246,10 @@
             // 
             // label29
             // 
-            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label29.ForeColor = System.Drawing.Color.Snow;
-            this.label29.Location = new System.Drawing.Point(17, 146);
+            this.label29.Location = new System.Drawing.Point(22, 150);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(184, 15);
             this.label29.TabIndex = 129;
@@ -4243,11 +4257,10 @@
             // 
             // comboBoxOutput
             // 
-            this.comboBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxOutput.FormattingEnabled = true;
-            this.comboBoxOutput.Location = new System.Drawing.Point(17, 163);
+            this.comboBoxOutput.Location = new System.Drawing.Point(22, 167);
             this.comboBoxOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxOutput.Name = "comboBoxOutput";
             this.comboBoxOutput.Size = new System.Drawing.Size(277, 23);
@@ -4256,11 +4269,10 @@
             // 
             // comboBoxInput
             // 
-            this.comboBoxInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxInput.FormattingEnabled = true;
-            this.comboBoxInput.Location = new System.Drawing.Point(17, 115);
+            this.comboBoxInput.Location = new System.Drawing.Point(22, 119);
             this.comboBoxInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxInput.Name = "comboBoxInput";
             this.comboBoxInput.Size = new System.Drawing.Size(277, 23);
@@ -7518,6 +7530,31 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button44
+            // 
+            this.button44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button44.ForeColor = System.Drawing.Color.Snow;
+            this.button44.Location = new System.Drawing.Point(22, 198);
+            this.button44.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(144, 25);
+            this.button44.TabIndex = 141;
+            this.button44.Text = "Display Current Time";
+            this.button44.UseVisualStyleBackColor = false;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
+            // label149
+            // 
+            this.label149.AutoSize = true;
+            this.label149.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.label149.ForeColor = System.Drawing.Color.Snow;
+            this.label149.Location = new System.Drawing.Point(172, 204);
+            this.label149.Name = "label149";
+            this.label149.Size = new System.Drawing.Size(196, 15);
+            this.label149.TabIndex = 142;
+            this.label149.Text = "Not available for continuous output";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -8135,5 +8172,8 @@
         private Label label147;
         public ComboBox comboBoxWhisperModelDownload;
         public Label modelLabel;
+        private Button button43;
+        private Label label149;
+        private Button button44;
     }
 }

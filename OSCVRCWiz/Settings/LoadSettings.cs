@@ -90,30 +90,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
 
-            try
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
-            }
-            catch
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = "Default";
-            }
-            try
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
-            }
-            catch
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = "Default";
-            }
-            try
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = Settings1.Default.SpeakerName2;
-            }
-            catch
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = "Default";
-            }
+         
+       
           
            
 
