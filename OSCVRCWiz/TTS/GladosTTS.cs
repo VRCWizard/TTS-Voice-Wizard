@@ -11,26 +11,22 @@ using EmbedIO;
 using NAudio.Wave.SampleProviders;
 using VarispeedDemo.SoundTouch;
 using System.Diagnostics;
+using OSCVRCWiz.Resources;
 
 namespace TTS
 {
     public class GladosTTS
     {
-        public static async Task GladosTextAsSpeech(string text, CancellationToken ct = default)
+        public static async Task GladosTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
             // if ("tiktokvoice.mp3" == null)
             //   throw new NullReferenceException("Output path is null");
             //text = FormatInputText(text);
-            string voice = "";
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-            {
-                voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
-            });
-            System.Diagnostics.Debug.WriteLine("glados speech ran " + voice);
+          
             try
            {
-                byte[] result = await CallGladosAPIAsync(text);     
+                byte[] result = await CallGladosAPIAsync(TTSMessageQueued.text);     
                 //  File.WriteAllBytes("TikTokTTS.mp3", result);          
                 //  Task.Run(() => PlayAudioHelper());
 
@@ -59,12 +55,11 @@ namespace TTS
                 var volumeFloat = 1f;
                 var pitchFloat = 1f;
                 var rateFloat = 1f;
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                    pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                    rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                });
+
+
+                volume = TTSMessageQueued.Volume;
+                pitch = TTSMessageQueued.Pitch;
+                rate = TTSMessageQueued.Speed;
 
                 volumeFloat = 0.5f + volume * 0.1f;
                 pitchFloat = 0.5f + pitch * 0.1f;
@@ -105,10 +100,14 @@ namespace TTS
                 }
 
 
+                ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
+                float delayTime = pitchFloat;
+                if (rate != 5) { delayTime = rateFloat; }
+                int delayInt = (int)Math.Ceiling((int)wave32.TotalTime.TotalMilliseconds / delayTime);
+                Thread.Sleep(delayInt);
 
-
-                Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
-                Thread.Sleep(500);
+              //  Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
+                Thread.Sleep(100);
 
 
 
@@ -138,9 +137,10 @@ namespace TTS
                     wav2.Dispose();
                     wav2 = null;
                 }
-                ct = new();
-
-                Debug.WriteLine("disposed of all");
+                if (!ct.IsCancellationRequested)
+                {
+                    TTSMessageQueue.PlayNextInQueue();
+                }
 
 
             }
@@ -155,6 +155,7 @@ namespace TTS
                 {
                     OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
                 }
+                TTSMessageQueue.PlayNextInQueue();
 
             }
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());

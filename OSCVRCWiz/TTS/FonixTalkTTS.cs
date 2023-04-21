@@ -8,6 +8,7 @@ using NAudio.Wave;
 using System.Diagnostics;
 using NAudio.Wave.SampleProviders;
 using VarispeedDemo.SoundTouch;
+using OSCVRCWiz.Resources;
 
 
 namespace OSCVRCWiz.TTS
@@ -20,7 +21,7 @@ namespace OSCVRCWiz.TTS
 
 
 
-        public static void FonixTTS(string text, CancellationToken ct = default)
+        public static void FonixTTS(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
             Process[] pname = Process.GetProcessesByName("MoonbaseVoices");
             if (pname.Length == 0)
@@ -37,7 +38,7 @@ namespace OSCVRCWiz.TTS
 
                     OutputText.outputLog("[Something prevented the program from running the MoonbaseVoice.exe console app included inside the TTSVoiceWizard download folder. Make sure that 'MoonbaseVoices.exe' exists in the download folder and has not been renamed. Try running TTS Voice Wizard as Administrator]", Color.DarkOrange);
 
-                 
+                    TTSMessageQueue.PlayNextInQueue();
 
                 }
 
@@ -50,7 +51,7 @@ namespace OSCVRCWiz.TTS
             try
             {
 
-                Task<string> stringTask = MoonBase(text);
+                Task<string> stringTask = MoonBase(TTSMessageQueued);
                 string audio = stringTask.Result;
                 var audiobytes = Convert.FromBase64String(audio);
                 MemoryStream memoryStream = new MemoryStream(audiobytes);
@@ -83,12 +84,10 @@ namespace OSCVRCWiz.TTS
                 var volumeFloat = 1f;
                 var pitchFloat = 1f;
                 var rateFloat = 1f;
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                    pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                    rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                });
+
+                volume = TTSMessageQueued.Volume;
+                pitch = TTSMessageQueued.Pitch;
+                rate = TTSMessageQueued.Speed;
 
                 volumeFloat = 0.5f + volume * 0.1f;
                 pitchFloat = 0.5f + pitch * 0.1f;
@@ -125,14 +124,17 @@ namespace OSCVRCWiz.TTS
                     AnyOutput2.Play();
                     ct.Register(async () => AnyOutput2.Stop());
                 }
-               
-               
 
+                ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
+                float delayTime = pitchFloat;
+                if (rate != 5) { delayTime = rateFloat; }
 
-                Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
-                Thread.Sleep(500);
+                int delayInt = (int)Math.Ceiling((int)wave32.TotalTime.TotalMilliseconds / delayTime);
+                Thread.Sleep(delayInt);
+                //  Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
+                Thread.Sleep(100);
 
-
+             //   WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
 
                 AnyOutput.Stop();
                 AnyOutput.Dispose();
@@ -160,9 +162,10 @@ namespace OSCVRCWiz.TTS
                     wav2.Dispose();
                     wav2 = null;
                 }
-                ct = new();
-
-                Debug.WriteLine("disposed of all");
+                if (!ct.IsCancellationRequested)
+                {
+                    TTSMessageQueue.PlayNextInQueue();
+                }
 
             }
             catch (Exception ex)
@@ -173,23 +176,19 @@ namespace OSCVRCWiz.TTS
                 {
                     OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
                 }
+                TTSMessageQueue.PlayNextInQueue();
             }
 
          }
-        public static async Task<string> MoonBase(string textIn)
+        public static async Task<string> MoonBase(TTSMessageQueue.TTSMessage TTSMessageQueued)
         {
             try
             {
-                string name = "";
-               VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    name = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
-                   
-                });
+ 
            
 
 
-                var url = $"http://localhost:54027/audio?voice={name}&text={textIn}";
+                var url = $"http://localhost:54027/audio?voice={TTSMessageQueued.Voice}&text={TTSMessageQueued.text}";
               
 
                 var request = new HttpRequestMessage(HttpMethod.Post, url);
@@ -223,6 +222,7 @@ namespace OSCVRCWiz.TTS
                 OutputText.outputLog("[Moonbase Error: "+ex.Message+"]", Color.Red);
                 OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
                 //  MessageBox.Show("FonixTalk Error: "+ex.Message);
+                TTSMessageQueue.PlayNextInQueue();
                 return "";
                 
             }

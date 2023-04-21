@@ -661,7 +661,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool VRCSoundNotifySetting {
             get {
                 return ((bool)(this["VRCSoundNotifySetting"]));
@@ -877,7 +877,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("System Speech")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TikTok")]
         public string ttsMode {
             get {
                 return ((string)(this["ttsMode"]));
@@ -1712,6 +1712,42 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["modelSelected"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int fontSize {
+            get {
+                return ((int)(this["fontSize"]));
+            }
+            set {
+                this["fontSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string delayBeforeNewTTS {
+            get {
+                return ((string)(this["delayBeforeNewTTS"]));
+            }
+            set {
+                this["delayBeforeNewTTS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string delayAfterNoTTS {
+            get {
+                return ((string)(this["delayAfterNoTTS"]));
+            }
+            set {
+                this["delayAfterNoTTS"] = value;
             }
         }
     }

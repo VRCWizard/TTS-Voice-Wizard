@@ -2,6 +2,7 @@
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using OSCVRCWiz;
+using OSCVRCWiz.Resources;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.Text;
 using System;
@@ -173,6 +174,7 @@ namespace Resources
                 OutputText.outputLog("[" +ex.Message+"]", Color.Red);
                 OutputText.outputLog("[ For the 'An item with the same key has already been added' error go to Control Panel > Sound > right click on one of the devices with the same name > properties > rename the device.]", Color.DarkOrange);
                 OutputText.outputLog("[Defaulting to output device 0]", Color.DarkOrange);
+                
 
                 return 0;
             }

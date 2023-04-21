@@ -1,11 +1,13 @@
 ﻿using Amazon.Polly.Model;
 using Amazon.Runtime.Internal;
+using Amazon.Runtime.Internal.Util;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using Octokit.Internal;
+using OSCVRCWiz.Resources;
 using OSCVRCWiz.Settings;
 using OSCVRCWiz.Text;
 using Resources;
@@ -33,28 +35,23 @@ namespace OSCVRCWiz.TTS
         private static readonly HttpClient client = new HttpClient();
         public static Dictionary<string, string> voiceDict =null;
         public static bool elevenFirstLoad = true;
-        public static async Task ElevenLabsTextAsSpeech(string text, CancellationToken ct = default)
+        public static async Task ElevenLabsTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
             // if ("tiktokvoice.mp3" == null)
             //   throw new NullReferenceException("Output path is null");
             //text = FormatInputText(text);
-            string voice = "";
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-            {
-                voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
-            });
-            System.Diagnostics.Debug.WriteLine("eleven speech ran " + voice);
+
             try
             {
-                var voiceID = voiceDict.FirstOrDefault(x => x.Value == voice).Key;
+                var voiceID = voiceDict.FirstOrDefault(x => x.Value == TTSMessageQueued.Voice).Key;
                 //  byte[] result = await CallTikTokAPIAsync(text, voice);
                 //  File.WriteAllBytes("TikTokTTS.mp3", result);          
                 //  Task.Run(() => PlayAudioHelper());
 
                 MemoryStream memoryStream = new MemoryStream();
 
-                Task<Stream> streamTask = CallElevenLabsAPIAsync(text, voiceID);
+                Task<Stream> streamTask = CallElevenLabsAPIAsync(TTSMessageQueued.text, voiceID);
                 Stream stream = streamTask.Result;
 
                 AmazonPollyTTS.WriteSpeechToStream(stream, memoryStream);
@@ -85,12 +82,10 @@ namespace OSCVRCWiz.TTS
                 var volumeFloat = 1f;
                 var pitchFloat = 1f;
                 var rateFloat = 1f;
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                    pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                    rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                });
+
+                volume = TTSMessageQueued.Volume;
+                pitch = TTSMessageQueued.Pitch;
+                rate = TTSMessageQueued.Speed;
 
                 volumeFloat = 0.5f + volume * 0.1f;
                 pitchFloat = 0.5f + pitch * 0.1f;
@@ -128,12 +123,21 @@ namespace OSCVRCWiz.TTS
                     AnyOutput2.Play();
                     ct.Register(async () => AnyOutput2.Stop());
                 }
-                
-                
+
+                //this is where i would save files
+                //  WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
 
 
-                Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
-                Thread.Sleep(500);
+                ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
+                float delayTime = pitchFloat;
+                if (rate != 5) { delayTime = rateFloat; }
+                
+                int delayInt = (int)Math.Ceiling((int)wave32.TotalTime.TotalMilliseconds / delayTime);
+                Thread.Sleep(delayInt);
+                //Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
+                Thread.Sleep(100);
+
+             
 
 
 
@@ -163,15 +167,17 @@ namespace OSCVRCWiz.TTS
                     wav2.Dispose();
                     wav2 = null;
                 }
-                ct = new();
-
-                Debug.WriteLine("disposed of all");
+                if (!ct.IsCancellationRequested)
+                {
+                    TTSMessageQueue.PlayNextInQueue();
+                }
 
 
             }
             catch (Exception ex)
             {
                 OutputText.outputLog("[ElevenLabs TTS Error: " + ex.Message + "]", Color.Red);
+                TTSMessageQueue.PlayNextInQueue();
 
             }
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
@@ -269,6 +275,7 @@ namespace OSCVRCWiz.TTS
             {
                 OutputText.outputLog("[ElevenLabs Voice Load Error: " + ex.Message + "]", Color.Red);
                 OutputText.outputLog("[You appear to be using an incorrect ElevenLabs Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS ]", Color.DarkOrange);
+                TTSMessageQueue.PlayNextInQueue();
 
             }
 

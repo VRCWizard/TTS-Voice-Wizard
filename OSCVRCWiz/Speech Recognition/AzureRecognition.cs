@@ -171,7 +171,33 @@ namespace OSCVRCWiz
                         string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string tranlated
 
 
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
+                        //   Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
+                        TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            TTSMessageQueued.text = text;
+                            TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                            TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                            TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                            TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                            TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                            TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                            TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.STTMode = "Azure Translate";
+                            TTSMessageQueued.AzureTranslateText = translatedString;
+                        });
+
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                        {
+                            TTSMessageQueue.Enqueue(TTSMessageQueued);
+                        }
+                        else
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                        }
 
                     }
 
@@ -191,7 +217,34 @@ namespace OSCVRCWiz
                         var text = eventArgs.Result.Text; //Dictation string
 
                         
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
+                    //    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
+
+                        TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            TTSMessageQueued.text = text;
+                            TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                            TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                            TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                            TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                            TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                            TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                            TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.STTMode = "Azure";
+                            TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                        });
+
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                        {
+                            TTSMessageQueue.Enqueue(TTSMessageQueued);
+                        }
+                        else
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                        }
 
 
 
@@ -249,7 +302,33 @@ namespace OSCVRCWiz
                     var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
                     var text = speechRecognitionResult.Text; //Dictation string
 
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
+                   // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
+                    TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        TTSMessageQueued.text = text;
+                        TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                        TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                        TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                        TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                        TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                        TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                        TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                        TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                        TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                        TTSMessageQueued.STTMode = "Azure";
+                        TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                    });
+
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                    {
+                        TTSMessageQueue.Enqueue(TTSMessageQueued);
+                    }
+                    else
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                    }
 
                 }
 
@@ -310,7 +389,35 @@ namespace OSCVRCWiz
                     var text = speechRecognitionResult.Text.ToString(); //Dictation string; Global string used to keep track of result text for default azure speech to text
                     string translatedString = speechRecognitionResult.Translations[toLanguage]; //Global string used to keep track of result text for translation azure speech to text
 
-                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
+                   // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
+
+
+                    TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        TTSMessageQueued.text = text;
+                        TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                        TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                        TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                        TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                        TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                        TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                        TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                        TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                        TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                        TTSMessageQueued.STTMode = "Azure Translate";
+                        TTSMessageQueued.AzureTranslateText = translatedString;
+                    });
+
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                    {
+                        TTSMessageQueue.Enqueue(TTSMessageQueued);
+                    }
+                    else
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                    }
 
 
                 }

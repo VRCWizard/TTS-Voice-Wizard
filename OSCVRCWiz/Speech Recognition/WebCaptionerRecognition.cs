@@ -19,6 +19,7 @@ using OSCVRCWiz.Text;
 using CoreOSC;
 using Windows.Devices.Power;
 using Newtonsoft.Json;
+using OSCVRCWiz.Resources;
 //using VRC.OSCQuery; // Beta Testing dll (added the project references)
 
 
@@ -149,7 +150,34 @@ namespace OSCVRCWiz
                         var reader = new StreamReader(body, encoding);
                         string json = reader.ReadToEnd();
                         var text = JObject.Parse(json)["transcript"].ToString();
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Web Captioner"));
+                      //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Web Captioner"));
+
+                        TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            TTSMessageQueued.text = text;
+                            TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                            TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                            TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                            TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                            TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                            TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                            TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.STTMode = "Web Captioner";
+                            TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                        });
+
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                        {
+                            TTSMessageQueue.Enqueue(TTSMessageQueued);
+                        }
+                        else
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                        }
 
 
 

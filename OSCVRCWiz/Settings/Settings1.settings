@@ -162,7 +162,7 @@
       <Value Profile="(Default)">{pause} {title} - {artist} </Value>
     </Setting>
     <Setting Name="VRCSoundNotifySetting" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="SystemTraySetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -216,7 +216,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ttsMode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">System Speech</Value>
+      <Value Profile="(Default)">TikTok</Value>
     </Setting>
     <Setting Name="approvedSource" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -424,6 +424,15 @@
     </Setting>
     <Setting Name="modelSelected" Type="System.String" Scope="User">
       <Value Profile="(Default)">ggml-tiny.bin (75 MB)</Value>
+    </Setting>
+    <Setting Name="fontSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="delayBeforeNewTTS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="delayAfterNoTTS" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5000</Value>
     </Setting>
   </Settings>
 </SettingsFile>

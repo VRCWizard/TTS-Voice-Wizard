@@ -12,6 +12,7 @@ using Resources;
 using NAudio.Wave;
 using System.IO;
 using Swan.Logging;
+using OSCVRCWiz.Resources;
 
 namespace OSCVRCWiz.TTS
 {
@@ -231,25 +232,17 @@ namespace OSCVRCWiz.TTS
 
         }
 
-        public static async Task SynthesizeAudioAsync(string text, CancellationToken ct = default) //TTS Outputs through speakers //can not change voice style
+        public static async Task SynthesizeAudioAsync(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default) //TTS Outputs through speakers //can not change voice style
         {
             try
             {
-                string style = "normal";
-                int rate = 5;
-                int pitch = 5;
-                int volume = 5;
-                string voice = "blank";
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString())) { style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString(); }
-                    rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                    pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                    volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                    if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString())) { voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString(); }
+                string style = TTSMessageQueued.Style;
+                int rate = TTSMessageQueued.Speed;
+                int pitch = TTSMessageQueued.Pitch;
+                int volume = TTSMessageQueued.Volume;
+                string voice = TTSMessageQueued.Voice;
 
 
-                });
 
              
 
@@ -282,7 +275,7 @@ namespace OSCVRCWiz.TTS
                 Debug.WriteLine("volume: " + volumePercent);
                 Debug.WriteLine("voice: " + voice);
                 Debug.WriteLine("style: " + style);
-                Debug.WriteLine("text: " + text);
+                Debug.WriteLine("text: " + TTSMessageQueued.text);
 
 
                 //  var audioConfig = AudioConfig.FromSpeakerOutput(AudioDevices.currentOutputDevice);
@@ -329,7 +322,7 @@ namespace OSCVRCWiz.TTS
 
 
                 }
-                ssml0 += text;
+                ssml0 += TTSMessageQueued.text;
                 if (rate != 5) { ssml0 += "</prosody>"; }
                 if (pitch != 5) { ssml0 += "</prosody>"; }
                 if (volume != 5) { ssml0 += "</prosody>"; }
@@ -345,7 +338,7 @@ namespace OSCVRCWiz.TTS
                 
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {
-                    Debug.WriteLine($"[Speech synthesized to speaker for text: {text}]");
+                    Debug.WriteLine($"[Speech synthesized to speaker for text: {TTSMessageQueued.text}]");
                     // ot.outputLog(MainForm, $"[Azure Speech Synthesized]");
                    
                         try
@@ -391,7 +384,6 @@ namespace OSCVRCWiz.TTS
                         while (AnyOutput.PlaybackState == PlaybackState.Playing)
                         {
                             Thread.Sleep(2000);
-                            Debug.WriteLine("does this dispose properly???");
                         }
                         if(AnyOutput.PlaybackState == PlaybackState.Stopped)
                         {
@@ -420,12 +412,14 @@ namespace OSCVRCWiz.TTS
 
                             ct = new();
                             Debug.WriteLine("azure dispose successful");
+                            TTSMessageQueue.PlayNextInQueue();
                         }
                     }
                         catch(Exception ex)
                         {
                             OutputText.outputLog("[Azure Ouput Device *AUDIO* Error: " + ex.Message + "]", Color.Red);
-                        }
+                        TTSMessageQueue.PlayNextInQueue();
+                    }
                     
                 }
                 else if (result.Reason == ResultReason.Canceled)
@@ -443,6 +437,7 @@ namespace OSCVRCWiz.TTS
                         Debug.WriteLine($"[CANCELED: Did you update the subscription info?]");
                         OutputText.outputLog($"[CANCELED: Did you update the subscription info?]", Color.Red);
                     }
+                    TTSMessageQueue.PlayNextInQueue();
                 }
 
 
@@ -453,6 +448,7 @@ namespace OSCVRCWiz.TTS
                 //  MessageBox.Show("No valid subscription key given or speech service has been disabled; " + ex.Message.ToString());
                 OutputText.outputLog("[Azure Error: " + ex.Message + "]", Color.Red);
                 OutputText.outputLog("[You may be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                TTSMessageQueue.PlayNextInQueue();
             }
         }
     }

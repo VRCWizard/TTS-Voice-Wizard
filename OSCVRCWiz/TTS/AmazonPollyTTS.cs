@@ -21,14 +21,14 @@ using OSCVRCWiz.Settings;
 using static OSCVRCWiz.TTS.ElevenLabsTTS;
 using System.Windows;
 using NAudio.Wave.SampleProviders;
-
+using OSCVRCWiz.Resources;
 
 namespace OSCVRCWiz.TTS
 {
     public class AmazonPollyTTS
     {
        
-        public static async Task PollyTTS(string text, CancellationToken ct = default)
+        public static async Task PollyTTS(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace OSCVRCWiz.TTS
                 var client = new AmazonPollyClient(AWSaccessKeyId, AWSsecretKey, AWSRegion);
 
 
-                var response = await PollySynthesizeSpeech(client, text);
+                var response = await PollySynthesizeSpeech(client, TTSMessageQueued);
 
             MemoryStream memoryStream = new MemoryStream();
             WriteSpeechToStream(response.AudioStream, memoryStream);
@@ -86,8 +86,9 @@ namespace OSCVRCWiz.TTS
                     }
                 }
                 while (AnyOutput.PlaybackState == PlaybackState.Playing)
-                {
+                {                  
                     Thread.Sleep(2000);
+                    
                 }
                 if (AnyOutput.PlaybackState == PlaybackState.Stopped)
                 {
@@ -116,6 +117,7 @@ namespace OSCVRCWiz.TTS
                     ct = new();
 
                     Debug.WriteLine("azure dispose successful");
+                    TTSMessageQueue.PlayNextInQueue();
                 }
 
 
@@ -124,7 +126,8 @@ namespace OSCVRCWiz.TTS
             catch(Exception ex)
             {
                OutputText.outputLog("[Amazon Polly TTS Error: " + ex.Message + "]", Color.Red);
-           }
+                TTSMessageQueue.PlayNextInQueue();
+            }
         }
 
         /// <summary>
@@ -136,7 +139,7 @@ namespace OSCVRCWiz.TTS
         /// <param name="text">The text to convert to speech.</param>
         /// <returns>A SynthesizeSpeechResponse object that includes an AudioStream
         /// object with the converted text.</returns>
-        private static async Task<SynthesizeSpeechResponse> PollySynthesizeSpeech(IAmazonPolly client,string text)
+        private static async Task<SynthesizeSpeechResponse> PollySynthesizeSpeech(IAmazonPolly client, TTSMessageQueue.TTSMessage TTSMessageQueued)
         {
             var tts = new SynthesizeSpeechRequest();
 
@@ -147,42 +150,17 @@ namespace OSCVRCWiz.TTS
                 tts.Engine = Engine.Standard;
       
             tts.TextType = TextType.Ssml;
-            
-               
 
 
-              
-              int rate = 5;
-              int pitch = 5;
-              int volume =5;
-              string voice = "blank";
-              VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-              {
-
-                  rate = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                  pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                  volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                  if (!string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString())) { voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString(); }
 
 
-              });
-            /*   string ratexslow = "<prosody rate=\"x-slow\">"; //1
-               string rateslow = "<prosody rate=\"slow\">"; //2
-               string ratemedium = "<prosody rate=\"medium\">"; //3
-               string ratefast = "<prosody rate=\"fast\">"; //4
-               string ratexfast = "<prosody rate=\"x-fast\">"; //5
 
-               string pitchxlow = "<prosody pitch=\"x-low\">"; //1
-               string pitchlow = "<prosody pitch=\"low\">"; //2
-               string pitchmedium = "<prosody pitch=\"medium\">"; //3
-               string pitchhigh = "<prosody pitch=\"high\">"; //4
-               string pitchxhigh = "<prosody pitch=\"x-high\">"; //5
-
-               string volumexlow = "<prosody volume=\"x-soft\">"; //1
-               string volumelow = "<prosody volume=\"soft\">"; //2
-               string volumemedium = "<prosody volume=\"medium\">"; //3
-               string volumehigh = "<prosody volume=\"loud\">"; //4
-               string volumexhigh = "<prosody volume=\"x-loud\">"; //5*/
+            int rate = TTSMessageQueued.Speed;
+            int pitch = TTSMessageQueued.Pitch;
+            int volume = TTSMessageQueued.Volume;
+            string voice = TTSMessageQueued.Voice;
+         
+          
 
             var ratePercent = (int)Math.Floor(((0.5f + rate * 0.1f) - 1) * 100);
             var pitchPercent = (int)Math.Floor(((0.5f + pitch * 0.1f) - 1) * 100);
@@ -223,7 +201,7 @@ namespace OSCVRCWiz.TTS
                  
 
               }
-              ssml0 += text;
+              ssml0 += TTSMessageQueued.text;
               if (rate != 5) { ssml0 += "</prosody>"; }
               if (pitch != 5) { ssml0 += "</prosody>"; }
               if (volume != 5) { ssml0 += "</prosody>"; }

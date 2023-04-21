@@ -20,6 +20,7 @@ using Resources;
 using NAudio.Wave;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using OSCVRCWiz.Resources;
 
 namespace OSCVRCWiz
 {
@@ -160,7 +161,34 @@ namespace OSCVRCWiz
                         System.Diagnostics.Debug.WriteLine("Vosk: " + text);
                         if (text != "")//only does stuff if the string is nothing silence
                         {
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Vosk"));
+                           // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Vosk"));
+
+                            TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+                                TTSMessageQueued.text = text;
+                                TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                                TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                                TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                                TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                                TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                                TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                                TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                                TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                                TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                                TTSMessageQueued.STTMode = "Vosk";
+                                TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                            });
+
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                            {
+                                TTSMessageQueue.Enqueue(TTSMessageQueued);
+                            }
+                            else
+                            {
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                            }
                         }
                     }
                     else

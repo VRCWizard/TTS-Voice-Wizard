@@ -133,7 +133,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.spotifyTimer = new System.Threading.Timer(VoiceWizardWindow.MainFormGlobal.spotifytimertick);
             VoiceWizardWindow.spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
 
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonCancelAudio.Checked = Settings1.Default.AudioCancelSetting;
+             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked = Settings1.Default.AudioCancelSetting;
 
             //  VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
 
@@ -146,8 +146,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton6.Checked = Settings1.Default.minimizeToolBarSetting;
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked = Settings1.Default.GreenScreenSetting;
-            VoiceWizardWindow.MainFormGlobal.textBoxFont.Text = Settings1.Default.fontSizeSetting;
+           // VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked = Settings1.Default.GreenScreenSetting;
+         //   VoiceWizardWindow.MainFormGlobal.textBoxFont.Text = Settings1.Default.fontSizeSetting;
 
             VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text = Settings1.Default.SpotifyCustomSetting;
 
@@ -229,6 +229,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = Settings1.Default.maxDuration;
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = Settings1.Default.dropStartSilence;
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = Settings1.Default.pauseDuration;
+
+            VoiceWizardWindow.fontSize = Settings1.Default.fontSize;
+            VoiceWizardWindow.MainFormGlobal.textBoxDelayAfterNoTTS.Text = Settings1.Default.delayAfterNoTTS;
+            VoiceWizardWindow.MainFormGlobal.textBoxQueueDelayBeforeNext.Text = Settings1.Default.delayBeforeNewTTS;
 
 
 

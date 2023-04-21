@@ -417,7 +417,37 @@ namespace OSCVRCWiz.Addons
                                 var forwardData = new OscMessage("/TTSVoiceWizard/TextToSpeech", text);
                                 OSC.OSCSender.Send(forwardData);
                             }
-                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "OSCListener"));
+                            //Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "OSCListener"));
+                           
+                            TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                            {
+                            TTSMessageQueued.text = text;
+                            TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                            TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                            TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                            TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                            TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                            TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                            TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.STTMode = "OSCListener";
+                            TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                            });
+
+
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                            {
+                                TTSMessageQueue.Enqueue(TTSMessageQueued);
+                            }
+                            else
+                            {
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                            }
+                            
+
+
                             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                             {
                                 if (VoiceWizardWindow.MainFormGlobal.groupBoxOSCtoTTS.ForeColor != Color.Green)
