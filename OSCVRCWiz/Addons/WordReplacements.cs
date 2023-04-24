@@ -94,7 +94,7 @@ namespace Addons
                     int count = 1;
                     string wordKey = "";
                     string wordValue = "";
-                    string[] split2 = words2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] split2 = words2.Split(new char[] { '¬' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string s2 in split2)
                     {
 

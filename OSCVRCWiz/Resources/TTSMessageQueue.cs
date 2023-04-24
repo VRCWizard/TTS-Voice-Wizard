@@ -67,7 +67,7 @@ namespace OSCVRCWiz.Resources
                    
                 }
                 isTTSPlaying = false;
-                Task.Delay(100);
+               // Task.Delay(100);
                PlayNext();
             }
             

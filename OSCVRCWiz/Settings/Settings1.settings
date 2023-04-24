@@ -434,5 +434,20 @@
     <Setting Name="delayAfterNoTTS" Type="System.String" Scope="User">
       <Value Profile="(Default)">5000</Value>
     </Setting>
+    <Setting Name="saveTxtFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">no text file selected</Value>
+    </Setting>
+    <Setting Name="saveToggleReadTextFile" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="saveQueueSystem" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="QueueWithTypedText" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WhisperFilterLog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -235,6 +235,13 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxQueueDelayBeforeNext.Text = Settings1.Default.delayBeforeNewTTS;
 
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked = Settings1.Default.saveToggleReadTextFile;
+            VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text = Settings1.Default.saveTxtFilePath;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked = Settings1.Default.saveQueueSystem;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueTypedText.Checked = Settings1.Default.QueueWithTypedText;
+
+           VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked= Settings1.Default.WhisperFilterLog;
 
             string[] split = Settings1.Default.approvedSource.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                foreach (string s in split)

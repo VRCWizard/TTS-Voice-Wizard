@@ -226,8 +226,15 @@ namespace OSCVRCWiz
             Settings1.Default.pauseDuration = VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text;
 
             Settings1.Default.fontSize = VoiceWizardWindow.fontSize;
+
             Settings1.Default.delayAfterNoTTS= VoiceWizardWindow.MainFormGlobal.textBoxDelayAfterNoTTS.Text;
             Settings1.Default.delayBeforeNewTTS = VoiceWizardWindow.MainFormGlobal.textBoxQueueDelayBeforeNext.Text;
+
+            Settings1.Default.saveQueueSystem = VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked;
+            Settings1.Default.QueueWithTypedText = VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueTypedText.Checked;
+
+            Settings1.Default.saveToggleReadTextFile = VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked;
+            Settings1.Default.saveTxtFilePath = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text;
             ///
 
             /*  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)
@@ -250,6 +257,7 @@ namespace OSCVRCWiz
             Settings1.Default.forwardData = VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked;
 
             Settings1.Default.modelSelected = VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Text.ToString();
+            Settings1.Default.WhisperFilterLog= VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked;
 
             // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
 

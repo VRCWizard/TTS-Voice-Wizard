@@ -102,7 +102,12 @@ namespace OSCVRCWiz.Resources
                     }
                     else
                     {
-                        OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked == true)
+                        {
+
+
+                            OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                        }
                     }
                     // continue;
                 }

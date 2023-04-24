@@ -1750,5 +1750,65 @@ namespace OSCVRCWiz.Settings {
                 this["delayAfterNoTTS"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("no text file selected")]
+        public string saveTxtFilePath {
+            get {
+                return ((string)(this["saveTxtFilePath"]));
+            }
+            set {
+                this["saveTxtFilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveToggleReadTextFile {
+            get {
+                return ((bool)(this["saveToggleReadTextFile"]));
+            }
+            set {
+                this["saveToggleReadTextFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool saveQueueSystem {
+            get {
+                return ((bool)(this["saveQueueSystem"]));
+            }
+            set {
+                this["saveQueueSystem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool QueueWithTypedText {
+            get {
+                return ((bool)(this["QueueWithTypedText"]));
+            }
+            set {
+                this["QueueWithTypedText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WhisperFilterLog {
+            get {
+                return ((bool)(this["WhisperFilterLog"]));
+            }
+            set {
+                this["WhisperFilterLog"] = value;
+            }
+        }
     }
 }

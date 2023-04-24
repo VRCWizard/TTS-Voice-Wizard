@@ -41,8 +41,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.1";
-        string releaseDate = "April 20, 2023";
+        public static string currentVersion = "1.2.2";
+        string releaseDate = "April 23, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -672,7 +672,7 @@ namespace OSCVRCWiz
                 TTSMessageQueued.AzureTranslateText = "[ERROR]";
             });
 
-            if(rjToggleButtonQueueSystem.Checked==true)
+            if(rjToggleButtonQueueSystem.Checked==true && rjToggleButtonQueueTypedText.Checked==true)
             {
                 TTSMessageQueue.Enqueue(TTSMessageQueued);
             }
@@ -3629,13 +3629,13 @@ namespace OSCVRCWiz
             if(logPanelExtended==true)
             {
                 logPanel.Size = new Size(20, logPanel.Height);
-                button45.Text = "←";
+                button45.Text = "🢀🢀🢀";
                 logPanelExtended = false;
             }
             else
             {
                 logPanel.Size = new Size(300, logPanel.Height);
-                button45.Text = "→";
+                button45.Text = "🢂🢂🢂";
                 logPanelExtended = true;
             }
            
@@ -3699,6 +3699,114 @@ namespace OSCVRCWiz
         {
             TTSMessageQueue.queueTTS.Clear();
             labelQueueSize.Text = TTSMessageQueue.queueTTS.Count.ToString();
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxReadFromTXTFile.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void rjToggleButton14_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButtonReadFromFile.Checked==true)
+            {
+                TextFileReader.ReadFromFile();
+            }
+            else
+            {
+                TextFileReader.StopWatcher();
+            }
+            
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            try {
+            string path = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text.ToString();
+            using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string contents = reader.ReadToEnd();
+                    //  Debug.WriteLine(contents);
+                    TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        TTSMessageQueued.text = contents.Replace("\n", " ").Replace("\r", " ");
+                        TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                        TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                        TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                        TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                        TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                        TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                        TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                        TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                        TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                        TTSMessageQueued.STTMode = "Text File Reader";
+                        TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                    });
+
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                    {
+                        TTSMessageQueue.Enqueue(TTSMessageQueued);
+                    }
+                    else
+                    {
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                    }
+                }
+            }
+        }
+            catch (Exception ex){
+
+               VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked= false;
+               OutputText.outputLog("[Text File Reader Error: This error occured while attempting to read the text file: " + ex.Message + "]", Color.Red);
+            }
+}
+
+        private void iconButton15_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string path = "";
+                var data = e.Data.GetData(DataFormats.FileDrop);
+                if (data != null)
+                {
+                    var fileNames = data as string[];
+                    if (fileNames.Length > 0)
+                    {
+                        path = fileNames[0];
+                      
+                    }
+                }
+
+                
+                using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string contents = reader.ReadToEnd();
+                        richTextBox3.Text = contents.Replace("\n", " ").Replace("\r", "");
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked = false;
+                OutputText.outputLog("[Text File Import Error: This error occured while attempting to read the text file: " + ex.Message + "]", Color.Red);
+            }
+
+        }
+
+        private void iconButton15_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
         }
     }
 
