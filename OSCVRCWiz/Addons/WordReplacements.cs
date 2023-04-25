@@ -138,7 +138,7 @@ namespace Addons
             foreach (var kvp in replaceDict)
             {
 
-                wordReplacemntsStored += $"{kvp.Key}:{kvp.Value};";
+                wordReplacemntsStored += $"{kvp.Key}¬{kvp.Value};";
             }
         }
     }

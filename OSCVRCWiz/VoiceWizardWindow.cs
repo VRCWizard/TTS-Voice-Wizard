@@ -41,8 +41,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.2";
-        string releaseDate = "April 23, 2023";
+        public static string currentVersion = "1.2.3";
+        string releaseDate = "April 25, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -103,6 +103,7 @@ namespace OSCVRCWiz
 
         public VoiceWizardWindow()
         {
+
             try
             {
 
@@ -115,7 +116,7 @@ namespace OSCVRCWiz
                 MessageBox.Show("Initalization Error: " + ex.Message);
             }
 
-
+            
 
             //    cpuCounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
             //    ramCounter = new PerformanceCounter("Memory", "Available MBytes");
@@ -132,7 +133,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hotkey Startup Error: " + ex.Message);
+                MessageBox.Show("Hotkey Startup Error: " + ex.Message+ "\n\nYour config file (where settings are stored) may have been corrupted.\nNavigate to C:\\Users\\<user>\\AppData\\Local\\TTSVoiceWizard and delete the files in this directory to reset your settings.");
             }
 
             try {
