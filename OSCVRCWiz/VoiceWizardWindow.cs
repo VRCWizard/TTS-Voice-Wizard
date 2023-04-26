@@ -41,7 +41,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.3";
+        public static string currentVersion = "1.2.3.1";
         string releaseDate = "April 25, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -787,14 +787,16 @@ namespace OSCVRCWiz
                         }
                         else
                         {
+                            
                             newText = TTSMessageQueued.AzureTranslateText;
                             translationMethod = "Azure Translation";
                         }
 
 
                         if (rjToggleButtonVoiceWhatLang.Checked == true)
-                        {
+                        {                          
                             speechText = newText;
+                            TTSMessageQueued.text = speechText;
 
                         }
                         if (rjToggleButtonAsTranslated2.Checked == true)
