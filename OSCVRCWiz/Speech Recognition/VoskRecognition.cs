@@ -21,6 +21,7 @@ using NAudio.Wave;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using OSCVRCWiz.Resources;
+using CoreOSC;
 
 namespace OSCVRCWiz
 {
@@ -145,6 +146,12 @@ namespace OSCVRCWiz
             waveIn.DataAvailable += WaveInOnDataAvailable;
             waveIn?.StartRecording();
             OutputText.outputLog("[Vosk Listening]");
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+            {
+                var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                OSC.OSCSender.Send(sttListening);
+            }
         }
         private static async void WaveInOnDataAvailable(object? sender, WaveInEventArgs e)
         {
@@ -231,7 +238,13 @@ namespace OSCVRCWiz
                 //  model = null;
                 // Debug.WriteLine("model nulled");
                 OutputText.outputLog("[Vosk Stopped Listening (resources freed)]");
-               // OutputText.outputLog("[Vosk Resources may not have properly been disposed (memory use still high in Task Manager). Consider restarting TTS Voice Wizard.]",Color.Red);
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
+                // OutputText.outputLog("[Vosk Resources may not have properly been disposed (memory use still high in Task Manager). Consider restarting TTS Voice Wizard.]",Color.Red);
             }
             catch (Exception ex)
             {
@@ -254,10 +267,20 @@ namespace OSCVRCWiz
                 //   model?.Dispose();
               //  voskPaused = true;
                 OutputText.outputLog("[Vosk Muted, to free resources switch speech to text mode]");
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
 
 
@@ -275,6 +298,11 @@ namespace OSCVRCWiz
                 //   model?.Dispose();
                // voskPaused = false;
                 OutputText.outputLog("[Vosk Unmuted]");
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
             catch (Exception ex)
             {

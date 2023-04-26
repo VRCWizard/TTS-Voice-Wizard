@@ -30,6 +30,7 @@ using static System.Net.WebRequestMethods;
 using System.IO;
 using Windows.Media.AppBroadcasting;
 using System.Collections;
+using CoreOSC;
 
 
 
@@ -41,8 +42,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.3.1";
-        string releaseDate = "April 25, 2023";
+        public static string currentVersion = "1.2.3.2";
+        string releaseDate = "April 26, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -91,6 +92,7 @@ namespace OSCVRCWiz
         CancellationTokenSource speechCt = new();
         public bool logPanelExtended =true;
         public static int fontSize = 20;
+        public static bool stt_listening = false;
 
      
 
@@ -891,13 +893,19 @@ namespace OSCVRCWiz
                     {
                         Task.Run(() => NoTTSQueue());
                     }
-                   
-                  
-                 //   if (rjToggleButtonGreenScreen.Checked == true)
-                 //   {
-                 //       Task.Run(() => OutputText.outputGreenScreen(writeText, "tts")); //original
 
-                //    }
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
+
+
+                    //   if (rjToggleButtonGreenScreen.Checked == true)
+                    //   {
+                    //       Task.Run(() => OutputText.outputGreenScreen(writeText, "tts")); //original
+
+                    //    }
 
                 }
                 else
@@ -908,6 +916,12 @@ namespace OSCVRCWiz
             catch (Exception ex)
             {
                 OutputText.outputLog("[DoTTS Error: "+ex.Message+"]", Color.Red);
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
                 
 

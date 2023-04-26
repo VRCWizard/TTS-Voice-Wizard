@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using CoreOSC;
+using NAudio.Wave;
 using OSCVRCWiz.Resources;
 using OSCVRCWiz.Text;
 using Resources;
@@ -64,9 +65,14 @@ namespace OSCVRCWiz.Speech_Recognition
                     Task.Run(() => doWhisper(args));
 
                     OutputText.outputLog("[Whisper Listening]");
-               // }
-        
-               
+                // }
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                    OSC.OSCSender.Send(sttListening);
+                }
+
+
             }
 
             else
@@ -76,6 +82,12 @@ namespace OSCVRCWiz.Speech_Recognition
                 WhisperEnabled = false;
                 OutputText.outputLog("[Whisper Stopped Listening]");
                 WhisperError = false;
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
 
             }
         }
@@ -88,6 +100,11 @@ namespace OSCVRCWiz.Speech_Recognition
                 WhisperEnabled = false;
                 OutputText.outputLog("[Whisper Stopped Listening]");
                 WhisperError = false;
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
 
             }
         }
@@ -257,7 +274,13 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
                WhisperEnabled = false;
-                
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
+
                 return ex.HResult;
             }
         }
