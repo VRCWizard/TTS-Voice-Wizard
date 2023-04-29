@@ -17,6 +17,7 @@ using OSCVRCWiz.Text;
 using NAudio.Wave;
 using System.Diagnostics;
 using OSCVRCWiz.Resources;
+using CoreOSC;
 
 
 //using NAudio.Wave;
@@ -92,7 +93,12 @@ namespace OSCVRCWiz
             waveIn.DataAvailable += WaveInOnDataAvailable;
 
             OutputText.outputLog("[System Speech Started Listening]");
-            waveIn?.StartRecording();
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                    OSC.OSCSender.Send(sttListening);
+                }
+                waveIn?.StartRecording();
             rec.SetInputToAudioStream(audioStream, new(48000, System.Speech.AudioFormat.AudioBitsPerSample.Sixteen, System.Speech.AudioFormat.AudioChannel.Mono));
             rec.RecognizeAsync(RecognizeMode.Multiple);
 
@@ -102,6 +108,11 @@ namespace OSCVRCWiz
 
                 OutputText.outputLog("[System Speech Recognizer Error: " + ex.Message + "]", Color.Red);
                 listeningCurrently = false;
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
 
         }
@@ -153,15 +164,25 @@ namespace OSCVRCWiz
                 {
                 listeningCurrently = true;
                 Task.Run(() => startListeningNow());
-
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                    OSC.OSCSender.Send(sttListening);
                 }
+
+            }
                 else
                 {
                 OutputText.outputLog("[System Speech Stopped Listening]");
                 listeningCurrently = false;
                 waveIn.StopRecording();
-                rec.RecognizeAsyncStop();             
+                rec.RecognizeAsyncStop();
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
                 }
+            }
 
 
 
@@ -175,6 +196,11 @@ namespace OSCVRCWiz
                 listeningCurrently = false;
                 waveIn.StopRecording();
                 rec.RecognizeAsyncStop();
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
         }
     }

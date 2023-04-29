@@ -92,11 +92,23 @@ namespace OSCVRCWiz
                 _listener.Start();
 
                 Task.Run(() => Receive());
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
             catch (Exception ex)
             {
                 OutputText.outputLog("[HTTP listener Unexpected Error (failed to start): " + ex.Message + "]", Color.Red);
                 webCapEnabled = false;
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
 
             }
         }
@@ -113,10 +125,15 @@ namespace OSCVRCWiz
                 webCapEnabled = true;
 
             }
-
-        
-           
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+            {
+                var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                OSC.OSCSender.Send(sttListening);
             }
+
+
+
+        }
 
             private static void Receive()
             {

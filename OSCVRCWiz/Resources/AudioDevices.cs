@@ -74,6 +74,7 @@ namespace Resources
         public static void NAudioSetupOutputDevices()
         {
             VoiceWizardWindow.MainFormGlobal.comboBoxOutput.Items.Clear();
+            VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.Items.Clear();//forgor this :p
             comboOut.Clear();
             speakerIDs.Clear();
 

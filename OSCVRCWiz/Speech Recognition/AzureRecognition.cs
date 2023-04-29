@@ -13,6 +13,7 @@ using OSCVRCWiz.Text;
 using Resources;
 using OSCVRCWiz.Resources;
 using OSCVRCWiz.Addons;
+using CoreOSC;
 
 namespace OSCVRCWiz
 {
@@ -158,6 +159,12 @@ namespace OSCVRCWiz
                     Console.WriteLine(eventArgs.Result.Text);
                    // var ot = new OutputText(); 
                     Task.Run(() => OutputText.outputLog("[Azure Speech Recognition Canceled (Translating): " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
                 };
 
                 translationRecognizer1.Recognized += (sender, eventArgs) =>
@@ -208,6 +215,12 @@ namespace OSCVRCWiz
                    // var ot = new OutputText();
                     Task.Run(() => OutputText.outputLog("[Azure Speech Recognition Canceled: " + eventArgs.Result.Text + " Reason: " + eventArgs.Result.Reason.ToString() + " Error Details: " + eventArgs.ErrorDetails.ToString() + "]", Color.Red));
                     OutputText.outputLog("[If this issue occurs often try searching the discord server. The solution has likely already been documented]", Color.DarkOrange);
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
 
                 };
                 speechRecognizer1.Recognized += (sender, eventArgs) =>
@@ -291,6 +304,11 @@ namespace OSCVRCWiz
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                        OSC.OSCSender.Send(sttListening);
+                    }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
                         OSCListener.pauseBPM = true;
@@ -340,7 +358,14 @@ namespace OSCVRCWiz
                     //  var ot = new OutputText();
                     OutputText.outputLog("[Azure Continuous Listening Enabled]");
 
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                        OSC.OSCSender.Send(sttListening);
+                    }
+
                     await speechRecognizer1.StartContinuousRecognitionAsync();
+
                 }
                 else if (continuousListening == true)
                 {
@@ -349,12 +374,23 @@ namespace OSCVRCWiz
                     System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
                     await speechRecognizer1.StopContinuousRecognitionAsync();
                     OutputText.outputLog("[Azure Continuous Listening Disabled]");
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Azure STTTS Failed: " + ex.Message.ToString());
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
 
             }
         }
@@ -376,6 +412,12 @@ namespace OSCVRCWiz
                         var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                         OSC.OSCSender.Send(typingbubble);
 
+                    }
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                        OSC.OSCSender.Send(sttListening);
                     }
 
                     var speechRecognitionResult = await translationRecognizer1.RecognizeOnceAsync();
@@ -428,6 +470,12 @@ namespace OSCVRCWiz
 
                     OutputText.outputLog("[Azure Continuous Listening Enabled (Translating)]");
 
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                        OSC.OSCSender.Send(sttListening);
+                    }
+
                     await translationRecognizer1.StartContinuousRecognitionAsync();
 
                 }
@@ -441,12 +489,24 @@ namespace OSCVRCWiz
                     //   speechRecognizer1.Dispose();
                     //  var ot = new OutputText();
                     OutputText.outputLog("[Azure Continuous Listening Disabled (Translating)]");
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
                 }
 
            }
             catch (Exception ex)
             {
                 OutputText.outputLog("Azure Translation STTTS Failed: Most likely your voice was not picked up by your microphone. Reason: " + ex.Message.ToString());
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
 
             }
         }
@@ -461,6 +521,12 @@ namespace OSCVRCWiz
                 await translationRecognizer1.StopContinuousRecognitionAsync();
                 await speechRecognizer1.StopContinuousRecognitionAsync();
                 OutputText.outputLog("[Azure Continuous Listening Disabled (Any)]");
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
         }
 
