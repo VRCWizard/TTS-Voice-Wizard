@@ -30,6 +30,7 @@ using static System.Net.WebRequestMethods;
 using System.IO;
 using Windows.Media.AppBroadcasting;
 using System.Collections;
+using CoreOSC;
 
 
 
@@ -41,8 +42,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.3.1";
-        string releaseDate = "April 25, 2023";
+        public static string currentVersion = "1.2.3.4";
+        string releaseDate = "April 29, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -91,6 +92,7 @@ namespace OSCVRCWiz
         CancellationTokenSource speechCt = new();
         public bool logPanelExtended =true;
         public static int fontSize = 20;
+        public static bool stt_listening = false;
 
      
 
@@ -439,7 +441,9 @@ namespace OSCVRCWiz
                 case "ElevenLabs": break;
 
                 case "TikTok":break;
-                 
+
+                case "NovelAI": break;
+
                 case "System Speech":
                    
 
@@ -831,6 +835,10 @@ namespace OSCVRCWiz
                         case "TikTok":
                             Task.Run(() => TikTokTTS.TikTokTextAsSpeech(TTSMessageQueued, speechCt.Token));
                             break;
+
+                        case "NovelAI": 
+                            Task.Run(() => NovelAITTS.NovelAITextAsSpeech(TTSMessageQueued, speechCt.Token));
+                            break;
                         case "Glados":
                             Task.Run(() => GladosTTS.GladosTextAsSpeech(TTSMessageQueued, speechCt.Token));
                             break;
@@ -891,13 +899,19 @@ namespace OSCVRCWiz
                     {
                         Task.Run(() => NoTTSQueue());
                     }
-                   
-                  
-                 //   if (rjToggleButtonGreenScreen.Checked == true)
-                 //   {
-                 //       Task.Run(() => OutputText.outputGreenScreen(writeText, "tts")); //original
 
-                //    }
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
+
+
+                    //   if (rjToggleButtonGreenScreen.Checked == true)
+                    //   {
+                    //       Task.Run(() => OutputText.outputGreenScreen(writeText, "tts")); //original
+
+                    //    }
 
                 }
                 else
@@ -908,6 +922,12 @@ namespace OSCVRCWiz
             catch (Exception ex)
             {
                 OutputText.outputLog("[DoTTS Error: "+ex.Message+"]", Color.Red);
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                {
+                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                    OSC.OSCSender.Send(sttListening);
+                }
             }
                 
 
@@ -2116,6 +2136,7 @@ namespace OSCVRCWiz
              "Chipmunk",
              "Dramatic",
             "Funny",
+            "Emotional",
             "Narrator",
                     };
                     foreach (var voice in tiktokVoices)
@@ -2258,6 +2279,25 @@ namespace OSCVRCWiz
                     TTSModeSaved = "Glados";
 
                     OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+
+                    break;
+                case "NovelAI":
+
+                    comboBox2.Items.Clear();
+                    comboBox2.Items.Add("NovelAI");
+                    comboBox2.SelectedIndex = 0;
+
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+                    TTSModeSaved = "NovelAI";
+
+                  //  OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
 
                     break;
                 case "ElevenLabs":
@@ -3258,8 +3298,9 @@ namespace OSCVRCWiz
             try
             {
                 speechCt.Cancel();
+   
                 //speechCt.Dispose();
-               // speechCt = new();
+                // speechCt = new();
                 //AnyOutput.Stop();
 
             }
@@ -3810,6 +3851,21 @@ namespace OSCVRCWiz
         private void iconButton15_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void iconButton47_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VRChat-Listener");
+        }
+
+        private void iconButton16_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Virtual-Cable");
         }
     }
 

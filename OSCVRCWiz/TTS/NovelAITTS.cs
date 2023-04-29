@@ -26,14 +26,17 @@ using System.Diagnostics;
 using Amazon.Polly;
 using Polly.Caching;
 using OSCVRCWiz.Resources;
+using System.Reflection.PortableExecutable;
+
 
 namespace OSCVRCWiz.TTS
 {
-    public class TikTokTTS
+    public class NovelAITTS
     {
-       // public static WaveOut TikTokOutput=null;
+        // public static WaveOut TikTokOutput=null;
+       
 
-        public static async Task TikTokTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
+        public static async Task NovelAITextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
             // if ("tiktokvoice.mp3" == null)
@@ -45,11 +48,12 @@ namespace OSCVRCWiz.TTS
             byte[] result = null;
             try
             {
-                result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
+                Debug.WriteLine("trying0");
+                result = await CallNovelAIAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[NovelAI TTS Error: " + ex.Message + "]", Color.Red);
              
 
             }
@@ -75,12 +79,15 @@ namespace OSCVRCWiz.TTS
 
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                Mp3FileReader wav = new Mp3FileReader(memoryStream);
+                StreamMediaFoundationReader wav = new StreamMediaFoundationReader(memoryStream);
+                //Mp3FileReader mp3Reader = new Mp3FileReader(wav);
 
 
                 memoryStream2.Flush();
                 memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                Mp3FileReader wav2 = new Mp3FileReader(memoryStream2);
+                StreamMediaFoundationReader wav2 = new StreamMediaFoundationReader(memoryStream2);
+
+        
 
 
                 var volume = 5;
@@ -195,7 +202,7 @@ namespace OSCVRCWiz.TTS
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[TikTok TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[NovelAI TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
                 if (ex.Message.Contains("An item with the same key has already been added"))
                 {
                     OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
@@ -205,46 +212,97 @@ namespace OSCVRCWiz.TTS
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
         }
 
-        public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
+        public static async Task<byte[]> CallNovelAIAPIAsync(string text, string voice)
         {
 
+           //    Debug.WriteLine("trying1");
+             
 
-            var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
+          //     string fixText = text.Replace(" ", "%20");
+             //  Debug.WriteLine(fixText);
+             //  var base64String = "";
+            // HttpClientHandler httpClientHandler = new HttpClientHandler();
+            // httpClientHandler.UseCookies = false;
+            //    var httpClient = new HttpClient(httpClientHandler);
 
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.Method = "POST";
+            //   var httpClient = new HttpClient();
+            //  httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36");
 
-            httpRequest.ContentType = "application/json";
+            //   httpClient.DefaultRequestHeaders.Referrer = new Uri($"https://api.novelai.net/ai/generate-voice?text={fixText}&seed=range_28_jumble&voice=0&opus=false&version=v2");
+            // Set accept headers to indicate that the client can handle various content types
+            //  httpClient.DefaultRequestHeaders.Accept.ParseAdd("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 
-            var apiVoice = GetTikTokVoice(voice);
+            // Add other headers as needed
+            // httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate, br");
+            //  httpClient.DefaultRequestHeaders.Add("Connection", "keep-alive");
 
-           var data = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
+            /*   httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
+               var response = await httpClient.GetAsync($"https://api.novelai.net/ai/generate-voice?text={fixText}&seed=range_28_jumble&voice=0&opus=false&version=v2");
+                Debug.WriteLine("trying");
+                if (response.IsSuccessStatusCode)
+                {
+                    var contentStream = await response.Content.ReadAsStreamAsync();
+                    var memoryStream = new MemoryStream();
+                    await contentStream.CopyToAsync(memoryStream);
+                    var bytes = memoryStream.ToArray();
+                    base64String = Convert.ToBase64String(bytes);
+                    Debug.WriteLine("output: "+base64String);
+                }
+                else
+                {
+                    Debug.WriteLine($"Request failed with status code {response.StatusCode} {response.ReasonPhrase}");
+                }*/
+            // System.Diagnostics.Debug.WriteLine(audioInBase64);*/
+            //string test = $"https://api.novelai.net/ai/generate-voice?text={fixText}&seed=range_28_jumble&voice=0&opus=false&version=v2";
 
-            using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
-            {
-                streamWriter.Write(data);
-            }
+          /*  Debug.WriteLine("wherestuck1");
+            Debug.WriteLine("wherestuck2");
+          //  IWebDriver driver = new FirefoxDriver();
+            Debug.WriteLine("wherestuck3");
+            driver.Navigate().GoToUrl(test);
+            Debug.WriteLine("wherestuck4");
+            // Find the audio element and get the source URL
+            IWebElement audioElement = driver.FindElement(By.CssSelector("audio[src$='.mp3']"));
+            string audioSrc = audioElement.GetAttribute("src");
 
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            string audioInBase64 = "";
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                var dataHere = JObject.Parse(result.ToString()).SelectToken("data").ToString();
-                audioInBase64 = dataHere.ToString();
+            // Use JavaScript to fetch the audio file as a byte array
+            string script = @"
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', arguments[0], false);
+                xhr.responseType = 'arraybuffer';
+                xhr.send();
+                return new Uint8Array(xhr.response);
+            ";
+            byte[] mp3Bytes = (byte[])((IJavaScriptExecutor)driver).ExecuteScript(script, audioSrc);
 
-                System.Diagnostics.Debug.WriteLine(result);
-            }
+            // Create a MemoryStream from the byte array
+            MemoryStream ms = new MemoryStream(mp3Bytes);
 
-            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
+            // Convert the MP3 file to a base64 string
+            string base64String = Convert.ToBase64String(ms.ToArray());
+
+            // Close the browser and the MemoryStream
+          //  driver.Quit();
+         //   ms.Close();
+           // ms.Dispose();
+
+            /* Debug.WriteLine(test);
+         //  Uri url = new Uri(test);
+             Process.Start(new ProcessStartInfo
+             {
+                 FileName = "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+                 Arguments = "-new-window " + test,
+                 WindowStyle = ProcessWindowStyle.Normal
+             });*/
 
 
 
-            System.Diagnostics.Debug.WriteLine(audioInBase64);
-            return Convert.FromBase64String(audioInBase64);
+
+              var base64String = "";
+            return Convert.FromBase64String(base64String);
 
         }
-        public static string GetTikTokVoice(string voice)
+        public static string GetNovelAIVoice(string voice)
         {
             string apiName = "en_us_001";
             switch (voice)
