@@ -42,8 +42,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.3.4";
-        string releaseDate = "April 29, 2023";
+        public static string currentVersion = "1.2.3.5";
+        string releaseDate = "April 30, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -754,7 +754,11 @@ namespace OSCVRCWiz
                         //  var ot = new OutputText();
                         OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
                     }
-                    Task.Run(() => VoiceCommands.MainDoVoiceCommand(TTSMessageQueued.text));
+                    VoiceCommands.MainDoVoiceCommand(TTSMessageQueued.text);
+                    if (selectedTTSMode == "Azure" && rjToggleButtonStyle.Checked == true)
+                    {
+                        TTSMessageQueued.Style = comboBox1.Text.ToString();// fix for speaking style not changing
+                    }
                     if (rjToggleReplaceBeforeTTS.Checked == true)
                     {
                         TTSMessageQueued.text = WordReplacements.MainDoWordReplacement(TTSMessageQueued.text);
