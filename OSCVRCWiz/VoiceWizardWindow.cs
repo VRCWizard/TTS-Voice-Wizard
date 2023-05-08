@@ -292,7 +292,7 @@ namespace OSCVRCWiz
                         // Activate and bring the form to the front
                         this.Activate();
                         this.BringToFront();
-
+                        richTextBox3.Text = "";
                         tabControl1.SelectTab(tabPage1);//sttts
                         richTextBox3.Select();
 
@@ -761,7 +761,17 @@ namespace OSCVRCWiz
         }
         private async void TTSButton_Click(object sender, EventArgs e)//TTS
         {
-           TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+            if (captureEnabled == true)//is capturing so turn it off
+            {
+
+                // Activate and bring the previous window to the front
+                if (prevFocusedWindow != IntPtr.Zero)
+                {
+                    SetForegroundWindow(prevFocusedWindow);
+                }
+                captureEnabled = false;
+            }
+            TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
             this.Invoke((MethodInvoker)delegate ()
             {
                 TTSMessageQueued.text = richTextBox3.Text.ToString();
@@ -1179,19 +1189,7 @@ namespace OSCVRCWiz
 
                 e.Handled = true;
 
-                if (captureEnabled == true)//is capturing so turn it off
-                {
-
-                    // Activate and bring the previous window to the front
-                    if (prevFocusedWindow != IntPtr.Zero)
-                    {
-                        SetForegroundWindow(prevFocusedWindow);
-                    }
-
-                    captureEnabled = false;
-
-
-                }
+               
             }
         }
         private void allButtonColorReset()
