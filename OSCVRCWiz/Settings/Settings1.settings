@@ -449,5 +449,14 @@
     <Setting Name="WhisperFilterLog" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="modHotkeyQuick" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="normalHotkeyQuick" Type="System.String" Scope="User">
+      <Value Profile="(Default)">J</Value>
+    </Setting>
+    <Setting Name="forceMediaToggle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

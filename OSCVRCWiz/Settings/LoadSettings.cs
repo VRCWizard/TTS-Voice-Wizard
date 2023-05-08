@@ -272,6 +272,11 @@ namespace OSCVRCWiz
             VoiceWizardWindow.normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
             VoiceWizardWindow.MainFormGlobal.textBoxStopTTS2.Text = VoiceWizardWindow.normalKeyStopTTS;
 
+            VoiceWizardWindow.modifierKeyQuickType = Settings1.Default.modHotkeyQuick;
+            VoiceWizardWindow.MainFormGlobal.textBoxQuickType1.Text = VoiceWizardWindow.modifierKeyQuickType;
+            VoiceWizardWindow.normalKeyQuickType = Settings1.Default.normalHotkeyQuick;
+            VoiceWizardWindow.MainFormGlobal.textBoxQuickType2.Text = VoiceWizardWindow.normalKeyQuickType;
+
 
             VoiceWizardWindow.MainFormGlobal.textBox9.Text = Settings1.Default.yourAWSKey;
             VoiceWizardWindow.MainFormGlobal.textBox10.Text = Settings1.Default.yourAWSSecret;
@@ -345,7 +350,9 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.SelectedItem = Settings1.Default.modelSelected;
 
-           // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked = Settings1.Default.forceMediaToggle;
+
+            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
 
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
               VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;

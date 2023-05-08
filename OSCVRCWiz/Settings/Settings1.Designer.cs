@@ -1810,5 +1810,41 @@ namespace OSCVRCWiz.Settings {
                 this["WhisperFilterLog"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public string modHotkeyQuick {
+            get {
+                return ((string)(this["modHotkeyQuick"]));
+            }
+            set {
+                this["modHotkeyQuick"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("J")]
+        public string normalHotkeyQuick {
+            get {
+                return ((string)(this["normalHotkeyQuick"]));
+            }
+            set {
+                this["normalHotkeyQuick"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool forceMediaToggle {
+            get {
+                return ((bool)(this["forceMediaToggle"]));
+            }
+            set {
+                this["forceMediaToggle"] = value;
+            }
+        }
     }
 }

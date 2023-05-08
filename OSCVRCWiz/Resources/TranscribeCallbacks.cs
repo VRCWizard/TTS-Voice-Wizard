@@ -24,9 +24,18 @@ namespace OSCVRCWiz.Resources
 
         public TranscribeCallbacks(CommandLineArgs args)
         {
-            this.args = args;
-            resultFlags = args.resultFlags();
-            //Console.OutputEncoding = System.Text.Encoding.UTF8;
+            try
+            {
+                this.args = args;
+                resultFlags = args.resultFlags();
+                //Console.OutputEncoding = System.Text.Encoding.UTF8;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[Whisper TranscribeCallbacks Error: " + ex.Message.ToString());
+                OutputText.outputLog("[Whisper TranscribeCallbackst Error: " + ex.Message.ToString() + "]", Color.Red);
+
+            }
         }
 
         // Terminal color map. 10 colors grouped in ranges [0.0, 0.1, ..., 0.9]
@@ -46,92 +55,101 @@ namespace OSCVRCWiz.Resources
             return col;
         }
 
-        public static string printTime(TimeSpan ts) =>
-            ts.ToString("hh':'mm':'ss'.'fff", CultureInfo.InvariantCulture);
-        public static string printTimeWithComma(TimeSpan ts) =>
-            ts.ToString("hh':'mm':'ss','fff", CultureInfo.InvariantCulture);
+      //  public static string printTime(TimeSpan ts) =>
+     //       ts.ToString("hh':'mm':'ss'.'fff", CultureInfo.InvariantCulture);
+     //   public static string printTimeWithComma(TimeSpan ts) =>
+      //      ts.ToString("hh':'mm':'ss','fff", CultureInfo.InvariantCulture);
 
         protected override void onNewSegment(Context sender, int countNew)
         {
-            
-            TranscribeResult res = sender.results(resultFlags);
-            ReadOnlySpan<sToken> tokens = res.tokens;
-            var testing = res.segments.Length;
-            int counter = 1;
-
-            int s0 = res.segments.Length - countNew;
-            if (s0 == 0)
-                Debug.WriteLine("");
-            string text = "";
-            string stuff = "";
-            for (int i = s0; i < res.segments.Length; i++)
+            try
             {
-                sSegment seg = res.segments[i];
 
-               stuff = seg.text.ToString().Trim();
+                TranscribeResult res = sender.results(resultFlags);
+                ReadOnlySpan<sToken> tokens = res.tokens;
+                var testing = res.segments.Length;
+                int counter = 1;
 
-  
-                Debug.WriteLine($"segment {s0}: {stuff}");
-                //   Debug.WriteLine("countNew : " + countNew);
-                //   Debug.WriteLine("s0 : " + s0);
-                //   Debug.WriteLine("testing : " + testing);
+                int s0 = res.segments.Length - countNew;
+                if (s0 == 0)
+                    Debug.WriteLine("");
+                string text = "";
+                string stuff = "";
+                for (int i = s0; i < res.segments.Length; i++)
+                {
+                    sSegment seg = res.segments[i];
 
-                //counter++;
-
-                //Char ch = '[';
-                //i am also want to ignore stuff starting with * ???? ill have to see after further testing/ when i release it.
-                //also since whisper can recognize laughter, i could add that as a feature.
-                //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
-
-            
+                    stuff = seg.text.ToString().Trim();
 
 
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
-               {
-                   
+                    Debug.WriteLine($"segment {s0}: {stuff}");
+                    //   Debug.WriteLine("countNew : " + countNew);
+                    //   Debug.WriteLine("s0 : " + s0);
+                    //   Debug.WriteLine("testing : " + testing);
+
+                    //counter++;
+
+                    //Char ch = '[';
+                    //i am also want to ignore stuff starting with * ???? ill have to see after further testing/ when i release it.
+                    //also since whisper can recognize laughter, i could add that as a feature.
+                    //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
 
 
-                    if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
+
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
                     {
 
-                        //   WhisperRecognition.WhisperString += text + " ";
-                        //  VoiceWizardWindow.whisperTimer.Change(250, 0);
-                        //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
-                        text += stuff;
 
+
+                        if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
+                        {
+
+                            //   WhisperRecognition.WhisperString += text + " ";
+                            //  VoiceWizardWindow.whisperTimer.Change(250, 0);
+                            //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
+                            text += stuff;
+
+                        }
+                        else
+                        {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked == true)
+                            {
+
+
+                                OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                            }
+                        }
+                        // continue;
                     }
                     else
                     {
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked == true)
+                        if (!stuff.StartsWith('[') || !stuff.EndsWith(']') || !stuff.StartsWith('(') || !stuff.EndsWith(')') || !stuff.StartsWith('*') || !stuff.EndsWith('*'))
                         {
-
-
-                            OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                            string pattern = @"[*()\[\]]"; // Match any of these characters
+                            stuff = Regex.Replace(stuff, pattern, "", RegexOptions.IgnoreCase);
+                            stuff = "'" + stuff + "'";
                         }
+
+
+                        text += stuff;
                     }
-                    // continue;
+
                 }
-                else
+                if (text != "")
                 {
-                    if (!stuff.StartsWith('[') || !stuff.EndsWith(']') || !stuff.StartsWith('(') || !stuff.EndsWith(')') || !stuff.StartsWith('*') || !stuff.EndsWith('*'))
-                    {            
-                        string pattern = @"[*()\[\]]"; // Match any of these characters
-                        stuff = Regex.Replace(stuff, pattern, "", RegexOptions.IgnoreCase);
-                        stuff = "'" + stuff + "'";
-                    }
-                 
+                    WhisperRecognition.WhisperString += text + " ";
+                    VoiceWizardWindow.whisperTimer.Change(250, 0);
+                    // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
 
-                    text += stuff;
+
                 }
-                
             }
-            if (text != "")
+            catch(Exception ex)
             {
-                   WhisperRecognition.WhisperString += text + " ";
-                   VoiceWizardWindow.whisperTimer.Change(250, 0);
-               // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
-
-
+                MessageBox.Show("[Whisper NewSegment Error: " + ex.Message.ToString());
+                OutputText.outputLog("[Whisper NewSegment Error: " + ex.Message.ToString() + "]", Color.Red);
+                
             }
 
 

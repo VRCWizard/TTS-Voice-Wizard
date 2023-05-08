@@ -109,7 +109,7 @@ namespace OSCVRCWiz.TTS
                 AnyOutput.Play();
                 ct.Register(async () => AnyOutput.Stop());
 
-                WaveOut AnyOutput2 = null;
+                WaveOut AnyOutput2 = new WaveOut();
                 VarispeedSampleProvider speedControl_2 = null;
                 WaveChannel32 wave32_2 = null;
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
@@ -118,7 +118,7 @@ namespace OSCVRCWiz.TTS
                     wave32_2.PadWithZeroes = false;
                     speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(useTempo, false));//output 2
                     speedControl_2.PlaybackRate = pitchFloat;//output 2
-                    AnyOutput2 = new WaveOut();
+                   // AnyOutput2 = new WaveOut();
                     AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
                     AnyOutput2.Init(speedControl_2);
                     AnyOutput2.Play();
@@ -138,7 +138,7 @@ namespace OSCVRCWiz.TTS
 
                 AnyOutput.Stop();
                 AnyOutput.Dispose();
-                AnyOutput = null;
+              //  AnyOutput = null;
                 speedControl.Dispose();
                 speedControl = null;
                 wave32.Dispose();
@@ -150,11 +150,12 @@ namespace OSCVRCWiz.TTS
                 memoryStream = null;
             //    synthesizerLite = null;
 
-                if (AnyOutput2 != null)
-                {
+             
                     AnyOutput2.Stop();
                     AnyOutput2.Dispose();
-                    AnyOutput2 = null;
+                  //  AnyOutput2 = null;
+                if (wave32_2 != null)
+                {
                     speedControl_2.Dispose();
                     speedControl_2 = null;
                     wave32_2.Dispose();

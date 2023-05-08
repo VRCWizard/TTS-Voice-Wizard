@@ -31,6 +31,7 @@ using System.IO;
 using Windows.Media.AppBroadcasting;
 using System.Collections;
 using CoreOSC;
+using System.Runtime.InteropServices;
 
 
 
@@ -42,8 +43,8 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.3.5";
-        string releaseDate = "April 30, 2023";
+        public static string currentVersion = "1.2.4";
+        string releaseDate = "May 7, 2023";
         string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
@@ -85,12 +86,16 @@ namespace OSCVRCWiz
         public static string modifierKeyStopTTS = "";
         public static string normalKeyStopTTS = "";
 
+        public static string modifierKeyQuickType = "Control";
+        public static string normalKeyQuickType = "J";
+
         // public static bool StopAnyTTS = false;
         public static WaveOut AnyOutput = new();
         public static WaveOut AnyOutput2 = new();
 
         CancellationTokenSource speechCt = new();
         public bool logPanelExtended =true;
+        public bool logPanelExtended2 = true;
         public static int fontSize = 20;
         public static bool stt_listening = false;
 
@@ -132,6 +137,9 @@ namespace OSCVRCWiz
                 modifierKeyStopTTS = Settings1.Default.modHotkeyStop;
                 normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
                 CUSTOMRegisterHotKey(1, modifierKeyStopTTS, normalKeyStopTTS);
+
+
+                CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
             }
             catch (Exception ex)
             {
@@ -245,6 +253,8 @@ namespace OSCVRCWiz
 
             RegisterHotKey(MainFormGlobal.Handle, id, (int)modkey, normKey.GetHashCode());
         }
+        private IntPtr prevFocusedWindow = IntPtr.Zero;
+        private bool captureEnabled = false;
         protected override void WndProc(ref Message m)
         {
             //link to implementation https://www.fluxbytes.com/csharp/how-to-register-a-global-hotkey-for-your-application-in-c/ 
@@ -263,18 +273,106 @@ namespace OSCVRCWiz
 
                 System.Diagnostics.Debug.WriteLine("-------------get key press id: " + key.ToString());
 
-                if (id == 0)
+                if (id == 0)//sttts
                 {
                     Task.Run(() => MainDoSpeechTTS());
                 }
-                if (id == 1)
+                if (id == 1)//stop
                 {
                     Task.Run(() => MainDoStopTTS());
+
+                }
+                if (id == 2)//game keyboard
+                {
+                    if (captureEnabled == false) // not capturing so turn it on
+                    {
+                        // Save the handle of the previously focused window
+                        prevFocusedWindow = GetForegroundWindow();
+
+                        // Activate and bring the form to the front
+                        this.Activate();
+                        this.BringToFront();
+
+                        tabControl1.SelectTab(tabPage1);//sttts
+                        richTextBox3.Select();
+
+
+                        captureEnabled = true;
+
+          
+                    }
+                    else if(captureEnabled == true)//is capturing so turn it off
+                    {
+
+                        // Activate and bring the previous window to the front
+                        if (prevFocusedWindow != IntPtr.Zero)
+                        {
+                            SetForegroundWindow(prevFocusedWindow);
+                        }
+
+                        captureEnabled = false;
+
+                   
+                    }
 
                 }
             }
 
         }
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetForegroundWindow(IntPtr hWnd);
+        /* private const int WM_HOTKEY = 0x0312;
+         private const int KEY_UP = 0x0101;
+         private const int KEY_DOWN = 0x0100;
+
+         private IntPtr hookId = IntPtr.Zero;
+         private bool captureEnabled = false;
+       //  private bool capturingNow = false;
+
+         private IntPtr KeyboardHookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+         {
+             if (nCode >= 0)
+             {
+                 int vkCode = Marshal.ReadInt32(lParam);
+
+
+
+                 if (captureEnabled)
+                 {
+                     // Capture the input by storing it in a buffer or sending it to the game window
+                     Debug.WriteLine($"Captured input: {(Keys)vkCode}");
+
+                     // Prevent the input from being passed on to the game
+                     return new IntPtr(1);
+                 }
+             }
+
+             return CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
+         }
+
+         // Constants and native function declarations
+         private const int WH_KEYBOARD_LL = 13;
+         private const int MOD_ALT = 0x0001;
+         private const int MOD_CONTROL = 0x0002;
+         private const int MOD_SHIFT = 0x0004;
+         private const int MOD_WIN = 0x0008;
+
+         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+
+
+         [DllImport("user32.dll", SetLastError = true)]
+         private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+         [DllImport("user32.dll")]
+         private static extern int UnhookWindowsHookEx(IntPtr idHook);
+
+         [DllImport("user32.dll")]
+         private static extern IntPtr CallNextHookEx(IntPtr idHook, int nCode, IntPtr wParam, IntPtr lParam);*/
+
 
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
         {
@@ -583,6 +681,7 @@ namespace OSCVRCWiz
                    // int id = 0;
                     CUSTOMRegisterHotKey(0, modifierKeySTTTS, normalKeySTTTS);
                     CUSTOMRegisterHotKey(1, modifierKeyStopTTS, normalKeyStopTTS);
+                    CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
                 }
 
             }
@@ -616,6 +715,8 @@ namespace OSCVRCWiz
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             VoiceWizardWindow.UnregisterHotKey(this.Handle, 0);
+            VoiceWizardWindow.UnregisterHotKey(this.Handle, 1);
+            VoiceWizardWindow.UnregisterHotKey(this.Handle, 2);
             SaveSettings.SavingSettings();
             try
             {
@@ -969,81 +1070,88 @@ namespace OSCVRCWiz
                 }
             
             }
-            
-
-            
-            this.Invoke((MethodInvoker)delegate ()
-            {
-                switch (comboBoxSTT.SelectedItem.ToString())
+            try
             {
 
-                case "Vosk":
-
-                        Task.Run(() => VoskRecognition.toggleVosk());
-
-                        break;
-               case "Whisper":
-                        if( whisperModelTextBox.Text.ToString()== "no model selected")
-                        {
-                            downloadWhisperModel();
-                            OutputText.outputLog("[Auto installing default Whisper model for you, please wait. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.DarkOrange);
-                        }
-                        else 
-                        {
-                            Task.Run(() => WhisperRecognition.toggleWhisper());
-                        }
-
-                       
-                     //   Task.Run(() => WhisperRecognitionV2.Demo());
-
-                        break;
-               case "Web Captioner":
-                        Task.Run(() => WebCaptionerRecognition.WebCapToggle());
-                        break;
-
-                case "System Speech":
-                   
-                    Task.Run(() => SystemSpeechRecognition.speechTTSButtonLiteClick());
-
-                    break;
-                case "Azure":
-                    if (AzureRecognition.YourSubscriptionKey == "")
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    switch (comboBoxSTT.SelectedItem.ToString())
                     {
-                            OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
-                        }
-                    if (AzureRecognition.YourSubscriptionKey != "")
-                    {
-                      //  var azureRec = new AzureRecognition();
-                      
-                            if (comboBox3.Text.ToString() == "No Translation (Default)")
+
+                        case "Vosk":
+
+                            Task.Run(() => VoskRecognition.toggleVosk());
+
+                            break;
+                        case "Whisper":
+                            if (whisperModelTextBox.Text.ToString() == "no model selected")
                             {
-                                AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
-                                System.Diagnostics.Debug.WriteLine("<speechSetup change>");
-                               
-                                    OutputText.outputLog("[Azure Listening]");
-                                AzureRecognition.speechTTTS(comboBox4.Text.ToString());
-                                
-
+                                downloadWhisperModel();
+                                OutputText.outputLog("[Auto installing default Whisper model for you, please wait. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.DarkOrange);
                             }
                             else
                             {
-                                AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
-                                System.Diagnostics.Debug.WriteLine("<speechSetup change>");
-                                                           
+                                Task.Run(() => WhisperRecognition.toggleWhisper());
+                            }
+
+
+                            //   Task.Run(() => WhisperRecognitionV2.Demo());
+
+                            break;
+                        case "Web Captioner":
+                            Task.Run(() => WebCaptionerRecognition.WebCapToggle());
+                            break;
+
+                        case "System Speech":
+
+                            Task.Run(() => SystemSpeechRecognition.speechTTSButtonLiteClick());
+
+                            break;
+                        case "Azure":
+                            if (AzureRecognition.YourSubscriptionKey == "")
+                            {
+                                OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                            }
+                            if (AzureRecognition.YourSubscriptionKey != "")
+                            {
+                                //  var azureRec = new AzureRecognition();
+
+                                if (comboBox3.Text.ToString() == "No Translation (Default)")
+                                {
+                                    AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                                    System.Diagnostics.Debug.WriteLine("<speechSetup change>");
+
+                                    OutputText.outputLog("[Azure Listening]");
+                                    AzureRecognition.speechTTTS(comboBox4.Text.ToString());
+
+
+                                }
+                                else
+                                {
+                                    AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
+                                    System.Diagnostics.Debug.WriteLine("<speechSetup change>");
+
                                     OutputText.outputLog("[Azure Translation Listening]");
-                                AzureRecognition.translationSTTTS(comboBox3.Text.ToString(), comboBox4.Text.ToString());
-                                
+                                    AzureRecognition.translationSTTTS(comboBox3.Text.ToString(), comboBox4.Text.ToString());
+
+
+                                }
 
                             }
-                        
+                            break;
+
+                        default:
+
+                            break;
                     }
-                    break;
-
-                default:
-
-                    break;
+                });
             }
-            });
+            catch (Exception ex)
+            {
+              //  MessageBox.Show("[STTTS Error: " + ex.Message.ToString());
+                OutputText.outputLog("[STTTS Error: " + ex.Message.ToString() + "]", Color.Red);
+
+            }
 
 
 
@@ -1070,6 +1178,20 @@ namespace OSCVRCWiz
                 TTSButton.PerformClick();
 
                 e.Handled = true;
+
+                if (captureEnabled == true)//is capturing so turn it off
+                {
+
+                    // Activate and bring the previous window to the front
+                    if (prevFocusedWindow != IntPtr.Zero)
+                    {
+                        SetForegroundWindow(prevFocusedWindow);
+                    }
+
+                    captureEnabled = false;
+
+
+                }
             }
         }
         private void allButtonColorReset()
@@ -1389,7 +1511,13 @@ namespace OSCVRCWiz
             }
             if (rjToggleButton10.Checked == true && rjToggleButtonPeriodic.Checked == true)
             {
+                
                 Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+            }
+            if (rjToggleButton10.Checked == true && rjToggleButtonForceMedia.Checked ==true)
+            {
+                WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
+                Debug.WriteLine("forced media");
             }
 
             spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
@@ -1878,6 +2006,7 @@ namespace OSCVRCWiz
 
                     CUSTOMRegisterHotKey(0, modifierKeySTTTS, normalKeySTTTS);
                     CUSTOMRegisterHotKey(1, modifierKeyStopTTS, normalKeyStopTTS);
+                    CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
                 }
 
             }
@@ -1896,6 +2025,7 @@ namespace OSCVRCWiz
 
                 CUSTOMRegisterHotKey(0, modifierKeySTTTS, normalKeySTTTS);
                 CUSTOMRegisterHotKey(1, modifierKeyStopTTS, normalKeyStopTTS);
+                CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
                 this.WindowState = FormWindowState.Normal;
 
             }
@@ -2746,6 +2876,10 @@ namespace OSCVRCWiz
                 ttsTrash.BackColor = Color.FromArgb(31, 30, 68);
                 logTrash.BackColor = Color.FromArgb(31, 30, 68);
                 iconButton22.BackColor = Color.FromArgb(31, 30, 68);
+                iconButton36.BackColor = Color.FromArgb(31, 30, 68);
+
+                iconButton37.BackColor = Color.FromArgb(31, 30, 68);
+
 
                 /* iconButton13.BackColor = LightModeColor;//dashboard buttons
                  iconButton14.BackColor = LightModeColor;
@@ -2753,7 +2887,7 @@ namespace OSCVRCWiz
                  iconButton16.BackColor = LightModeColor;
                  iconButton17.BackColor = LightModeColor;
                  iconButton26.BackColor = LightModeColor;*/
-                
+
 
 
 
@@ -2764,7 +2898,12 @@ namespace OSCVRCWiz
             logTrash.IconColor = Color.White;
             iconButton22.IconColor = Color.White;
 
-              }
+                iconButton36.IconColor = Color.White;
+                iconButton37.IconColor = Color.White;
+                iconButton36.ForeColor = Color.White;
+                iconButton37.ForeColor = Color.White;
+
+            }
             if (rjToggleDarkMode.Checked == false)//light mode
             {
                 DarkTitleBarClass.UseImmersiveDarkMode(Handle, false);
@@ -2793,17 +2932,27 @@ namespace OSCVRCWiz
                 logTrash.BackColor = Color.White;
                 iconButton22.BackColor = Color.White;
 
-               /* iconButton13.BackColor = Color.FromArgb(68, 72, 111);//dashboard buttons
-                iconButton14.BackColor = Color.FromArgb(68, 72, 111);
-                iconButton15.BackColor = Color.FromArgb(68, 72, 111);
-                iconButton16.BackColor = Color.FromArgb(68, 72, 111);
-                iconButton17.BackColor = Color.FromArgb(68, 72, 111);
-                iconButton26.BackColor = Color.FromArgb(68, 72, 111);*/
+                iconButton36.BackColor = Color.White;
+                iconButton37.BackColor = Color.White;
+
+                
+
+                /* iconButton13.BackColor = Color.FromArgb(68, 72, 111);//dashboard buttons
+                 iconButton14.BackColor = Color.FromArgb(68, 72, 111);
+                 iconButton15.BackColor = Color.FromArgb(68, 72, 111);
+                 iconButton16.BackColor = Color.FromArgb(68, 72, 111);
+                 iconButton17.BackColor = Color.FromArgb(68, 72, 111);
+                 iconButton26.BackColor = Color.FromArgb(68, 72, 111);*/
 
                 labelCharCount.ForeColor = Color.FromArgb(68, 72, 111);
                 ttsTrash.IconColor = Color.FromArgb(68, 72, 111);
                 logTrash.IconColor = Color.FromArgb(68, 72, 111);
                 iconButton22.IconColor = Color.FromArgb(68, 72, 111);
+
+                iconButton36.IconColor = Color.FromArgb(68, 72, 111);
+                iconButton37.IconColor = Color.FromArgb(68, 72, 111);
+                iconButton36.ForeColor = Color.FromArgb(68, 72, 111);
+                iconButton37.ForeColor = Color.FromArgb(68, 72, 111);
 
                 richTextBox4.BackColor = Color.FromArgb(68, 72, 111);
                 richTextBox4.ForeColor = Color.White;
@@ -3870,6 +4019,64 @@ namespace OSCVRCWiz
         private void iconButton16_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Virtual-Cable");
+        }
+
+        private void button50_Click(object sender, EventArgs e)
+        {
+ 
+                if (logPanelExtended2 == true)
+                {
+                   panelCustomize.Size = new Size(20, logPanel.Height);
+                    button50.Text = "🢀🢀🢀";
+                    logPanelExtended2 = false;
+                }
+                else
+                {
+                    panelCustomize.Size = new Size(315, logPanel.Height);
+                    button50.Text = "🢂🢂🢂";
+                    logPanelExtended2 = true;
+                }
+
+            
+        }
+
+        private void rjToggleButtonQuickTypeEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleButtonQuickTypeEnabled.Checked == true)
+            {
+                CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
+            }
+            if (rjToggleButtonQuickTypeEnabled.Checked == false)
+            {
+                UnregisterHotKey(this.Handle, 2);
+            }
+        }
+
+        private void buttonQuickTypeEdit_Click(object sender, EventArgs e)
+        {
+            textBoxQuickType1.Clear();
+            textBoxQuickType2.Clear();
+            buttonQuickTypeSave.Enabled = true;
+            buttonQuickTypeEdit.Enabled = false;
+            textBoxQuickType1.Enabled = true;
+            textBoxQuickType2.Enabled = true;
+        }
+
+        private void buttonQuickTypeSave_Click(object sender, EventArgs e)
+        {
+            textBoxQuickType1.Enabled = false;
+            textBoxQuickType2.Enabled = false;
+            buttonQuickTypeSave.Enabled = false;
+            buttonQuickTypeEdit.Enabled = true;
+            modifierKeyQuickType = textBoxQuickType1.Text.ToString();
+            normalKeyQuickType = textBoxQuickType2.Text.ToString();
+            UnregisterHotKey(this.Handle, 2);
+            CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
+        }
+
+        private void button38_Click_1(object sender, EventArgs e)
+        {
+            SaveSettings.SavingSettings();
         }
     }
 

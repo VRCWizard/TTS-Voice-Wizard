@@ -14,7 +14,7 @@ namespace OSCVRCWiz.Addons
 {
     public class WindowsMedia
     {
-        static MediaManager mediaManager;
+        public static MediaManager mediaManager;
         public static string previousTitle = "-|-]][54h]nh734ngeg==--=";
         public static string mediaTitle = "";
         public static string mediaSource = "";
@@ -41,6 +41,7 @@ namespace OSCVRCWiz.Addons
 
 
                     mediaManager.Start();
+                    
                 }
             }
             catch (Exception ex)

@@ -367,10 +367,10 @@ namespace OSCVRCWiz.TTS
                         AnyOutput.Init(wav);
                         AnyOutput.Play();
                         ct.Register(async () => AnyOutput.Stop());
-                        WaveOut AnyOutput2 = null;
+                        var AnyOutput2 = new WaveOut();
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
                         {
-                           AnyOutput2 = new WaveOut();
+                         //  AnyOutput2 = new WaveOut();
                             AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
                             AnyOutput2.Init(wav2);
                             AnyOutput2.Play();
@@ -391,13 +391,13 @@ namespace OSCVRCWiz.TTS
                             AnyOutput.Stop();
                             AnyOutput.Dispose();
                            
-                            AnyOutput = null;
-                            if (AnyOutput2 != null)
-                            {
+                           // AnyOutput = null;
+                          //  if (AnyOutput2 != null)
+                          //  {
                                 AnyOutput2.Stop();
                                 AnyOutput2.Dispose();
-                                AnyOutput2 = null;
-                            }
+                            //    AnyOutput2 = null;
+                         //   }
                             memoryStream.Dispose();
                             memoryStream = null;
                           //  memoryStream2.Dispose();

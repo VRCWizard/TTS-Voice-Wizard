@@ -186,12 +186,13 @@ namespace OSCVRCWiz
             Settings1.Default.saveAutoRefreshKat= VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked;
 
             Settings1.Default.modHotKey = VoiceWizardWindow.modifierKeySTTTS;
-
             Settings1.Default.normalHotKey = VoiceWizardWindow.normalKeySTTTS;
 
-            Settings1.Default.modHotkeyStop = VoiceWizardWindow.modifierKeyStopTTS;
-
+           Settings1.Default.modHotkeyStop = VoiceWizardWindow.modifierKeyStopTTS;
             Settings1.Default.normalHotkeyStop = VoiceWizardWindow.normalKeyStopTTS;
+
+            Settings1.Default.modHotkeyQuick = VoiceWizardWindow.modifierKeyQuickType;
+            Settings1.Default.normalHotkeyQuick = VoiceWizardWindow.normalKeyQuickType;
 
 
 
@@ -258,6 +259,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.modelSelected = VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Text.ToString();
             Settings1.Default.WhisperFilterLog= VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked;
+
+            Settings1.Default.forceMediaToggle = VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked;
 
             // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
 

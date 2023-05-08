@@ -17,22 +17,36 @@ namespace OSCVRCWiz.Resources
            public static CaptureThread ctt =null;
            public CaptureThread(CommandLineArgs args, Context context, iAudioCapture source)
            {
-               callbacks = new TranscribeCallbacks(args);
-               this.context = context;
-               this.source = source;
+            try
+            {
+                callbacks = new TranscribeCallbacks(args);
+                this.context = context;
+                this.source = source;
 
-               thread = new Thread(threadMain) { Name = "Capture Thread" };
-             //  Debug.WriteLine("Press any key to quit");
-               thread.Start();
-           }
+                thread = new Thread(threadMain) { Name = "Capture Thread" };
+                //  Debug.WriteLine("Press any key to quit");
+                thread.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[Whisper CaptureThread Error: " + ex.Message.ToString());
+              
+            }
+        }
 
            static void readKeyCallback(object? state)
            {
-            
+            try { 
                ctt = (state as CaptureThread) ?? throw new ApplicationException();
-              // Console.ReadKey();
-             //  ct.shouldQuit = true; //this line has been making it quit automatically dumb dumb
-           }
+            // Console.ReadKey();
+            //  ct.shouldQuit = true; //this line has been making it quit automatically dumb dumb
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("[Whisper readKeyCallback Error: " + ex.Message.ToString());
+                
+            }
+}
            public static void stopWhisper()
            {
                ctt.shouldQuit = true;
@@ -41,9 +55,15 @@ namespace OSCVRCWiz.Resources
 
            public void join()
            {
-               ThreadPool.QueueUserWorkItem(readKeyCallback, this);
-               thread.Join();
-              edi?.Throw();
+            try
+            {
+                ThreadPool.QueueUserWorkItem(readKeyCallback, this);
+                thread.Join();
+                edi?.Throw();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("[Whisper join Error: " + ex.Message.ToString());
+            }
            }
 
            volatile bool shouldQuit = false;
@@ -71,7 +91,8 @@ namespace OSCVRCWiz.Resources
                }
                catch (Exception ex)
                {
-                   edi = ExceptionDispatchInfo.Capture(ex);
+                MessageBox.Show("[Whisper threadMain Error: " + ex.Message.ToString());
+                edi = ExceptionDispatchInfo.Capture(ex);
                    Debug.WriteLine(ex.Message.ToString());
                }
            }
