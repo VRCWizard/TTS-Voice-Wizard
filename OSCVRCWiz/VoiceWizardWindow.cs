@@ -43,9 +43,9 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.4";
-        string releaseDate = "May 7, 2023";
-        string versionBuild = "x64"; //update when converting to x86/x64
+        public static string currentVersion = "1.2.4.1";
+       // string releaseDate = "May 7, 2023";
+     //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
       //  string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x86.xml"; //update when converting to x86/x64
@@ -138,7 +138,8 @@ namespace OSCVRCWiz
                 normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
                 CUSTOMRegisterHotKey(1, modifierKeyStopTTS, normalKeyStopTTS);
 
-
+                modifierKeyQuickType = Settings1.Default.modHotkeyQuick;
+                normalKeyQuickType = Settings1.Default.normalHotkeyQuick;
                 CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
             }
             catch (Exception ex)
@@ -244,7 +245,10 @@ namespace OSCVRCWiz
        
         public static void CUSTOMRegisterHotKey(int id, string modifierKey,string normalKey)
         {
-          //  int id = 0;// The id of the hotkey. 
+            //  int id = 0;// The id of the hotkey. 
+            if (id == 0 && VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked==false) { return; }
+            if (id == 1 && VoiceWizardWindow.MainFormGlobal.rjToggleButton12.Checked == false) { return; }
+            if (id == 2 && VoiceWizardWindow.MainFormGlobal.rjToggleButtonQuickTypeEnabled.Checked == false) { return; }
             KeyModifier modkey;
             Enum.TryParse(modifierKey, out modkey);
 
@@ -4075,6 +4079,32 @@ namespace OSCVRCWiz
         private void button38_Click_1(object sender, EventArgs e)
         {
             SaveSettings.SavingSettings();
+        }
+
+        private void textBoxStopTTS1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void textBoxQuickType1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (textBoxQuickType1.Enabled == true)
+            {
+                Keys modifierKeys = e.Modifiers;
+                textBoxQuickType1.Text = modifierKeys.ToString();
+
+            }
+        }
+
+        private void textBoxQuickType2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (textBoxQuickType2.Enabled == true)
+            {
+                Keys modifierKeys = e.Modifiers;
+                Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
+                var converter = new KeysConverter();
+                textBoxQuickType2.Text = converter.ConvertToString(pressedKey);
+
+            }
         }
     }
 

@@ -1846,5 +1846,29 @@ namespace OSCVRCWiz.Settings {
                 this["forceMediaToggle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool shortcutStop {
+            get {
+                return ((bool)(this["shortcutStop"]));
+            }
+            set {
+                this["shortcutStop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool shortcutQuickType {
+            get {
+                return ((bool)(this["shortcutQuickType"]));
+            }
+            set {
+                this["shortcutQuickType"] = value;
+            }
+        }
     }
 }

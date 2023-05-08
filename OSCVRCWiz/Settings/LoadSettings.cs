@@ -259,6 +259,8 @@ namespace OSCVRCWiz
             
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked = Settings1.Default.hotketSave;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButton12.Checked = Settings1.Default.shortcutStop;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonQuickTypeEnabled.Checked = Settings1.Default.shortcutQuickType;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked = Settings1.Default.saveAutoRefreshKat;
 
