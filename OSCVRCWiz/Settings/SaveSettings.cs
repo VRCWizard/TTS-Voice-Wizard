@@ -263,6 +263,7 @@ namespace OSCVRCWiz
             Settings1.Default.WhisperFilterLog= VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked;
 
             Settings1.Default.forceMediaToggle = VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked;
+            Settings1.Default.refocusWindow = VoiceWizardWindow.MainFormGlobal.rjToggleButtonRefocus.Checked;
 
             // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
 

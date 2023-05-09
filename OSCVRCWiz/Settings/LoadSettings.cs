@@ -354,6 +354,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked = Settings1.Default.forceMediaToggle;
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonRefocus.Checked = Settings1.Default.refocusWindow;
+
             // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
 
             /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;

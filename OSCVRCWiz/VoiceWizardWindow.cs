@@ -43,7 +43,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.4.1";
+        public static string currentVersion = "1.2.4.2";
        // string releaseDate = "May 7, 2023";
      //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -765,7 +765,7 @@ namespace OSCVRCWiz
         }
         private async void TTSButton_Click(object sender, EventArgs e)//TTS
         {
-            if (captureEnabled == true)//is capturing so turn it off
+            if (captureEnabled == true && rjToggleButtonRefocus.Checked==true)//is capturing so turn it off
             {
 
                 // Activate and bring the previous window to the front

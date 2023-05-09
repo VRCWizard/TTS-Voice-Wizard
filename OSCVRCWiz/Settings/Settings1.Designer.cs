@@ -1870,5 +1870,17 @@ namespace OSCVRCWiz.Settings {
                 this["shortcutQuickType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool refocusWindow {
+            get {
+                return ((bool)(this["refocusWindow"]));
+            }
+            set {
+                this["refocusWindow"] = value;
+            }
+        }
     }
 }
