@@ -18,13 +18,14 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Buffers.Text;
 using System.Diagnostics;
 using Swan.Logging;
+using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz.TTS
 {
     public class VoiceWizardProTTS
     {
-        
-        public static async Task<string> VoiceWizardProTextAsSpeech(string apiKey,TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
+
+        public static async Task<string> VoiceWizardProTextAsSpeech(string apiKey, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
             // if ("tiktokvoice.mp3" == null)
@@ -36,7 +37,7 @@ namespace OSCVRCWiz.TTS
                 return "";
             }
 
-         
+
             string result = null;
             string translation = null;
             string audioString = "";
@@ -45,7 +46,7 @@ namespace OSCVRCWiz.TTS
             // byte[] result = null;
             try
             {
-                (result,translation) = await Task.Run(() => CallVoiceProAPIAsync(apiKey,TTSMessageQueued));
+                (result, translation) = await Task.Run(() => CallVoiceProAPIAsync(apiKey, TTSMessageQueued));
                 audioString = result;
                 translationString = translation;
 
@@ -53,33 +54,33 @@ namespace OSCVRCWiz.TTS
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[VoiceWizardPro API Error: " + ex.Message +  "]", Color.Red);
+                OutputText.outputLog("[VoiceWizardPro API Error: " + ex.Message + "]", Color.Red);
                 TTSMessageQueue.PlayNextInQueue();
                 return "";
 
             }
-          
 
 
-                switch (TTSMessageQueued.TTSMode)
-                {
-                   /* case "Moonbase":
-                    // code to execute when expression is equal to value1
-                    Task.Run(() => FonixTalkTTS.MoonBasePlayAudio(audioString, TTSMessageQueued, ct));
 
-                        break;*/
-                    case "Azure":
+            switch (TTSMessageQueued.TTSMode)
+            {
+                /* case "Moonbase":
+                 // code to execute when expression is equal to value1
+                 Task.Run(() => FonixTalkTTS.MoonBasePlayAudio(audioString, TTSMessageQueued, ct));
+
+                     break;*/
+                case "Azure":
                     // code to execute when expression is equal to value2
                     Task.Run(() => AzureTTS.AzurePlayAudioPro(audioString, TTSMessageQueued, ct));
 
-                        break;
-                    case "Amazon Polly":
+                    break;
+                case "Amazon Polly":
                     // code to execute when expression is equal to value2
                     Task.Run(() => AmazonPollyTTS.AmazonPlayAudioPro(audioString, TTSMessageQueued, ct));
 
-                        break;
+                    break;
 
-                    case "Google (Pro Only)":
+                case "Google (Pro Only)":
                     // code to execute when expression is equal to value2
                     Task.Run(() => GoogleTTS.GooglePlayAudio(audioString, TTSMessageQueued, ct));
 
@@ -88,38 +89,38 @@ namespace OSCVRCWiz.TTS
                     // code to execute when expression is equal to value2
                     Task.Run(() => UberDuckTTS.UberPlayAudio(audioString, TTSMessageQueued, ct));*/
 
-                    //break;
+                //break;
                 default:
-                        // code to execute when expression is not equal to any of the values
-                        break;
-                }
+                    // code to execute when expression is not equal to any of the values
+                    break;
+            }
             return translationString;
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
         }
 
-        public static async Task<(string,string)> CallVoiceProAPIAsync(string apiKey, TTSMessageQueue.TTSMessage message)
+        public static async Task<(string, string)> CallVoiceProAPIAsync(string apiKey, TTSMessageQueue.TTSMessage message)
         {
             string voiceWizardAPITranslationString = "";
 
             bool translate = false;
-            if(VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked==true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked==true)
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true)
             {
-                translate= true;
+                translate = true;
             }
-        
+
             //var url = $"http://localhost:54029/api/tts?" +
-             var url = $"https://ttsvoicewizard.herokuapp.com/api/tts?" +
-              $"apiKey={apiKey}" +
-                $"&TTSMode={message.TTSMode}" +
-                $"&text={message.text}" +
-                $"&voice={message.Voice}" +
-                $"&style={message.Style}" +
-                $"&speed={message.Speed}" +
-                $"&pitch={message.Pitch}" +
-                $"&volume={message.Volume}" +
-                $"&fromLang={message.SpokenLang}" +
-                $"&toLang={message.TranslateLang}" +
-                $"&transAudio={translate}";
+            var url = $"https://ttsvoicewizard.herokuapp.com/api/tts?" +
+             $"apiKey={apiKey}" +
+               $"&TTSMode={message.TTSMode}" +
+               $"&text={message.text}" +
+               $"&voice={message.Voice}" +
+               $"&style={message.Style}" +
+               $"&speed={message.Speed}" +
+               $"&pitch={message.Pitch}" +
+               $"&volume={message.Volume}" +
+               $"&fromLang={message.SpokenLang}" +
+               $"&toLang={message.TranslateLang}" +
+               $"&transAudio={translate}";
 
 
             var request = new HttpRequestMessage(HttpMethod.Post, url);
@@ -132,34 +133,50 @@ namespace OSCVRCWiz.TTS
             HttpResponseMessage response = await client.SendAsync(request);
 
             //   System.Diagnostics.Debug.WriteLine("Fonix:" + response.StatusCode);
-           
-           // System.Diagnostics.Debug.WriteLine("VoiceWizardPro API: " + response.StatusCode +" "+ response.ReasonPhrase);
 
-            if(!response.IsSuccessStatusCode)
+            // System.Diagnostics.Debug.WriteLine("VoiceWizardPro API: " + response.StatusCode +" "+ response.ReasonPhrase);
+
+            if (!response.IsSuccessStatusCode)
             {
                 var errorMessage = await response.Content.ReadAsStringAsync();
-                OutputText.outputLog("VoiceWizardPro API Error: " + response.StatusCode+": "+ errorMessage , Color.Red);
-                return (null,"");
+                OutputText.outputLog("VoiceWizardPro API Error: " + response.StatusCode + ": " + errorMessage, Color.Red);
+                return (null, "");
             }
-                
+
 
             var json = response.Content.ReadAsStringAsync().Result.ToString();
             System.Diagnostics.Debug.WriteLine("VoiceWizardPro API: " + json);
 
             var dataHere = JObject.Parse(json).SelectToken("audioString").ToString();
 
-          //  var TTSModeUsed = JObject.Parse(json).SelectToken("TTSMethod").ToString();
+            //  var TTSModeUsed = JObject.Parse(json).SelectToken("TTSMethod").ToString();
 
             var charUsed = JObject.Parse(json).SelectToken("charUsed").ToString();
             var charLimit = JObject.Parse(json).SelectToken("charLimit").ToString();
-           var transCharUsed = JObject.Parse(json).SelectToken("transCharUsed").ToString();
+            var transCharUsed = JObject.Parse(json).SelectToken("transCharUsed").ToString();
             var transCharLimit = JObject.Parse(json).SelectToken("transCharLimit").ToString();
+
+
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+
+
+
+
+                VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text = $"TTS Characters: {charUsed}/{charLimit}";
+                VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text = $"Translation Characters: {transCharUsed}/{transCharLimit}";
+                Settings1.Default.charsUsed = VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text.ToString();
+                Settings1.Default.transCharsUsed = VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text.ToString();
+                Settings1.Default.Save();
+            });
+
+
             voiceWizardAPITranslationString = JObject.Parse(json).SelectToken("translationText").ToString();
             var audioInBase64 = dataHere.ToString();
             System.Diagnostics.Debug.WriteLine("audio string: " + dataHere);
-            return (audioInBase64,voiceWizardAPITranslationString);
-            
-           
+            return (audioInBase64, voiceWizardAPITranslationString);
+
+
 
         }
     }

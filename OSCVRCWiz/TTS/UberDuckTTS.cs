@@ -30,13 +30,13 @@ namespace OSCVRCWiz.TTS
     }
     public class UberDuckTTS
     {
-      
-       
-            // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
 
-            //TTS
-            //  public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
-            public static Dictionary<string, string> UberVoiceNameAndID = new Dictionary<string, string>();
+
+        // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
+
+        //TTS
+        //  public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
+        public static Dictionary<string, string> UberVoiceNameAndID = new Dictionary<string, string>();
         public static Dictionary<string, string> UberNameAndCategory = new Dictionary<string, string>();
         public static bool UberfirstVoiceLoad = true;
         public static HashSet<string> seenCategories = new HashSet<string>();
@@ -48,10 +48,10 @@ namespace OSCVRCWiz.TTS
             VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Clear();
             if (UberfirstVoiceLoad == true)
             {
-                
 
 
-                
+
+
 
 
                 // replace with the path to the JSON file
@@ -73,17 +73,17 @@ namespace OSCVRCWiz.TTS
 
 
                     // AllVoices4Language.Add(voice.ShortName, styleList.ToArray());
-                  //  VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice.display_name);
-                   //  voiceList.Add(voice.display_name);
+                    //  VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice.display_name);
+                    //  voiceList.Add(voice.display_name);
                     try
                     {
                         UberVoiceNameAndID.Add(voice.display_name, voice.voicemodel_uuid);
                         UberNameAndCategory.Add(voice.display_name, voice.category);
                     }
-                    catch(System.ArgumentException e) { }
+                    catch (System.ArgumentException e) { }
                 }
 
-                
+
 
                 foreach (KeyValuePair<string, string> voice in UberNameAndCategory)
                 {
@@ -100,7 +100,7 @@ namespace OSCVRCWiz.TTS
                     }
 
                     // Do something for each voice
-                 //   Console.WriteLine("Voice " + voice.Key + " belongs to category " + categoryName);
+                    //   Console.WriteLine("Voice " + voice.Key + " belongs to category " + categoryName);
                 }
                 VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = 0;
                 foreach (KeyValuePair<string, string> voice in UberNameAndCategory)
@@ -114,17 +114,17 @@ namespace OSCVRCWiz.TTS
 
 
 
-               
+
                 UberfirstVoiceLoad = false;
 
 
 
             }
 
-           
 
-                else
-                {
+
+            else
+            {
                 /*  foreach (string voice in voiceList)
                   {
                       VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice);
@@ -150,7 +150,7 @@ namespace OSCVRCWiz.TTS
                 }
 
             }
-            
+
             VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex = 0;
 
 
@@ -163,10 +163,11 @@ namespace OSCVRCWiz.TTS
 
         public static async Task uberduckTTS(TTSMessage message, CancellationToken ct = default)
         {
-            try { 
-                
-            var authKey = VoiceWizardWindow.MainFormGlobal.textBoxUberKey.Text.ToString();
-            var authSecret = VoiceWizardWindow.MainFormGlobal.textBoxUberSecret.Text.ToString();
+            try
+            {
+
+                var authKey = VoiceWizardWindow.MainFormGlobal.textBoxUberKey.Text.ToString();
+                var authSecret = VoiceWizardWindow.MainFormGlobal.textBoxUberSecret.Text.ToString();
 
                 if (string.IsNullOrWhiteSpace(authKey) || string.IsNullOrWhiteSpace(authKey))
                 {
@@ -175,68 +176,68 @@ namespace OSCVRCWiz.TTS
                 }
 
 
-                    // string apiKey = "your_api_key_here";
-            string voicemodel_uuid = message.Voice;
-            string text = message.text;
-            string audio_uuid = "";
+                // string apiKey = "your_api_key_here";
+                string voicemodel_uuid = message.Voice;
+                string text = message.text;
+                string audio_uuid = "";
 
 
-            var client = new HttpClient();
+                var client = new HttpClient();
 
-            client.BaseAddress = new Uri("https://api.uberduck.ai/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.BaseAddress = new Uri("https://api.uberduck.ai/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var content = new StringContent(JsonConvert.SerializeObject(new { speech = text, voicemodel_uuid = voicemodel_uuid }));
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var content = new StringContent(JsonConvert.SerializeObject(new { speech = text, voicemodel_uuid = voicemodel_uuid }));
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var byteArray = System.Text.Encoding.ASCII.GetBytes($"{authKey}:{authSecret}");
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                var byteArray = System.Text.Encoding.ASCII.GetBytes($"{authKey}:{authSecret}");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
-            var response = await client.PostAsync("speak", content);
+                var response = await client.PostAsync("speak", content);
 
-            if (response.IsSuccessStatusCode)
-            {
-                string json = response.Content.ReadAsStringAsync().Result.ToString();
-                audio_uuid = JObject.Parse(json).SelectToken("uuid").ToString();
-                // Console.WriteLine(audio_uuid);
-            }
-
-
-
-            string audioUrl = null;
-
-            for (int i = 0; i < 10; i++)
-            {
-
-                await Task.Delay(1000); // check status every second.
-                var response2 = await client.GetAsync($"https://api.uberduck.ai/speak-status?uuid={audio_uuid}");
-                Console.WriteLine(response2.Content.ReadAsStringAsync().Result.ToString());
-
-                audioUrl = JObject.Parse(await response2.Content.ReadAsStringAsync())["path"].ToString();
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = response.Content.ReadAsStringAsync().Result.ToString();
+                    audio_uuid = JObject.Parse(json).SelectToken("uuid").ToString();
+                    // Console.WriteLine(audio_uuid);
+                }
 
 
-                // audioUrl = JObject.Parse(statusContent)["path"]?.ToString();
 
-                if (audioUrl != null && audioUrl != "")
+                string audioUrl = null;
+
+                for (int i = 0; i < 10; i++)
                 {
 
-                    Console.WriteLine("printing: " + audioUrl.ToString());
-                    break;
+                    await Task.Delay(1000); // check status every second.
+                    var response2 = await client.GetAsync($"https://api.uberduck.ai/speak-status?uuid={audio_uuid}");
+                    Console.WriteLine(response2.Content.ReadAsStringAsync().Result.ToString());
 
+                    audioUrl = JObject.Parse(await response2.Content.ReadAsStringAsync())["path"].ToString();
+
+
+                    // audioUrl = JObject.Parse(statusContent)["path"]?.ToString();
+
+                    if (audioUrl != null && audioUrl != "")
+                    {
+
+                        Console.WriteLine("printing: " + audioUrl.ToString());
+                        break;
+
+                    }
                 }
+
+
+
+                // read the audio file into a byte array
+                client = new HttpClient();
+                byte[] audioBytes = await client.GetByteArrayAsync(audioUrl);
+
+                // convert the byte array to a base64-encoded string
+                string base64String = Convert.ToBase64String(audioBytes);
+                UberPlayAudio(base64String, message, ct);
             }
-
-
-
-            // read the audio file into a byte array
-            client = new HttpClient();
-            byte[] audioBytes = await client.GetByteArrayAsync(audioUrl);
-
-            // convert the byte array to a base64-encoded string
-            string base64String = Convert.ToBase64String(audioBytes);
-            UberPlayAudio(base64String, message, ct);
-        }
             catch (Exception ex)
             {
                 OutputText.outputLog("[Uberduck TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
@@ -244,27 +245,27 @@ namespace OSCVRCWiz.TTS
                 {
                     OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
                 }
-                        TTSMessageQueue.PlayNextInQueue();
+                TTSMessageQueue.PlayNextInQueue();
             }
 
-         //   return base64String;
+            //   return base64String;
             //  return "";
         }
         public static async void UberPlayAudio(string audioString, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct)
+        {
+            try
             {
-                try
-                {
 
 
-                    var audiobytes = Convert.FromBase64String(audioString);
-                    MemoryStream memoryStream = new MemoryStream(audiobytes);
+                var audiobytes = Convert.FromBase64String(audioString);
+                MemoryStream memoryStream = new MemoryStream(audiobytes);
 
 
 
-                    MemoryStream memoryStream2 = new MemoryStream();
-                    memoryStream.Flush();
-                    memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                    memoryStream.CopyTo(memoryStream2);
+                MemoryStream memoryStream2 = new MemoryStream();
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                memoryStream.CopyTo(memoryStream2);
 
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked)
@@ -280,121 +281,121 @@ namespace OSCVRCWiz.TTS
                 }
 
                 memoryStream.Flush();
-                    memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                    WaveFileReader wav = new WaveFileReader(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                WaveFileReader wav = new WaveFileReader(memoryStream);
 
-                    memoryStream2.Flush();
-                    memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                    WaveFileReader wav2 = new WaveFileReader(memoryStream2);
-
-
+                memoryStream2.Flush();
+                memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                WaveFileReader wav2 = new WaveFileReader(memoryStream2);
 
 
 
 
 
-                    var volume = 5;
-                    int pitch = 5;
-                    int rate = 5;
-                    var volumeFloat = 1f;
-                    var pitchFloat = 1f;
-                    var rateFloat = 1f;
-
-                    volume = TTSMessageQueued.Volume;
-                    pitch = TTSMessageQueued.Pitch;
-                    rate = TTSMessageQueued.Speed;
-
-                    volumeFloat = 0.5f + volume * 0.1f;
-                    pitchFloat = 0.5f + pitch * 0.1f;
-                    rateFloat = 0.5f + rate * 0.1f;
-
-                    bool useTempo = false;
-                    if (rate != 5)//if rate is changed will use only rate, else use pitch which also changes rate.
-                    {
-                        useTempo = true;
-                        pitchFloat = rateFloat;
-                    }
-
-                    var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
-                    VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(useTempo, false));
-                    speedControl.PlaybackRate = pitchFloat;
-                    var AnyOutput = new WaveOut();
-                    AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                    AnyOutput.Init(speedControl);
-                    AnyOutput.Play();
-                    ct.Register(async () => AnyOutput.Stop());
-
-                    WaveOut AnyOutput2 = new WaveOut();
-                    VarispeedSampleProvider speedControl_2 = null;
-                    WaveChannel32 wave32_2 = null;
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
-                    {
-                        wave32_2 = new WaveChannel32(wav2, volumeFloat, 0f); //output 2
-                        wave32_2.PadWithZeroes = false;
-                        speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(useTempo, false));//output 2
-                        speedControl_2.PlaybackRate = pitchFloat;//output 2
-                                                                 // AnyOutput2 = new WaveOut();
-                        AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
-                        AnyOutput2.Init(speedControl_2);
-                        AnyOutput2.Play();
-                        ct.Register(async () => AnyOutput2.Stop());
-                    }
-
-                    ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
-                    float delayTime = pitchFloat;
-                    if (rate != 5) { delayTime = rateFloat; }
-
-                    int delayInt = (int)Math.Ceiling((int)wave32.TotalTime.TotalMilliseconds / delayTime);
-                    Thread.Sleep(delayInt);
-                    //  Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
-                    Thread.Sleep(100);
-
-                    //   WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
-
-                    AnyOutput.Stop();
-                    AnyOutput.Dispose();
-                    //  AnyOutput = null;
-                    speedControl.Dispose();
-                    speedControl = null;
-                    wave32.Dispose();
-                    wave32 = null;
-                    wav.Dispose();
-                    wav = null;
-                    memoryStream.Dispose();
-                    //   synthesizerLite.Dispose();
-                    memoryStream = null;
-                    //    synthesizerLite = null;
 
 
-                    AnyOutput2.Stop();
-                    AnyOutput2.Dispose();
-                    //  AnyOutput2 = null;
-                    if (wave32_2 != null)
-                    {
-                        speedControl_2.Dispose();
-                        speedControl_2 = null;
-                        wave32_2.Dispose();
-                        wave32_2 = null;
-                        wav2.Dispose();
-                        wav2 = null;
-                    }
-                    if (!ct.IsCancellationRequested)
-                    {
-                        TTSMessageQueue.PlayNextInQueue();
-                    }
+                var volume = 5;
+                int pitch = 5;
+                int rate = 5;
+                var volumeFloat = 1f;
+                var pitchFloat = 1f;
+                var rateFloat = 1f;
 
-                }
-                catch (Exception ex)
+                volume = TTSMessageQueued.Volume;
+                pitch = TTSMessageQueued.Pitch;
+                rate = TTSMessageQueued.Speed;
+
+                volumeFloat = 0.5f + volume * 0.1f;
+                pitchFloat = 0.5f + pitch * 0.1f;
+                rateFloat = 0.5f + rate * 0.1f;
+
+                bool useTempo = false;
+                if (rate != 5)//if rate is changed will use only rate, else use pitch which also changes rate.
                 {
-                    OutputText.outputLog("[Uberduck TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
+                    useTempo = true;
+                    pitchFloat = rateFloat;
+                }
 
-                    if (ex.Message.Contains("An item with the same key has already been added"))
-                    {
-                        OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
-                    }
+                var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
+                VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(useTempo, false));
+                speedControl.PlaybackRate = pitchFloat;
+                var AnyOutput = new WaveOut();
+                AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                AnyOutput.Init(speedControl);
+                AnyOutput.Play();
+                ct.Register(async () => AnyOutput.Stop());
+
+                WaveOut AnyOutput2 = new WaveOut();
+                VarispeedSampleProvider speedControl_2 = null;
+                WaveChannel32 wave32_2 = null;
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
+                {
+                    wave32_2 = new WaveChannel32(wav2, volumeFloat, 0f); //output 2
+                    wave32_2.PadWithZeroes = false;
+                    speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(useTempo, false));//output 2
+                    speedControl_2.PlaybackRate = pitchFloat;//output 2
+                                                             // AnyOutput2 = new WaveOut();
+                    AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
+                    AnyOutput2.Init(speedControl_2);
+                    AnyOutput2.Play();
+                    ct.Register(async () => AnyOutput2.Stop());
+                }
+
+                ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
+                float delayTime = pitchFloat;
+                if (rate != 5) { delayTime = rateFloat; }
+
+                int delayInt = (int)Math.Ceiling((int)wave32.TotalTime.TotalMilliseconds / delayTime);
+                Thread.Sleep(delayInt);
+                //  Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
+                Thread.Sleep(100);
+
+                //   WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
+
+                AnyOutput.Stop();
+                AnyOutput.Dispose();
+                //  AnyOutput = null;
+                speedControl.Dispose();
+                speedControl = null;
+                wave32.Dispose();
+                wave32 = null;
+                wav.Dispose();
+                wav = null;
+                memoryStream.Dispose();
+                //   synthesizerLite.Dispose();
+                memoryStream = null;
+                //    synthesizerLite = null;
+
+
+                AnyOutput2.Stop();
+                AnyOutput2.Dispose();
+                //  AnyOutput2 = null;
+                if (wave32_2 != null)
+                {
+                    speedControl_2.Dispose();
+                    speedControl_2 = null;
+                    wave32_2.Dispose();
+                    wave32_2 = null;
+                    wav2.Dispose();
+                    wav2 = null;
+                }
+                if (!ct.IsCancellationRequested)
+                {
                     TTSMessageQueue.PlayNextInQueue();
                 }
+
             }
-        
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Uberduck TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
+
+                if (ex.Message.Contains("An item with the same key has already been added"))
+                {
+                    OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
+                }
+                TTSMessageQueue.PlayNextInQueue();
+            }
+        }
+
     }
 }

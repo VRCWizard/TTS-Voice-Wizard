@@ -2038,5 +2038,29 @@ namespace OSCVRCWiz.Settings {
                 this["saveToWav"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TTS Characters: 0/0")]
+        public string charsUsed {
+            get {
+                return ((string)(this["charsUsed"]));
+            }
+            set {
+                this["charsUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Translation Characters: 0/0")]
+        public string transCharsUsed {
+            get {
+                return ((string)(this["transCharsUsed"]));
+            }
+            set {
+                this["transCharsUsed"] = value;
+            }
+        }
     }
 }

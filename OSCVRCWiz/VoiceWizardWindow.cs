@@ -819,13 +819,13 @@ namespace OSCVRCWiz
                 {
 
 
-                    string sound = @"sounds\TTSButton.wav";
-                    //   if (rjToggleButtonAprilFools.Checked == true)
-                    //  {
-                    //        sound = @"sounds\ringTone.wav";
-                    //    }
-                    var soundPlayer = new SoundPlayer(sound);
-                    soundPlayer.Play();
+                    Task.Run(() =>
+                     {
+                         string sound = @"sounds\TTSButton.wav";
+
+                         var soundPlayer = new SoundPlayer(sound);
+                         soundPlayer.Play();
+                     });
                 }
                 catch (Exception ex)
                 {
@@ -914,7 +914,7 @@ namespace OSCVRCWiz
                                      newText = text;
                                      translationMethod = "Whisper English Translation";
                                  }*/
-                            if (rjToggleButtonUsePro.Checked != true && rjToggleButtonProTranslation.Checked != true)
+                            if ((rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked != true) || rjToggleButtonUsePro.Checked != true)
                             {
                                 if (TTSMessageQueued.STTMode != "Azure Translate")
                                 {
@@ -1019,10 +1019,10 @@ namespace OSCVRCWiz
                                 break;
 
                             case "Uberduck":
-                               
-                                    TTSMessageQueued.Voice = UberDuckTTS.UberVoiceNameAndID[TTSMessageQueued.Voice];
-                                    Task.Run(() => UberDuckTTS.uberduckTTS( TTSMessageQueued, speechCt.Token));
-                               
+
+                                TTSMessageQueued.Voice = UberDuckTTS.UberVoiceNameAndID[TTSMessageQueued.Voice];
+                                Task.Run(() => UberDuckTTS.uberduckTTS(TTSMessageQueued, speechCt.Token));
+
 
 
 
@@ -1156,14 +1156,19 @@ namespace OSCVRCWiz
             {
                 try
                 {
-                    string sound = @"sounds\speechButton.wav";
-                    //   if(rjToggleButtonAprilFools.Checked == true)
-                    //    {
-                    //       sound = @"sounds\metalPipe.wav";
-                    //     }
-                    var soundPlayer = new SoundPlayer(sound);
 
-                    soundPlayer.Play();
+                    Task.Run(() =>
+                    {
+                        string sound = @"sounds\speechButton.wav";
+                        //   if(rjToggleButtonAprilFools.Checked == true)
+                        //    {
+                        //       sound = @"sounds\metalPipe.wav";
+                        //     }
+                        var soundPlayer = new SoundPlayer(sound);
+
+                        soundPlayer.Play();
+                    });
+
                 }
                 catch (Exception ex)
                 {
@@ -1218,7 +1223,7 @@ namespace OSCVRCWiz
                             {
                                 //  var azureRec = new AzureRecognition();
 
-                                if (comboBox3.Text.ToString() == "No Translation (Default)" || (rjToggleButtonUsePro.Checked==true && rjToggleButtonProTranslation.Checked == true))
+                                if (comboBox3.Text.ToString() == "No Translation (Default)" || (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true))
                                 {
                                     AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
                                     System.Diagnostics.Debug.WriteLine("<speechSetup change>");
@@ -2177,7 +2182,7 @@ namespace OSCVRCWiz
             }
             if (TTSModeSaved == "Uberduck")
             {
-                UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString(),false);
+                UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString(), false);
 
             }
 
@@ -2562,7 +2567,7 @@ namespace OSCVRCWiz
 
 
                     comboBox5.Items.Clear();
-                    UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString(),true);
+                    UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString(), true);
                     // comboBox2.SelectedIndex = 0;
                     comboBox1.SelectedIndex = 0;
                     comboBox1.Enabled = false;
@@ -4316,6 +4321,46 @@ namespace OSCVRCWiz
         private void iconButton54_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://docs.elevenlabs.io/api-reference/text-to-speech");
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.SelectedItem != null && comboBox4.SelectedItem != null)
+            {
+                // Get the language code from the selected spoken language
+                string spokenLanguageCode = comboBox4.SelectedItem.ToString().Substring(0, comboBox4.SelectedItem.ToString().IndexOf(' '));
+
+                // Get the language code from the selected translation language
+                string translationLanguageCode = comboBox3.SelectedItem.ToString().Substring(0, comboBox3.SelectedItem.ToString().IndexOf(' '));
+
+                // Check if the selected spoken language is the same as the selected translation language
+                if (spokenLanguageCode == translationLanguageCode)
+                {
+                    // Set the translation language to position 0 (no translation)
+                    comboBox3.SelectedIndex = 0;
+                }
+            }
+
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.SelectedItem != null && comboBox4.SelectedItem != null)
+            {
+                // Get the language code from the selected spoken language
+                string spokenLanguageCode = comboBox4.SelectedItem.ToString().Substring(0, comboBox4.SelectedItem.ToString().IndexOf(' '));
+
+                // Get the language code from the selected translation language
+                string translationLanguageCode = comboBox3.SelectedItem.ToString().Substring(0, comboBox3.SelectedItem.ToString().IndexOf(' '));
+
+                // Check if the selected spoken language is the same as the selected translation language
+                if (spokenLanguageCode == translationLanguageCode)
+                {
+                    // Set the translation language to position 0 (no translation)
+                    comboBox3.SelectedIndex = 0;
+                }
+            }
         }
     }
 
