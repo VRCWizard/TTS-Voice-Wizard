@@ -16,6 +16,7 @@ using Swan.Formatters;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Json;
@@ -56,13 +57,27 @@ namespace OSCVRCWiz.TTS
 
                 AmazonPollyTTS.WriteSpeechToStream(stream, memoryStream);
 
-
-
+             
 
                 MemoryStream memoryStream2 = new MemoryStream();
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
                 memoryStream.CopyTo(memoryStream2);
+
+                ///////////////
+                ///
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked)
+                {
+                    MemoryStream memoryStream3 = new MemoryStream();
+                    memoryStream.Flush();
+                    memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    memoryStream.CopyTo(memoryStream3);
+
+                    memoryStream3.Flush();
+                    memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    audioFiles.writeAudioToOutputMp3(memoryStream3);
+                }
+                //////////
 
 
                 memoryStream.Flush();
@@ -75,6 +90,22 @@ namespace OSCVRCWiz.TTS
                 Mp3FileReader wav2 = new Mp3FileReader(memoryStream2);
 
 
+                //OUTPUT TO FILE
+           ////  
+                
+
+                //  audioFiles.writeAudioToOutput(memoryStream3);
+             /*   using (Mp3FileReader reader = new Mp3FileReader(memoryStream3))
+                {
+                    using (WaveStream pcmStream = WaveFormatConversionStream.CreatePcmStream(reader))
+                    {
+                        WaveFileWriter.CreateWaveFile("TTSVoiceWizard-output.wav", pcmStream);
+                    }
+                }*/
+                ///////
+
+
+                ///////
 
                 var volume = 5;
                 int pitch = 5;
@@ -182,7 +213,7 @@ namespace OSCVRCWiz.TTS
                 TTSMessageQueue.PlayNextInQueue();
 
             }
-            //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
+            //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());v
         }
 
         public static async Task<Stream> CallElevenLabsAPIAsync(string textIn, string voice)
@@ -190,13 +221,45 @@ namespace OSCVRCWiz.TTS
 
             //modified from https://github.com/connorbutler44/bingbot/blob/main/Service/ElevenLabsTextToSpeechService.cs
 
+            int optimize = 0;
+            int stabilities = 0;
+            int similarities = 0;
+            string modelID = "eleven_monolingual_v1";
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+               
 
-            var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}";
+                optimize = Int32.Parse(VoiceWizardWindow.MainFormGlobal.comboBoxLabsOptimize.SelectedItem.ToString());
+                stabilities = VoiceWizardWindow.MainFormGlobal.trackBarStability.Value;
+                similarities = VoiceWizardWindow.MainFormGlobal.trackBarSimilarity.Value;
+                modelID = VoiceWizardWindow.MainFormGlobal.comboBoxLabsModelID.SelectedItem.ToString();
+
+                Debug.WriteLine(optimize);
+                Debug.WriteLine(stabilities);
+                Debug.WriteLine(similarities);
+                Debug.WriteLine(modelID);
+
+
+            });
+
+          
+            var similarityFloat = similarities * 0.1f;
+            var stabilityFloat =  stabilities * 0.1f;
+
+            var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}?optimize_streaming_latency={optimize}";
+          //  var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}";
             var apiKey = Settings1.Default.elevenLabsAPIKey;
 
             var request = new HttpRequestMessage(HttpMethod.Post, url);
 
-            request.Content = JsonContent.Create(new { text = textIn });
+            request.Content = JsonContent.Create(new { text = textIn,
+                model_id = modelID,
+                voice_settings = new
+                {
+                    stability = stabilityFloat,
+                    similarity_boost = similarityFloat
+                }
+            });
 
            
             request.Headers.Add("xi-api-key", apiKey);

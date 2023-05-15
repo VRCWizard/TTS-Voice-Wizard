@@ -759,11 +759,114 @@ namespace OSCVRCWiz.TTS
 
                 default:  break; 
             }
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked==true) // assuming you have a boolean variable named "boolValue"
+            {
+                for (int i = VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Count - 1; i >= 0; i--)
+                {
+                    if (VoiceWizardWindow.MainFormGlobal.comboBox2.Items[i].ToString().EndsWith("($Neural)"))
+                    {
+                        VoiceWizardWindow.MainFormGlobal.comboBox2.Items.RemoveAt(i);
+                    }
+                }
+            }
             try
             {
                 VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex = 0;
             }
             catch { }
+        }
+        public static async void AmazonPlayAudioPro(string audioString, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct)
+        {
+            try
+            {
+                var audiobytes = Convert.FromBase64String(audioString);
+                MemoryStream memoryStream = new MemoryStream(audiobytes);
+
+                MemoryStream memoryStream2 = new MemoryStream();
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                memoryStream.CopyTo(memoryStream2);
+
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked)
+                {
+                    MemoryStream memoryStream3 = new MemoryStream();
+                    memoryStream.Flush();
+                    memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    memoryStream.CopyTo(memoryStream3);
+
+                    memoryStream3.Flush();
+                    memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    audioFiles.writeAudioToOutputMp3(memoryStream3);
+                }
+
+
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                Mp3FileReader wav = new Mp3FileReader(memoryStream);
+
+
+                memoryStream2.Flush();
+                memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                Mp3FileReader wav2 = new Mp3FileReader(memoryStream2);
+
+
+
+                var AnyOutput = new WaveOut();
+                AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+                AnyOutput.Init(wav);
+                AnyOutput.Play();
+                ct.Register(async () => AnyOutput.Stop());
+                var AnyOutput2 = new WaveOut();
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
+                {
+                    //  AnyOutput2 = new WaveOut();
+                    AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
+                    AnyOutput2.Init(wav2);
+                    AnyOutput2.Play();
+
+                    ct.Register(async () => AnyOutput2.Stop());
+                    while (AnyOutput2.PlaybackState == PlaybackState.Playing)
+                    {
+                        Thread.Sleep(2000);
+                    }
+                }
+                while (AnyOutput.PlaybackState == PlaybackState.Playing)
+                {
+                    Thread.Sleep(2000);
+                }
+                if (AnyOutput.PlaybackState == PlaybackState.Stopped)
+                {
+
+                    AnyOutput.Stop();
+                    AnyOutput.Dispose();
+
+                    // AnyOutput = null;
+                    //  if (AnyOutput2 != null)
+                    //  {
+                    AnyOutput2.Stop();
+                    AnyOutput2.Dispose();
+                    //    AnyOutput2 = null;
+                    //   }
+                    memoryStream.Dispose();
+                    memoryStream = null;
+                    //  memoryStream2.Dispose();
+                    wav.Dispose();
+                    wav2.Dispose();
+                    wav = null;
+                    wav2 = null;
+
+
+                    ct = new();
+                    Debug.WriteLine("amazon dispose successful");
+                    TTSMessageQueue.PlayNextInQueue();
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Amazon Ouput Device *AUDIO* Error: " + ex.Message + "]", Color.Red);
+                TTSMessageQueue.PlayNextInQueue();
+            }
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Addons;
 using EmbedIO.Sessions;
@@ -265,6 +266,24 @@ namespace OSCVRCWiz
             Settings1.Default.forceMediaToggle = VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked;
             Settings1.Default.refocusWindow = VoiceWizardWindow.MainFormGlobal.rjToggleButtonRefocus.Checked;
 
+
+            Settings1.Default.voiceWizProAzure = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAzure.Checked;
+            Settings1.Default.voiceWizProAmazon = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked;
+          //  Settings1.Default.voiceWizProMoonbase = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProMoonbase.Checked;
+            Settings1.Default.useVoiceWizardPro = VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked;
+            Settings1.Default.voiceWizardProKey = VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString();
+
+
+            Settings1.Default.voiceWizProTranslation = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked;
+            Settings1.Default.uberDuckKey = VoiceWizardWindow.MainFormGlobal.textBoxUberKey.Text.ToString();
+            Settings1.Default.uberDuckSecret = VoiceWizardWindow.MainFormGlobal.textBoxUberSecret.Text.ToString();
+
+            Settings1.Default.labsModelID = VoiceWizardWindow.MainFormGlobal.comboBoxLabsModelID.SelectedIndex;
+            Settings1.Default.labsOptimize = VoiceWizardWindow.MainFormGlobal.comboBoxLabsOptimize.SelectedIndex;
+            Settings1.Default.labsSimboost = VoiceWizardWindow.MainFormGlobal.trackBarSimilarity.Value;
+            Settings1.Default.labsStability = VoiceWizardWindow.MainFormGlobal.trackBarStability.Value;
+
+            Settings1.Default.saveToWav = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked;
             // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
 
 

@@ -43,13 +43,13 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.2.4.2";
-       // string releaseDate = "May 7, 2023";
-     //   string versionBuild = "x64"; //update when converting to x86/x64
+        public static string currentVersion = "1.3.0";
+        // string releaseDate = "May 7, 2023";
+        //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
         string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml"; //update when converting to x86/x64
-      //  string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x86.xml"; //update when converting to x86/x64
-        //update build
+                                                                                                                             //  string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x86.xml"; //update when converting to x86/x64
+                                                                                                                             //update build
 
 
 
@@ -67,7 +67,7 @@ namespace OSCVRCWiz
         public static string TTSBoxText = "";
         public static bool typingBox = false;
 
-   
+
         public System.Threading.Timer hideTimer;
         public System.Threading.Timer toastTimer;
         public System.Threading.Timer typeTimer;
@@ -94,12 +94,12 @@ namespace OSCVRCWiz
         public static WaveOut AnyOutput2 = new();
 
         CancellationTokenSource speechCt = new();
-        public bool logPanelExtended =true;
+        public bool logPanelExtended = true;
         public bool logPanelExtended2 = true;
         public static int fontSize = 20;
         public static bool stt_listening = false;
 
-     
+
 
 
 
@@ -115,7 +115,7 @@ namespace OSCVRCWiz
             {
 
                 InitializeComponent();
-             
+
 
             }
             catch (Exception ex)
@@ -123,16 +123,17 @@ namespace OSCVRCWiz
                 MessageBox.Show("Initalization Error: " + ex.Message);
             }
 
-            
+
 
             //    cpuCounter = new PerformanceCounter("Processor Information", "% Processor Time", "_Total");
             //    ramCounter = new PerformanceCounter("Memory", "Available MBytes");
             MainFormGlobal = this;
 
-            try {
+            try
+            {
                 modifierKeySTTTS = Settings1.Default.modHotKey;
                 normalKeySTTTS = Settings1.Default.normalHotKey;
-                CUSTOMRegisterHotKey(0,modifierKeySTTTS,normalKeySTTTS);
+                CUSTOMRegisterHotKey(0, modifierKeySTTTS, normalKeySTTTS);
 
                 modifierKeyStopTTS = Settings1.Default.modHotkeyStop;
                 normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
@@ -144,12 +145,13 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hotkey Startup Error: " + ex.Message+ "\n\nYour config file (where settings are stored) may have been corrupted.\nNavigate to C:\\Users\\<user>\\AppData\\Local\\TTSVoiceWizard and delete the files in this directory to reset your settings.");
+                MessageBox.Show("Hotkey Startup Error: " + ex.Message + "\n\nYour config file (where settings are stored) may have been corrupted.\nNavigate to C:\\Users\\<user>\\AppData\\Local\\TTSVoiceWizard and delete the files in this directory to reset your settings.");
             }
 
-            try {
-            AudioDevices.NAudioSetupInputDevices();
-               AudioDevices.NAudioSetupOutputDevices();
+            try
+            {
+                AudioDevices.NAudioSetupInputDevices();
+                AudioDevices.NAudioSetupOutputDevices();
             }
             catch (Exception ex)
             {
@@ -161,48 +163,50 @@ namespace OSCVRCWiz
             {
                 SystemSpeechTTS.getVoices();
                 SystemSpeechRecognition.getInstalledRecogs();
-            
-             }
+
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("System Speech Startup Error: " + ex.Message);
             }
 
-            try {
-           OSC.Start();
+            try
+            {
+                OSC.Start();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("OSC Startup Error: "+ex.Message);
+                MessageBox.Show("OSC Startup Error: " + ex.Message);
             }
 
-            try {
+            try
+            {
 
-            // Startup Changes
-           // tabControl1.Dock = DockStyle.Fill;
-               tabControl1.Appearance = TabAppearance.FlatButtons;
-               tabControl1.ItemSize = new Size(0, 1);
-               tabControl1.SizeMode = TabSizeMode.Fixed;
-               hideTimer = new System.Threading.Timer(hidetimertick);
-               hideTimer.Change(Timeout.Infinite, Timeout.Infinite);
-               typeTimer = new System.Threading.Timer(typetimertick);
-               typeTimer.Change(1500, 0);
+                // Startup Changes
+                // tabControl1.Dock = DockStyle.Fill;
+                mainTabControl.Appearance = TabAppearance.FlatButtons;
+                mainTabControl.ItemSize = new Size(0, 1);
+                mainTabControl.SizeMode = TabSizeMode.Fixed;
+                hideTimer = new System.Threading.Timer(hidetimertick);
+                hideTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                typeTimer = new System.Threading.Timer(typetimertick);
+                typeTimer.Change(1500, 0);
 
-               toastTimer = new System.Threading.Timer(toasttimertick);
-               toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
-               katRefreshTimer = new System.Threading.Timer(katRefreshtimertick);
-               katRefreshTimer.Change(2000, 0);
+                toastTimer = new System.Threading.Timer(toasttimertick);
+                toastTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                katRefreshTimer = new System.Threading.Timer(katRefreshtimertick);
+                katRefreshTimer.Change(2000, 0);
 
                 VRCCounterTimer = new System.Threading.Timer(VRCCountertimertick);
                 VRCCounterTimer.Change(1600, 0);
 
-               whisperTimer = new System.Threading.Timer(whispertimertick);
+                whisperTimer = new System.Threading.Timer(whispertimertick);
                 whisperTimer.Change(Timeout.Infinite, Timeout.Infinite);
 
 
                 //listView1.View = View.List;
                 TTSBoxText = richTextBox3.Text.ToString();
-               labelCharCount.Text = TTSBoxText.Length.ToString();
+                labelCharCount.Text = TTSBoxText.Length.ToString();
             }
             catch (Exception ex)
             {
@@ -228,7 +232,7 @@ namespace OSCVRCWiz
         }
         public struct voicePreset //use then when setting up presets
         {
-           public string PresetName;
+            public string PresetName;
             public string TTSMode;
             public string Voice;
             public string Accent;
@@ -242,11 +246,11 @@ namespace OSCVRCWiz
             public int VolumeNew;
             public int SpeedNew;
         }
-       
-        public static void CUSTOMRegisterHotKey(int id, string modifierKey,string normalKey)
+
+        public static void CUSTOMRegisterHotKey(int id, string modifierKey, string normalKey)
         {
             //  int id = 0;// The id of the hotkey. 
-            if (id == 0 && VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked==false) { return; }
+            if (id == 0 && VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked == false) { return; }
             if (id == 1 && VoiceWizardWindow.MainFormGlobal.rjToggleButton12.Checked == false) { return; }
             if (id == 2 && VoiceWizardWindow.MainFormGlobal.rjToggleButtonQuickTypeEnabled.Checked == false) { return; }
             KeyModifier modkey;
@@ -297,15 +301,15 @@ namespace OSCVRCWiz
                         this.Activate();
                         this.BringToFront();
                         richTextBox3.Text = "";
-                        tabControl1.SelectTab(tabPage1);//sttts
+                        mainTabControl.SelectTab(tabPage1);//sttts
                         richTextBox3.Select();
 
 
                         captureEnabled = true;
 
-          
+
                     }
-                    else if(captureEnabled == true)//is capturing so turn it off
+                    else if (captureEnabled == true)//is capturing so turn it off
                     {
 
                         // Activate and bring the previous window to the front
@@ -316,7 +320,7 @@ namespace OSCVRCWiz
 
                         captureEnabled = false;
 
-                   
+
                     }
 
                 }
@@ -380,7 +384,7 @@ namespace OSCVRCWiz
 
         private void hideVRCTextButton_Click(object sender, EventArgs e)//speech to text
         {
-          //  var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
+            //  var sender2 = new SharpOSC.UDPSender("127.0.0.1", 9000);
             var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
             OSC.OSCSender.Send(message0);
         }
@@ -421,27 +425,27 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: "+line+". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
+                OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: " + line + ". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
 
             }
 
-            
+
         }
- 
+
         public void ClearTextBox()
         {
             try
             {
 
                 if (InvokeRequired)
-            {
-                this.Invoke(new Action(ClearTextBox));
-                return;
-            }
-            this.Invoke((MethodInvoker)delegate ()
-            {
-                richTextBox1.Text = "";
-            });
+                {
+                    this.Invoke(new Action(ClearTextBox));
+                    return;
+                }
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    richTextBox1.Text = "";
+                });
             }
             catch (Exception ex)
             {
@@ -449,7 +453,7 @@ namespace OSCVRCWiz
 
             }
 
-}
+        }
 
         public void ClearTextBoxTTS()
         {
@@ -457,12 +461,12 @@ namespace OSCVRCWiz
             {
 
                 if (InvokeRequired)
-            {
-                this.Invoke(new Action(ClearTextBoxTTS));
-                return;
-            }
+                {
+                    this.Invoke(new Action(ClearTextBoxTTS));
+                    return;
+                }
 
-            richTextBox3.Text = "";
+                richTextBox3.Text = "";
             }
             catch (Exception ex)
             {
@@ -477,18 +481,18 @@ namespace OSCVRCWiz
             {
 
                 if (InvokeRequired)
-            {
-                this.Invoke(new Action(ClearTextBox));
-                return;
-            }
+                {
+                    this.Invoke(new Action(ClearTextBox));
+                    return;
+                }
 
-            richTextBox9.Text = "";
-            if (rjToggleButtonOSC.Checked == true)
-            {
+                richTextBox9.Text = "";
+                if (rjToggleButtonOSC.Checked == true)
+                {
 
-                var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
-                OSC.OSCSender.Send(message0);
-            }
+                    var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
+                    OSC.OSCSender.Send(message0);
+                }
             }
             catch (Exception ex)
             {
@@ -542,12 +546,12 @@ namespace OSCVRCWiz
 
                 case "ElevenLabs": break;
 
-                case "TikTok":break;
+                case "TikTok": break;
 
                 case "NovelAI": break;
 
                 case "System Speech":
-                   
+
 
                     break;
                 case "Azure":
@@ -558,20 +562,25 @@ namespace OSCVRCWiz
                         comboBox1.Items.Add(style);
                     }
                     comboBox1.SelectedIndex = 0; break;
+
+                case "Google (Pro Only)": break;
+
+
+
                 default:
-                 
+
                     break;
             }
-           
+
         }
 
 
 
         private async void getGithubInfo()
         {
-          try
-          {
-                
+            try
+            {
+
                 var githubClient = new GitHubClient(new ProductHeaderValue("TTS-Voice-Wizard"));
 
                 //  var user = await githubClient.User.Get("VRCWizard");
@@ -588,7 +597,7 @@ namespace OSCVRCWiz
                 Version localVersion = new Version(currentVersion);
 
                 int versionComparison = localVersion.CompareTo(latestGitHubVersion);
-               // var ot = new OutputText();
+                // var ot = new OutputText();
                 if (versionComparison < 0)
                 {
                     //The version on GitHub is more up to date than this local release.
@@ -608,12 +617,12 @@ namespace OSCVRCWiz
                 }
                 //richTextBox5.Text = "Current Version: v"+currentVersion+ "-"+versionBuild + " - " + releaseDate+" \nChangelog: (full changelogs visible at https://github.com/VRCWizard/TTS-Voice-Wizard/releases )";
                 versionLabel.Text = "v" + currentVersion;
-                }
-              catch (Exception ex)
-             {
-                 //  OutputText.outputLog("[Error with Github info: " + ex.Message + ".]", Color.Red);
-                MessageBox.Show("Error with Github info: "+ex.Message+". Check your Internet Connection.");
-             }
+            }
+            catch (Exception ex)
+            {
+                //  OutputText.outputLog("[Error with Github info: " + ex.Message + ".]", Color.Red);
+                MessageBox.Show("Error with Github info: " + ex.Message + ". Check your Internet Connection.");
+            }
 
 
 
@@ -650,22 +659,23 @@ namespace OSCVRCWiz
 
             if (rjToggleButton11.Checked == true)//turn on osc listener on start
             {
-                try { 
-                Task.Run(() => OSC.OSCLegacyVRChatListener());
-            }
+                try
+                {
+                    Task.Run(() => OSC.OSCLegacyVRChatListener());
+                }
                 catch (Exception ex) { OutputText.outputLog("[OSC VRChat Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
-            button33.Enabled = false;
+                button33.Enabled = false;
 
             }
 
 
-           
+
 
             WindowsMedia.getWindowsMedia();
             VoiceCommands.voiceCommands();
             VoiceCommands.refreshCommandList();
             ToastNotification.ToastListen();
-            
+
 
             if (rjToggleButtonSystemTray.Checked == true)
             {
@@ -674,7 +684,7 @@ namespace OSCVRCWiz
                     MessageBox.Show("TTS Voice Wizard (System Tray Launch): This application is already running!");
                     System.Diagnostics.Process.GetCurrentProcess().Kill();
                 }
-                
+
                 // bool cursorNotInBar = Screen.GetWorkingArea(this).Contains(Cursor.Position);
                 this.WindowState = FormWindowState.Minimized;
                 if (this.WindowState == FormWindowState.Minimized)
@@ -682,7 +692,7 @@ namespace OSCVRCWiz
                     this.ShowInTaskbar = false;
                     notifyIcon1.Visible = true;
                     this.Hide();
-                   // int id = 0;
+                    // int id = 0;
                     CUSTOMRegisterHotKey(0, modifierKeySTTTS, normalKeySTTTS);
                     CUSTOMRegisterHotKey(1, modifierKeyStopTTS, normalKeyStopTTS);
                     CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
@@ -701,7 +711,7 @@ namespace OSCVRCWiz
                     System.IO.File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 OutputText.outputLog("[OBSText File Error: " + ex.Message + ". Try moving folder location.]", Color.Red);
             }
@@ -765,7 +775,7 @@ namespace OSCVRCWiz
         }
         private async void TTSButton_Click(object sender, EventArgs e)//TTS
         {
-            if (captureEnabled == true && rjToggleButtonRefocus.Checked==true)//is capturing so turn it off
+            if (captureEnabled == true && rjToggleButtonRefocus.Checked == true)//is capturing so turn it off
             {
 
                 // Activate and bring the previous window to the front
@@ -792,7 +802,7 @@ namespace OSCVRCWiz
                 TTSMessageQueued.AzureTranslateText = "[ERROR]";
             });
 
-            if(rjToggleButtonQueueSystem.Checked==true && rjToggleButtonQueueTypedText.Checked==true)
+            if (rjToggleButtonQueueSystem.Checked == true && rjToggleButtonQueueTypedText.Checked == true)
             {
                 TTSMessageQueue.Enqueue(TTSMessageQueued);
             }
@@ -801,47 +811,47 @@ namespace OSCVRCWiz
                 Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
             }
 
-          //  if (TTSMessageQueued.STTMode == "Text")
-           // {
-                if (rjToggleButtonMedia.Checked == true)
+            //  if (TTSMessageQueued.STTMode == "Text")
+            // {
+            if (rjToggleButtonMedia.Checked == true)
+            {
+                try
                 {
-                    try
-                    {
 
 
-                        string sound = @"sounds\TTSButton.wav";
-                        //   if (rjToggleButtonAprilFools.Checked == true)
-                        //  {
-                        //        sound = @"sounds\ringTone.wav";
-                        //    }
-                        var soundPlayer = new SoundPlayer(sound);
-                        soundPlayer.Play();
-                    }
-                    catch (Exception ex)
-                    {
-                        OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
-                        OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
-                    }
+                    string sound = @"sounds\TTSButton.wav";
+                    //   if (rjToggleButtonAprilFools.Checked == true)
+                    //  {
+                    //        sound = @"sounds\ringTone.wav";
+                    //    }
+                    var soundPlayer = new SoundPlayer(sound);
+                    soundPlayer.Play();
                 }
-                this.Invoke((MethodInvoker)delegate ()
+                catch (Exception ex)
                 {
-                    if (rjToggleButtonClear.Checked == true)
-                    {
-                        richTextBox3.Clear();
+                    OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
+                    OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
+                }
+            }
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                if (rjToggleButtonClear.Checked == true)
+                {
+                    richTextBox3.Clear();
 
-                    }
+                }
 
-                });
-          //  }
+            });
+            //  }
 
 
 
         }
         private void speechTTSButton_Click(object sender, EventArgs e)
         {
-            
+
             Task.Run(() => MainDoSpeechTTS());
-         
+
         }
         public async void MainDoTTS(TTSMessageQueue.TTSMessage TTSMessageQueued)
         {
@@ -850,7 +860,7 @@ namespace OSCVRCWiz
                 if (IsHandleCreated)
                 {
 
-                   
+
 
 
                     var language = "";
@@ -883,99 +893,177 @@ namespace OSCVRCWiz
                     var speechText = TTSMessageQueued.text;
                     var newText = TTSMessageQueued.text;
                     var translationMethod = "";
-
-                    if (language != "No Translation (Default)")
+                    if (!String.IsNullOrEmpty(TTSMessageQueued.text))
                     {
-                        // var DL = new DeepL();
-
-                        /*     if (STTMode != "Azure Translate"&& STTMode != "Whisper")
-                             {
-                                 newText = await DeepLTranslate.translateTextDeepL(text);
-                                 translationMethod = "DeepL Translation";
-                             }
-                             else if (STTMode == "Azure Translate")
-                             {
-                                 newText = AzureTranslateText;
-                                 translationMethod = "Azure Translation";
-                             }
-                             else if (STTMode == "Whisper"&& language == "English[en]")
-                             {
-                                 newText = text;
-                                 translationMethod = "Whisper English Translation";
-                             }*/
-                        if (TTSMessageQueued.STTMode != "Azure Translate")
+                        if (language != "No Translation (Default)")
                         {
-                            newText = await DeepLTranslate.translateTextDeepL(TTSMessageQueued.text);
-                            translationMethod = "DeepL Translation";
+                            // var DL = new DeepL();
+
+                            /*     if (STTMode != "Azure Translate"&& STTMode != "Whisper")
+                                 {
+                                     newText = await DeepLTranslate.translateTextDeepL(text);
+                                     translationMethod = "DeepL Translation";
+                                 }
+                                 else if (STTMode == "Azure Translate")
+                                 {
+                                     newText = AzureTranslateText;
+                                     translationMethod = "Azure Translation";
+                                 }
+                                 else if (STTMode == "Whisper"&& language == "English[en]")
+                                 {
+                                     newText = text;
+                                     translationMethod = "Whisper English Translation";
+                                 }*/
+                            if (rjToggleButtonUsePro.Checked != true && rjToggleButtonProTranslation.Checked != true)
+                            {
+                                if (TTSMessageQueued.STTMode != "Azure Translate")
+                                {
+                                    newText = await DeepLTranslate.translateTextDeepL(TTSMessageQueued.text);
+                                    translationMethod = "DeepL Translation";
+                                }
+                                else
+                                {
+
+                                    newText = TTSMessageQueued.AzureTranslateText;
+                                    translationMethod = "Azure Translation";
+                                }
+
+
+
+                                if (rjToggleButtonVoiceWhatLang.Checked == true)
+                                {
+                                    speechText = newText;
+                                    TTSMessageQueued.text = speechText;
+
+                                }
+                                if (rjToggleButtonAsTranslated2.Checked == true)
+                                {
+                                    writeText = newText;
+
+                                }
+                            }
+
                         }
-                        else
+                        if (rjToggleButtonStopCurrentTTS.Checked == true)
                         {
-                            
-                            newText = TTSMessageQueued.AzureTranslateText;
-                            translationMethod = "Azure Translation";
+                            MainDoStopTTS();
                         }
 
 
-                        if (rjToggleButtonVoiceWhatLang.Checked == true)
-                        {                          
-                            speechText = newText;
-                            TTSMessageQueued.text = speechText;
-
-                        }
-                        if (rjToggleButtonAsTranslated2.Checked == true)
-                        {
-                            writeText = newText;
-
-                        }
-
-                    }
-                    if (rjToggleButtonStopCurrentTTS.Checked == true)
-                    {
-                        MainDoStopTTS();
-                    }
-
-
-
+                        var voiceWizardAPITranslationString = "";
                         speechCt = new();
-                    switch (selectedTTSMode)
-                    {
-                        case "Moonbase":
-                            Task.Run(() => FonixTalkTTS.FonixTTS(TTSMessageQueued, speechCt.Token));
-                            break;
-                        case "ElevenLabs":
-                            Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(TTSMessageQueued, speechCt.Token));
-                            break;
-                        case "System Speech":
-                            Task.Run(() => SystemSpeechTTS.systemTTSAction(TTSMessageQueued, speechCt.Token));
-                            break;
-                        case "Azure":
-                            Task.Run(() => AzureTTS.SynthesizeAudioAsync(TTSMessageQueued, speechCt.Token)); //turning off TTS for now
-                            break;
-                        case "TikTok":
-                            Task.Run(() => TikTokTTS.TikTokTextAsSpeech(TTSMessageQueued, speechCt.Token));
-                            break;
+                        switch (selectedTTSMode)
+                        {
+                            case "Moonbase":
+                                /* if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProMoonbase.Checked == true)
+                                 {
+                                     voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                     selectedTTSMode = "Moonbase (Pro)";
+                                 }
+                                 else
+                                 {*/
+                                Task.Run(() => FonixTalkTTS.FonixTTS(TTSMessageQueued, speechCt.Token));
+                                //  }
+                                // Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(TTSMessageQueued, speechCt.Token)); //turning off TTS for now
+                                break;
+                            case "ElevenLabs":
+                                Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(TTSMessageQueued, speechCt.Token));
+                                break;
+                            case "System Speech":
+                                Task.Run(() => SystemSpeechTTS.systemTTSAction(TTSMessageQueued, speechCt.Token));
+                                break;
+                            case "Azure":
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProAzure.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    selectedTTSMode = "Azure (Pro)";
+                                }
+                                else
+                                {
+                                    Task.Run(() => AzureTTS.SynthesizeAudioAsync(TTSMessageQueued, speechCt.Token)); //turning off TTS for now
+                                }
+                                // Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(TTSMessageQueued, speechCt.Token));
+                                break;
+                            case "TikTok":
+                                Task.Run(() => TikTokTTS.TikTokTextAsSpeech(TTSMessageQueued, speechCt.Token));
+                                break;
 
-                        case "NovelAI": 
-                            Task.Run(() => NovelAITTS.NovelAITextAsSpeech(TTSMessageQueued, speechCt.Token));
-                            break;
-                        case "Glados":
-                            Task.Run(() => GladosTTS.GladosTextAsSpeech(TTSMessageQueued, speechCt.Token));
-                            break;
-                        case "Amazon Polly":
-                            Task.Run(() => AmazonPollyTTS.PollyTTS(TTSMessageQueued, speechCt.Token));
-                            break;
-                        case "Miku":
-                           // Task.Run(() => MikuTTS.MikuTextAsSpeech(speechText, speechCt.Token));
-                            break;
+                            case "NovelAI":
+                                Task.Run(() => NovelAITTS.NovelAITextAsSpeech(TTSMessageQueued, speechCt.Token));
+                                break;
+                            case "Glados":
+                                Task.Run(() => GladosTTS.GladosTextAsSpeech(TTSMessageQueued, speechCt.Token));
+                                break;
+                            case "Amazon Polly":
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProAmazon.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    selectedTTSMode = "Amazon Polly (Pro)";
+                                }
+                                else
+                                {
+                                    Task.Run(() => AmazonPollyTTS.PollyTTS(TTSMessageQueued, speechCt.Token));
+                                }
+                                break;
+                            case "Google (Pro Only)":
+                                if (rjToggleButtonUsePro.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                }
+                                else
+                                {
+                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange));
+                                    Task.Run(() => TTSMessageQueue.PlayNextInQueue());
+                                    return;
+                                }
+                                break;
 
-                        case "Fart to Speech":
-                            // Task.Run(() => FartTTS.FartTextAsSpeech(speechText, speechCt.Token)); //april fools
-                            break;
+                            case "Uberduck":
+                               
+                                    TTSMessageQueued.Voice = UberDuckTTS.UberVoiceNameAndID[TTSMessageQueued.Voice];
+                                    Task.Run(() => UberDuckTTS.uberduckTTS( TTSMessageQueued, speechCt.Token));
+                               
 
 
-                        default:
 
-                            break;
+                                break;
+                            case "Miku":
+                                // Task.Run(() => MikuTTS.MikuTextAsSpeech(speechText, speechCt.Token));
+                                break;
+
+                            case "Fart to Speech":
+                                // Task.Run(() => FartTTS.FartTextAsSpeech(speechText, speechCt.Token)); //april fools
+                                break;
+
+
+                            default:
+
+                                break;
+                        }
+
+                        if (language != "No Translation (Default)")
+                        {
+
+                            if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                            {
+
+                                newText = voiceWizardAPITranslationString;
+                                /* if (rjToggleButtonVoiceWhatLang.Checked == true)
+                                 {
+                                     speechText = VoiceWizardProTTS.voiceWizardAPITranslationString;
+
+
+                                 }*/
+                                if (rjToggleButtonAsTranslated2.Checked == true)
+                                {
+                                    writeText = voiceWizardAPITranslationString;
+
+                                }
+                                translationMethod = "VoiceWizardPro Translation";
+                                voiceWizardAPITranslationString = "";
+                            }
+
+                        }
                     }
 
                     if (rjToggleReplaceBeforeTTS.Checked == false)
@@ -1040,7 +1128,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[DoTTS Error: "+ex.Message+"]", Color.Red);
+                OutputText.outputLog("[DoTTS Error: " + ex.Message + "]", Color.Red);
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                 {
@@ -1048,18 +1136,18 @@ namespace OSCVRCWiz
                     OSC.OSCSender.Send(sttListening);
                 }
             }
-                
 
 
-            
+
+
         }
         private static void NoTTSQueue()
         {
-               
-                Task.Delay(Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxDelayAfterNoTTS.Text.ToString())).Wait();
-                
-                Task.Run(() => TTSMessageQueue.PlayNextInQueue());
-           
+
+            Task.Delay(Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxDelayAfterNoTTS.Text.ToString())).Wait();
+
+            Task.Run(() => TTSMessageQueue.PlayNextInQueue());
+
 
         }
         private void MainDoSpeechTTS()
@@ -1069,12 +1157,12 @@ namespace OSCVRCWiz
                 try
                 {
                     string sound = @"sounds\speechButton.wav";
-                 //   if(rjToggleButtonAprilFools.Checked == true)
-                //    {
-                 //       sound = @"sounds\metalPipe.wav";
-               //     }
+                    //   if(rjToggleButtonAprilFools.Checked == true)
+                    //    {
+                    //       sound = @"sounds\metalPipe.wav";
+                    //     }
                     var soundPlayer = new SoundPlayer(sound);
-                    
+
                     soundPlayer.Play();
                 }
                 catch (Exception ex)
@@ -1082,7 +1170,7 @@ namespace OSCVRCWiz
                     OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
                     OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
                 }
-            
+
             }
             try
             {
@@ -1130,7 +1218,7 @@ namespace OSCVRCWiz
                             {
                                 //  var azureRec = new AzureRecognition();
 
-                                if (comboBox3.Text.ToString() == "No Translation (Default)")
+                                if (comboBox3.Text.ToString() == "No Translation (Default)" || (rjToggleButtonUsePro.Checked==true && rjToggleButtonProTranslation.Checked == true))
                                 {
                                     AzureRecognition.speechSetup(comboBox3.Text.ToString(), comboBox4.Text.ToString()); //only speechSetup needed
                                     System.Diagnostics.Debug.WriteLine("<speechSetup change>");
@@ -1162,7 +1250,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-              //  MessageBox.Show("[STTTS Error: " + ex.Message.ToString());
+                //  MessageBox.Show("[STTTS Error: " + ex.Message.ToString());
                 OutputText.outputLog("[STTTS Error: " + ex.Message.ToString() + "]", Color.Red);
 
             }
@@ -1171,7 +1259,7 @@ namespace OSCVRCWiz
 
 
         }
-     
+
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
             if (rjToggleButtonOnTop2.Checked == true)
@@ -1193,7 +1281,7 @@ namespace OSCVRCWiz
 
                 e.Handled = true;
 
-               
+
             }
         }
         private void allButtonColorReset()
@@ -1210,9 +1298,9 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton2.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(tabPage1);//sttts
+            mainTabControl.SelectTab(tabPage1);//sttts
             webView21.Hide();
-            
+
 
         }
 
@@ -1220,7 +1308,7 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton4.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(APIs);//provider
+            mainTabControl.SelectTab(APIs);//provider
             webView21.Hide();
         }
 
@@ -1228,7 +1316,7 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton5.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(General);//settings
+            mainTabControl.SelectTab(General);//settings
             webView21.Hide();
         }
 
@@ -1236,7 +1324,7 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton1.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(tabPage4);//Dashboard
+            mainTabControl.SelectTab(tabPage4);//Dashboard
             webView21.Show();
 
 
@@ -1274,8 +1362,8 @@ namespace OSCVRCWiz
             Settings1.Default.Save();
             SpotifyAddon.SpotifyConnect();
 
-             VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Green;
-            
+            VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Green;
+
 
         }
 
@@ -1358,12 +1446,12 @@ namespace OSCVRCWiz
 
             if (rjToggleButtonOSC.Checked == true)
             {
-                if(VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked == true)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked == true)
                 {
                     Task.Delay(2500).Wait();
 
                 }
-                
+
                 var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Visible", false);
                 OSC.OSCSender.Send(message0);
                 var message1 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
@@ -1374,7 +1462,7 @@ namespace OSCVRCWiz
                 var message1 = new CoreOSC.OscMessage("/chatbox/input", "", true, false);
                 OSC.OSCSender.Send(message1);
             }
-            if (rjToggleButtonOBSText.Checked==true && rjToggleButtonHideDelay2.Checked)
+            if (rjToggleButtonOBSText.Checked == true && rjToggleButtonHideDelay2.Checked)
             {
                 OutputText.outputTextFile("");
             }
@@ -1388,18 +1476,19 @@ namespace OSCVRCWiz
                   });
 
               }*/
-       
-            
+
+
 
         }
         private void doToastTimerTick()
         {
-            try { 
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            try
             {
-                var message0 = new CoreOSC.OscMessage(VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text.ToString(), false);
-                OSC.OSCSender.Send(message0);
-            });
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    var message0 = new CoreOSC.OscMessage(VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text.ToString(), false);
+                    OSC.OSCSender.Send(message0);
+                });
             }
             catch (Exception ex)
             {
@@ -1409,10 +1498,10 @@ namespace OSCVRCWiz
 
         }
 
-     private void doWhisperTimerTick()
+        private void doWhisperTimerTick()
         {
-          
-              string text = WhisperRecognition.WhisperString;
+
+            string text = WhisperRecognition.WhisperString;
 
 
 
@@ -1420,17 +1509,17 @@ namespace OSCVRCWiz
             this.Invoke((MethodInvoker)delegate ()
             {
                 TTSMessageQueued.text = text;
-            TTSMessageQueued.TTSMode = comboBoxTTSMode.Text.ToString();
-            TTSMessageQueued.Voice = comboBox2.Text.ToString();
-            TTSMessageQueued.Accent = comboBox5.Text.ToString();
-            TTSMessageQueued.Style = comboBox1.Text.ToString();
-            TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-            TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-            TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-            TTSMessageQueued.SpokenLang = comboBox3.Text.ToString();
-            TTSMessageQueued.TranslateLang = comboBox3.Text.ToString();
-            TTSMessageQueued.STTMode = "Whisper";
-            TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                TTSMessageQueued.TTSMode = comboBoxTTSMode.Text.ToString();
+                TTSMessageQueued.Voice = comboBox2.Text.ToString();
+                TTSMessageQueued.Accent = comboBox5.Text.ToString();
+                TTSMessageQueued.Style = comboBox1.Text.ToString();
+                TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                TTSMessageQueued.SpokenLang = comboBox3.Text.ToString();
+                TTSMessageQueued.TranslateLang = comboBox3.Text.ToString();
+                TTSMessageQueued.STTMode = "Whisper";
+                TTSMessageQueued.AzureTranslateText = "[ERROR]";
             });
 
             if (rjToggleButtonQueueSystem.Checked == true)
@@ -1444,11 +1533,11 @@ namespace OSCVRCWiz
 
 
 
-          //  VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper");
+            //  VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper");
 
-                WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
-                WhisperRecognition.WhisperString = "";
- 
+            WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
+            WhisperRecognition.WhisperString = "";
+
 
 
 
@@ -1462,12 +1551,12 @@ namespace OSCVRCWiz
             {
                 this.Invoke((MethodInvoker)delegate ()
                 {
-                    if (typingBox == false && tabControl1.SelectedTab == tabPage3)
+                    if (typingBox == false && mainTabControl.SelectedTab == tabPage3)
                     {
                         var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);//this is what spams osc
                         OSC.OSCSender.Send(typingbubble);
                     }
-                    if (typingBox == true && tabControl1.SelectedTab == tabPage3)
+                    if (typingBox == true && mainTabControl.SelectedTab == tabPage3)
                     {
                         var theString = "";
 
@@ -1513,10 +1602,10 @@ namespace OSCVRCWiz
             }
             if (rjToggleButton10.Checked == true && rjToggleButtonPeriodic.Checked == true)
             {
-                
+
                 Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
             }
-            if (rjToggleButton10.Checked == true && rjToggleButtonForceMedia.Checked ==true)
+            if (rjToggleButton10.Checked == true && rjToggleButtonForceMedia.Checked == true)
             {
                 WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
                 Debug.WriteLine("forced media");
@@ -1528,7 +1617,7 @@ namespace OSCVRCWiz
         }
         private void doKatRefreshTimerTick()
         {
-            if (rjToggleButtonHideDelay2.Checked == false &&rjToggleButtonAutoRefreshKAT.Checked==true)
+            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
             {
                 if (rjToggleButtonOSC.Checked == true)
                 {
@@ -1542,9 +1631,9 @@ namespace OSCVRCWiz
 
         private void doVRCCounterTimerTick()
         {
-          //  SpotifyAddon.pauseSpotify = true;
+            //  SpotifyAddon.pauseSpotify = true;
 
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector==true &&OSCListener.pauseBPM !=true)
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector == true && OSCListener.pauseBPM != true)
             {
                 var elapsedTime = DateTime.Now - OSC.afkStartTime;
                 string elapsedMinutesSeconds = $"{elapsedTime.Hours:00}:{elapsedTime.Minutes:00}:{elapsedTime.Seconds:00}";
@@ -1567,29 +1656,29 @@ namespace OSCVRCWiz
             }
 
 
-                if (rjToggleButton13.Checked == true && button33.Enabled==false )
+            if (rjToggleButton13.Checked == true && button33.Enabled == false)
             {
-                
-              
-                    if(OSC.counter1 > OSC.prevCounter1)
+
+
+                if (OSC.counter1 > OSC.prevCounter1)
+                {
+                    OSC.prevCounter1 = OSC.counter1;
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                    theString = theString.Replace("{counter}", OSC.counter1.ToString());
+
+                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
                     {
-                        OSC.prevCounter1 = OSC.counter1;
-                         var theString = "";
-                         theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
-
-                          theString = theString.Replace("{counter}", OSC.counter1.ToString());
-
-                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
-                        {
-                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString,"bpm"));
-                        }
-                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
-                        {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
-                        }
-
-
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
                     }
+                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                    {
+                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                    }
+
+
+                }
                 else if (OSC.counter2 > OSC.prevCounter2)
                 {
                     OSC.prevCounter2 = OSC.counter2;
@@ -1669,7 +1758,7 @@ namespace OSCVRCWiz
                 else if (OSC.counter6 > OSC.prevCounter6)
                 {
                     OSC.prevCounter6 = OSC.counter6;
-                    
+
                     var theString = "";
                     theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
 
@@ -1686,7 +1775,7 @@ namespace OSCVRCWiz
 
 
                 }
-              
+
 
 
 
@@ -1702,9 +1791,9 @@ namespace OSCVRCWiz
                 Settings1.Default.Save();
             }
             VRCCounterTimer.Change(1600, 0);
-            
 
-            
+
+
         }
 
 
@@ -1754,42 +1843,42 @@ namespace OSCVRCWiz
         {
             allButtonColorReset();
             iconButton3.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(tabAddons); //addon
+            mainTabControl.SelectTab(tabAddons); //addon
             webView21.Hide();
-            
+
 
         }
 
         private void iconButton9_Click(object sender, EventArgs e)
         {
             //richTextBox7.Text = richTextBox1.Text;
-            tabControl1.SelectTab(tabSpotify);
+            mainTabControl.SelectTab(tabSpotify);
 
 
         }
 
         private void iconButton10_Click(object sender, EventArgs e)
         {
-           // richTextBox8.Text = richTextBox1.Text;
-            tabControl1.SelectTab(tabHeartBeat);
+            // richTextBox8.Text = richTextBox1.Text;
+            mainTabControl.SelectTab(tabHeartBeat);
 
         }
 
         private void iconButton11_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(tabEmoji);
+            mainTabControl.SelectTab(tabEmoji);
 
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if(richTextBox1.Lines.Count()>=2000)
+            if (richTextBox1.Lines.Count() >= 2000)
             {
                 ClearTextBox();
                 OutputText.outputLog("Log exceeded limit and was automatically cleared");
             }
-        
-           
+
+
         }
 
         private void iconButton12_Click(object sender, EventArgs e)
@@ -1808,7 +1897,7 @@ namespace OSCVRCWiz
             OSCListener.OSCReceiveport = Convert.ToInt32(textBoxHRPort.Text.ToString());
 
         }
-      
+
 
         private void richTextBox3_TextChanged(object sender, EventArgs e)
         {
@@ -1843,8 +1932,8 @@ namespace OSCVRCWiz
             }
 
         }
-      
-     
+
+
         private void iconButton13_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/wBRUcx9EWes");
@@ -1907,14 +1996,14 @@ namespace OSCVRCWiz
 
         private void iconButton20_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(AzureSet);//settings
+            mainTabControl.SelectTab(AzureSet);//settings
         }
 
- 
-      //  private void iconButton18_Click_1(object sender, EventArgs e)
-      //  {
-      //      tabControl1.SelectTab(AzureSet);//settings
-      //  }
+
+        //  private void iconButton18_Click_1(object sender, EventArgs e)
+        //  {
+        //      tabControl1.SelectTab(AzureSet);//settings
+        //  }
 
 
         private void rjToggleButton4_CheckedChanged(object sender, EventArgs e)
@@ -1965,28 +2054,28 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonGreenScreen_CheckedChanged(object sender, EventArgs e)
         {
-          /*  if (rjToggleButtonGreenScreen.Checked == true)
-            {
-                pf = new GreenScreen();
-                pf.BackColor = Color.LimeGreen;
-                pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
-                pf.Show(this);
-            }
-            if (rjToggleButtonGreenScreen.Checked == false)
-            {
-                pf.Dispose();
+            /*  if (rjToggleButtonGreenScreen.Checked == true)
+              {
+                  pf = new GreenScreen();
+                  pf.BackColor = Color.LimeGreen;
+                  pf.customrtb1.SelectionAlignment = HorizontalAlignment.Center;
+                  pf.Show(this);
+              }
+              if (rjToggleButtonGreenScreen.Checked == false)
+              {
+                  pf.Dispose();
 
-            }*/
+              }*/
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-          /*  if (rjToggleButtonGreenScreen.Checked == true)
-            {
-                pf.customrtb1.Font = new Font("Calibri", Int32.Parse(textBoxFont.Text.ToString()));
+            /*  if (rjToggleButtonGreenScreen.Checked == true)
+              {
+                  pf.customrtb1.Font = new Font("Calibri", Int32.Parse(textBoxFont.Text.ToString()));
 
-            }
-            Settings1.Default.fontSizeSetting = textBoxFont.Text.ToString(); */
+              }
+              Settings1.Default.fontSizeSetting = textBoxFont.Text.ToString(); */
 
 
 
@@ -2037,10 +2126,10 @@ namespace OSCVRCWiz
 
         private void button12_Click(object sender, EventArgs e)
         {
-           // var sender4 = new CoreOSC.UDPSender("127.0.0.1", 9000);
+            // var sender4 = new CoreOSC.UDPSender("127.0.0.1", 9000);
             var message0 = new CoreOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255);
             OutputText.lastKatString = "";
-            
+
 
             OSC.OSCSender.Send(message0);
         }
@@ -2051,17 +2140,17 @@ namespace OSCVRCWiz
             var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
             OSC.OSCSender.Send(typingbubble);
         }
-       
+
 
 
         private void iconButton23_Click(object sender, EventArgs e)
         {
             allButtonColorReset();
             iconButton23.BackColor = Color.FromArgb(68, 72, 111);
-            tabControl1.SelectTab(tabPage3);//ttt
+            mainTabControl.SelectTab(tabPage3);//ttt
 
             webView21.Hide();
-          
+
         }
 
         private void iconButton22_Click(object sender, EventArgs e)
@@ -2071,7 +2160,7 @@ namespace OSCVRCWiz
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(TTSModeSaved=="Azure")
+            if (TTSModeSaved == "Azure")
             {
                 AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
 
@@ -2079,6 +2168,16 @@ namespace OSCVRCWiz
             if (TTSModeSaved == "Amazon Polly")
             {
                 AmazonPollyTTS.SynthesisGetAvailableVoices(comboBox5.Text.ToString());
+
+            }
+            if (TTSModeSaved == "Google (Pro Only)")
+            {
+                GoogleTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
+
+            }
+            if (TTSModeSaved == "Uberduck")
+            {
+                UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString(),false);
 
             }
 
@@ -2118,12 +2217,12 @@ namespace OSCVRCWiz
             System.Diagnostics.Process.Start("explorer.exe", "https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features");
         }
 
- 
- 
+
+
         private void iconButton31_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
-        
+
         }
 
         private void iconButton29_Click(object sender, EventArgs e)
@@ -2137,7 +2236,7 @@ namespace OSCVRCWiz
         }
 
 
-      
+
 
 
         private void iconButton32_Click(object sender, EventArgs e)
@@ -2221,9 +2320,9 @@ namespace OSCVRCWiz
                         AzureTTS.firstVoiceLoad = false;
                     }
 
-                 
-                        OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
-                    
+
+                    OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
+
 
                     break;
                 case "TikTok":
@@ -2340,7 +2439,7 @@ namespace OSCVRCWiz
                     break;
                 case "Azure":
                     comboBox5.Items.Clear();
-                   // comboBox2.Items.Add("");
+                    // comboBox2.Items.Add("");
 
                     var voiceAccents = new List<string>()
                     {
@@ -2367,7 +2466,7 @@ namespace OSCVRCWiz
                         "Portuguese [pt]",
                         "Russian [ru]",
                         "Spanish [es]",
-                        "Swedish[ sv]",
+                        "Swedish [sv]",
                         "Thai [th]",
                         "Ukrainian [uk]",
                         "Vietnamese [vi]"
@@ -2380,7 +2479,7 @@ namespace OSCVRCWiz
 
 
                     AzureTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
-                   // comboBox2.SelectedIndex = 0;
+                    // comboBox2.SelectedIndex = 0;
                     comboBox1.Enabled = true;
                     comboBox2.Enabled = true;
                     comboBox3.Enabled = true;
@@ -2393,6 +2492,91 @@ namespace OSCVRCWiz
                     if (textBox2.Text.ToString() == "")
                     {
                         OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                    }
+
+
+                    break;
+
+                case "Google (Pro Only)":
+                    comboBox5.Items.Clear();
+                    // comboBox2.Items.Add("");
+
+                    var voiceAccentsGoogle = new List<string>()
+                    {
+                        "Arabic [ar]",
+                        "Chinese [zh]",
+                        "Czech [cs]",
+                        "Danish [da]",
+                        "Dutch [nl]",
+                        "English [en]",
+                       // "Estonian [et]",
+                        "Filipino [fil]",
+                        "Finnish [fi]",
+                        "French [fr]",
+                        "German [de]",
+                        "Hindi [hi]",
+                        "Hungarian [hu]",
+                        "Indonesian [id]",
+                       // "Irish [ga]",
+                        "Italian [it]",
+                        "Japanese [ja]",
+                        "Korean [ko]",
+                        "Norwegian [nb]",
+                        "Polish [pl]",
+                        "Portuguese [pt]",
+                        "Russian [ru]",
+                        "Spanish [es]",
+                        "Swedish [sv]",
+                        "Thai [th]",
+                        "Ukrainian [uk]",
+                        "Vietnamese [vi]"
+                    };
+                    foreach (var accent in voiceAccentsGoogle)
+                    {
+                        comboBox5.Items.Add(accent);
+                    }
+                    comboBox5.SelectedIndex = 5;
+
+
+                    GoogleTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString());
+                    // comboBox2.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = true;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+                    TTSModeSaved = "Google (Pro Only)";
+
+                    if (textBoxWizardProKey.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                    }
+
+
+                    break;
+
+                case "Uberduck":
+
+
+                    comboBox5.Items.Clear();
+                    UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBox5.Text.ToString(),true);
+                    // comboBox2.SelectedIndex = 0;
+                    comboBox1.SelectedIndex = 0;
+                    comboBox1.Enabled = false;
+                    comboBox2.Enabled = true;
+                    comboBox3.Enabled = true;
+                    comboBox5.Enabled = true;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+                    TTSModeSaved = "Uberduck";
+
+                    if (textBoxWizardProKey.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
                     }
 
 
@@ -2433,16 +2617,16 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "NovelAI";
 
-                  //  OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+                    //  OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
 
                     break;
                 case "ElevenLabs":
 
                     comboBox2.Items.Clear();
-                   
+
                     try
                     {
-                        if(ElevenLabsTTS.elevenFirstLoad==true)
+                        if (ElevenLabsTTS.elevenFirstLoad == true)
                         {
                             ElevenLabsTTS.CallElevenVoices();
                         }
@@ -2490,11 +2674,11 @@ namespace OSCVRCWiz
                 case "Amazon Polly":
 
                     comboBox5.Items.Clear();
-                  var voiceAccentsAmazon = new List<string>()
+                    var voiceAccentsAmazon = new List<string>()
                     {
                         "Arabic [ar]",
                         "Catalan [ca]",
-                        "Chinese [zh]",                    
+                        "Chinese [zh]",
                         "Danish [da]",
                         "Dutch [nl]",
                         "English [en]",
@@ -2524,9 +2708,9 @@ namespace OSCVRCWiz
                     comboBox2.Items.Clear();
                     AmazonPollyTTS.SynthesisGetAvailableVoices(comboBox5.Text.ToString());
 
-                  
 
-                   
+
+
 
 
 
@@ -2543,7 +2727,7 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Amazon Polly";
 
-                    if (textBox9.Text.ToString()=="")
+                    if (textBox9.Text.ToString() == "")
                     {
                         OutputText.outputLog("[You appear to be missing an Amazon Polly Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly ]", Color.DarkOrange);
                     }
@@ -2565,12 +2749,12 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Miku";
 
-                 //   OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+                    //   OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
 
                     break;
                 case "Fart to Speech":
 
-                    comboBox2.Items.Clear();  
+                    comboBox2.Items.Clear();
                     comboBox2.Items.Add("Squeaky Cheeks");
                     comboBox2.Items.Add("Stinky Symphony");
                     comboBox2.Items.Add("Thunder Down Under");
@@ -2591,7 +2775,7 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Fart to Speech";
 
-                   // OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+                    // OutputText.outputLog("[Miku Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
 
                     break;
 
@@ -2618,7 +2802,7 @@ namespace OSCVRCWiz
         }
 
 
-      
+
 
         private void button2_Click_1(object sender, EventArgs e)
         {
@@ -2664,8 +2848,8 @@ namespace OSCVRCWiz
 
         private void iconButton27_Click_1(object sender, EventArgs e)
         {
-           // richTextBox12.Text = richTextBox1.Text;
-            tabControl1.SelectTab(tabPage2);//voiceCommands
+            // richTextBox12.Text = richTextBox1.Text;
+            mainTabControl.SelectTab(tabPage2);//voiceCommands
         }
 
 
@@ -2673,7 +2857,7 @@ namespace OSCVRCWiz
         {
             VoiceCommands.clearVoiceCommands();
             VoiceCommands.voiceCommandsStored += $"{textBox1Spoken.Text.ToString()}:{textBox2Address.Text.ToString()}:{comboBox3Type.SelectedItem.ToString()}:{textBox4Value.Text.ToString()};";
-            
+
             VoiceCommands.voiceCommands();
             VoiceCommands.refreshCommandList();
 
@@ -2689,12 +2873,12 @@ namespace OSCVRCWiz
 
         private void button24_Click(object sender, EventArgs e)
         {
-            if(deleteCommandsToggle.Checked==true)
+            if (deleteCommandsToggle.Checked == true)
             {
                 VoiceCommands.clearVoiceCommands();
                 VoiceCommands.refreshCommandList();
             }
-            
+
 
         }
 
@@ -2707,12 +2891,12 @@ namespace OSCVRCWiz
 
         private void iconButton37_Click(object sender, EventArgs e)
         {
-            if (Int32.Parse(richTextBox3.Font.Size.ToString())>=1)
+            if (Int32.Parse(richTextBox3.Font.Size.ToString()) >= 1)
             {
                 fontSize = Int32.Parse(richTextBox3.Font.Size.ToString()) - 1;
                 richTextBox3.Font = new Font("Segoe UI", fontSize);
             }
-           
+
 
         }
 
@@ -2726,7 +2910,7 @@ namespace OSCVRCWiz
 
         private void button25_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(AzureSet);//settings
+            mainTabControl.SelectTab(AzureSet);//settings
         }
 
         private void iconButton39_Click(object sender, EventArgs e)
@@ -2743,7 +2927,7 @@ namespace OSCVRCWiz
 
         private void checkedListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(deleteCommandsToggle.Checked==true)
+            if (deleteCommandsToggle.Checked == true)
             {
                 try
                 {
@@ -2756,7 +2940,7 @@ namespace OSCVRCWiz
                 }
 
             }
-           
+
         }
 
 
@@ -2804,7 +2988,7 @@ namespace OSCVRCWiz
                     {
                         OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ]", Color.DarkOrange);
                     }
-                        break;
+                    break;
 
                 case "Web Captioner": OutputText.outputLog("[Web Captioner selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner ]", Color.DarkOrange); break;
 
@@ -2815,7 +2999,7 @@ namespace OSCVRCWiz
                     }
                     break;
 
-              //  case "System Speech": OutputText.outputLog("[System Speech selected for Speech to Text (Voice Recognition).]", Color.DarkOrange); break;
+                //  case "System Speech": OutputText.outputLog("[System Speech selected for Speech to Text (Voice Recognition).]", Color.DarkOrange); break;
                 case "Azure":
                     if (textBox2.Text.ToString() == "")
                     {
@@ -2829,8 +3013,8 @@ namespace OSCVRCWiz
 
 
 
-           
-         
+
+
         }
 
         private void iconButton41_Click(object sender, EventArgs e)
@@ -2842,16 +3026,16 @@ namespace OSCVRCWiz
 
         private void iconButton28_Click(object sender, EventArgs e)
         {
-           
+
         }
         Color DarkModeColor = Color.FromArgb(31, 30, 68);
         Color LightModeColor = Color.FromArgb(68, 72, 111);
-        
+
 
         private void rjToggleButton7_CheckedChanged_1(object sender, EventArgs e)
         {
 
-           if (rjToggleDarkMode.Checked== true)//dark mode
+            if (rjToggleDarkMode.Checked == true)//dark mode
             {
                 DarkTitleBarClass.UseImmersiveDarkMode(Handle, true);
                 foreach (var thisControl in GetAllChildren(this).OfType<TextBox>())
@@ -2874,7 +3058,7 @@ namespace OSCVRCWiz
                     thisControl.BackColor = Color.FromArgb(31, 30, 68);
                     thisControl.ForeColor = Color.White;
                 }
-                labelCharCount.BackColor= Color.FromArgb(31, 30, 68);
+                labelCharCount.BackColor = Color.FromArgb(31, 30, 68);
                 ttsTrash.BackColor = Color.FromArgb(31, 30, 68);
                 logTrash.BackColor = Color.FromArgb(31, 30, 68);
                 iconButton22.BackColor = Color.FromArgb(31, 30, 68);
@@ -2896,9 +3080,9 @@ namespace OSCVRCWiz
 
 
                 labelCharCount.ForeColor = Color.White;
-            ttsTrash.IconColor = Color.White;
-            logTrash.IconColor = Color.White;
-            iconButton22.IconColor = Color.White;
+                ttsTrash.IconColor = Color.White;
+                logTrash.IconColor = Color.White;
+                iconButton22.IconColor = Color.White;
 
                 iconButton36.IconColor = Color.White;
                 iconButton37.IconColor = Color.White;
@@ -2937,7 +3121,7 @@ namespace OSCVRCWiz
                 iconButton36.BackColor = Color.White;
                 iconButton37.BackColor = Color.White;
 
-                
+
 
                 /* iconButton13.BackColor = Color.FromArgb(68, 72, 111);//dashboard buttons
                  iconButton14.BackColor = Color.FromArgb(68, 72, 111);
@@ -2960,7 +3144,7 @@ namespace OSCVRCWiz
                 richTextBox4.ForeColor = Color.White;
 
                 //richTextBox5.BackColor = Color.FromArgb(31, 30, 68);
-               // richTextBox5.ForeColor = Color.White;
+                // richTextBox5.ForeColor = Color.White;
 
 
             }
@@ -2993,7 +3177,7 @@ namespace OSCVRCWiz
 
         private void iconButton30_Click_2(object sender, EventArgs e)
         {
-           
+
         }
 
         private void iconButton42_Click_1(object sender, EventArgs e)
@@ -3021,7 +3205,7 @@ namespace OSCVRCWiz
 
         private void comboBoxPreset_SelectedIndexChanged(object sender, EventArgs e)//preset selected
         {
-            if(comboBoxPreset.SelectedIndex==0)
+            if (comboBoxPreset.SelectedIndex == 0)
             {
                 buttonEditPreset.Enabled = false;
                 buttonDeletePreset.Enabled = false;
@@ -3034,32 +3218,32 @@ namespace OSCVRCWiz
 
 
             }
-            
-           
-            
-            
+
+
+
+
         }
-      
+
 
         private void button19_Click(object sender, EventArgs e)
         {
             VoicePresets.presetEditButton();
-            
+
         }
 
         private void button25_Click_1(object sender, EventArgs e)
         {
             VoicePresets.presetDeleteButton();
-           
+
         }
-      
-      
+
+
 
         private void iconButton25_Click(object sender, EventArgs e)
         {
-           // richTextBoxDiscord.Text = richTextBox1.Text;
-            tabControl1.SelectTab(discordTab);//discord
-           
+            // richTextBoxDiscord.Text = richTextBox1.Text;
+            mainTabControl.SelectTab(discordTab);//discord
+
 
         }
 
@@ -3071,17 +3255,17 @@ namespace OSCVRCWiz
         private void buttonReplaceAdd_Click(object sender, EventArgs e)
         {
 
-            WordReplacements.addWordReplacement(textBoxOriginalWord.Text.ToString(),textBoxReplaceWord.Text.ToString());
+            WordReplacements.addWordReplacement(textBoxOriginalWord.Text.ToString(), textBoxReplaceWord.Text.ToString());
         }
 
         private void button19_Click_1(object sender, EventArgs e)
         {
-            if (rjToggleButton7.Checked==true)
+            if (rjToggleButton7.Checked == true)
             {
-              WordReplacements.clearWordReplacement();
+                WordReplacements.clearWordReplacement();
             }
-               
-            
+
+
         }
 
         private void checkedListBoxReplacements_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -3102,7 +3286,7 @@ namespace OSCVRCWiz
 
         private void iconButton42_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(Replacements);
+            mainTabControl.SelectTab(Replacements);
         }
 
         private void button26_Click(object sender, EventArgs e)
@@ -3136,7 +3320,7 @@ namespace OSCVRCWiz
 
         private void rjToggleButton9_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButton9.Checked==true)
+            if (rjToggleButton9.Checked == true)
             {
                 CUSTOMRegisterHotKey(0, modifierKeySTTTS, normalKeySTTTS);
             }
@@ -3189,14 +3373,14 @@ namespace OSCVRCWiz
             textBox1.Clear();
             button27.Enabled = true;
             button28.Enabled = false;
-            textBox1.Enabled= true;
+            textBox1.Enabled = true;
             textBox4.Enabled = true;
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-           /* string text = e.KeyChar.ToString();
-            textBox4.Text += text;*/
+            /* string text = e.KeyChar.ToString();
+             textBox4.Text += text;*/
         }
 
         private void button27_Click(object sender, EventArgs e)//save key
@@ -3235,23 +3419,23 @@ namespace OSCVRCWiz
 
         private void iconButton21_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(DeepLTab);
+            mainTabControl.SelectTab(DeepLTab);
         }
 
         private void iconButton19_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(AmazonPolly);
+            mainTabControl.SelectTab(AmazonPolly);
         }
 
         private void button31_Click(object sender, EventArgs e)//access key
         {
-           
+
             this.Invoke((MethodInvoker)delegate ()
             {
                 var text = textBox9.Text.ToString();
                 Settings1.Default.yourAWSKey = text;
                 Settings1.Default.Save();
-                
+
             });
         }
 
@@ -3285,7 +3469,7 @@ namespace OSCVRCWiz
 
         private void iconButton24_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(VRCOSC);
+            mainTabControl.SelectTab(VRCOSC);
         }
 
         private void button34_Click(object sender, EventArgs e)
@@ -3298,7 +3482,7 @@ namespace OSCVRCWiz
 
         private void iconButton30_Click_1(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(LocalSpeech);
+            mainTabControl.SelectTab(LocalSpeech);
         }
 
         private void button33_Click(object sender, EventArgs e)
@@ -3318,7 +3502,7 @@ namespace OSCVRCWiz
 
         private void iconButton28_Click_2(object sender, EventArgs e)
         {
-            tabControl1.SelectTab(elevenLabs);
+            mainTabControl.SelectTab(elevenLabs);
         }
 
         private void button37_Click(object sender, EventArgs e)
@@ -3395,7 +3579,7 @@ namespace OSCVRCWiz
         private void OBSLink_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#obs-text-for-streaming-and-recording-videos");
-        
+
         }
 
         private void iconButton35_Click(object sender, EventArgs e)
@@ -3448,12 +3632,12 @@ namespace OSCVRCWiz
         }
         private void MainDoStopTTS()
         {
-            
+
             // StopAnyTTS = true;
             try
             {
                 speechCt.Cancel();
-   
+
                 //speechCt.Dispose();
                 // speechCt = new();
                 //AnyOutput.Stop();
@@ -3461,9 +3645,9 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                 OutputText.outputLog("[Stop TTS Error: "+ex.Message+"]", Color.Red);
+                OutputText.outputLog("[Stop TTS Error: " + ex.Message + "]", Color.Red);
             }
-         
+
 
         }
 
@@ -3529,7 +3713,7 @@ namespace OSCVRCWiz
             Settings1.Default.Save();
 
             OutputText.outputLog("Restart required for changes to take effect (Disabling Windows Media may solve 'random' crashing). If you just restarted, Windows Media mode is already disabled so disregard this message.", Color.Red);
-            
+
 
         }
 
@@ -3542,8 +3726,8 @@ namespace OSCVRCWiz
 
         private void trackBarPitch_Scroll(object sender, EventArgs e)
         {
-         //   float value = 0.5f + trackBarPitch.Value * 0.1f;
-         //   labelPitchNum.Text = "x" + Math.Round(value, 1).ToString();
+            //   float value = 0.5f + trackBarPitch.Value * 0.1f;
+            //   labelPitchNum.Text = "x" + Math.Round(value, 1).ToString();
             if (TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly" && trackBarSpeed.Value != 5 && trackBarPitch.Value != 5)
             {
                 OutputText.outputLog("Speed can not be used with pitch for this TTS method. Although changing pitch will alter both pitch and speed.", Color.DarkOrange);
@@ -3567,19 +3751,19 @@ namespace OSCVRCWiz
 
         private void trackBarSpeed_Scroll(object sender, EventArgs e)
         {
-          
-          //  float value = 0.5f + trackBarSpeed.Value * 0.1f;
-           // labelSpeedNum.Text = "x" + Math.Round(value,1).ToString();
-            if(TTSModeSaved!= "Azure" && TTSModeSaved != "Amazon Polly" && trackBarSpeed.Value != 5 && trackBarPitch.Value != 5)
+
+            //  float value = 0.5f + trackBarSpeed.Value * 0.1f;
+            // labelSpeedNum.Text = "x" + Math.Round(value,1).ToString();
+            if (TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly" && trackBarSpeed.Value != 5 && trackBarPitch.Value != 5)
             {
                 OutputText.outputLog("Speed can not be used with pitch for this TTS method. Although changing pitch will alter both pitch and speed.", Color.DarkOrange);
             }
-            if(TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly" )
+            if (TTSModeSaved != "Azure" && TTSModeSaved != "Amazon Polly")
             {
                 if (trackBarSpeed.Value == 5)
                 {
                     //  trackBarPitch.Enabled = true;
-                    
+
                 }
                 else
                 {
@@ -3610,7 +3794,7 @@ namespace OSCVRCWiz
             float value3 = 0.5f + trackBarVolume.Value * 0.1f;
             labelVolumeNum.Text = "x" + Math.Round(value3, 1).ToString();
 
-       
+
 
         }
 
@@ -3639,18 +3823,18 @@ namespace OSCVRCWiz
 
 
 
-             //   if (rjToggleButtonAprilFools.Checked == true)
-            //    {
+                //   if (rjToggleButtonAprilFools.Checked == true)
+                //    {
                 //    rjToggleButtonMedia.Checked = true;
                 //    TTSButton.BackColor = Color.DeepPink;
                 //    speechTTSButton.BackColor = Color.DeepPink;
-             //   }
-             //   if (rjToggleButtonAprilFools.Checked == false)
-             //   {
+                //   }
+                //   if (rjToggleButtonAprilFools.Checked == false)
+                //   {
                 //    TTSButton.BackColor = DarkModeColor;
-               //     speechTTSButton.BackColor = DarkModeColor;
+                //     speechTTSButton.BackColor = DarkModeColor;
 
-            //    }
+                //    }
             });
         }
 
@@ -3663,7 +3847,7 @@ namespace OSCVRCWiz
             string address = "https://huggingface.co/datasets/ggerganov/whisper.cpp/resolve/main/";
             string path = "models/";
 
-            
+
             switch (VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Text.ToString())
             {
                 case "ggml-tiny.bin (75 MB)":
@@ -3715,7 +3899,7 @@ namespace OSCVRCWiz
         {
             if (e.Cancelled)
             {
-               // Console.WriteLine("File download cancelled.");
+                // Console.WriteLine("File download cancelled.");
                 MessageBox.Show("File download cancelled");
                 OutputText.outputLog("[Whisper Model Download Cancelled: Model Download was cancelled, If this was un-intentional try manually downloading the model from here]", Color.Red);
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
@@ -3787,7 +3971,7 @@ namespace OSCVRCWiz
             }
 
 
-         }
+        }
 
         private void button43_Click(object sender, EventArgs e)
         {
@@ -3825,7 +4009,7 @@ namespace OSCVRCWiz
 
         private void button45_Click(object sender, EventArgs e)
         {
-            if(logPanelExtended==true)
+            if (logPanelExtended == true)
             {
                 logPanel.Size = new Size(20, logPanel.Height);
                 button45.Text = "🢀🢀🢀";
@@ -3837,7 +4021,7 @@ namespace OSCVRCWiz
                 button45.Text = "🢂🢂🢂";
                 logPanelExtended = true;
             }
-           
+
         }
 
         private void translucentPanel3_DragDrop(object sender, DragEventArgs e)
@@ -3847,13 +4031,13 @@ namespace OSCVRCWiz
 
         private void button47_Click(object sender, EventArgs e)
         {
-            var appPath =Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TTSVoiceWizard");
+            var appPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TTSVoiceWizard");
             Process.Start("explorer.exe", appPath);
         }
 
         private void button46_Click(object sender, EventArgs e)
         {
-            var appPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace("Roaming", "LocalLow")+@"\VRChat\VRChat", "OSC");
+            var appPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace("Roaming", "LocalLow") + @"\VRChat\VRChat", "OSC");
             Process.Start("explorer.exe", appPath);
             Debug.WriteLine(appPath);
 
@@ -3871,27 +4055,27 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonQueueSystem_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButtonQueueSystem.Checked==true)
+            if (rjToggleButtonQueueSystem.Checked == true)
             {
                 label81.Visible = true;
                 labelQueueSize.Visible = true;
                 buttonQueueClear.Visible = true;
-              //  label150.Visible = true;
-               // label151.Visible = true;
-              //  textBoxQueueDelayBeforeNext.Visible = true;
-              //  textBoxDelayAfterNoTTS.Visible = true;
+                //  label150.Visible = true;
+                // label151.Visible = true;
+                //  textBoxQueueDelayBeforeNext.Visible = true;
+                //  textBoxDelayAfterNoTTS.Visible = true;
             }
             else
             {
                 label81.Visible = false;
                 labelQueueSize.Visible = false;
                 buttonQueueClear.Visible = false;
-              //  label150.Visible = false;
-              //  label151.Visible = false;
+                //  label150.Visible = false;
+                //  label151.Visible = false;
                 //textBoxQueueDelayBeforeNext.Visible = false;
-              //  textBoxDelayAfterNoTTS.Visible = false;
+                //  textBoxDelayAfterNoTTS.Visible = false;
             }
-            
+
         }
 
         private void buttonQueueClear_Click(object sender, EventArgs e)
@@ -3910,7 +4094,7 @@ namespace OSCVRCWiz
 
         private void rjToggleButton14_CheckedChanged(object sender, EventArgs e)
         {
-            if(rjToggleButtonReadFromFile.Checked==true)
+            if (rjToggleButtonReadFromFile.Checked == true)
             {
                 TextFileReader.ReadFromFile();
             }
@@ -3918,54 +4102,56 @@ namespace OSCVRCWiz
             {
                 TextFileReader.StopWatcher();
             }
-            
+
         }
 
         private void button49_Click(object sender, EventArgs e)
         {
-            try {
-            string path = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text.ToString();
-            using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            try
             {
-                using (StreamReader reader = new StreamReader(stream))
+                string path = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text.ToString();
+                using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
-                    string contents = reader.ReadToEnd();
-                    //  Debug.WriteLine(contents);
-                    TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    using (StreamReader reader = new StreamReader(stream))
                     {
-                        TTSMessageQueued.text = contents.Replace("\n", " ").Replace("\r", " ");
-                        TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
-                        TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
-                        TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
-                        TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
-                        TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                        TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                        TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                        TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
-                        TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
-                        TTSMessageQueued.STTMode = "Text File Reader";
-                        TTSMessageQueued.AzureTranslateText = "[ERROR]";
-                    });
+                        string contents = reader.ReadToEnd();
+                        //  Debug.WriteLine(contents);
+                        TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            TTSMessageQueued.text = contents.Replace("\n", " ").Replace("\r", " ");
+                            TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                            TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.Text.ToString();
+                            TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.Text.ToString();
+                            TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.Text.ToString();
+                            TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                            TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                            TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.STTMode = "Text File Reader";
+                            TTSMessageQueued.AzureTranslateText = "[ERROR]";
+                        });
 
 
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
-                    {
-                        TTSMessageQueue.Enqueue(TTSMessageQueued);
-                    }
-                    else
-                    {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
+                        {
+                            TTSMessageQueue.Enqueue(TTSMessageQueued);
+                        }
+                        else
+                        {
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(TTSMessageQueued));
+                        }
                     }
                 }
             }
-        }
-            catch (Exception ex){
+            catch (Exception ex)
+            {
 
-               VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked= false;
-               OutputText.outputLog("[Text File Reader Error: This error occured while attempting to read the text file: " + ex.Message + "]", Color.Red);
+                VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked = false;
+                OutputText.outputLog("[Text File Reader Error: This error occured while attempting to read the text file: " + ex.Message + "]", Color.Red);
             }
-}
+        }
 
         private void iconButton15_DragDrop(object sender, DragEventArgs e)
         {
@@ -3979,11 +4165,11 @@ namespace OSCVRCWiz
                     if (fileNames.Length > 0)
                     {
                         path = fileNames[0];
-                      
+
                     }
                 }
 
-                
+
                 using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     using (StreamReader reader = new StreamReader(stream))
@@ -4025,21 +4211,21 @@ namespace OSCVRCWiz
 
         private void button50_Click(object sender, EventArgs e)
         {
- 
-                if (logPanelExtended2 == true)
-                {
-                   panelCustomize.Size = new Size(20, logPanel.Height);
-                    button50.Text = "🢀🢀🢀";
-                    logPanelExtended2 = false;
-                }
-                else
-                {
-                    panelCustomize.Size = new Size(315, logPanel.Height);
-                    button50.Text = "🢂🢂🢂";
-                    logPanelExtended2 = true;
-                }
 
-            
+            if (logPanelExtended2 == true)
+            {
+                panelCustomize.Size = new Size(20, logPanel.Height);
+                button50.Text = "🢀🢀🢀";
+                logPanelExtended2 = false;
+            }
+            else
+            {
+                panelCustomize.Size = new Size(315, logPanel.Height);
+                button50.Text = "🢂🢂🢂";
+                logPanelExtended2 = true;
+            }
+
+
         }
 
         private void rjToggleButtonQuickTypeEnabled_CheckedChanged(object sender, EventArgs e)
@@ -4105,6 +4291,31 @@ namespace OSCVRCWiz
                 textBoxQuickType2.Text = converter.ConvertToString(pressedKey);
 
             }
+        }
+
+        private void iconButton50_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectTab(VoiceWizPro);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers#");
+        }
+
+        private void iconButton52_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectTab(uberduck);
+        }
+
+        private void iconButton53_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Uberduck-TTS");
+        }
+
+        private void iconButton54_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://docs.elevenlabs.io/api-reference/text-to-speech");
         }
     }
 

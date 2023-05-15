@@ -54,14 +54,19 @@ namespace OSCVRCWiz
 
            VoiceWizardWindow.MainFormGlobal.rjToggleButton2.Checked = Settings1.Default.BPMSpamSetting;
 
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
+            }
+            catch (Exception ex)
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = 0;
+            }
 
-            VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
-
-
-            // comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
-            // comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
-            // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
-            VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
+                // comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
+                // comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+                // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
+                VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
 
            
                 VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
@@ -355,6 +360,28 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked = Settings1.Default.forceMediaToggle;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonRefocus.Checked = Settings1.Default.refocusWindow;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAzure.Checked = Settings1.Default.voiceWizProAzure;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked = Settings1.Default.voiceWizProAmazon;
+          //  VoiceWizardWindow.MainFormGlobal.rjToggleButtonProMoonbase.Checked = Settings1.Default.voiceWizProMoonbase;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked = Settings1.Default.useVoiceWizardPro;
+            VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text = Settings1.Default.voiceWizardProKey;
+
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked = Settings1.Default.voiceWizProTranslation;
+            VoiceWizardWindow.MainFormGlobal.textBoxUberKey.Text = Settings1.Default.uberDuckKey;
+            VoiceWizardWindow.MainFormGlobal.textBoxUberSecret.Text = Settings1.Default.uberDuckSecret;
+
+
+            VoiceWizardWindow.MainFormGlobal.comboBoxLabsModelID.SelectedIndex = Settings1.Default.labsModelID;
+            VoiceWizardWindow.MainFormGlobal.comboBoxLabsOptimize.SelectedIndex = Settings1.Default.labsOptimize;
+          
+
+
+            VoiceWizardWindow.MainFormGlobal.trackBarSimilarity.Value = Settings1.Default.labsSimboost;
+            VoiceWizardWindow.MainFormGlobal.trackBarStability.Value = Settings1.Default.labsStability;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked = Settings1.Default.saveToWav;
 
             // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
 
