@@ -4362,6 +4362,12 @@ namespace OSCVRCWiz
                 }
             }
         }
+
+        private void iconButton55_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro");
+        
+        }
     }
 
 

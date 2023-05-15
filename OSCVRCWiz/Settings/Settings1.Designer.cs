@@ -2041,7 +2041,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TTS Characters: 0/0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TTS Characters Used: 0/0")]
         public string charsUsed {
             get {
                 return ((string)(this["charsUsed"]));
@@ -2053,7 +2053,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Translation Characters: 0/0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Translation Characters Used: 0/0")]
         public string transCharsUsed {
             get {
                 return ((string)(this["transCharsUsed"]));

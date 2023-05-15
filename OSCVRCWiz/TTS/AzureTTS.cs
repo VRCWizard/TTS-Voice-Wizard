@@ -412,7 +412,7 @@ namespace OSCVRCWiz.TTS
 
                             memoryStream3.Flush();
                             memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                            audioFiles.writeAudioToOutputMp3(memoryStream3);
+                            audioFiles.writeAudioToOutputWav(memoryStream3);
                         }
                         ////
 
@@ -539,7 +539,7 @@ namespace OSCVRCWiz.TTS
 
                     memoryStream3.Flush();
                     memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                    audioFiles.writeAudioToOutputMp3(memoryStream3);
+                    audioFiles.writeAudioToOutputWav(memoryStream3);
                 }
 
 

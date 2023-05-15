@@ -163,8 +163,8 @@ namespace OSCVRCWiz.TTS
 
 
 
-                VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text = $"TTS Characters: {charUsed}/{charLimit}";
-                VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text = $"Translation Characters: {transCharUsed}/{transCharLimit}";
+                VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text = $"TTS Characters Used: {charUsed}/{charLimit}";
+                VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text = $"Translation Characters Used: {transCharUsed}/{transCharLimit}";
                 Settings1.Default.charsUsed = VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text.ToString();
                 Settings1.Default.transCharsUsed = VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text.ToString();
                 Settings1.Default.Save();
