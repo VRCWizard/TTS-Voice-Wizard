@@ -77,37 +77,50 @@ namespace OSCVRCWiz.Speech_Recognition
 
             else
             {
-                WhisperString = "";
-                CaptureThread.stopWhisper();
-                WhisperEnabled = false;
-                OutputText.outputLog("[Whisper Stopped Listening]");
-                WhisperError = false;
-
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                try
                 {
-                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                    OSC.OSCSender.Send(sttListening);
+                    WhisperString = "";
+                    CaptureThread.stopWhisper();
+                    WhisperEnabled = false;
+                    OutputText.outputLog("[Whisper Stopped Listening]");
+                    WhisperError = false;
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
+                }
+                catch(Exception ex) {
+                    OutputText.outputLog("[Error Stopping Whisper]");
                 }
 
             }
         }
         public static void autoStopWhisper()
         {
-            if (WhisperEnabled == true)
+            try
             {
-                WhisperString = "";
-                CaptureThread.stopWhisper();
-                WhisperEnabled = false;
-                OutputText.outputLog("[Whisper Stopped Listening]");
-                WhisperError = false;
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                if (WhisperEnabled == true)
                 {
-                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                    OSC.OSCSender.Send(sttListening);
-                }
+                    WhisperString = "";
+                    CaptureThread.stopWhisper();
+                    WhisperEnabled = false;
+                    OutputText.outputLog("[Whisper Stopped Listening]");
+                    WhisperError = false;
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                        OSC.OSCSender.Send(sttListening);
+                    }
 
+                }
+           
+              }
+                catch(Exception ex) {
+                OutputText.outputLog("[Error Stopping Whisper]");
             }
-        }
+}
 
             public static int getWhisperInputDevice()
         {

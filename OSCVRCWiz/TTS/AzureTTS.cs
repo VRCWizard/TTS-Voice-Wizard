@@ -54,12 +54,12 @@ namespace OSCVRCWiz.TTS
 
             if (!RememberLanguageVoices.ContainsKey(fromLanguageFullname))
             {
-                var config = SpeechConfig.FromSubscription(AzureRecognition.YourSubscriptionKey, AzureRecognition.YourServiceRegion);
+                //var config = SpeechConfig.FromSubscription(AzureRecognition.YourSubscriptionKey, AzureRecognition.YourServiceRegion);
 
                 // Creates a speech synthesizer
-                using (var synthesizer = new SpeechSynthesizer(config, null as AudioConfig))
-                {
-                    var ts = new AzureRecognition();
+             //  using (var synthesizer = new SpeechSynthesizer(config, null as AudioConfig))
+             //   {
+                  //  var ts = new AzureRecognition();
                     //   var language = ts.toLanguageID(fromLanguageFullname);
 
                     List<string> localList = new List<string>();  //keep commented voices and release if they are widely requested (idea with new releasing all voices is to reduce load time)
@@ -257,7 +257,7 @@ namespace OSCVRCWiz.TTS
                     }
                     RememberLanguageVoices.Add(fromLanguageFullname, voiceList.ToArray());
 
-                }
+                
             }
             else
             {

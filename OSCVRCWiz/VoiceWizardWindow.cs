@@ -43,7 +43,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.0";
+        public static string currentVersion = "1.3.1";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -2313,7 +2313,7 @@ namespace OSCVRCWiz
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Moonbase";
-                    if (AzureTTS.firstVoiceLoad == false)
+                  /*  if (AzureTTS.firstVoiceLoad == false)
                     {
                         OutputText.outputLog("[DEBUG: setting voice]");
                         comboBox2.SelectedIndex = 0;
@@ -2323,7 +2323,7 @@ namespace OSCVRCWiz
                         OutputText.outputLog("[DEBUG: setting voice to saved value]");
                         comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                         AzureTTS.firstVoiceLoad = false;
-                    }
+                    }*/
 
 
                     OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
@@ -2399,7 +2399,7 @@ namespace OSCVRCWiz
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "TikTok";
-                    if (AzureTTS.firstVoiceLoad == false)
+             /*       if (AzureTTS.firstVoiceLoad == false)
                     {
                         OutputText.outputLog("[DEBUG: setting voice]");
                         comboBox2.SelectedIndex = 0;
@@ -2409,7 +2409,7 @@ namespace OSCVRCWiz
                         OutputText.outputLog("[DEBUG: setting voice to saved value]");
                         comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                         AzureTTS.firstVoiceLoad = false;
-                    }
+                    }*/
 
                     break;
                 case "System Speech":
@@ -2430,7 +2430,7 @@ namespace OSCVRCWiz
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "System Speech";
-                    if (AzureTTS.firstVoiceLoad == false)
+                /*    if (AzureTTS.firstVoiceLoad == false)
                     {
                         OutputText.outputLog("[DEBUG: setting voice]");
                         comboBox2.SelectedIndex = 0;
@@ -2440,7 +2440,7 @@ namespace OSCVRCWiz
                         OutputText.outputLog("[DEBUG: setting voice to saved value]");
                         comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
                         AzureTTS.firstVoiceLoad = false;
-                    }
+                    }*/
                     break;
                 case "Azure":
                     comboBox5.Items.Clear();
@@ -2494,9 +2494,10 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Azure";
 
-                    if (textBox2.Text.ToString() == "")
+                    if (textBox2.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
                         OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
                     }
 
 
@@ -2732,9 +2733,10 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
                     TTSModeSaved = "Amazon Polly";
 
-                    if (textBox9.Text.ToString() == "")
+                    if (textBox9.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
                         OutputText.outputLog("[You appear to be missing an Amazon Polly Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
                     }
 
                     break;

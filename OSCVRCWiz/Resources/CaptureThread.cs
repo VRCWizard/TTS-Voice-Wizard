@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OSCVRCWiz.Text;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -49,8 +50,15 @@ namespace OSCVRCWiz.Resources
 }
            public static void stopWhisper()
            {
-               ctt.shouldQuit = true;
-               ctt = null;
+          
+                if (ctt != null)
+                {
+                    ctt.shouldQuit = true;
+                    ctt = null;//SETTING THIS TO NULL PROBABLY CAUSED THE CRASHING
+                }
+            
+          
+
            }
 
            public void join()
