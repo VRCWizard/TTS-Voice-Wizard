@@ -9,6 +9,7 @@ using System.Diagnostics;
 using NAudio.Wave.SampleProviders;
 using VarispeedDemo.SoundTouch;
 using OSCVRCWiz.Resources;
+using Microsoft.VisualBasic.Devices;
 
 
 namespace OSCVRCWiz.TTS
@@ -42,18 +43,27 @@ namespace OSCVRCWiz.TTS
 
                 }
 
-                
+               
 
-                
-               // Moonbase = true;
-               // Task.Delay(2000).Wait();
+
+
+
+                // Moonbase = true;
+                // Task.Delay(2000).Wait();
             }
+            Task<string> stringTask = MoonBase(TTSMessageQueued);
+            string audio = stringTask.Result;
+            MoonBasePlayAudio(audio, TTSMessageQueued, ct);
+
+
+        }
+        public static async void MoonBasePlayAudio(string audioString, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct)
+        {
             try
             {
 
-                Task<string> stringTask = MoonBase(TTSMessageQueued);
-                string audio = stringTask.Result;
-                var audiobytes = Convert.FromBase64String(audio);
+               
+                var audiobytes = Convert.FromBase64String(audioString);
                 MemoryStream memoryStream = new MemoryStream(audiobytes);
 
 
@@ -63,14 +73,26 @@ namespace OSCVRCWiz.TTS
                 memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
                 memoryStream.CopyTo(memoryStream2);
 
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked)
+                {
+                    MemoryStream memoryStream3 = new MemoryStream();
+                    memoryStream.Flush();
+                    memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    memoryStream.CopyTo(memoryStream3);
+
+                    memoryStream3.Flush();
+                    memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    audioFiles.writeAudioToOutputMp3(memoryStream3);
+                }
+
 
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
-               var  wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1));
+                var wav = new RawSourceWaveStream(memoryStream, new WaveFormat(11000, 16, 1));
 
                 memoryStream2.Flush();
                 memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
-               var wav2 = new RawSourceWaveStream(memoryStream2, new WaveFormat(11000, 16, 1));
+                var wav2 = new RawSourceWaveStream(memoryStream2, new WaveFormat(11000, 16, 1));
 
 
 
@@ -118,7 +140,7 @@ namespace OSCVRCWiz.TTS
                     wave32_2.PadWithZeroes = false;
                     speedControl_2 = new VarispeedSampleProvider(new WaveToSampleProvider(wave32_2), 2000, new SoundTouchProfile(useTempo, false));//output 2
                     speedControl_2.PlaybackRate = pitchFloat;//output 2
-                   // AnyOutput2 = new WaveOut();
+                                                             // AnyOutput2 = new WaveOut();
                     AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
                     AnyOutput2.Init(speedControl_2);
                     AnyOutput2.Play();
@@ -134,11 +156,11 @@ namespace OSCVRCWiz.TTS
                 //  Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
                 Thread.Sleep(100);
 
-             //   WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
+                //   WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
 
                 AnyOutput.Stop();
                 AnyOutput.Dispose();
-              //  AnyOutput = null;
+                //  AnyOutput = null;
                 speedControl.Dispose();
                 speedControl = null;
                 wave32.Dispose();
@@ -146,14 +168,14 @@ namespace OSCVRCWiz.TTS
                 wav.Dispose();
                 wav = null;
                 memoryStream.Dispose();
-             //   synthesizerLite.Dispose();
+                //   synthesizerLite.Dispose();
                 memoryStream = null;
-            //    synthesizerLite = null;
+                //    synthesizerLite = null;
 
-             
-                    AnyOutput2.Stop();
-                    AnyOutput2.Dispose();
-                  //  AnyOutput2 = null;
+
+                AnyOutput2.Stop();
+                AnyOutput2.Dispose();
+                //  AnyOutput2 = null;
                 if (wave32_2 != null)
                 {
                     speedControl_2.Dispose();
@@ -179,9 +201,9 @@ namespace OSCVRCWiz.TTS
                 }
                 TTSMessageQueue.PlayNextInQueue();
             }
+        }
 
-         }
-        public static async Task<string> MoonBase(TTSMessageQueue.TTSMessage TTSMessageQueued)
+            public static async Task<string> MoonBase(TTSMessageQueue.TTSMessage TTSMessageQueued)
         {
             try
             {

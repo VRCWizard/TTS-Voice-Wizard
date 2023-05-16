@@ -139,6 +139,7 @@ namespace OSCVRCWiz.Addons
             }
             catch (Exception ex) {
                 OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
+
             }
             return "-:-";
         }
@@ -175,6 +176,7 @@ namespace OSCVRCWiz.Addons
             }
             catch (Exception ex) {
                 OutputText.outputLog("MediaManager_OnAnySessionOpened Exception: " + ex.Message, Color.Red);
+                MessageBox.Show("MediaManager_OnAnySessionOpened Exception " + ex.Message);
             }
 
 
@@ -200,6 +202,7 @@ namespace OSCVRCWiz.Addons
              }
             catch (Exception ex) {
                 OutputText.outputLog("MediaManager_OnAnySessionClosed Exception: " + ex.Message, Color.Red);
+                MessageBox.Show("MediaManager_OnAnySessionClosed Exception " + ex.Message);
             }
 }
 
@@ -222,6 +225,7 @@ namespace OSCVRCWiz.Addons
             catch (Exception ex)
             {
                 OutputText.outputLog("MediaManager_OnAnyPlaybackStateChanged Exception: " + ex.Message, Color.Red);
+                MessageBox.Show("MediaManager_OnAnyPlaybackStateChanged Exception " + ex.Message);
             }
 
 
@@ -294,6 +298,7 @@ namespace OSCVRCWiz.Addons
             catch (Exception ex)
             {
                 OutputText.outputLog("MediaManager_OnAnyMediaPropertyChanged Exception: " + ex.Message, Color.Red);
+                MessageBox.Show("MediaManager_OnAnyMediaPropertyChanged Exception " + ex.Message);
             }
 
 }

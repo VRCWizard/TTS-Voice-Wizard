@@ -1882,5 +1882,185 @@ namespace OSCVRCWiz.Settings {
                 this["refocusWindow"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string voiceWizardProKey {
+            get {
+                return ((string)(this["voiceWizardProKey"]));
+            }
+            set {
+                this["voiceWizardProKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool useVoiceWizardPro {
+            get {
+                return ((bool)(this["useVoiceWizardPro"]));
+            }
+            set {
+                this["useVoiceWizardPro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool voiceWizProAzure {
+            get {
+                return ((bool)(this["voiceWizProAzure"]));
+            }
+            set {
+                this["voiceWizProAzure"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool voiceWizProAmazon {
+            get {
+                return ((bool)(this["voiceWizProAmazon"]));
+            }
+            set {
+                this["voiceWizProAmazon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool voiceWizProMoonbase {
+            get {
+                return ((bool)(this["voiceWizProMoonbase"]));
+            }
+            set {
+                this["voiceWizProMoonbase"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool voiceWizProTranslation {
+            get {
+                return ((bool)(this["voiceWizProTranslation"]));
+            }
+            set {
+                this["voiceWizProTranslation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string uberDuckKey {
+            get {
+                return ((string)(this["uberDuckKey"]));
+            }
+            set {
+                this["uberDuckKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string uberDuckSecret {
+            get {
+                return ((string)(this["uberDuckSecret"]));
+            }
+            set {
+                this["uberDuckSecret"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int labsModelID {
+            get {
+                return ((int)(this["labsModelID"]));
+            }
+            set {
+                this["labsModelID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int labsOptimize {
+            get {
+                return ((int)(this["labsOptimize"]));
+            }
+            set {
+                this["labsOptimize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int labsSimboost {
+            get {
+                return ((int)(this["labsSimboost"]));
+            }
+            set {
+                this["labsSimboost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int labsStability {
+            get {
+                return ((int)(this["labsStability"]));
+            }
+            set {
+                this["labsStability"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool saveToWav {
+            get {
+                return ((bool)(this["saveToWav"]));
+            }
+            set {
+                this["saveToWav"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TTS Characters Used: 0/0")]
+        public string charsUsed {
+            get {
+                return ((string)(this["charsUsed"]));
+            }
+            set {
+                this["charsUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Translation Characters Used: 0/0")]
+        public string transCharsUsed {
+            get {
+                return ((string)(this["transCharsUsed"]));
+            }
+            set {
+                this["transCharsUsed"] = value;
+            }
+        }
     }
 }

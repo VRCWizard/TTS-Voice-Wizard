@@ -72,6 +72,18 @@ namespace OSCVRCWiz.TTS
                 memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
                 memoryStream.CopyTo(memoryStream2);
 
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked)
+                {
+                    MemoryStream memoryStream3 = new MemoryStream();
+                    memoryStream.Flush();
+                    memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    memoryStream.CopyTo(memoryStream3);
+
+                    memoryStream3.Flush();
+                    memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                    audioFiles.writeAudioToOutputMp3(memoryStream3);
+                }
+
 
                 memoryStream.Flush();
                 memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
