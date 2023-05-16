@@ -396,7 +396,7 @@
       <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="volumeNew" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="speedNew" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>

@@ -48,77 +48,13 @@ namespace OSCVRCWiz.TTS
 
 
 
+                AudioDevices.playSSMLMP3Stream(memoryStream, TTSMessageQueued, ct);
+                memoryStream.Dispose();
 
-                MemoryStream memoryStream2 = new MemoryStream();
-                memoryStream.Flush();
-                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                memoryStream.CopyTo(memoryStream2);
-
-
-                memoryStream.Flush();
-                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                Mp3FileReader wav = new Mp3FileReader(memoryStream);
-
-
-                memoryStream2.Flush();
-                memoryStream2.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                Mp3FileReader wav2 = new Mp3FileReader(memoryStream2);
-
-
-
-                var AnyOutput = new WaveOut();
-                AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-                AnyOutput.Init(wav);
-                AnyOutput.Play();
-                ct.Register(async () => AnyOutput.Stop());
-                var AnyOutput2 = new WaveOut();
-
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
-                {
-                    
-                    AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
-                    AnyOutput2.Init(wav2);
-                    AnyOutput2.Play();
-                    ct.Register(async () => AnyOutput2.Stop());
-                    while (AnyOutput2.PlaybackState == PlaybackState.Playing)
-                    {
-                        Thread.Sleep(2000);
-                    }
-                }
-                while (AnyOutput.PlaybackState == PlaybackState.Playing)
-                {                  
-                    Thread.Sleep(2000);
-                    
-                }
-                if (AnyOutput.PlaybackState == PlaybackState.Stopped)
-                {
-                    
-                    AnyOutput.Stop();
-                    AnyOutput.Dispose();
-                  //  AnyOutput = null;
-                   // if (AnyOutput2 != null)
-                  //  {
-                        AnyOutput2.Stop();
-                        AnyOutput2.Dispose();
-                        
-                   //     AnyOutput2 = null;
-                  //  }
-                    memoryStream.Dispose();
-                    memoryStream = null;
-                    //  memoryStream2.Dispose();
-                    wav.Dispose();
-                   
-                    wav = null;
-                    wav2 = null;
-                    client.Dispose();
-                    client= null;
-                    response.Dispose();
-                    response= null;
-                    ct = new();
-
-                    Debug.WriteLine("azure dispose successful");
-                    TTSMessageQueue.PlayNextInQueue();
-                }
+                client.Dispose();
+                client = null;
+                response.Dispose();
+                response = null;
 
 
 
@@ -164,7 +100,7 @@ namespace OSCVRCWiz.TTS
 
             var ratePercent = (int)Math.Floor(((0.5f + rate * 0.1f) - 1) * 100);
             var pitchPercent = (int)Math.Floor(((0.5f + pitch * 0.1f) - 1) * 100);
-            var volumePercent = (int)Math.Floor(((0.5f + volume * 0.1f) - 1) * 10);
+            var volumePercent = (int)Math.Floor(((volume * 0.1f) - 1) * 10);
 
             string rateString = "<prosody rate=\"" + ratePercent + "%\">"; //1
             string pitchString = "<prosody pitch=\"" + pitchPercent + "%\">"; //1
@@ -195,7 +131,7 @@ namespace OSCVRCWiz.TTS
                 
 
               }
-              if (volume != 5)
+              if (volume != 10)
               {
                   ssml0 += volumeString;
                  
@@ -204,7 +140,7 @@ namespace OSCVRCWiz.TTS
               ssml0 += TTSMessageQueued.text;
               if (rate != 5) { ssml0 += "</prosody>"; }
               if (pitch != 5) { ssml0 += "</prosody>"; }
-              if (volume != 5) { ssml0 += "</prosody>"; }
+              if (volume != 10) { ssml0 += "</prosody>"; }
 
               ssml0 += "</speak>";
 

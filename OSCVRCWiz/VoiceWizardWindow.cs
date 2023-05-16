@@ -43,7 +43,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.1";
+        public static string currentVersion = "1.3.2";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -893,7 +893,8 @@ namespace OSCVRCWiz
                     var speechText = TTSMessageQueued.text;
                     var newText = TTSMessageQueued.text;
                     var translationMethod = "";
-                    if (!String.IsNullOrEmpty(TTSMessageQueued.text))
+
+                        if (!String.IsNullOrEmpty(TTSMessageQueued.text))
                     {
                         if (language != "No Translation (Default)")
                         {
@@ -1065,6 +1066,12 @@ namespace OSCVRCWiz
 
                         }
                     }
+                    else
+                    {
+                        TTSMessageQueue.PlayNextInQueue();
+                    }
+
+
 
                     if (rjToggleReplaceBeforeTTS.Checked == false)
                     {
@@ -3798,8 +3805,8 @@ namespace OSCVRCWiz
             float value2 = 0.5f + trackBarSpeed.Value * 0.1f;
             labelSpeedNum.Text = "x" + Math.Round(value2, 1).ToString();
 
-            float value3 = 0.5f + trackBarVolume.Value * 0.1f;
-            labelVolumeNum.Text = "x" + Math.Round(value3, 1).ToString();
+            float value3 = trackBarVolume.Value * 0.1f;
+            labelVolumeNum.Text = (Math.Round(value3, 1)*100).ToString("0.#") + "%";
 
 
 
