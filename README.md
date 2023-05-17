@@ -82,14 +82,17 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 
 ## Donate
-- Leave me a Github Star ⭐ (it's free) or <br />
+- Leave me a Github Star ⭐ (it's free) or get<br />
 
-<a href='https://ko-fi.com/ttsvoicewizard' target='_blank'><img height='35' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /> <br />
-  
-### Consider becoming a VoiceWizardPro member
-The VoiceWizardPro API allows you to access Microsoft Azure, Amazon Polly, and the new Google Cloud voices without the need to create and manage multiple accounts. By choosing a tier and becoming a member on https://ko-fi.com/ttsvoicewizard/tiers, you will receive an allotted amount of TTS characters and Translation characters that refresh monthly.
+### 🔑 VoiceWizardPro
 
-For more information on VoiceWizardPro visit: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro
+The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, and the new Google Cloud voices without the need to create and manage multiple accounts. By choosing a tier and becoming a member on [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers), you will receive an allotted amount of TTS and Translation characters that refresh monthly. This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
+
+
+<p align="center">
+<a href='https://ko-fi.com/ttsvoicewizard/tiers' target='_blank'><img height='56' style='border:0px;height:56px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+ </p>
+
 
 
 ## Credits
