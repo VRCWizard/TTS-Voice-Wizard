@@ -43,7 +43,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.2";
+        public static string currentVersion = "1.3.2.1";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -888,10 +888,11 @@ namespace OSCVRCWiz
                     {
                         TTSMessageQueued.text = WordReplacements.MainDoWordReplacement(TTSMessageQueued.text);
                     }
-                    var writeText = TTSMessageQueued.text;
+                    var originalText = TTSMessageQueued.text;
+                    var writeText = TTSMessageQueued.text;//send to osc
 
-                    var speechText = TTSMessageQueued.text;
-                    var newText = TTSMessageQueued.text;
+                    var speechText = TTSMessageQueued.text;//send to tts
+                    var newText = TTSMessageQueued.text; //translated text
                     var translationMethod = "";
 
                         if (!String.IsNullOrEmpty(TTSMessageQueued.text))
@@ -919,7 +920,7 @@ namespace OSCVRCWiz
                             {
                                 if (TTSMessageQueued.STTMode != "Azure Translate")
                                 {
-                                    newText = await DeepLTranslate.translateTextDeepL(TTSMessageQueued.text);
+                                    newText = await DeepLTranslate.translateTextDeepL(TTSMessageQueued.text.ToString());
                                     translationMethod = "DeepL Translation";
                                 }
                                 else
@@ -1075,7 +1076,10 @@ namespace OSCVRCWiz
 
                     if (rjToggleReplaceBeforeTTS.Checked == false)
                     {
+                        
                         writeText = WordReplacements.MainDoWordReplacement(writeText);
+                     
+                       
                     }
 
 
@@ -1087,7 +1091,7 @@ namespace OSCVRCWiz
                         }
                         else
                         {
-                            OutputText.outputLog($"[{TTSMessageQueued.STTMode} > {selectedTTSMode}]: {TTSMessageQueued.text} [{translationMethod}]: {newText}");
+                            OutputText.outputLog($"[{TTSMessageQueued.STTMode} > {selectedTTSMode}]: {originalText} [{translationMethod}]: {newText}");
                         }
 
                         if (rjToggleButtonOBSText.Checked == true)

@@ -695,7 +695,7 @@ namespace OSCVRCWiz.TTS
 
                 default:  break; 
             }
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked==true) // assuming you have a boolean variable named "boolValue"
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked==true) 
             {
                 for (int i = VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Count - 1; i >= 0; i--)
                 {
