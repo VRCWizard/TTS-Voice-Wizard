@@ -43,7 +43,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.2.1";
+        public static string currentVersion = "1.3.2.2";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -796,7 +796,7 @@ namespace OSCVRCWiz
                 TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
                 TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
                 TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                TTSMessageQueued.SpokenLang = comboBox3.Text.ToString();
+                TTSMessageQueued.SpokenLang = comboBox4.Text.ToString();
                 TTSMessageQueued.TranslateLang = comboBox3.Text.ToString();
                 TTSMessageQueued.STTMode = "Text";
                 TTSMessageQueued.AzureTranslateText = "[ERROR]";
@@ -1532,7 +1532,7 @@ namespace OSCVRCWiz
                 TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
                 TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
                 TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                TTSMessageQueued.SpokenLang = comboBox3.Text.ToString();
+                TTSMessageQueued.SpokenLang = comboBox4.Text.ToString();
                 TTSMessageQueued.TranslateLang = comboBox3.Text.ToString();
                 TTSMessageQueued.STTMode = "Whisper";
                 TTSMessageQueued.AzureTranslateText = "[ERROR]";
@@ -4145,7 +4145,7 @@ namespace OSCVRCWiz
                             TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
                             TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
                             TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
+                            TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox4.Text.ToString();
                             TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.Text.ToString();
                             TTSMessageQueued.STTMode = "Text File Reader";
                             TTSMessageQueued.AzureTranslateText = "[ERROR]";
@@ -4380,6 +4380,14 @@ namespace OSCVRCWiz
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro");
         
+        }
+
+        private void rjToggleButtonProAmazon_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButtonUsePro.Checked==true &&rjToggleButtonProAmazon.Checked==true)
+            {
+
+            }
         }
     }
 

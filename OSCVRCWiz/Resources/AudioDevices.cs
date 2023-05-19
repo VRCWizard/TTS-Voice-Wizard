@@ -490,7 +490,7 @@ namespace Resources
 
                 memoryStream3.Flush();
                 memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                audioFiles.writeAudioToOutputMp3(memoryStream3);
+                audioFiles.writeAudioToOutputRaw(memoryStream3);
             }
 
 
@@ -614,7 +614,7 @@ namespace Resources
 
                 memoryStream3.Flush();
                 memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
-                audioFiles.writeAudioToOutputMp3(memoryStream3);
+                audioFiles.writeAudioToOutputWav(memoryStream3);
             }
 
 
