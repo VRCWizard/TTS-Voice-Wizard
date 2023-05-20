@@ -101,8 +101,8 @@ namespace OSCVRCWiz.TTS
             });
 
           
-            var similarityFloat = similarities * 0.1f;
-            var stabilityFloat =  stabilities * 0.1f;
+            var similarityFloat = similarities * 0.01f;
+            var stabilityFloat =  stabilities * 0.01f;
 
             var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}?optimize_streaming_latency={optimize}";
           //  var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}";

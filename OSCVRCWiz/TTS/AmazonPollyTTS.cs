@@ -84,9 +84,11 @@ namespace OSCVRCWiz.TTS
                 tts.VoiceId = VoiceId.Joanna;
                 
                 tts.Engine = Engine.Standard;
-      
-            tts.TextType = TextType.Ssml;
 
+               tts.TextType = TextType.Ssml;
+
+
+           // tts.TextType = TextType.Text;
 
 
 
@@ -137,8 +139,10 @@ namespace OSCVRCWiz.TTS
                  
 
               }
-              ssml0 += TTSMessageQueued.text;
-              if (rate != 5) { ssml0 += "</prosody>"; }
+            ssml0 += TTSMessageQueued.text;
+
+           // ssml0 += Encoding.UTF8.GetString(Encoding.Default.GetBytes(TTSMessageQueued.text));
+            if (rate != 5) { ssml0 += "</prosody>"; }
               if (pitch != 5) { ssml0 += "</prosody>"; }
               if (volume != 10) { ssml0 += "</prosody>"; }
 
@@ -147,9 +151,12 @@ namespace OSCVRCWiz.TTS
 
 
 
-            tts.Text = ssml0;
+               tts.Text = ssml0;
+          //  tts.Text = TTSMessageQueued.text;
+            //  tts.Text = "Привет! Меня зовут Татьяна. Я прочитаю любой текст который вы введете здесь.";
 
-
+          //  Debug.WriteLine(ssml0);
+            
 
 
 
@@ -419,8 +426,18 @@ namespace OSCVRCWiz.TTS
 
                 case "Cristiano [pt-PT]": tts.VoiceId = VoiceId.Cristiano; break;
                 case "Carmen [ro-RO]": tts.VoiceId = VoiceId.Carmen; break;
-                case "Tatyana [ru-RU]": tts.VoiceId = VoiceId.Tatyana; break;
-                case "Maxim [ru-RU]": tts.VoiceId = VoiceId.Maxim; break;
+                case "Tatyana [ru-RU]": tts.VoiceId = VoiceId.Tatyana;
+                    tts.TextType = TextType.Text;
+                    tts.Text = TTSMessageQueued.text;
+                    //  tts.LanguageCode = LanguageCode.RuRU;
+
+                    break;
+                case "Maxim [ru-RU]": tts.VoiceId = VoiceId.Maxim;
+                   tts.TextType = TextType.Text;
+                   tts.Text = TTSMessageQueued.text;
+                    // tts.LanguageCode = LanguageCode.RuRU;
+
+                    break;
                 case "Conchita [es-ES]": tts.VoiceId = VoiceId.Conchita; break;
                 case "Lucia [es-ES]": tts.VoiceId = VoiceId.Lucia; break;
                 case "Lucia [es-ES] ($Neural)": tts.VoiceId = VoiceId.Lucia; tts.Engine = Engine.Neural; break;

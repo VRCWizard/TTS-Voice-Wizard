@@ -83,9 +83,9 @@ namespace OSCVRCWiz.TTS
                     catch (System.ArgumentException e) { }
                 }
 
+                var sortedList = UberNameAndCategory.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
 
-
-                foreach (KeyValuePair<string, string> voice in UberNameAndCategory)
+                foreach (KeyValuePair<string, string> voice in sortedList)
                 {
                     string categoryName = voice.Value;
 

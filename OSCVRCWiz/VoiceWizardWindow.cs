@@ -43,7 +43,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.2.2";
+        public static string currentVersion = "1.3.2.5";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -1014,7 +1014,7 @@ namespace OSCVRCWiz
                                 }
                                 else
                                 {
-                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange));
+                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange));
                                     Task.Run(() => TTSMessageQueue.PlayNextInQueue());
                                     return;
                                 }
@@ -1623,8 +1623,11 @@ namespace OSCVRCWiz
             }
             if (rjToggleButton10.Checked == true && rjToggleButtonForceMedia.Checked == true)
             {
-                WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
-                Debug.WriteLine("forced media");
+                if (WindowsMedia.mediaManager != null)
+                {
+                    WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
+                    Debug.WriteLine("forced media");
+                }
             }
 
             spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
@@ -3814,6 +3817,11 @@ namespace OSCVRCWiz
 
 
 
+            labelStability.Text = trackBarStability.Value + "%";
+            labelSimboost.Text = trackBarSimilarity.Value + "%";
+
+
+
         }
 
         private void label142_Click(object sender, EventArgs e)
@@ -4388,6 +4396,101 @@ namespace OSCVRCWiz
             {
 
             }
+        }
+
+        private void trackBarStability_Scroll(object sender, EventArgs e)
+        {
+            
+            labelStability.Text = trackBarStability.Value + "%";
+        }
+
+        private void trackBarSimilarity_Scroll(object sender, EventArgs e)
+        {
+            
+            labelSimboost.Text = trackBarSimilarity.Value + "%";
+        }
+
+        private void button51_Click(object sender, EventArgs e)
+        {
+            comboBoxLabsModelID.SelectedIndex= 0;
+            comboBoxLabsOptimize.SelectedIndex= 0;
+            trackBarStability.Value = 75;
+            trackBarSimilarity.Value = 75;
+
+            labelStability.Text = trackBarStability.Value + "%";
+            labelSimboost.Text = trackBarSimilarity.Value + "%";
+        }
+
+        private void rjToggleButtonResetButtonsCounter_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rjToggleButtonResetButtonsCounter.Checked==true)
+            {
+                buttonResetCounter1.Enabled = true;
+                buttonResetCounter2.Enabled = true;
+                buttonResetCounter3.Enabled = true;
+                buttonResetCounter4.Enabled = true;
+                buttonResetCounter5.Enabled = true;
+                buttonResetCounter6.Enabled = true;
+                buttonResetCounterAll.Enabled = true;
+            }
+           else
+            {
+                buttonResetCounter1.Enabled = false;
+                buttonResetCounter2.Enabled = false;
+                buttonResetCounter3.Enabled = false;
+                buttonResetCounter4.Enabled = false;
+                buttonResetCounter5.Enabled = false;
+                buttonResetCounter6.Enabled = false;
+                buttonResetCounterAll.Enabled = false;
+            }
+        }
+
+        private void buttonResetCounter1_Click(object sender, EventArgs e)
+        {
+            OSC.counter1 = 0;
+            OSC.prevCounter1 = 0;
+            Settings1.Default.Counter1 = OSC.counter1;
+            Settings1.Default.Save();
+        }
+
+        private void buttonResetCounter2_Click(object sender, EventArgs e)
+        {
+            OSC.counter2 = 0;
+            OSC.prevCounter2 = 0;
+            Settings1.Default.Counter2 = OSC.counter2;
+            Settings1.Default.Save();
+        }
+
+        private void buttonResetCounter3_Click(object sender, EventArgs e)
+        {
+            OSC.counter3 = 0;
+            OSC.prevCounter3 = 0;
+            Settings1.Default.Counter3 = OSC.counter3;
+            Settings1.Default.Save();
+        }
+
+        private void buttonResetCounter4_Click(object sender, EventArgs e)
+        {
+            OSC.counter4 = 0;
+            OSC.prevCounter4 = 0;
+            Settings1.Default.Counter4 = OSC.counter4;
+            Settings1.Default.Save();
+        }
+
+        private void buttonResetCounter5_Click(object sender, EventArgs e)
+        {
+            OSC.counter5 = 0;
+            OSC.prevCounter5 = 0;
+            Settings1.Default.Counter5 = OSC.counter5;
+            Settings1.Default.Save();
+        }
+
+        private void buttonResetCounter6_Click(object sender, EventArgs e)
+        {
+            OSC.counter6 = 0;
+            OSC.prevCounter6 = 0;
+            Settings1.Default.Counter6 = OSC.counter6;
+            Settings1.Default.Save();
         }
     }
 

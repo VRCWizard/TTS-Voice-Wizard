@@ -498,10 +498,10 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="labsSimboost" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">7</Value>
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="labsStability" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">7</Value>
+      <Value Profile="(Default)">75</Value>
     </Setting>
     <Setting Name="saveToWav" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

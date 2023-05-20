@@ -174,6 +174,10 @@ namespace OSCVRCWiz.Addons
 
                 });
             }
+              catch (FileNotFoundException e)
+    {
+        // FileNotFoundExceptions are handled here.
+    }
             catch (Exception ex) {
                 OutputText.outputLog("MediaManager_OnAnySessionOpened Exception: " + ex.Message, Color.Red);
                 MessageBox.Show("MediaManager_OnAnySessionOpened Exception " + ex.Message);

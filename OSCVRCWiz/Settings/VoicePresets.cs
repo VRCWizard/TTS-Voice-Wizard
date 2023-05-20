@@ -171,7 +171,7 @@ namespace Settings
         {
             //  string words = VoiceWizardWindow.MainFormGlobal.richTextBox2.Text.ToString();
             string words = presetsStored;
-            string[] split = words.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] split = words.Split(new char[] { ';' });
             foreach (string s in split)
             {
                 if (s.Trim() != "")
@@ -180,7 +180,7 @@ namespace Settings
                     int count = 1;
                     voicePreset saveThisPreset = new voicePreset();
 
-                    string[] split2 = words2.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] split2 = words2.Split(new char[] { ':' });
                     foreach (string s2 in split2)
                     {
 
