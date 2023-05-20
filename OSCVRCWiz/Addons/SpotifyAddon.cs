@@ -359,7 +359,11 @@ namespace OSCVRCWiz.Addons
                     theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());
                     theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
                     theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
-                    theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+                   theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+
+
+
+
                     /* try{theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());}
                      catch { theString = theString.Replace("{progressMinutes}", "-"); }
                      try { theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration()); }

@@ -35,7 +35,6 @@
     <PackageReference Include="Autoupdater.NET.Official" Version="1.7.6" />
     <PackageReference Include="AWSSDK.Polly" Version="3.7.106.60" />
     <PackageReference Include="DeepL.net" Version="1.6.0" />
-    <PackageReference Include="Dubya.WindowsMediaController" Version="2.4.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="MeaMod.DNS" Version="1.0.70" />
@@ -54,6 +53,9 @@
   <ItemGroup>
     <Reference Include="CoreOSC">
       <HintPath>CoreOSC.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsMediaController">
+      <HintPath>WindowsMediaController.dll</HintPath>
     </Reference>
   </ItemGroup>
 
