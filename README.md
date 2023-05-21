@@ -60,8 +60,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## GETTING STARTED
 <a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.3.2.5/TTSVoiceWizard-v1.3.2.5-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
--  **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** for instructions on how to set up the basic features of TTS Voice Wizard. 
-    -  The [Getting Started Video](https://youtu.be/Q4kaXcA74Bo) is the Quickstart Guide in video form.
+-  ### **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** or watch the [Tutorial Video](https://youtu.be/Q4kaXcA74Bo) for instructions on how to set up the basic features of TTS Voice Wizard. 
 
 
 <a href="https://youtu.be/Q4kaXcA74Bo"><img alt="Getting Started with TTS Voice Wizard" src="https://cdn.discordapp.com/attachments/719824324973821972/1108809206125043832/Screenshot_2023-05-18_004402.png"></a>
@@ -70,7 +69,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## GitHub Wiki Table of Contents
 ### Quick Start Guide
-- [Getting Started Video](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#getting-started-video)
+- [Tutorial Video](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#getting-started-video)
 - [Installation](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#installation)
 - [Speech-to-Text and Text-to-Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#speech-to-text-and-text-to-speech)
    - [🔌 Playing Audio Through Your Microphone](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#-playing-audio-through-your-microphone)
