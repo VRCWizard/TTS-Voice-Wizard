@@ -125,6 +125,7 @@ The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, 
 - [tiktok-tts](https://github.com/Weilbyte/tiktok-tts) - Tiktok voices made possible by Weilbyte's Tiktok TTS endpoint
 - [KillFrenzyAvatarText (KAT)](https://github.com/killfrenzy96/KillFrenzyAvatarText) - A text display system designed to be used on VRChat Avatars
 - [Frosty's Billboard](https://github.com/Frosty704/Billboard) - Frosty's billboard is a container for the KAT allowing you to have a speech bubble in your hand
+- [WindowsMediaController](https://github.com/DubyaDude/WindowsMediaController) - Windows Media Package
 - [WhisperNet](https://github.com/Const-me/Whisper) - C# wrapper for whisper.cpp
 
 
