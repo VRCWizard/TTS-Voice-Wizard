@@ -32,6 +32,7 @@ using Windows.Media.AppBroadcasting;
 using System.Collections;
 using CoreOSC;
 using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 
 
@@ -43,7 +44,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.3";
+        public static string currentVersion = "1.3.4";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -80,6 +81,8 @@ namespace OSCVRCWiz
 
         public static System.Threading.Timer whisperTimer;
 
+        public static System.Threading.Timer rotationTimer;
+
         public static string modifierKeySTTTS = "Control";
         public static string normalKeySTTTS = "G";
 
@@ -98,6 +101,9 @@ namespace OSCVRCWiz
         public bool logPanelExtended2 = true;
         public static int fontSize = 20;
         public static bool stt_listening = false;
+
+
+       static int bannerPage = 0;
 
 
 
@@ -202,6 +208,10 @@ namespace OSCVRCWiz
 
                 whisperTimer = new System.Threading.Timer(whispertimertick);
                 whisperTimer.Change(Timeout.Infinite, Timeout.Infinite);
+
+
+                rotationTimer = new System.Threading.Timer(rotationtimertick);
+                rotationTimer.Change(25000, 0);
 
 
                 //listView1.View = View.List;
@@ -721,6 +731,18 @@ namespace OSCVRCWiz
 
             OutputText.outputLog("[QuickStart Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide ]");
 
+            if (rjToggleButtonUsePro.Checked == false)
+            {
+
+
+                OutputText.outputLog("[Consider becoming a VoiceWizardPro member for instant access to all the best voices: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+            }
+            else
+            {
+                iconButton17.ForeColor = Color.White;
+                iconButton17.IconColor= Color.White;
+            }
+
 
 
 
@@ -874,7 +896,7 @@ namespace OSCVRCWiz
                     string selectedTTSMode = VoiceWizardWindow.TTSModeSaved;
                     //VoiceCommand task
 
-                    if (AzureRecognition.YourSubscriptionKey == "" && selectedTTSMode == "Azure")
+                    if ((AzureRecognition.YourSubscriptionKey == "" && selectedTTSMode == "Azure") && rjToggleButtonUsePro.Checked != true)
                     {
                         //  var ot = new OutputText();
                         OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
@@ -1027,6 +1049,14 @@ namespace OSCVRCWiz
 
 
 
+
+                                break;
+                            case "No TTS":
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                  
+                                }
 
                                 break;
                             case "Miku":
@@ -1452,7 +1482,48 @@ namespace OSCVRCWiz
             t.Start();
         }
 
-        private void doHideTimerTick()
+        public void rotationtimertick(object sender)
+        {
+
+            Thread t = new Thread(doRotationTimerTick);
+            t.Start();
+        }
+        private void doRotationTimerTick()
+        {
+            if (!webView21.IsDisposed)
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate ()
+                    {
+                        if (!webView21.Source.ToString().Contains("ko-fi"))
+                        {
+                            if (bannerPage == 0)
+                            {
+                                Uri uri = new Uri("https://voicewizardpro.carrd.co/");
+                                webView21.Source = uri;
+                                bannerPage = 1;
+                            }
+                            else
+                            {
+                                Uri uri = new Uri("https://voicewizardsponsors.carrd.co/");
+                                webView21.Source = uri;
+                                bannerPage = 0;
+                            }
+                        }
+                    });
+                    Debug.WriteLine("it happened" + bannerPage);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+                rotationTimer.Change(25000, 0);
+            }
+        }
+            private void doHideTimerTick()
         {
             // var message0 = new SharpOSC.OscMessage("/avatar/parameters/KAT_Pointer", 255); // causes glitch if enabled
 
@@ -1902,7 +1973,7 @@ namespace OSCVRCWiz
 
         private void iconButton12_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -1977,7 +2048,7 @@ namespace OSCVRCWiz
 
         private void iconButton17_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
 
         }
         private void iconButton18_Click(object sender, EventArgs e)
@@ -1988,7 +2059,7 @@ namespace OSCVRCWiz
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Uri uri = new Uri("https://voicewizardsponsors.carrd.co/");
+            Uri uri = new Uri("https://voicewizardpro.carrd.co/");
             webView21.Source = uri;
         }
 
@@ -3733,7 +3804,7 @@ namespace OSCVRCWiz
             Settings1.Default.WindowsMediaDisable = rjToggleButtonDisableWindowsMedia.Checked;
             Settings1.Default.Save();
 
-            OutputText.outputLog("Restart required for changes to take effect (Disabling Windows Media may solve 'random' crashing). If you just restarted, Windows Media mode is already disabled so disregard this message.", Color.Red);
+            OutputText.outputLog("Restart required for changes to take effect (Disabling Windows Media may solve 'random' crashing). If you just restarted, Windows Media mode is already disabled so disregard this message.", Color.DarkOrange);
 
 
         }
@@ -4491,6 +4562,21 @@ namespace OSCVRCWiz
             OSC.prevCounter6 = 0;
             Settings1.Default.Counter6 = OSC.counter6;
             Settings1.Default.Save();
+        }
+
+        private void iconButton33_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/Q4kaXcA74Bo");
+        }
+
+        private void iconButton34_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://discord.gg/YjgR9SWPnW");
+        }
+
+        private void iconButton17_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
         }
     }
 

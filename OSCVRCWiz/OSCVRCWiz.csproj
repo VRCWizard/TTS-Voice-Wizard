@@ -33,7 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autoupdater.NET.Official" Version="1.7.6" />
-    <PackageReference Include="AWSSDK.Polly" Version="3.7.106.60" />
+    <PackageReference Include="AWSSDK.Polly" Version="3.7.106.54" />
     <PackageReference Include="DeepL.net" Version="1.6.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
     <PackageReference Include="Json.Net" Version="1.0.33" />

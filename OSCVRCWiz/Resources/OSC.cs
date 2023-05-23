@@ -88,7 +88,7 @@ namespace OSCVRCWiz.Resources
                 VoiceWizardWindow.MainFormGlobal.button33.Enabled = false;
                 VoiceWizardWindow.MainFormGlobal.button33.ForeColor = Color.Green;
                 OutputText.outputLog("[VRChat OSC Listener Activated]", Color.Green);
-                OutputText.outputLog($"[VRChat OSC Listener: Remember that only one program can listen on a UDP port. TTS Voice Wizard is listening on port {FromVRChatPort}.", Color.Orange);
+                OutputText.outputLog($"[VRChat OSC Listener: Remember that only one program can listen on a UDP port. TTS Voice Wizard is listening on port {FromVRChatPort}.", Color.DarkOrange);
             });
 
             HandleOscPacket callback = delegate (OscPacket packet)

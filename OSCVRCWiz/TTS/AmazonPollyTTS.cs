@@ -97,14 +97,22 @@ namespace OSCVRCWiz.TTS
             int pitch = TTSMessageQueued.Pitch;
             int volume = TTSMessageQueued.Volume;
             string voice = TTSMessageQueued.Voice;
-         
-          
 
-            var ratePercent = (int)Math.Floor(((0.5f + rate * 0.1f) - 1) * 100);
-            var pitchPercent = (int)Math.Floor(((0.5f + pitch * 0.1f) - 1) * 100);
+
+
+              var ratePercent = (int)Math.Floor(((0.5f + rate * 0.1f) - 1) * 100);
+         // var ratePercent = "+10";
+              var pitchPercent = (int)Math.Floor(((0.5f + pitch * 0.1f) - 1) * 100);
             var volumePercent = (int)Math.Floor(((volume * 0.1f) - 1) * 10);
 
-            string rateString = "<prosody rate=\"" + ratePercent + "%\">"; //1
+            string rateString = "<prosody rate=\"";
+            if (ratePercent>0)
+            {
+                rateString += "+";
+            }
+
+
+              rateString += ratePercent + "%\">"; //1
             string pitchString = "<prosody pitch=\"" + pitchPercent + "%\">"; //1
             string volumeString = "<prosody volume=\"" + volumePercent + "dB\">"; //1
 
@@ -115,10 +123,10 @@ namespace OSCVRCWiz.TTS
             Debug.WriteLine("volume: " + volumeString);
 
 
-            //  string ssml0 = "<speak>";
-            string ssml0 = "<speak version=\"1.0\"";
-            ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
-            ssml0 += " xml:lang=\"en-US\">";
+              string ssml0 = "<speak>";
+           // string ssml0 = "<speak";
+           // ssml0 += " xmlns=\"http://www.w3.org/2001/10/synthesis\"";
+           // ssml0 += " xml:lang=\"en-US\">";
 
 
             if (rate != 5)//5 = default /middle of track bar
@@ -427,15 +435,11 @@ namespace OSCVRCWiz.TTS
                 case "Cristiano [pt-PT]": tts.VoiceId = VoiceId.Cristiano; break;
                 case "Carmen [ro-RO]": tts.VoiceId = VoiceId.Carmen; break;
                 case "Tatyana [ru-RU]": tts.VoiceId = VoiceId.Tatyana;
-                    tts.TextType = TextType.Text;
-                    tts.Text = TTSMessageQueued.text;
-                    //  tts.LanguageCode = LanguageCode.RuRU;
+           
 
                     break;
                 case "Maxim [ru-RU]": tts.VoiceId = VoiceId.Maxim;
-                   tts.TextType = TextType.Text;
-                   tts.Text = TTSMessageQueued.text;
-                    // tts.LanguageCode = LanguageCode.RuRU;
+
 
                     break;
                 case "Conchita [es-ES]": tts.VoiceId = VoiceId.Conchita; break;
