@@ -44,7 +44,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.4";
+        public static string currentVersion = "1.3.4.1";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -979,21 +979,38 @@ namespace OSCVRCWiz
                         switch (selectedTTSMode)
                         {
                             case "Moonbase":
-                                /* if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProMoonbase.Checked == true)
-                                 {
-                                     voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
-                                     selectedTTSMode = "Moonbase (Pro)";
-                                 }
-                                 else
-                                 {*/
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
                                 Task.Run(() => FonixTalkTTS.FonixTTS(TTSMessageQueued, speechCt.Token));
                                 //  }
                                 // Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(TTSMessageQueued, speechCt.Token)); //turning off TTS for now
                                 break;
                             case "ElevenLabs":
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
                                 Task.Run(() => ElevenLabsTTS.ElevenLabsTextAsSpeech(TTSMessageQueued, speechCt.Token));
                                 break;
                             case "System Speech":
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
                                 Task.Run(() => SystemSpeechTTS.systemTTSAction(TTSMessageQueued, speechCt.Token));
                                 break;
                             case "Azure":
@@ -1004,11 +1021,28 @@ namespace OSCVRCWiz
                                 }
                                 else
                                 {
+                                    if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                    {
+                                        TTSMessageQueued.TTSMode = "No TTS";
+                                        voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                        if (rjToggleButtonVoiceWhatLang.Checked)
+                                        {
+                                            TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                        }
+                                    }
                                     Task.Run(() => AzureTTS.SynthesizeAudioAsync(TTSMessageQueued, speechCt.Token)); //turning off TTS for now
                                 }
                                 // Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(TTSMessageQueued, speechCt.Token));
                                 break;
                             case "TikTok":
+                                if(rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked==true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if(rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
                                 Task.Run(() => TikTokTTS.TikTokTextAsSpeech(TTSMessageQueued, speechCt.Token));
                                 break;
 
@@ -1016,6 +1050,14 @@ namespace OSCVRCWiz
                                 Task.Run(() => NovelAITTS.NovelAITextAsSpeech(TTSMessageQueued, speechCt.Token));
                                 break;
                             case "Glados":
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
                                 Task.Run(() => GladosTTS.GladosTextAsSpeech(TTSMessageQueued, speechCt.Token));
                                 break;
                             case "Amazon Polly":
@@ -1026,6 +1068,15 @@ namespace OSCVRCWiz
                                 }
                                 else
                                 {
+                                    if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                    {
+                                        TTSMessageQueued.TTSMode = "No TTS";
+                                        voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                        if (rjToggleButtonVoiceWhatLang.Checked)
+                                        {
+                                            TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                        }
+                                    }
                                     Task.Run(() => AmazonPollyTTS.PollyTTS(TTSMessageQueued, speechCt.Token));
                                 }
                                 break;
@@ -1043,7 +1094,14 @@ namespace OSCVRCWiz
                                 break;
 
                             case "Uberduck":
-
+                                if (rjToggleButtonUsePro.Checked == true && rjToggleButtonProTranslation.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
                                 TTSMessageQueued.Voice = UberDuckTTS.UberVoiceNameAndID[TTSMessageQueued.Voice];
                                 Task.Run(() => UberDuckTTS.uberduckTTS(TTSMessageQueued, speechCt.Token));
 
