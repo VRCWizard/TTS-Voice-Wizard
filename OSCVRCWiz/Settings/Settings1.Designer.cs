@@ -2062,5 +2062,53 @@ namespace OSCVRCWiz.Settings {
                 this["transCharsUsed"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Speech Hours Used: 0/0")]
+        public string hoursUsed {
+            get {
+                return ((string)(this["hoursUsed"]));
+            }
+            set {
+                this["hoursUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public string minAudioDuration {
+            get {
+                return ((string)(this["minAudioDuration"]));
+            }
+            set {
+                this["minAudioDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string maxAudioDuration {
+            get {
+                return ((string)(this["maxAudioDuration"]));
+            }
+            set {
+                this["maxAudioDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public string SilenceThreshold {
+            get {
+                return ((string)(this["SilenceThreshold"]));
+            }
+            set {
+                this["SilenceThreshold"] = value;
+            }
+        }
     }
 }

@@ -539,6 +539,22 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label107 = new System.Windows.Forms.Label();
             this.VoiceWizPro = new System.Windows.Forms.TabPage();
+            this.groupBox40 = new System.Windows.Forms.GroupBox();
+            this.label182 = new System.Windows.Forms.Label();
+            this.label177 = new System.Windows.Forms.Label();
+            this.pot1 = new NAudio.Gui.Pot();
+            this.textBoxSilence = new System.Windows.Forms.TextBox();
+            this.minimumAudio = new System.Windows.Forms.TextBox();
+            this.label181 = new System.Windows.Forms.Label();
+            this.maximumAudio = new System.Windows.Forms.TextBox();
+            this.label180 = new System.Windows.Forms.Label();
+            this.label179 = new System.Windows.Forms.Label();
+            this.label178 = new System.Windows.Forms.Label();
+            this.label167 = new System.Windows.Forms.Label();
+            this.label176 = new System.Windows.Forms.Label();
+            this.trackBarSilence = new System.Windows.Forms.TrackBar();
+            this.SpeechHoursUsed = new System.Windows.Forms.Label();
+            this.iconButton38 = new FontAwesome.Sharp.IconButton();
             this.iconButton55 = new FontAwesome.Sharp.IconButton();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label165 = new System.Windows.Forms.Label();
@@ -659,6 +675,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarStability)).BeginInit();
             this.groupBox39.SuspendLayout();
             this.VoiceWizPro.SuspendLayout();
+            this.groupBox40.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSilence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox23.SuspendLayout();
             this.uberduck.SuspendLayout();
@@ -1328,6 +1346,7 @@
             this.iconButton15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.iconButton15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton15.UseVisualStyleBackColor = true;
+            this.iconButton15.Visible = false;
             this.iconButton15.DragDrop += new System.Windows.Forms.DragEventHandler(this.iconButton15_DragDrop);
             this.iconButton15.DragEnter += new System.Windows.Forms.DragEventHandler(this.iconButton15_DragEnter);
             // 
@@ -1586,7 +1605,7 @@
             this.textBoxRename.Location = new System.Drawing.Point(18, 472);
             this.textBoxRename.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxRename.Name = "textBoxRename";
-            this.textBoxRename.Size = new System.Drawing.Size(215, 29);
+            this.textBoxRename.Size = new System.Drawing.Size(196, 29);
             this.textBoxRename.TabIndex = 102;
             this.textBoxRename.Text = "Preset 1";
             this.textBoxRename.Visible = false;
@@ -1634,7 +1653,7 @@
             this.comboBoxPreset.Location = new System.Drawing.Point(18, 470);
             this.comboBoxPreset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxPreset.Name = "comboBoxPreset";
-            this.comboBoxPreset.Size = new System.Drawing.Size(234, 29);
+            this.comboBoxPreset.Size = new System.Drawing.Size(217, 29);
             this.comboBoxPreset.TabIndex = 100;
             this.comboBoxPreset.SelectedIndexChanged += new System.EventHandler(this.comboBoxPreset_SelectedIndexChanged);
             // 
@@ -4331,6 +4350,7 @@
             this.comboBoxSTT.Items.AddRange(new object[] {
             "System Speech",
             "Azure",
+            "Deepgram (Pro Only)",
             "Vosk",
             "Web Captioner",
             "Whisper"});
@@ -8080,7 +8100,9 @@
             // 
             // VoiceWizPro
             // 
+            this.VoiceWizPro.AutoScroll = true;
             this.VoiceWizPro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.VoiceWizPro.Controls.Add(this.groupBox40);
             this.VoiceWizPro.Controls.Add(this.iconButton55);
             this.VoiceWizPro.Controls.Add(this.pictureBox3);
             this.VoiceWizPro.Controls.Add(this.label165);
@@ -8093,6 +8115,192 @@
             this.VoiceWizPro.TabIndex = 21;
             this.VoiceWizPro.Text = "VoiceWizPro";
             // 
+            // groupBox40
+            // 
+            this.groupBox40.Controls.Add(this.label182);
+            this.groupBox40.Controls.Add(this.label177);
+            this.groupBox40.Controls.Add(this.pot1);
+            this.groupBox40.Controls.Add(this.textBoxSilence);
+            this.groupBox40.Controls.Add(this.minimumAudio);
+            this.groupBox40.Controls.Add(this.label181);
+            this.groupBox40.Controls.Add(this.maximumAudio);
+            this.groupBox40.Controls.Add(this.label180);
+            this.groupBox40.Controls.Add(this.label179);
+            this.groupBox40.Controls.Add(this.label178);
+            this.groupBox40.Controls.Add(this.label167);
+            this.groupBox40.Controls.Add(this.label176);
+            this.groupBox40.Controls.Add(this.trackBarSilence);
+            this.groupBox40.Controls.Add(this.SpeechHoursUsed);
+            this.groupBox40.Controls.Add(this.iconButton38);
+            this.groupBox40.ForeColor = System.Drawing.Color.White;
+            this.groupBox40.Location = new System.Drawing.Point(7, 402);
+            this.groupBox40.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox40.Name = "groupBox40";
+            this.groupBox40.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox40.Size = new System.Drawing.Size(728, 308);
+            this.groupBox40.TabIndex = 162;
+            this.groupBox40.TabStop = false;
+            this.groupBox40.Text = "DeepGram Recognition";
+            // 
+            // label182
+            // 
+            this.label182.AutoSize = true;
+            this.label182.ForeColor = System.Drawing.Color.Snow;
+            this.label182.Location = new System.Drawing.Point(556, 114);
+            this.label182.Name = "label182";
+            this.label182.Size = new System.Drawing.Size(44, 15);
+            this.label182.TabIndex = 201;
+            this.label182.Text = "Talking";
+            // 
+            // label177
+            // 
+            this.label177.AutoSize = true;
+            this.label177.ForeColor = System.Drawing.Color.Snow;
+            this.label177.Location = new System.Drawing.Point(635, 114);
+            this.label177.Name = "label177";
+            this.label177.Size = new System.Drawing.Size(44, 15);
+            this.label177.TabIndex = 200;
+            this.label177.Text = "Silence";
+            // 
+            // pot1
+            // 
+            this.pot1.Location = new System.Drawing.Point(556, 17);
+            this.pot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pot1.Maximum = 50000D;
+            this.pot1.Minimum = 0D;
+            this.pot1.Name = "pot1";
+            this.pot1.Size = new System.Drawing.Size(123, 105);
+            this.pot1.TabIndex = 164;
+            this.pot1.Value = 0D;
+            // 
+            // textBoxSilence
+            // 
+            this.textBoxSilence.Location = new System.Drawing.Point(333, 245);
+            this.textBoxSilence.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxSilence.Name = "textBoxSilence";
+            this.textBoxSilence.Size = new System.Drawing.Size(59, 23);
+            this.textBoxSilence.TabIndex = 199;
+            this.textBoxSilence.Text = "1000";
+            // 
+            // minimumAudio
+            // 
+            this.minimumAudio.Location = new System.Drawing.Point(29, 47);
+            this.minimumAudio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.minimumAudio.Name = "minimumAudio";
+            this.minimumAudio.Size = new System.Drawing.Size(59, 23);
+            this.minimumAudio.TabIndex = 198;
+            this.minimumAudio.Text = "2";
+            // 
+            // label181
+            // 
+            this.label181.AutoSize = true;
+            this.label181.ForeColor = System.Drawing.Color.Snow;
+            this.label181.Location = new System.Drawing.Point(18, 25);
+            this.label181.Name = "label181";
+            this.label181.Size = new System.Drawing.Size(157, 15);
+            this.label181.TabIndex = 197;
+            this.label181.Text = "Minimum audio duration (s)";
+            // 
+            // maximumAudio
+            // 
+            this.maximumAudio.Location = new System.Drawing.Point(29, 99);
+            this.maximumAudio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.maximumAudio.Name = "maximumAudio";
+            this.maximumAudio.Size = new System.Drawing.Size(59, 23);
+            this.maximumAudio.TabIndex = 196;
+            this.maximumAudio.Text = "10";
+            // 
+            // label180
+            // 
+            this.label180.AutoSize = true;
+            this.label180.ForeColor = System.Drawing.Color.Snow;
+            this.label180.Location = new System.Drawing.Point(18, 77);
+            this.label180.Name = "label180";
+            this.label180.Size = new System.Drawing.Size(159, 15);
+            this.label180.TabIndex = 195;
+            this.label180.Text = "Maximum audio duration (s)";
+            // 
+            // label179
+            // 
+            this.label179.AutoSize = true;
+            this.label179.ForeColor = System.Drawing.Color.Snow;
+            this.label179.Location = new System.Drawing.Point(214, 166);
+            this.label179.Name = "label179";
+            this.label179.Size = new System.Drawing.Size(321, 15);
+            this.label179.TabIndex = 194;
+            this.label179.Text = "Determine the amount of silence that will end a recognition";
+            // 
+            // label178
+            // 
+            this.label178.AutoSize = true;
+            this.label178.ForeColor = System.Drawing.Color.Snow;
+            this.label178.Location = new System.Drawing.Point(280, 136);
+            this.label178.Name = "label178";
+            this.label178.Size = new System.Drawing.Size(176, 15);
+            this.label178.TabIndex = 193;
+            this.label178.Text = "How quiet is your enviornment?";
+            // 
+            // label167
+            // 
+            this.label167.AutoSize = true;
+            this.label167.ForeColor = System.Drawing.Color.Snow;
+            this.label167.Location = new System.Drawing.Point(677, 187);
+            this.label167.Name = "label167";
+            this.label167.Size = new System.Drawing.Size(34, 15);
+            this.label167.TabIndex = 192;
+            this.label167.Text = "Loud";
+            // 
+            // label176
+            // 
+            this.label176.AutoSize = true;
+            this.label176.ForeColor = System.Drawing.Color.Snow;
+            this.label176.Location = new System.Drawing.Point(17, 187);
+            this.label176.Name = "label176";
+            this.label176.Size = new System.Drawing.Size(36, 15);
+            this.label176.TabIndex = 190;
+            this.label176.Text = "Silent";
+            // 
+            // trackBarSilence
+            // 
+            this.trackBarSilence.LargeChange = 10;
+            this.trackBarSilence.Location = new System.Drawing.Point(17, 205);
+            this.trackBarSilence.Maximum = 100;
+            this.trackBarSilence.Name = "trackBarSilence";
+            this.trackBarSilence.Size = new System.Drawing.Size(694, 45);
+            this.trackBarSilence.TabIndex = 191;
+            this.trackBarSilence.TickFrequency = 2;
+            this.trackBarSilence.Value = 50;
+            this.trackBarSilence.Scroll += new System.EventHandler(this.trackBarSilence_Scroll);
+            // 
+            // SpeechHoursUsed
+            // 
+            this.SpeechHoursUsed.AutoSize = true;
+            this.SpeechHoursUsed.Location = new System.Drawing.Point(18, 263);
+            this.SpeechHoursUsed.Name = "SpeechHoursUsed";
+            this.SpeechHoursUsed.Size = new System.Drawing.Size(132, 15);
+            this.SpeechHoursUsed.TabIndex = 117;
+            this.SpeechHoursUsed.Text = "Speech Hours Used: 0/0";
+            // 
+            // iconButton38
+            // 
+            this.iconButton38.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton38.FlatAppearance.BorderSize = 0;
+            this.iconButton38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton38.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton38.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.iconButton38.IconColor = System.Drawing.Color.White;
+            this.iconButton38.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton38.IconSize = 40;
+            this.iconButton38.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton38.Location = new System.Drawing.Point(1325, 15);
+            this.iconButton38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton38.Name = "iconButton38";
+            this.iconButton38.Size = new System.Drawing.Size(53, 53);
+            this.iconButton38.TabIndex = 110;
+            this.iconButton38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton38.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton38.UseVisualStyleBackColor = true;
+            // 
             // iconButton55
             // 
             this.iconButton55.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -8104,7 +8312,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(540, 47);
+            this.iconButton55.Location = new System.Drawing.Point(616, 28);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -8117,9 +8325,9 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(117, 396);
+            this.pictureBox3.Location = new System.Drawing.Point(176, 718);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(346, 57);
+            this.pictureBox3.Size = new System.Drawing.Size(346, 56);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 160;
             this.pictureBox3.TabStop = false;
@@ -8152,7 +8360,7 @@
             this.groupBox23.Controls.Add(this.textBoxWizardProKey);
             this.groupBox23.Controls.Add(this.rjToggleButtonProAzure);
             this.groupBox23.ForeColor = System.Drawing.Color.White;
-            this.groupBox23.Location = new System.Drawing.Point(24, 113);
+            this.groupBox23.Location = new System.Drawing.Point(7, 116);
             this.groupBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -8923,6 +9131,9 @@
             this.groupBox39.PerformLayout();
             this.VoiceWizPro.ResumeLayout(false);
             this.VoiceWizPro.PerformLayout();
+            this.groupBox40.ResumeLayout(false);
+            this.groupBox40.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSilence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox23.ResumeLayout(false);
             this.groupBox23.PerformLayout();
@@ -9497,5 +9708,21 @@
         private FontAwesome.Sharp.IconButton iconButton34;
         private FontAwesome.Sharp.IconButton iconButton33;
         private FontAwesome.Sharp.IconButton iconButton17;
+        private GroupBox groupBox40;
+        public Label SpeechHoursUsed;
+        private FontAwesome.Sharp.IconButton iconButton38;
+        private Label label167;
+        private Label label176;
+        public TrackBar trackBarSilence;
+        private Label label179;
+        private Label label178;
+        public TextBox minimumAudio;
+        private Label label181;
+        public TextBox maximumAudio;
+        private Label label180;
+        public TextBox textBoxSilence;
+        private Label label182;
+        private Label label177;
+        public NAudio.Gui.Pot pot1;
     }
 }

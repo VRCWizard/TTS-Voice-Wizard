@@ -44,7 +44,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.4.2";
+        public static string currentVersion = "1.3.5";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -1250,7 +1250,7 @@ namespace OSCVRCWiz
 
 
         }
-        private void MainDoSpeechTTS()
+       public void MainDoSpeechTTS()
         {
             if (rjToggleButtonMedia.Checked == true)
             {
@@ -1284,6 +1284,25 @@ namespace OSCVRCWiz
                 {
                     switch (comboBoxSTT.SelectedItem.ToString())
                     {
+
+                        case "Deepgram (Pro Only)":
+                            int min=0;
+                            int max=0;
+                            int silence=0;
+                            string lang="en";
+
+                            this.Invoke((MethodInvoker)delegate ()
+                            {
+                                 min = Int32.Parse(minimumAudio.Text);
+                                 max = Int32.Parse(maximumAudio.Text);
+                                silence = Int32.Parse(textBoxSilence.Text);
+                                lang = comboBox4.SelectedItem.ToString();
+
+                            });
+                            Debug.WriteLine(min+" "+ max+" "+ silence+" "+ lang);
+                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(),min, max, silence, lang));
+
+                            break;
 
                         case "Vosk":
 
@@ -2978,7 +2997,7 @@ namespace OSCVRCWiz
         private void button23_Click_1(object sender, EventArgs e)
         {
             string currentText = textBoxCustomSpot.Text.ToString();
-            currentText = currentText + "『🎮{averageControllerBattery}%{cCharge}』『🔋{averageTrackerBattery}%{tCharge}』 ";
+            currentText = currentText + "『🎮{averageControllerBattery}%』『🔋{averageTrackerBattery}%{TCharge}』 ";
             textBoxCustomSpot.Text = currentText;
 
         }
@@ -4636,6 +4655,11 @@ namespace OSCVRCWiz
         private void iconButton17_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
+        }
+
+        private void trackBarSilence_Scroll(object sender, EventArgs e)
+        {
+            textBoxSilence.Text= ((int)Math.Floor((trackBarSilence.Value / .5)) * 10).ToString();
         }
     }
 

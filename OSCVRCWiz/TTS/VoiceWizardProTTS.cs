@@ -98,7 +98,7 @@ namespace OSCVRCWiz.TTS
             //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
         }
 
-        public static async Task<(string, string)> CallVoiceProAPIAsync(string apiKey, TTSMessageQueue.TTSMessage message)
+        private static async Task<(string, string)> CallVoiceProAPIAsync(string apiKey, TTSMessageQueue.TTSMessage message)
         {
             string voiceWizardAPITranslationString = "";
 
@@ -108,8 +108,8 @@ namespace OSCVRCWiz.TTS
                 translate = true;
             }
 
-            //var url = $"http://localhost:54029/api/tts?" +
-            var url = $"https://ttsvoicewizard.herokuapp.com/api/tts?" +
+           // var url = $"http://localhost:54029/api/tts?" +
+           var url = $"https://ttsvoicewizard.herokuapp.com/api/tts?" +
              $"apiKey={apiKey}" +
                $"&TTSMode={message.TTSMode}" +
                $"&text={message.text}" +

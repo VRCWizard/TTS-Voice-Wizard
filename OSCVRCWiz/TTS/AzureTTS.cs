@@ -229,6 +229,11 @@ namespace OSCVRCWiz.TTS
                         // read the JSON data from the file
                         string jsonData = File.ReadAllText(jsonFilePath);
 
+                    if(string.IsNullOrWhiteSpace(jsonData))
+                    {
+                        OutputText.outputLog("[Error accessing voice files, try running as admin or moving entire VoiceWizardFolder to new location]", Color.Red);
+                    }
+
                         // deserialize the JSON data into an array of Voice objects
                         Voice[] voices = JsonSerializer.Deserialize<Voice[]>(jsonData);
 

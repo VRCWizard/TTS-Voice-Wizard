@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -286,6 +286,11 @@ namespace OSCVRCWiz
             Settings1.Default.labsStability = VoiceWizardWindow.MainFormGlobal.trackBarStability.Value;
 
             Settings1.Default.saveToWav = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked;
+
+
+            Settings1.Default.minAudioDuration = VoiceWizardWindow.MainFormGlobal.minimumAudio.Text;
+            Settings1.Default.maxAudioDuration = VoiceWizardWindow.MainFormGlobal.maximumAudio.Text;
+            Settings1.Default.SilenceThreshold = VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text;
 
 
             // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;

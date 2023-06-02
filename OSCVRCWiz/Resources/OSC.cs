@@ -16,7 +16,7 @@ namespace OSCVRCWiz.Resources
     {
         public static CoreOSC.UDPSender OSCSender;
         public static CoreOSC.UDPSender OSCReSender;
-        public static string OSCAddress= "127.0.0.1";
+        public static string OSCAddress = "127.0.0.1";
         public static string OSCPort = "9000";
 
         public static string FromVRChatPort = "9001";
@@ -28,7 +28,7 @@ namespace OSCVRCWiz.Resources
         public static int counter3 = 0;
         public static int counter4 = 0;
         public static int counter5 = 0;
-        public static int counter6= 0;
+        public static int counter6 = 0;
 
         public static int prevCounter1 = 0;
         public static int prevCounter2 = 0;
@@ -59,29 +59,29 @@ namespace OSCVRCWiz.Resources
         }
 
         //VRChat OSCQuery Test Code
-     /*   public static void OSCQueryAdvertMyApp() //no in use yet
-        {
+        /*   public static void OSCQueryAdvertMyApp() //no in use yet
+           {
 
-            var OSCQueryService = new OSCQueryServiceBuilder()
-                              .WithServiceName("TTS Voice Wizard v" + VoiceWizardWindow.currentVersion)
-                             .WithTcpPort(Extensions.GetAvailableTcpPort())
-                              .WithUdpPort(Convert.ToInt32(OSCPort))
-                              .Build();
+               var OSCQueryService = new OSCQueryServiceBuilder()
+                                 .WithServiceName("TTS Voice Wizard v" + VoiceWizardWindow.currentVersion)
+                                .WithTcpPort(Extensions.GetAvailableTcpPort())
+                                 .WithUdpPort(Convert.ToInt32(OSCPort))
+                                 .Build();
 
-            // Add endpoints for all data tts voice wizard sends out
-           // OSCQueryService.AddEndpoint("/path", "T means bool, i means int, f means float, s means string", Attributes.AccessValues.WriteOnly, null, "description for people to look at");
-
-
+               // Add endpoints for all data tts voice wizard sends out
+              // OSCQueryService.AddEndpoint("/path", "T means bool, i means int, f means float, s means string", Attributes.AccessValues.WriteOnly, null, "description for people to look at");
 
 
 
 
-        }*/
-       public static void OSCLegacyVRChatListener()//no in use remove apon release of oscquery
+
+
+           }*/
+        public static void OSCLegacyVRChatListener()//no in use remove apon release of oscquery
         {
             //  int port = 9001;//VRChats default UDP // ONLY ONE APP CAN LISTEN HERE
 
-           
+
 
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
@@ -106,8 +106,8 @@ namespace OSCVRCWiz.Resources
                             if (messageReceived.Address.ToString() == "/avatar/parameters/AFK")
                             {
 
-                              //  var theString = "";
-                              //  theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
+                                //  var theString = "";
+                                //  theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
 
 
                                 if (messageReceived.Arguments[0].ToString() == "True")
@@ -136,7 +136,26 @@ namespace OSCVRCWiz.Resources
                             }
                         }
 
-                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text.ToString() && messageReceived.Arguments[0].ToString() =="True")
+
+
+                        if (messageReceived.Address.ToString() == "/avatar/parameters/DoSpeechToText")
+                        {
+
+
+
+                            if (messageReceived.Arguments[0].ToString() == "True")
+                            {
+
+                                Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoSpeechTTS());
+
+
+                            }
+
+
+
+                        }
+
+                        if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
                         {
                             counter1++;
                             var theString = "";
@@ -146,8 +165,8 @@ namespace OSCVRCWiz.Resources
 
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)
                             {
-                              Task.Run(() => OutputText.outputLog(theString));
-                            }      
+                                Task.Run(() => OutputText.outputLog(theString));
+                            }
 
                         }
                         if (messageReceived.Address.ToString() == VoiceWizardWindow.MainFormGlobal.textBoxCounter2.Text.ToString() && messageReceived.Arguments[0].ToString() == "True")
@@ -231,39 +250,39 @@ namespace OSCVRCWiz.Resources
             var listener = new UDPListener(Convert.ToInt32(FromVRChatPort), callback);
 
         }
-       /* private static async Task OSCQueryVRchatListener()//no in use yet
-        {
-            var _tcpPort = 9001;//VRChats default TCP // MANY APPS CAN LISTEN HERE
-            var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/avatar/parameters");
-            //  var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/input");
-            //  var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/tracking");
-            //   var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/chatbox");
+        /* private static async Task OSCQueryVRchatListener()//no in use yet
+         {
+             var _tcpPort = 9001;//VRChats default TCP // MANY APPS CAN LISTEN HERE
+             var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/avatar/parameters");
+             //  var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/input");
+             //  var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/tracking");
+             //   var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/chatbox");
 
-            if (response.IsSuccessStatusCode)
-            {
-                var responseString = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<OSCQueryRootNode>(responseString);
+             if (response.IsSuccessStatusCode)
+             {
+                 var responseString = await response.Content.ReadAsStringAsync();
+                 var result = JsonConvert.DeserializeObject<OSCQueryRootNode>(responseString);
 
-                var sb = new StringBuilder();
-                foreach (var pair in result.Contents)
-                {
+                 var sb = new StringBuilder();
+                 foreach (var pair in result.Contents)
+                 {
 
-                    sb.AppendLine($"{pair.Key}: {pair.Value}");
+                     sb.AppendLine($"{pair.Key}: {pair.Value}");
 
-                }
-                System.Diagnostics.Debug.WriteLine(sb.ToString());
-                // OutputText.outputLog(sb.ToString());
-                // OutputText.outputLog("hi");
-            }
+                 }
+                 System.Diagnostics.Debug.WriteLine(sb.ToString());
+                 // OutputText.outputLog(sb.ToString());
+                 // OutputText.outputLog("hi");
+             }
 
-            await Task.Delay(500); // poll every half second
+             await Task.Delay(500); // poll every half second
 
-            OSCQueryVRchatListener();
+             OSCQueryVRchatListener();
 
-        }*/
+         }*/
 
 
-       
+
 
     }
 }

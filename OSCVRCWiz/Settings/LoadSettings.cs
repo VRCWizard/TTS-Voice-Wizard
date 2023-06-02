@@ -386,6 +386,11 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text = Settings1.Default.charsUsed;
             VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text = Settings1.Default.transCharsUsed;
+            VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text = Settings1.Default.hoursUsed;
+
+            VoiceWizardWindow.MainFormGlobal.minimumAudio.Text = Settings1.Default.minAudioDuration;
+            VoiceWizardWindow.MainFormGlobal.maximumAudio.Text = Settings1.Default.maxAudioDuration;
+            VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text = Settings1.Default.SilenceThreshold;
 
             // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
 

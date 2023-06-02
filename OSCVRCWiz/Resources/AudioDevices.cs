@@ -30,7 +30,7 @@ namespace Resources
         public static string currentOutputDevice = "";
         public static string currentInputDeviceName = "Default";
         public static string currentOutputDeviceName = "Default";
-        // public static int currentOutputDeviceLite = 0;
+         public static int currentOutputDeviceLite = 0;
 
         public static string currentOutputDevice2nd = "";
         public static string currentOutputDeviceName2nd = "Default";
@@ -67,6 +67,10 @@ namespace Resources
             try
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
+                if(String.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem.ToString()))
+                {
+                    VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = "Default";
+                }
             }
             catch
             {
@@ -78,7 +82,7 @@ namespace Resources
             VoiceWizardWindow.MainFormGlobal.comboBoxOutput.Items.Clear();
             VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.Items.Clear();//forgor this :p
             comboOut.Clear();
-            speakerIDs.Clear();
+           speakerIDs.Clear();
 
 
             comboOut.Add("Default");
@@ -102,6 +106,10 @@ namespace Resources
             try
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = Settings1.Default.SpeakerName;
+                if (String.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem.ToString()))
+                {
+                    VoiceWizardWindow.MainFormGlobal.comboBoxOutput.SelectedItem = "Default";
+                }
             }
             catch
             {
@@ -110,6 +118,11 @@ namespace Resources
             try
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = Settings1.Default.SpeakerName2;
+
+               if (String.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem.ToString()))
+                {
+                    VoiceWizardWindow.MainFormGlobal.comboBoxOutput2.SelectedItem = "Default";
+                }
             }
             catch
             {
@@ -409,6 +422,19 @@ namespace Resources
             memoryStream.Flush();
             memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
             memoryStream.CopyTo(memoryStream2);
+
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked)
+            {
+                MemoryStream memoryStream3 = new MemoryStream();
+                memoryStream.Flush();
+                memoryStream.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                memoryStream.CopyTo(memoryStream3);
+
+                memoryStream3.Flush();
+                memoryStream3.Seek(0, SeekOrigin.Begin);// go to begining before copying
+                audioFiles.writeAudioToOutputMp3(memoryStream3);
+            }
 
 
             memoryStream.Flush();

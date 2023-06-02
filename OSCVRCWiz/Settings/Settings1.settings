@@ -512,5 +512,17 @@
     <Setting Name="transCharsUsed" Type="System.String" Scope="User">
       <Value Profile="(Default)">Translation Characters Used: 0/0</Value>
     </Setting>
+    <Setting Name="hoursUsed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Speech Hours Used: 0/0</Value>
+    </Setting>
+    <Setting Name="minAudioDuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="maxAudioDuration" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="SilenceThreshold" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
