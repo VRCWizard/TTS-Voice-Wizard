@@ -44,6 +44,7 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.panel4 = new System.Windows.Forms.Panel();
             this.iconButton33 = new FontAwesome.Sharp.IconButton();
             this.iconButton34 = new FontAwesome.Sharp.IconButton();
@@ -56,7 +57,6 @@
             this.iconButton26 = new FontAwesome.Sharp.IconButton();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.iconButton49 = new FontAwesome.Sharp.IconButton();
@@ -604,10 +604,10 @@
             this.button45 = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.panelCustomize.SuspendLayout();
@@ -994,6 +994,20 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dashboard";
             // 
+            // webView21
+            // 
+            this.webView21.AllowExternalDrop = false;
+            this.webView21.CreationProperties = null;
+            this.webView21.DefaultBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView21.Location = new System.Drawing.Point(3, 98);
+            this.webView21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.webView21.Name = "webView21";
+            this.webView21.Size = new System.Drawing.Size(763, 417);
+            this.webView21.Source = new System.Uri("https://voicewizardpro.carrd.co/", System.UriKind.Absolute);
+            this.webView21.TabIndex = 0;
+            this.webView21.ZoomFactor = 0.95D;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.iconButton33);
@@ -1205,20 +1219,6 @@
             this.button9.Text = "🔄";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // webView21
-            // 
-            this.webView21.AllowExternalDrop = false;
-            this.webView21.CreationProperties = null;
-            this.webView21.DefaultBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.webView21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webView21.Location = new System.Drawing.Point(3, 98);
-            this.webView21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(763, 417);
-            this.webView21.Source = new System.Uri("https://voicewizardpro.carrd.co/", System.UriKind.Absolute);
-            this.webView21.TabIndex = 0;
-            this.webView21.ZoomFactor = 0.95D;
             // 
             // tabPage1
             // 
@@ -8322,7 +8322,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(565, 28);
+            this.iconButton55.Location = new System.Drawing.Point(480, 28);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -9000,10 +9000,10 @@
             this.Resize += new System.EventHandler(this.VoiceWizardWindow_Resize);
             this.mainTabControl.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();

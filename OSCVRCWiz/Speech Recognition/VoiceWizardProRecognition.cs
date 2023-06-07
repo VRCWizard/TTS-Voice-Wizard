@@ -137,7 +137,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
 
-                VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text = $"Speech Hours Used: {Math.Round(decimal.Parse(hoursUsed), 7)}/{hoursLimit}";
+                VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text = $"Speech Hours Used: {Math.Round(decimal.Parse(hoursUsed), 4)}/{hoursLimit}";
                
               
                 Settings1.Default.hoursUsed = VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text.ToString();
