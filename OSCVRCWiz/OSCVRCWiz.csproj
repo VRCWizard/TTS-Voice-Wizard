@@ -48,7 +48,7 @@
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />
     <PackageReference Include="System.Speech" Version="7.0.0-preview.2.22152.2" />
     <PackageReference Include="Vosk" Version="0.3.38" />
-    <PackageReference Include="WhisperNet" Version="1.7.0" />
+    <PackageReference Include="WhisperNet" Version="1.11.0" />
   </ItemGroup>
 
   <ItemGroup>
