@@ -365,55 +365,128 @@ namespace Resources
 
 
 
+            /*   var AnyOutput = new WaveOut();
+               AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
+               AnyOutput.Init(wav);
+               AnyOutput.Play();
+               ct.Register(async () => AnyOutput.Stop());
+
+               var AnyOutput2 = new WaveOut();
+
+
+               if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
+               {
+                   //  AnyOutput2 = new WaveOut();
+                   AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
+                   AnyOutput2.Init(wav2);
+                   AnyOutput2.Play();
+
+                   ct.Register(async () => AnyOutput2.Stop());
+                   while (AnyOutput2.PlaybackState == PlaybackState.Playing)
+                   {
+                       Thread.Sleep(2000);
+                   }
+               }
+               while (AnyOutput.PlaybackState == PlaybackState.Playing)
+               {
+                   Thread.Sleep(2000);
+               }
+               if (AnyOutput.PlaybackState == PlaybackState.Stopped)
+               {
+
+                   AnyOutput.Stop();
+                   AnyOutput.Dispose();
+
+                   // AnyOutput = null;
+                   //  if (AnyOutput2 != null)
+                   //  {
+                   AnyOutput2.Stop();
+                   AnyOutput2.Dispose();
+                   //    AnyOutput2 = null;
+                   //   }
+                   memoryStream.Dispose();
+                   memoryStream = null;
+                   //  memoryStream2.Dispose();
+                   wav.Dispose();
+                   wav2.Dispose();
+                   wav = null;
+                   wav2 = null;
+
+
+                   ct = new();
+                   Debug.WriteLine("azure dispose successful");
+                   TTSMessageQueue.PlayNextInQueue();*/
+
+
+            var volume = 10;
+
+            var volumeFloat = 1f;
+            var rateFloat = 1f;
+
+
+            volume = TTSMessageQueued.Volume;
+            volumeFloat = volume * 0.1f;
+
+            var wave32 = new WaveChannel32(wav, volumeFloat, 0f);  //1f volume is normal, keep pan at 0 for audio through both ears
+           
+         
             var AnyOutput = new WaveOut();
             AnyOutput.DeviceNumber = AudioDevices.getCurrentOutputDevice();
-            AnyOutput.Init(wav);
+            AnyOutput.Init(wave32);
             AnyOutput.Play();
             ct.Register(async () => AnyOutput.Stop());
-            var AnyOutput2 = new WaveOut();
+
+            WaveOut AnyOutput2 = new WaveOut();
+            
+            WaveChannel32 wave32_2 = null;
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked == true)//output 2
             {
-                //  AnyOutput2 = new WaveOut();
+                wave32_2 = new WaveChannel32(wav2, volumeFloat, 0f); //output 2
+                wave32_2.PadWithZeroes = false;
+               
+                                                         // AnyOutput2 = new WaveOut();
                 AnyOutput2.DeviceNumber = AudioDevices.getCurrentOutputDevice2();
-                AnyOutput2.Init(wav2);
+                AnyOutput2.Init(wave32_2);
                 AnyOutput2.Play();
-
                 ct.Register(async () => AnyOutput2.Stop());
-                while (AnyOutput2.PlaybackState == PlaybackState.Playing)
-                {
-                    Thread.Sleep(2000);
-                }
             }
-            while (AnyOutput.PlaybackState == PlaybackState.Playing)
-            {
-                Thread.Sleep(2000);
-            }
-            if (AnyOutput.PlaybackState == PlaybackState.Stopped)
-            {
 
-                AnyOutput.Stop();
-                AnyOutput.Dispose();
+            ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
+            float delayTime = rateFloat;
 
-                // AnyOutput = null;
-                //  if (AnyOutput2 != null)
-                //  {
-                AnyOutput2.Stop();
-                AnyOutput2.Dispose();
-                //    AnyOutput2 = null;
-                //   }
-                memoryStream.Dispose();
-                memoryStream = null;
-                //  memoryStream2.Dispose();
-                wav.Dispose();
+            int delayInt = (int)Math.Ceiling((int)wave32.TotalTime.TotalMilliseconds / delayTime);
+            Thread.Sleep(delayInt);
+            //  Thread.Sleep((int)wave32.TotalTime.TotalMilliseconds * 2);// VERY IMPORTANT HIS IS x2 since THE AUDIO CAN ONLY GO AS SLOW AS .5 TIMES SPEED IF IT GOES SLOWER THIS WILL NEED TO BE CHANGED
+            Thread.Sleep(100);
+
+            //   WaveFileWriter.CreateWaveFile(@"TextOut\file.wav", speedControl.ToWaveProvider());
+
+            AnyOutput.Stop();
+            AnyOutput.Dispose();
+
+            wave32.Dispose();
+            wave32 = null;
+            wav.Dispose();
+            wav = null;
+            memoryStream.Dispose();
+ 
+            memoryStream = null;
+
+            AnyOutput2.Stop();
+            AnyOutput2.Dispose();
+            //  AnyOutput2 = null;
+            if (wave32_2 != null)
+            {
+                wave32_2.Dispose();
+                wave32_2 = null;
                 wav2.Dispose();
-                wav = null;
                 wav2 = null;
-
-
-                ct = new();
-                Debug.WriteLine("azure dispose successful");
+            }
+            if (!ct.IsCancellationRequested)
+            {
                 TTSMessageQueue.PlayNextInQueue();
             }
+        
         }
 
         public static void playSSMLMP3Stream(MemoryStream memoryStream, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct)

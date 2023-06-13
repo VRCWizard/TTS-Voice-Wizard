@@ -128,6 +128,9 @@
             this.label45 = new System.Windows.Forms.Label();
             this.tabSpotify = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button52 = new System.Windows.Forms.Button();
+            this.comboBoxMediaPreset = new System.Windows.Forms.ComboBox();
+            this.button36 = new System.Windows.Forms.Button();
             this.label149 = new System.Windows.Forms.Label();
             this.button44 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -428,6 +431,8 @@
             this.VRCOSC = new System.Windows.Forms.TabPage();
             this.iconButton47 = new FontAwesome.Sharp.IconButton();
             this.groupBox37 = new System.Windows.Forms.GroupBox();
+            this.counterOutputInterval = new System.Windows.Forms.TextBox();
+            this.label183 = new System.Windows.Forms.Label();
             this.buttonResetCounter6 = new System.Windows.Forms.Button();
             this.buttonResetCounter5 = new System.Windows.Forms.Button();
             this.buttonResetCounter4 = new System.Windows.Forms.Button();
@@ -2427,6 +2432,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button52);
+            this.groupBox5.Controls.Add(this.comboBoxMediaPreset);
+            this.groupBox5.Controls.Add(this.button36);
             this.groupBox5.Controls.Add(this.label149);
             this.groupBox5.Controls.Add(this.button44);
             this.groupBox5.Controls.Add(this.button14);
@@ -2456,12 +2464,57 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "General Media Settings";
             // 
+            // button52
+            // 
+            this.button52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button52.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button52.ForeColor = System.Drawing.Color.Snow;
+            this.button52.Location = new System.Drawing.Point(225, 86);
+            this.button52.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(70, 25);
+            this.button52.TabIndex = 145;
+            this.button52.Text = "Save";
+            this.button52.UseVisualStyleBackColor = false;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
+            // 
+            // comboBoxMediaPreset
+            // 
+            this.comboBoxMediaPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMediaPreset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxMediaPreset.FormattingEnabled = true;
+            this.comboBoxMediaPreset.Items.AddRange(new object[] {
+            "Preset 1",
+            "Preset 2",
+            "Preset 3"});
+            this.comboBoxMediaPreset.Location = new System.Drawing.Point(17, 86);
+            this.comboBoxMediaPreset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxMediaPreset.Name = "comboBoxMediaPreset";
+            this.comboBoxMediaPreset.Size = new System.Drawing.Size(126, 23);
+            this.comboBoxMediaPreset.TabIndex = 144;
+            // 
+            // button36
+            // 
+            this.button36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button36.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button36.ForeColor = System.Drawing.Color.Snow;
+            this.button36.Location = new System.Drawing.Point(149, 86);
+            this.button36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(70, 25);
+            this.button36.TabIndex = 143;
+            this.button36.Text = "Load";
+            this.button36.UseVisualStyleBackColor = false;
+            this.button36.Click += new System.EventHandler(this.button36_Click_1);
+            // 
             // label149
             // 
             this.label149.AutoSize = true;
             this.label149.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label149.ForeColor = System.Drawing.Color.Snow;
-            this.label149.Location = new System.Drawing.Point(172, 204);
+            this.label149.Location = new System.Drawing.Point(173, 283);
             this.label149.Name = "label149";
             this.label149.Size = new System.Drawing.Size(196, 15);
             this.label149.TabIndex = 142;
@@ -2472,7 +2525,7 @@
             this.button44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button44.ForeColor = System.Drawing.Color.Snow;
-            this.button44.Location = new System.Drawing.Point(22, 198);
+            this.button44.Location = new System.Drawing.Point(23, 277);
             this.button44.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button44.Name = "button44";
             this.button44.Size = new System.Drawing.Size(144, 25);
@@ -2747,7 +2800,7 @@
             this.label60.AutoSize = true;
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label60.ForeColor = System.Drawing.Color.Snow;
-            this.label60.Location = new System.Drawing.Point(65, 145);
+            this.label60.Location = new System.Drawing.Point(66, 224);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(146, 15);
             this.label60.TabIndex = 130;
@@ -2756,7 +2809,7 @@
             // rjToggleButtonPlayPaused
             // 
             this.rjToggleButtonPlayPaused.AutoSize = true;
-            this.rjToggleButtonPlayPaused.Location = new System.Drawing.Point(20, 143);
+            this.rjToggleButtonPlayPaused.Location = new System.Drawing.Point(21, 222);
             this.rjToggleButtonPlayPaused.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonPlayPaused.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonPlayPaused.Name = "rjToggleButtonPlayPaused";
@@ -2797,7 +2850,7 @@
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label57.ForeColor = System.Drawing.Color.Snow;
-            this.label57.Location = new System.Drawing.Point(65, 166);
+            this.label57.Location = new System.Drawing.Point(66, 245);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(101, 15);
             this.label57.TabIndex = 53;
@@ -2808,7 +2861,7 @@
             this.rjToggleButtonSpotifySpam.AutoSize = true;
             this.rjToggleButtonSpotifySpam.Checked = true;
             this.rjToggleButtonSpotifySpam.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonSpotifySpam.Location = new System.Drawing.Point(20, 164);
+            this.rjToggleButtonSpotifySpam.Location = new System.Drawing.Point(21, 243);
             this.rjToggleButtonSpotifySpam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonSpotifySpam.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonSpotifySpam.Name = "rjToggleButtonSpotifySpam";
@@ -2825,7 +2878,7 @@
             this.label56.AutoSize = true;
             this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label56.ForeColor = System.Drawing.Color.Snow;
-            this.label56.Location = new System.Drawing.Point(65, 120);
+            this.label56.Location = new System.Drawing.Point(66, 199);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(229, 15);
             this.label56.TabIndex = 51;
@@ -2834,7 +2887,7 @@
             // rjToggleButtonPeriodic
             // 
             this.rjToggleButtonPeriodic.AutoSize = true;
-            this.rjToggleButtonPeriodic.Location = new System.Drawing.Point(20, 122);
+            this.rjToggleButtonPeriodic.Location = new System.Drawing.Point(21, 201);
             this.rjToggleButtonPeriodic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonPeriodic.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonPeriodic.Name = "rjToggleButtonPeriodic";
@@ -2852,7 +2905,7 @@
             this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label55.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label55.ForeColor = System.Drawing.Color.Snow;
-            this.label55.Location = new System.Drawing.Point(18, 70);
+            this.label55.Location = new System.Drawing.Point(19, 149);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(114, 15);
             this.label55.TabIndex = 49;
@@ -2864,7 +2917,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.ForeColor = System.Drawing.Color.Snow;
-            this.button4.Location = new System.Drawing.Point(185, 86);
+            this.button4.Location = new System.Drawing.Point(186, 165);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 25);
@@ -2875,7 +2928,7 @@
             // 
             // textBoxSpotifyTime
             // 
-            this.textBoxSpotifyTime.Location = new System.Drawing.Point(22, 87);
+            this.textBoxSpotifyTime.Location = new System.Drawing.Point(23, 166);
             this.textBoxSpotifyTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSpotifyTime.Name = "textBoxSpotifyTime";
             this.textBoxSpotifyTime.Size = new System.Drawing.Size(158, 23);
@@ -6647,6 +6700,8 @@
             // 
             // groupBox37
             // 
+            this.groupBox37.Controls.Add(this.counterOutputInterval);
+            this.groupBox37.Controls.Add(this.label183);
             this.groupBox37.Controls.Add(this.buttonResetCounter6);
             this.groupBox37.Controls.Add(this.buttonResetCounter5);
             this.groupBox37.Controls.Add(this.buttonResetCounter4);
@@ -6693,6 +6748,26 @@
             this.groupBox37.TabIndex = 127;
             this.groupBox37.TabStop = false;
             this.groupBox37.Text = "Counters";
+            // 
+            // counterOutputInterval
+            // 
+            this.counterOutputInterval.Location = new System.Drawing.Point(619, 345);
+            this.counterOutputInterval.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.counterOutputInterval.Name = "counterOutputInterval";
+            this.counterOutputInterval.Size = new System.Drawing.Size(104, 23);
+            this.counterOutputInterval.TabIndex = 154;
+            this.counterOutputInterval.Text = "2000";
+            // 
+            // label183
+            // 
+            this.label183.AutoSize = true;
+            this.label183.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label183.ForeColor = System.Drawing.Color.Snow;
+            this.label183.Location = new System.Drawing.Point(619, 327);
+            this.label183.Name = "label183";
+            this.label183.Size = new System.Drawing.Size(114, 15);
+            this.label183.TabIndex = 155;
+            this.label183.Text = "Output Interval (ms)";
             // 
             // buttonResetCounter6
             // 
@@ -6816,10 +6891,10 @@
             this.buttonResetCounterAll.Enabled = false;
             this.buttonResetCounterAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonResetCounterAll.ForeColor = System.Drawing.Color.Snow;
-            this.buttonResetCounterAll.Location = new System.Drawing.Point(555, 348);
+            this.buttonResetCounterAll.Location = new System.Drawing.Point(606, 12);
             this.buttonResetCounterAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonResetCounterAll.Name = "buttonResetCounterAll";
-            this.buttonResetCounterAll.Size = new System.Drawing.Size(174, 22);
+            this.buttonResetCounterAll.Size = new System.Drawing.Size(133, 22);
             this.buttonResetCounterAll.TabIndex = 145;
             this.buttonResetCounterAll.Text = "Reset All Counters";
             this.buttonResetCounterAll.UseVisualStyleBackColor = false;
@@ -8322,7 +8397,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(480, 28);
+            this.iconButton55.Location = new System.Drawing.Point(412, 28);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -9715,5 +9790,10 @@
         public NAudio.Gui.Pot pot1;
         private Panel panel4;
         private Panel panel3;
+        public TextBox counterOutputInterval;
+        private Label label183;
+        private Button button36;
+        private Button button52;
+        public ComboBox comboBoxMediaPreset;
     }
 }

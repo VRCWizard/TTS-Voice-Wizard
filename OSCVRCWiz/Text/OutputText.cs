@@ -81,13 +81,13 @@ namespace OSCVRCWiz.Text
 
 
         }
-        public static async void outputTextFile(string textstring)
+        public static async void outputTextFile(string textstring,string filepath)
         {
             try
             {
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true)
                 {
-                    await File.WriteAllTextAsync(@"TextOut\OBSText.txt", textstring);
+                    await File.WriteAllTextAsync(filepath, textstring);
                    
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //hide
                     {

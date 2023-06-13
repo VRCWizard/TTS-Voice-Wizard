@@ -73,9 +73,7 @@ namespace OSCVRCWiz
 
 
 
-            //   Settings1.Default.pitchSetting = VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex;
-            //   Settings1.Default.volumeSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex;
-            //   Settings1.Default.rateSetting = VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex;
+ 
 
             Settings1.Default.pitchNew = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
             Settings1.Default.volumeNew = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
@@ -85,16 +83,14 @@ namespace OSCVRCWiz
 
 
             Settings1.Default.STTTSContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked;
-            // Settings1.Default.useBuiltInSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked;
-            // Settings1.Default.BuiltInVoiceSetting = VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex;
-            // Settings1.Default.BuiltInOutputSetting = VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem.ToString();
+
 
             Settings1.Default.SpotifyPeriodicallySetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked;
             Settings1.Default.SpotifySpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked;
             Settings1.Default.SpotifyTimerIntervalSetting = SpotifyAddon.spotifyInterval;
 
             Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked;
-            // Settings1.Default.cultureInfoSetting = VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text.ToString();
+   
 
             Settings1.Default.bannerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked;
 
@@ -120,12 +116,7 @@ namespace OSCVRCWiz
 
             Settings1.Default.activateOSCStart = VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked;
 
-            //  Settings1.Default.independentSpotifyText = VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked;
 
-
-            //Settings1.Default.WebcaptionerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked;
-            // Settings1.Default.saveUseAzure = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked;
-            // Settings1.Default.saveUseSystem = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked;
 
             Settings1.Default.chatBoxSpotifyOnly = VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked;
             Settings1.Default.chatBoxSpotifyOnly4VRC = VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked;
@@ -241,17 +232,7 @@ namespace OSCVRCWiz
 
             Settings1.Default.saveToggleReadTextFile = VoiceWizardWindow.MainFormGlobal.rjToggleButtonReadFromFile.Checked;
             Settings1.Default.saveTxtFilePath = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text;
-            ///
 
-            /*  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)
-              {
-                  Settings1.Default.Counter1 = OSC.counter1;
-                  Settings1.Default.Counter2 = OSC.counter2;
-                  Settings1.Default.Counter3 = OSC.counter3;
-                  Settings1.Default.Counter4 = OSC.counter4;
-                  Settings1.Default.Counter5 = OSC.counter5;
-                  Settings1.Default.Counter6 = OSC.counter6;
-              }*/
 
             Settings1.Default.OBSTextFile = VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked;
             Settings1.Default.OBS4Media = VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked;
@@ -271,7 +252,7 @@ namespace OSCVRCWiz
 
             Settings1.Default.voiceWizProAzure = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAzure.Checked;
             Settings1.Default.voiceWizProAmazon = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked;
-            //  Settings1.Default.voiceWizProMoonbase = VoiceWizardWindow.MainFormGlobal.rjToggleButtonProMoonbase.Checked;
+ 
             Settings1.Default.useVoiceWizardPro = VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked;
             Settings1.Default.voiceWizardProKey = VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString();
 
@@ -293,30 +274,9 @@ namespace OSCVRCWiz
             Settings1.Default.SilenceThreshold = VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text;
 
 
-            // Settings1.Default.aprilFools2023 = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked;
+            Settings1.Default.CounterOutputInterval = VoiceWizardWindow.MainFormGlobal.counterOutputInterval.Text;
 
 
-            /*
-            emojiSettings.Default.emoji1 = VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text.ToString();
-            emojiSettings.Default.emoji2 = VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text.ToString();
-            emojiSettings.Default.emoji3 = VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text.ToString();
-            emojiSettings.Default.emoji4 = VoiceWizardWindow.MainFormGlobal.EmojiBox4.Text.ToString();
-            emojiSettings.Default.emoji5 = VoiceWizardWindow.MainFormGlobal.EmojiBox5.Text.ToString();
-            emojiSettings.Default.emoji6 = VoiceWizardWindow.MainFormGlobal.EmojiBox6.Text.ToString();
-            emojiSettings.Default.emoji7 = VoiceWizardWindow.MainFormGlobal.EmojiBox7.Text.ToString();
-            emojiSettings.Default.emoji8 = VoiceWizardWindow.MainFormGlobal.EmojiBox8.Text.ToString();
-            emojiSettings.Default.emoji9 = VoiceWizardWindow.MainFormGlobal.EmojiBox9.Text.ToString();
-            emojiSettings.Default.emoji10 = VoiceWizardWindow.MainFormGlobal.EmojiBox10.Text.ToString();
-            emojiSettings.Default.emoji11 = VoiceWizardWindow.MainFormGlobal.EmojiBox11.Text.ToString();
-            emojiSettings.Default.emoji12 = VoiceWizardWindow.MainFormGlobal.EmojiBox12.Text.ToString();
-            emojiSettings.Default.emoji13 = VoiceWizardWindow.MainFormGlobal.EmojiBox13.Text.ToString();
-            emojiSettings.Default.emoji14 = VoiceWizardWindow.MainFormGlobal.EmojiBox14.Text.ToString();
-            emojiSettings.Default.emoji15 = VoiceWizardWindow.MainFormGlobal.EmojiBox15.Text.ToString();
-            emojiSettings.Default.emoji16 = VoiceWizardWindow.MainFormGlobal.EmojiBox16.Text.ToString();
-            emojiSettings.Default.emoji17 = VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text.ToString();
-            emojiSettings.Default.emoji18 = VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text.ToString();
-            emojiSettings.Default.emoji19 = VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text.ToString();
-            emojiSettings.Default.emoji20 = VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text.ToString(); */
 
 
 

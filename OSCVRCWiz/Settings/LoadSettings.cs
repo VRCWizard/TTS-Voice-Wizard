@@ -17,16 +17,7 @@ namespace OSCVRCWiz
     {
         public static void LoadingSettings()
         {
-            //  try
-            //   {
-            //      File.WriteAllText("logfile.txt", String.Empty);
-            //   }
-            //   catch (Exception ex) { }
 
-
-            //rjToggleButtonActivation.Checked = Settings1.Default.recognition; //activation phrase off
-            //textBoxActivationWord.Text = Settings1.Default.activationWord;
-            //VoiceWizardWindow.MainFormGlobal.activationWord = Settings1.Default.activationWord;
             VoiceWizardWindow.MainFormGlobal.textBox2.Text = Settings1.Default.yourKey;
             VoiceWizardWindow.MainFormGlobal.textBox3.Text = Settings1.Default.yourRegion;
             AzureRecognition.YourSubscriptionKey = Settings1.Default.yourKey;
@@ -63,28 +54,13 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = 0;
             }
 
-            // comboBox2.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
-            // comboBox1.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
-            // VoiceWizardWindow.TTSModeSaved=Settings1.Default.ttsMode;
+
             VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
 
 
             VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
             VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
-            try
-            {
-                //  VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedIndex = Settings1.Default.pitchSetting;
-                //  VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedIndex = Settings1.Default.volumeSetting;
-                //   VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedIndex = Settings1.Default.rateSetting;
-            }
-            catch (Exception ex)
-            {
-                OutputText.outputLog("[One of your TTS setttings was invalid (pitch, volume or speed). Setting to defaults.]", Color.Red);
-                //   VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = "default";
-                //   VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = "default";
-                //   VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = "default";
-
-            }
+ 
 
             VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = Settings1.Default.pitchNew;
             VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value = Settings1.Default.volumeNew;
@@ -97,16 +73,6 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked = Settings1.Default.STTTSContinuous;
 
 
-
-
-
-
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonLiteMode.Checked = Settings1.Default.useBuiltInSetting;
-            //VoiceWizardWindow.MainFormGlobal.comboLiteInput.SelectedIndex = 0;
-
-
-            // VoiceWizardWindow.MainFormGlobal.comboBoxLite.SelectedIndex = Settings1.Default.BuiltInVoiceSetting;
-            // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked = Settings1.Default.bannerSetting;
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked == true)
@@ -134,8 +100,7 @@ namespace OSCVRCWiz
 
             SpotifyAddon.spotifyInterval = Settings1.Default.SpotifyTimerIntervalSetting;
             VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text = SpotifyAddon.spotifyInterval;
-            //VoiceWizardWindow.MainFormGlobal.timer1.Interval = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text.ToString());
-            // VoiceWizardWindow.MainFormGlobal.timer1.Interval = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text.ToString());
+
             VoiceWizardWindow.spotifyTimer = new System.Threading.Timer(VoiceWizardWindow.MainFormGlobal.spotifytimertick);
             VoiceWizardWindow.spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
 
@@ -152,8 +117,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton6.Checked = Settings1.Default.minimizeToolBarSetting;
 
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonGreenScreen.Checked = Settings1.Default.GreenScreenSetting;
-            //   VoiceWizardWindow.MainFormGlobal.textBoxFont.Text = Settings1.Default.fontSizeSetting;
+
 
             VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text = Settings1.Default.SpotifyCustomSetting;
 
@@ -173,14 +137,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked = Settings1.Default.activateOSCStart;
 
-            //  VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked= Settings1.Default.independentSpotifyText;
 
-
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.
-
-            //  VoiceWizardWindow.MainFormGlobal.rjToggleButton7.Checked = Settings1.Default.WebcaptionerSetting; //already saves
-            //  VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapAzure.Checked = Settings1.Default.saveUseAzure;
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonWebCapSystem.Checked = Settings1.Default.saveUseSystem;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked = Settings1.Default.chatBoxSpotifyOnly;
 
@@ -324,6 +281,8 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked = Settings1.Default.SaveCounter;
 
 
+            VoiceWizardWindow.MainFormGlobal.comboBoxMediaPreset.SelectedIndex = 0;
+
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)
             {
@@ -392,29 +351,8 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.maximumAudio.Text = Settings1.Default.maxAudioDuration;
             VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text = Settings1.Default.SilenceThreshold;
 
-            // VoiceWizardWindow.MainFormGlobal.rjToggleButtonAprilFools.Checked = Settings1.Default.aprilFools2023;
+            VoiceWizardWindow.MainFormGlobal.counterOutputInterval.Text = Settings1.Default.CounterOutputInterval;
 
-            /*  VoiceWizardWindow.MainFormGlobal.EmojiBox1.Text = Settings.emojiSettings.Default.emoji1;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox2.Text = emojiSettings.Default.emoji2;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox3.Text = emojiSettings.Default.emoji3;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox4.Text = emojiSettings.Default.emoji4;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox5.Text = emojiSettings.Default.emoji5;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox6.Text = emojiSettings.Default.emoji6;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox7.Text = emojiSettings.Default.emoji7;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox8.Text = emojiSettings.Default.emoji8;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox9.Text = emojiSettings.Default.emoji9;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox10.Text = emojiSettings.Default.emoji10;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox11.Text = emojiSettings.Default.emoji11;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox12.Text = emojiSettings.Default.emoji12;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox13.Text = emojiSettings.Default.emoji13;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox14.Text = emojiSettings.Default.emoji14;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox15.Text = emojiSettings.Default.emoji15;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox16.Text = emojiSettings.Default.emoji16;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox17.Text = emojiSettings.Default.emoji17;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox18.Text = emojiSettings.Default.emoji18;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox19.Text = emojiSettings.Default.emoji19;
-              VoiceWizardWindow.MainFormGlobal.EmojiBox20.Text = emojiSettings.Default.emoji20;
-            */
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;

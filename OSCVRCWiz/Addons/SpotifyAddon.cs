@@ -232,7 +232,7 @@ namespace OSCVRCWiz.Addons
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
                             {
-                                OutputText.outputTextFile(theString);
+                                OutputText.outputTextFile(theString, @"TextOut\OBSText.txt");
                             }
                         }
 
@@ -433,7 +433,7 @@ namespace OSCVRCWiz.Addons
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
             {
-                OutputText.outputTextFile(text);
+                OutputText.outputTextFile(text, @"TextOut\OBSText.txt");
             }
 
         }

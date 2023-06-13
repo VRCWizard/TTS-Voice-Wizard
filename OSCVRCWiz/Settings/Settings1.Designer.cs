@@ -2110,5 +2110,53 @@ namespace OSCVRCWiz.Settings {
                 this["SilenceThreshold"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public string CounterOutputInterval {
+            get {
+                return ((string)(this["CounterOutputInterval"]));
+            }
+            set {
+                this["CounterOutputInterval"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string mediaPreset1 {
+            get {
+                return ((string)(this["mediaPreset1"]));
+            }
+            set {
+                this["mediaPreset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string mediaPreset2 {
+            get {
+                return ((string)(this["mediaPreset2"]));
+            }
+            set {
+                this["mediaPreset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string mediaPreset3 {
+            get {
+                return ((string)(this["mediaPreset3"]));
+            }
+            set {
+                this["mediaPreset3"] = value;
+            }
+        }
     }
 }

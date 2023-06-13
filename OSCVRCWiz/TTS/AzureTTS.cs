@@ -387,6 +387,7 @@ namespace OSCVRCWiz.TTS
                 ssml0 += "</voice>";
                 ssml0 += "</speak>";
 
+                Debug.WriteLine("DEBUG OUTPUT HERE");
                 Debug.WriteLine(ssml0);
 
                // var result = await synthesizerVoice.
