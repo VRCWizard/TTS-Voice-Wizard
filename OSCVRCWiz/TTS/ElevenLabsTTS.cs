@@ -129,9 +129,30 @@ namespace OSCVRCWiz.TTS
 
             System.Diagnostics.Debug.WriteLine("Eleven Response:"+ response.StatusCode);
 
+            if (!response.IsSuccessStatusCode)
+            {
+               
+             //  System.Diagnostics.Debug.WriteLine("Eleven Response:" + response.StatusCode);
+                string json = response.Content.ReadAsStringAsync().Result.ToString();
+
+                dynamic data = JsonConvert.DeserializeObject(json);
+                string status = data.detail.status;
+
+                if (status != "invalid_api_key")
+                {
+                    OutputText.outputLog("[ElevenLabs TTS Error: " + response.StatusCode + ": " + json + "]", Color.Red);
+                }
+                else
+                {
+                    OutputText.outputLog("[YOU COPIED YOUR ELEVEN LABS API KEY INCORRECTLY]", Color.Red);
+                }
+
+               
 
 
-           
+            }
+
+
             return await response.Content.ReadAsStreamAsync();
 
         }
