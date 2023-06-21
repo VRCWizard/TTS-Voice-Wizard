@@ -43,8 +43,8 @@ namespace OSCVRCWiz.TTS
 
                 var response = await PollySynthesizeSpeech(client, TTSMessageQueued);
 
-            MemoryStream memoryStream = new MemoryStream();
-            WriteSpeechToStream(response.AudioStream, memoryStream);
+               MemoryStream memoryStream = new MemoryStream();
+               WriteSpeechToStream(response.AudioStream, memoryStream);
 
 
 

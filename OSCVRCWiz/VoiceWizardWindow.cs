@@ -44,7 +44,7 @@ namespace OSCVRCWiz
 
     public partial class VoiceWizardWindow : Form
     {
-        public static string currentVersion = "1.3.6.1";
+        public static string currentVersion = "1.3.8.1";
         // string releaseDate = "May 7, 2023";
         //   string versionBuild = "x64"; //update when converting to x86/x64
         //string versionBuild = "x86"; //update when converting to x86/x64
@@ -718,7 +718,9 @@ namespace OSCVRCWiz
             {
                 if (rjToggleButtonOBSText.Checked == true)
                 {
-                    System.IO.File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
+                    // System.IO.File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
+                    OutputText.outputTextFile(String.Empty, @"TextOut\OBSText.txt");
+                    OutputText.outputTextFile(String.Empty, @"TextOut\OBSTextTranslated.txt");
                 }
             }
             catch (Exception ex)
@@ -1169,8 +1171,9 @@ namespace OSCVRCWiz
                     {
                         
                         writeText = WordReplacements.MainDoWordReplacement(writeText);
-                     
-                       
+                        originalText = WordReplacements.MainDoWordReplacement(originalText);
+
+
                     }
 
 
@@ -1187,7 +1190,8 @@ namespace OSCVRCWiz
 
                         if (rjToggleButtonOBSText.Checked == true)
                         {
-                            OutputText.outputTextFile(writeText);
+                            OutputText.outputTextFile(originalText, @"TextOut\OBSText.txt");
+                            OutputText.outputTextFile(newText, @"TextOut\OBSTextTranslated.txt");
                         }
 
                     }
@@ -1633,7 +1637,8 @@ namespace OSCVRCWiz
             }
             if (rjToggleButtonOBSText.Checked == true && rjToggleButtonHideDelay2.Checked)
             {
-                OutputText.outputTextFile("");
+                OutputText.outputTextFile("", @"TextOut\OBSText.txt");
+                OutputText.outputTextFile("", @"TextOut\OBSTextTranslated.txt");
             }
 
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
@@ -1804,166 +1809,169 @@ namespace OSCVRCWiz
         private void doVRCCounterTimerTick()
         {
             //  SpotifyAddon.pauseSpotify = true;
-
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector == true && OSCListener.pauseBPM != true)
-            {
-                var elapsedTime = DateTime.Now - OSC.afkStartTime;
-                string elapsedMinutesSeconds = $"{elapsedTime.Hours:00}:{elapsedTime.Minutes:00}:{elapsedTime.Seconds:00}";
-                var theString = "";
-                theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
-                theString = theString.Replace("{time}", elapsedMinutesSeconds);
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)//////////////delete when done testing
-                {
-                    Task.Run(() => OutputText.outputLog(theString));
-                }////////////////////////////////////////////////////
-                if (rjToggleButtonChatBox.Checked == true)
-                {
-                    Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
-                }
-                if (rjToggleButtonOSC.Checked == true)
-                {
-                    Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
-                }
-
-            }
-
-
-            if (rjToggleButton13.Checked == true && button33.Enabled == false)
+            try
             {
 
-
-                if (OSC.counter1 > OSC.prevCounter1)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked == true && OSC.AFKDetector == true && OSCListener.pauseBPM != true)
                 {
-                    OSC.prevCounter1 = OSC.counter1;
+                    var elapsedTime = DateTime.Now - OSC.afkStartTime;
+                    string elapsedMinutesSeconds = $"{elapsedTime.Hours:00}:{elapsedTime.Minutes:00}:{elapsedTime.Seconds:00}";
                     var theString = "";
-                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
-
-                    theString = theString.Replace("{counter}", OSC.counter1.ToString());
-
-                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
+                    theString = theString.Replace("{time}", elapsedMinutesSeconds);
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked == true)//////////////delete when done testing
+                    {
+                        Task.Run(() => OutputText.outputLog(theString));
+                    }////////////////////////////////////////////////////
+                    if (rjToggleButtonChatBox.Checked == true)
                     {
                         Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
                     }
-                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                    if (rjToggleButtonOSC.Checked == true)
                     {
                         Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
                     }
 
-
                 }
-                else if (OSC.counter2 > OSC.prevCounter2)
+
+
+                if (rjToggleButton13.Checked == true && button33.Enabled == false)
                 {
-                    OSC.prevCounter2 = OSC.counter2;
-                    var theString = "";
-                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text.ToString();
 
-                    theString = theString.Replace("{counter}", OSC.counter2.ToString());
 
-                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                    if (OSC.counter1 > OSC.prevCounter1)
                     {
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        OSC.prevCounter1 = OSC.counter1;
+                        var theString = "";
+                        theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
+
+                        theString = theString.Replace("{counter}", OSC.counter1.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
                     }
-                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                    else if (OSC.counter2 > OSC.prevCounter2)
                     {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        OSC.prevCounter2 = OSC.counter2;
+                        var theString = "";
+                        theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text.ToString();
+
+                        theString = theString.Replace("{counter}", OSC.counter2.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
                     }
+                    else if (OSC.counter3 > OSC.prevCounter3)
+                    {
+                        OSC.prevCounter3 = OSC.counter3;
+                        var theString = "";
+                        theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text.ToString();
+
+                        theString = theString.Replace("{counter}", OSC.counter3.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
+                    }
+                    else if (OSC.counter4 > OSC.prevCounter4)
+                    {
+                        OSC.prevCounter4 = OSC.counter4;
+                        var theString = "";
+                        theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text.ToString();
+
+                        theString = theString.Replace("{counter}", OSC.counter4.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
+                    }
+                    else if (OSC.counter5 > OSC.prevCounter5)
+                    {
+                        OSC.prevCounter5 = OSC.counter5;
+                        var theString = "";
+                        theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text.ToString();
+
+                        theString = theString.Replace("{counter}", OSC.counter5.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
+                    }
+                    else if (OSC.counter6 > OSC.prevCounter6)
+                    {
+                        OSC.prevCounter6 = OSC.counter6;
+
+                        var theString = "";
+                        theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
+
+                        theString = theString.Replace("{counter}", OSC.counter6.ToString());
+
+                        if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        }
+                        if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                        {
+                            Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        }
+
+
+                    }
+
+
 
 
                 }
-                else if (OSC.counter3 > OSC.prevCounter3)
+                if (rjToggleButtonCounterSaver.Checked == true)
                 {
-                    OSC.prevCounter3 = OSC.counter3;
-                    var theString = "";
-                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage3.Text.ToString();
-
-                    theString = theString.Replace("{counter}", OSC.counter3.ToString());
-
-                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
-                    }
-                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
-                    }
-
-
+                    Settings1.Default.Counter1 = OSC.counter1;
+                    Settings1.Default.Counter2 = OSC.counter2;
+                    Settings1.Default.Counter3 = OSC.counter3;
+                    Settings1.Default.Counter4 = OSC.counter4;
+                    Settings1.Default.Counter5 = OSC.counter5;
+                    Settings1.Default.Counter6 = OSC.counter6;
+                    Settings1.Default.Save();
                 }
-                else if (OSC.counter4 > OSC.prevCounter4)
-                {
-                    OSC.prevCounter4 = OSC.counter4;
-                    var theString = "";
-                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text.ToString();
-
-                    theString = theString.Replace("{counter}", OSC.counter4.ToString());
-
-                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
-                    }
-                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
-                    }
-
-
-                }
-                else if (OSC.counter5 > OSC.prevCounter5)
-                {
-                    OSC.prevCounter5 = OSC.counter5;
-                    var theString = "";
-                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text.ToString();
-
-                    theString = theString.Replace("{counter}", OSC.counter5.ToString());
-
-                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
-                    }
-                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
-                    }
-
-
-                }
-                else if (OSC.counter6 > OSC.prevCounter6)
-                {
-                    OSC.prevCounter6 = OSC.counter6;
-
-                    var theString = "";
-                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
-
-                    theString = theString.Replace("{counter}", OSC.counter6.ToString());
-
-                    if (rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
-                    }
-                    if (rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
-                    {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
-                    }
-
-
-                }
-
-
-
-
+                VRCCounterTimer.Change(Int32.Parse(counterOutputInterval.Text), 0);
             }
-            if (rjToggleButtonCounterSaver.Checked == true)
-            {
-                Settings1.Default.Counter1 = OSC.counter1;
-                Settings1.Default.Counter2 = OSC.counter2;
-                Settings1.Default.Counter3 = OSC.counter3;
-                Settings1.Default.Counter4 = OSC.counter4;
-                Settings1.Default.Counter5 = OSC.counter5;
-                Settings1.Default.Counter6 = OSC.counter6;
-                Settings1.Default.Save();
-            }
-            VRCCounterTimer.Change(1600, 0);
-
+            catch (Exception ex) { OutputText.outputLog($"[Error Occurred with VRC Counter: {ex.Message}]", Color.Red); }
 
 
         }
@@ -4664,6 +4672,47 @@ namespace OSCVRCWiz
         private void trackBarSilence_Scroll(object sender, EventArgs e)
         {
             textBoxSilence.Text= ((int)Math.Floor((trackBarSilence.Value / .5)) * 10).ToString();
+        }
+
+        private void button36_Click_1(object sender, EventArgs e)//load media preset
+        {
+            string mediaText = "";
+            switch (comboBoxMediaPreset.SelectedItem)
+            {
+             
+                case "Preset 1": mediaText = Settings1.Default.mediaPreset1; break;
+
+                case "Preset 2": mediaText = Settings1.Default.mediaPreset2;  break;
+
+                case "Preset 3": mediaText = Settings1.Default.mediaPreset3; break;
+
+                default: mediaText = ""; break;
+
+
+            }
+            VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text = mediaText;
+        }
+
+        private void button52_Click(object sender, EventArgs e)//save media preset
+        {
+            string mediaText = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text;
+            switch (comboBoxMediaPreset.SelectedItem)
+            {
+
+                case "Preset 1": Settings1.Default.mediaPreset1= mediaText; break;
+
+                case "Preset 2": Settings1.Default.mediaPreset2 = mediaText; break;
+
+                case "Preset 3": Settings1.Default.mediaPreset3 = mediaText; break;
+
+                default: mediaText = ""; break;
+
+
+
+            }
+            Settings1.Default.Save();
+          
+
         }
     }
 
