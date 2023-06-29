@@ -37,8 +37,9 @@ namespace OSCVRCWiz.Services.Speech
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
                 text = VoiceWizardWindow.MainFormGlobal.richTextBox3.Text.ToString();
+                TTSMessageQueue.QueueMessage(VoiceWizardWindow.MainFormGlobal.richTextBox3.Text.ToString(), "Text");
             });
-            TTSMessageQueue.QueueMessage(VoiceWizardWindow.MainFormGlobal.richTextBox3.Text.ToString(), "Text");
+            
 
 
 
@@ -369,8 +370,8 @@ namespace OSCVRCWiz.Services.Speech
 
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true)
                         {
-                            OutputText.outputTextFile(originalText, @"TextOut\OBSText.txt");
-                            OutputText.outputTextFile(newText, @"TextOut\OBSTextTranslated.txt");
+                            OutputText.outputTextFile(originalText, @"Output\TextOutput\OBSText.txt");
+                            OutputText.outputTextFile(newText, @"Output\TextOutput\OBSTextTranslated.txt");
                         }
 
                     }

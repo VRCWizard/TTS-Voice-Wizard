@@ -1,0 +1,1 @@
+Wave files will output here if the setting is enabled for "Saving TTS Messages to Wave File".
