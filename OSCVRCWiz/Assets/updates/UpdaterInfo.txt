@@ -1,0 +1,1 @@
+﻿Update files will be downloaded and extracted from here, feel free to clean out this folder after updating.

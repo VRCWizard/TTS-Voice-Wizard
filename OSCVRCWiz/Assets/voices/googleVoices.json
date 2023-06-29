@@ -1,0 +1,1241 @@
+[
+  {
+    "Name": "eu-ES-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "eu-ES"
+    ]
+  },
+  {
+    "Name": "gl-ES-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "gl-ES"
+    ]
+  },
+  {
+    "Name": "mr-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "mr-IN"
+    ]
+  },
+  {
+    "Name": "mr-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "mr-IN"
+    ]
+  },
+  {
+    "Name": "mr-IN-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "mr-IN"
+    ]
+  },
+  {
+    "Name": "pa-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pa-IN"
+    ]
+  },
+  {
+    "Name": "pa-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pa-IN"
+    ]
+  },
+  {
+    "Name": "pa-IN-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pa-IN"
+    ]
+  },
+  {
+    "Name": "pa-IN-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pa-IN"
+    ]
+  },
+  {
+    "Name": "sv-SE-Standard-B",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "sv-SE"
+    ]
+  },
+  {
+    "Name": "sv-SE-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "sv-SE"
+    ]
+  },
+  {
+    "Name": "sv-SE-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "sv-SE"
+    ]
+  },
+  {
+    "Name": "sv-SE-Standard-E",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "sv-SE"
+    ]
+  },
+  {
+    "Name": "sv-SE-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "sv-SE"
+    ]
+  },
+  {
+    "Name": "ta-IN-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ta-IN"
+    ]
+  },
+  {
+    "Name": "ta-IN-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ta-IN"
+    ]
+  },
+  {
+    "Name": "yue-HK-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "yue-HK"
+    ]
+  },
+  {
+    "Name": "yue-HK-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "yue-HK"
+    ]
+  },
+  {
+    "Name": "yue-HK-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "yue-HK"
+    ]
+  },
+  {
+    "Name": "yue-HK-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "yue-HK"
+    ]
+  },
+  {
+    "Name": "bn-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "bn-IN"
+    ]
+  },
+  {
+    "Name": "bn-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "bn-IN"
+    ]
+  },
+  {
+    "Name": "cmn-CN-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "cmn-CN"
+    ]
+  },
+  {
+    "Name": "cmn-CN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "cmn-CN"
+    ]
+  },
+  {
+    "Name": "cmn-CN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "cmn-CN"
+    ]
+  },
+  {
+    "Name": "cmn-CN-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "cmn-CN"
+    ]
+  },
+  {
+    "Name": "cmn-TW-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "cmn-TW"
+    ]
+  },
+  {
+    "Name": "cmn-TW-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "cmn-TW"
+    ]
+  },
+  {
+    "Name": "cmn-TW-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "cmn-TW"
+    ]
+  },
+  {
+    "Name": "es-US-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "es-US"
+    ]
+  },
+  {
+    "Name": "es-US-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "es-US"
+    ]
+  },
+  {
+    "Name": "es-US-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "es-US"
+    ]
+  },
+  {
+    "Name": "gu-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "gu-IN"
+    ]
+  },
+  {
+    "Name": "gu-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "gu-IN"
+    ]
+  },
+  {
+    "Name": "ja-JP-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ja-JP"
+    ]
+  },
+  {
+    "Name": "ja-JP-Standard-B",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ja-JP"
+    ]
+  },
+  {
+    "Name": "ja-JP-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ja-JP"
+    ]
+  },
+  {
+    "Name": "ja-JP-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ja-JP"
+    ]
+  },
+  {
+    "Name": "kn-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "kn-IN"
+    ]
+  },
+  {
+    "Name": "kn-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "kn-IN"
+    ]
+  },
+  {
+    "Name": "ml-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ml-IN"
+    ]
+  },
+  {
+    "Name": "ml-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ml-IN"
+    ]
+  },
+  {
+    "Name": "nl-BE-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nl-BE"
+    ]
+  },
+  {
+    "Name": "nl-BE-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "nl-BE"
+    ]
+  },
+  {
+    "Name": "ta-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ta-IN"
+    ]
+  },
+  {
+    "Name": "ta-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ta-IN"
+    ]
+  },
+  {
+    "Name": "af-ZA-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "af-ZA"
+    ]
+  },
+  {
+    "Name": "ar-XA-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ar-XA"
+    ]
+  },
+  {
+    "Name": "ar-XA-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ar-XA"
+    ]
+  },
+  {
+    "Name": "ar-XA-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ar-XA"
+    ]
+  },
+  {
+    "Name": "ar-XA-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ar-XA"
+    ]
+  },
+  {
+    "Name": "bg-BG-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "bg-BG"
+    ]
+  },
+  {
+    "Name": "cs-CZ-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "cs-CZ"
+    ]
+  },
+  {
+    "Name": "da-DK-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "da-DK"
+    ]
+  },
+  {
+    "Name": "da-DK-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "da-DK"
+    ]
+  },
+  {
+    "Name": "da-DK-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "da-DK"
+    ]
+  },
+  {
+    "Name": "da-DK-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "da-DK"
+    ]
+  },
+  {
+    "Name": "de-DE-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "de-DE"
+    ]
+  },
+  {
+    "Name": "de-DE-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "de-DE"
+    ]
+  },
+  {
+    "Name": "de-DE-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "de-DE"
+    ]
+  },
+  {
+    "Name": "de-DE-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "de-DE"
+    ]
+  },
+  {
+    "Name": "de-DE-Standard-E",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "de-DE"
+    ]
+  },
+  {
+    "Name": "de-DE-Standard-F",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "de-DE"
+    ]
+  },
+  {
+    "Name": "en-AU-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-AU"
+    ]
+  },
+  {
+    "Name": "en-AU-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-AU"
+    ]
+  },
+  {
+    "Name": "en-AU-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-AU"
+    ]
+  },
+  {
+    "Name": "en-AU-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-AU"
+    ]
+  },
+  {
+    "Name": "en-GB-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-GB"
+    ]
+  },
+  {
+    "Name": "en-GB-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-GB"
+    ]
+  },
+  {
+    "Name": "en-GB-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-GB"
+    ]
+  },
+  {
+    "Name": "en-GB-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-GB"
+    ]
+  },
+  {
+    "Name": "en-GB-Standard-F",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-GB"
+    ]
+  },
+  {
+    "Name": "en-IN-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-IN"
+    ]
+  },
+  {
+    "Name": "en-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-IN"
+    ]
+  },
+  {
+    "Name": "en-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-IN"
+    ]
+  },
+  {
+    "Name": "en-IN-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-IN"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-A",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-F",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-G",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-H",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-I",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "en-US-Standard-J",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "en-US"
+    ]
+  },
+  {
+    "Name": "es-ES-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "es-ES"
+    ]
+  },
+  {
+    "Name": "es-ES-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "es-ES"
+    ]
+  },
+  {
+    "Name": "es-ES-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "es-ES"
+    ]
+  },
+  {
+    "Name": "es-ES-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "es-ES"
+    ]
+  },
+  {
+    "Name": "fi-FI-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fi-FI"
+    ]
+  },
+  {
+    "Name": "fr-CA-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fr-CA"
+    ]
+  },
+  {
+    "Name": "fr-CA-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "fr-CA"
+    ]
+  },
+  {
+    "Name": "fr-CA-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fr-CA"
+    ]
+  },
+  {
+    "Name": "fr-CA-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "fr-CA"
+    ]
+  },
+  {
+    "Name": "fr-FR-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fr-FR"
+    ]
+  },
+  {
+    "Name": "fr-FR-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "fr-FR"
+    ]
+  },
+  {
+    "Name": "fr-FR-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fr-FR"
+    ]
+  },
+  {
+    "Name": "fr-FR-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "fr-FR"
+    ]
+  },
+  {
+    "Name": "fr-FR-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fr-FR"
+    ]
+  },
+  {
+    "Name": "he-IL-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "he-IL"
+    ]
+  },
+  {
+    "Name": "he-IL-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "he-IL"
+    ]
+  },
+  {
+    "Name": "he-IL-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "he-IL"
+    ]
+  },
+  {
+    "Name": "he-IL-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "he-IL"
+    ]
+  },
+  {
+    "Name": "hi-IN-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "hi-IN"
+    ]
+  },
+  {
+    "Name": "hi-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "hi-IN"
+    ]
+  },
+  {
+    "Name": "hi-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "hi-IN"
+    ]
+  },
+  {
+    "Name": "hi-IN-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "hi-IN"
+    ]
+  },
+  {
+    "Name": "hu-HU-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "hu-HU"
+    ]
+  },
+  {
+    "Name": "is-IS-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "is-IS"
+    ]
+  },
+  {
+    "Name": "lt-LT-Standard-A",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "lt-LT"
+    ]
+  },
+  {
+    "Name": "lv-LV-Standard-A",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "lv-LV"
+    ]
+  },
+  {
+    "Name": "ms-MY-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ms-MY"
+    ]
+  },
+  {
+    "Name": "ms-MY-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ms-MY"
+    ]
+  },
+  {
+    "Name": "ms-MY-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ms-MY"
+    ]
+  },
+  {
+    "Name": "ms-MY-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ms-MY"
+    ]
+  },
+  {
+    "Name": "nb-NO-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nb-NO"
+    ]
+  },
+  {
+    "Name": "nb-NO-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "nb-NO"
+    ]
+  },
+  {
+    "Name": "nb-NO-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nb-NO"
+    ]
+  },
+  {
+    "Name": "nb-NO-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nb-NO"
+    ]
+  },
+  {
+    "Name": "nb-NO-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "nb-NO"
+    ]
+  },
+  {
+    "Name": "nl-NL-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "nl-NL"
+    ]
+  },
+  {
+    "Name": "nl-NL-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "nl-NL"
+    ]
+  },
+  {
+    "Name": "nl-NL-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nl-NL"
+    ]
+  },
+  {
+    "Name": "nl-NL-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nl-NL"
+    ]
+  },
+  {
+    "Name": "nl-NL-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "nl-NL"
+    ]
+  },
+  {
+    "Name": "pt-BR-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pt-BR"
+    ]
+  },
+  {
+    "Name": "pt-BR-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pt-BR"
+    ]
+  },
+  {
+    "Name": "pt-BR-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pt-BR"
+    ]
+  },
+  {
+    "Name": "pt-PT-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pt-PT"
+    ]
+  },
+  {
+    "Name": "pt-PT-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pt-PT"
+    ]
+  },
+  {
+    "Name": "pt-PT-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pt-PT"
+    ]
+  },
+  {
+    "Name": "pt-PT-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pt-PT"
+    ]
+  },
+  {
+    "Name": "ro-RO-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ro-RO"
+    ]
+  },
+  {
+    "Name": "ru-RU-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ru-RU"
+    ]
+  },
+  {
+    "Name": "ru-RU-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ru-RU"
+    ]
+  },
+  {
+    "Name": "ru-RU-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ru-RU"
+    ]
+  },
+  {
+    "Name": "ru-RU-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ru-RU"
+    ]
+  },
+  {
+    "Name": "ru-RU-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ru-RU"
+    ]
+  },
+  {
+    "Name": "sk-SK-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "sk-SK"
+    ]
+  },
+  {
+    "Name": "sr-RS-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "sr-RS"
+    ]
+  },
+  {
+    "Name": "th-TH-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "th-TH"
+    ]
+  },
+  {
+    "Name": "uk-UA-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "uk-UA"
+    ]
+  },
+  {
+    "Name": "te-IN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "te-IN"
+    ]
+  },
+  {
+    "Name": "te-IN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "te-IN"
+    ]
+  },
+  {
+    "Name": "ca-ES-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ca-ES"
+    ]
+  },
+  {
+    "Name": "tr-TR-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "tr-TR"
+    ]
+  },
+  {
+    "Name": "tr-TR-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "tr-TR"
+    ]
+  },
+  {
+    "Name": "tr-TR-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "tr-TR"
+    ]
+  },
+  {
+    "Name": "tr-TR-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "tr-TR"
+    ]
+  },
+  {
+    "Name": "tr-TR-Standard-E",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "tr-TR"
+    ]
+  },
+  {
+    "Name": "el-GR-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "el-GR"
+    ]
+  },
+  {
+    "Name": "fil-PH-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fil-PH"
+    ]
+  },
+  {
+    "Name": "fil-PH-Standard-B",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "fil-PH"
+    ]
+  },
+  {
+    "Name": "fil-PH-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "fil-PH"
+    ]
+  },
+  {
+    "Name": "fil-PH-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "fil-PH"
+    ]
+  },
+  {
+    "Name": "vi-VN-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "vi-VN"
+    ]
+  },
+  {
+    "Name": "vi-VN-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "vi-VN"
+    ]
+  },
+  {
+    "Name": "vi-VN-Standard-C",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "vi-VN"
+    ]
+  },
+  {
+    "Name": "vi-VN-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "vi-VN"
+    ]
+  },
+  {
+    "Name": "pl-PL-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pl-PL"
+    ]
+  },
+  {
+    "Name": "pl-PL-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pl-PL"
+    ]
+  },
+  {
+    "Name": "pl-PL-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "pl-PL"
+    ]
+  },
+  {
+    "Name": "pl-PL-Standard-E",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pl-PL"
+    ]
+  },
+  {
+    "Name": "pl-PL-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "pl-PL"
+    ]
+  },
+  {
+    "Name": "it-IT-Standard-B",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "it-IT"
+    ]
+  },
+  {
+    "Name": "it-IT-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "it-IT"
+    ]
+  },
+  {
+    "Name": "it-IT-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "it-IT"
+    ]
+  },
+  {
+    "Name": "it-IT-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "it-IT"
+    ]
+  },
+  {
+    "Name": "ko-KR-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ko-KR"
+    ]
+  },
+  {
+    "Name": "ko-KR-Standard-B",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "ko-KR"
+    ]
+  },
+  {
+    "Name": "ko-KR-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ko-KR"
+    ]
+  },
+  {
+    "Name": "ko-KR-Standard-D",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "ko-KR"
+    ]
+  },
+  {
+    "Name": "id-ID-Standard-A",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "id-ID"
+    ]
+  },
+  {
+    "Name": "id-ID-Standard-B",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "id-ID"
+    ]
+  },
+  {
+    "Name": "id-ID-Standard-C",
+    "SsmlGender": "Male",
+    "LanguageCodes": [
+      "id-ID"
+    ]
+  },
+  {
+    "Name": "id-ID-Standard-D",
+    "SsmlGender": "Female",
+    "LanguageCodes": [
+      "id-ID"
+    ]
+  }
+]
