@@ -170,6 +170,7 @@ namespace OSCVRCWiz.Services.Integrations
         {
 
             Thread t = new Thread(doToastTimerTick);
+            t.IsBackground = true; // Set the thread as a background thread
             t.Start();
         }
 

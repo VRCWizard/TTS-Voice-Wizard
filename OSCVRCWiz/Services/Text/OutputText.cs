@@ -1081,12 +1081,14 @@ namespace OSCVRCWiz.Services.Text
         {
 
             Thread t = new Thread(doHideTimerTick);
+            t.IsBackground = true; // Set the thread as a background thread
             t.Start();
         }
         private static void typetimertick(object sender)
         {
 
             Thread t = new Thread(doTypeTimerTick);
+            t.IsBackground = true;
             t.Start();
         }
 
@@ -1094,6 +1096,7 @@ namespace OSCVRCWiz.Services.Text
         {
 
             Thread t = new Thread(doKatRefreshTimerTick);
+            t.IsBackground = true;
             t.Start();
         }
 

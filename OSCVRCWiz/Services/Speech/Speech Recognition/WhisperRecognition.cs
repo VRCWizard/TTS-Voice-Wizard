@@ -307,6 +307,7 @@ namespace OSCVRCWiz.Speech_Recognition
         {
 
             Thread t = new Thread(doWhisperTimerTick);
+            t.IsBackground = true; // Set the thread as a background thread
             t.Start();
         }
 

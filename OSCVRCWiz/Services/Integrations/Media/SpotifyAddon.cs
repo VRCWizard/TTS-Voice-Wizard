@@ -127,7 +127,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                             }
 
-                            string currentArtists = m_currentTrack.Artists[0].ToString();
+                            artist = m_currentTrack.Artists[0].Name.ToString();
 
                             progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
                             duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
@@ -359,6 +359,63 @@ namespace OSCVRCWiz.Services.Integrations.Media
             }
         }
 
+        public static async Task soundpadGetSongInfo()
+        {
+            var spotifyPausedIndicator = "▶️";
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked == true)  //10 media mode
+            {
+                if (pauseSpotify == false)
+                {
+                    if (WindowsMedia.mediaStatus == "Paused")
+                    {
+                        spotifyPausedIndicator = "⏸️";
+                    }
+                    else
+                    {
+                        spotifyPausedIndicator = "▶️";
+                    }
+
+                    var spotifySymbol = "ふ";
+                    var theString = "";
+                    theString = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString();
+
+                    theString = theString.Replace("{bpm}", OSCListener.globalBPM);
+                    theString = theString.Replace("{bpmStats}", OSCListener.HREleveated);
+                    theString = theString.Replace("{averageTrackerBattery}", OSCListener.globalAverageTrackerBattery.ToString());
+                    theString = theString.Replace("{TCharge}", OSCListener.trackerCharge);
+                    theString = theString.Replace("{leftControllerBattery}", OSCListener.globalLeftControllerBattery.ToString());
+                    theString = theString.Replace("{rightControllerBattery}", OSCListener.globalRightControllerBattery.ToString());
+                    theString = theString.Replace("{averageControllerBattery}", OSCListener.globalAverageControllerBattery.ToString());
+                    theString = theString.Replace("{HMDBattery}", OSCListener.globalHMDBattery.ToString());
+                    theString = theString.Replace("{RCharge}", OSCListener.controllerChargeR);
+                    theString = theString.Replace("{LCharge}", OSCListener.controllerChargeL);
+                    theString = theString.Replace("{AVGCharge}", OSCListener.controllerChargeAVG);
+                    theString = theString.Replace("{HMDCharge}", OSCListener.controllerChargeHMD);
+                    theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
+                    theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
+                    theString = theString.Replace("{source}", WindowsMedia.mediaSource);
+                    theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());
+                    theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
+                    theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
+                    theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+                    theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+                    theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
+                    theString = theString.Replace("{counter2}", VRChatListener.counter2.ToString());
+                    theString = theString.Replace("{counter3}", VRChatListener.counter3.ToString());
+                    theString = theString.Replace("{counter4}", VRChatListener.counter4.ToString());
+                    theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
+                    theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
+                    theString = theString.Replace("{pause}", spotifyPausedIndicator);
+
+
+                    MediaOutput(theString);
+                    
+
+
+                }
+            }
+        }
+
         private static void MediaOutput(string text)
         {
             var textTime = text;
@@ -500,18 +557,66 @@ namespace OSCVRCWiz.Services.Integrations.Media
             {
                 Task.Run(() => SpotifyAddon.spotifyGetCurrentSongInfo());
             }
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
-            {
 
-                Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
-            }
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked == true)
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked == true)
             {
-                if (WindowsMedia.mediaManager != null)
+                bool soundpad = false;
+                foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
                 {
-                    WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
-                    Debug.WriteLine("forced media");
+                    if (Item.ToString() == "Soundpad")
+                    {
+                        soundpad = true;
+                    }
+   
                 }
+
+                if (soundpad == true) 
+                {
+                    Task.Run(() => WindowsMedia.GetSoundPadMedia());
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
+                    {
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)
+                        {
+                            Task.Run(() => SpotifyAddon.soundpadGetSongInfo());
+                        }
+                        else
+                        {
+                            if (WindowsMedia.mediaTitle != "" && WindowsMedia.mediaStatus != "Paused")
+                            {
+                                Task.Run(() => SpotifyAddon.soundpadGetSongInfo());
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                        if (WindowsMedia.mediaTitle != "")
+                        {
+                            Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                        }
+                    }
+                   
+                }
+
+                else
+                {
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked == true)
+                    {
+                        if (WindowsMedia.mediaManager != null)
+                        {
+                            WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
+                            Debug.WriteLine("forced media");
+                        }
+                    }
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
+                    {
+
+                        Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                    }
+                }
+              
             }
 
             spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);

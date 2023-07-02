@@ -494,6 +494,11 @@ namespace OSCVRCWiz
         #region Home Screen Tab
 
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
+        }
+
         #region Socials
         private void iconButton13_Click(object sender, EventArgs e)
         {
@@ -1276,6 +1281,17 @@ namespace OSCVRCWiz
 
                 iconButton37.BackColor = DarkModeColor;
 
+                ShowAmazonKeyPassword.BackColor= DarkModeColor;
+                ShowDeepLPassword.BackColor= DarkModeColor;
+                ShowAmazonSecretPassword.BackColor= DarkModeColor;
+                ShowAzurePassword.BackColor= DarkModeColor;
+                ShowElevenLabsPassword.BackColor = DarkModeColor;
+                ShowSpotifyPassword.BackColor= DarkModeColor;
+                ProShowKey.BackColor= DarkModeColor;
+                UberDuckShowPassword.BackColor= DarkModeColor;  
+                UberDuckShowSecretPassword.BackColor= DarkModeColor;
+                   
+
 
                 labelCharCount.ForeColor = Color.White;
                 ttsTrash.IconColor = Color.White;
@@ -1286,6 +1302,16 @@ namespace OSCVRCWiz
                 iconButton37.IconColor = Color.White;
                 iconButton36.ForeColor = Color.White;
                 iconButton37.ForeColor = Color.White;
+
+                ShowAmazonKeyPassword.IconColor = Color.White;
+                ShowDeepLPassword.IconColor = Color.White;
+                ShowAmazonSecretPassword.IconColor = Color.White;
+                ShowAzurePassword.IconColor = Color.White;
+                ShowElevenLabsPassword.IconColor = Color.White;
+                ShowSpotifyPassword.IconColor = Color.White;
+                ProShowKey.IconColor = Color.White;
+                UberDuckShowPassword.IconColor = Color.White;
+                UberDuckShowSecretPassword.IconColor = Color.White;
 
             }
             if (rjToggleDarkMode.Checked == false)//light mode
@@ -1321,6 +1347,18 @@ namespace OSCVRCWiz
 
 
 
+                ShowAmazonKeyPassword.BackColor = Color.White;
+                ShowDeepLPassword.BackColor = Color.White;
+                ShowAmazonSecretPassword.BackColor = Color.White;
+                ShowAzurePassword.BackColor = Color.White;
+                ShowElevenLabsPassword.BackColor = Color.White;
+                ShowSpotifyPassword.BackColor = Color.White;
+                ProShowKey.BackColor = Color.White;
+                UberDuckShowPassword.BackColor = Color.White;
+                UberDuckShowSecretPassword.BackColor = Color.White;
+
+
+
                 labelCharCount.ForeColor = LightModeColor;
                 ttsTrash.IconColor = LightModeColor;
                 logTrash.IconColor = LightModeColor;
@@ -1333,6 +1371,17 @@ namespace OSCVRCWiz
 
                 richTextBox4.BackColor = LightModeColor;
                 richTextBox4.ForeColor = Color.White;
+
+
+                ShowAmazonKeyPassword.IconColor = LightModeColor;
+                ShowDeepLPassword.IconColor = LightModeColor;
+                ShowAmazonSecretPassword.IconColor = LightModeColor;
+                ShowAzurePassword.IconColor = LightModeColor;
+                ShowElevenLabsPassword.IconColor = LightModeColor;
+                ShowSpotifyPassword.IconColor = LightModeColor;
+                ProShowKey.IconColor = LightModeColor;
+                UberDuckShowPassword.IconColor = LightModeColor;
+                UberDuckShowSecretPassword.IconColor = LightModeColor;
 
 
 
@@ -1684,6 +1733,16 @@ namespace OSCVRCWiz
 
         #region Media Integration
 
+        private void button14_Click_1(object sender, EventArgs e)
+        {
+            WindowsMedia.addSoundPad();
+        }
+
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://youtu.be/6-zFSiRFu-A");
+        }
+
         private void ShowSpotifyPassword_Click(object sender, EventArgs e)
         {
             ShowHidePassword(textBoxSpotKey, ShowSpotifyPassword);
@@ -1753,33 +1812,93 @@ namespace OSCVRCWiz
         private void button36_Click_1(object sender, EventArgs e)//load media preset
         {
             string mediaText = "";
+            string updateInterval = "5000";
+            bool OutputContinuously = false;
+            bool StopPaused = false;
+            bool SpamLog = true;
             switch (comboBoxMediaPreset.SelectedItem)
             {
 
-                case "Preset 1": mediaText = Settings1.Default.mediaPreset1; break;
+                case "Preset 1":
+                    mediaText = Settings1.Default.mediaPreset1;
+                    updateInterval = Settings1.Default.updateIntervalPreset1;
+                    OutputContinuously = Settings1.Default.OutputContinPreset1;
+                    StopPaused = Settings1.Default.StopPausedPreset1;
+                    SpamLog = Settings1.Default.MediaSpamPreset1;
+                    break;
 
-                case "Preset 2": mediaText = Settings1.Default.mediaPreset2; break;
+                case "Preset 2":
+                    mediaText = Settings1.Default.mediaPreset2;
+                    updateInterval = Settings1.Default.updateIntervalPreset2;
+                    OutputContinuously = Settings1.Default.OutputContinPreset2;
+                    StopPaused = Settings1.Default.StopPausedPreset2;
+                    SpamLog = Settings1.Default.MediaSpamPreset2;
 
-                case "Preset 3": mediaText = Settings1.Default.mediaPreset3; break;
+                    break;
+
+                case "Preset 3":
+                    mediaText = Settings1.Default.mediaPreset3;
+                    updateInterval = Settings1.Default.updateIntervalPreset3;
+                    OutputContinuously = Settings1.Default.OutputContinPreset3;
+                    StopPaused = Settings1.Default.StopPausedPreset3;
+                    SpamLog = Settings1.Default.MediaSpamPreset3;
+
+                    break;
 
                 default: mediaText = ""; break;
 
 
             }
-            VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text = mediaText;
+            textBoxCustomSpot.Text = mediaText;
+
+            SpotifyAddon.spotifyInterval = updateInterval;
+            textBoxSpotifyTime.Text = SpotifyAddon.spotifyInterval;
+            SpotifyAddon.spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
+            rjToggleButtonPeriodic.Checked = OutputContinuously;
+            rjToggleButtonPlayPaused.Checked = StopPaused;
+            rjToggleButtonSpotifySpam.Checked = SpamLog;
+
+
+
         }
 
         private void button52_Click(object sender, EventArgs e)//save media preset
         {
             string mediaText = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text;
+            string updateInterval = SpotifyAddon.spotifyInterval;
+            bool OutputContinuously = rjToggleButtonPeriodic.Checked;
+            bool StopPaused = rjToggleButtonPlayPaused.Checked;
+            bool SpamLog = rjToggleButtonSpotifySpam.Checked;
             switch (comboBoxMediaPreset.SelectedItem)
             {
 
-                case "Preset 1": Settings1.Default.mediaPreset1 = mediaText; break;
+                case "Preset 1":
+                    Settings1.Default.mediaPreset1 = mediaText;
+                    Settings1.Default.updateIntervalPreset1 = updateInterval;
+                    Settings1.Default.OutputContinPreset1 = OutputContinuously;
+                    Settings1.Default.StopPausedPreset1 = StopPaused;
+                    Settings1.Default.MediaSpamPreset1 = SpamLog;
 
-                case "Preset 2": Settings1.Default.mediaPreset2 = mediaText; break;
 
-                case "Preset 3": Settings1.Default.mediaPreset3 = mediaText; break;
+                    break;
+
+                case "Preset 2":
+                    Settings1.Default.mediaPreset2 = mediaText;
+                    Settings1.Default.updateIntervalPreset2 = updateInterval;
+                    Settings1.Default.OutputContinPreset2 = OutputContinuously;
+                    Settings1.Default.StopPausedPreset2 = StopPaused;
+                    Settings1.Default.MediaSpamPreset2 = SpamLog;
+
+                    break;
+
+                case "Preset 3":
+                    Settings1.Default.mediaPreset3 = mediaText;
+                    Settings1.Default.updateIntervalPreset3 = updateInterval;
+                    Settings1.Default.OutputContinPreset3 = OutputContinuously;
+                    Settings1.Default.StopPausedPreset3 = StopPaused;
+                    Settings1.Default.MediaSpamPreset3 = SpamLog;
+
+                    break;
 
                 default: mediaText = ""; break;
 
@@ -2639,13 +2758,16 @@ namespace OSCVRCWiz
 
 
 
-        #endregion
+
+
+
+
 
         #endregion
 
-     
+        #endregion
 
-      
+       
     }
 
 

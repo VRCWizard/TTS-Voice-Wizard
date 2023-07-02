@@ -44,6 +44,7 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.panel4 = new System.Windows.Forms.Panel();
             this.iconButton33 = new FontAwesome.Sharp.IconButton();
@@ -125,7 +126,9 @@
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.tabSpotify = new System.Windows.Forms.TabPage();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label184 = new System.Windows.Forms.Label();
             this.button52 = new System.Windows.Forms.Button();
             this.comboBoxMediaPreset = new System.Windows.Forms.ComboBox();
             this.button36 = new System.Windows.Forms.Button();
@@ -170,6 +173,7 @@
             this.rjToggleButtonCurrentSong = new OSCVRCWiz.RJControls.RJToggleButton();
             this.buttonSpotify = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.labelMediaPaused = new System.Windows.Forms.Label();
             this.checkedListBoxApproved = new System.Windows.Forms.CheckedListBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -617,6 +621,7 @@
             this.button45 = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -1000,6 +1005,7 @@
             this.tabPage4.Controls.Add(this.webView21);
             this.tabPage4.Controls.Add(this.panel4);
             this.tabPage4.Controls.Add(this.panel3);
+            this.tabPage4.Controls.Add(this.pictureBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
@@ -1007,6 +1013,17 @@
             this.tabPage4.Size = new System.Drawing.Size(769, 587);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dashboard";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(181, 280);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(428, 71);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 161;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // webView21
             // 
@@ -2385,6 +2402,7 @@
             // 
             this.tabSpotify.AutoScroll = true;
             this.tabSpotify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabSpotify.Controls.Add(this.iconButton1);
             this.tabSpotify.Controls.Add(this.groupBox5);
             this.tabSpotify.Controls.Add(this.groupBox3);
             this.tabSpotify.Controls.Add(this.groupBox2);
@@ -2397,8 +2415,33 @@
             this.tabSpotify.TabIndex = 6;
             this.tabSpotify.Text = "Spotify";
             // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton1.FlatAppearance.BorderSize = 3;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.iconButton1.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Play;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 25;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(549, 3);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(162, 37);
+            this.iconButton1.TabIndex = 141;
+            this.iconButton1.Text = "Watch Tutorial";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click_1);
+            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label184);
             this.groupBox5.Controls.Add(this.button52);
             this.groupBox5.Controls.Add(this.comboBoxMediaPreset);
             this.groupBox5.Controls.Add(this.button36);
@@ -2431,13 +2474,25 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "General Media Settings";
             // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.label184.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label184.ForeColor = System.Drawing.Color.Snow;
+            this.label184.Location = new System.Drawing.Point(23, 210);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(44, 15);
+            this.label184.TabIndex = 146;
+            this.label184.Text = "Presets";
+            // 
             // button52
             // 
             this.button52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button52.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button52.ForeColor = System.Drawing.Color.Snow;
-            this.button52.Location = new System.Drawing.Point(225, 86);
+            this.button52.Location = new System.Drawing.Point(231, 227);
             this.button52.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button52.Name = "button52";
             this.button52.Size = new System.Drawing.Size(70, 25);
@@ -2455,7 +2510,7 @@
             "Preset 1",
             "Preset 2",
             "Preset 3"});
-            this.comboBoxMediaPreset.Location = new System.Drawing.Point(17, 86);
+            this.comboBoxMediaPreset.Location = new System.Drawing.Point(23, 227);
             this.comboBoxMediaPreset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxMediaPreset.Name = "comboBoxMediaPreset";
             this.comboBoxMediaPreset.Size = new System.Drawing.Size(126, 23);
@@ -2467,7 +2522,7 @@
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button36.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button36.ForeColor = System.Drawing.Color.Snow;
-            this.button36.Location = new System.Drawing.Point(149, 86);
+            this.button36.Location = new System.Drawing.Point(155, 227);
             this.button36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(70, 25);
@@ -2767,7 +2822,7 @@
             this.label60.AutoSize = true;
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label60.ForeColor = System.Drawing.Color.Snow;
-            this.label60.Location = new System.Drawing.Point(66, 224);
+            this.label60.Location = new System.Drawing.Point(66, 164);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(146, 15);
             this.label60.TabIndex = 130;
@@ -2776,7 +2831,7 @@
             // rjToggleButtonPlayPaused
             // 
             this.rjToggleButtonPlayPaused.AutoSize = true;
-            this.rjToggleButtonPlayPaused.Location = new System.Drawing.Point(21, 222);
+            this.rjToggleButtonPlayPaused.Location = new System.Drawing.Point(21, 162);
             this.rjToggleButtonPlayPaused.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonPlayPaused.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonPlayPaused.Name = "rjToggleButtonPlayPaused";
@@ -2817,7 +2872,7 @@
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label57.ForeColor = System.Drawing.Color.Snow;
-            this.label57.Location = new System.Drawing.Point(66, 245);
+            this.label57.Location = new System.Drawing.Point(66, 185);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(101, 15);
             this.label57.TabIndex = 53;
@@ -2828,7 +2883,7 @@
             this.rjToggleButtonSpotifySpam.AutoSize = true;
             this.rjToggleButtonSpotifySpam.Checked = true;
             this.rjToggleButtonSpotifySpam.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonSpotifySpam.Location = new System.Drawing.Point(21, 243);
+            this.rjToggleButtonSpotifySpam.Location = new System.Drawing.Point(21, 183);
             this.rjToggleButtonSpotifySpam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonSpotifySpam.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonSpotifySpam.Name = "rjToggleButtonSpotifySpam";
@@ -2845,7 +2900,7 @@
             this.label56.AutoSize = true;
             this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label56.ForeColor = System.Drawing.Color.Snow;
-            this.label56.Location = new System.Drawing.Point(66, 199);
+            this.label56.Location = new System.Drawing.Point(66, 139);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(229, 15);
             this.label56.TabIndex = 51;
@@ -2854,7 +2909,7 @@
             // rjToggleButtonPeriodic
             // 
             this.rjToggleButtonPeriodic.AutoSize = true;
-            this.rjToggleButtonPeriodic.Location = new System.Drawing.Point(21, 201);
+            this.rjToggleButtonPeriodic.Location = new System.Drawing.Point(21, 141);
             this.rjToggleButtonPeriodic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonPeriodic.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonPeriodic.Name = "rjToggleButtonPeriodic";
@@ -2872,7 +2927,7 @@
             this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label55.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label55.ForeColor = System.Drawing.Color.Snow;
-            this.label55.Location = new System.Drawing.Point(19, 149);
+            this.label55.Location = new System.Drawing.Point(19, 89);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(114, 15);
             this.label55.TabIndex = 49;
@@ -2884,7 +2939,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.ForeColor = System.Drawing.Color.Snow;
-            this.button4.Location = new System.Drawing.Point(186, 165);
+            this.button4.Location = new System.Drawing.Point(186, 105);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 25);
@@ -2895,7 +2950,7 @@
             // 
             // textBoxSpotifyTime
             // 
-            this.textBoxSpotifyTime.Location = new System.Drawing.Point(23, 166);
+            this.textBoxSpotifyTime.Location = new System.Drawing.Point(23, 106);
             this.textBoxSpotifyTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSpotifyTime.Name = "textBoxSpotifyTime";
             this.textBoxSpotifyTime.Size = new System.Drawing.Size(158, 23);
@@ -2933,10 +2988,10 @@
             this.ShowSpotifyPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ShowSpotifyPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ShowSpotifyPassword.IconSize = 15;
-            this.ShowSpotifyPassword.Location = new System.Drawing.Point(251, 104);
+            this.ShowSpotifyPassword.Location = new System.Drawing.Point(246, 106);
             this.ShowSpotifyPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowSpotifyPassword.Name = "ShowSpotifyPassword";
-            this.ShowSpotifyPassword.Size = new System.Drawing.Size(31, 20);
+            this.ShowSpotifyPassword.Size = new System.Drawing.Size(31, 18);
             this.ShowSpotifyPassword.TabIndex = 123;
             this.ShowSpotifyPassword.UseVisualStyleBackColor = false;
             this.ShowSpotifyPassword.Click += new System.EventHandler(this.ShowSpotifyPassword_Click);
@@ -3035,6 +3090,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button14);
             this.groupBox2.Controls.Add(this.labelMediaPaused);
             this.groupBox2.Controls.Add(this.checkedListBoxApproved);
             this.groupBox2.Controls.Add(this.label18);
@@ -3050,6 +3106,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Windows Media";
             // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.ForeColor = System.Drawing.Color.Snow;
+            this.button14.Location = new System.Drawing.Point(16, 155);
+            this.button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(79, 28);
+            this.button14.TabIndex = 124;
+            this.button14.Text = "Soundpad";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click_1);
+            // 
             // labelMediaPaused
             // 
             this.labelMediaPaused.AutoSize = true;
@@ -3064,7 +3134,7 @@
             // checkedListBoxApproved
             // 
             this.checkedListBoxApproved.FormattingEnabled = true;
-            this.checkedListBoxApproved.Location = new System.Drawing.Point(16, 64);
+            this.checkedListBoxApproved.Location = new System.Drawing.Point(16, 60);
             this.checkedListBoxApproved.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkedListBoxApproved.Name = "checkedListBoxApproved";
             this.checkedListBoxApproved.Size = new System.Drawing.Size(295, 94);
@@ -3076,7 +3146,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label18.ForeColor = System.Drawing.Color.Snow;
-            this.label18.Location = new System.Drawing.Point(16, 46);
+            this.label18.Location = new System.Drawing.Point(16, 42);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(155, 15);
             this.label18.TabIndex = 126;
@@ -5221,9 +5291,9 @@
             this.label66.ForeColor = System.Drawing.Color.Snow;
             this.label66.Location = new System.Drawing.Point(53, 80);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(175, 15);
+            this.label66.Size = new System.Drawing.Size(194, 15);
             this.label66.TabIndex = 88;
-            this.label66.Text = "Close Supporter Banner on Start";
+            this.label66.Text = "Close Home Screen Banner on Start";
             // 
             // rjToggleButtonLog
             // 
@@ -5541,10 +5611,10 @@
             this.ShowAzurePassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ShowAzurePassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ShowAzurePassword.IconSize = 15;
-            this.ShowAzurePassword.Location = new System.Drawing.Point(293, 34);
+            this.ShowAzurePassword.Location = new System.Drawing.Point(288, 36);
             this.ShowAzurePassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowAzurePassword.Name = "ShowAzurePassword";
-            this.ShowAzurePassword.Size = new System.Drawing.Size(31, 20);
+            this.ShowAzurePassword.Size = new System.Drawing.Size(31, 18);
             this.ShowAzurePassword.TabIndex = 122;
             this.ShowAzurePassword.UseVisualStyleBackColor = false;
             this.ShowAzurePassword.Click += new System.EventHandler(this.ShowAzurePassword_Click);
@@ -6071,10 +6141,10 @@
             this.ShowDeepLPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ShowDeepLPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ShowDeepLPassword.IconSize = 15;
-            this.ShowDeepLPassword.Location = new System.Drawing.Point(293, 34);
+            this.ShowDeepLPassword.Location = new System.Drawing.Point(288, 36);
             this.ShowDeepLPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowDeepLPassword.Name = "ShowDeepLPassword";
-            this.ShowDeepLPassword.Size = new System.Drawing.Size(31, 20);
+            this.ShowDeepLPassword.Size = new System.Drawing.Size(31, 18);
             this.ShowDeepLPassword.TabIndex = 122;
             this.ShowDeepLPassword.UseVisualStyleBackColor = false;
             this.ShowDeepLPassword.Click += new System.EventHandler(this.ShowDeepLPassword_Click);
@@ -6599,10 +6669,10 @@
             this.ShowAmazonSecretPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ShowAmazonSecretPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ShowAmazonSecretPassword.IconSize = 15;
-            this.ShowAmazonSecretPassword.Location = new System.Drawing.Point(292, 88);
+            this.ShowAmazonSecretPassword.Location = new System.Drawing.Point(288, 90);
             this.ShowAmazonSecretPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowAmazonSecretPassword.Name = "ShowAmazonSecretPassword";
-            this.ShowAmazonSecretPassword.Size = new System.Drawing.Size(31, 20);
+            this.ShowAmazonSecretPassword.Size = new System.Drawing.Size(31, 18);
             this.ShowAmazonSecretPassword.TabIndex = 123;
             this.ShowAmazonSecretPassword.UseVisualStyleBackColor = false;
             this.ShowAmazonSecretPassword.Click += new System.EventHandler(this.ShowAmazonSecretPassword_Click);
@@ -6618,10 +6688,10 @@
             this.ShowAmazonKeyPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ShowAmazonKeyPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ShowAmazonKeyPassword.IconSize = 15;
-            this.ShowAmazonKeyPassword.Location = new System.Drawing.Point(293, 34);
+            this.ShowAmazonKeyPassword.Location = new System.Drawing.Point(288, 36);
             this.ShowAmazonKeyPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowAmazonKeyPassword.Name = "ShowAmazonKeyPassword";
-            this.ShowAmazonKeyPassword.Size = new System.Drawing.Size(31, 20);
+            this.ShowAmazonKeyPassword.Size = new System.Drawing.Size(31, 18);
             this.ShowAmazonKeyPassword.TabIndex = 122;
             this.ShowAmazonKeyPassword.UseVisualStyleBackColor = false;
             this.ShowAmazonKeyPassword.Click += new System.EventHandler(this.ShowAmazonKeyPassword_Click);
@@ -8234,10 +8304,10 @@
             this.ShowElevenLabsPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ShowElevenLabsPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ShowElevenLabsPassword.IconSize = 15;
-            this.ShowElevenLabsPassword.Location = new System.Drawing.Point(443, 34);
+            this.ShowElevenLabsPassword.Location = new System.Drawing.Point(438, 36);
             this.ShowElevenLabsPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowElevenLabsPassword.Name = "ShowElevenLabsPassword";
-            this.ShowElevenLabsPassword.Size = new System.Drawing.Size(31, 20);
+            this.ShowElevenLabsPassword.Size = new System.Drawing.Size(31, 18);
             this.ShowElevenLabsPassword.TabIndex = 165;
             this.ShowElevenLabsPassword.UseVisualStyleBackColor = false;
             this.ShowElevenLabsPassword.Click += new System.EventHandler(this.ShowElevenLabsPassword_Click);
@@ -8515,7 +8585,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(546, 20);
+            this.iconButton55.Location = new System.Drawing.Point(650, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -8583,10 +8653,10 @@
             this.ProShowKey.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.ProShowKey.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ProShowKey.IconSize = 15;
-            this.ProShowKey.Location = new System.Drawing.Point(425, 72);
+            this.ProShowKey.Location = new System.Drawing.Point(420, 74);
             this.ProShowKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ProShowKey.Name = "ProShowKey";
-            this.ProShowKey.Size = new System.Drawing.Size(31, 20);
+            this.ProShowKey.Size = new System.Drawing.Size(31, 18);
             this.ProShowKey.TabIndex = 121;
             this.ProShowKey.UseVisualStyleBackColor = false;
             this.ProShowKey.Click += new System.EventHandler(this.ProShowKey_Click);
@@ -8789,10 +8859,10 @@
             this.UberDuckShowSecretPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.UberDuckShowSecretPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.UberDuckShowSecretPassword.IconSize = 15;
-            this.UberDuckShowSecretPassword.Location = new System.Drawing.Point(293, 88);
+            this.UberDuckShowSecretPassword.Location = new System.Drawing.Point(288, 90);
             this.UberDuckShowSecretPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UberDuckShowSecretPassword.Name = "UberDuckShowSecretPassword";
-            this.UberDuckShowSecretPassword.Size = new System.Drawing.Size(31, 20);
+            this.UberDuckShowSecretPassword.Size = new System.Drawing.Size(31, 18);
             this.UberDuckShowSecretPassword.TabIndex = 123;
             this.UberDuckShowSecretPassword.UseVisualStyleBackColor = false;
             this.UberDuckShowSecretPassword.Click += new System.EventHandler(this.UberDuckShowSecretPassword_Click);
@@ -8808,10 +8878,10 @@
             this.UberDuckShowPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.UberDuckShowPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.UberDuckShowPassword.IconSize = 15;
-            this.UberDuckShowPassword.Location = new System.Drawing.Point(293, 34);
+            this.UberDuckShowPassword.Location = new System.Drawing.Point(288, 36);
             this.UberDuckShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UberDuckShowPassword.Name = "UberDuckShowPassword";
-            this.UberDuckShowPassword.Size = new System.Drawing.Size(31, 20);
+            this.UberDuckShowPassword.Size = new System.Drawing.Size(31, 18);
             this.UberDuckShowPassword.TabIndex = 122;
             this.UberDuckShowPassword.UseVisualStyleBackColor = false;
             this.UberDuckShowPassword.Click += new System.EventHandler(this.UberDuckShowPassword_Click);
@@ -9253,6 +9323,7 @@
             this.Resize += new System.EventHandler(this.VoiceWizardWindow_Resize);
             this.mainTabControl.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -9981,5 +10052,9 @@
         private FontAwesome.Sharp.IconButton UberDuckShowSecretPassword;
         private FontAwesome.Sharp.IconButton UberDuckShowPassword;
         private FontAwesome.Sharp.IconButton ShowSpotifyPassword;
+        private Label label184;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        public Button button14;
+        private PictureBox pictureBox4;
     }
 }

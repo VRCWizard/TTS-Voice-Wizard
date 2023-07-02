@@ -29,7 +29,7 @@ namespace OSCVRCWiz.Resources.StartUp
             OSC.InitializeOSC();
             VRChatListener.initiateTimer();
             WhisperRecognition.initiateTimer();
-            HomeScreenBanner.initiateTimer();
+           // HomeScreenBanner.initiateTimer();
             ToastNotification.initiateTimer();
             OutputText.initiateTextTimers();
 
@@ -49,6 +49,7 @@ namespace OSCVRCWiz.Resources.StartUp
             ToastNotification.ToastListen();
             MinimizeSystemTray.StartInSystemTray();
             OutputText.EmptyTextOutput();
+            WindowsMedia.addSoundPad();
 
 
             OutputText.outputLog("[QuickStart Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide ]");

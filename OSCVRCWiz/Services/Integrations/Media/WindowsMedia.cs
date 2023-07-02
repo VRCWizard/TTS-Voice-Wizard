@@ -10,6 +10,8 @@ using CoreOSC;
 using OSCVRCWiz.Resources;
 using System.Diagnostics;
 using OSCVRCWiz.Services.Text;
+using System.Windows.Forms;
+using EmbedIO.Sessions;
 
 namespace OSCVRCWiz.Services.Integrations.Media
 {
@@ -307,8 +309,6 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     if (args.Title != previousTitle)
                     {
-
-                        var sp = new SpotifyAddon();
                         Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                     }
                 }
@@ -321,6 +321,73 @@ namespace OSCVRCWiz.Services.Integrations.Media
             }
 
         }
+
+        public static void GetSoundPadMedia()
+        {
+        
+        
+                Process soundPadProcess = Process.GetProcessesByName("Soundpad").FirstOrDefault();
+
+            if (soundPadProcess != null)
+            {
+                if (soundPadProcess.MainWindowTitle != "Soundpad")
+                {
+                    if (soundPadProcess.MainWindowTitle.StartsWith(" II  Soundpad - "))
+                    {
+
+                        string soundName = soundPadProcess.MainWindowTitle.Replace(" II  Soundpad - ", "");
+                        mediaTitle = soundName;
+                        mediaSource = "Soundpad";
+                        mediaArtist = "";
+                        mediaStatus = "Paused";
+                    }
+
+
+                    else 
+                    {
+
+                        string soundName = soundPadProcess.MainWindowTitle.Replace("Soundpad - ", "");
+                        mediaTitle = soundName;
+                        mediaSource = "Soundpad";
+                        mediaArtist = "";
+                        mediaStatus = "Playing";
+                    }
+                  //  Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                    // Do something with the soundName
+                }
+                else
+                {
+                    mediaTitle = "";
+                    mediaSource = "Soundpad";
+                    mediaArtist = "";
+                  //  Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                }
+            }
+           
+        }
+        public static void addSoundPad()
+        {
+            Process soundPadProcess = Process.GetProcessesByName("Soundpad").FirstOrDefault();
+
+            if (soundPadProcess != null)
+            {
+                bool inThere = false;
+                for (int i = 0; i < VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Count; i++)
+                {
+
+                    if (VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items[i].ToString() == "Soundpad")
+                    {
+                        inThere = true;
+                    }
+                }
+                if (inThere == false)
+                {
+
+                    VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.Items.Add("Soundpad");
+                }
+            }
+        }
+      
 
     }
 
