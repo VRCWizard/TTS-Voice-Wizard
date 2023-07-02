@@ -44,7 +44,6 @@
             this.buttonDelayHere = new System.Windows.Forms.Button();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.panel4 = new System.Windows.Forms.Panel();
             this.iconButton33 = new FontAwesome.Sharp.IconButton();
@@ -58,6 +57,7 @@
             this.iconButton26 = new FontAwesome.Sharp.IconButton();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.iconButton49 = new FontAwesome.Sharp.IconButton();
@@ -173,7 +173,6 @@
             this.rjToggleButtonCurrentSong = new OSCVRCWiz.RJControls.RJToggleButton();
             this.buttonSpotify = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
             this.labelMediaPaused = new System.Windows.Forms.Label();
             this.checkedListBoxApproved = new System.Windows.Forms.CheckedListBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -621,11 +620,11 @@
             this.button45 = new System.Windows.Forms.Button();
             this.mainTabControl.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.panelCustomize.SuspendLayout();
@@ -1014,17 +1013,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dashboard";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(181, 280);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(428, 71);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 161;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
             // webView21
             // 
             this.webView21.AllowExternalDrop = false;
@@ -1250,6 +1238,17 @@
             this.button9.Text = "🔄";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(181, 280);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(428, 71);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 161;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // tabPage1
             // 
@@ -3090,7 +3089,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button14);
             this.groupBox2.Controls.Add(this.labelMediaPaused);
             this.groupBox2.Controls.Add(this.checkedListBoxApproved);
             this.groupBox2.Controls.Add(this.label18);
@@ -3105,20 +3103,6 @@
             this.groupBox2.TabIndex = 137;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Windows Media";
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.ForeColor = System.Drawing.Color.Snow;
-            this.button14.Location = new System.Drawing.Point(16, 155);
-            this.button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(79, 28);
-            this.button14.TabIndex = 124;
-            this.button14.Text = "Soundpad";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click_1);
             // 
             // labelMediaPaused
             // 
@@ -8585,7 +8569,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(650, 5);
+            this.iconButton55.Location = new System.Drawing.Point(633, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -9323,11 +9307,11 @@
             this.Resize += new System.EventHandler(this.VoiceWizardWindow_Resize);
             this.mainTabControl.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -10054,7 +10038,6 @@
         private FontAwesome.Sharp.IconButton ShowSpotifyPassword;
         private Label label184;
         private FontAwesome.Sharp.IconButton iconButton1;
-        public Button button14;
         private PictureBox pictureBox4;
     }
 }
