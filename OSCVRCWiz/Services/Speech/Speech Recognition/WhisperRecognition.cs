@@ -324,7 +324,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
         public static void downloadWhisperModel()
         {
-            string address = "https://huggingface.co/datasets/ggerganov/whisper.cpp/resolve/main/";
+            string address = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/";
             string path = "Assets/models/";
 
 
