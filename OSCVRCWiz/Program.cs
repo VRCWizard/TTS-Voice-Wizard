@@ -1,5 +1,3 @@
-using OSCVRCWiz.Text;
-
 namespace OSCVRCWiz
 {
     internal static class Program

@@ -1,13 +1,8 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using Addons;
-using EmbedIO.Sessions;
-using OSCVRCWiz.Addons;
-using OSCVRCWiz.Resources;
+﻿using OSCVRCWiz.Resources.StartUp;
+using OSCVRCWiz.Resources.StartUp.StartUp;
+using OSCVRCWiz.Services.Integrations;
+using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Settings;
-using OSCVRCWiz.TranslationAPIs;
 using Settings;
 
 namespace OSCVRCWiz
@@ -64,12 +59,12 @@ namespace OSCVRCWiz
             Settings1.Default.HRIntervalSetting = OSCListener.HRInternalValue.ToString();
             Settings1.Default.HRPortSetting = OSCListener.OSCReceiveport.ToString();
             Settings1.Default.BPMSpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton2.Checked;
-            Settings1.Default.voiceBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedIndex;
-            Settings1.Default.styleBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedIndex;
+            Settings1.Default.voiceBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex;
+            Settings1.Default.styleBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedIndex;
 
-            Settings1.Default.voiceLanguage = VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex;//voice language (make this save)
-            Settings1.Default.langToBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex;
-            Settings1.Default.langSpokenSetting = VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex;
+            Settings1.Default.voiceLanguage = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex;//voice language (make this save)
+            Settings1.Default.langToBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedIndex;
+            Settings1.Default.langSpokenSetting = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedIndex;
 
 
 
@@ -108,7 +103,7 @@ namespace OSCVRCWiz
             Settings1.Default.VRCSoundNotifySetting = VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked;
 
             Settings1.Default.SystemTraySetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSystemTray.Checked;
-            Settings1.Default.playMediaSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia.Checked;
+            Settings1.Default.playMediaSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSounds.Checked;
 
             Settings1.Default.VRCUseDelay = VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBoxUseDelay.Checked;
 
@@ -126,7 +121,7 @@ namespace OSCVRCWiz
 
             Settings1.Default.heartrateOutput = VoiceWizardWindow.MainFormGlobal.rjToggleButton1.Checked;
 
-            Settings1.Default.enableMedia = VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked;
+            Settings1.Default.enableMedia = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked;
 
             Settings1.Default.ttsMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString();
 
@@ -181,14 +176,14 @@ namespace OSCVRCWiz
 
             Settings1.Default.saveAutoRefreshKat = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked;
 
-            Settings1.Default.modHotKey = VoiceWizardWindow.modifierKeySTTTS;
-            Settings1.Default.normalHotKey = VoiceWizardWindow.normalKeySTTTS;
+            Settings1.Default.modHotKey = Hotkeys.modifierKeySTTTS;
+            Settings1.Default.normalHotKey = Hotkeys.normalKeySTTTS;
 
-            Settings1.Default.modHotkeyStop = VoiceWizardWindow.modifierKeyStopTTS;
-            Settings1.Default.normalHotkeyStop = VoiceWizardWindow.normalKeyStopTTS;
+            Settings1.Default.modHotkeyStop = Hotkeys.modifierKeyStopTTS;
+            Settings1.Default.normalHotkeyStop = Hotkeys.normalKeyStopTTS;
 
-            Settings1.Default.modHotkeyQuick = VoiceWizardWindow.modifierKeyQuickType;
-            Settings1.Default.normalHotkeyQuick = VoiceWizardWindow.normalKeyQuickType;
+            Settings1.Default.modHotkeyQuick = Hotkeys.modifierKeyQuickType;
+            Settings1.Default.normalHotkeyQuick = Hotkeys.normalKeyQuickType;
 
 
 
@@ -222,7 +217,7 @@ namespace OSCVRCWiz
             Settings1.Default.dropStartSilence = VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text;
             Settings1.Default.pauseDuration = VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text;
 
-            Settings1.Default.fontSize = VoiceWizardWindow.fontSize;
+            Settings1.Default.fontSize = StartUps.fontSize;
 
             Settings1.Default.delayAfterNoTTS = VoiceWizardWindow.MainFormGlobal.textBoxDelayAfterNoTTS.Text;
             Settings1.Default.delayBeforeNewTTS = VoiceWizardWindow.MainFormGlobal.textBoxQueueDelayBeforeNext.Text;

@@ -1,14 +1,31 @@
-﻿using OSCVRCWiz.Text;
-using OSCVRCWiz;
+﻿using OSCVRCWiz;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using static OSCVRCWiz.VoiceWizardWindow;
+using OSCVRCWiz.Services.Text;
 
 namespace Settings
 {
     public class VoicePresets
     {
+
+        public struct voicePreset //use then when setting up presets
+        {
+            public string PresetName;
+            public string TTSMode;
+            public string Voice;
+            public string Accent;
+            public string SpokenLang;
+            public string TranslateLang;
+            public string Style;
+            public string Pitch;
+            public string Volume;
+            public string Speed;
+            public int PitchNew;
+            public int VolumeNew;
+            public int SpeedNew;
+        }
 
         public static int presetnum = 0;
         private static Dictionary<string, voicePreset> presetDict = new Dictionary<string, voicePreset>();
@@ -33,11 +50,11 @@ namespace Settings
                 }
                 saveThisPreset.PresetName = nameToCheck;
                 saveThisPreset.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString();
-                saveThisPreset.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem.ToString();
-                saveThisPreset.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedItem.ToString();
-                saveThisPreset.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem.ToString();
-                saveThisPreset.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
-                saveThisPreset.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem.ToString();
+                saveThisPreset.Voice = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedItem.ToString();
+                saveThisPreset.Accent = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem.ToString();
+                saveThisPreset.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
+                saveThisPreset.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedItem.ToString();
+                saveThisPreset.Style = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedItem.ToString();
                 saveThisPreset.Pitch = "";
                 saveThisPreset.Volume = "";
                 saveThisPreset.Speed = "";
@@ -66,11 +83,11 @@ namespace Settings
                 }
                 saveThisPreset.PresetName = nameToCheck;
                 saveThisPreset.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString();
-                saveThisPreset.Voice = VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem.ToString();
-                saveThisPreset.Accent = VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedItem.ToString();
-                saveThisPreset.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem.ToString();
-                saveThisPreset.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
-                saveThisPreset.Style = VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem.ToString();
+                saveThisPreset.Voice = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedItem.ToString();
+                saveThisPreset.Accent = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem.ToString();
+                saveThisPreset.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
+                saveThisPreset.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedItem.ToString();
+                saveThisPreset.Style = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedItem.ToString();
                 saveThisPreset.Pitch = "";
                 saveThisPreset.Volume = "";
                 saveThisPreset.Speed = "";
@@ -126,14 +143,14 @@ namespace Settings
                     if (VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem.ToString() == kvp.Key)
                     {
                         VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = kvp.Value.TTSMode;
-                        VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedItem = kvp.Value.Accent;
+                        VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem = kvp.Value.Accent;
                         Thread.Sleep(10);
-                        VoiceWizardWindow.MainFormGlobal.comboBox2.SelectedItem = kvp.Value.Voice;
+                        VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedItem = kvp.Value.Voice;
                          Thread.Sleep(10);
                         
-                        VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedItem = kvp.Value.SpokenLang;
-                        VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem = kvp.Value.TranslateLang;
-                        VoiceWizardWindow.MainFormGlobal.comboBox1.SelectedItem = kvp.Value.Style;
+                        VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem = kvp.Value.SpokenLang;
+                        VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedItem = kvp.Value.TranslateLang;
+                        VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedItem = kvp.Value.Style;
                         // VoiceWizardWindow.MainFormGlobal.comboBoxPitch.SelectedItem = kvp.Value.Pitch;
                         //  VoiceWizardWindow.MainFormGlobal.comboBoxVolume.SelectedItem = kvp.Value.Volume;
                         //  VoiceWizardWindow.MainFormGlobal.comboBoxRate.SelectedItem = kvp.Value.Speed;

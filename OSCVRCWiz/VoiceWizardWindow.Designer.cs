@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStyleSelect = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxVoiceSelect = new System.Windows.Forms.ComboBox();
             this.hideVRCTextButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,13 +57,12 @@
             this.iconButton26 = new FontAwesome.Sharp.IconButton();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.iconButton49 = new FontAwesome.Sharp.IconButton();
             this.StopButton = new FontAwesome.Sharp.IconButton();
             this.TTSButton = new FontAwesome.Sharp.IconButton();
-            this.iconButton48 = new FontAwesome.Sharp.IconButton();
-            this.iconButton15 = new FontAwesome.Sharp.IconButton();
             this.label81 = new System.Windows.Forms.Label();
             this.labelQueueSize = new System.Windows.Forms.Label();
             this.buttonQueueClear = new System.Windows.Forms.Button();
@@ -86,12 +85,12 @@
             this.label50 = new System.Windows.Forms.Label();
             this.labelPitchNum = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTranslationLanguage = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBoxSpokenLanguage = new System.Windows.Forms.ComboBox();
             this.comboBoxTTSMode = new System.Windows.Forms.ComboBox();
             this.label109 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBoxAccentSelect = new System.Windows.Forms.ComboBox();
             this.trackBarVolume = new System.Windows.Forms.TrackBar();
             this.trackBarPitch = new System.Windows.Forms.TrackBar();
             this.trackBarSpeed = new System.Windows.Forms.TrackBar();
@@ -127,13 +126,15 @@
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.tabSpotify = new System.Windows.Forms.TabPage();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label184 = new System.Windows.Forms.Label();
             this.button52 = new System.Windows.Forms.Button();
             this.comboBoxMediaPreset = new System.Windows.Forms.ComboBox();
             this.button36 = new System.Windows.Forms.Button();
             this.label149 = new System.Windows.Forms.Label();
             this.button44 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.volumeStats = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label155 = new System.Windows.Forms.Label();
             this.rjToggleButtonForceMedia = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -147,10 +148,10 @@
             this.rjToggleButtonSpotifyKatDisable = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label132 = new System.Windows.Forms.Label();
             this.rjToggleButtonNoTTSKAT = new OSCVRCWiz.RJControls.RJToggleButton();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
+            this.heartRateStats = new System.Windows.Forms.Button();
+            this.batteryStats = new System.Windows.Forms.Button();
+            this.durationStats = new System.Windows.Forms.Button();
+            this.songStats = new System.Windows.Forms.Button();
             this.label60 = new System.Windows.Forms.Label();
             this.rjToggleButtonPlayPaused = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label103 = new System.Windows.Forms.Label();
@@ -163,6 +164,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textBoxSpotifyTime = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ShowSpotifyPassword = new FontAwesome.Sharp.IconButton();
             this.label68 = new System.Windows.Forms.Label();
             this.rjToggleSpotLegacy = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label67 = new System.Windows.Forms.Label();
@@ -171,10 +173,11 @@
             this.rjToggleButtonCurrentSong = new OSCVRCWiz.RJControls.RJToggleButton();
             this.buttonSpotify = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelMediaPaused = new System.Windows.Forms.Label();
             this.checkedListBoxApproved = new System.Windows.Forms.CheckedListBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label137 = new System.Windows.Forms.Label();
-            this.rjToggleButton10 = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonWindowsMedia = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label49 = new System.Windows.Forms.Label();
             this.iconButton31 = new FontAwesome.Sharp.IconButton();
             this.tabHeartBeat = new System.Windows.Forms.TabPage();
@@ -230,8 +233,10 @@
             this.rjToggleButtonChatBox = new OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonShowKeyboard = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.label175 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.OBSLink = new FontAwesome.Sharp.IconButton();
+            this.rjToggleButtonSaveToWav = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label102 = new System.Windows.Forms.Label();
             this.rjToggleButtonOBSText = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
@@ -258,13 +263,13 @@
             this.rjToggleButtonOSC = new OSCVRCWiz.RJControls.RJToggleButton();
             this.comboBoxPara = new System.Windows.Forms.ComboBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.iconButton16 = new FontAwesome.Sharp.IconButton();
-            this.button43 = new System.Windows.Forms.Button();
+            this.VirtualCableHelp = new FontAwesome.Sharp.IconButton();
+            this.RefreshAudioDevicesButton = new System.Windows.Forms.Button();
             this.label135 = new System.Windows.Forms.Label();
             this.rjToggleButtonUse2ndOutput = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label125 = new System.Windows.Forms.Label();
             this.comboBoxOutput2 = new System.Windows.Forms.ComboBox();
-            this.iconButton41 = new FontAwesome.Sharp.IconButton();
+            this.SpeechToTextHelp = new FontAwesome.Sharp.IconButton();
             this.label17 = new System.Windows.Forms.Label();
             this.comboBoxSTT = new System.Windows.Forms.ComboBox();
             this.label145 = new System.Windows.Forms.Label();
@@ -272,10 +277,8 @@
             this.comboBoxOutput = new System.Windows.Forms.ComboBox();
             this.comboBoxInput = new System.Windows.Forms.ComboBox();
             this.label105 = new System.Windows.Forms.Label();
-            this.rjToggleButtonMedia = new OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonSounds = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label175 = new System.Windows.Forms.Label();
-            this.rjToggleButtonSaveToWav = new OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonRefocus = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label158 = new System.Windows.Forms.Label();
             this.button38 = new System.Windows.Forms.Button();
@@ -342,6 +345,7 @@
             this.rjToggleButton4 = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.ShowAzurePassword = new FontAwesome.Sharp.IconButton();
             this.button13 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.rjToggleButtonKeyRegion2 = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -350,7 +354,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxAzureKey = new System.Windows.Forms.TextBox();
             this.iconButton29 = new FontAwesome.Sharp.IconButton();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -380,10 +384,11 @@
             this.label118 = new System.Windows.Forms.Label();
             this.rjToggleButtonVoiceWhatLang = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.ShowDeepLPassword = new FontAwesome.Sharp.IconButton();
             this.label51 = new System.Windows.Forms.Label();
             this.iconButton43 = new FontAwesome.Sharp.IconButton();
             this.button18 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxDeepLKey = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.discordTab = new System.Windows.Forms.TabPage();
             this.label59 = new System.Windows.Forms.Label();
@@ -417,16 +422,18 @@
             this.label71 = new System.Windows.Forms.Label();
             this.AmazonPolly = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.ShowAmazonSecretPassword = new FontAwesome.Sharp.IconButton();
+            this.ShowAmazonKeyPassword = new FontAwesome.Sharp.IconButton();
             this.label74 = new System.Windows.Forms.Label();
             this.iconButton18 = new FontAwesome.Sharp.IconButton();
             this.button29 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBoxAmazonSecret = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
             this.button30 = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label82 = new System.Windows.Forms.Label();
             this.button31 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBoxAmazonKey = new System.Windows.Forms.TextBox();
             this.label83 = new System.Windows.Forms.Label();
             this.VRCOSC = new System.Windows.Forms.TabPage();
             this.iconButton47 = new FontAwesome.Sharp.IconButton();
@@ -539,11 +546,12 @@
             this.comboBoxLabsModelID = new System.Windows.Forms.ComboBox();
             this.iconButton54 = new FontAwesome.Sharp.IconButton();
             this.groupBox39 = new System.Windows.Forms.GroupBox();
+            this.ShowElevenLabsPassword = new FontAwesome.Sharp.IconButton();
             this.iconButton35 = new FontAwesome.Sharp.IconButton();
             this.button35 = new System.Windows.Forms.Button();
             this.label111 = new System.Windows.Forms.Label();
             this.button37 = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBoxElevenLabsKey = new System.Windows.Forms.TextBox();
             this.label107 = new System.Windows.Forms.Label();
             this.VoiceWizPro = new System.Windows.Forms.TabPage();
             this.groupBox40 = new System.Windows.Forms.GroupBox();
@@ -565,6 +573,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label165 = new System.Windows.Forms.Label();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.ProShowKey = new FontAwesome.Sharp.IconButton();
             this.label168 = new System.Windows.Forms.Label();
             this.rjToggleButtonProTranslation = new OSCVRCWiz.RJControls.RJToggleButton();
             this.labelTranslationCharacters = new System.Windows.Forms.Label();
@@ -580,6 +589,8 @@
             this.label163 = new System.Windows.Forms.Label();
             this.uberduck = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.UberDuckShowSecretPassword = new FontAwesome.Sharp.IconButton();
+            this.UberDuckShowPassword = new FontAwesome.Sharp.IconButton();
             this.label160 = new System.Windows.Forms.Label();
             this.iconButton53 = new FontAwesome.Sharp.IconButton();
             this.textBoxUberSecret = new System.Windows.Forms.TextBox();
@@ -590,16 +601,16 @@
             this.logTrash = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.versionLabel = new System.Windows.Forms.Label();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.iconButton12 = new FontAwesome.Sharp.IconButton();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
-            this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton23 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.navbarUpdates = new FontAwesome.Sharp.IconButton();
+            this.navbarDonate = new FontAwesome.Sharp.IconButton();
+            this.navbarGithub = new FontAwesome.Sharp.IconButton();
+            this.navbarDiscord = new FontAwesome.Sharp.IconButton();
+            this.navbarSpeechProvider = new FontAwesome.Sharp.IconButton();
+            this.navbarIntegrations = new FontAwesome.Sharp.IconButton();
+            this.navbarSettings = new FontAwesome.Sharp.IconButton();
+            this.navbarTextToText = new FontAwesome.Sharp.IconButton();
+            this.navbarTextToSpeech = new FontAwesome.Sharp.IconButton();
+            this.navbarHome = new FontAwesome.Sharp.IconButton();
             this.panel2Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -613,6 +624,7 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.panelCustomize.SuspendLayout();
@@ -714,26 +726,26 @@
             this.richTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.richTextBox1_LinkClicked);
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // comboBox1
+            // comboBoxStyleSelect
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.comboBoxStyleSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxStyleSelect.BackColor = System.Drawing.Color.White;
+            this.comboBoxStyleSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStyleSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxStyleSelect.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxStyleSelect.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxStyleSelect.FormattingEnabled = true;
+            this.comboBoxStyleSelect.Items.AddRange(new object[] {
             "Normal",
             "Angry",
             "Happy",
             "Sad"});
-            this.comboBox1.Location = new System.Drawing.Point(169, 135);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(115, 29);
-            this.comboBox1.TabIndex = 11;
+            this.comboBoxStyleSelect.Location = new System.Drawing.Point(169, 135);
+            this.comboBoxStyleSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxStyleSelect.Name = "comboBoxStyleSelect";
+            this.comboBoxStyleSelect.Size = new System.Drawing.Size(115, 29);
+            this.comboBoxStyleSelect.TabIndex = 11;
             // 
             // label1
             // 
@@ -761,17 +773,17 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Voice";
             // 
-            // comboBox2
+            // comboBoxVoiceSelect
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.comboBoxVoiceSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox2.BackColor = System.Drawing.Color.White;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox2.ForeColor = System.Drawing.Color.Black;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBoxVoiceSelect.BackColor = System.Drawing.Color.White;
+            this.comboBoxVoiceSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVoiceSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxVoiceSelect.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxVoiceSelect.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxVoiceSelect.FormattingEnabled = true;
+            this.comboBoxVoiceSelect.Items.AddRange(new object[] {
             "Sara",
             "Jenny",
             "Aria",
@@ -857,13 +869,13 @@
             "[Ukrainian] {Male}",
             "[Vietnamese] {Female}",
             "[Vietnamese] {Male}"});
-            this.comboBox2.Location = new System.Drawing.Point(18, 74);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(266, 29);
-            this.comboBox2.TabIndex = 13;
-            this.comboBox2.Tag = "Sara";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBoxVoiceSelect.Location = new System.Drawing.Point(18, 74);
+            this.comboBoxVoiceSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxVoiceSelect.Name = "comboBoxVoiceSelect";
+            this.comboBoxVoiceSelect.Size = new System.Drawing.Size(266, 29);
+            this.comboBoxVoiceSelect.TabIndex = 13;
+            this.comboBoxVoiceSelect.Tag = "Sara";
+            this.comboBoxVoiceSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // hideVRCTextButton
             // 
@@ -928,6 +940,7 @@
             this.textBoxDelay.Size = new System.Drawing.Size(83, 23);
             this.textBoxDelay.TabIndex = 24;
             this.textBoxDelay.Text = "250";
+            this.textBoxDelay.TextChanged += new System.EventHandler(this.textBoxDelay_TextChanged);
             // 
             // label7
             // 
@@ -991,6 +1004,7 @@
             this.tabPage4.Controls.Add(this.webView21);
             this.tabPage4.Controls.Add(this.panel4);
             this.tabPage4.Controls.Add(this.panel3);
+            this.tabPage4.Controls.Add(this.pictureBox4);
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
@@ -1225,6 +1239,17 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(181, 280);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(428, 71);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 161;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
             // tabPage1
             // 
             this.tabPage1.AutoScroll = true;
@@ -1244,8 +1269,6 @@
             this.groupBox7.Controls.Add(this.iconButton49);
             this.groupBox7.Controls.Add(this.StopButton);
             this.groupBox7.Controls.Add(this.TTSButton);
-            this.groupBox7.Controls.Add(this.iconButton48);
-            this.groupBox7.Controls.Add(this.iconButton15);
             this.groupBox7.Controls.Add(this.label81);
             this.groupBox7.Controls.Add(this.labelQueueSize);
             this.groupBox7.Controls.Add(this.buttonQueueClear);
@@ -1331,45 +1354,6 @@
             this.TTSButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.TTSButton.UseVisualStyleBackColor = false;
             this.TTSButton.Click += new System.EventHandler(this.TTSButton_Click);
-            // 
-            // iconButton48
-            // 
-            this.iconButton48.AllowDrop = true;
-            this.iconButton48.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton48.IconChar = FontAwesome.Sharp.IconChar.FileAudio;
-            this.iconButton48.IconColor = System.Drawing.Color.White;
-            this.iconButton48.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton48.Location = new System.Drawing.Point(364, 285);
-            this.iconButton48.Name = "iconButton48";
-            this.iconButton48.Size = new System.Drawing.Size(60, 89);
-            this.iconButton48.TabIndex = 113;
-            this.iconButton48.Text = "Output File";
-            this.iconButton48.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton48.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton48.UseVisualStyleBackColor = false;
-            this.iconButton48.Visible = false;
-            // 
-            // iconButton15
-            // 
-            this.iconButton15.AllowDrop = true;
-            this.iconButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton15.IconChar = FontAwesome.Sharp.IconChar.FileAlt;
-            this.iconButton15.IconColor = System.Drawing.Color.White;
-            this.iconButton15.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton15.Location = new System.Drawing.Point(364, 388);
-            this.iconButton15.Name = "iconButton15";
-            this.iconButton15.Size = new System.Drawing.Size(60, 96);
-            this.iconButton15.TabIndex = 112;
-            this.iconButton15.Text = "Import";
-            this.iconButton15.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton15.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton15.UseVisualStyleBackColor = true;
-            this.iconButton15.Visible = false;
-            this.iconButton15.DragDrop += new System.Windows.Forms.DragEventHandler(this.iconButton15_DragDrop);
-            this.iconButton15.DragEnter += new System.Windows.Forms.DragEventHandler(this.iconButton15_DragEnter);
             // 
             // label81
             // 
@@ -1536,7 +1520,7 @@
             this.panel2.Controls.Add(this.buttonEditPreset);
             this.panel2.Controls.Add(this.label52);
             this.panel2.Controls.Add(this.textBoxRename);
-            this.panel2.Controls.Add(this.comboBox2);
+            this.panel2.Controls.Add(this.comboBoxVoiceSelect);
             this.panel2.Controls.Add(this.buttonSavePreset);
             this.panel2.Controls.Add(this.labelSpeedNum);
             this.panel2.Controls.Add(this.comboBoxPreset);
@@ -1544,14 +1528,14 @@
             this.panel2.Controls.Add(this.label50);
             this.panel2.Controls.Add(this.labelPitchNum);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.comboBox3);
+            this.panel2.Controls.Add(this.comboBoxTranslationLanguage);
             this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.comboBox4);
+            this.panel2.Controls.Add(this.comboBoxSpokenLanguage);
             this.panel2.Controls.Add(this.comboBoxTTSMode);
             this.panel2.Controls.Add(this.label109);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.comboBox5);
+            this.panel2.Controls.Add(this.comboBoxStyleSelect);
+            this.panel2.Controls.Add(this.comboBoxAccentSelect);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.trackBarVolume);
@@ -1562,7 +1546,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(309, 560);
             this.panel2.TabIndex = 111;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // buttonDeletePreset
             // 
@@ -1717,17 +1700,17 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Translation Language";
             // 
-            // comboBox3
+            // comboBoxTranslationLanguage
             // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.comboBoxTranslationLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox3.BackColor = System.Drawing.Color.White;
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox3.ForeColor = System.Drawing.Color.Black;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.comboBoxTranslationLanguage.BackColor = System.Drawing.Color.White;
+            this.comboBoxTranslationLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTranslationLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTranslationLanguage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxTranslationLanguage.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxTranslationLanguage.FormattingEnabled = true;
+            this.comboBoxTranslationLanguage.Items.AddRange(new object[] {
             "No Translation (Default)",
             "Arabic [ar]",
             "Chinese [zh]",
@@ -1756,12 +1739,12 @@
             "Thai [th]",
             "Ukrainian [uk]",
             "Vietnamese [vi]"});
-            this.comboBox3.Location = new System.Drawing.Point(18, 411);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(266, 29);
-            this.comboBox3.TabIndex = 25;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.comboBoxTranslationLanguage.Location = new System.Drawing.Point(18, 411);
+            this.comboBoxTranslationLanguage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxTranslationLanguage.Name = "comboBoxTranslationLanguage";
+            this.comboBoxTranslationLanguage.Size = new System.Drawing.Size(266, 29);
+            this.comboBoxTranslationLanguage.TabIndex = 25;
+            this.comboBoxTranslationLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -1776,17 +1759,17 @@
             this.label14.TabIndex = 28;
             this.label14.Text = "Spoken Language";
             // 
-            // comboBox4
+            // comboBoxSpokenLanguage
             // 
-            this.comboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.comboBoxSpokenLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox4.BackColor = System.Drawing.Color.White;
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox4.ForeColor = System.Drawing.Color.Black;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.comboBoxSpokenLanguage.BackColor = System.Drawing.Color.White;
+            this.comboBoxSpokenLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSpokenLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxSpokenLanguage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxSpokenLanguage.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxSpokenLanguage.FormattingEnabled = true;
+            this.comboBoxSpokenLanguage.Items.AddRange(new object[] {
             "Arabic [ar-EG]",
             "Chinese [zh-CN]",
             "Czech [cs-CZ]",
@@ -1814,12 +1797,12 @@
             "Thai [th-TH]",
             "Ukrainian [uk-UA]",
             "Vietnamese [vi-VN]"});
-            this.comboBox4.Location = new System.Drawing.Point(18, 353);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(266, 29);
-            this.comboBox4.TabIndex = 27;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.comboBoxSpokenLanguage.Location = new System.Drawing.Point(18, 353);
+            this.comboBoxSpokenLanguage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxSpokenLanguage.Name = "comboBoxSpokenLanguage";
+            this.comboBoxSpokenLanguage.Size = new System.Drawing.Size(266, 29);
+            this.comboBoxSpokenLanguage.TabIndex = 27;
+            this.comboBoxSpokenLanguage.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // comboBoxTTSMode
             // 
@@ -1862,17 +1845,17 @@
             this.label109.TabIndex = 36;
             this.label109.Text = "Voice Accent/Language";
             // 
-            // comboBox5
+            // comboBoxAccentSelect
             // 
-            this.comboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.comboBoxAccentSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox5.BackColor = System.Drawing.Color.White;
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox5.ForeColor = System.Drawing.Color.Black;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.comboBoxAccentSelect.BackColor = System.Drawing.Color.White;
+            this.comboBoxAccentSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAccentSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxAccentSelect.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxAccentSelect.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxAccentSelect.FormattingEnabled = true;
+            this.comboBoxAccentSelect.Items.AddRange(new object[] {
             "Arabic [ar]",
             "Chinese [zh]",
             "Czech [cs]",
@@ -1900,12 +1883,12 @@
             "Thai [th]",
             "Ukrainian [uk]",
             "Vietnamese [vi]"});
-            this.comboBox5.Location = new System.Drawing.Point(18, 135);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(132, 29);
-            this.comboBox5.TabIndex = 35;
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            this.comboBoxAccentSelect.Location = new System.Drawing.Point(18, 135);
+            this.comboBoxAccentSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxAccentSelect.Name = "comboBoxAccentSelect";
+            this.comboBoxAccentSelect.Size = new System.Drawing.Size(132, 29);
+            this.comboBoxAccentSelect.TabIndex = 35;
+            this.comboBoxAccentSelect.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // trackBarVolume
             // 
@@ -2383,7 +2366,7 @@
             this.iconButton32.IconColor = System.Drawing.Color.White;
             this.iconButton32.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton32.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton32.Location = new System.Drawing.Point(805, 4);
+            this.iconButton32.Location = new System.Drawing.Point(713, 5);
             this.iconButton32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton32.Name = "iconButton32";
             this.iconButton32.Size = new System.Drawing.Size(44, 56);
@@ -2418,6 +2401,7 @@
             // 
             this.tabSpotify.AutoScroll = true;
             this.tabSpotify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.tabSpotify.Controls.Add(this.iconButton1);
             this.tabSpotify.Controls.Add(this.groupBox5);
             this.tabSpotify.Controls.Add(this.groupBox3);
             this.tabSpotify.Controls.Add(this.groupBox2);
@@ -2430,19 +2414,44 @@
             this.tabSpotify.TabIndex = 6;
             this.tabSpotify.Text = "Spotify";
             // 
+            // iconButton1
+            // 
+            this.iconButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.iconButton1.FlatAppearance.BorderSize = 3;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.iconButton1.ForeColor = System.Drawing.Color.Snow;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Play;
+            this.iconButton1.IconColor = System.Drawing.Color.White;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.IconSize = 25;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(549, 3);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton1.Size = new System.Drawing.Size(162, 37);
+            this.iconButton1.TabIndex = 141;
+            this.iconButton1.Text = "Watch Tutorial";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click_1);
+            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label184);
             this.groupBox5.Controls.Add(this.button52);
             this.groupBox5.Controls.Add(this.comboBoxMediaPreset);
             this.groupBox5.Controls.Add(this.button36);
             this.groupBox5.Controls.Add(this.label149);
             this.groupBox5.Controls.Add(this.button44);
-            this.groupBox5.Controls.Add(this.button14);
+            this.groupBox5.Controls.Add(this.volumeStats);
             this.groupBox5.Controls.Add(this.groupBox4);
-            this.groupBox5.Controls.Add(this.button22);
-            this.groupBox5.Controls.Add(this.button23);
-            this.groupBox5.Controls.Add(this.button21);
-            this.groupBox5.Controls.Add(this.button20);
+            this.groupBox5.Controls.Add(this.heartRateStats);
+            this.groupBox5.Controls.Add(this.batteryStats);
+            this.groupBox5.Controls.Add(this.durationStats);
+            this.groupBox5.Controls.Add(this.songStats);
             this.groupBox5.Controls.Add(this.label60);
             this.groupBox5.Controls.Add(this.rjToggleButtonPlayPaused);
             this.groupBox5.Controls.Add(this.label103);
@@ -2464,13 +2473,25 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "General Media Settings";
             // 
+            // label184
+            // 
+            this.label184.AutoSize = true;
+            this.label184.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.label184.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label184.ForeColor = System.Drawing.Color.Snow;
+            this.label184.Location = new System.Drawing.Point(23, 210);
+            this.label184.Name = "label184";
+            this.label184.Size = new System.Drawing.Size(44, 15);
+            this.label184.TabIndex = 146;
+            this.label184.Text = "Presets";
+            // 
             // button52
             // 
             this.button52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.button52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button52.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button52.ForeColor = System.Drawing.Color.Snow;
-            this.button52.Location = new System.Drawing.Point(225, 86);
+            this.button52.Location = new System.Drawing.Point(231, 227);
             this.button52.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button52.Name = "button52";
             this.button52.Size = new System.Drawing.Size(70, 25);
@@ -2488,7 +2509,7 @@
             "Preset 1",
             "Preset 2",
             "Preset 3"});
-            this.comboBoxMediaPreset.Location = new System.Drawing.Point(17, 86);
+            this.comboBoxMediaPreset.Location = new System.Drawing.Point(23, 227);
             this.comboBoxMediaPreset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxMediaPreset.Name = "comboBoxMediaPreset";
             this.comboBoxMediaPreset.Size = new System.Drawing.Size(126, 23);
@@ -2500,7 +2521,7 @@
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button36.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button36.ForeColor = System.Drawing.Color.Snow;
-            this.button36.Location = new System.Drawing.Point(149, 86);
+            this.button36.Location = new System.Drawing.Point(155, 227);
             this.button36.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(70, 25);
@@ -2534,20 +2555,20 @@
             this.button44.UseVisualStyleBackColor = false;
             this.button44.Click += new System.EventHandler(this.button44_Click);
             // 
-            // button14
+            // volumeStats
             // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.ForeColor = System.Drawing.Color.Snow;
-            this.button14.Location = new System.Drawing.Point(661, 74);
-            this.button14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(25, 25);
-            this.button14.TabIndex = 140;
-            this.button14.Text = "🔊";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.volumeStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.volumeStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.volumeStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.volumeStats.ForeColor = System.Drawing.Color.Snow;
+            this.volumeStats.Location = new System.Drawing.Point(661, 74);
+            this.volumeStats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.volumeStats.Name = "volumeStats";
+            this.volumeStats.Size = new System.Drawing.Size(25, 25);
+            this.volumeStats.TabIndex = 140;
+            this.volumeStats.Text = "🔊";
+            this.volumeStats.UseVisualStyleBackColor = false;
+            this.volumeStats.Click += new System.EventHandler(this.button14_Click);
             // 
             // groupBox4
             // 
@@ -2735,72 +2756,72 @@
             this.rjToggleButtonNoTTSKAT.TabIndex = 114;
             this.rjToggleButtonNoTTSKAT.UseVisualStyleBackColor = false;
             // 
-            // button22
+            // heartRateStats
             // 
-            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.ForeColor = System.Drawing.Color.Snow;
-            this.button22.Location = new System.Drawing.Point(725, 74);
-            this.button22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(25, 25);
-            this.button22.TabIndex = 136;
-            this.button22.Text = "💓";
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
+            this.heartRateStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.heartRateStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.heartRateStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.heartRateStats.ForeColor = System.Drawing.Color.Snow;
+            this.heartRateStats.Location = new System.Drawing.Point(725, 74);
+            this.heartRateStats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.heartRateStats.Name = "heartRateStats";
+            this.heartRateStats.Size = new System.Drawing.Size(25, 25);
+            this.heartRateStats.TabIndex = 136;
+            this.heartRateStats.Text = "💓";
+            this.heartRateStats.UseVisualStyleBackColor = false;
+            this.heartRateStats.Click += new System.EventHandler(this.button22_Click);
             // 
-            // button23
+            // batteryStats
             // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.ForeColor = System.Drawing.Color.Snow;
-            this.button23.Location = new System.Drawing.Point(694, 74);
-            this.button23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(25, 25);
-            this.button23.TabIndex = 135;
-            this.button23.Text = "🔋";
-            this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click_1);
+            this.batteryStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.batteryStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.batteryStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.batteryStats.ForeColor = System.Drawing.Color.Snow;
+            this.batteryStats.Location = new System.Drawing.Point(694, 74);
+            this.batteryStats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.batteryStats.Name = "batteryStats";
+            this.batteryStats.Size = new System.Drawing.Size(25, 25);
+            this.batteryStats.TabIndex = 135;
+            this.batteryStats.Text = "🔋";
+            this.batteryStats.UseVisualStyleBackColor = false;
+            this.batteryStats.Click += new System.EventHandler(this.button23_Click_1);
             // 
-            // button21
+            // durationStats
             // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.ForeColor = System.Drawing.Color.Snow;
-            this.button21.Location = new System.Drawing.Point(630, 74);
-            this.button21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(25, 25);
-            this.button21.TabIndex = 134;
-            this.button21.Text = "⏰";
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click_1);
+            this.durationStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.durationStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.durationStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.durationStats.ForeColor = System.Drawing.Color.Snow;
+            this.durationStats.Location = new System.Drawing.Point(630, 74);
+            this.durationStats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.durationStats.Name = "durationStats";
+            this.durationStats.Size = new System.Drawing.Size(25, 25);
+            this.durationStats.TabIndex = 134;
+            this.durationStats.Text = "⏰";
+            this.durationStats.UseVisualStyleBackColor = false;
+            this.durationStats.Click += new System.EventHandler(this.button21_Click_1);
             // 
-            // button20
+            // songStats
             // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.ForeColor = System.Drawing.Color.Snow;
-            this.button20.Location = new System.Drawing.Point(598, 74);
-            this.button20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(25, 25);
-            this.button20.TabIndex = 133;
-            this.button20.Text = "♫";
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click_1);
+            this.songStats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.songStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.songStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.songStats.ForeColor = System.Drawing.Color.Snow;
+            this.songStats.Location = new System.Drawing.Point(598, 74);
+            this.songStats.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.songStats.Name = "songStats";
+            this.songStats.Size = new System.Drawing.Size(25, 25);
+            this.songStats.TabIndex = 133;
+            this.songStats.Text = "♫";
+            this.songStats.UseVisualStyleBackColor = false;
+            this.songStats.Click += new System.EventHandler(this.button20_Click_1);
             // 
             // label60
             // 
             this.label60.AutoSize = true;
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label60.ForeColor = System.Drawing.Color.Snow;
-            this.label60.Location = new System.Drawing.Point(66, 224);
+            this.label60.Location = new System.Drawing.Point(66, 164);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(146, 15);
             this.label60.TabIndex = 130;
@@ -2809,7 +2830,7 @@
             // rjToggleButtonPlayPaused
             // 
             this.rjToggleButtonPlayPaused.AutoSize = true;
-            this.rjToggleButtonPlayPaused.Location = new System.Drawing.Point(21, 222);
+            this.rjToggleButtonPlayPaused.Location = new System.Drawing.Point(21, 162);
             this.rjToggleButtonPlayPaused.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonPlayPaused.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonPlayPaused.Name = "rjToggleButtonPlayPaused";
@@ -2850,7 +2871,7 @@
             this.label57.AutoSize = true;
             this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label57.ForeColor = System.Drawing.Color.Snow;
-            this.label57.Location = new System.Drawing.Point(66, 245);
+            this.label57.Location = new System.Drawing.Point(66, 185);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(101, 15);
             this.label57.TabIndex = 53;
@@ -2861,7 +2882,7 @@
             this.rjToggleButtonSpotifySpam.AutoSize = true;
             this.rjToggleButtonSpotifySpam.Checked = true;
             this.rjToggleButtonSpotifySpam.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonSpotifySpam.Location = new System.Drawing.Point(21, 243);
+            this.rjToggleButtonSpotifySpam.Location = new System.Drawing.Point(21, 183);
             this.rjToggleButtonSpotifySpam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonSpotifySpam.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonSpotifySpam.Name = "rjToggleButtonSpotifySpam";
@@ -2878,7 +2899,7 @@
             this.label56.AutoSize = true;
             this.label56.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label56.ForeColor = System.Drawing.Color.Snow;
-            this.label56.Location = new System.Drawing.Point(66, 199);
+            this.label56.Location = new System.Drawing.Point(66, 139);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(229, 15);
             this.label56.TabIndex = 51;
@@ -2887,7 +2908,7 @@
             // rjToggleButtonPeriodic
             // 
             this.rjToggleButtonPeriodic.AutoSize = true;
-            this.rjToggleButtonPeriodic.Location = new System.Drawing.Point(21, 201);
+            this.rjToggleButtonPeriodic.Location = new System.Drawing.Point(21, 141);
             this.rjToggleButtonPeriodic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rjToggleButtonPeriodic.MinimumSize = new System.Drawing.Size(39, 16);
             this.rjToggleButtonPeriodic.Name = "rjToggleButtonPeriodic";
@@ -2905,7 +2926,7 @@
             this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label55.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label55.ForeColor = System.Drawing.Color.Snow;
-            this.label55.Location = new System.Drawing.Point(19, 149);
+            this.label55.Location = new System.Drawing.Point(19, 89);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(114, 15);
             this.label55.TabIndex = 49;
@@ -2917,7 +2938,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.ForeColor = System.Drawing.Color.Snow;
-            this.button4.Location = new System.Drawing.Point(186, 165);
+            this.button4.Location = new System.Drawing.Point(186, 105);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 25);
@@ -2928,7 +2949,7 @@
             // 
             // textBoxSpotifyTime
             // 
-            this.textBoxSpotifyTime.Location = new System.Drawing.Point(23, 166);
+            this.textBoxSpotifyTime.Location = new System.Drawing.Point(23, 106);
             this.textBoxSpotifyTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxSpotifyTime.Name = "textBoxSpotifyTime";
             this.textBoxSpotifyTime.Size = new System.Drawing.Size(158, 23);
@@ -2937,6 +2958,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ShowSpotifyPassword);
             this.groupBox3.Controls.Add(this.label68);
             this.groupBox3.Controls.Add(this.rjToggleSpotLegacy);
             this.groupBox3.Controls.Add(this.label67);
@@ -2949,10 +2971,29 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(392, 164);
+            this.groupBox3.Size = new System.Drawing.Size(392, 189);
             this.groupBox3.TabIndex = 138;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Spotify API";
+            // 
+            // ShowSpotifyPassword
+            // 
+            this.ShowSpotifyPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowSpotifyPassword.BackColor = System.Drawing.Color.White;
+            this.ShowSpotifyPassword.FlatAppearance.BorderSize = 0;
+            this.ShowSpotifyPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowSpotifyPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowSpotifyPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ShowSpotifyPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowSpotifyPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ShowSpotifyPassword.IconSize = 15;
+            this.ShowSpotifyPassword.Location = new System.Drawing.Point(246, 106);
+            this.ShowSpotifyPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowSpotifyPassword.Name = "ShowSpotifyPassword";
+            this.ShowSpotifyPassword.Size = new System.Drawing.Size(31, 18);
+            this.ShowSpotifyPassword.TabIndex = 123;
+            this.ShowSpotifyPassword.UseVisualStyleBackColor = false;
+            this.ShowSpotifyPassword.Click += new System.EventHandler(this.ShowSpotifyPassword_Click);
             // 
             // label68
             // 
@@ -3048,24 +3089,36 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelMediaPaused);
             this.groupBox2.Controls.Add(this.checkedListBoxApproved);
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label137);
-            this.groupBox2.Controls.Add(this.rjToggleButton10);
+            this.groupBox2.Controls.Add(this.rjToggleButtonWindowsMedia);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(436, 39);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(325, 164);
+            this.groupBox2.Size = new System.Drawing.Size(325, 189);
             this.groupBox2.TabIndex = 137;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Windows Media";
             // 
+            // labelMediaPaused
+            // 
+            this.labelMediaPaused.AutoSize = true;
+            this.labelMediaPaused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.labelMediaPaused.ForeColor = System.Drawing.Color.Snow;
+            this.labelMediaPaused.Location = new System.Drawing.Point(236, 162);
+            this.labelMediaPaused.Name = "labelMediaPaused";
+            this.labelMediaPaused.Size = new System.Drawing.Size(81, 15);
+            this.labelMediaPaused.TabIndex = 146;
+            this.labelMediaPaused.Text = "Media Paused";
+            // 
             // checkedListBoxApproved
             // 
             this.checkedListBoxApproved.FormattingEnabled = true;
-            this.checkedListBoxApproved.Location = new System.Drawing.Point(16, 64);
+            this.checkedListBoxApproved.Location = new System.Drawing.Point(16, 60);
             this.checkedListBoxApproved.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkedListBoxApproved.Name = "checkedListBoxApproved";
             this.checkedListBoxApproved.Size = new System.Drawing.Size(295, 94);
@@ -3077,7 +3130,7 @@
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
             this.label18.ForeColor = System.Drawing.Color.Snow;
-            this.label18.Location = new System.Drawing.Point(16, 46);
+            this.label18.Location = new System.Drawing.Point(16, 42);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(155, 15);
             this.label18.TabIndex = 126;
@@ -3094,21 +3147,21 @@
             this.label137.TabIndex = 122;
             this.label137.Text = "Enable Windows Media Mode";
             // 
-            // rjToggleButton10
+            // rjToggleButtonWindowsMedia
             // 
-            this.rjToggleButton10.AutoSize = true;
-            this.rjToggleButton10.Location = new System.Drawing.Point(16, 20);
-            this.rjToggleButton10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rjToggleButton10.MinimumSize = new System.Drawing.Size(39, 16);
-            this.rjToggleButton10.Name = "rjToggleButton10";
-            this.rjToggleButton10.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButton10.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButton10.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButton10.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButton10.Size = new System.Drawing.Size(39, 16);
-            this.rjToggleButton10.TabIndex = 123;
-            this.rjToggleButton10.UseVisualStyleBackColor = true;
-            this.rjToggleButton10.CheckedChanged += new System.EventHandler(this.rjToggleButton10_CheckedChanged);
+            this.rjToggleButtonWindowsMedia.AutoSize = true;
+            this.rjToggleButtonWindowsMedia.Location = new System.Drawing.Point(16, 20);
+            this.rjToggleButtonWindowsMedia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonWindowsMedia.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonWindowsMedia.Name = "rjToggleButtonWindowsMedia";
+            this.rjToggleButtonWindowsMedia.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonWindowsMedia.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonWindowsMedia.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonWindowsMedia.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonWindowsMedia.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonWindowsMedia.TabIndex = 123;
+            this.rjToggleButtonWindowsMedia.UseVisualStyleBackColor = true;
+            this.rjToggleButtonWindowsMedia.CheckedChanged += new System.EventHandler(this.rjToggleButton10_CheckedChanged);
             // 
             // label49
             // 
@@ -3335,6 +3388,7 @@
             this.rjToggleButtonForwardData.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonForwardData.TabIndex = 101;
             this.rjToggleButtonForwardData.UseVisualStyleBackColor = true;
+            this.rjToggleButtonForwardData.CheckedChanged += new System.EventHandler(this.rjToggleButtonForwardData_CheckedChanged);
             // 
             // label130
             // 
@@ -3360,6 +3414,7 @@
             this.rjToggleButton8.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButton8.TabIndex = 99;
             this.rjToggleButton8.UseVisualStyleBackColor = true;
+            this.rjToggleButton8.CheckedChanged += new System.EventHandler(this.rjToggleButton8_CheckedChanged);
             // 
             // label46
             // 
@@ -3714,8 +3769,8 @@
             this.iconButton50.Name = "iconButton50";
             this.iconButton50.Size = new System.Drawing.Size(763, 75);
             this.iconButton50.TabIndex = 15;
-            this.iconButton50.Text = "VoiceWizard Pro - (Instant access to Azure, Amazon, and Google voices with one AP" +
-    "I key)";
+            this.iconButton50.Text = "Voice Wizard Pro - (Instant access to Azure, Amazon, and Google voices with one A" +
+    "PI key)";
             this.iconButton50.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.iconButton50.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButton50.UseVisualStyleBackColor = false;
@@ -3795,6 +3850,7 @@
             this.rjToggleButtonChatBoxUseDelay.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonChatBoxUseDelay.TabIndex = 110;
             this.rjToggleButtonChatBoxUseDelay.UseVisualStyleBackColor = true;
+            this.rjToggleButtonChatBoxUseDelay.CheckedChanged += new System.EventHandler(this.rjToggleButtonChatBoxUseDelay_CheckedChanged);
             // 
             // label78
             // 
@@ -3823,6 +3879,7 @@
             this.rjToggleSoundNotification.Size = new System.Drawing.Size(39, 16);
             this.rjToggleSoundNotification.TabIndex = 106;
             this.rjToggleSoundNotification.UseVisualStyleBackColor = true;
+            this.rjToggleSoundNotification.CheckedChanged += new System.EventHandler(this.rjToggleSoundNotification_CheckedChanged);
             // 
             // label69
             // 
@@ -3862,6 +3919,7 @@
             this.rjToggleButtonChatBox.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonChatBox.TabIndex = 91;
             this.rjToggleButtonChatBox.UseVisualStyleBackColor = true;
+            this.rjToggleButtonChatBox.CheckedChanged += new System.EventHandler(this.rjToggleButtonChatBox_CheckedChanged);
             // 
             // rjToggleButtonShowKeyboard
             // 
@@ -3877,11 +3935,14 @@
             this.rjToggleButtonShowKeyboard.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonShowKeyboard.TabIndex = 93;
             this.rjToggleButtonShowKeyboard.UseVisualStyleBackColor = true;
+            this.rjToggleButtonShowKeyboard.CheckedChanged += new System.EventHandler(this.rjToggleButtonShowKeyboard_CheckedChanged);
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.label175);
             this.groupBox18.Controls.Add(this.button3);
             this.groupBox18.Controls.Add(this.OBSLink);
+            this.groupBox18.Controls.Add(this.rjToggleButtonSaveToWav);
             this.groupBox18.Controls.Add(this.label102);
             this.groupBox18.Controls.Add(this.rjToggleButtonOBSText);
             this.groupBox18.ForeColor = System.Drawing.Color.White;
@@ -3889,10 +3950,21 @@
             this.groupBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox18.Size = new System.Drawing.Size(707, 79);
+            this.groupBox18.Size = new System.Drawing.Size(707, 117);
             this.groupBox18.TabIndex = 120;
             this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Streaming Overlay";
+            this.groupBox18.Text = "Output";
+            // 
+            // label175
+            // 
+            this.label175.AutoSize = true;
+            this.label175.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label175.ForeColor = System.Drawing.Color.Snow;
+            this.label175.Location = new System.Drawing.Point(62, 68);
+            this.label175.Name = "label175";
+            this.label175.Size = new System.Drawing.Size(173, 15);
+            this.label175.TabIndex = 156;
+            this.label175.Text = "Save TTS Messages to Wave File";
             // 
             // button3
             // 
@@ -3901,7 +3973,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.Color.Snow;
-            this.button3.Location = new System.Drawing.Point(556, 44);
+            this.button3.Location = new System.Drawing.Point(556, 82);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(144, 28);
@@ -3920,7 +3992,7 @@
             this.OBSLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.OBSLink.IconSize = 30;
             this.OBSLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OBSLink.Location = new System.Drawing.Point(124, 20);
+            this.OBSLink.Location = new System.Drawing.Point(240, 20);
             this.OBSLink.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.OBSLink.Name = "OBSLink";
             this.OBSLink.Size = new System.Drawing.Size(44, 30);
@@ -3930,6 +4002,22 @@
             this.OBSLink.UseVisualStyleBackColor = true;
             this.OBSLink.Click += new System.EventHandler(this.OBSLink_Click);
             // 
+            // rjToggleButtonSaveToWav
+            // 
+            this.rjToggleButtonSaveToWav.AutoSize = true;
+            this.rjToggleButtonSaveToWav.Location = new System.Drawing.Point(14, 68);
+            this.rjToggleButtonSaveToWav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonSaveToWav.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonSaveToWav.Name = "rjToggleButtonSaveToWav";
+            this.rjToggleButtonSaveToWav.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonSaveToWav.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonSaveToWav.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonSaveToWav.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonSaveToWav.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonSaveToWav.TabIndex = 157;
+            this.rjToggleButtonSaveToWav.UseVisualStyleBackColor = true;
+            this.rjToggleButtonSaveToWav.CheckedChanged += new System.EventHandler(this.rjToggleButtonSaveToWav_CheckedChanged);
+            // 
             // label102
             // 
             this.label102.AutoSize = true;
@@ -3937,9 +4025,9 @@
             this.label102.ForeColor = System.Drawing.Color.Snow;
             this.label102.Location = new System.Drawing.Point(57, 28);
             this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(53, 15);
+            this.label102.Size = new System.Drawing.Size(176, 15);
             this.label102.TabIndex = 104;
-            this.label102.Text = "OBS Text";
+            this.label102.Text = "OBS Text (for streaming overlay)";
             // 
             // rjToggleButtonOBSText
             // 
@@ -3955,6 +4043,7 @@
             this.rjToggleButtonOBSText.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonOBSText.TabIndex = 105;
             this.rjToggleButtonOBSText.UseVisualStyleBackColor = true;
+            this.rjToggleButtonOBSText.CheckedChanged += new System.EventHandler(this.rjToggleButtonOBSText_CheckedChanged);
             // 
             // groupBox19
             // 
@@ -4257,6 +4346,7 @@
             this.rjToggleButtonOSC.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonOSC.TabIndex = 73;
             this.rjToggleButtonOSC.UseVisualStyleBackColor = true;
+            this.rjToggleButtonOSC.CheckedChanged += new System.EventHandler(this.rjToggleButtonOSC_CheckedChanged);
             // 
             // comboBoxPara
             // 
@@ -4276,13 +4366,13 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.iconButton16);
-            this.groupBox13.Controls.Add(this.button43);
+            this.groupBox13.Controls.Add(this.VirtualCableHelp);
+            this.groupBox13.Controls.Add(this.RefreshAudioDevicesButton);
             this.groupBox13.Controls.Add(this.label135);
             this.groupBox13.Controls.Add(this.rjToggleButtonUse2ndOutput);
             this.groupBox13.Controls.Add(this.label125);
             this.groupBox13.Controls.Add(this.comboBoxOutput2);
-            this.groupBox13.Controls.Add(this.iconButton41);
+            this.groupBox13.Controls.Add(this.SpeechToTextHelp);
             this.groupBox13.Controls.Add(this.label17);
             this.groupBox13.Controls.Add(this.comboBoxSTT);
             this.groupBox13.Controls.Add(this.label145);
@@ -4290,7 +4380,7 @@
             this.groupBox13.Controls.Add(this.comboBoxOutput);
             this.groupBox13.Controls.Add(this.comboBoxInput);
             this.groupBox13.Controls.Add(this.label105);
-            this.groupBox13.Controls.Add(this.rjToggleButtonMedia);
+            this.groupBox13.Controls.Add(this.rjToggleButtonSounds);
             this.groupBox13.ForeColor = System.Drawing.Color.White;
             this.groupBox13.Location = new System.Drawing.Point(21, 498);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -4301,41 +4391,41 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Audio";
             // 
-            // iconButton16
+            // VirtualCableHelp
             // 
-            this.iconButton16.FlatAppearance.BorderSize = 0;
-            this.iconButton16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton16.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton16.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.iconButton16.IconColor = System.Drawing.Color.White;
-            this.iconButton16.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton16.IconSize = 30;
-            this.iconButton16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton16.Location = new System.Drawing.Point(341, 225);
-            this.iconButton16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton16.Name = "iconButton16";
-            this.iconButton16.Size = new System.Drawing.Size(44, 30);
-            this.iconButton16.TabIndex = 139;
-            this.iconButton16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton16.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton16.UseVisualStyleBackColor = true;
-            this.iconButton16.Click += new System.EventHandler(this.iconButton16_Click_1);
+            this.VirtualCableHelp.FlatAppearance.BorderSize = 0;
+            this.VirtualCableHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VirtualCableHelp.ForeColor = System.Drawing.Color.Snow;
+            this.VirtualCableHelp.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.VirtualCableHelp.IconColor = System.Drawing.Color.White;
+            this.VirtualCableHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.VirtualCableHelp.IconSize = 30;
+            this.VirtualCableHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.VirtualCableHelp.Location = new System.Drawing.Point(341, 225);
+            this.VirtualCableHelp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VirtualCableHelp.Name = "VirtualCableHelp";
+            this.VirtualCableHelp.Size = new System.Drawing.Size(44, 30);
+            this.VirtualCableHelp.TabIndex = 139;
+            this.VirtualCableHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.VirtualCableHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.VirtualCableHelp.UseVisualStyleBackColor = true;
+            this.VirtualCableHelp.Click += new System.EventHandler(this.iconButton16_Click_1);
             // 
-            // button43
+            // RefreshAudioDevicesButton
             // 
-            this.button43.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button43.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button43.ForeColor = System.Drawing.Color.Snow;
-            this.button43.Location = new System.Drawing.Point(527, 236);
-            this.button43.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(173, 31);
-            this.button43.TabIndex = 138;
-            this.button43.Text = "Refresh Audio Devices";
-            this.button43.UseVisualStyleBackColor = false;
-            this.button43.Click += new System.EventHandler(this.button43_Click);
+            this.RefreshAudioDevicesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RefreshAudioDevicesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.RefreshAudioDevicesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshAudioDevicesButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RefreshAudioDevicesButton.ForeColor = System.Drawing.Color.Snow;
+            this.RefreshAudioDevicesButton.Location = new System.Drawing.Point(527, 236);
+            this.RefreshAudioDevicesButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RefreshAudioDevicesButton.Name = "RefreshAudioDevicesButton";
+            this.RefreshAudioDevicesButton.Size = new System.Drawing.Size(173, 31);
+            this.RefreshAudioDevicesButton.TabIndex = 138;
+            this.RefreshAudioDevicesButton.Text = "Refresh Audio Devices";
+            this.RefreshAudioDevicesButton.UseVisualStyleBackColor = false;
+            this.RefreshAudioDevicesButton.Click += new System.EventHandler(this.button43_Click);
             // 
             // label135
             // 
@@ -4362,6 +4452,7 @@
             this.rjToggleButtonUse2ndOutput.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonUse2ndOutput.TabIndex = 137;
             this.rjToggleButtonUse2ndOutput.UseVisualStyleBackColor = true;
+            this.rjToggleButtonUse2ndOutput.CheckedChanged += new System.EventHandler(this.rjToggleButtonUse2ndOutput_CheckedChanged);
             // 
             // label125
             // 
@@ -4386,25 +4477,25 @@
             this.comboBoxOutput2.TabIndex = 134;
             this.comboBoxOutput2.SelectedIndexChanged += new System.EventHandler(this.comboBoxOutput2_SelectedIndexChanged);
             // 
-            // iconButton41
+            // SpeechToTextHelp
             // 
-            this.iconButton41.FlatAppearance.BorderSize = 0;
-            this.iconButton41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton41.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton41.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.iconButton41.IconColor = System.Drawing.Color.White;
-            this.iconButton41.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton41.IconSize = 30;
-            this.iconButton41.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton41.Location = new System.Drawing.Point(255, 29);
-            this.iconButton41.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton41.Name = "iconButton41";
-            this.iconButton41.Size = new System.Drawing.Size(44, 30);
-            this.iconButton41.TabIndex = 133;
-            this.iconButton41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton41.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton41.UseVisualStyleBackColor = true;
-            this.iconButton41.Click += new System.EventHandler(this.iconButton41_Click);
+            this.SpeechToTextHelp.FlatAppearance.BorderSize = 0;
+            this.SpeechToTextHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SpeechToTextHelp.ForeColor = System.Drawing.Color.Snow;
+            this.SpeechToTextHelp.IconChar = FontAwesome.Sharp.IconChar.Question;
+            this.SpeechToTextHelp.IconColor = System.Drawing.Color.White;
+            this.SpeechToTextHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.SpeechToTextHelp.IconSize = 30;
+            this.SpeechToTextHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SpeechToTextHelp.Location = new System.Drawing.Point(255, 29);
+            this.SpeechToTextHelp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SpeechToTextHelp.Name = "SpeechToTextHelp";
+            this.SpeechToTextHelp.Size = new System.Drawing.Size(44, 30);
+            this.SpeechToTextHelp.TabIndex = 133;
+            this.SpeechToTextHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SpeechToTextHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SpeechToTextHelp.UseVisualStyleBackColor = true;
+            this.SpeechToTextHelp.Click += new System.EventHandler(this.iconButton41_Click);
             // 
             // label17
             // 
@@ -4493,27 +4584,26 @@
             this.label105.TabIndex = 124;
             this.label105.Text = "Button Sounds";
             // 
-            // rjToggleButtonMedia
+            // rjToggleButtonSounds
             // 
-            this.rjToggleButtonMedia.AutoSize = true;
-            this.rjToggleButtonMedia.Checked = true;
-            this.rjToggleButtonMedia.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.rjToggleButtonMedia.Location = new System.Drawing.Point(13, 86);
-            this.rjToggleButtonMedia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rjToggleButtonMedia.MinimumSize = new System.Drawing.Size(39, 16);
-            this.rjToggleButtonMedia.Name = "rjToggleButtonMedia";
-            this.rjToggleButtonMedia.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonMedia.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonMedia.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonMedia.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonMedia.Size = new System.Drawing.Size(39, 16);
-            this.rjToggleButtonMedia.TabIndex = 125;
-            this.rjToggleButtonMedia.UseVisualStyleBackColor = true;
+            this.rjToggleButtonSounds.AutoSize = true;
+            this.rjToggleButtonSounds.Checked = true;
+            this.rjToggleButtonSounds.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rjToggleButtonSounds.Location = new System.Drawing.Point(13, 86);
+            this.rjToggleButtonSounds.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonSounds.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonSounds.Name = "rjToggleButtonSounds";
+            this.rjToggleButtonSounds.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonSounds.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonSounds.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonSounds.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonSounds.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonSounds.TabIndex = 125;
+            this.rjToggleButtonSounds.UseVisualStyleBackColor = true;
+            this.rjToggleButtonSounds.CheckedChanged += new System.EventHandler(this.rjToggleButtonSounds_CheckedChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label175);
-            this.groupBox1.Controls.Add(this.rjToggleButtonSaveToWav);
             this.groupBox1.Controls.Add(this.rjToggleButtonRefocus);
             this.groupBox1.Controls.Add(this.label158);
             this.groupBox1.Controls.Add(this.button38);
@@ -4575,32 +4665,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
             // 
-            // label175
-            // 
-            this.label175.AutoSize = true;
-            this.label175.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label175.ForeColor = System.Drawing.Color.Snow;
-            this.label175.Location = new System.Drawing.Point(53, 448);
-            this.label175.Name = "label175";
-            this.label175.Size = new System.Drawing.Size(173, 15);
-            this.label175.TabIndex = 156;
-            this.label175.Text = "Save TTS Messages to Wave File";
-            // 
-            // rjToggleButtonSaveToWav
-            // 
-            this.rjToggleButtonSaveToWav.AutoSize = true;
-            this.rjToggleButtonSaveToWav.Location = new System.Drawing.Point(5, 448);
-            this.rjToggleButtonSaveToWav.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rjToggleButtonSaveToWav.MinimumSize = new System.Drawing.Size(39, 16);
-            this.rjToggleButtonSaveToWav.Name = "rjToggleButtonSaveToWav";
-            this.rjToggleButtonSaveToWav.OffBackColor = System.Drawing.Color.Gray;
-            this.rjToggleButtonSaveToWav.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjToggleButtonSaveToWav.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjToggleButtonSaveToWav.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjToggleButtonSaveToWav.Size = new System.Drawing.Size(39, 16);
-            this.rjToggleButtonSaveToWav.TabIndex = 157;
-            this.rjToggleButtonSaveToWav.UseVisualStyleBackColor = true;
-            // 
             // rjToggleButtonRefocus
             // 
             this.rjToggleButtonRefocus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -4618,6 +4682,7 @@
             this.rjToggleButtonRefocus.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonRefocus.TabIndex = 155;
             this.rjToggleButtonRefocus.UseVisualStyleBackColor = true;
+            this.rjToggleButtonRefocus.CheckedChanged += new System.EventHandler(this.rjToggleButtonRefocus_CheckedChanged);
             // 
             // label158
             // 
@@ -4770,6 +4835,7 @@
             this.rjToggleButtonQueueTypedText.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonQueueTypedText.TabIndex = 145;
             this.rjToggleButtonQueueTypedText.UseVisualStyleBackColor = true;
+            this.rjToggleButtonQueueTypedText.CheckedChanged += new System.EventHandler(this.rjToggleButtonQueueTypedText_CheckedChanged);
             // 
             // label150
             // 
@@ -4801,6 +4867,7 @@
             this.textBoxQueueDelayBeforeNext.Size = new System.Drawing.Size(110, 23);
             this.textBoxQueueDelayBeforeNext.TabIndex = 141;
             this.textBoxQueueDelayBeforeNext.Text = "0";
+            this.textBoxQueueDelayBeforeNext.TextChanged += new System.EventHandler(this.textBoxQueueDelayBeforeNext_TextChanged);
             // 
             // textBoxDelayAfterNoTTS
             // 
@@ -4810,6 +4877,7 @@
             this.textBoxDelayAfterNoTTS.Size = new System.Drawing.Size(110, 23);
             this.textBoxDelayAfterNoTTS.TabIndex = 140;
             this.textBoxDelayAfterNoTTS.Text = "5000";
+            this.textBoxDelayAfterNoTTS.TextChanged += new System.EventHandler(this.textBoxDelayAfterNoTTS_TextChanged);
             // 
             // label79
             // 
@@ -4879,6 +4947,7 @@
             this.rjToggleButtonStopCurrentTTS.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonStopCurrentTTS.TabIndex = 133;
             this.rjToggleButtonStopCurrentTTS.UseVisualStyleBackColor = true;
+            this.rjToggleButtonStopCurrentTTS.CheckedChanged += new System.EventHandler(this.rjToggleButtonStopCurrentTTS_CheckedChanged);
             // 
             // label123
             // 
@@ -4964,7 +5033,6 @@
             this.textBoxStopTTS1.ReadOnly = true;
             this.textBoxStopTTS1.Size = new System.Drawing.Size(53, 23);
             this.textBoxStopTTS1.TabIndex = 126;
-            this.textBoxStopTTS1.TextChanged += new System.EventHandler(this.textBoxStopTTS1_TextChanged);
             this.textBoxStopTTS1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStopTTS1_KeyDown);
             // 
             // label124
@@ -5028,6 +5096,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(53, 23);
             this.textBox1.TabIndex = 121;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // button28
@@ -5132,6 +5201,7 @@
             this.rjToggleButtonSystemTray.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonSystemTray.TabIndex = 99;
             this.rjToggleButtonSystemTray.UseVisualStyleBackColor = true;
+            this.rjToggleButtonSystemTray.CheckedChanged += new System.EventHandler(this.rjToggleButtonSystemTray_CheckedChanged);
             // 
             // label77
             // 
@@ -5174,6 +5244,7 @@
             this.rjToggleButtonClear.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonClear.TabIndex = 74;
             this.rjToggleButtonClear.UseVisualStyleBackColor = true;
+            this.rjToggleButtonClear.CheckedChanged += new System.EventHandler(this.rjToggleButtonClear_CheckedChanged);
             // 
             // label25
             // 
@@ -5204,9 +5275,9 @@
             this.label66.ForeColor = System.Drawing.Color.Snow;
             this.label66.Location = new System.Drawing.Point(53, 80);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(175, 15);
+            this.label66.Size = new System.Drawing.Size(194, 15);
             this.label66.TabIndex = 88;
-            this.label66.Text = "Close Supporter Banner on Start";
+            this.label66.Text = "Close Home Screen Banner on Start";
             // 
             // rjToggleButtonLog
             // 
@@ -5224,6 +5295,7 @@
             this.rjToggleButtonLog.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonLog.TabIndex = 72;
             this.rjToggleButtonLog.UseVisualStyleBackColor = true;
+            this.rjToggleButtonLog.CheckedChanged += new System.EventHandler(this.rjToggleButtonLog_CheckedChanged);
             // 
             // rjToggleButton5
             // 
@@ -5266,6 +5338,7 @@
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(53, 23);
             this.textBox4.TabIndex = 33;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox4_KeyDown);
             // 
             // label22
@@ -5491,6 +5564,7 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.ShowAzurePassword);
             this.groupBox11.Controls.Add(this.button13);
             this.groupBox11.Controls.Add(this.label19);
             this.groupBox11.Controls.Add(this.rjToggleButtonKeyRegion2);
@@ -5499,7 +5573,7 @@
             this.groupBox11.Controls.Add(this.textBox3);
             this.groupBox11.Controls.Add(this.label8);
             this.groupBox11.Controls.Add(this.button5);
-            this.groupBox11.Controls.Add(this.textBox2);
+            this.groupBox11.Controls.Add(this.textBoxAzureKey);
             this.groupBox11.ForeColor = System.Drawing.Color.White;
             this.groupBox11.Location = new System.Drawing.Point(15, 35);
             this.groupBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -5509,6 +5583,25 @@
             this.groupBox11.TabIndex = 108;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Azure Setup";
+            // 
+            // ShowAzurePassword
+            // 
+            this.ShowAzurePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowAzurePassword.BackColor = System.Drawing.Color.White;
+            this.ShowAzurePassword.FlatAppearance.BorderSize = 0;
+            this.ShowAzurePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowAzurePassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowAzurePassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ShowAzurePassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowAzurePassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ShowAzurePassword.IconSize = 15;
+            this.ShowAzurePassword.Location = new System.Drawing.Point(288, 36);
+            this.ShowAzurePassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowAzurePassword.Name = "ShowAzurePassword";
+            this.ShowAzurePassword.Size = new System.Drawing.Size(31, 18);
+            this.ShowAzurePassword.TabIndex = 122;
+            this.ShowAzurePassword.UseVisualStyleBackColor = false;
+            this.ShowAzurePassword.Click += new System.EventHandler(this.ShowAzurePassword_Click);
             // 
             // button13
             // 
@@ -5609,14 +5702,14 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // textBox2
+            // textBoxAzureKey
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 34);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(312, 23);
-            this.textBox2.TabIndex = 27;
+            this.textBoxAzureKey.Location = new System.Drawing.Point(12, 34);
+            this.textBoxAzureKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxAzureKey.Name = "textBoxAzureKey";
+            this.textBoxAzureKey.PasswordChar = '*';
+            this.textBoxAzureKey.Size = new System.Drawing.Size(312, 23);
+            this.textBoxAzureKey.TabIndex = 27;
             // 
             // iconButton29
             // 
@@ -6006,10 +6099,11 @@
             // 
             // groupBox26
             // 
+            this.groupBox26.Controls.Add(this.ShowDeepLPassword);
             this.groupBox26.Controls.Add(this.label51);
             this.groupBox26.Controls.Add(this.iconButton43);
             this.groupBox26.Controls.Add(this.button18);
-            this.groupBox26.Controls.Add(this.textBox5);
+            this.groupBox26.Controls.Add(this.textBoxDeepLKey);
             this.groupBox26.ForeColor = System.Drawing.Color.White;
             this.groupBox26.Location = new System.Drawing.Point(11, 54);
             this.groupBox26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -6019,6 +6113,25 @@
             this.groupBox26.TabIndex = 111;
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "DeepL Settings";
+            // 
+            // ShowDeepLPassword
+            // 
+            this.ShowDeepLPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowDeepLPassword.BackColor = System.Drawing.Color.White;
+            this.ShowDeepLPassword.FlatAppearance.BorderSize = 0;
+            this.ShowDeepLPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowDeepLPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowDeepLPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ShowDeepLPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowDeepLPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ShowDeepLPassword.IconSize = 15;
+            this.ShowDeepLPassword.Location = new System.Drawing.Point(288, 36);
+            this.ShowDeepLPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowDeepLPassword.Name = "ShowDeepLPassword";
+            this.ShowDeepLPassword.Size = new System.Drawing.Size(31, 18);
+            this.ShowDeepLPassword.TabIndex = 122;
+            this.ShowDeepLPassword.UseVisualStyleBackColor = false;
+            this.ShowDeepLPassword.Click += new System.EventHandler(this.ShowDeepLPassword_Click);
             // 
             // label51
             // 
@@ -6066,14 +6179,14 @@
             this.button18.UseVisualStyleBackColor = false;
             this.button18.Click += new System.EventHandler(this.button18_Click_1);
             // 
-            // textBox5
+            // textBoxDeepLKey
             // 
-            this.textBox5.Location = new System.Drawing.Point(12, 34);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PasswordChar = '*';
-            this.textBox5.Size = new System.Drawing.Size(312, 23);
-            this.textBox5.TabIndex = 27;
+            this.textBoxDeepLKey.Location = new System.Drawing.Point(12, 34);
+            this.textBoxDeepLKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxDeepLKey.Name = "textBoxDeepLKey";
+            this.textBoxDeepLKey.PasswordChar = '*';
+            this.textBoxDeepLKey.Size = new System.Drawing.Size(312, 23);
+            this.textBoxDeepLKey.TabIndex = 27;
             // 
             // label53
             // 
@@ -6507,16 +6620,18 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.ShowAmazonSecretPassword);
+            this.groupBox16.Controls.Add(this.ShowAmazonKeyPassword);
             this.groupBox16.Controls.Add(this.label74);
             this.groupBox16.Controls.Add(this.iconButton18);
             this.groupBox16.Controls.Add(this.button29);
-            this.groupBox16.Controls.Add(this.textBox10);
+            this.groupBox16.Controls.Add(this.textBoxAmazonSecret);
             this.groupBox16.Controls.Add(this.label75);
             this.groupBox16.Controls.Add(this.button30);
             this.groupBox16.Controls.Add(this.textBox8);
             this.groupBox16.Controls.Add(this.label82);
             this.groupBox16.Controls.Add(this.button31);
-            this.groupBox16.Controls.Add(this.textBox9);
+            this.groupBox16.Controls.Add(this.textBoxAmazonKey);
             this.groupBox16.ForeColor = System.Drawing.Color.White;
             this.groupBox16.Location = new System.Drawing.Point(13, 42);
             this.groupBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -6526,6 +6641,44 @@
             this.groupBox16.TabIndex = 111;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Amazon Polly Setup";
+            // 
+            // ShowAmazonSecretPassword
+            // 
+            this.ShowAmazonSecretPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowAmazonSecretPassword.BackColor = System.Drawing.Color.White;
+            this.ShowAmazonSecretPassword.FlatAppearance.BorderSize = 0;
+            this.ShowAmazonSecretPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowAmazonSecretPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowAmazonSecretPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ShowAmazonSecretPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowAmazonSecretPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ShowAmazonSecretPassword.IconSize = 15;
+            this.ShowAmazonSecretPassword.Location = new System.Drawing.Point(288, 90);
+            this.ShowAmazonSecretPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowAmazonSecretPassword.Name = "ShowAmazonSecretPassword";
+            this.ShowAmazonSecretPassword.Size = new System.Drawing.Size(31, 18);
+            this.ShowAmazonSecretPassword.TabIndex = 123;
+            this.ShowAmazonSecretPassword.UseVisualStyleBackColor = false;
+            this.ShowAmazonSecretPassword.Click += new System.EventHandler(this.ShowAmazonSecretPassword_Click);
+            // 
+            // ShowAmazonKeyPassword
+            // 
+            this.ShowAmazonKeyPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowAmazonKeyPassword.BackColor = System.Drawing.Color.White;
+            this.ShowAmazonKeyPassword.FlatAppearance.BorderSize = 0;
+            this.ShowAmazonKeyPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowAmazonKeyPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowAmazonKeyPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ShowAmazonKeyPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowAmazonKeyPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ShowAmazonKeyPassword.IconSize = 15;
+            this.ShowAmazonKeyPassword.Location = new System.Drawing.Point(288, 36);
+            this.ShowAmazonKeyPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowAmazonKeyPassword.Name = "ShowAmazonKeyPassword";
+            this.ShowAmazonKeyPassword.Size = new System.Drawing.Size(31, 18);
+            this.ShowAmazonKeyPassword.TabIndex = 122;
+            this.ShowAmazonKeyPassword.UseVisualStyleBackColor = false;
+            this.ShowAmazonKeyPassword.Click += new System.EventHandler(this.ShowAmazonKeyPassword_Click);
             // 
             // label74
             // 
@@ -6572,14 +6725,14 @@
             this.button29.UseVisualStyleBackColor = false;
             this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
-            // textBox10
+            // textBoxAmazonSecret
             // 
-            this.textBox10.Location = new System.Drawing.Point(12, 88);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.PasswordChar = '*';
-            this.textBox10.Size = new System.Drawing.Size(312, 23);
-            this.textBox10.TabIndex = 33;
+            this.textBoxAmazonSecret.Location = new System.Drawing.Point(12, 88);
+            this.textBoxAmazonSecret.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxAmazonSecret.Name = "textBoxAmazonSecret";
+            this.textBoxAmazonSecret.PasswordChar = '*';
+            this.textBoxAmazonSecret.Size = new System.Drawing.Size(312, 23);
+            this.textBoxAmazonSecret.TabIndex = 33;
             // 
             // label75
             // 
@@ -6639,14 +6792,14 @@
             this.button31.UseVisualStyleBackColor = false;
             this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
-            // textBox9
+            // textBoxAmazonKey
             // 
-            this.textBox9.Location = new System.Drawing.Point(12, 34);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.PasswordChar = '*';
-            this.textBox9.Size = new System.Drawing.Size(312, 23);
-            this.textBox9.TabIndex = 27;
+            this.textBoxAmazonKey.Location = new System.Drawing.Point(12, 34);
+            this.textBoxAmazonKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxAmazonKey.Name = "textBoxAmazonKey";
+            this.textBoxAmazonKey.PasswordChar = '*';
+            this.textBoxAmazonKey.Size = new System.Drawing.Size(312, 23);
+            this.textBoxAmazonKey.TabIndex = 27;
             // 
             // label83
             // 
@@ -7544,7 +7697,6 @@
             this.groupBox38.TabIndex = 159;
             this.groupBox38.TabStop = false;
             this.groupBox38.Text = "Whisper.cpp Model (BIN file)";
-            this.groupBox38.Enter += new System.EventHandler(this.groupBox38_Enter);
             // 
             // label146
             // 
@@ -8109,11 +8261,12 @@
             // 
             // groupBox39
             // 
+            this.groupBox39.Controls.Add(this.ShowElevenLabsPassword);
             this.groupBox39.Controls.Add(this.iconButton35);
             this.groupBox39.Controls.Add(this.button35);
             this.groupBox39.Controls.Add(this.label111);
             this.groupBox39.Controls.Add(this.button37);
-            this.groupBox39.Controls.Add(this.textBox12);
+            this.groupBox39.Controls.Add(this.textBoxElevenLabsKey);
             this.groupBox39.ForeColor = System.Drawing.Color.White;
             this.groupBox39.Location = new System.Drawing.Point(18, 51);
             this.groupBox39.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -8123,6 +8276,25 @@
             this.groupBox39.TabIndex = 126;
             this.groupBox39.TabStop = false;
             this.groupBox39.Text = "Eleven Labs Setup";
+            // 
+            // ShowElevenLabsPassword
+            // 
+            this.ShowElevenLabsPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowElevenLabsPassword.BackColor = System.Drawing.Color.White;
+            this.ShowElevenLabsPassword.FlatAppearance.BorderSize = 0;
+            this.ShowElevenLabsPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowElevenLabsPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowElevenLabsPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ShowElevenLabsPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ShowElevenLabsPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ShowElevenLabsPassword.IconSize = 15;
+            this.ShowElevenLabsPassword.Location = new System.Drawing.Point(438, 36);
+            this.ShowElevenLabsPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ShowElevenLabsPassword.Name = "ShowElevenLabsPassword";
+            this.ShowElevenLabsPassword.Size = new System.Drawing.Size(31, 18);
+            this.ShowElevenLabsPassword.TabIndex = 165;
+            this.ShowElevenLabsPassword.UseVisualStyleBackColor = false;
+            this.ShowElevenLabsPassword.Click += new System.EventHandler(this.ShowElevenLabsPassword_Click);
             // 
             // iconButton35
             // 
@@ -8184,14 +8356,14 @@
             this.button37.UseVisualStyleBackColor = false;
             this.button37.Click += new System.EventHandler(this.button37_Click);
             // 
-            // textBox12
+            // textBoxElevenLabsKey
             // 
-            this.textBox12.Location = new System.Drawing.Point(12, 34);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.PasswordChar = '*';
-            this.textBox12.Size = new System.Drawing.Size(462, 23);
-            this.textBox12.TabIndex = 27;
+            this.textBoxElevenLabsKey.Location = new System.Drawing.Point(12, 34);
+            this.textBoxElevenLabsKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxElevenLabsKey.Name = "textBoxElevenLabsKey";
+            this.textBoxElevenLabsKey.PasswordChar = '*';
+            this.textBoxElevenLabsKey.Size = new System.Drawing.Size(462, 23);
+            this.textBoxElevenLabsKey.TabIndex = 27;
             // 
             // label107
             // 
@@ -8397,7 +8569,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(412, 28);
+            this.iconButton55.Location = new System.Drawing.Point(633, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -8431,6 +8603,7 @@
             // 
             // groupBox23
             // 
+            this.groupBox23.Controls.Add(this.ProShowKey);
             this.groupBox23.Controls.Add(this.label168);
             this.groupBox23.Controls.Add(this.rjToggleButtonProTranslation);
             this.groupBox23.Controls.Add(this.labelTranslationCharacters);
@@ -8452,6 +8625,25 @@
             this.groupBox23.TabIndex = 114;
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Voice Wizard Pro Settings";
+            // 
+            // ProShowKey
+            // 
+            this.ProShowKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProShowKey.BackColor = System.Drawing.Color.White;
+            this.ProShowKey.FlatAppearance.BorderSize = 0;
+            this.ProShowKey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProShowKey.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ProShowKey.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.ProShowKey.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.ProShowKey.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ProShowKey.IconSize = 15;
+            this.ProShowKey.Location = new System.Drawing.Point(420, 74);
+            this.ProShowKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ProShowKey.Name = "ProShowKey";
+            this.ProShowKey.Size = new System.Drawing.Size(31, 18);
+            this.ProShowKey.TabIndex = 121;
+            this.ProShowKey.UseVisualStyleBackColor = false;
+            this.ProShowKey.Click += new System.EventHandler(this.ProShowKey_Click);
             // 
             // label168
             // 
@@ -8550,7 +8742,6 @@
             this.rjToggleButtonProAmazon.Size = new System.Drawing.Size(39, 16);
             this.rjToggleButtonProAmazon.TabIndex = 112;
             this.rjToggleButtonProAmazon.UseVisualStyleBackColor = true;
-            this.rjToggleButtonProAmazon.CheckedChanged += new System.EventHandler(this.rjToggleButtonProAmazon_CheckedChanged);
             // 
             // label162
             // 
@@ -8624,6 +8815,8 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.UberDuckShowSecretPassword);
+            this.groupBox14.Controls.Add(this.UberDuckShowPassword);
             this.groupBox14.Controls.Add(this.label160);
             this.groupBox14.Controls.Add(this.iconButton53);
             this.groupBox14.Controls.Add(this.textBoxUberSecret);
@@ -8638,6 +8831,44 @@
             this.groupBox14.TabIndex = 113;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Uberduck Setup";
+            // 
+            // UberDuckShowSecretPassword
+            // 
+            this.UberDuckShowSecretPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.UberDuckShowSecretPassword.BackColor = System.Drawing.Color.White;
+            this.UberDuckShowSecretPassword.FlatAppearance.BorderSize = 0;
+            this.UberDuckShowSecretPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UberDuckShowSecretPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.UberDuckShowSecretPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.UberDuckShowSecretPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.UberDuckShowSecretPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UberDuckShowSecretPassword.IconSize = 15;
+            this.UberDuckShowSecretPassword.Location = new System.Drawing.Point(288, 90);
+            this.UberDuckShowSecretPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.UberDuckShowSecretPassword.Name = "UberDuckShowSecretPassword";
+            this.UberDuckShowSecretPassword.Size = new System.Drawing.Size(31, 18);
+            this.UberDuckShowSecretPassword.TabIndex = 123;
+            this.UberDuckShowSecretPassword.UseVisualStyleBackColor = false;
+            this.UberDuckShowSecretPassword.Click += new System.EventHandler(this.UberDuckShowSecretPassword_Click);
+            // 
+            // UberDuckShowPassword
+            // 
+            this.UberDuckShowPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.UberDuckShowPassword.BackColor = System.Drawing.Color.White;
+            this.UberDuckShowPassword.FlatAppearance.BorderSize = 0;
+            this.UberDuckShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UberDuckShowPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.UberDuckShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            this.UberDuckShowPassword.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(72)))), ((int)(((byte)(111)))));
+            this.UberDuckShowPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.UberDuckShowPassword.IconSize = 15;
+            this.UberDuckShowPassword.Location = new System.Drawing.Point(288, 36);
+            this.UberDuckShowPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.UberDuckShowPassword.Name = "UberDuckShowPassword";
+            this.UberDuckShowPassword.Size = new System.Drawing.Size(31, 18);
+            this.UberDuckShowPassword.TabIndex = 122;
+            this.UberDuckShowPassword.UseVisualStyleBackColor = false;
+            this.UberDuckShowPassword.Click += new System.EventHandler(this.UberDuckShowPassword_Click);
             // 
             // label160
             // 
@@ -8748,16 +8979,16 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.panel1.Controls.Add(this.versionLabel);
-            this.panel1.Controls.Add(this.iconButton8);
-            this.panel1.Controls.Add(this.iconButton12);
-            this.panel1.Controls.Add(this.iconButton7);
-            this.panel1.Controls.Add(this.iconButton6);
-            this.panel1.Controls.Add(this.iconButton4);
-            this.panel1.Controls.Add(this.iconButton3);
-            this.panel1.Controls.Add(this.iconButton5);
-            this.panel1.Controls.Add(this.iconButton23);
-            this.panel1.Controls.Add(this.iconButton2);
-            this.panel1.Controls.Add(this.iconButton1);
+            this.panel1.Controls.Add(this.navbarUpdates);
+            this.panel1.Controls.Add(this.navbarDonate);
+            this.panel1.Controls.Add(this.navbarGithub);
+            this.panel1.Controls.Add(this.navbarDiscord);
+            this.panel1.Controls.Add(this.navbarSpeechProvider);
+            this.panel1.Controls.Add(this.navbarIntegrations);
+            this.panel1.Controls.Add(this.navbarSettings);
+            this.panel1.Controls.Add(this.navbarTextToText);
+            this.panel1.Controls.Add(this.navbarTextToSpeech);
+            this.panel1.Controls.Add(this.navbarHome);
             this.panel1.Controls.Add(this.panel2Logo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -8776,227 +9007,228 @@
             this.versionLabel.TabIndex = 12;
             this.versionLabel.Text = "Version";
             this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.versionLabel.Click += new System.EventHandler(this.versionLabel_Click);
             // 
-            // iconButton8
+            // navbarUpdates
             // 
-            this.iconButton8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton8.FlatAppearance.BorderSize = 0;
-            this.iconButton8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton8.ForeColor = System.Drawing.Color.Gold;
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.iconButton8.IconColor = System.Drawing.Color.Gold;
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton8.IconSize = 40;
-            this.iconButton8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.Location = new System.Drawing.Point(0, 510);
-            this.iconButton8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(159, 45);
-            this.iconButton8.TabIndex = 8;
-            this.iconButton8.Text = "Update";
-            this.iconButton8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton8.UseVisualStyleBackColor = true;
-            this.iconButton8.Visible = false;
-            this.iconButton8.Click += new System.EventHandler(this.iconButton8_Click);
+            this.navbarUpdates.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarUpdates.FlatAppearance.BorderSize = 0;
+            this.navbarUpdates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarUpdates.ForeColor = System.Drawing.Color.Gold;
+            this.navbarUpdates.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.navbarUpdates.IconColor = System.Drawing.Color.Gold;
+            this.navbarUpdates.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarUpdates.IconSize = 40;
+            this.navbarUpdates.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarUpdates.Location = new System.Drawing.Point(0, 510);
+            this.navbarUpdates.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarUpdates.Name = "navbarUpdates";
+            this.navbarUpdates.Size = new System.Drawing.Size(159, 45);
+            this.navbarUpdates.TabIndex = 8;
+            this.navbarUpdates.Text = "Update";
+            this.navbarUpdates.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarUpdates.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarUpdates.UseVisualStyleBackColor = true;
+            this.navbarUpdates.Visible = false;
+            this.navbarUpdates.Click += new System.EventHandler(this.iconButton8_Click);
             // 
-            // iconButton12
+            // navbarDonate
             // 
-            this.iconButton12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton12.FlatAppearance.BorderSize = 0;
-            this.iconButton12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton12.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton12.IconChar = FontAwesome.Sharp.IconChar.HandHoldingHeart;
-            this.iconButton12.IconColor = System.Drawing.Color.White;
-            this.iconButton12.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton12.IconSize = 40;
-            this.iconButton12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton12.Location = new System.Drawing.Point(0, 465);
-            this.iconButton12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton12.Name = "iconButton12";
-            this.iconButton12.Size = new System.Drawing.Size(159, 45);
-            this.iconButton12.TabIndex = 10;
-            this.iconButton12.Text = "Donate";
-            this.iconButton12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton12.UseVisualStyleBackColor = true;
-            this.iconButton12.Click += new System.EventHandler(this.iconButton12_Click);
+            this.navbarDonate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarDonate.FlatAppearance.BorderSize = 0;
+            this.navbarDonate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarDonate.ForeColor = System.Drawing.Color.Snow;
+            this.navbarDonate.IconChar = FontAwesome.Sharp.IconChar.HandHoldingHeart;
+            this.navbarDonate.IconColor = System.Drawing.Color.White;
+            this.navbarDonate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.navbarDonate.IconSize = 40;
+            this.navbarDonate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarDonate.Location = new System.Drawing.Point(0, 465);
+            this.navbarDonate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarDonate.Name = "navbarDonate";
+            this.navbarDonate.Size = new System.Drawing.Size(159, 45);
+            this.navbarDonate.TabIndex = 10;
+            this.navbarDonate.Text = "Donate";
+            this.navbarDonate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarDonate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarDonate.UseVisualStyleBackColor = true;
+            this.navbarDonate.Click += new System.EventHandler(this.iconButton12_Click);
             // 
-            // iconButton7
+            // navbarGithub
             // 
-            this.iconButton7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton7.FlatAppearance.BorderSize = 0;
-            this.iconButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton7.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.Github;
-            this.iconButton7.IconColor = System.Drawing.Color.White;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Brands;
-            this.iconButton7.IconSize = 40;
-            this.iconButton7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.Location = new System.Drawing.Point(0, 420);
-            this.iconButton7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Size = new System.Drawing.Size(159, 45);
-            this.iconButton7.TabIndex = 7;
-            this.iconButton7.Text = "Github";
-            this.iconButton7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton7.UseVisualStyleBackColor = true;
-            this.iconButton7.Click += new System.EventHandler(this.iconButton7_Click);
+            this.navbarGithub.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarGithub.FlatAppearance.BorderSize = 0;
+            this.navbarGithub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarGithub.ForeColor = System.Drawing.Color.Snow;
+            this.navbarGithub.IconChar = FontAwesome.Sharp.IconChar.Github;
+            this.navbarGithub.IconColor = System.Drawing.Color.White;
+            this.navbarGithub.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            this.navbarGithub.IconSize = 40;
+            this.navbarGithub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarGithub.Location = new System.Drawing.Point(0, 420);
+            this.navbarGithub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarGithub.Name = "navbarGithub";
+            this.navbarGithub.Size = new System.Drawing.Size(159, 45);
+            this.navbarGithub.TabIndex = 7;
+            this.navbarGithub.Text = "Github";
+            this.navbarGithub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarGithub.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarGithub.UseVisualStyleBackColor = true;
+            this.navbarGithub.Click += new System.EventHandler(this.iconButton7_Click);
             // 
-            // iconButton6
+            // navbarDiscord
             // 
-            this.iconButton6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton6.FlatAppearance.BorderSize = 0;
-            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton6.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.Discord;
-            this.iconButton6.IconColor = System.Drawing.Color.White;
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Brands;
-            this.iconButton6.IconSize = 40;
-            this.iconButton6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.Location = new System.Drawing.Point(0, 375);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(159, 45);
-            this.iconButton6.TabIndex = 6;
-            this.iconButton6.Text = "Discord";
-            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton6.UseVisualStyleBackColor = true;
-            this.iconButton6.Click += new System.EventHandler(this.iconButton6_Click);
+            this.navbarDiscord.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarDiscord.FlatAppearance.BorderSize = 0;
+            this.navbarDiscord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarDiscord.ForeColor = System.Drawing.Color.Snow;
+            this.navbarDiscord.IconChar = FontAwesome.Sharp.IconChar.Discord;
+            this.navbarDiscord.IconColor = System.Drawing.Color.White;
+            this.navbarDiscord.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            this.navbarDiscord.IconSize = 40;
+            this.navbarDiscord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarDiscord.Location = new System.Drawing.Point(0, 375);
+            this.navbarDiscord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarDiscord.Name = "navbarDiscord";
+            this.navbarDiscord.Size = new System.Drawing.Size(159, 45);
+            this.navbarDiscord.TabIndex = 6;
+            this.navbarDiscord.Text = "Discord";
+            this.navbarDiscord.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarDiscord.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarDiscord.UseVisualStyleBackColor = true;
+            this.navbarDiscord.Click += new System.EventHandler(this.iconButton6_Click);
             // 
-            // iconButton4
+            // navbarSpeechProvider
             // 
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
-            this.iconButton4.IconColor = System.Drawing.Color.Snow;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton4.IconSize = 40;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 330);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(159, 45);
-            this.iconButton4.TabIndex = 0;
-            this.iconButton4.Text = "Speech Provider";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = true;
-            this.iconButton4.Click += new System.EventHandler(this.iconButton4_Click);
+            this.navbarSpeechProvider.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarSpeechProvider.FlatAppearance.BorderSize = 0;
+            this.navbarSpeechProvider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarSpeechProvider.ForeColor = System.Drawing.Color.Snow;
+            this.navbarSpeechProvider.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            this.navbarSpeechProvider.IconColor = System.Drawing.Color.Snow;
+            this.navbarSpeechProvider.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarSpeechProvider.IconSize = 40;
+            this.navbarSpeechProvider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarSpeechProvider.Location = new System.Drawing.Point(0, 330);
+            this.navbarSpeechProvider.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarSpeechProvider.Name = "navbarSpeechProvider";
+            this.navbarSpeechProvider.Size = new System.Drawing.Size(159, 45);
+            this.navbarSpeechProvider.TabIndex = 0;
+            this.navbarSpeechProvider.Text = "Speech Provider";
+            this.navbarSpeechProvider.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarSpeechProvider.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarSpeechProvider.UseVisualStyleBackColor = true;
+            this.navbarSpeechProvider.Click += new System.EventHandler(this.iconButton4_Click);
             // 
-            // iconButton3
+            // navbarIntegrations
             // 
-            this.iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
-            this.iconButton3.IconColor = System.Drawing.Color.Snow;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton3.IconSize = 40;
-            this.iconButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new System.Drawing.Point(0, 285);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(159, 45);
-            this.iconButton3.TabIndex = 9;
-            this.iconButton3.Text = "Integrations";
-            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = true;
-            this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
+            this.navbarIntegrations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarIntegrations.FlatAppearance.BorderSize = 0;
+            this.navbarIntegrations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarIntegrations.ForeColor = System.Drawing.Color.Snow;
+            this.navbarIntegrations.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
+            this.navbarIntegrations.IconColor = System.Drawing.Color.Snow;
+            this.navbarIntegrations.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarIntegrations.IconSize = 40;
+            this.navbarIntegrations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarIntegrations.Location = new System.Drawing.Point(0, 285);
+            this.navbarIntegrations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarIntegrations.Name = "navbarIntegrations";
+            this.navbarIntegrations.Size = new System.Drawing.Size(159, 45);
+            this.navbarIntegrations.TabIndex = 9;
+            this.navbarIntegrations.Text = "Integrations";
+            this.navbarIntegrations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarIntegrations.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarIntegrations.UseVisualStyleBackColor = true;
+            this.navbarIntegrations.Click += new System.EventHandler(this.iconButton3_Click);
             // 
-            // iconButton5
+            // navbarSettings
             // 
-            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.Cog;
-            this.iconButton5.IconColor = System.Drawing.Color.Snow;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton5.IconSize = 40;
-            this.iconButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new System.Drawing.Point(0, 240);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(159, 45);
-            this.iconButton5.TabIndex = 1;
-            this.iconButton5.Text = "Settings";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton5.UseVisualStyleBackColor = true;
-            this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
+            this.navbarSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarSettings.FlatAppearance.BorderSize = 0;
+            this.navbarSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarSettings.ForeColor = System.Drawing.Color.Snow;
+            this.navbarSettings.IconChar = FontAwesome.Sharp.IconChar.Cog;
+            this.navbarSettings.IconColor = System.Drawing.Color.Snow;
+            this.navbarSettings.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarSettings.IconSize = 40;
+            this.navbarSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarSettings.Location = new System.Drawing.Point(0, 240);
+            this.navbarSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarSettings.Name = "navbarSettings";
+            this.navbarSettings.Size = new System.Drawing.Size(159, 45);
+            this.navbarSettings.TabIndex = 1;
+            this.navbarSettings.Text = "Settings";
+            this.navbarSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarSettings.UseVisualStyleBackColor = true;
+            this.navbarSettings.Click += new System.EventHandler(this.iconButton5_Click);
             // 
-            // iconButton23
+            // navbarTextToText
             // 
-            this.iconButton23.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton23.FlatAppearance.BorderSize = 0;
-            this.iconButton23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton23.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton23.IconChar = FontAwesome.Sharp.IconChar.Keyboard;
-            this.iconButton23.IconColor = System.Drawing.Color.Snow;
-            this.iconButton23.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton23.IconSize = 40;
-            this.iconButton23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton23.Location = new System.Drawing.Point(0, 195);
-            this.iconButton23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton23.Name = "iconButton23";
-            this.iconButton23.Size = new System.Drawing.Size(159, 45);
-            this.iconButton23.TabIndex = 11;
-            this.iconButton23.Text = "Text to Text";
-            this.iconButton23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton23.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton23.UseVisualStyleBackColor = true;
-            this.iconButton23.Click += new System.EventHandler(this.iconButton23_Click);
+            this.navbarTextToText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarTextToText.FlatAppearance.BorderSize = 0;
+            this.navbarTextToText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarTextToText.ForeColor = System.Drawing.Color.Snow;
+            this.navbarTextToText.IconChar = FontAwesome.Sharp.IconChar.Keyboard;
+            this.navbarTextToText.IconColor = System.Drawing.Color.Snow;
+            this.navbarTextToText.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarTextToText.IconSize = 40;
+            this.navbarTextToText.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarTextToText.Location = new System.Drawing.Point(0, 195);
+            this.navbarTextToText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarTextToText.Name = "navbarTextToText";
+            this.navbarTextToText.Size = new System.Drawing.Size(159, 45);
+            this.navbarTextToText.TabIndex = 11;
+            this.navbarTextToText.Text = "Text to Text";
+            this.navbarTextToText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarTextToText.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarTextToText.UseVisualStyleBackColor = true;
+            this.navbarTextToText.Click += new System.EventHandler(this.iconButton23_Click);
             // 
-            // iconButton2
+            // navbarTextToSpeech
             // 
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Microphone;
-            this.iconButton2.IconColor = System.Drawing.Color.Snow;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton2.IconSize = 40;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 150);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(159, 45);
-            this.iconButton2.TabIndex = 2;
-            this.iconButton2.Text = "Text to Speech";
-            this.iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            this.navbarTextToSpeech.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarTextToSpeech.FlatAppearance.BorderSize = 0;
+            this.navbarTextToSpeech.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarTextToSpeech.ForeColor = System.Drawing.Color.Snow;
+            this.navbarTextToSpeech.IconChar = FontAwesome.Sharp.IconChar.Microphone;
+            this.navbarTextToSpeech.IconColor = System.Drawing.Color.Snow;
+            this.navbarTextToSpeech.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarTextToSpeech.IconSize = 40;
+            this.navbarTextToSpeech.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarTextToSpeech.Location = new System.Drawing.Point(0, 150);
+            this.navbarTextToSpeech.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarTextToSpeech.Name = "navbarTextToSpeech";
+            this.navbarTextToSpeech.Size = new System.Drawing.Size(159, 45);
+            this.navbarTextToSpeech.TabIndex = 2;
+            this.navbarTextToSpeech.Text = "Text to Speech";
+            this.navbarTextToSpeech.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarTextToSpeech.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarTextToSpeech.UseVisualStyleBackColor = true;
+            this.navbarTextToSpeech.Click += new System.EventHandler(this.iconButton2_Click);
             // 
-            // iconButton1
+            // navbarHome
             // 
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.iconButton1.IconColor = System.Drawing.Color.Snow;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton1.IconSize = 40;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 105);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(159, 45);
-            this.iconButton1.TabIndex = 1;
-            this.iconButton1.Text = "Dashboard";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = true;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.navbarHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navbarHome.FlatAppearance.BorderSize = 0;
+            this.navbarHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.navbarHome.ForeColor = System.Drawing.Color.Snow;
+            this.navbarHome.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.navbarHome.IconColor = System.Drawing.Color.Snow;
+            this.navbarHome.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.navbarHome.IconSize = 40;
+            this.navbarHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarHome.Location = new System.Drawing.Point(0, 105);
+            this.navbarHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.navbarHome.Name = "navbarHome";
+            this.navbarHome.Size = new System.Drawing.Size(159, 45);
+            this.navbarHome.TabIndex = 1;
+            this.navbarHome.Text = "Home";
+            this.navbarHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.navbarHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.navbarHome.UseVisualStyleBackColor = true;
+            this.navbarHome.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // panel2Logo
             // 
@@ -9079,6 +9311,7 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -9226,9 +9459,6 @@
         private Label label6;
         private Label label7;
         private Button buttonDelayHere;
-        private TabControl mainTabControl;
-        private TabPage tabPage1;
-        private TabPage tabPage3;
         private Label label8;
         private Button button5;
         private Label label10;
@@ -9237,20 +9467,19 @@
         private Label label11;
         private Button button1;
         private Label label3;
-        public ComboBox comboBox1;
-        public ComboBox comboBox2;
-        public ComboBox comboBox3;
+        public ComboBox comboBoxStyleSelect;
+        public ComboBox comboBoxVoiceSelect;
+        public ComboBox comboBoxTranslationLanguage;
         private Label label14;
-        public ComboBox comboBox4;
+        public ComboBox comboBoxSpokenLanguage;
         private Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton navbarSettings;
+        private FontAwesome.Sharp.IconButton navbarSpeechProvider;
+        private FontAwesome.Sharp.IconButton navbarTextToSpeech;
         private Panel panel2Logo;
         private PictureBox pictureBox1;
         private TabPage tabPage4;
-        private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton navbarDiscord;
         private RichTextBox richTextBox4; 
         private Label label16;
         private Label label26;
@@ -9261,7 +9490,7 @@
         private Label label20;
         private Label label19;
 
-        private FontAwesome.Sharp.IconButton iconButton7;
+        private FontAwesome.Sharp.IconButton navbarGithub;
         private Label label13;
         public RichTextBox richTextBox6;
         public ComboBox comboBoxPara;
@@ -9283,9 +9512,8 @@
         private Button HRIntervalChange;
         private TextBox HRInterval;
         private TabPage tabAddons;
-        private FontAwesome.Sharp.IconButton iconButton8;
         private RJControls.TranslucentPanel translucentPanel1;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton navbarIntegrations;
         private FontAwesome.Sharp.IconButton iconButton10;
         private FontAwesome.Sharp.IconButton iconButton9;
         private FontAwesome.Sharp.IconButton iconButton11;
@@ -9297,7 +9525,7 @@
         private Label label45;
         private Label label43;
         public RJControls.RJToggleButton rjToggleButton3;
-        private FontAwesome.Sharp.IconButton iconButton12;
+        private FontAwesome.Sharp.IconButton navbarDonate;
         private Label label46;
         private Button button8;
         private Label label47;
@@ -9344,14 +9572,14 @@
         public RJControls.RJToggleButton rjToggleButtonChatBoxUseDelay;
         private FontAwesome.Sharp.IconButton iconButton22;
         public RichTextBox richTextBox9;
-        private FontAwesome.Sharp.IconButton iconButton23;
+        private FontAwesome.Sharp.IconButton navbarTextToText;
         private Label label109;
-        public ComboBox comboBox5;
+        public ComboBox comboBoxAccentSelect;
         private Button button13;
         public RJControls.RJToggleButton rjToggleButtonOnTop2;
         public RJControls.RJToggleButton rjToggleButtonProfan;
         public RJControls.RJToggleButton rjToggleButtonKeyRegion2;
-        public TextBox textBox2;
+        public TextBox textBoxAzureKey;
         public TextBox textBox3;
         public Button buttonSpotify;
         public RJControls.RJToggleButton rjToggleButtonCurrentSong;
@@ -9389,7 +9617,7 @@
         private Label label136;
         public RJControls.RJToggleButton rjToggleButtonNoTTSChat;
         private Label label137;
-        public RJControls.RJToggleButton rjToggleButton10;
+        public RJControls.RJToggleButton rjToggleButtonWindowsMedia;
         public ComboBox comboBoxTTSMode;
         private Label label52;
         private Label label18;
@@ -9397,10 +9625,10 @@
         private Label label60;
         public RJControls.RJToggleButton rjToggleButtonPlayPaused;
         private Button button2;
-        private Button button20;
-        private Button button22;
-        private Button button23;
-        private Button button21;
+        private Button songStats;
+        private Button heartRateStats;
+        private Button batteryStats;
+        private Button durationStats;
         private TabPage tabPage2;
         private Label label115;
         private Label label131;
@@ -9424,7 +9652,7 @@
         public ComboBox comboBoxOutput;
         public ComboBox comboBoxInput;
         private Label label105;
-        public RJControls.RJToggleButton rjToggleButtonMedia;
+        public RJControls.RJToggleButton rjToggleButtonSounds;
         private FontAwesome.Sharp.IconButton iconButton39;
         private FontAwesome.Sharp.IconButton iconButton40;
         private Label label117;
@@ -9450,7 +9678,7 @@
         private Label label17;
         public ComboBox comboBoxSTT;
         private GroupBox groupBox21;
-        private FontAwesome.Sharp.IconButton iconButton41;
+        private FontAwesome.Sharp.IconButton SpeechToTextHelp;
         private Label label27;
         public RJControls.RJToggleButton rjToggleDarkMode;
         public RJControls.RJToggleButton rjToggleButtonStyle;
@@ -9467,11 +9695,11 @@
         private Label label51;
         private FontAwesome.Sharp.IconButton iconButton43;
         private Button button18;
-        public TextBox textBox5;
+        public TextBox textBoxDeepLKey;
         private Label label53;
         private GroupBox groupBox27;
         private Label label24;
-        private Button button14;
+        private Button volumeStats;
         private Label label33;
         public RJControls.RJToggleButton rjToggleDiscordToast;
         public ComboBox comboBoxPreset;
@@ -9534,13 +9762,13 @@
         private Label label74;
         private FontAwesome.Sharp.IconButton iconButton18;
         private Button button29;
-        public TextBox textBox10;
+        public TextBox textBoxAmazonSecret;
         private Label label75;
         private Button button30;
         public TextBox textBox8;
         private Label label82;
         private Button button31;
-        public TextBox textBox9;
+        public TextBox textBoxAmazonKey;
         private Label label83;
         private FontAwesome.Sharp.IconButton iconButton24;
         private TabPage VRCOSC;
@@ -9590,7 +9818,7 @@
         private GroupBox groupBox39;
         private Label label111;
         private Button button37;
-        public TextBox textBox12;
+        public TextBox textBoxElevenLabsKey;
         private Label label107;
         private Button button35;
         public TextBox textBoxVRChatOSCPort;
@@ -9666,10 +9894,9 @@
         private Label label147;
         public ComboBox comboBoxWhisperModelDownload;
         public Label modelLabel;
-        private Button button43;
+        private Button RefreshAudioDevicesButton;
         private Label label149;
         private Button button44;
-        private Label versionLabel;
         private Panel logPanel;
         private Button button45;
         private Button button3;
@@ -9696,15 +9923,13 @@
         private Button button49;
         private Label label154;
         public RJControls.RJToggleButton rjToggleButtonQueueTypedText;
-        private FontAwesome.Sharp.IconButton iconButton15;
         private Label label146;
         public RJControls.RJToggleButton rjToggleButtonWhisperFilterInLog;
         private FontAwesome.Sharp.IconButton iconButton47;
-        private FontAwesome.Sharp.IconButton iconButton16;
+        private FontAwesome.Sharp.IconButton VirtualCableHelp;
         private Label label155;
         public RJControls.RJToggleButton rjToggleButtonForceMedia;
         private Button button50;
-        private FontAwesome.Sharp.IconButton iconButton48;
         private Panel panelCustomize;
         private FontAwesome.Sharp.IconButton StopButton;
         private FontAwesome.Sharp.IconButton TTSButton;
@@ -9772,7 +9997,6 @@
         public RJControls.RJToggleButton rjToggleButtonResetButtonsCounter;
         private FontAwesome.Sharp.IconButton iconButton34;
         private FontAwesome.Sharp.IconButton iconButton33;
-        private FontAwesome.Sharp.IconButton iconButton17;
         private GroupBox groupBox40;
         public Label SpeechHoursUsed;
         private Label label167;
@@ -9795,5 +10019,25 @@
         private Button button36;
         private Button button52;
         public ComboBox comboBoxMediaPreset;
+        public Label labelMediaPaused;
+        public TabControl mainTabControl;
+        public TabPage tabPage1;
+        public FontAwesome.Sharp.IconButton navbarUpdates;
+        public Label versionLabel;
+        public TabPage tabPage3;
+        public FontAwesome.Sharp.IconButton iconButton17;
+        public FontAwesome.Sharp.IconButton navbarHome;
+        private FontAwesome.Sharp.IconButton ProShowKey;
+        private FontAwesome.Sharp.IconButton ShowAzurePassword;
+        private FontAwesome.Sharp.IconButton ShowDeepLPassword;
+        private FontAwesome.Sharp.IconButton ShowAmazonSecretPassword;
+        private FontAwesome.Sharp.IconButton ShowAmazonKeyPassword;
+        private FontAwesome.Sharp.IconButton ShowElevenLabsPassword;
+        private FontAwesome.Sharp.IconButton UberDuckShowSecretPassword;
+        private FontAwesome.Sharp.IconButton UberDuckShowPassword;
+        private FontAwesome.Sharp.IconButton ShowSpotifyPassword;
+        private Label label184;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private PictureBox pictureBox4;
     }
 }

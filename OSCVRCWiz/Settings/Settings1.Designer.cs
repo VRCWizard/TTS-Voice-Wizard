@@ -2158,5 +2158,149 @@ namespace OSCVRCWiz.Settings {
                 this["mediaPreset3"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string updateIntervalPreset1 {
+            get {
+                return ((string)(this["updateIntervalPreset1"]));
+            }
+            set {
+                this["updateIntervalPreset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string updateIntervalPreset2 {
+            get {
+                return ((string)(this["updateIntervalPreset2"]));
+            }
+            set {
+                this["updateIntervalPreset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public string updateIntervalPreset3 {
+            get {
+                return ((string)(this["updateIntervalPreset3"]));
+            }
+            set {
+                this["updateIntervalPreset3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OutputContinPreset1 {
+            get {
+                return ((bool)(this["OutputContinPreset1"]));
+            }
+            set {
+                this["OutputContinPreset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OutputContinPreset2 {
+            get {
+                return ((bool)(this["OutputContinPreset2"]));
+            }
+            set {
+                this["OutputContinPreset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OutputContinPreset3 {
+            get {
+                return ((bool)(this["OutputContinPreset3"]));
+            }
+            set {
+                this["OutputContinPreset3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StopPausedPreset1 {
+            get {
+                return ((bool)(this["StopPausedPreset1"]));
+            }
+            set {
+                this["StopPausedPreset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StopPausedPreset2 {
+            get {
+                return ((bool)(this["StopPausedPreset2"]));
+            }
+            set {
+                this["StopPausedPreset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StopPausedPreset3 {
+            get {
+                return ((bool)(this["StopPausedPreset3"]));
+            }
+            set {
+                this["StopPausedPreset3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MediaSpamPreset1 {
+            get {
+                return ((bool)(this["MediaSpamPreset1"]));
+            }
+            set {
+                this["MediaSpamPreset1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MediaSpamPreset2 {
+            get {
+                return ((bool)(this["MediaSpamPreset2"]));
+            }
+            set {
+                this["MediaSpamPreset2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MediaSpamPreset3 {
+            get {
+                return ((bool)(this["MediaSpamPreset3"]));
+            }
+            set {
+                this["MediaSpamPreset3"] = value;
+            }
+        }
     }
 }

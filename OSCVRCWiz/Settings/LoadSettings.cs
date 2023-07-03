@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EmbedIO.Sessions;
-using OSCVRCWiz.Addons;
-using OSCVRCWiz.TranslationAPIs;
-using OSCVRCWiz.Settings;
-using OSCVRCWiz.Resources;
-using System.Printing;
-using OSCVRCWiz.Text;
+﻿using OSCVRCWiz.Settings;
 using Settings;
-using Addons;
+using OSCVRCWiz.Services.Integrations.Media;
+using OSCVRCWiz.Services.Integrations;
+using OSCVRCWiz.Resources.StartUp;
+using OSCVRCWiz.Resources.StartUp.StartUp;
 
 namespace OSCVRCWiz
 {
@@ -18,7 +12,7 @@ namespace OSCVRCWiz
         public static void LoadingSettings()
         {
 
-            VoiceWizardWindow.MainFormGlobal.textBox2.Text = Settings1.Default.yourKey;
+            VoiceWizardWindow.MainFormGlobal.textBoxAzureKey.Text = Settings1.Default.yourKey;
             VoiceWizardWindow.MainFormGlobal.textBox3.Text = Settings1.Default.yourRegion;
             AzureRecognition.YourSubscriptionKey = Settings1.Default.yourKey;
             AzureRecognition.YourServiceRegion = Settings1.Default.yourRegion;
@@ -47,19 +41,19 @@ namespace OSCVRCWiz
 
             try
             {
-                VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
+                VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
             }
             catch (Exception ex)
             {
-                VoiceWizardWindow.MainFormGlobal.comboBox5.SelectedIndex = 0;
+                VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex = 0;
             }
 
 
             VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
 
 
-            VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
-            VoiceWizardWindow.MainFormGlobal.comboBox4.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
+            VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
+            VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
  
 
             VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = Settings1.Default.pitchNew;
@@ -82,31 +76,17 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.MainFormGlobal.button9.Dispose();
             }
 
-            try
-            {
-                // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedItem = Settings1.Default.BuiltInOutputSetting;
 
-            }
-            catch (Exception ex)
-            {
-                // VoiceWizardWindow.MainFormGlobal.comboLiteOutput.SelectedIndex = 0;
-
-            }
-
-            // comboLiteOutput.SelectedIndex = Settings1.Default.BuiltInOutputSetting;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked = Settings1.Default.SpotifyPeriodicallySetting;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifySpam.Checked = Settings1.Default.SpotifySpamSetting;
 
             SpotifyAddon.spotifyInterval = Settings1.Default.SpotifyTimerIntervalSetting;
             VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text = SpotifyAddon.spotifyInterval;
-
-            VoiceWizardWindow.spotifyTimer = new System.Threading.Timer(VoiceWizardWindow.MainFormGlobal.spotifytimertick);
-            VoiceWizardWindow.spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
+            SpotifyAddon.initiateTimer();
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked = Settings1.Default.AudioCancelSetting;
 
-            //  VoiceWizardWindow.MainFormGlobal.textBoxCultureInfo.Text = Settings1.Default.cultureInfoSetting;
 
             VoiceWizardWindow.MainFormGlobal.textBoxSpotKey.Text = Settings1.Default.SpotifyKey;
             VoiceWizardWindow.MainFormGlobal.rjToggleSpotLegacy.Checked = Settings1.Default.SpotifyLegacySetting;
@@ -124,7 +104,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked = Settings1.Default.VRCSoundNotifySetting;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonSystemTray.Checked = Settings1.Default.SystemTraySetting;
-            VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia.Checked = Settings1.Default.playMediaSetting;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonSounds.Checked = Settings1.Default.playMediaSetting;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBoxUseDelay.Checked = Settings1.Default.VRCUseDelay;
 
@@ -148,9 +128,9 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton1.Checked = Settings1.Default.heartrateOutput;
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton10.Checked = Settings1.Default.enableMedia;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked = Settings1.Default.enableMedia;
 
-            //  VoiceWizardWindow.MainFormGlobal.richTextBox11.Text = Settings1.Default.approvedSource;
+       
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked = Settings1.Default.StopOnPause;
 
@@ -162,8 +142,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
 
-            // DeepLTranslate.DeepLKey= Settings1.Default.deepLKeysave;
-            VoiceWizardWindow.MainFormGlobal.textBox5.Text = Settings1.Default.deepLKeysave;
+            VoiceWizardWindow.MainFormGlobal.textBoxDeepLKey.Text = Settings1.Default.deepLKeysave;
 
             OSC.OSCAddress = Settings1.Default.OSCAddress;
             OSC.OSCPort = Settings1.Default.OSCPort;
@@ -193,7 +172,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = Settings1.Default.dropStartSilence;
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = Settings1.Default.pauseDuration;
 
-            VoiceWizardWindow.fontSize = Settings1.Default.fontSize;
+            StartUps.fontSize = Settings1.Default.fontSize;
             VoiceWizardWindow.MainFormGlobal.textBoxDelayAfterNoTTS.Text = Settings1.Default.delayAfterNoTTS;
             VoiceWizardWindow.MainFormGlobal.textBoxQueueDelayBeforeNext.Text = Settings1.Default.delayBeforeNewTTS;
 
@@ -227,27 +206,27 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked = Settings1.Default.saveAutoRefreshKat;
 
-            VoiceWizardWindow.modifierKeySTTTS = Settings1.Default.modHotKey;
-            VoiceWizardWindow.MainFormGlobal.textBox4.Text = VoiceWizardWindow.modifierKeySTTTS;
-            VoiceWizardWindow.normalKeySTTTS = Settings1.Default.normalHotKey;
-            VoiceWizardWindow.MainFormGlobal.textBox1.Text = VoiceWizardWindow.normalKeySTTTS;
+            Hotkeys.modifierKeySTTTS = Settings1.Default.modHotKey;
+            VoiceWizardWindow.MainFormGlobal.textBox4.Text = Hotkeys.modifierKeySTTTS;
+            Hotkeys.normalKeySTTTS = Settings1.Default.normalHotKey;
+            VoiceWizardWindow.MainFormGlobal.textBox1.Text = Hotkeys.normalKeySTTTS;
 
-            VoiceWizardWindow.modifierKeyStopTTS = Settings1.Default.modHotkeyStop;
-            VoiceWizardWindow.MainFormGlobal.textBoxStopTTS1.Text = VoiceWizardWindow.modifierKeyStopTTS;
-            VoiceWizardWindow.normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
-            VoiceWizardWindow.MainFormGlobal.textBoxStopTTS2.Text = VoiceWizardWindow.normalKeyStopTTS;
+            Hotkeys.modifierKeyStopTTS = Settings1.Default.modHotkeyStop;
+            VoiceWizardWindow.MainFormGlobal.textBoxStopTTS1.Text = Hotkeys.modifierKeyStopTTS;
+            Hotkeys.normalKeyStopTTS = Settings1.Default.normalHotkeyStop;
+            VoiceWizardWindow.MainFormGlobal.textBoxStopTTS2.Text = Hotkeys.normalKeyStopTTS;
 
-            VoiceWizardWindow.modifierKeyQuickType = Settings1.Default.modHotkeyQuick;
-            VoiceWizardWindow.MainFormGlobal.textBoxQuickType1.Text = VoiceWizardWindow.modifierKeyQuickType;
-            VoiceWizardWindow.normalKeyQuickType = Settings1.Default.normalHotkeyQuick;
-            VoiceWizardWindow.MainFormGlobal.textBoxQuickType2.Text = VoiceWizardWindow.normalKeyQuickType;
+            Hotkeys.modifierKeyQuickType = Settings1.Default.modHotkeyQuick;
+            VoiceWizardWindow.MainFormGlobal.textBoxQuickType1.Text = Hotkeys.modifierKeyQuickType;
+            Hotkeys.normalKeyQuickType = Settings1.Default.normalHotkeyQuick;
+            VoiceWizardWindow.MainFormGlobal.textBoxQuickType2.Text = Hotkeys.normalKeyQuickType;
 
 
-            VoiceWizardWindow.MainFormGlobal.textBox9.Text = Settings1.Default.yourAWSKey;
-            VoiceWizardWindow.MainFormGlobal.textBox10.Text = Settings1.Default.yourAWSSecret;
+            VoiceWizardWindow.MainFormGlobal.textBoxAmazonKey.Text = Settings1.Default.yourAWSKey;
+            VoiceWizardWindow.MainFormGlobal.textBoxAmazonSecret.Text = Settings1.Default.yourAWSSecret;
             VoiceWizardWindow.MainFormGlobal.textBox8.Text = Settings1.Default.yourAWSRegion;
 
-            VoiceWizardWindow.MainFormGlobal.textBox12.Text = Settings1.Default.elevenLabsAPIKey;
+            VoiceWizardWindow.MainFormGlobal.textBoxElevenLabsKey.Text = Settings1.Default.elevenLabsAPIKey;
             VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text = Settings1.Default.whisperModel;
 
 
@@ -260,7 +239,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text = Settings1.Default.AFKMsg;
             VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.VRCPort;
-            OSC.FromVRChatPort = Settings1.Default.VRCPort;
+            VRChatListener.FromVRChatPort = Settings1.Default.VRCPort;
             VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked = Settings1.Default.VRCListemOnStart;
 
 
@@ -286,23 +265,23 @@ namespace OSCVRCWiz
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)
             {
-                OSC.prevCounter1 = Settings1.Default.Counter1;
-                OSC.counter1 = Settings1.Default.Counter1;
+                VRChatListener.prevCounter1 = Settings1.Default.Counter1;
+                VRChatListener.counter1 = Settings1.Default.Counter1;
 
-                OSC.prevCounter2 = Settings1.Default.Counter2;
-                OSC.counter2 = Settings1.Default.Counter2;
+                VRChatListener.prevCounter2 = Settings1.Default.Counter2;
+                VRChatListener.counter2 = Settings1.Default.Counter2;
 
-                OSC.prevCounter3 = Settings1.Default.Counter3;
-                OSC.counter3 = Settings1.Default.Counter3;
+                VRChatListener.prevCounter3 = Settings1.Default.Counter3;
+                VRChatListener.counter3 = Settings1.Default.Counter3;
 
-                OSC.prevCounter4 = Settings1.Default.Counter4;
-                OSC.counter4 = Settings1.Default.Counter4;
+                VRChatListener.prevCounter4 = Settings1.Default.Counter4;
+                VRChatListener.counter4 = Settings1.Default.Counter4;
 
-                OSC.prevCounter5 = Settings1.Default.Counter5;
-                OSC.counter5 = Settings1.Default.Counter5;
+                VRChatListener.prevCounter5 = Settings1.Default.Counter5;
+                VRChatListener.counter5 = Settings1.Default.Counter5;
 
-                OSC.prevCounter6 = Settings1.Default.Counter6;
-                OSC.counter6 = Settings1.Default.Counter6;
+                VRChatListener.prevCounter6 = Settings1.Default.Counter6;
+                VRChatListener.counter6 = Settings1.Default.Counter6;
             }
 
 
@@ -323,7 +302,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAzure.Checked = Settings1.Default.voiceWizProAzure;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonProAmazon.Checked = Settings1.Default.voiceWizProAmazon;
-            //  VoiceWizardWindow.MainFormGlobal.rjToggleButtonProMoonbase.Checked = Settings1.Default.voiceWizProMoonbase;
+   
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked = Settings1.Default.useVoiceWizardPro;
             VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text = Settings1.Default.voiceWizardProKey;
 
