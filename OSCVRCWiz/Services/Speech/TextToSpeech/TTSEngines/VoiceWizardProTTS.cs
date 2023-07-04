@@ -122,7 +122,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             {
                 var errorMessage = await response.Content.ReadAsStringAsync();
                 OutputText.outputLog("VoiceWizardPro API Error: " + response.StatusCode + ": " + errorMessage, Color.Red);
-                return (null, "");
+                return ("", "");
             }
 
 
