@@ -133,6 +133,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             catch (Exception ex)
             {
                 OutputText.outputLog("[ElevenLabs TTS Error: " + ex.Message + "]", Color.Red);
+                Task.Run(() => TTSMessageQueue.PlayNextInQueue());
                 return null;
 
 

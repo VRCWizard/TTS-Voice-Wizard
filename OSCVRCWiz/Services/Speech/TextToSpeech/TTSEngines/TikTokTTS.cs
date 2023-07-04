@@ -29,6 +29,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             catch (Exception ex)
             {
                 OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
+                Task.Run(() => TTSMessageQueue.PlayNextInQueue());
 
 
             }

@@ -735,13 +735,21 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         }
         public static async void AmazonPlayAudioPro(string audioString, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct)
         {
-            var audiobytes = Convert.FromBase64String(audioString);
-            MemoryStream memoryStream = new MemoryStream(audiobytes);
+            try
+            {
+                var audiobytes = Convert.FromBase64String(audioString);
+                MemoryStream memoryStream = new MemoryStream(audiobytes);
 
-            AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, false, AudioFormat.Mp3);
-            memoryStream.Dispose();
+                AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, false, AudioFormat.Mp3);
+                memoryStream.Dispose();
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Amazon Polly TTS Error: " + ex.Message + "]", Color.Red);
+                TTSMessageQueue.PlayNextInQueue();
+            }
 
-        }
+}
         public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
         {
             accents.Items.Clear();

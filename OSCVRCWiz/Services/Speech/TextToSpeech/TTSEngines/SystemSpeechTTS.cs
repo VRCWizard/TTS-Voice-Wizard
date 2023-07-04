@@ -1,4 +1,5 @@
 ﻿using OSCVRCWiz.Resources.Audio;
+using OSCVRCWiz.Services.Text;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
@@ -41,44 +42,52 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             // var downOneTone = 1.0 / upOneTone;
 
 
-
-            string phrase = TTSMessageQueued.Voice;
-            string[] words = phrase.Split('|');
-            int counter = 1;
-            var voice = "none";
-
-            foreach (var word in words)
+            try
             {
-                if (counter == 1)
-                {
-                    //synthesizerLite.SelectVoice(word);
-                    voice = word;
-                    // System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
+                string phrase = TTSMessageQueued.Voice;
+                string[] words = phrase.Split('|');
+                int counter = 1;
+                var voice = "none";
 
-                }
-                if (counter == 2)
+                foreach (var word in words)
                 {
-                    //CultureSelected = word;
-                    //  System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
+                    if (counter == 1)
+                    {
+                        //synthesizerLite.SelectVoice(word);
+                        voice = word;
+                        // System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
+
+                    }
+                    if (counter == 2)
+                    {
+                        //CultureSelected = word;
+                        //  System.Diagnostics.Debug.WriteLine(counter + ": " + word + "///////////////////////////////////////////");
+                    }
+                    counter++;
                 }
-                counter++;
+
+
+                System.Speech.Synthesis.SpeechSynthesizer synthesizerLite = new System.Speech.Synthesis.SpeechSynthesizer();
+                synthesizerLite.SelectVoice(voice);
+
+                MemoryStream memoryStream = new MemoryStream();
+                synthesizerLite.SetOutputToWaveStream(memoryStream);
+                synthesizerLite.Speak(TTSMessageQueued.text);
+
+                //  AudioDevices.playWaveStream(memoryStream, TTSMessageQueued, ct);
+                AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, true, AudioFormat.Wav);
+                memoryStream.Dispose();
+
+                synthesizerLite.Dispose();
+                synthesizerLite = null;
             }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("System Speech TTS Error: " + ex.Message + "]", Color.Red);
+                Task.Run(() => TTSMessageQueue.PlayNextInQueue());
 
 
-            System.Speech.Synthesis.SpeechSynthesizer synthesizerLite = new System.Speech.Synthesis.SpeechSynthesizer();
-            synthesizerLite.SelectVoice(voice);
-
-            MemoryStream memoryStream = new MemoryStream();
-            synthesizerLite.SetOutputToWaveStream(memoryStream);
-            synthesizerLite.Speak(TTSMessageQueued.text);
-
-            //  AudioDevices.playWaveStream(memoryStream, TTSMessageQueued, ct);
-            AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, true, AudioFormat.Wav);
-            memoryStream.Dispose();
-
-            synthesizerLite.Dispose();
-            synthesizerLite = null;
-
+            }
 
 
 

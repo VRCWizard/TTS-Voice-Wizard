@@ -26,6 +26,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     OutputText.outputLog("[You did not setup Glados TTS follow the instructions on the wiki here: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS]", Color.DarkOrange);
                 }
 
+                Task.Run(() => TTSMessageQueue.PlayNextInQueue());
+
             }
             //  File.WriteAllBytes("TikTokTTS.mp3", result);          
             //  Task.Run(() => PlayAudioHelper());
