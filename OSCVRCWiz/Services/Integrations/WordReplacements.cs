@@ -26,12 +26,9 @@ namespace OSCVRCWiz.Services.Integrations
                         //index = replaceDict.Values.ToList().IndexOf(kvp.Key);
                         if (MainFormGlobal.checkedListBoxReplacements.GetItemCheckState(index) == CheckState.Checked)
                         {
-                            //text = text.Replace(kvp.Key.ToString(), kvp.Value.ToString());
 
-
-                            // string pattern = @"[*#()\[\]]"; // Match any of these characters
-
-                            text = Regex.Replace(text, kvp.Key.ToString(), kvp.Value.ToString(), RegexOptions.IgnoreCase);
+                            string pattern = Regex.Escape(kvp.Key.ToString());
+                            text = Regex.Replace(text, pattern, kvp.Value.ToString(), RegexOptions.IgnoreCase);
                         }
 
                     }

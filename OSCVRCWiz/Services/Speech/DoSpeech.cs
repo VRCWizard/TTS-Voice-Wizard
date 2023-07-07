@@ -295,10 +295,25 @@ namespace OSCVRCWiz.Services.Speech
                                 TTSMessageQueued.Voice = UberDuckTTS.UberVoiceNameAndID[TTSMessageQueued.Voice];
                                 Task.Run(() => UberDuckTTS.uberduckTTS(TTSMessageQueued, speechCt.Token));
 
-
-
-
                                 break;
+
+                            case "IBM Watson (Pro Only)":
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                }
+                                else
+                                {
+                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange));
+                                    Task.Run(() => TTSMessageQueue.PlayNextInQueue());
+                                    return;
+                                }
+                                break;
+
+
+
+
+                              
                             case "No TTS":
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                 {
@@ -409,6 +424,7 @@ namespace OSCVRCWiz.Services.Speech
             catch (Exception ex)
             {
                 OutputText.outputLog("[DoTTS Error: " + ex.Message + "]", Color.Red);
+                TTSMessageQueue.PlayNextInQueue();
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                 {

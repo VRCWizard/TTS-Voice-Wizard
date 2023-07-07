@@ -52,7 +52,18 @@ namespace OSCVRCWiz
                 labelCharCount.Text = richTextBox3.Text.ToString().Length.ToString();
                 navbarHome.BackColor = SelectedNavBar;//make home button appear selected   
             }
-            catch (Exception ex) { MessageBox.Show("Startup Error: " + ex.Message); }
+            catch (Exception ex)
+            {
+                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
+
+                try
+                {
+                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
+
+                }
+                catch { }
+                MessageBox.Show("Startup Error: " + errorMsg);
+            }
 
 
         }
@@ -60,7 +71,21 @@ namespace OSCVRCWiz
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadSettings.LoadingSettings();
-            StartUps.OnFormLoad();
+            try
+            {
+                StartUps.OnFormLoad();
+            }
+            catch (Exception ex) {
+                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
+                
+                try
+                {
+                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
+
+                }
+                catch { }
+                MessageBox.Show("FormLoad Error: " + errorMsg);
+            }
 
         }
 
@@ -687,6 +712,23 @@ namespace OSCVRCWiz
 
                     break;
 
+                case "IBM Watson (Pro Only)":
+                    IBMWatsonTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+                    comboBoxTranslationLanguage.Enabled = true;
+                    comboBoxAccentSelect.Enabled = true;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+                    DoSpeech.TTSModeSaved = "IBM Watson (Pro Only)";
+
+                    if (textBoxWizardProKey.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                    }
+
+
+                    break;
+
                 case "Uberduck":
                     UberDuckTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
@@ -757,6 +799,8 @@ namespace OSCVRCWiz
                     }
 
                     break;
+
+             
 
 
 
@@ -895,6 +939,11 @@ namespace OSCVRCWiz
             if (DoSpeech.TTSModeSaved == "Uberduck")
             {
                 UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString(), false);
+
+            }
+            if (DoSpeech.TTSModeSaved == "IBM Watson (Pro Only)")
+            {
+                IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect,comboBoxAccentSelect.Text.ToString());
 
             }
 
@@ -2695,7 +2744,7 @@ namespace OSCVRCWiz
 
         private void comboBoxWhisperModelDownload_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string path = "models/";
+            string path = "Assets/models/";
             switch (comboBoxWhisperModelDownload.Text.ToString())
             {
                 case "ggml-tiny.bin (75 MB)":

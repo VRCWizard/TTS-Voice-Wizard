@@ -1820,6 +1820,7 @@
             "Azure",
             "ElevenLabs",
             "Google (Pro Only)",
+            "IBM Watson (Pro Only)",
             "Moonbase",
             "TikTok",
             "Uberduck",
@@ -8569,7 +8570,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(633, 5);
+            this.iconButton55.Location = new System.Drawing.Point(616, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);

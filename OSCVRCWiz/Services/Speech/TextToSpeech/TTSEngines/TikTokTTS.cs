@@ -121,6 +121,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 case "Spanish Male": apiName = "es_002"; break;
                 case "Spanish MX Male": apiName = "es_mx_002"; break;
 
+               
+
 
                 case "Portuguese BR Female 1": apiName = "br_003"; break;
                 case "Portuguese BR Female 2": apiName = "br_004"; break;
@@ -159,6 +161,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 case "Narrator": apiName = "en_male_narration"; break;
 
 
+                case "Spanish Male 2": apiName = "es_male_m3"; break;//newly discovered // 7/6/2023
+                case "Spanish Female 1": apiName = "es_female_f6"; break;
+                case "Spanish Female 2": apiName = "es_female_fp1"; break;
+                case "Spanish Female 3 (SuperMom)": apiName = "es_mx_female_supermom"; break;
+                case "Spanish Male 3 (Transformer)": apiName = "es_mx_male_transformer"; break;
+
+
                 default: break;
             }
             return apiName;
@@ -184,7 +193,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                "German Female",
                "German Male",
                "Spanish Male",
-             "Spanish MX Male",
+               "Spanish Male 2",
+               "Spanish Male 3 (Transformer)",
+             "Spanish MX Male",           
+            "Spanish Female 1",
+            "Spanish Female 2",
+            "Spanish Female 3 (SuperMom)",
                 "Portuguese BR Female 1",
                "Portuguese BR Female 2",
                  "Portuguese BR Male",
@@ -212,8 +226,10 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
              "Dramatic",
             "Funny",
             "Emotional",
-            "Narrator",
-                    };
+            "Narrator",           
+
+
+        };
             foreach (var voice in tiktokVoices)
             {
                 voices.Items.Add(voice);

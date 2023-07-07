@@ -27,16 +27,16 @@ namespace OSCVRCWiz.Resources.StartUp
             AudioDevices.InitializeAudioDevices();
             SystemSpeechTTS.InitializeSystemSpeech();
             OSC.InitializeOSC();
-            VRChatListener.initiateTimer();
-            WhisperRecognition.initiateTimer();
-           // HomeScreenBanner.initiateTimer();
-            ToastNotification.initiateTimer();
-            OutputText.initiateTextTimers();
+           
 
         }
 
         public static void OnFormLoad() //delayed until form is loaded correctly
         {
+            VRChatListener.initiateTimer();
+            WhisperRecognition.initiateTimer();
+            ToastNotification.initiateTimer();
+            OutputText.initiateTextTimers();
 
             Updater.getGithubInfo();
             Hotkeys.InitiateHotkeys();
