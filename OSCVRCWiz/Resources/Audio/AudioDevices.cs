@@ -420,7 +420,7 @@ namespace OSCVRCWiz.Resources.Audio
                 ct.Register(async () => TTSMessageQueue.PlayNextInQueue());
 
                
-                int delay = applyAudioEditing ? ((int)Math.Ceiling((audioReader.TotalTime.TotalMilliseconds / rateFloat)/pitchFloat)) : (int)Math.Ceiling(audioReader.TotalTime.TotalMilliseconds / rateFloat);
+                int delay = applyAudioEditing ? ((int)Math.Ceiling((audioReader.TotalTime.TotalMilliseconds / rateFloat)/pitchFloat)) : (int)Math.Ceiling(audioReader.TotalTime.TotalMilliseconds);
                 Thread.Sleep(delay);
                 Thread.Sleep(100);
 

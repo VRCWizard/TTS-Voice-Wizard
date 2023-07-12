@@ -1,8 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-//using CSCore;
-//using CSCore.MediaFoundation;
 using System.Net;
-//using CSCore.CoreAudioAPI;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
 
@@ -28,7 +25,14 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
+
+
+
+                OutputText.outputLog("[TikTok TTS Error: " + ex.Message+ "]", Color.Red);
+                if (ex.InnerException != null)
+                {
+                    OutputText.outputLog("[TikTok TTS Inner Exception: " + ex.InnerException.Message + "]", Color.Red);
+                }
                 Task.Run(() => TTSMessageQueue.PlayNextInQueue());
 
 
@@ -57,7 +61,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
         public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
         {
-
+           
 
             var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
 
@@ -65,6 +69,9 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             httpRequest.Method = "POST";
 
             httpRequest.ContentType = "application/json";
+
+            //httpRequest.Timeout = 180000;// httpclient-an-error-occurred-while-sending-the-request attempt fix (3 minutes)
+           // httpRequest.KeepAlive = false;// httpclient-an-error-occurred-while-sending-the-request attempt fix                 
 
             var apiVoice = GetTikTokVoice(voice);
 
@@ -87,6 +94,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             }
 
             System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
+          //  OutputText.outputLog("[TikTok TTS Error: " + httpResponse.StatusCode + "]", Color.Red);
 
 
 
@@ -167,6 +175,22 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 case "Spanish Female 3 (SuperMom)": apiName = "es_mx_female_supermom"; break;
                 case "Spanish Male 3 (Transformer)": apiName = "es_mx_male_transformer"; break;
 
+                
+                case "Wizard": apiName = "en_male_wizard"; break;
+                case "Halloween": apiName = "en_female_ht_f08_halloween"; break;
+                case "Madam Leota": apiName = "en_female_madam_leota"; break;
+                case "Ghost Host": apiName = "en_male_ghosthost"; break;
+                case "Pirate": apiName = "en_male_pirate"; break;
+                case "Empathetic": apiName = "en_female_samc"; break;
+                case "Serious": apiName = "en_male_cody"; break;
+                case "Grandma": apiName = "en_female_grandma"; break;
+              //  case "Joker": apiName = "en_male_joker"; break;
+               // case "Goblin": apiName = "en_male_goblin"; break;
+                case "Grinch": apiName = "en_male_grinch"; break;
+                case "Santa": apiName = "en_male_santa"; break;
+                case "Cupid": apiName = "en_male_cupid"; break;
+
+
 
                 default: break;
             }
@@ -226,7 +250,20 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
              "Dramatic",
             "Funny",
             "Emotional",
-            "Narrator",           
+            "Narrator",
+            "Wizard",
+             "Halloween",
+            "Madam Leota",
+            "Ghost Host",
+              "Pirate",
+              "Empathetic",
+              "Serious",
+           "Grandma",
+           //   "Joker",
+           // "Goblin",
+            "Grinch",
+            "Santa",
+          "Cupid",
 
 
         };
