@@ -572,5 +572,11 @@
     <Setting Name="MediaSpamPreset3" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="SmartStringSplit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SSSCharacterLimit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">295</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

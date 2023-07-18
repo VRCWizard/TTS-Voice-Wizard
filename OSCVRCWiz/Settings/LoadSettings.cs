@@ -11,7 +11,7 @@ namespace OSCVRCWiz
     {
         public static void LoadingSettings()
         {
-
+            
             VoiceWizardWindow.MainFormGlobal.textBoxAzureKey.Text = Settings1.Default.yourKey;
             VoiceWizardWindow.MainFormGlobal.textBox3.Text = Settings1.Default.yourRegion;
             AzureRecognition.YourSubscriptionKey = Settings1.Default.yourKey;
@@ -284,6 +284,8 @@ namespace OSCVRCWiz
                 VRChatListener.counter6 = Settings1.Default.Counter6;
             }
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked = Settings1.Default.SmartStringSplit;
+
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked = Settings1.Default.OBSTextFile;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked = Settings1.Default.OBS4Media;
@@ -339,6 +341,8 @@ namespace OSCVRCWiz
             });
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
             VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.Text = Settings1.Default.SSSCharacterLimit;
 
         }
     }

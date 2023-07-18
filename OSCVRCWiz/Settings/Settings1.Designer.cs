@@ -2302,5 +2302,29 @@ namespace OSCVRCWiz.Settings {
                 this["MediaSpamPreset3"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SmartStringSplit {
+            get {
+                return ((bool)(this["SmartStringSplit"]));
+            }
+            set {
+                this["SmartStringSplit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("295")]
+        public string SSSCharacterLimit {
+            get {
+                return ((string)(this["SSSCharacterLimit"]));
+            }
+            set {
+                this["SSSCharacterLimit"] = value;
+            }
+        }
     }
 }

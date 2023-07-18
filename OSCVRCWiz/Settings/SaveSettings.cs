@@ -271,11 +271,15 @@ namespace OSCVRCWiz
 
             Settings1.Default.CounterOutputInterval = VoiceWizardWindow.MainFormGlobal.counterOutputInterval.Text;
 
+            Settings1.Default.SmartStringSplit = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked;
+
+            Settings1.Default.SSSCharacterLimit = VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.Text;
 
 
 
 
-            Settings1.Default.Save();
+
+         Settings1.Default.Save();
             //emojiSettings.Default.Save();
             VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
         }

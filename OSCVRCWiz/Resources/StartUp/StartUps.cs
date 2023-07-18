@@ -33,6 +33,10 @@ namespace OSCVRCWiz.Resources.StartUp
 
         public static void OnFormLoad() //delayed until form is loaded correctly
         {
+            AudioDevices.InitializeAudioDevices();
+            SystemSpeechTTS.InitializeSystemSpeech();
+            OSC.InitializeOSC();
+
             VRChatListener.initiateTimer();
             WhisperRecognition.initiateTimer();
             ToastNotification.initiateTimer();

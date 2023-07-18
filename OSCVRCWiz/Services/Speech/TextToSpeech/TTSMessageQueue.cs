@@ -67,6 +67,43 @@
 
         public static void QueueMessage(string text, string STTMode, string AzureTranslate = "[ERROR]")
         {
+            text = text.Replace("\n", "");
+            string inputText = text;
+            string firstString = "";
+            string secondString = "";
+            int maxLength =Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.ToString());
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked == true)
+            {
+             
+                if (inputText.Length > maxLength)
+                {
+
+                    if (char.IsWhiteSpace(inputText[maxLength]))
+                    {
+                        // Split at the exact 300th character where a space is found
+                        firstString = inputText.Substring(0, maxLength);
+                        secondString = inputText.Substring(maxLength + 1);
+                        text = firstString;
+                    }
+                    else
+                    {
+                        int index = maxLength;
+                        while (index >= 0 && !char.IsWhiteSpace(inputText[index]))
+                        {
+                            index--;
+                        }
+
+                        firstString = inputText.Substring(0, index);
+                        secondString = inputText.Substring(index + 1);                    
+                        text = firstString;
+                    }
+
+
+                }
+            }
+
+
+
             TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
@@ -107,7 +144,19 @@
                     }
                 }
 
-        }
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked == true)
+            {
+                if (inputText.Length > maxLength)
+                {
+                    QueueMessage(secondString, STTMode, AzureTranslate);
+                }
+            }
 
-    }
+            }
+
+   
+
+
+
+        }
 }

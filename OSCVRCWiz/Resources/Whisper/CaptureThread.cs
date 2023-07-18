@@ -49,7 +49,8 @@ namespace OSCVRCWiz.Resources.Whisper
             if (ctt != null)
             {
                 ctt.shouldQuit = true;
-                ctt = null;//SETTING THIS TO NULL PROBABLY CAUSED THE CRASHING
+                ctt.thread.Join();//wait for thread to finish to prevent crashing
+                ctt = null;//free resources
             }
 
 
