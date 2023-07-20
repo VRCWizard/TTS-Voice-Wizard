@@ -45,7 +45,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
 
                 // replace with the path to the JSON file
-                string jsonFilePath = "voices/uberduckVoices.json";
+                string jsonFilePath = "Assets/voices/uberduckVoices.json";
 
                 // read the JSON data from the file
                 string jsonData = File.ReadAllText(jsonFilePath);
@@ -115,10 +115,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
             else
             {
-                /*  foreach (string voice in voiceList)
-                  {
-                      VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice);
-                  }*/
+              
                 if (changedMethods)
                 {
 
@@ -154,7 +151,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static async Task uberduckTTS(TTSMessage message, CancellationToken ct = default)
         {
             try
-            {
+           {
 
                 var authKey = VoiceWizardWindow.MainFormGlobal.textBoxUberKey.Text.ToString();
                 var authSecret = VoiceWizardWindow.MainFormGlobal.textBoxUberSecret.Text.ToString();
@@ -185,6 +182,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
 
                 var response = await client.PostAsync("speak", content);
+
+                var responseCode = response.StatusCode;
+                if (!response.IsSuccessStatusCode)
+                {
+                    OutputText.outputLog("[Uberduck Error: " + responseCode + "]", Color.Red);
+                }
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -230,16 +233,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[Uberduck TTS *AUDIO* Error: " + ex.Message + "]", Color.Red);
-                if (ex.Message.Contains("An item with the same key has already been added"))
-                {
-                    OutputText.outputLog("[Looks like you may have 2 audio devices with the same name which causes an error in TTS Voice Wizard. To fix this go to Control Panel > Sound > right click on one of the devices > properties > rename the device.]", Color.DarkOrange);
-                }
-                PlayNextInQueue();
+                OutputText.outputLog("[Uberduck TTS  Error: " + ex.Message + "]", Color.Red);
+              
+               PlayNextInQueue();
             }
 
-            //   return base64String;
-            //  return "";
+             //  return base64String;
+             // return "";
         }
         public static async void UberPlayAudio(string audioString, TTSMessage TTSMessageQueued, CancellationToken ct)
         {

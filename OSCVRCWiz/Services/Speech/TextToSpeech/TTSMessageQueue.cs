@@ -1,4 +1,7 @@
-﻿namespace OSCVRCWiz.Services.Speech.TextToSpeech
+﻿using OSCVRCWiz.Services.Text;
+using System.Windows.Shapes;
+
+namespace OSCVRCWiz.Services.Speech.TextToSpeech
 {
     public class TTSMessageQueue
     {
@@ -67,60 +70,62 @@
 
         public static void QueueMessage(string text, string STTMode, string AzureTranslate = "[ERROR]")
         {
-            text = text.Replace("\n", "");
-            string inputText = text;
-            string firstString = "";
-            string secondString = "";
-            int maxLength =Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.ToString());
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked == true)
-            {
-             
-                if (inputText.Length > maxLength)
+            try {
+                text = text.Replace("\n", "");
+                string inputText = text;
+                string firstString = "";
+                string secondString = "";
+                int maxLength = 295;
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked == true)
                 {
+                    maxLength = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.Text.ToString());
 
-                    if (char.IsWhiteSpace(inputText[maxLength]))
+                    if (inputText.Length > maxLength)
                     {
-                        // Split at the exact 300th character where a space is found
-                        firstString = inputText.Substring(0, maxLength);
-                        secondString = inputText.Substring(maxLength + 1);
-                        text = firstString;
-                    }
-                    else
-                    {
-                        int index = maxLength;
-                        while (index >= 0 && !char.IsWhiteSpace(inputText[index]))
+
+                        if (char.IsWhiteSpace(inputText[maxLength]))
                         {
-                            index--;
+                            // Split at the exact 300th character where a space is found
+                            firstString = inputText.Substring(0, maxLength);
+                            secondString = inputText.Substring(maxLength + 1);
+                            text = firstString;
+                        }
+                        else
+                        {
+                            int index = maxLength;
+                            while (index >= 0 && !char.IsWhiteSpace(inputText[index]))
+                            {
+                                index--;
+                            }
+
+                            firstString = inputText.Substring(0, index);
+                            secondString = inputText.Substring(index + 1);
+                            text = firstString;
                         }
 
-                        firstString = inputText.Substring(0, index);
-                        secondString = inputText.Substring(index + 1);                    
-                        text = firstString;
+
                     }
-
-
                 }
-            }
 
 
 
-            TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-            {
-                TTSMessageQueued.text = text;
-                TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
-                TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Text.ToString();
-                TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.Text.ToString();
-                TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.Text.ToString();
-                TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
-                TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
-                TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
-                TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.Text.ToString();
-                TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.Text.ToString();
-                TTSMessageQueued.STTMode = STTMode;
-                TTSMessageQueued.AzureTranslateText = AzureTranslate;
-            });
-            if (STTMode == "Text")
+                TTSMessageQueue.TTSMessage TTSMessageQueued = new TTSMessageQueue.TTSMessage();
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    TTSMessageQueued.text = text;
+                    TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                    TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Text.ToString();
+                    TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.Text.ToString();
+                    TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.Text.ToString();
+                    TTSMessageQueued.Pitch = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
+                    TTSMessageQueued.Speed = VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value;
+                    TTSMessageQueued.Volume = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
+                    TTSMessageQueued.SpokenLang = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.Text.ToString();
+                    TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.Text.ToString();
+                    TTSMessageQueued.STTMode = STTMode;
+                    TTSMessageQueued.AzureTranslateText = AzureTranslate;
+                });
+                if (STTMode == "Text")
                 {
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueTypedText.Checked == true)
                     {
@@ -136,7 +141,7 @@
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
                     {
 
-                            TTSMessageQueue.Enqueue(TTSMessageQueued);
+                        TTSMessageQueue.Enqueue(TTSMessageQueued);
                     }
                     else
                     {
@@ -144,13 +149,22 @@
                     }
                 }
 
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked == true)
-            {
-                if (inputText.Length > maxLength)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked == true)
                 {
-                    QueueMessage(secondString, STTMode, AzureTranslate);
+                    if (inputText.Length > maxLength)
+                    {
+                        QueueMessage(secondString, STTMode, AzureTranslate);
+                    }
                 }
+
             }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[TTS Queue Message Error: " + ex.Message + "]", Color.Red);
+            {
+               
+            }
+        }
 
             }
 

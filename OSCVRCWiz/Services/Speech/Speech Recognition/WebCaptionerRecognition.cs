@@ -1,12 +1,10 @@
 ﻿using System.Net;
 using Newtonsoft.Json.Linq;
 using CoreOSC;
-using Newtonsoft.Json;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Resources.StartUp.StartUp;
-//using VRC.OSCQuery; // Beta Testing dll (added the project references)
-
+using Newtonsoft.Json;
 
 namespace OSCVRCWiz
 {
@@ -50,17 +48,11 @@ namespace OSCVRCWiz
         {
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");
             // var httpServer = new HttpServer();
-            _listener = new HttpListener();
-            // _listener.Prefixes.Add("http://*:" + Port.ToString() + "/");//MUST RUN AS ADMIN //http://127.0.0.1:8080/
-            _listener.Prefixes.Add("http://localhost:" + Port.ToString() +
-                                   "/"); //THIS IS THE EASIEST WAY TO MAKE USERS NOT HAVE TO RUN PROGRAM AS ADMINISTRATOR EVREY TIME!!! //http://localhost:8080/
             Task.Run(() => Start());
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
-            OutputText.outputLog(
-                "[Starting HTTP listener for Web Captioner Started. Webhook URL: http://localhost:54026/ ]");
+            OutputText.outputLog("[Starting HTTP listener for Web Captioner Started. Webhook URL: http://localhost:54026/ ]");
             //button11.Enabled = false;
         }
-
         private static void webCapOff()
         {
             System.Diagnostics.Debug.WriteLine("Stopping HTTP listener...");
@@ -77,12 +69,14 @@ namespace OSCVRCWiz
         {
             try
             {
+                _listener = new HttpListener();
+                // _listener.Prefixes.Add("http://*:" + Port.ToString() + "/");//MUST RUN AS ADMIN //http://127.0.0.1:8080/
+                _listener.Prefixes.Add("http://localhost:" + Port.ToString() + "/"); //THIS IS THE EASIEST WAY TO MAKE USERS NOT HAVE TO RUN PROGRAM AS ADMINISTRATOR EVREY TIME!!! //http://localhost:8080/
                 _listener.Start();
 
                 Task.Run(() => Receive());
 
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true ||
-                    VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                 {
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
                     OSC.OSCSender.Send(sttListening);
@@ -90,12 +84,10 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[HTTP listener Unexpected Error (failed to start): " + ex.Message + "]",
-                    Color.Red);
+                OutputText.outputLog("[HTTP listener Unexpected Error (failed to start): " + ex.Message + "]", Color.Red);
                 webCapEnabled = false;
 
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true ||
-                    VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                 {
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                     OSC.OSCSender.Send(sttListening);
@@ -112,14 +104,11 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[HTTP listener Unexpected Error (still listening): " + ex.Message + "]",
-                    Color.Red);
+                OutputText.outputLog("[HTTP listener Unexpected Error (still listening): " + ex.Message + "]", Color.Red);
                 webCapEnabled = true;
 
             }
-
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true ||
-                VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
             {
                 var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                 OSC.OSCSender.Send(sttListening);
@@ -132,6 +121,7 @@ namespace OSCVRCWiz
         private static void Receive()
         {
             _listener.BeginGetContext(new AsyncCallback(ListenerCallback), _listener);
+
         }
 
         private static void Respond(HttpListenerResponse response, string message, int code = 200)
@@ -146,10 +136,10 @@ namespace OSCVRCWiz
             response.StatusCode = code;
             response.ContentLength64 = buffer.Length;
             System.IO.Stream output = response.OutputStream;
-            output.Write(buffer,0,buffer.Length);
+            output.Write(buffer, 0, buffer.Length);
             output.Close();
             // for some reason if I remove this log then subsequent requests have no response
-            OutputText.outputLog("[HTTP Response Complete]", Color.Green);
+            //OutputText.outputLog("[HTTP Response Complete]", Color.Green);
             Stop();
             Start();
         }
@@ -160,7 +150,7 @@ namespace OSCVRCWiz
             {
                 return;
             }
-            
+
             var context = _listener.EndGetContext(result);
             var request = context.Request;
 
@@ -197,8 +187,14 @@ namespace OSCVRCWiz
             Respond(context.Response, "message queued");
 
         }
+
+
+
     }
 
+
 }
-  
+
+
+
 

@@ -149,8 +149,8 @@ namespace OSCVRCWiz
 
             //Settings1.Default.deepLKeysave= DeepLTranslate.DeepLKey;
 
-            Settings1.Default.OSCAddress = OSC.OSCAddress;
-            Settings1.Default.OSCPort = OSC.OSCPort;
+           // Settings1.Default.OSCAddress = OSC.OSCAddress;
+           // Settings1.Default.OSCPort = OSC.OSCPort;
 
             Settings1.Default.saveToast = VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked;
 

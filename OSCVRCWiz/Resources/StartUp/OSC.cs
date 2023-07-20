@@ -3,6 +3,7 @@ using Json.Net;
 using Newtonsoft.Json;
 using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Text;
+using OSCVRCWiz.Settings;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,8 +17,8 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
     {
         public static UDPSender OSCSender;
         public static UDPSender OSCReSender;
-        public static string OSCAddress = "127.0.0.1";
-        public static string OSCPort = "9000";
+        //public static string OSCAddress = "127.0.0.1";
+        //public static string OSCPort = "9000";
 
 
 
@@ -27,8 +28,10 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
         {
             try
             {
-                OSCSender = new UDPSender(OSCAddress, Convert.ToInt32(OSCPort));//9000
-                OSCReSender = new UDPSender(OSCAddress, Convert.ToInt32(OSCListener.OSCReceiveport));
+                OSCSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(Settings1.Default.OSCPort));//9000
+                OSCReSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(OSCListener.OSCReceiveport));
+                VoiceWizardWindow.MainFormGlobal.textBoxOSCAddress.Text = Settings1.Default.rememberAddress;
+                VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.OSCPort;
             }
             catch (Exception ex) { MessageBox.Show("OSC Startup Error: " + ex.Message); }
 
@@ -37,9 +40,10 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
         {
             try
             {
-                OSCAddress = address;
-                OSCPort = port;
-                OSCSender = new UDPSender(OSCAddress, Convert.ToInt32(OSCPort));//9000
+                Settings1.Default.OSCAddress = address;
+                Settings1.Default.OSCPort = port;
+                Settings1.Default.Save();
+                OSCSender = new UDPSender(address, Convert.ToInt32(port));//9000
             }
             catch (Exception ex)
             {

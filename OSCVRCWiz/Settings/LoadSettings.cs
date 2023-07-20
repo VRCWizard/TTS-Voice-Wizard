@@ -112,7 +112,7 @@ namespace OSCVRCWiz
 
 
 
-            VoiceWizardWindow.MainFormGlobal.textBoxOSCAddress.Text = Settings1.Default.rememberAddress;
+           
             VoiceWizardWindow.MainFormGlobal.textBoxOSCPort.Text = Settings1.Default.rememberPort;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked = Settings1.Default.activateOSCStart;
@@ -144,9 +144,9 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.textBoxDeepLKey.Text = Settings1.Default.deepLKeysave;
 
-            OSC.OSCAddress = Settings1.Default.OSCAddress;
-            OSC.OSCPort = Settings1.Default.OSCPort;
-            VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.OSCPort;
+            //OSC.OSCAddress = Settings1.Default.OSCAddress;
+            // OSC.OSCPort = Settings1.Default.OSCPort;
+           
 
             VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked = Settings1.Default.saveToast;
 
