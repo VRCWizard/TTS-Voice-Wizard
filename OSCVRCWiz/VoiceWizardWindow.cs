@@ -24,6 +24,7 @@ using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using FontAwesome.Sharp;
+using System.Text;
 #endregion
 
 
@@ -41,6 +42,8 @@ namespace OSCVRCWiz
             try { InitializeComponent(); }
             catch (Exception ex) { MessageBox.Show("Initalization Error: " + ex.Message); }
             MainFormGlobal = this;
+
+
 
             try
             {
@@ -70,9 +73,31 @@ namespace OSCVRCWiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadSettings.LoadingSettings();
+
+
             try
             {
+                try
+                {
+                    LoadSettings.LoadingSettings();// this is the source of the configuration error //add a try catch
+                }
+                catch (Exception ex)
+                {
+
+                   
+
+                DialogResult result = MessageBox.Show("Error Loading Settings: \n \n" + ex.Message + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? (Deleting these files will reset your settings)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        var appPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TTSVoiceWizard");
+                        Process.Start("explorer.exe", appPath);
+                    }
+                    if (result == DialogResult.No)
+                    {
+                        
+                    }
+                }
                 StartUps.OnFormLoad();
             }
             catch (Exception ex) {
@@ -2812,11 +2837,10 @@ namespace OSCVRCWiz
 
 
 
-        #endregion
 
         #endregion
 
-       
+        #endregion
     }
 
 

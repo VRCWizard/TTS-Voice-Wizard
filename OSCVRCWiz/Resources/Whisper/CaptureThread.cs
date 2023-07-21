@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
+﻿using OSCVRCWiz.Services.Text;
+using System.Diagnostics;
 using System.Runtime.ExceptionServices;
 using Whisper;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -46,14 +48,11 @@ namespace OSCVRCWiz.Resources.Whisper
         public static void stopWhisper()
         {
 
-            if (ctt != null)
-            {
                 ctt.shouldQuit = true;
+              //  OutputText.outputLog("[begin stopping]");
                 ctt.thread.Join();//wait for thread to finish to prevent crashing
                 ctt = null;//free resources
-            }
-
-
+              //  OutputText.outputLog("[should stop]");
 
         }
 

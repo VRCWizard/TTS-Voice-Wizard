@@ -5,6 +5,7 @@ using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using Newtonsoft.Json;
+using OSCVRCWiz.Services.Speech;
 
 namespace OSCVRCWiz
 {
@@ -22,11 +23,13 @@ namespace OSCVRCWiz
         {
             if (webCapEnabled == false)
             {
+                DoSpeech.speechToTextOnSound();
                 webCapOn();
                 webCapEnabled = true;
             }
             else
             {
+                DoSpeech.speechToTextOffSound();
                 webCapOff();
                 webCapEnabled = false;
 
@@ -92,6 +95,7 @@ namespace OSCVRCWiz
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                     OSC.OSCSender.Send(sttListening);
                 }
+                DoSpeech.speechToTextOffSound();
 
             }
         }
@@ -106,6 +110,7 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog("[HTTP listener Unexpected Error (still listening): " + ex.Message + "]", Color.Red);
                 webCapEnabled = true;
+                
 
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)

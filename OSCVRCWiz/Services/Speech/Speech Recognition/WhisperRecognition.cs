@@ -1,24 +1,16 @@
 ﻿using CoreOSC;
-using NAudio.Wave;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Resources.Whisper;
+using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
-using SpotifyAPI.Web;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Vosk;
 using Whisper;
+using Windows.UI;
 //using Whisper;
 //using Whisper.Internal;
 using static System.Net.WebRequestMethods;
@@ -38,10 +30,11 @@ namespace OSCVRCWiz.Speech_Recognition
         {
             if (WhisperEnabled == false)
             {
+                DoSpeech.speechToTextOnSound();
 
 
 
-                
+
                 WhisperEnabled = true;
 
                 string UseThisMic = getWhisperInputDevice().ToString();
@@ -81,22 +74,31 @@ namespace OSCVRCWiz.Speech_Recognition
 
             else
             {
-                try
+                if (CaptureThread.ctt != null)
                 {
-                    WhisperString = "";
-                    CaptureThread.stopWhisper();
-                    WhisperEnabled = false;
-                    OutputText.outputLog("[Whisper Stopped Listening]");
-                    WhisperError = false;
-
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    DoSpeech.speechToTextOffSound();
+                    try
                     {
-                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                        OSC.OSCSender.Send(sttListening);
+                        WhisperString = "";
+                        CaptureThread.stopWhisper();
+                        WhisperEnabled = false;
+                        OutputText.outputLog("[Whisper Stopped Listening]");
+                        WhisperError = false;
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                        {
+                            var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                            OSC.OSCSender.Send(sttListening);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        OutputText.outputLog("[Error Stopping Whisper]", System.Drawing.Color.Red);
                     }
                 }
-                catch(Exception ex) {
-                    OutputText.outputLog("[Error Stopping Whisper]");
+                else
+                {
+                    OutputText.outputLog("[Error Stopping Whisper]", System.Drawing.Color.Red);
                 }
 
             }
@@ -122,7 +124,7 @@ namespace OSCVRCWiz.Speech_Recognition
            
               }
                 catch(Exception ex) {
-                OutputText.outputLog("[Error Stopping Whisper]");
+                OutputText.outputLog("[Error Stopping Whisper]", System.Drawing.Color.Red);
             }
 }
 
@@ -236,7 +238,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     cp.pauseDuration = 1.0f;
                     if (WhisperError == false)
                     {
-                        OutputText.outputLog("[WARNING: Error Occured loading Whisper custom values. Forcing defaults]", Color.DarkOrange);
+                        OutputText.outputLog("[WARNING: Error Occured loading Whisper custom values. Forcing defaults]", System.Drawing.Color.DarkOrange);
                     }
                     WhisperError = true;
                     VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
@@ -278,8 +280,8 @@ namespace OSCVRCWiz.Speech_Recognition
             { 
                 
                
-                OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", Color.Red);
-                OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", Color.DarkOrange);
+                OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", System.Drawing.Color.Red);
+                OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", System.Drawing.Color.DarkOrange);
 
 
                WhisperEnabled = false;
@@ -359,7 +361,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
             if (!System.IO.File.Exists(path))
             {
-                VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.DarkOrange;
+                VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = System.Drawing.Color.DarkOrange;
                 VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model downloading... PLEASE WAIT";
 
 
@@ -381,10 +383,10 @@ namespace OSCVRCWiz.Speech_Recognition
             {
                 // Console.WriteLine("File download cancelled.");
                 MessageBox.Show("File download cancelled");
-                OutputText.outputLog("[Whisper Model Download Cancelled: Model Download was cancelled, If this was un-intentional try manually downloading the model from here]", Color.Red);
+                OutputText.outputLog("[Whisper Model Download Cancelled: Model Download was cancelled, If this was un-intentional try manually downloading the model from here]", System.Drawing.Color.Red);
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-                    VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.Red;
+                    VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = System.Drawing.Color.Red;
                     VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model error";
                 });
                 return;
@@ -393,21 +395,21 @@ namespace OSCVRCWiz.Speech_Recognition
             if (e.Error != null)
             {
                 MessageBox.Show("Error while downloading file.");
-                OutputText.outputLog("[Whisper Model Download Error: " + e.Error.Message + "]", Color.Red);
+                OutputText.outputLog("[Whisper Model Download Error: " + e.Error.Message + "]", System.Drawing.Color.Red);
                 //Console.WriteLine(e.Error.ToString());
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-                    VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.Red;
+                    VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = System.Drawing.Color.Red;
                     VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model error";
                 });
                 return;
             }
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
-                VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = Color.Green;
+                VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = System.Drawing.Color.Green;
                 VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model downloaded";
             });
-            OutputText.outputLog("[Your Whisper Model has completed downloading]", Color.Green);
+            OutputText.outputLog("[Your Whisper Model has completed downloading]", System.Drawing.Color.Green);
             MessageBox.Show("Your Whisper Model has completed downloading");
 
 

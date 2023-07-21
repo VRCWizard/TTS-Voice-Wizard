@@ -5,6 +5,7 @@ using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Resources.StartUp.StartUp;
+using OSCVRCWiz.Services.Speech;
 
 
 //using NAudio.Wave;
@@ -92,7 +93,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-
+                
                 OutputText.outputLog("[System Speech Recognizer Error: " + ex.Message + "]", Color.Red);
                 listeningCurrently = false;
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
@@ -100,6 +101,7 @@ namespace OSCVRCWiz
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                     OSC.OSCSender.Send(sttListening);
                 }
+                DoSpeech.speechToTextOffSound();
             }
 
         }
@@ -124,17 +126,19 @@ namespace OSCVRCWiz
 
                 if (listeningCurrently == false)
                 {
-                listeningCurrently = true;
-                Task.Run(() => startListeningNow());
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                {
-                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
-                    OSC.OSCSender.Send(sttListening);
-                }
+                    DoSpeech.speechToTextOnSound();
+                    listeningCurrently = true;
+                    Task.Run(() => startListeningNow());
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                        OSC.OSCSender.Send(sttListening);
+                    }
 
-            }
+                }
                 else
                 {
+                DoSpeech.speechToTextOffSound();
                 OutputText.outputLog("[System Speech Stopped Listening]");
                 listeningCurrently = false;
                 waveIn.StopRecording();

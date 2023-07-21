@@ -8,6 +8,7 @@ using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Resources.StartUp.StartUp;
+using OSCVRCWiz.Services.Speech;
 
 namespace OSCVRCWiz
 {
@@ -251,6 +252,7 @@ namespace OSCVRCWiz
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    DoSpeech.speechToTextOnSound();
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
                         var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
@@ -268,12 +270,14 @@ namespace OSCVRCWiz
                     var text = speechRecognitionResult.Text; //Dictation string
 
                     TTSMessageQueue.QueueMessage(text, "Azure");
+                    DoSpeech.speechToTextButtonOff();
 
                 }
 
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true && continuousListening == false)
                 {
+                    DoSpeech.speechToTextOnSound();
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
                     //  var ot = new OutputText();
@@ -290,6 +294,7 @@ namespace OSCVRCWiz
                 }
                 else if (continuousListening == true)
                 {
+                    DoSpeech.speechToTextOffSound();
                     continuousListening = false;
                     // Make the following call at some point to stop recognition:
                     System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
@@ -312,6 +317,7 @@ namespace OSCVRCWiz
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                     OSC.OSCSender.Send(sttListening);
                 }
+                DoSpeech.speechToTextButtonOff();
 
             }
         }
@@ -361,6 +367,7 @@ namespace OSCVRCWiz
                 }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true && continuousListening == false)
                 {
+                    DoSpeech.speechToTextOnSound();
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
 
@@ -377,6 +384,7 @@ namespace OSCVRCWiz
                 }
                 else if (continuousListening == true)
                 {
+                    DoSpeech.speechToTextOffSound();
                     continuousListening = false;
                     // Make the following call at some point to stop recognition:
                     System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
@@ -410,6 +418,7 @@ namespace OSCVRCWiz
         {
             if (continuousListening == true)
             {
+
                 continuousListening = false;
                 // Make the following call at some point to stop recognition:
                 System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");

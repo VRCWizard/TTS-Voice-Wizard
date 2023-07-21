@@ -124,15 +124,16 @@ namespace OSCVRCWiz.Resources.Whisper
                     }
                     else
                     {
-                        if (!stuff.StartsWith('[') || !stuff.EndsWith(']') || !stuff.StartsWith('(') || !stuff.EndsWith(')') || !stuff.StartsWith('*') || !stuff.EndsWith('*'))
+                        if (stuff.StartsWith('[') || stuff.EndsWith(']') || stuff.StartsWith('(') || stuff.EndsWith(')') || stuff.StartsWith('*') || stuff.EndsWith('*'))
                         {
                             string pattern = @"[*()\[\]]"; // Match any of these characters
                             stuff = Regex.Replace(stuff, pattern, "", RegexOptions.IgnoreCase);
                             stuff = "'" + stuff + "'";
                         }
 
-
                         text += stuff;
+
+
                     }
 
                 }

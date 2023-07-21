@@ -438,24 +438,36 @@ namespace OSCVRCWiz.Services.Speech
 
         }
 
+        //  public static string speechOn = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechOnButton.wav");
+        // public static string speechOff = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechOffButton.wav");
 
-
-        public static  void MainDoSpeechTTS()
+        public static void speechToTextButtonOn()
         {
+            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.ForeColor = Color.Green;
+            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.IconColor = Color.Green;
+        }
+
+        public static void speechToTextButtonOff()
+        {
+            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.ForeColor = Color.White;
+            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.IconColor = Color.White;
+        }
+
+        public static void speechToTextOnSound()
+        {
+            speechToTextButtonOn();
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSounds.Checked == true)
             {
                 try
                 {
-
                     Task.Run(() =>
                     {
-                        string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechButton.wav");
+                        string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechOnButton.wav");
                         var soundPlayer = new SoundPlayer(sound);
 
                         soundPlayer.Play();
                         Thread.Sleep(1000);
                     });
-
                 }
                 catch (Exception ex)
                 {
@@ -463,6 +475,35 @@ namespace OSCVRCWiz.Services.Speech
                     OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
                 }
             }
+        }
+
+        public static void speechToTextOffSound()
+        {
+            speechToTextButtonOff();
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonSounds.Checked == true)
+            {
+                try
+                {
+                    Task.Run(() =>
+                    {
+                        string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechOffButton.wav");
+                        var soundPlayer = new SoundPlayer(sound);
+
+                        soundPlayer.Play();
+                        Thread.Sleep(1000);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
+                    OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
+                }
+            }
+        }
+
+        public static  void MainDoSpeechTTS()
+        {
+          
             try
             {
 
@@ -476,6 +517,8 @@ namespace OSCVRCWiz.Services.Speech
                             int max = 0;
                             int silence = 0;
                             string lang = "en";
+
+                            DoSpeech.speechToTextOnSound();
 
                             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                             {

@@ -60,7 +60,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.iconButton49 = new FontAwesome.Sharp.IconButton();
+            this.SpeechToTextBigButton = new FontAwesome.Sharp.IconButton();
             this.StopButton = new FontAwesome.Sharp.IconButton();
             this.TTSButton = new FontAwesome.Sharp.IconButton();
             this.label81 = new System.Windows.Forms.Label();
@@ -279,6 +279,10 @@
             this.label105 = new System.Windows.Forms.Label();
             this.rjToggleButtonSounds = new OSCVRCWiz.RJControls.RJToggleButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label186 = new System.Windows.Forms.Label();
+            this.textBoxSSSCharLimit = new System.Windows.Forms.TextBox();
+            this.label185 = new System.Windows.Forms.Label();
+            this.rjToggleButtonSmartStringSplit = new OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonRefocus = new OSCVRCWiz.RJControls.RJToggleButton();
             this.label158 = new System.Windows.Forms.Label();
             this.button38 = new System.Windows.Forms.Button();
@@ -1266,7 +1270,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.iconButton49);
+            this.groupBox7.Controls.Add(this.SpeechToTextBigButton);
             this.groupBox7.Controls.Add(this.StopButton);
             this.groupBox7.Controls.Add(this.TTSButton);
             this.groupBox7.Controls.Add(this.label81);
@@ -1289,29 +1293,29 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Text to Speech";
             // 
-            // iconButton49
+            // SpeechToTextBigButton
             // 
-            this.iconButton49.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.SpeechToTextBigButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.iconButton49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton49.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.iconButton49.ForeColor = System.Drawing.Color.Snow;
-            this.iconButton49.IconChar = FontAwesome.Sharp.IconChar.Microphone;
-            this.iconButton49.IconColor = System.Drawing.Color.White;
-            this.iconButton49.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton49.IconSize = 40;
-            this.iconButton49.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton49.Location = new System.Drawing.Point(10, 513);
-            this.iconButton49.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconButton49.Name = "iconButton49";
-            this.iconButton49.Size = new System.Drawing.Size(414, 58);
-            this.iconButton49.TabIndex = 13;
-            this.iconButton49.Text = "Speech to Text to Speech";
-            this.iconButton49.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton49.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton49.UseVisualStyleBackColor = false;
-            this.iconButton49.Click += new System.EventHandler(this.speechTTSButton_Click);
+            this.SpeechToTextBigButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.SpeechToTextBigButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SpeechToTextBigButton.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SpeechToTextBigButton.ForeColor = System.Drawing.Color.Snow;
+            this.SpeechToTextBigButton.IconChar = FontAwesome.Sharp.IconChar.Microphone;
+            this.SpeechToTextBigButton.IconColor = System.Drawing.Color.White;
+            this.SpeechToTextBigButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.SpeechToTextBigButton.IconSize = 40;
+            this.SpeechToTextBigButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SpeechToTextBigButton.Location = new System.Drawing.Point(10, 513);
+            this.SpeechToTextBigButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SpeechToTextBigButton.Name = "SpeechToTextBigButton";
+            this.SpeechToTextBigButton.Size = new System.Drawing.Size(414, 58);
+            this.SpeechToTextBigButton.TabIndex = 13;
+            this.SpeechToTextBigButton.Text = "Speech to Text to Speech";
+            this.SpeechToTextBigButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SpeechToTextBigButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SpeechToTextBigButton.UseVisualStyleBackColor = false;
+            this.SpeechToTextBigButton.Click += new System.EventHandler(this.speechTTSButton_Click);
             // 
             // StopButton
             // 
@@ -3817,7 +3821,7 @@
             this.groupBox17.Controls.Add(this.rjToggleButtonChatBox);
             this.groupBox17.Controls.Add(this.rjToggleButtonShowKeyboard);
             this.groupBox17.ForeColor = System.Drawing.Color.White;
-            this.groupBox17.Location = new System.Drawing.Point(19, 962);
+            this.groupBox17.Location = new System.Drawing.Point(19, 1040);
             this.groupBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -3947,7 +3951,7 @@
             this.groupBox18.Controls.Add(this.label102);
             this.groupBox18.Controls.Add(this.rjToggleButtonOBSText);
             this.groupBox18.ForeColor = System.Drawing.Color.White;
-            this.groupBox18.Location = new System.Drawing.Point(20, 1239);
+            this.groupBox18.Location = new System.Drawing.Point(19, 1317);
             this.groupBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -4062,7 +4066,7 @@
             this.groupBox19.Controls.Add(this.button1);
             this.groupBox19.Controls.Add(this.textBoxErase);
             this.groupBox19.ForeColor = System.Drawing.Color.White;
-            this.groupBox19.Location = new System.Drawing.Point(21, 785);
+            this.groupBox19.Location = new System.Drawing.Point(19, 863);
             this.groupBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -4243,7 +4247,7 @@
             this.groupBox20.Controls.Add(this.buttonDelayHere);
             this.groupBox20.Controls.Add(this.textBoxDelay);
             this.groupBox20.ForeColor = System.Drawing.Color.White;
-            this.groupBox20.Location = new System.Drawing.Point(19, 1076);
+            this.groupBox20.Location = new System.Drawing.Point(19, 1154);
             this.groupBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -4383,7 +4387,7 @@
             this.groupBox13.Controls.Add(this.label105);
             this.groupBox13.Controls.Add(this.rjToggleButtonSounds);
             this.groupBox13.ForeColor = System.Drawing.Color.White;
-            this.groupBox13.Location = new System.Drawing.Point(21, 498);
+            this.groupBox13.Location = new System.Drawing.Point(19, 588);
             this.groupBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -4605,6 +4609,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label186);
+            this.groupBox1.Controls.Add(this.textBoxSSSCharLimit);
+            this.groupBox1.Controls.Add(this.label185);
+            this.groupBox1.Controls.Add(this.rjToggleButtonSmartStringSplit);
             this.groupBox1.Controls.Add(this.rjToggleButtonRefocus);
             this.groupBox1.Controls.Add(this.label158);
             this.groupBox1.Controls.Add(this.button38);
@@ -4657,14 +4665,60 @@
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(21, 2);
+            this.groupBox1.Location = new System.Drawing.Point(19, 2);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(706, 484);
+            this.groupBox1.Size = new System.Drawing.Size(706, 582);
             this.groupBox1.TabIndex = 100;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // label186
+            // 
+            this.label186.AutoSize = true;
+            this.label186.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label186.ForeColor = System.Drawing.Color.Snow;
+            this.label186.Location = new System.Drawing.Point(9, 465);
+            this.label186.Name = "label186";
+            this.label186.Size = new System.Drawing.Size(191, 15);
+            this.label186.TabIndex = 159;
+            this.label186.Text = "Queue System: SSS Character Limit";
+            // 
+            // textBoxSSSCharLimit
+            // 
+            this.textBoxSSSCharLimit.Location = new System.Drawing.Point(10, 482);
+            this.textBoxSSSCharLimit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxSSSCharLimit.Name = "textBoxSSSCharLimit";
+            this.textBoxSSSCharLimit.Size = new System.Drawing.Size(110, 23);
+            this.textBoxSSSCharLimit.TabIndex = 158;
+            this.textBoxSSSCharLimit.Text = "295";
+            // 
+            // label185
+            // 
+            this.label185.AutoSize = true;
+            this.label185.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label185.ForeColor = System.Drawing.Color.Snow;
+            this.label185.Location = new System.Drawing.Point(53, 439);
+            this.label185.Name = "label185";
+            this.label185.Size = new System.Drawing.Size(201, 15);
+            this.label185.TabIndex = 156;
+            this.label185.Text = "Queue System: Smart String Splitting";
+            // 
+            // rjToggleButtonSmartStringSplit
+            // 
+            this.rjToggleButtonSmartStringSplit.AutoSize = true;
+            this.rjToggleButtonSmartStringSplit.Location = new System.Drawing.Point(5, 439);
+            this.rjToggleButtonSmartStringSplit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rjToggleButtonSmartStringSplit.MinimumSize = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonSmartStringSplit.Name = "rjToggleButtonSmartStringSplit";
+            this.rjToggleButtonSmartStringSplit.OffBackColor = System.Drawing.Color.Gray;
+            this.rjToggleButtonSmartStringSplit.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjToggleButtonSmartStringSplit.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjToggleButtonSmartStringSplit.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjToggleButtonSmartStringSplit.Size = new System.Drawing.Size(39, 16);
+            this.rjToggleButtonSmartStringSplit.TabIndex = 157;
+            this.rjToggleButtonSmartStringSplit.UseVisualStyleBackColor = true;
             // 
             // rjToggleButtonRefocus
             // 
@@ -4704,7 +4758,7 @@
             this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button38.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button38.ForeColor = System.Drawing.Color.Snow;
-            this.button38.Location = new System.Drawing.Point(544, 409);
+            this.button38.Location = new System.Drawing.Point(544, 507);
             this.button38.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(155, 28);
@@ -4818,9 +4872,9 @@
             this.label154.ForeColor = System.Drawing.Color.Snow;
             this.label154.Location = new System.Drawing.Point(53, 409);
             this.label154.Name = "label154";
-            this.label154.Size = new System.Drawing.Size(191, 15);
+            this.label154.Size = new System.Drawing.Size(194, 15);
             this.label154.TabIndex = 144;
-            this.label154.Text = "Use Queue System With Typed Text";
+            this.label154.Text = "Queue System: Use With Typed Text";
             // 
             // rjToggleButtonQueueTypedText
             // 
@@ -4914,7 +4968,7 @@
             this.button47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button47.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button47.ForeColor = System.Drawing.Color.Snow;
-            this.button47.Location = new System.Drawing.Point(544, 448);
+            this.button47.Location = new System.Drawing.Point(544, 546);
             this.button47.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button47.Name = "button47";
             this.button47.Size = new System.Drawing.Size(155, 28);
@@ -8570,7 +8624,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(616, 5);
+            this.iconButton55.Location = new System.Drawing.Point(514, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -9934,7 +9988,6 @@
         private Panel panelCustomize;
         private FontAwesome.Sharp.IconButton StopButton;
         private FontAwesome.Sharp.IconButton TTSButton;
-        private FontAwesome.Sharp.IconButton iconButton49;
         private Label label156;
         public TextBox textBoxQuickType2;
         private Button buttonQuickTypeEdit;
@@ -10040,5 +10093,10 @@
         private Label label184;
         private FontAwesome.Sharp.IconButton iconButton1;
         private PictureBox pictureBox4;
+        private Label label185;
+        public RJControls.RJToggleButton rjToggleButtonSmartStringSplit;
+        private Label label186;
+        public TextBox textBoxSSSCharLimit;
+        public FontAwesome.Sharp.IconButton SpeechToTextBigButton;
     }
 }

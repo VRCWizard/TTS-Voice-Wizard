@@ -7,6 +7,7 @@ using NAudio.Wave;
 using Newtonsoft.Json.Linq;
 using Octokit;
 using OSCVRCWiz.Resources.Audio;
+using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
@@ -51,12 +52,14 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
                     TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+                    DoSpeech.speechToTextButtonOff();
                 }
             }
             catch(Exception ex)
             {
                 OutputText.outputLog("[DeepGram Stopped Listening]");
                 OutputText.outputLog("[VoiceWizardPro Reognition Error: " + ex.Message + "]", Color.Red);
+                DoSpeech.speechToTextButtonOff();
             }
         }
 

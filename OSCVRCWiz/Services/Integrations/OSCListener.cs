@@ -93,7 +93,7 @@ namespace OSCVRCWiz.Services.Integrations
                         for (int i = 0; i < messageBundle.Messages.Count; i++)
                         {
                             var resend = messageBundle.Messages[i];
-                            OSC.OSCReSender.Send(resend);
+                            OSC.OSCSender.Send(resend);
                         }
 
                     }

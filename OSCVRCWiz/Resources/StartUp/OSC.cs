@@ -16,7 +16,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
     public class OSC
     {
         public static UDPSender OSCSender;
-        public static UDPSender OSCReSender;
+      //  public static UDPSender OSCReSender;
         //public static string OSCAddress = "127.0.0.1";
         //public static string OSCPort = "9000";
 
@@ -29,9 +29,9 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
             try
             {
                 OSCSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(Settings1.Default.OSCPort));//9000
-                OSCReSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(OSCListener.OSCReceiveport));
+             //   OSCReSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(OSCListener.OSCReceiveport));
                 VoiceWizardWindow.MainFormGlobal.textBoxOSCAddress.Text = Settings1.Default.rememberAddress;
-                VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.OSCPort;
+                VoiceWizardWindow.MainFormGlobal.textBoxOSCPort.Text = Settings1.Default.OSCPort;
             }
             catch (Exception ex) { MessageBox.Show("OSC Startup Error: " + ex.Message); }
 

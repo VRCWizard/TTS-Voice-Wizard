@@ -7,6 +7,7 @@ using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Resources.StartUp.StartUp;
+using OSCVRCWiz.Services.Speech;
 
 namespace OSCVRCWiz
 {
@@ -32,9 +33,10 @@ namespace OSCVRCWiz
             {
                 if (voskEnabled == false)
                 {
-                   
+                    DoSpeech.speechToTextOnSound();
 
-                    if(voskPause==false)
+
+                    if (voskPause==false)
                     {
                         Task.Run(() => VoskRecognition.doVosk());
                         voskPause= true;
@@ -50,6 +52,7 @@ namespace OSCVRCWiz
                 }
                 else
                 {
+                    DoSpeech.speechToTextOffSound();
                     Task.Run(() => VoskRecognition.pauseVosk());
 
 
@@ -109,7 +112,8 @@ namespace OSCVRCWiz
                 OutputText.outputLog("[Vosk Failed to Start]", Color.Red);
               //  OutputText.outputLog("[Reminder that Vosk only works on the x64 build of TTS Voice Wizard]", Color.Red);
                 MessageBox.Show("Vosk Error: " + ex.Message);
-                
+                DoSpeech.speechToTextOffSound();
+
 
 
             }
