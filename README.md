@@ -127,5 +127,6 @@ The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, 
 - [Frosty's Billboard](https://github.com/Frosty704/Billboard) - Frosty's billboard is a container for the KAT allowing you to have a speech bubble in your hand
 - [WindowsMediaController](https://github.com/DubyaDude/WindowsMediaController) - Windows Media Package
 - [WhisperNet](https://github.com/Const-me/Whisper) - C# wrapper for whisper.cpp
+- [ZAPSPLAT](https://www.zapsplat.com) - Sound effects obtained from https://www.zapsplat.com
 
 
