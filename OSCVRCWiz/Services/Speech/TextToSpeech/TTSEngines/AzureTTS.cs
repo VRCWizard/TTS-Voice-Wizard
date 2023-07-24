@@ -140,6 +140,9 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     case "Japanese [ja]": localList.Add("ja-JP"); break;
                     case "Korean [ko]": localList.Add("ko-KR"); break;
                     case "Norwegian [nb]": localList.Add("nb-NO"); break;
+
+                    case "Persian [fa]": localList.Add("fa-IR"); break;
+
                     case "Polish [pl]": localList.Add("pl-PL"); break;
                     case "Portuguese [pt]":
                         localList.Add("pt-BR");
@@ -488,6 +491,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         "Japanese [ja]",
                         "Korean [ko]",
                         "Norwegian [nb]",
+                        "Persian [fa]",
                         "Polish [pl]",
                         "Portuguese [pt]",
                         "Russian [ru]",

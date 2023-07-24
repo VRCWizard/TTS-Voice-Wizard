@@ -1735,6 +1735,7 @@
             "Japanese [ja]",
             "Korean [ko]",
             "Norwegian [nb]",
+            "Persian [fa]",
             "Polish [pl]",
             "Portuguese [pt]",
             "Russian [ru]",
@@ -1793,6 +1794,7 @@
             "Japanese [ja-JP]",
             "Korean [ko-KR]",
             "Norwegian [nb-NO]",
+            "Persian [fa-IR]",
             "Polish [pl-PL]",
             "Portuguese [pt-BR]",
             "Russian [ru-RU]",
@@ -8624,7 +8626,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(514, 5);
+            this.iconButton55.Location = new System.Drawing.Point(497, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);

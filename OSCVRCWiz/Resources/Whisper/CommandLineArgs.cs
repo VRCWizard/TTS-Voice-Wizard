@@ -16,8 +16,7 @@ namespace OSCVRCWiz.Resources.Whisper
         public int offset_t_ms = 0;
         public int offset_n = 0;
         public int duration_ms = 0;
-        public int max_context = 0;//To prevent repeating multiple sources say that max_context should be 0. Other sources mention --entropy-thold other than the default 2.4 but this paeameter does not seem to be present.
-                                   // public int max_context = 300;
+        public int max_context = 0;//To prevent repeating, multiple sources say that max_context should be 0. Other sources mention --entropy-thold other than the default 2.4 but this parameter does not seem to be present.
         public int max_len = 0;
         // public int max_len = 300; //not implemented yet so changing this breaks it
 
@@ -28,8 +27,8 @@ namespace OSCVRCWiz.Resources.Whisper
         public bool diarize = false;
         public bool output_txt = false;
         public bool print_special = false;
-        public bool print_progress = false;
-        public bool print_colors = true;
+        public bool print_progress = true;
+        public bool print_colors = false;
         public bool no_timestamps = false;
         public int[]? prompt = null;
         public int captureDeviceIndex = 0;
@@ -65,16 +64,13 @@ namespace OSCVRCWiz.Resources.Whisper
         public eResultFlags resultFlags()
         {
             eResultFlags flags = eResultFlags.None;
-            bool wts = output_wts || max_len > 0;
-            if (!no_timestamps || wts)
-                flags |= eResultFlags.Timestamps;
-            if (wts || print_colors)
-                flags |= eResultFlags.Tokens;
             return flags;
         }
 
         static eLanguage parseLanguage(string lang) =>
             Library.languageFromCode(lang) ?? throw new ArgumentException($"Unknown language code \"{lang}\"");
+
+        
 
         public CommandLineArgs(string[] argv)
         {

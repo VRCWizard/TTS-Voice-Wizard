@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
 using Whisper;
+using Whisper.Internal;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -21,8 +22,9 @@ namespace OSCVRCWiz.Resources.Whisper
                 this.source = source;
 
                 thread = new Thread(threadMain) { Name = "Capture Thread" };
-                //  Debug.WriteLine("Press any key to quit");
                 thread.Start();
+                
+                
             }
             catch (Exception ex)
             {
@@ -35,9 +37,12 @@ namespace OSCVRCWiz.Resources.Whisper
         {
             try
             {
-                ctt = state as CaptureThread ?? throw new ApplicationException();
+                ctt = state as CaptureThread;
+
+
+
                 // Console.ReadKey();
-                //  ct.shouldQuit = true; //this line has been making it quit automatically dumb dumb
+                //  ct.shouldQuit = true; 
             }
             catch (Exception ex)
             {
@@ -47,12 +52,11 @@ namespace OSCVRCWiz.Resources.Whisper
         }
         public static void stopWhisper()
         {
-
+               
                 ctt.shouldQuit = true;
-              //  OutputText.outputLog("[begin stopping]");
                 ctt.thread.Join();//wait for thread to finish to prevent crashing
                 ctt = null;//free resources
-              //  OutputText.outputLog("[should stop]");
+  
 
         }
 
@@ -96,8 +100,6 @@ namespace OSCVRCWiz.Resources.Whisper
             catch (Exception ex)
             {
                 MessageBox.Show("[Whisper threadMain Error: " + ex.Message.ToString());
-                edi = ExceptionDispatchInfo.Capture(ex);
-                Debug.WriteLine(ex.Message.ToString());
             }
         }
     }

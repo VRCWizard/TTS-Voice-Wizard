@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Media;
 using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp.StartUp;
+using OSCVRCWiz.Resources.Audio;
 
 namespace OSCVRCWiz.Services.Speech
 {
@@ -50,17 +51,7 @@ namespace OSCVRCWiz.Services.Speech
             {
                 try
                 {
-
-
-                    Task.Run(() =>
-                    {
-                        string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "TTSButton.wav");
-                        // string sound = @"sounds\TTSButton.wav";
-
-                        var soundPlayer = new SoundPlayer(sound);
-                        soundPlayer.Play();
-                        Thread.Sleep(1000);
-                    });
+                    AudioDevices.PlaySoundAsync("TTSButton.wav");
                 }
                 catch (Exception ex)
                 {
@@ -443,14 +434,35 @@ namespace OSCVRCWiz.Services.Speech
 
         public static void speechToTextButtonOn()
         {
-            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.ForeColor = Color.Green;
-            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.IconColor = Color.Green;
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.ForeColor = Color.Green;
+                    VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.IconColor = Color.Green;
+                });
+
+            }
+            catch(Exception ex)
+            {
+                OutputText.outputLog("[Button Color Error: " + ex.Message + "]", Color.Red);
+            }
         }
 
         public static void speechToTextButtonOff()
         {
-            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.ForeColor = Color.White;
-            VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.IconColor = Color.White;
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.ForeColor = Color.White;
+                    VoiceWizardWindow.MainFormGlobal.SpeechToTextBigButton.IconColor = Color.White;
+                });
+            }
+            catch(Exception ex) 
+            {
+                OutputText.outputLog("[Button Color Error: " + ex.Message + "]", Color.Red);
+            }
         }
 
         public static void speechToTextOnSound()
@@ -460,15 +472,11 @@ namespace OSCVRCWiz.Services.Speech
             {
                 try
                 {
-                    Task.Run(() =>
-                    {
-                        string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechOnButton.wav");
-                        var soundPlayer = new SoundPlayer(sound);
 
-                        soundPlayer.Play();
-                        Thread.Sleep(1000);
-                    });
+
+                    AudioDevices.PlaySoundAsync("speechOnButton.wav");
                 }
+
                 catch (Exception ex)
                 {
                     OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
@@ -484,14 +492,7 @@ namespace OSCVRCWiz.Services.Speech
             {
                 try
                 {
-                    Task.Run(() =>
-                    {
-                        string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", "speechOffButton.wav");
-                        var soundPlayer = new SoundPlayer(sound);
-
-                        soundPlayer.Play();
-                        Thread.Sleep(1000);
-                    });
+                    AudioDevices.PlaySoundAsync("speechOffButton.wav");
                 }
                 catch (Exception ex)
                 {
@@ -500,6 +501,9 @@ namespace OSCVRCWiz.Services.Speech
                 }
             }
         }
+
+       
+
 
         public static  void MainDoSpeechTTS()
         {

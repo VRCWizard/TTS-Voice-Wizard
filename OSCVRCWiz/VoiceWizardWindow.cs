@@ -304,6 +304,7 @@ namespace OSCVRCWiz
             catch (Exception ex)
             {
                 OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: " + line + ". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
+            
 
             }
 
@@ -1535,6 +1536,7 @@ namespace OSCVRCWiz
                 Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
                 Task.Run(() => VoskRecognition.AutoStopVoskRecog());
                 Task.Run(() => WhisperRecognition.autoStopWhisper());
+              //  DoSpeech.speechToTextOffSound();
             }
             catch
             {

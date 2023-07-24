@@ -10,10 +10,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Net;
 using Whisper;
-using Windows.UI;
-//using Whisper;
-//using Whisper.Internal;
-using static System.Net.WebRequestMethods;
 
 
 namespace OSCVRCWiz.Speech_Recognition
@@ -25,39 +21,27 @@ namespace OSCVRCWiz.Speech_Recognition
         public static string WhisperPrevText = "";
         private static string langcode = "en";
         private static bool WhisperError = false;
-       
+
+
         public static void toggleWhisper()
         {
-            if (WhisperEnabled == false)
+            if (WhisperEnabled == false )
             {
+
                 DoSpeech.speechToTextOnSound();
 
-
-
-
                 WhisperEnabled = true;
-
                 string UseThisMic = getWhisperInputDevice().ToString();
-
-              //  var language = "";
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     fromLanguageID(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString());//set lang code for recognition
-                  //  language = VoiceWizardWindow.MainFormGlobal.comboBox3.SelectedItem.ToString();
 
                 });
-
-               
-                
-             //   if(language!= "English[en]")
-            //   {
 
                     string[] args = {
                 "-c",UseThisMic,
                 "-m",  VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text,
                 "-l", langcode,
-              //  "-tr", VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperToEnglish.Checked.ToString()
-              //  "-ml", "300"
                  };
                     Task.Run(() => doWhisper(args));
 
@@ -93,12 +77,12 @@ namespace OSCVRCWiz.Speech_Recognition
                     }
                     catch (Exception ex)
                     {
-                        OutputText.outputLog("[Error Stopping Whisper]", System.Drawing.Color.Red);
+                        OutputText.outputLog("[Error Stopping Whisper (manual): "+ ex.Message+ " ]", System.Drawing.Color.Red);
                     }
                 }
                 else
                 {
-                    OutputText.outputLog("[Error Stopping Whisper]", System.Drawing.Color.Red);
+                    OutputText.outputLog("[Could not stop whisper (slow down)]", System.Drawing.Color.Red);
                 }
 
             }
@@ -119,17 +103,19 @@ namespace OSCVRCWiz.Speech_Recognition
                         var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                         OSC.OSCSender.Send(sttListening);
                     }
+                    DoSpeech.speechToTextOffSound();
 
                 }
            
               }
                 catch(Exception ex) {
-                OutputText.outputLog("[Error Stopping Whisper]", System.Drawing.Color.Red);
+                OutputText.outputLog("[Error Stopping Whisper (auto): " + ex.Message + " ]", System.Drawing.Color.Red);
             }
 }
 
             public static int getWhisperInputDevice()
         {
+            
 
             // Setting to Correct Input Device
             using iMediaFoundation mf = Library.initMediaFoundation();
@@ -173,9 +159,12 @@ namespace OSCVRCWiz.Speech_Recognition
                 case "Italian [it-IT]": langcode = "it"; break;
                 case "Japanese [ja-JP]": langcode = "ja"; break;
                 case "Korean [ko-KR]": langcode = "ko"; break;
-                case "Norwegian [nb-NO]": langcode = "nb"; break;
+                case "Norwegian [nb-NO]": langcode = "no"; break;
+
+                case "Persian [fa-IR]": langcode = "fa"; break;//new
                 case "Polish [pl-PL]": langcode = "pl"; break;
                 case "Portuguese [pt-BR]": langcode = "pt"; break;
+
                 //place holder^^
                 case "Russian [ru-RU]": langcode = "ru"; break;
                 case "Spanish [es-MX]": langcode = "es"; break;
@@ -207,16 +196,13 @@ namespace OSCVRCWiz.Speech_Recognition
                 {
                     return 1;
                 }
-                const eLoggerFlags loggerFlags = eLoggerFlags.UseStandardError | eLoggerFlags.SkipFormatMessage;
-               Library.setLogSink(eLogLevel.Debug, loggerFlags);
 
                 using iMediaFoundation mf = Library.initMediaFoundation();
                 CaptureDeviceId[] devices = mf.listCaptureDevices() ??
                     throw new ApplicationException("This computer has no audio capture devices");
 
 
-              
-                
+                       
                 if (cla.captureDeviceIndex < 0 || cla.captureDeviceIndex >= devices.Length)
                     throw new ApplicationException($"Capture device index is out of range; the valid range is [ 0 .. {devices.Length - 1} ]");
                 
@@ -272,8 +258,8 @@ namespace OSCVRCWiz.Speech_Recognition
                 
 
 
-                context.timingsPrint();
-                Debug.WriteLine("finished");
+               // context.timingsPrint();
+                Debug.WriteLine("Whisper finished");
                 return 0;
               }
             catch (Exception ex)
@@ -291,6 +277,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                     OSC.OSCSender.Send(sttListening);
                 }
+                DoSpeech.speechToTextOffSound();
 
                 return ex.HResult;
             }

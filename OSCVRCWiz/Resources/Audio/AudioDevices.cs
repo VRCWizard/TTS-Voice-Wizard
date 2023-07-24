@@ -11,6 +11,7 @@ using OSCVRCWiz.Settings;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Media;
 using System.Text;
 using System.Windows.Media.Media3D;
 using Whisper;
@@ -37,6 +38,8 @@ namespace OSCVRCWiz.Resources.Audio
 
         public static string currentOutputDevice2nd = "";
         public static string currentOutputDeviceName2nd = "Default";
+
+        
 
 
         public static void InitializeAudioDevices()
@@ -78,7 +81,7 @@ namespace OSCVRCWiz.Resources.Audio
             try
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = Settings1.Default.MicName;
-                if (string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem.ToString()))
+                if (string.IsNullOrWhiteSpace(VoiceWizardWindow.MainFormGlobal.comboBoxInput.Text))
                 {
                     VoiceWizardWindow.MainFormGlobal.comboBoxInput.SelectedItem = "Default";
                 }
@@ -449,6 +452,31 @@ namespace OSCVRCWiz.Resources.Audio
                 OutputText.outputLog("[Your text input was invalid]", Color.DarkOrange);
                 TTSMessageQueue.PlayNextInQueue();
             }
+        }
+
+        public static async void PlaySoundAsync(string soundName)
+        {
+
+            string path = "Assets\\sounds\\" + soundName;
+
+            WaveStream waveStream = new WaveFileReader(path);
+            WaveOutEvent waveOutButton;
+            waveOutButton = new WaveOutEvent();
+            waveOutButton.Init(waveStream);
+            waveOutButton.Play();
+
+            // Optionally, you can handle the PlaybackStopped event to release resources when the audio finishes playing.
+            waveOutButton.PlaybackStopped += (sender, args) =>
+            {
+                waveStream.Dispose();
+                waveOutButton.Dispose();
+            };
+
+            /* string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", soundName);
+             var soundPlayer = new SoundPlayer(sound);
+
+             // Use async/await to play the sound asynchronously.
+             await Task.Run(() => soundPlayer.Play());*/
         }
 
 

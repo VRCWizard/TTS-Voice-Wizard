@@ -53,6 +53,8 @@ namespace OSCVRCWiz
                 case "Japanese [ja-JP]": fromLanguage = "ja-JP"; break;
                 case "Korean [ko-KR]": fromLanguage = "ko-KR"; break;
                 case "Norwegian [nb-NO]": fromLanguage = "nb-NO"; break;
+
+                case "Persian [fa-IR]": fromLanguage = "fa-IR"; break;//new
                 case "Polish [pl-PL]": fromLanguage = "pl-PL"; break;
                 case "Portuguese [pt-BR]": fromLanguage = "pt-BR"; break;
                 //place holder^^

@@ -14,7 +14,7 @@ using OSCVRCWiz.Services.Text;
 
 namespace OSCVRCWiz.Resources.Whisper
 {
-    //MODIFIED FROM Const-me/Whisper/ example
+    //MODIFIED FROM Const-me/Whisper/example
 
     public sealed class TranscribeCallbacks : Callbacks
     {
@@ -38,27 +38,6 @@ namespace OSCVRCWiz.Resources.Whisper
             }
         }
 
-        // Terminal color map. 10 colors grouped in ranges [0.0, 0.1, ..., 0.9]
-        // Lowest is red, middle is yellow, highest is green.
-        readonly string[] k_colors = new string[]
-        {
-            "\x1B[38;5;196m", "\x1B[38;5;202m", "\x1B[38;5;208m", "\x1B[38;5;214m", "\x1B[38;5;220m",
-            "\x1B[38;5;226m", "\x1B[38;5;190m", "\x1B[38;5;154m", "\x1B[38;5;118m", "\x1B[38;5;82m"
-        };
-
-        int colorIndex(in sToken tok)
-        {
-            float p = tok.probability;
-            float p3 = p * p * p;
-            int col = (int)(p3 * k_colors.Length);
-            col = Math.Clamp(col, 0, k_colors.Length - 1);
-            return col;
-        }
-
-        //  public static string printTime(TimeSpan ts) =>
-        //       ts.ToString("hh':'mm':'ss'.'fff", CultureInfo.InvariantCulture);
-        //   public static string printTimeWithComma(TimeSpan ts) =>
-        //      ts.ToString("hh':'mm':'ss','fff", CultureInfo.InvariantCulture);
 
         protected override void onNewSegment(Context sender, int countNew)
         {
@@ -66,7 +45,6 @@ namespace OSCVRCWiz.Resources.Whisper
             {
 
                 TranscribeResult res = sender.results(resultFlags);
-                ReadOnlySpan<sToken> tokens = res.tokens;
                 var testing = res.segments.Length;
                 int counter = 1;
 
@@ -80,19 +58,8 @@ namespace OSCVRCWiz.Resources.Whisper
                     sSegment seg = res.segments[i];
 
                     stuff = seg.text.ToString().Trim();
-
-
                     Debug.WriteLine($"segment {s0}: {stuff}");
-                    //   Debug.WriteLine("countNew : " + countNew);
-                    //   Debug.WriteLine("s0 : " + s0);
-                    //   Debug.WriteLine("testing : " + testing);
 
-                    //counter++;
-
-                    //Char ch = '[';
-                    //i am also want to ignore stuff starting with * ???? ill have to see after further testing/ when i release it.
-                    //also since whisper can recognize laughter, i could add that as a feature.
-                    //the better way may be to whitelist certain things because there seem to be too many variations to blacklist... 
 
 
 
@@ -105,9 +72,6 @@ namespace OSCVRCWiz.Resources.Whisper
                         if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
                         {
 
-                            //   WhisperRecognition.WhisperString += text + " ";
-                            //  VoiceWizardWindow.whisperTimer.Change(250, 0);
-                            //  Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
                             text += stuff;
 
                         }
@@ -141,8 +105,6 @@ namespace OSCVRCWiz.Resources.Whisper
                 {
                     WhisperRecognition.WhisperString += text + " ";
                     WhisperRecognition.whisperTimer.Change(250, 0);
-                    // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Whisper"));
-
 
                 }
             }
