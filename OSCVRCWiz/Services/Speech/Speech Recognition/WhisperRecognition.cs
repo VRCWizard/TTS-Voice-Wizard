@@ -258,7 +258,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 
 
 
-               // context.timingsPrint();
+                //context.timingsPrint();
                 Debug.WriteLine("Whisper finished");
                 return 0;
               }
