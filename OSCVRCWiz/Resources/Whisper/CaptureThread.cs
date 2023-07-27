@@ -1,6 +1,7 @@
 ﻿using OSCVRCWiz.Services.Text;
 using System.Diagnostics;
 using System.Runtime.ExceptionServices;
+using System.Windows.Shapes;
 using Whisper;
 using Whisper.Internal;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -81,7 +82,11 @@ namespace OSCVRCWiz.Resources.Whisper
 
         protected override void captureStatusChanged(Context sender, eCaptureStatus status)
         {
-            Debug.WriteLine($"CaptureStatusChanged: {status}");
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug: {status}";
+            });
+          //  OutputText.outputLog($"CaptureStatusChanged: {status}");
         }
 
         readonly TranscribeCallbacks callbacks;

@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Net;
 using Whisper;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace OSCVRCWiz.Speech_Recognition
@@ -58,9 +59,14 @@ namespace OSCVRCWiz.Speech_Recognition
 
             else
             {
+                
                 if (CaptureThread.ctt != null)
                 {
                     DoSpeech.speechToTextOffSound();
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug:";
+                    });
                     try
                     {
                         WhisperString = "";
@@ -104,6 +110,10 @@ namespace OSCVRCWiz.Speech_Recognition
                         OSC.OSCSender.Send(sttListening);
                     }
                     DoSpeech.speechToTextOffSound();
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug:";
+                    });
 
                 }
            

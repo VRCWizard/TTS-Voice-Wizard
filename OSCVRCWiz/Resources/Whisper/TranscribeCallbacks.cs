@@ -49,8 +49,8 @@ namespace OSCVRCWiz.Resources.Whisper
                 int counter = 1;
 
                 int s0 = res.segments.Length - countNew;
-                if (s0 == 0)
-                    Debug.WriteLine("");
+               // if (s0 == 0)
+               //     Debug.WriteLine("");
                 string text = "";
                 string stuff = "";
                 for (int i = s0; i < res.segments.Length; i++)
