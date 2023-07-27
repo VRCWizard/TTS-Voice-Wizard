@@ -138,7 +138,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.comboBox3Type.SelectedIndex = 0;
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedIndex = 0;
-            VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = 0;
+            
 
             VoiceWizardWindow.MainFormGlobal.modelTextBox.Text = Settings1.Default.modelnamesave;
 
@@ -343,6 +343,17 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
 
             VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.Text = Settings1.Default.SSSCharacterLimit;
+
+            //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;
+            try
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = Settings1.Default.saveVoicePresetIndex;
+            }
+            catch(Exception ex)
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = 0;
+            }
+            
 
         }
     }
