@@ -42,7 +42,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="hideDelayValue" Type="System.String" Scope="User">
-      <Value Profile="(Default)">5000</Value>
+      <Value Profile="(Default)">10000</Value>
     </Setting>
     <Setting Name="wordsTranslateVRCSetting" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -577,6 +577,9 @@
     </Setting>
     <Setting Name="SSSCharacterLimit" Type="System.String" Scope="User">
       <Value Profile="(Default)">295</Value>
+    </Setting>
+    <Setting Name="saveVoicePresetIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

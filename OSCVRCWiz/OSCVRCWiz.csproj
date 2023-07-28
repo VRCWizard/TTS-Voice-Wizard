@@ -34,7 +34,6 @@
   <ItemGroup>
     <PackageReference Include="Autoupdater.NET.Official" Version="1.7.6" />
     <PackageReference Include="AWSSDK.Polly" Version="3.7.106.54" />
-    <PackageReference Include="ComLightInterop" Version="1.3.7" />
     <PackageReference Include="Deepgram" Version="2.0.0" />
     <PackageReference Include="DeepL.net" Version="1.6.0" />
     <PackageReference Include="FontAwesome.Sharp" Version="5.15.4" />
@@ -52,6 +51,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="ComLight">
+      <HintPath>ComLight.dll</HintPath>
+    </Reference>
     <Reference Include="CoreOSC">
       <HintPath>CoreOSC.dll</HintPath>
     </Reference>
@@ -132,7 +134,13 @@
     <None Update="Assets\voices\googleVoices.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\voices\tiktokVoices.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\voices\uberduckVoices.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ComLight.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="CoreOSC.dll">
@@ -188,22 +196,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="sounds\speechButton.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="sounds\TTSButton.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Assets\updates\UpdaterInfo.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="voices\azureVoices.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="voices\googleVoices.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="voices\uberduckVoices.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Whisper.dll">

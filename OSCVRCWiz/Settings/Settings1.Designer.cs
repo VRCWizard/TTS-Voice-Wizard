@@ -181,7 +181,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10000")]
         public string hideDelayValue {
             get {
                 return ((string)(this["hideDelayValue"]));
@@ -2324,6 +2324,18 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["SSSCharacterLimit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int saveVoicePresetIndex {
+            get {
+                return ((int)(this["saveVoicePresetIndex"]));
+            }
+            set {
+                this["saveVoicePresetIndex"] = value;
             }
         }
     }

@@ -29,7 +29,7 @@ namespace OSCVRCWiz.Resources.Whisper
         public bool print_special = false;
         public bool print_progress = true;
         public bool print_colors = false;
-        public bool no_timestamps = false;
+        public bool no_timestamps = true;
         public int[]? prompt = null;
         public int captureDeviceIndex = 0;
 

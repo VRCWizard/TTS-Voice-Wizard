@@ -121,6 +121,7 @@ namespace OSCVRCWiz
             Hotkeys.UnregisterHotKey(this.Handle, 2);
             SaveSettings.SavingSettings();
             MoonbaseTTS.CloseMoonbaseTerminal();
+            StopAllRecogntion();
 
 
         }
@@ -972,6 +973,7 @@ namespace OSCVRCWiz
                 IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect,comboBoxAccentSelect.Text.ToString());
 
             }
+      
 
 
         }
@@ -1017,6 +1019,11 @@ namespace OSCVRCWiz
                 buttonDeletePreset.Enabled = true;
                 Task.Run(() => VoicePresets.setPreset());
             }
+            Settings1.Default.saveVoicePresetIndex = comboBoxPreset.SelectedIndex;
+            Settings1.Default.Save();
+
+
+
 
         }
 
@@ -1526,16 +1533,21 @@ namespace OSCVRCWiz
             System.Diagnostics.Debug.WriteLine("speaker changed");
         }
 
+        public static void StopAllRecogntion()
+        {
+            Task.Run(() => SystemSpeechRecognition.AutoStopSystemSpeechRecog());
+            Task.Run(() => WebCaptionerRecognition.autoStopWebCap());
+            Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
+            Task.Run(() => VoskRecognition.AutoStopVoskRecog());
+            Task.Run(() => WhisperRecognition.autoStopWhisper());
+        }
+
 
         private void comboBoxSTT_SelectedIndexChanged(object sender, EventArgs e)// this is used to auto turn off other speech to text option if you switch
         {
             try
             {
-                Task.Run(() => SystemSpeechRecognition.AutoStopSystemSpeechRecog());
-                Task.Run(() => WebCaptionerRecognition.autoStopWebCap());
-                Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
-                Task.Run(() => VoskRecognition.AutoStopVoskRecog());
-                Task.Run(() => WhisperRecognition.autoStopWhisper());
+              StopAllRecogntion();
               //  DoSpeech.speechToTextOffSound();
             }
             catch

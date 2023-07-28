@@ -74,6 +74,7 @@
             this.panelCustomize = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.WhisperDebugLabel = new System.Windows.Forms.Label();
             this.buttonDeletePreset = new System.Windows.Forms.Button();
             this.labelVolumeNum = new System.Windows.Forms.Label();
             this.buttonEditPreset = new System.Windows.Forms.Button();
@@ -1551,6 +1552,15 @@
             this.panel2.Size = new System.Drawing.Size(309, 560);
             this.panel2.TabIndex = 111;
             // 
+            // WhisperDebugLabel
+            // 
+            this.WhisperDebugLabel.AutoSize = true;
+            this.WhisperDebugLabel.Location = new System.Drawing.Point(15, 584);
+            this.WhisperDebugLabel.Name = "WhisperDebugLabel";
+            this.WhisperDebugLabel.Size = new System.Drawing.Size(91, 15);
+            this.WhisperDebugLabel.TabIndex = 111;
+            this.WhisperDebugLabel.Text = "Whisper Debug:";
+            // 
             // buttonDeletePreset
             // 
             this.buttonDeletePreset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
@@ -1657,7 +1667,7 @@
             this.comboBoxPreset.ForeColor = System.Drawing.Color.Black;
             this.comboBoxPreset.FormattingEnabled = true;
             this.comboBoxPreset.Items.AddRange(new object[] {
-            "Non Selected"});
+            "-None Selected-"});
             this.comboBoxPreset.Location = new System.Drawing.Point(18, 470);
             this.comboBoxPreset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxPreset.Name = "comboBoxPreset";
@@ -8626,7 +8636,7 @@
             this.iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new System.Drawing.Point(497, 5);
+            this.iconButton55.Location = new System.Drawing.Point(429, 5);
             this.iconButton55.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new System.Drawing.Size(53, 53);
@@ -9001,6 +9011,7 @@
             this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.WhisperDebugLabel);
             this.groupBox9.Controls.Add(this.logTrash);
             this.groupBox9.Controls.Add(this.richTextBox1);
             this.groupBox9.ForeColor = System.Drawing.Color.White;
@@ -9498,6 +9509,7 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -10100,5 +10112,6 @@
         private Label label186;
         public TextBox textBoxSSSCharLimit;
         public FontAwesome.Sharp.IconButton SpeechToTextBigButton;
+        public Label WhisperDebugLabel;
     }
 }

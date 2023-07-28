@@ -1,0 +1,375 @@
+[
+  {
+    "voice_id": "en_us_002",
+    "name": "Jessie [Female]"
+  },
+  {
+    "voice_id": "en_au_001",
+    "name": "Metro (Eddie) [Female]"
+  },
+  {
+    "voice_id": "en_au_002",
+    "name": "Smooth (Alex) [Male]"
+  },
+  {
+    "voice_id": "en_uk_001",
+    "name": "Narrator (Chris) [Male]"
+  },
+  {
+    "voice_id": "en_uk_003",
+    "name": "UK Male 2"
+  },
+  {
+    "voice_id": "en_female_emotional",
+    "name": "Peaceful [Female]"
+  },
+  {
+    "voice_id": "en_us_006",
+    "name": "Joey [Male]"
+  },
+  {
+    "voice_id": "en_us_007",
+    "name": "Professor [Male]"
+  },
+  {
+    "voice_id": "en_us_009",
+    "name": "Scientist [Male]"
+  },
+  {
+    "voice_id": "en_us_010",
+    "name": "Confidence [Male]"
+  },
+  {
+    "voice_id": "en_female_samc",
+    "name": "Empathetic [Female]"
+  },
+  {
+    "voice_id": "en_male_cody",
+    "name": "Serious [Male]"
+  },
+  {
+    "voice_id": "en_male_narration",
+    "name": "Story Teller [Male]"
+  },
+  {
+    "voice_id": "en_male_funny",
+    "name": "Wacky [Male]"
+  },
+  {
+    "voice_id": "en_male_jarvis",
+    "name": "Alfred"
+  },
+  {
+    "voice_id": "en_male_santa_narration",
+    "name": "Author [Male]"
+  },
+  {
+    "voice_id": "en_female_betty",
+    "name": "Bae [Female]"
+  },
+  {
+    "voice_id": "en_female_makeup",
+    "name": "Beauty Guru [Female]"
+  },
+  {
+    "voice_id": "en_female_richgirl",
+    "name": "Bestie [Female]"
+  },
+  {
+    "voice_id": "en_male_cupid",
+    "name": "Cupid"
+  },
+  {
+    "voice_id": "en_female_shenna",
+    "name": "Debutante [Female]"
+  },
+  {
+    "voice_id": "en_male_ghosthost",
+    "name": "Ghost Host"
+  },
+  {
+    "voice_id": "en_female_grandma",
+    "name": "Grandma"
+  },
+  {
+    "voice_id": "en_male_ukneighbor",
+    "name": "Lord Cringe"
+  },
+  {
+    "voice_id": "en_male_wizard",
+    "name": "Magician"
+  },
+  {
+    "voice_id": "en_male_trevor",
+    "name": "Marty"
+  },
+  {
+    "voice_id": "en_male_deadpool",
+    "name": "Mr. GoodGuy (Deadpool)"
+  },
+  {
+    "voice_id": "en_male_ukbutler",
+    "name": "Mr. Meticulous"
+  },
+  {
+    "voice_id": "en_male_petercullen",
+    "name": "Optimus Prime"
+  },
+  {
+    "voice_id": "en_male_pirate",
+    "name": "Pirate"
+  },
+  {
+    "voice_id": "en_male_santa",
+    "name": "Santa"
+  },
+  {
+    "voice_id": "en_male_santa_effect",
+    "name": "Santa (w/ effect)"
+  },
+  {
+    "voice_id": "en_female_pansino",
+    "name": "Varsity [Female]"
+  },
+  {
+    "voice_id": "en_male_grinch",
+    "name": "Trickster (Grinch)"
+  },
+  {
+    "voice_id": "en_us_ghostface",
+    "name": "Ghostface (Scream)"
+  },
+  {
+    "voice_id": "en_us_chewbacca",
+    "name": "Chewbacca (Star Wars)"
+  },
+  {
+    "voice_id": "en_us_c3po",
+    "name": "C-3PO (Star Wars)"
+  },
+  {
+    "voice_id": "en_us_stormtrooper",
+    "name": "Stormtrooper (Star Wars)"
+  },
+  {
+    "voice_id": "en_us_stitch",
+    "name": "Stitch (Lilo & Stitch)"
+  },
+  {
+    "voice_id": "en_us_rocket",
+    "name": "Rocket (Guardians of the Galaxy)"
+  },
+  {
+    "voice_id": "en_female_madam_leota",
+    "name": "Madame Leota (Haunted Mansion)"
+  },
+  {
+    "voice_id": "en_male_sing_deep_jingle",
+    "name": "Song: Caroler"
+  },
+  {
+    "voice_id": "en_male_m03_classical",
+    "name": "Song: Classic Electric"
+  },
+  {
+    "voice_id": "en_female_f08_salut_damour",
+    "name": "Song: Cottagecore (Salut d'Amour)"
+  },
+  {
+    "voice_id": "en_male_m2_xhxs_m03_christmas",
+    "name": "Song: Cozy"
+  },
+  {
+    "voice_id": "en_female_f08_warmy_breeze",
+    "name": "Song: Open Mic (Warmy Breeze)"
+  },
+  {
+    "voice_id": "en_female_ht_f08_halloween",
+    "name": "Song: Opera (Halloween)"
+  },
+  {
+    "voice_id": "en_female_ht_f08_glorious",
+    "name": "Song: Euphoric (Glorious)"
+  },
+  {
+    "voice_id": "en_male_sing_funny_it_goes_up",
+    "name": "Song: Hypetrain (It Goes Up)"
+  },
+  {
+    "voice_id": "en_male_m03_lobby",
+    "name": "Song: Jingle (Lobby)"
+  },
+  {
+    "voice_id": "en_female_ht_f08_wonderful_world",
+    "name": "Song: Melodrama (Wonderful World)"
+  },
+  {
+    "voice_id": "en_female_ht_f08_newyear",
+    "name": "Song: NYE 2023"
+  },
+  {
+    "voice_id": "en_male_sing_funny_thanksgiving",
+    "name": "Song: Thanksgiving"
+  },
+  {
+    "voice_id": "en_male_m03_sunshine_soon",
+    "name": "Song: Toon Beat (Sunshine Soon)"
+  },
+  {
+    "voice_id": "en_female_f08_twinkle",
+    "name": "Song: Pop Lullaby"
+  },
+  {
+    "voice_id": "en_male_m2_xhxs_m03_silly",
+    "name": "Song: Quirky Time"
+  },
+  {
+    "voice_id": "fr_001",
+    "name": "French Male 1"
+  },
+  {
+    "voice_id": "fr_002",
+    "name": "French Male 2"
+  },
+  {
+    "voice_id": "de_001",
+    "name": "German Female"
+  },
+  {
+    "voice_id": "de_002",
+    "name": "German Male"
+  },
+  {
+    "voice_id": "id_male_darma",
+    "name": "Darma (Indonesian)"
+  },
+  {
+    "voice_id": "id_female_icha",
+    "name": "Icha (Indonesian)"
+  },
+  {
+    "voice_id": "id_female_noor",
+    "name": "Noor (Indonesian)"
+  },
+  {
+    "voice_id": "id_male_putra",
+    "name": "Putra (Indonesian)"
+  },
+  {
+    "voice_id": "it_male_m18",
+    "name": "Italian Male"
+  },
+  {
+    "voice_id": "jp_001",
+    "name": "Miho (美穂)"
+  },
+  {
+    "voice_id": "jp_003",
+    "name": "Keiko (恵子)"
+  },
+  {
+    "voice_id": "jp_005",
+    "name": "Sakura (さくら)"
+  },
+  {
+    "voice_id": "jp_006",
+    "name": "Naoki (直樹)"
+  },
+  {
+    "voice_id": "jp_male_osada",
+    "name": "モリスケ (Morisuke)"
+  },
+  {
+    "voice_id": "jp_male_matsuo",
+    "name": "モジャオ (Matsuo)"
+  },
+  {
+    "voice_id": "jp_female_machikoriiita",
+    "name": "まちこりーた (Machikoriiita)"
+  },
+  {
+    "voice_id": "jp_male_matsudake",
+    "name": "マツダ家の日常 (Matsudake)"
+  },
+  {
+    "voice_id": "jp_male_shuichiro",
+    "name": "修一朗 (Shuichiro)"
+  },
+  {
+    "voice_id": "jp_female_rei",
+    "name": "丸山礼 (Maruyama Rei)"
+  },
+  {
+    "voice_id": "jp_male_hikakin",
+    "name": "ヒカキン (Hikakin)"
+  },
+  {
+    "voice_id": "jp_female_yagishaki",
+    "name": "八木沙季 (Yagi Saki)"
+  },
+  {
+    "voice_id": "kr_002",
+    "name": "Korean Male 1"
+  },
+  {
+    "voice_id": "kr_004",
+    "name": "Korean Male 2"
+  },
+  {
+    "voice_id": "kr_003",
+    "name": "Korean Female"
+  },
+  {
+    "voice_id": "br_003",
+    "name": "Júlia (Portuguese)"
+  },
+  {
+    "voice_id": "br_004",
+    "name": "Ana (Portuguese)"
+  },
+  {
+    "voice_id": "br_005",
+    "name": "Lucas (Portuguese)"
+  },
+  {
+    "voice_id": "pt_female_lhays",
+    "name": "Lhays Macedo (Portuguese)"
+  },
+  {
+    "voice_id": "pt_female_laizza",
+    "name": "Laizza (Portuguese)"
+  },
+  {
+    "voice_id": "pt_male_transformer",
+    "name": "Optimus Prime (Portuguese)"
+  },
+  {
+    "voice_id": "es_002",
+    "name": "Spanish Male"
+  },
+  {
+    "voice_id": "es_male_m3",
+    "name": "Julio (Spanish)"
+  },
+  {
+    "voice_id": "es_female_f6",
+    "name": "Alejandra (Spanish)"
+  },
+  {
+    "voice_id": "es_female_fp1",
+    "name": "Mariana (Spanish)"
+  },
+  {
+    "voice_id": "es_mx_002",
+    "name": "Álex (Warm) (Mexican)"
+  },
+  {
+    "voice_id": "es_mx_male_transformer",
+    "name": "Optimus Prime (Mexican)"
+  },
+  {
+    "voice_id": "es_mx_female_supermom",
+    "name": "Super Mamá (Mexican)"
+  }
+
+]
