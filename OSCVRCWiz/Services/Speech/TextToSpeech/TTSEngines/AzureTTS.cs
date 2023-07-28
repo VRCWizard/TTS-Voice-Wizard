@@ -102,16 +102,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         localList.Add("en-AU");
                         localList.Add("en-CA");
 
-                        // localList.Add("en-GH");
-                        //   localList.Add("en-HK");
-                        //   localList.Add("en-IE");
-                        //   localList.Add("en-IN");
-                        //   localList.Add("en-KE");
-                        //    localList.Add("en-NZ");
+                         localList.Add("en-GH");
+                          localList.Add("en-HK");
+                          localList.Add("en-IE");
+                           localList.Add("en-IN");
+                           localList.Add("en-KE");
+                            localList.Add("en-NZ");
                         localList.Add("en-PH");
-                        //    localList.Add("en-SG");
-                        //   localList.Add("en-TZ");
-                        //   localList.Add("en-ZA");
+                           localList.Add("en-SG");
+                           localList.Add("en-TZ");
+                           localList.Add("en-ZA");
 
                         break;
                     case "Estonian [et]": localList.Add("et-EE"); break;

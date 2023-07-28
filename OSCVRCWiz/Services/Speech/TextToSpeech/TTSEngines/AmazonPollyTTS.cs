@@ -96,6 +96,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             int pitch = TTSMessageQueued.Pitch;
             int volume = TTSMessageQueued.Volume;
             string voice = TTSMessageQueued.Voice;
+            string style = TTSMessageQueued.Style;
 
 
 
@@ -132,26 +133,72 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             {
                 ssml0 += rateString;
 
-
             }
             if (pitch != 5)
             {
                 ssml0 += pitchString;
 
-
             }
             if (volume != 10)
             {
                 ssml0 += volumeString;
+            }
+            if (style != "normal")
+            {
+
+                switch (style)
+                {
+                    case "auto-breaths":
+                        ssml0 += "<amazon:auto-breaths>";
+                        break;
+
+                    case "whispered":
+                        ssml0 += "<amazon:effect name=\"whispered\">";
+                        break;
+
+                    case "soft":
+                        ssml0 += "<amazon:effect phonation=\"soft\">";
+                        break;
+
+                    default: break;
+                }
+            }
+
+
+            ssml0 += TTSMessageQueued.text;
+
+
+            if (style != "normal")
+            {
+
+                switch (style)
+                {
+                    case "auto-breaths":
+                        ssml0 += "</amazon:auto-breaths>";
+                        break;
+
+                    case "whispered":
+                        ssml0 += "</amazon:effect>";
+                        break;
+
+                    case "soft":
+                        ssml0 += "</amazon:effect>";
+                        break;
+
+                    default: break;
+                }
 
 
             }
-            ssml0 += TTSMessageQueued.text;
 
             // ssml0 += Encoding.UTF8.GetString(Encoding.Default.GetBytes(TTSMessageQueued.text));
             if (rate != 5) { ssml0 += "</prosody>"; }
             if (pitch != 5) { ssml0 += "</prosody>"; }
             if (volume != 10) { ssml0 += "</prosody>"; }
+          
+
+
+           
 
             ssml0 += "</speak>";
 
@@ -791,7 +838,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             styles.SelectedIndex = 0;
 
            
-            styles.Enabled = false;
+            styles.Enabled = true;
             voices.Enabled = true;
 
         }

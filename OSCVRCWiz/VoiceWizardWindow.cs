@@ -25,6 +25,7 @@ using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using FontAwesome.Sharp;
 using System.Text;
+using System.Windows;
 #endregion
 
 
@@ -40,17 +41,17 @@ namespace OSCVRCWiz
         public VoiceWizardWindow()
         {
             try { InitializeComponent(); }
-            catch (Exception ex) { MessageBox.Show("Initalization Error: " + ex.Message); }
+            catch (Exception ex) { System.Windows.Forms.MessageBox.Show("Initalization Error: " + ex.Message); }
             MainFormGlobal = this;
 
-
+           
 
             try
             {
                 StartUps.OnAppStart();
      
                 mainTabControl.Appearance = TabAppearance.FlatButtons;
-                mainTabControl.ItemSize = new Size(0, 1);
+                mainTabControl.ItemSize = new System.Drawing.Size(0, 1);
                 mainTabControl.SizeMode = TabSizeMode.Fixed;
                 labelCharCount.Text = richTextBox3.Text.ToString().Length.ToString();
                 navbarHome.BackColor = SelectedNavBar;//make home button appear selected   
@@ -65,7 +66,7 @@ namespace OSCVRCWiz
 
                 }
                 catch { }
-                MessageBox.Show("Startup Error: " + errorMsg);
+                System.Windows.Forms.MessageBox.Show("Startup Error: " + errorMsg);
             }
 
 
@@ -86,7 +87,7 @@ namespace OSCVRCWiz
 
                    
 
-                DialogResult result = MessageBox.Show("Error Loading Settings: \n \n" + ex.Message + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? (Deleting these files will reset your settings)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ex.Message + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? (Deleting these files will reset your settings)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
@@ -109,7 +110,7 @@ namespace OSCVRCWiz
 
                 }
                 catch { }
-                MessageBox.Show("FormLoad Error: " + errorMsg);
+                System.Windows.Forms.MessageBox.Show("FormLoad Error: " + errorMsg);
             }
 
         }
@@ -517,13 +518,13 @@ namespace OSCVRCWiz
         {
             if (logPanelExtended == true)
             {
-                logPanel.Size = new Size(20, logPanel.Height);
+                logPanel.Size = new System.Drawing.Size(20, logPanel.Height);
                 button45.Text = "🢀🢀🢀";
                 logPanelExtended = false;
             }
             else
             {
-                logPanel.Size = new Size(300, logPanel.Height);
+                logPanel.Size = new System.Drawing.Size(300, logPanel.Height);
                 button45.Text = "🢂🢂🢂";
                 logPanelExtended = true;
             }
@@ -856,13 +857,13 @@ namespace OSCVRCWiz
 
             if (logPanelExtended2 == true)
             {
-                panelCustomize.Size = new Size(20, logPanel.Height);
+                panelCustomize.Size = new System.Drawing.Size(20, logPanel.Height);
                 button50.Text = "🢀🢀🢀";
                 logPanelExtended2 = false;
             }
             else
             {
-                panelCustomize.Size = new Size(315, logPanel.Height);
+                panelCustomize.Size = new System.Drawing.Size(315, logPanel.Height);
                 button50.Text = "🢂🢂🢂";
                 logPanelExtended2 = true;
             }
@@ -936,11 +937,27 @@ namespace OSCVRCWiz
                     }
                     comboBoxStyleSelect.SelectedIndex = 0; break;
 
+
+                case "Amazon Polly":
+                    comboBoxStyleSelect.Items.Clear();
+                    comboBoxStyleSelect.Items.Add("normal");
+                    if (!VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Text.ToString().EndsWith("($Neural)"))
+                    {
+                        comboBoxStyleSelect.Items.Add("auto-breaths");
+                        comboBoxStyleSelect.Items.Add("soft");
+                        comboBoxStyleSelect.Items.Add("whispered");
+                    }
+                    comboBoxStyleSelect.SelectedIndex = 0; 
+                    break;
+                    
+
                 case "Google (Pro Only)": break;
 
+                    
 
 
-                default:
+
+                        default:
 
                     break;
             }
@@ -1508,7 +1525,7 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Audio Device Startup Error: " + ex.Message);
+                System.Windows.Forms.MessageBox.Show("Audio Device Startup Error: " + ex.Message);
             }
 
         }
@@ -2303,7 +2320,7 @@ namespace OSCVRCWiz
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
 
             }
@@ -2367,7 +2384,7 @@ namespace OSCVRCWiz
         {
             checkedListBox2.Items.Clear();
             EmojiAddon.ReplacePhraseList.Clear();
-            MessageBox.Show("Restart App");
+            System.Windows.Forms.MessageBox.Show("Restart App");
 
         }
 
