@@ -153,6 +153,9 @@ namespace OSCVRCWiz
             VoicePresets.presetsStored = Settings1.Default.presetSave;
             VoicePresets.presetsLoad();
 
+            MediaPresets.mediaPresetsStored = Settings1.Default.mediaPresetSave;
+            MediaPresets.presetsLoad();
+
             WordReplacements.wordReplacemntsStored = Settings1.Default.replaceSave;
             WordReplacements.replacementsLoad();
 
@@ -343,6 +346,12 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
 
             VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.Text = Settings1.Default.SSSCharacterLimit;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoSend.Checked = Settings1.Default.autoSend;
+
+            VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.SelectedItem = Settings1.Default.ProAPIBranch;
+
+
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;
             try

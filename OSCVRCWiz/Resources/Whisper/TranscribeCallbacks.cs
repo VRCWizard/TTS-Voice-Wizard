@@ -20,6 +20,7 @@ namespace OSCVRCWiz.Resources.Whisper
     {
         readonly CommandLineArgs args;
         readonly eResultFlags resultFlags;
+        public static bool MuteWhisper = false;
 
 
         public TranscribeCallbacks(CommandLineArgs args)
@@ -38,19 +39,27 @@ namespace OSCVRCWiz.Resources.Whisper
             }
         }
 
+        public bool WhisperStartedListening  = false;
+        protected override bool onEncoderBegin(Context sender)
+        {
+            WhisperStartedListening = true;
+            return true;
+        }
+
 
         protected override void onNewSegment(Context sender, int countNew)
         {
             try
             {
+                if(MuteWhisper==true)
+                { return; }
 
                 TranscribeResult res = sender.results(resultFlags);
                 var testing = res.segments.Length;
                 int counter = 1;
 
                 int s0 = res.segments.Length - countNew;
-               // if (s0 == 0)
-               //     Debug.WriteLine("");
+
                 string text = "";
                 string stuff = "";
                 for (int i = s0; i < res.segments.Length; i++)
@@ -60,20 +69,12 @@ namespace OSCVRCWiz.Resources.Whisper
                     stuff = seg.text.ToString().Trim();
                     Debug.WriteLine($"segment {s0}: {stuff}");
 
-
-
-
-
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
                     {
 
-
-
                         if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
                         {
-
                             text += stuff;
-
                         }
                         else
                         {
@@ -84,7 +85,6 @@ namespace OSCVRCWiz.Resources.Whisper
                                 OutputText.outputLog("Whisper (FILTERED): " + stuff);
                             }
                         }
-                        // continue;
                     }
                     else
                     {
@@ -96,7 +96,6 @@ namespace OSCVRCWiz.Resources.Whisper
                         }
 
                         text += stuff;
-
 
                     }
 

@@ -10,7 +10,7 @@ namespace Settings
     public class VoicePresets
     {
 
-        public struct voicePreset //use then when setting up presets
+        private struct voicePreset //use then when setting up presets
         {
             public string PresetName;
             public string TTSMode;

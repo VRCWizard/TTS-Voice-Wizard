@@ -68,9 +68,24 @@ namespace OSCVRCWiz.Speech_Recognition
         {
 
 
+            var branch = "eastus";
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                branch = VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.Text.ToString();
+            });
 
+            var url = $"https://ttsvoicewizard.herokuapp.com/api/transcribe?";
+            switch (branch)
+            {
+                case "eastus": url = $"https://ttsvoicewizard.herokuapp.com/api/transcribe?"; break;
+                case "dev": url = $"https://ttsvoicewizard-playground.herokuapp.com/api/transcribe?"; break;
+                case "local": url = $"http://localhost:54029/api/transcribe?"; break;
+                default: break;
+            }
 
-             var url = $"https://ttsvoicewizard.herokuapp.com/api/transcribe?" +
+            url +=
+
+            // var url = $"https://ttsvoicewizard.herokuapp.com/api/transcribe?" +
 
           //  var url = $"http://localhost:54029/api/transcribe?"+
             $"apiKey={apiKey}" +

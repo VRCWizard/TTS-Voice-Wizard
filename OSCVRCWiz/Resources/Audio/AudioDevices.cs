@@ -256,7 +256,28 @@ namespace OSCVRCWiz.Resources.Audio
             return 0;
         }
 
-      
+        public static float ConvertPitchToFloat(int pitchValue)
+        {
+            // Step 1: Normalize the pitch value to the range 0 to 200
+            float normalizedValue = (pitchValue + 100) * 1.0f; // Convert to float to ensure floating-point division
+
+            // Step 2: Divide by 100 to get it in the range 0.0f to 2.0f
+            float floatValue = normalizedValue / 100.0f;
+
+            // Ensure the value is within the desired range (0.0f to 2.0f)
+            floatValue = Math.Clamp(floatValue, 0.0f, 2.0f);
+
+            if(floatValue == 0f)
+            {
+                floatValue = 0.01f;
+            }
+            Debug.WriteLine(floatValue);
+            Debug.WriteLine(pitchValue);
+
+            return floatValue;
+        }
+
+
 
         public static void PlayAudioStream(Stream audioStream, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct, bool applyAudioEditing, AudioFormat audioFormat)
         {
@@ -320,10 +341,10 @@ namespace OSCVRCWiz.Resources.Audio
                 rate = TTSMessageQueued.Speed;
 
                 volumeFloat = volume * 0.1f;
-                pitchFloat = 0.5f + pitch * 0.1f;
-                rateFloat = 0.5f + rate * 0.1f;
+                pitchFloat = ConvertPitchToFloat(pitch);
+                rateFloat = ConvertPitchToFloat(rate);
 
-    
+
 
                 // Apply audio editing only if specified
                 if (applyAudioEditing)

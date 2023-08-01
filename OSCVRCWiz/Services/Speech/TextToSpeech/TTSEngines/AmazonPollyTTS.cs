@@ -100,9 +100,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
 
 
-            var ratePercent = (int)Math.Floor((0.5f + rate * 0.1f - 1) * 100);
-            // var ratePercent = "+10";
-            var pitchPercent = (int)Math.Floor((0.5f + pitch * 0.1f - 1) * 100);
+            var ratePercent = rate;
+            var pitchPercent = pitch;
             var volumePercent = (int)Math.Floor((volume * 0.1f - 1) * 10);
 
             string rateString = "<prosody rate=\"";
@@ -129,12 +128,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             // ssml0 += " xml:lang=\"en-US\">";
 
 
-            if (rate != 5)//5 = default /middle of track bar
+            if (rate != 0)//5 = default /middle of track bar
             {
                 ssml0 += rateString;
 
             }
-            if (pitch != 5)
+            if (pitch != 0)
             {
                 ssml0 += pitchString;
 
@@ -192,8 +191,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             }
 
             // ssml0 += Encoding.UTF8.GetString(Encoding.Default.GetBytes(TTSMessageQueued.text));
-            if (rate != 5) { ssml0 += "</prosody>"; }
-            if (pitch != 5) { ssml0 += "</prosody>"; }
+            if (rate != 0) { ssml0 += "</prosody>"; }
+            if (pitch != 0) { ssml0 += "</prosody>"; }
             if (volume != 10) { ssml0 += "</prosody>"; }
           
 

@@ -393,13 +393,13 @@
       <Value Profile="(Default)">Default</Value>
     </Setting>
     <Setting Name="pitchNew" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="volumeNew" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="speedNew" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="use2ndDevice" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -527,15 +527,6 @@
     <Setting Name="CounterOutputInterval" Type="System.String" Scope="User">
       <Value Profile="(Default)">2000</Value>
     </Setting>
-    <Setting Name="mediaPreset1" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="mediaPreset2" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="mediaPreset3" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="updateIntervalPreset1" Type="System.String" Scope="User">
       <Value Profile="(Default)">5000</Value>
     </Setting>
@@ -580,6 +571,15 @@
     </Setting>
     <Setting Name="saveVoicePresetIndex" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="mediaPresetSave" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="autoSend" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ProAPIBranch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">eastus</Value>
     </Setting>
   </Settings>
 </SettingsFile>

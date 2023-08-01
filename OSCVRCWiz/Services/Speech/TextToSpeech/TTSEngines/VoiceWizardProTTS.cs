@@ -95,9 +95,22 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             {
                 translate = true;
             }
+            var branch = "eastus";
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                branch = VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.Text.ToString();
+            });
+            
+            var url = $"https://ttsvoicewizard.herokuapp.com/api/tts?";
+           switch (branch)
+            {
+                case "eastus": url = $"https://ttsvoicewizard.herokuapp.com/api/tts?"; break;
+                case "dev":    url = $"https://ttsvoicewizard-playground.herokuapp.com/api/tts?"; break;
+                case "local": url = $"http://localhost:54029/api/tts?"; break;
+                default: break;
+            }
 
-            // var url = $"http://localhost:54029/api/tts?" +
-            var url = $"https://ttsvoicewizard.herokuapp.com/api/tts?" +
+            url +=
               $"apiKey={apiKey}" +
                 $"&TTSMode={message.TTSMode}" +
                 $"&text={message.text}" +

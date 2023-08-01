@@ -22,8 +22,9 @@ namespace OSCVRCWiz.Speech_Recognition
         public static string WhisperPrevText = "";
         private static string langcode = "en";
         private static bool WhisperError = false;
+        private static bool WhisperAllowStop = false;
 
-
+        private static CaptureThread? ctt;
         public static void toggleWhisper()
         {
             if (WhisperEnabled == false )
@@ -44,9 +45,11 @@ namespace OSCVRCWiz.Speech_Recognition
                 "-m",  VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text,
                 "-l", langcode,
                  };
-                    Task.Run(() => doWhisper(args));
+                OutputText.outputLog("[Starting Whisper]");
+                Task.Run(() => doWhisper(args));
+               // OutputText.outputLog("[test output]");
 
-                    OutputText.outputLog("[Whisper Listening]");
+
                 // }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                 {
@@ -60,7 +63,7 @@ namespace OSCVRCWiz.Speech_Recognition
             else
             {
                 
-                if (CaptureThread.ctt != null)
+                if (ctt != null && WhisperAllowStop==true)
                 {
                     DoSpeech.speechToTextOffSound();
                     VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
@@ -70,9 +73,9 @@ namespace OSCVRCWiz.Speech_Recognition
                     try
                     {
                         WhisperString = "";
-                        CaptureThread.stopWhisper();
+                        StopWhisper();
                         WhisperEnabled = false;
-                        OutputText.outputLog("[Whisper Stopped Listening]");
+                        OutputText.outputLog("[Whisper Stopping Listening]");
                         WhisperError = false;
 
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
@@ -100,7 +103,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 if (WhisperEnabled == true)
                 {
                     WhisperString = "";
-                    CaptureThread.stopWhisper();
+                    StopWhisper();
                     WhisperEnabled = false;
                     OutputText.outputLog("[Whisper Stopped Listening]");
                     WhisperError = false;
@@ -187,6 +190,13 @@ namespace OSCVRCWiz.Speech_Recognition
             }
         }
 
+        public static void StopWhisper()
+        {
+      
+            ctt?.Stop();
+            ctt = null;
+        }
+
 
 
 
@@ -260,16 +270,20 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
                 cla.apply(ref context.parameters);
-                
 
-                CaptureThread thread = new CaptureThread(cla, context, captureDev);
-                thread.join();
-
+                WhisperAllowStop = false;
+                ctt = new CaptureThread(cla, context, captureDev);
                 
+                Thread.Sleep(3000);
+                WhisperAllowStop = true;
+
+                ctt?.join();
+
+
 
 
                 //context.timingsPrint();
-                Debug.WriteLine("Whisper finished");
+                OutputText.outputLog("[Whisper Stopped]");
                 return 0;
               }
             catch (Exception ex)

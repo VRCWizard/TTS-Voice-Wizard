@@ -1585,7 +1585,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int pitchNew {
             get {
                 return ((int)(this["pitchNew"]));
@@ -1609,7 +1609,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int speedNew {
             get {
                 return ((int)(this["speedNew"]));
@@ -2125,42 +2125,6 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string mediaPreset1 {
-            get {
-                return ((string)(this["mediaPreset1"]));
-            }
-            set {
-                this["mediaPreset1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string mediaPreset2 {
-            get {
-                return ((string)(this["mediaPreset2"]));
-            }
-            set {
-                this["mediaPreset2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string mediaPreset3 {
-            get {
-                return ((string)(this["mediaPreset3"]));
-            }
-            set {
-                this["mediaPreset3"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5000")]
         public string updateIntervalPreset1 {
             get {
@@ -2336,6 +2300,42 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["saveVoicePresetIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string mediaPresetSave {
+            get {
+                return ((string)(this["mediaPresetSave"]));
+            }
+            set {
+                this["mediaPresetSave"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autoSend {
+            get {
+                return ((bool)(this["autoSend"]));
+            }
+            set {
+                this["autoSend"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("eastus")]
+        public string ProAPIBranch {
+            get {
+                return ((string)(this["ProAPIBranch"]));
+            }
+            set {
+                this["ProAPIBranch"] = value;
             }
         }
     }

@@ -330,8 +330,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
 
-                var ratePercent = (int)Math.Floor((0.5f + rate * 0.1f - 1) * 100);
-                var pitchPercent = (int)Math.Floor((0.5f + pitch * 0.1f - 1) * 100);
+                var ratePercent = rate;
+                var pitchPercent = pitch;
                 var volumePercent = (int)Math.Floor((volume * 0.1f - 1) * 100);
 
                 string rateString = "<prosody rate=\"" + ratePercent + "%\">"; //1
@@ -372,13 +372,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     ssml0 += "<mstts:express-as style=\"" + style + "\">";
 
                 }
-                if (rate != 5)//5 = default /middle of track bar
+                if (rate != 0)//5 = default /middle of track bar
                 {
                     ssml0 += rateString;
 
 
                 }
-                if (pitch != 5)
+                if (pitch != 0)
                 {
                     ssml0 += pitchString;
 
@@ -391,8 +391,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                 }
                 ssml0 += TTSMessageQueued.text;
-                if (rate != 5) { ssml0 += "</prosody>"; }
-                if (pitch != 5) { ssml0 += "</prosody>"; }
+                if (rate != 0) { ssml0 += "</prosody>"; }
+                if (pitch != 0) { ssml0 += "</prosody>"; }
                 if (volume != 10) { ssml0 += "</prosody>"; }
                 if (style != "normal") { ssml0 += "</mstts:express-as>"; }
                 ssml0 += "</voice>";

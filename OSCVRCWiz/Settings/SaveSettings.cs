@@ -157,6 +157,9 @@ namespace OSCVRCWiz
             VoicePresets.presetsSave();
             Settings1.Default.presetSave = VoicePresets.presetsStored;
 
+            MediaPresets.presetsSave();
+            Settings1.Default.mediaPresetSave = MediaPresets.mediaPresetsStored;
+
             WordReplacements.replacementSave();
             Settings1.Default.replaceSave = WordReplacements.wordReplacemntsStored;
 
@@ -276,10 +279,12 @@ namespace OSCVRCWiz
             Settings1.Default.SSSCharacterLimit = VoiceWizardWindow.MainFormGlobal.textBoxSSSCharLimit.Text;
 
 
+            Settings1.Default.autoSend = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoSend.Checked;
+
+            Settings1.Default.ProAPIBranch = VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.Text.ToString();
 
 
-
-         Settings1.Default.Save();
+            Settings1.Default.Save();
             //emojiSettings.Default.Save();
             VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
         }

@@ -13,7 +13,6 @@ namespace OSCVRCWiz.Resources.Whisper
     //MODIFIED FROM Const-me/Whisper/ example
     public sealed class CaptureThread : CaptureCallbacks
     {
-        public static CaptureThread ctt = null;
         public CaptureThread(CommandLineArgs args, Context context, iAudioCapture source)
         {
             try
@@ -24,8 +23,26 @@ namespace OSCVRCWiz.Resources.Whisper
 
                 thread = new Thread(threadMain) { Name = "Capture Thread" };
                 thread.Start();
-                
-                
+
+
+                var startTime = 0;
+                bool couldntStart = false;
+                while (!callbacks.WhisperStartedListening)
+                {
+                    if (++startTime > 12000)
+                    {
+                        MessageBox.Show("Whisper is taking abnormally long to start.");
+                        couldntStart = true;
+                        break;
+                    }
+                    Thread.Sleep(10);
+                }
+                if (!couldntStart)
+                {
+                    OutputText.outputLog("[Whisper Listening]");
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -34,40 +51,13 @@ namespace OSCVRCWiz.Resources.Whisper
             }
         }
 
-        static void readKeyCallback(object? state)
-        {
-            try
-            {
-                ctt = state as CaptureThread;
-
-
-
-                // Console.ReadKey();
-                //  ct.shouldQuit = true; 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("[Whisper readKeyCallback Error: " + ex.Message.ToString());
-
-            }
-        }
-        public static void stopWhisper()
-        {
-               
-                ctt.shouldQuit = true;
-                ctt.thread.Join();//wait for thread to finish to prevent crashing
-                ctt = null;//free resources
-  
-
-        }
+    
 
         public void join()
         {
             try
             {
-                ThreadPool.QueueUserWorkItem(readKeyCallback, this);
                 thread.Join();
-                edi?.Throw();
             }
             catch (Exception ex)
             {
@@ -76,6 +66,9 @@ namespace OSCVRCWiz.Resources.Whisper
         }
 
         volatile bool shouldQuit = false;
+
+        internal void Stop()
+            => shouldQuit = true;
 
         protected override bool shouldCancel(Context sender) =>
             shouldQuit;
@@ -86,14 +79,12 @@ namespace OSCVRCWiz.Resources.Whisper
             {
                 VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug: {status}";
             });
-          //  OutputText.outputLog($"CaptureStatusChanged: {status}");
         }
 
         readonly TranscribeCallbacks callbacks;
         readonly Thread thread;
         readonly Context context;
         readonly iAudioCapture source;
-        ExceptionDispatchInfo? edi = null;
 
         void threadMain()
         {
