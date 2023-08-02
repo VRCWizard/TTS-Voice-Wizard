@@ -203,6 +203,7 @@ namespace OSCVRCWiz.Services.Integrations
         {
             VoiceWizardWindow.MainFormGlobal.checkedListBox2.Items[index - 1] = "Emoji " + index + ": " + phrase;
             ReplacePhraseList[index - 1] = phrase;
+            emojiReplacementsSave();
 
         }
 

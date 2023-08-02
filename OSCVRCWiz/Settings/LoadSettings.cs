@@ -26,7 +26,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAsTranslated2.Checked = Settings1.Default.wordsTranslateVRCSetting;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked = Settings1.Default.hideDelaySetting;//off
             VoiceWizardWindow.MainFormGlobal.textBoxErase.Text = Settings1.Default.hideDelayValue;
-            VoiceWizardWindow.MainFormGlobal.richTextBox6.Text = Settings1.Default.phraseListValue;
+            VoiceWizardWindow.MainFormGlobal.richTextBoxAzureDict.Text = Settings1.Default.phraseListValue;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonPhraseList2.Checked = Settings1.Default.phraseListBoolSetting;
             AzureRecognition.YourSubscriptionKey = Settings1.Default.yourKey;
             AzureRecognition.YourServiceRegion = Settings1.Default.yourRegion;

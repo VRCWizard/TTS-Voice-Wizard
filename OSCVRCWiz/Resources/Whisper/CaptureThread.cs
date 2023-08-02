@@ -1,11 +1,6 @@
 ﻿using OSCVRCWiz.Services.Text;
-using System.Diagnostics;
-using System.Runtime.ExceptionServices;
-using System.Windows.Shapes;
 using Whisper;
-using Whisper.Internal;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 
 namespace OSCVRCWiz.Resources.Whisper
@@ -20,7 +15,6 @@ namespace OSCVRCWiz.Resources.Whisper
                 callbacks = new TranscribeCallbacks(args);
                 this.context = context;
                 this.source = source;
-
                 thread = new Thread(threadMain) { Name = "Capture Thread" };
                 thread.Start();
 
@@ -41,6 +35,7 @@ namespace OSCVRCWiz.Resources.Whisper
                 {
                     OutputText.outputLog("[Whisper Listening]");
                 }
+                //TODO add code to let you know it's listening or might be even after abnormal start or attempt to stop whisper
 
 
             }

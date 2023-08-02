@@ -217,7 +217,7 @@ namespace OSCVRCWiz
                 var phraseList = PhraseListGrammar.FromRecognizer(speechRecognizer1);
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPhraseList2.Checked == true)
                 {
-                    string words = VoiceWizardWindow.MainFormGlobal.richTextBox6.Text.ToString();
+                    string words = VoiceWizardWindow.MainFormGlobal.richTextBoxAzureDict.Text.ToString();
 
                     string[] split = words.Split(new Char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string s in split)

@@ -108,6 +108,7 @@ namespace Settings
 
             }
             VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count - 1;
+            presetsSave();
 
         }
         public static void presetEditButton()

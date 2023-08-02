@@ -27,7 +27,7 @@ namespace OSCVRCWiz
             Settings1.Default.wordsTranslateVRCSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAsTranslated2.Checked;
             Settings1.Default.hideDelaySetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked;
             Settings1.Default.hideDelayValue = VoiceWizardWindow.MainFormGlobal.textBoxErase.Text.ToString();
-            Settings1.Default.phraseListValue = VoiceWizardWindow.MainFormGlobal.richTextBox6.Text.ToString();
+            Settings1.Default.phraseListValue = VoiceWizardWindow.MainFormGlobal.richTextBoxAzureDict.Text.ToString();
             Settings1.Default.phraseListBoolSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonPhraseList2.Checked;
             try
             {

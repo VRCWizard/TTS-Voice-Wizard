@@ -48,6 +48,7 @@ namespace OSCVRCWiz.Services.Integrations
 
                 replaceDict.Add(wordKey, wordValue);//it is important to catch the thing that will actually break first in this case*** (fixes but with phantom entry after error occurs)
                 MainFormGlobal.checkedListBoxReplacements.Items.Add($"{MainFormGlobal.checkedListBoxReplacements.Items.Count + 1} | {wordKey} ---> {wordValue}", true);
+                replacementSave();
             }
             catch (Exception ex)
             {

@@ -1,21 +1,12 @@
 ﻿//Wizard
 #region Using Statements
-using System.Media;
-using System.Net;
 using OSCVRCWiz.Settings;
-using Octokit;
 using System.Diagnostics;
-using NAudio.Wave;
 using Settings;
-using AutoUpdaterDotNET;
 using OSCVRCWiz.Speech_Recognition;
-using System.ComponentModel;
-using CoreOSC;
-using System.Runtime.InteropServices;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Resources.Themes;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
-using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Services.Integrations;
@@ -24,8 +15,6 @@ using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using FontAwesome.Sharp;
-using System.Text;
-using System.Windows;
 #endregion
 
 
@@ -281,6 +270,11 @@ namespace OSCVRCWiz
             }
             // TTSBoxText = richTextBox3.Text.ToString();
             labelCharCount.Text = length.ToString();
+
+            if(rjToggleButtonAutoSend.Checked)
+            {
+                Task.Run(() => DoSpeech.TTSButonClick());
+            }
 
         }
 
@@ -667,6 +661,24 @@ namespace OSCVRCWiz
 
         #region Voice Customization Options
 
+        private void buttonImportVoicePresets_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                comboBoxPreset.Items.Clear();
+                comboBoxPreset.Items.Add("- None Selected -");
+                VoicePresets.presetsStored = Import_Export.importFile(openFileDialog1.FileName);
+                VoicePresets.presetsLoad();
+                comboBoxPreset.SelectedIndex = 0;
+
+            }
+        }
+
+        private void buttonExportVoicePresets_Click(object sender, EventArgs e)
+        {
+            Import_Export.ExportList("Output\\Exports", "VoicePreset", VoicePresets.presetsStored);
+        }
+
         private void comboBoxTTSMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBoxTTSMode.Text.ToString())
@@ -1009,11 +1021,16 @@ namespace OSCVRCWiz
         }
         public void updateAllTrackBarLabels()
         {
-            float value1 = 0.5f + trackBarPitch.Value * 0.1f;
-            labelPitchNum.Text = "x" + Math.Round(value1, 1).ToString();
+            //float value1 = 0.5f + trackBarPitch.Value * 0.1f;
+           // labelPitchNum.Text = "x" + Math.Round(value1, 1).ToString();
 
-            float value2 = 0.5f + trackBarSpeed.Value * 0.1f;
-            labelSpeedNum.Text = "x" + Math.Round(value2, 1).ToString();
+            labelPitchNum.Text = trackBarPitch.Value+"%";
+
+
+            //  float value2 = 0.5f + trackBarSpeed.Value * 0.1f;
+            //  labelSpeedNum.Text =  Math.Round(value2, 1).ToString();
+
+            labelSpeedNum.Text = trackBarSpeed.Value + "%";
 
             float value3 = trackBarVolume.Value * 0.1f;
             labelVolumeNum.Text = (Math.Round(value3, 1) * 100).ToString("0.#") + "%";
@@ -1084,6 +1101,16 @@ namespace OSCVRCWiz
 
         #region Settings Tab
         #region General Settings
+
+        private void iconButton2_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Settings");
+        }
+
+        private void button14_Click_2(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", "Output\\Exports");
+        }
 
 
 
@@ -1578,7 +1605,10 @@ namespace OSCVRCWiz
                     if (whisperModelTextBox.Text.ToString() == "no model selected")
                     {
                         OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ]", Color.DarkOrange);
+                       
                     }
+                    iconButtonMute.Visible = true;
+                    WhisperDebugLabel.Visible = true;
                     break;
 
                 case "Web Captioner": OutputText.outputLog("[Web Captioner selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner ]", Color.DarkOrange); break;
@@ -1833,7 +1863,6 @@ namespace OSCVRCWiz
             mainTabControl.SelectTab(tabEmoji);
         }
 
-
         #endregion
 
         #region Media Integration
@@ -1914,105 +1943,19 @@ namespace OSCVRCWiz
             }
         }
 
-        private void button36_Click_1(object sender, EventArgs e)//load media preset
+        private void buttonMediaPresetSaveNew_Click(object sender, EventArgs e)
         {
-            string mediaText = "";
-            string updateInterval = "5000";
-            bool OutputContinuously = false;
-            bool StopPaused = false;
-            bool SpamLog = true;
-            switch (comboBoxMediaPreset.SelectedItem)
-            {
-
-                case "Preset 1":
-                    mediaText = Settings1.Default.mediaPreset1;
-                    updateInterval = Settings1.Default.updateIntervalPreset1;
-                    OutputContinuously = Settings1.Default.OutputContinPreset1;
-                    StopPaused = Settings1.Default.StopPausedPreset1;
-                    SpamLog = Settings1.Default.MediaSpamPreset1;
-                    break;
-
-                case "Preset 2":
-                    mediaText = Settings1.Default.mediaPreset2;
-                    updateInterval = Settings1.Default.updateIntervalPreset2;
-                    OutputContinuously = Settings1.Default.OutputContinPreset2;
-                    StopPaused = Settings1.Default.StopPausedPreset2;
-                    SpamLog = Settings1.Default.MediaSpamPreset2;
-
-                    break;
-
-                case "Preset 3":
-                    mediaText = Settings1.Default.mediaPreset3;
-                    updateInterval = Settings1.Default.updateIntervalPreset3;
-                    OutputContinuously = Settings1.Default.OutputContinPreset3;
-                    StopPaused = Settings1.Default.StopPausedPreset3;
-                    SpamLog = Settings1.Default.MediaSpamPreset3;
-
-                    break;
-
-                default: mediaText = ""; break;
-
-
-            }
-            textBoxCustomSpot.Text = mediaText;
-
-            SpotifyAddon.spotifyInterval = updateInterval;
-            textBoxSpotifyTime.Text = SpotifyAddon.spotifyInterval;
-            SpotifyAddon.spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
-            rjToggleButtonPeriodic.Checked = OutputContinuously;
-            rjToggleButtonPlayPaused.Checked = StopPaused;
-            rjToggleButtonSpotifySpam.Checked = SpamLog;
-
-
-
+            MediaPresets.presetSaveButton();
         }
 
-        private void button52_Click(object sender, EventArgs e)//save media preset
+        private void buttonMediaPresetEditNew_Click(object sender, EventArgs e)
         {
-            string mediaText = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text;
-            string updateInterval = SpotifyAddon.spotifyInterval;
-            bool OutputContinuously = rjToggleButtonPeriodic.Checked;
-            bool StopPaused = rjToggleButtonPlayPaused.Checked;
-            bool SpamLog = rjToggleButtonSpotifySpam.Checked;
-            switch (comboBoxMediaPreset.SelectedItem)
-            {
+            MediaPresets.presetEditButton();
+        }
 
-                case "Preset 1":
-                    Settings1.Default.mediaPreset1 = mediaText;
-                    Settings1.Default.updateIntervalPreset1 = updateInterval;
-                    Settings1.Default.OutputContinPreset1 = OutputContinuously;
-                    Settings1.Default.StopPausedPreset1 = StopPaused;
-                    Settings1.Default.MediaSpamPreset1 = SpamLog;
-
-
-                    break;
-
-                case "Preset 2":
-                    Settings1.Default.mediaPreset2 = mediaText;
-                    Settings1.Default.updateIntervalPreset2 = updateInterval;
-                    Settings1.Default.OutputContinPreset2 = OutputContinuously;
-                    Settings1.Default.StopPausedPreset2 = StopPaused;
-                    Settings1.Default.MediaSpamPreset2 = SpamLog;
-
-                    break;
-
-                case "Preset 3":
-                    Settings1.Default.mediaPreset3 = mediaText;
-                    Settings1.Default.updateIntervalPreset3 = updateInterval;
-                    Settings1.Default.OutputContinPreset3 = OutputContinuously;
-                    Settings1.Default.StopPausedPreset3 = StopPaused;
-                    Settings1.Default.MediaSpamPreset3 = SpamLog;
-
-                    break;
-
-                default: mediaText = ""; break;
-
-
-
-            }
-            Settings1.Default.Save();
-
-
+        private void buttonMediaPresetDeleteNew_Click(object sender, EventArgs e)
+        {
+            MediaPresets.presetDeleteButton();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
@@ -2063,6 +2006,40 @@ namespace OSCVRCWiz
             string currentText = textBoxCustomSpot.Text.ToString();
             currentText = currentText + "📢{spotifyVolume}% ";
             textBoxCustomSpot.Text = currentText;
+        }
+
+        private void comboBoxMediaPreset_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxMediaPreset.SelectedIndex == 0)
+            {
+                buttonMediaPresetEditNew.Enabled = false;
+                buttonMediaPresetDeleteNew.Enabled = false;
+            }
+            else
+            {
+                buttonMediaPresetEditNew.Enabled = true;
+                buttonMediaPresetDeleteNew.Enabled = true;
+                Task.Run(() => MediaPresets.setPreset());
+            }
+
+
+        }
+        private void buttonImportMedia_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                comboBoxMediaPreset.Items.Clear();
+                comboBoxMediaPreset.Items.Add("- None Selected -");
+                MediaPresets.mediaPresetsStored = Import_Export.importFile(openFileDialog1.FileName);
+                MediaPresets.presetsLoad();
+                comboBoxMediaPreset.SelectedIndex = 0;
+
+            }
+        }
+
+        private void buttonExportMedia_Click(object sender, EventArgs e)
+        {
+            Import_Export.ExportList("Output\\Exports", "MediaPreset", MediaPresets.mediaPresetsStored);
         }
 
         #endregion
@@ -2306,9 +2283,44 @@ namespace OSCVRCWiz
             System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Voice-Commands");
         }
 
+        private void buttonImportVC_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                VoiceCommands.voiceCommandsStored = Import_Export.importFile(openFileDialog1.FileName);
+                VoiceCommands.voiceCommands();
+                VoiceCommands.refreshCommandList();
+
+            }
+        }
+
+        private void buttonExportVC_Click(object sender, EventArgs e)
+        {
+            Import_Export.ExportList("Output\\Exports", "VoiceCommand", VoiceCommands.voiceCommandsStored);
+        }
+
+
+
         #endregion
 
         #region Word Replacements
+
+
+        private void buttonImportWR_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                WordReplacements.wordReplacemntsStored = Import_Export.importFile(openFileDialog1.FileName);
+                WordReplacements.replacementsLoad();
+                //WordReplacements.
+
+            }
+        }
+
+        private void buttonExportWR_Click(object sender, EventArgs e)
+        {
+            Import_Export.ExportList("Output\\Exports", "WordReplacement", WordReplacements.wordReplacemntsStored);
+        }
 
         private void checkedListBoxReplacements_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -2367,6 +2379,24 @@ namespace OSCVRCWiz
         #endregion
 
         #region Emoji Tab
+
+        private void buttonImportEmoji_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                checkedListBox2.Items.Clear();
+                EmojiAddon.emojiReplacemntsStored = Import_Export.importFile(openFileDialog1.FileName);
+                EmojiAddon.emojiReplacementsLoad();
+
+
+            }
+        }
+
+        private void buttonExportEmoji_Click(object sender, EventArgs e)
+        {
+            Import_Export.ExportList("Output\\Exports", "Emojis", EmojiAddon.emojiReplacemntsStored);
+        }
+
 
         private void iconButton32_Click(object sender, EventArgs e)//help
         {
@@ -2470,6 +2500,22 @@ namespace OSCVRCWiz
         #endregion
 
         #region Azure Cognitive Services Tab
+
+        private void buttonImportDict_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                richTextBoxAzureDict.Text = Import_Export.importFile(openFileDialog1.FileName);
+
+
+            }
+        }
+
+        private void buttonExportDict_Click(object sender, EventArgs e)
+        {
+            Import_Export.ExportList("Output\\Exports", "AzureDictionary", richTextBoxAzureDict.Text);
+        }
+
 
         private void ShowAzurePassword_Click(object sender, EventArgs e)
         {
@@ -2869,9 +2915,21 @@ namespace OSCVRCWiz
 
 
 
+
+
+
+
+
+
+
+
         #endregion
 
         #endregion
+
+ 
+
+       
     }
 
 
