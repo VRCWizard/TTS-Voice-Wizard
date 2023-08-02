@@ -25,7 +25,8 @@ namespace OSCVRCWiz.Resources.Whisper
                 {
                     if (++startTime > 12000)
                     {
-                        MessageBox.Show("Whisper is taking abnormally long to start.");
+                        //MessageBox.Show("Whisper is taking abnormally long to start.");
+                        OutputText.outputLog("[Whisper is taking abornmally long to start, if this continues try restarting the app and select a smaller Whisper model]");
                         couldntStart = true;
                         break;
                     }
@@ -35,6 +36,8 @@ namespace OSCVRCWiz.Resources.Whisper
                 {
                     OutputText.outputLog("[Whisper Listening]");
                 }
+
+
                 //TODO add code to let you know it's listening or might be even after abnormal start or attempt to stop whisper
 
 
