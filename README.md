@@ -114,8 +114,8 @@ The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, 
 <a href='https://ko-fi.com/ttsvoicewizard/tiers' target='_blank'><img height='56' style='border:0px;height:56px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
  </p>
 
-
-
+## Partners
+- [TalaTora](https://www.twitch.tv/talatora) - TalaTora the talented tiger VTuber, check them out on twitch
 ## Credits
 - [@RavenNovaa](https://twitter.com/RavenNovaa) - New logo art by @RavenNovaa on twitter, check them out :)
 - [CoreOSC](https://github.com/VRCWizard/CoreOSC-VRC-UTF8) - Sending / recieving OSC data (modified for sending UTF8)
