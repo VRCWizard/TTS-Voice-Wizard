@@ -101,35 +101,29 @@ namespace OSCVRCWiz.Speech_Recognition
             try
             {
                 // if (WhisperEnabled == true && WhisperAllowStop == true)
-                if (WhisperEnabled == true )
+                if (WhisperEnabled == true && WhisperAllowStop == true)
                 {
-                    WhisperString = "";
-                    StopWhisper();
-                    WhisperEnabled = false;
-                    OutputText.outputLog("[Whisper Stopped Listening]");
-                    WhisperError = false;
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                    {
-                        var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                        OSC.OSCSender.Send(sttListening);
-                    }
-                    DoSpeech.speechToTextOffSound();
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                    {
-                        VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug:";
-                    });
 
-                    if(WhisperAllowStop != true)
-                    {
-                        OutputText.outputLog("[Whisper Forcibly Stopped, this could cause the program to crash]", System.Drawing.Color.Red);
-                    }
+                        WhisperString = "";
+                        StopWhisper();
+                        WhisperEnabled = false;
+                        OutputText.outputLog("[Whisper Stopped Listening]");
+                        WhisperError = false;
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                        {
+                            var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                            OSC.OSCSender.Send(sttListening);
+                        }
+                        DoSpeech.speechToTextOffSound();
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug:";
+                        });
+                    
 
                 }
-              // else if (WhisperEnabled == true && WhisperAllowStop != true)
-             //   {
-             //       OutputText.outputLog("[Could not stop whisper automatically (slow down)]", System.Drawing.Color.Red);
-            //    }
-           
+               
+
               }
                 catch(Exception ex) {
                 OutputText.outputLog("[Error Stopping Whisper (auto): " + ex.Message + " ]", System.Drawing.Color.Red);

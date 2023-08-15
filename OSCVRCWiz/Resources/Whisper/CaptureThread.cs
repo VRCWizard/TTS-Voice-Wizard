@@ -1,4 +1,5 @@
 ﻿using OSCVRCWiz.Services.Text;
+using OSCVRCWiz.Speech_Recognition;
 using Whisper;
 
 
@@ -36,10 +37,6 @@ namespace OSCVRCWiz.Resources.Whisper
                 {
                     OutputText.outputLog("[Whisper Listening]");
                 }
-
-
-                //TODO add code to let you know it's listening or might be even after abnormal start or attempt to stop whisper
-
 
             }
             catch (Exception ex)
