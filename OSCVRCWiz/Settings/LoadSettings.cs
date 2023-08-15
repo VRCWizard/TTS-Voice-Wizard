@@ -264,6 +264,7 @@ namespace OSCVRCWiz
 
 
             VoiceWizardWindow.MainFormGlobal.comboBoxMediaPreset.SelectedIndex = 0;
+           // VoiceWizardWindow.MainFormGlobal.comboBoxMediaPreset.SelectedIndex = 20; //test for errors
 
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked == true)

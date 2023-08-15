@@ -98,23 +98,13 @@ namespace OSCVRCWiz.Services.Integrations
                             }
                         }
 
-
-
                         if (messageReceived.Address.ToString() == "/avatar/parameters/DoSpeechToText")//Activate Speech to Text from OSC
                         {
 
-
-
                             if (messageReceived.Arguments[0].ToString() == "True")
                             {
-
-                                
-
-                                Task.Run(() => DoSpeech.MainDoStopTTS());
-
-
+                                Task.Run(() => DoSpeech.MainDoSpeechTTS());
                             }
-
 
 
                         }

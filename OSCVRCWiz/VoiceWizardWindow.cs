@@ -25,6 +25,7 @@ namespace OSCVRCWiz
     {
 
         public static VoiceWizardWindow MainFormGlobal;
+        bool forceClose = false;
 
 
         public VoiceWizardWindow()
@@ -74,14 +75,23 @@ namespace OSCVRCWiz
                 catch (Exception ex)
                 {
 
-                   
+                    string ErrorMessage = ex.Message;
+                    if(ex.StackTrace != null)
+                    {
+                        ErrorMessage += "\n \n" + ex.StackTrace;
+                    }
 
-                DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ex.Message + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? (Deleting these files will reset your settings)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ErrorMessage
+              
+                    + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? Deleting these files will reset your settings. \n \n(If this does not solve your issue please post a screenshot of your error message in the #help channel of the Discord server)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
                         var appPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TTSVoiceWizard");
                         Process.Start("explorer.exe", appPath);
+                        forceClose = true;
+                        Application.Exit();
                     }
                     if (result == DialogResult.No)
                     {
@@ -109,7 +119,10 @@ namespace OSCVRCWiz
             Hotkeys.UnregisterHotKey(this.Handle, 0);
             Hotkeys.UnregisterHotKey(this.Handle, 1);
             Hotkeys.UnregisterHotKey(this.Handle, 2);
-            SaveSettings.SavingSettings();
+            if (!forceClose)
+            {
+                SaveSettings.SavingSettings();
+            }
             MoonbaseTTS.CloseMoonbaseTerminal();
             StopAllRecogntion();
 

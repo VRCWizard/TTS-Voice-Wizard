@@ -100,7 +100,8 @@ namespace OSCVRCWiz.Speech_Recognition
         {
             try
             {
-                if (WhisperEnabled == true)
+                // if (WhisperEnabled == true && WhisperAllowStop == true)
+                if (WhisperEnabled == true )
                 {
                     WhisperString = "";
                     StopWhisper();
@@ -118,7 +119,16 @@ namespace OSCVRCWiz.Speech_Recognition
                         VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug:";
                     });
 
+                    if(WhisperAllowStop != true)
+                    {
+                        OutputText.outputLog("[Whisper Forcibly Stopped, this could cause the program to crash]", System.Drawing.Color.Red);
+                    }
+
                 }
+              // else if (WhisperEnabled == true && WhisperAllowStop != true)
+             //   {
+             //       OutputText.outputLog("[Could not stop whisper automatically (slow down)]", System.Drawing.Color.Red);
+            //    }
            
               }
                 catch(Exception ex) {
