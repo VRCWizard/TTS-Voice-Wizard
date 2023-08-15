@@ -74,9 +74,16 @@ namespace OSCVRCWiz
                 catch (Exception ex)
                 {
 
-                   
+                    string ErrorMessage = ex.Message;
+                    if(ex.StackTrace != null)
+                    {
+                        ErrorMessage += "\n \n" + ex.StackTrace;
+                    }
 
-                DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ex.Message + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? (Deleting these files will reset your settings)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ErrorMessage
+              
+                    + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? (Deleting these files will reset your settings)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
