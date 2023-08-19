@@ -283,6 +283,9 @@ namespace OSCVRCWiz
 
             Settings1.Default.ProAPIBranch = VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.Text.ToString();
 
+            Settings1.Default.KatLineLength = VoiceWizardWindow.MainFormGlobal.KATLineLengthTextBox.Text.ToString();
+           
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

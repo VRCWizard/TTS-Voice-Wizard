@@ -477,21 +477,32 @@ namespace OSCVRCWiz.Resources.Audio
 
         public static async void PlaySoundAsync(string soundName)
         {
-
-            string path = "Assets\\sounds\\" + soundName;
-
-            WaveStream waveStream = new WaveFileReader(path);
-            WaveOutEvent waveOutButton;
-            waveOutButton = new WaveOutEvent();
-            waveOutButton.Init(waveStream);
-            waveOutButton.Play();
-
-            // Optionally, you can handle the PlaybackStopped event to release resources when the audio finishes playing.
-            waveOutButton.PlaybackStopped += (sender, args) =>
+            try
             {
-                waveStream.Dispose();
-                waveOutButton.Dispose();
-            };
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                string relativePath = "Assets\\sounds\\" + soundName;
+
+                string fullPath = Path.Combine(basePath, relativePath);
+
+                WaveStream waveStream = new WaveFileReader(fullPath);
+                WaveOutEvent waveOutButton;
+                waveOutButton = new WaveOutEvent();
+                waveOutButton.Init(waveStream);
+                waveOutButton.Play();
+
+                // Optionally, you can handle the PlaybackStopped event to release resources when the audio finishes playing.
+                waveOutButton.PlaybackStopped += (sender, args) =>
+                {
+                    waveStream.Dispose();
+                    waveOutButton.Dispose();
+                };
+            } 
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Button Sound Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[This is caused by the sound folder/files being missing or access being denied. Check to make sure the sound folder exists with sound files inside. Try changing the app folders location. Try running as administator. If do not care for button sounds simply disable them]", Color.DarkOrange);
+            }
 
             /* string sound = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\sounds", soundName);
              var soundPlayer = new SoundPlayer(sound);

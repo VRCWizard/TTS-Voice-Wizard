@@ -352,6 +352,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.SelectedItem = Settings1.Default.ProAPIBranch;
 
+            VoiceWizardWindow.MainFormGlobal.KATLineLengthTextBox.Text = Settings1.Default.KatLineLength;
+
 
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;

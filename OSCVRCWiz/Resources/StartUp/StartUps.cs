@@ -26,18 +26,22 @@ namespace OSCVRCWiz.Resources.StartUp
         {
             AudioDevices.InitializeAudioDevices();
             SystemSpeechTTS.InitializeSystemSpeech();
-           
-           
 
-        }
-
-        public static void OnFormLoad() //delayed until form is loaded correctly
-        {
-            OSC.InitializeOSC();
             VRChatListener.initiateTimer();
             WhisperRecognition.initiateTimer();
             ToastNotification.initiateTimer();
             OutputText.initiateTextTimers();
+
+
+
+        }
+
+
+
+        public static void OnFormLoad() //delayed until form is loaded correctly
+        {
+            OSC.InitializeOSC();
+            
 
             Updater.getGithubInfo();
             Hotkeys.InitiateHotkeys();

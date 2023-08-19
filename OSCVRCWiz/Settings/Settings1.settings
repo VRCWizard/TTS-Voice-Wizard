@@ -581,5 +581,8 @@
     <Setting Name="ProAPIBranch" Type="System.String" Scope="User">
       <Value Profile="(Default)">eastus</Value>
     </Setting>
+    <Setting Name="KatLineLength" Type="System.String" Scope="User">
+      <Value Profile="(Default)">32</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

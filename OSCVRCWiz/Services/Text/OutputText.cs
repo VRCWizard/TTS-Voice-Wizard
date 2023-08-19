@@ -38,6 +38,7 @@ namespace OSCVRCWiz.Services.Text
         }
         private static string SplitToLines(string value, int maximumLineLength)
         {
+            int lineSize = maximumLineLength;//need to add this to UI
             try
             {
                 string perfectString = "";
@@ -53,10 +54,10 @@ namespace OSCVRCWiz.Services.Text
                     if (line.Length + word.Length >= maximumLineLength)
                     {
                         System.Diagnostics.Debug.WriteLine(line.ToString());
-                        if (line.ToString().Length <= 32)
+                        if (line.ToString().Length <= lineSize)
                         {
                             perfectString += line.ToString();
-                            int spacesToAdd = 32 - line.ToString().Length;
+                            int spacesToAdd = lineSize - line.ToString().Length;
                             for (int i = 0; i < spacesToAdd; i++)
                             {
                                 perfectString += " ";
@@ -147,7 +148,8 @@ namespace OSCVRCWiz.Services.Text
 
                 if (type == "spotify")
                 {
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == false || VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == true)
+                        //the fix, this needs to activate when ever KAT DOESNT OUTPUT, which also happens if disable spotify output for kat is enabled
                     {
                         SpotifyAddon.lastSong = SpotifyAddon.title;
                         WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
@@ -210,7 +212,17 @@ namespace OSCVRCWiz.Services.Text
 
                 System.Diagnostics.Debug.WriteLine("*KAT String Splitting*");
 
-                string textstring = SplitToLines(textstringbefore, 32);
+                int lineSplitLength = 32;
+
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    lineSplitLength = Int32.Parse(VoiceWizardWindow.MainFormGlobal.KATLineLengthTextBox.Text);
+
+
+                });
+
+
+                string textstring = SplitToLines(textstringbefore, lineSplitLength);
 
                 // System.Diagnostics.Debug.WriteLine("perfectString= " + textstring);
                 //  System.Diagnostics.Debug.WriteLine("broken lines==========================================================");

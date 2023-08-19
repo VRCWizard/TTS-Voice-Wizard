@@ -34,12 +34,12 @@ namespace OSCVRCWiz
             catch (Exception ex) { System.Windows.Forms.MessageBox.Show("Initalization Error: " + ex.Message); }
             MainFormGlobal = this;
 
-           
+
 
             try
             {
                 StartUps.OnAppStart();
-     
+
                 mainTabControl.Appearance = TabAppearance.FlatButtons;
                 mainTabControl.ItemSize = new System.Drawing.Size(0, 1);
                 mainTabControl.SizeMode = TabSizeMode.Fixed;
@@ -76,15 +76,15 @@ namespace OSCVRCWiz
                 {
 
                     string ErrorMessage = ex.Message;
-                    if(ex.StackTrace != null)
+                    if (ex.StackTrace != null)
                     {
                         ErrorMessage += "\n \n" + ex.StackTrace;
                     }
 
 
-                DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ErrorMessage
-              
-                    + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? Deleting these files will reset your settings. \n \n(If this does not solve your issue please post a screenshot of your error message in the #help channel of the Discord server)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = System.Windows.Forms.MessageBox.Show("Error Loading Settings: \n \n" + ErrorMessage
+
+                        + "\n \nYour config file (where settings are stored) may have been corrupted.\n \nWould you like to be redirected to the AppData/Local/TTSVoiceWizard directory to manually delete the config files? Deleting these files will reset your settings. \n \n(If this does not solve your issue please post a screenshot of your error message in the #help channel of the Discord server)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.Yes)
                     {
@@ -95,14 +95,15 @@ namespace OSCVRCWiz
                     }
                     if (result == DialogResult.No)
                     {
-                        
+
                     }
                 }
                 StartUps.OnFormLoad();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
-                
+
                 try
                 {
                     errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
@@ -284,7 +285,7 @@ namespace OSCVRCWiz
             // TTSBoxText = richTextBox3.Text.ToString();
             labelCharCount.Text = length.ToString();
 
-            if(rjToggleButtonAutoSend.Checked)
+            if (rjToggleButtonAutoSend.Checked)
             {
                 Task.Run(() => DoSpeech.TTSButonClick());
             }
@@ -313,7 +314,7 @@ namespace OSCVRCWiz
             catch (Exception ex)
             {
                 OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: " + line + ". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
-            
+
 
             }
 
@@ -853,7 +854,7 @@ namespace OSCVRCWiz
 
                     break;
 
-             
+
 
 
 
@@ -972,17 +973,17 @@ namespace OSCVRCWiz
                         comboBoxStyleSelect.Items.Add("soft");
                         comboBoxStyleSelect.Items.Add("whispered");
                     }
-                    comboBoxStyleSelect.SelectedIndex = 0; 
+                    comboBoxStyleSelect.SelectedIndex = 0;
                     break;
-                    
+
 
                 case "Google (Pro Only)": break;
 
-                    
 
 
 
-                        default:
+
+                default:
 
                     break;
             }
@@ -1012,10 +1013,10 @@ namespace OSCVRCWiz
             }
             if (DoSpeech.TTSModeSaved == "IBM Watson (Pro Only)")
             {
-                IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect,comboBoxAccentSelect.Text.ToString());
+                IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString());
 
             }
-      
+
 
 
         }
@@ -1035,9 +1036,9 @@ namespace OSCVRCWiz
         public void updateAllTrackBarLabels()
         {
             //float value1 = 0.5f + trackBarPitch.Value * 0.1f;
-           // labelPitchNum.Text = "x" + Math.Round(value1, 1).ToString();
+            // labelPitchNum.Text = "x" + Math.Round(value1, 1).ToString();
 
-            labelPitchNum.Text = trackBarPitch.Value+"%";
+            labelPitchNum.Text = trackBarPitch.Value + "%";
 
 
             //  float value2 = 0.5f + trackBarSpeed.Value * 0.1f;
@@ -1286,37 +1287,37 @@ namespace OSCVRCWiz
         }
 
         private void rjToggleButton9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rjToggleButton9.Checked == true)
             {
-                if (rjToggleButton9.Checked == true)
-                {
-                    Hotkeys.CUSTOMRegisterHotKey(0, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS);
-                }
-                if (rjToggleButton9.Checked == false)
-                {
-                    Hotkeys.UnregisterHotKey(this.Handle, 0);
-                }
-
+                Hotkeys.CUSTOMRegisterHotKey(0, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS);
             }
-            private void button28_Click(object sender, EventArgs e)//STTTS hotkey edit key
-                {
-                    textBox4.Clear();
-                    textBox1.Clear();
-                    button27.Enabled = true;
-                    button28.Enabled = false;
-                    textBox1.Enabled = true;
-                    textBox4.Enabled = true;
-                }
-                private void button27_Click(object sender, EventArgs e)//STTTS hotkey save key
-                {
-                    textBox1.Enabled = false;
-                    textBox4.Enabled = false;
-                    button27.Enabled = false;
-                    button28.Enabled = true;
-                    Hotkeys.modifierKeySTTTS = textBox4.Text.ToString();
-                    Hotkeys.normalKeySTTTS = textBox1.Text.ToString();
-                    Hotkeys.UnregisterHotKey(this.Handle, 0);
-                    Hotkeys.CUSTOMRegisterHotKey(0, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS);
-                }
+            if (rjToggleButton9.Checked == false)
+            {
+                Hotkeys.UnregisterHotKey(this.Handle, 0);
+            }
+
+        }
+        private void button28_Click(object sender, EventArgs e)//STTTS hotkey edit key
+        {
+            textBox4.Clear();
+            textBox1.Clear();
+            button27.Enabled = true;
+            button28.Enabled = false;
+            textBox1.Enabled = true;
+            textBox4.Enabled = true;
+        }
+        private void button27_Click(object sender, EventArgs e)//STTTS hotkey save key
+        {
+            textBox1.Enabled = false;
+            textBox4.Enabled = false;
+            button27.Enabled = false;
+            button28.Enabled = true;
+            Hotkeys.modifierKeySTTTS = textBox4.Text.ToString();
+            Hotkeys.normalKeySTTTS = textBox1.Text.ToString();
+            Hotkeys.UnregisterHotKey(this.Handle, 0);
+            Hotkeys.CUSTOMRegisterHotKey(0, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS);
+        }
         private void button39_Click(object sender, EventArgs e)
         {
             textBoxStopTTS1.Clear();
@@ -1420,16 +1421,16 @@ namespace OSCVRCWiz
 
                 iconButton37.BackColor = DarkModeColor;
 
-                ShowAmazonKeyPassword.BackColor= DarkModeColor;
-                ShowDeepLPassword.BackColor= DarkModeColor;
-                ShowAmazonSecretPassword.BackColor= DarkModeColor;
-                ShowAzurePassword.BackColor= DarkModeColor;
+                ShowAmazonKeyPassword.BackColor = DarkModeColor;
+                ShowDeepLPassword.BackColor = DarkModeColor;
+                ShowAmazonSecretPassword.BackColor = DarkModeColor;
+                ShowAzurePassword.BackColor = DarkModeColor;
                 ShowElevenLabsPassword.BackColor = DarkModeColor;
-                ShowSpotifyPassword.BackColor= DarkModeColor;
-                ProShowKey.BackColor= DarkModeColor;
-                UberDuckShowPassword.BackColor= DarkModeColor;  
-                UberDuckShowSecretPassword.BackColor= DarkModeColor;
-                   
+                ShowSpotifyPassword.BackColor = DarkModeColor;
+                ProShowKey.BackColor = DarkModeColor;
+                UberDuckShowPassword.BackColor = DarkModeColor;
+                UberDuckShowSecretPassword.BackColor = DarkModeColor;
+
 
 
                 labelCharCount.ForeColor = Color.White;
@@ -1604,8 +1605,8 @@ namespace OSCVRCWiz
         {
             try
             {
-              StopAllRecogntion();
-              //  DoSpeech.speechToTextOffSound();
+                StopAllRecogntion();
+                //  DoSpeech.speechToTextOffSound();
             }
             catch
             {
@@ -1618,7 +1619,7 @@ namespace OSCVRCWiz
                     if (whisperModelTextBox.Text.ToString() == "no model selected")
                     {
                         OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ]", Color.DarkOrange);
-                       
+
                     }
                     iconButtonMute.Visible = true;
                     WhisperDebugLabel.Visible = true;
@@ -2916,33 +2917,8 @@ namespace OSCVRCWiz
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion
-
         #endregion
-
- 
-
-       
     }
 
 
