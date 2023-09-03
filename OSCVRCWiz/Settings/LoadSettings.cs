@@ -41,7 +41,8 @@ namespace OSCVRCWiz
 
             try
             {
-                VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
+               // VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex = Settings1.Default.voiceLanguage;//voice language (make this save)
+                VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem = Settings1.Default.voiceLanguageNew;
             }
             catch (Exception ex)
             {
@@ -52,8 +53,8 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleDarkMode.Checked = Settings1.Default.saveDarkMode;
 
 
-            VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedIndex = Settings1.Default.langToBoxSetting;//language to
-            VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedIndex = Settings1.Default.langSpokenSetting;//language from [5 is english0
+            VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedIndex = Settings1.Default.langToBoxSetting;
+            VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem = Settings1.Default.langSpokenSettingNew;
  
 
             VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = Settings1.Default.pitchNew;
@@ -83,7 +84,7 @@ namespace OSCVRCWiz
 
             SpotifyAddon.spotifyInterval = Settings1.Default.SpotifyTimerIntervalSetting;
             VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text = SpotifyAddon.spotifyInterval;
-            SpotifyAddon.initiateTimer();
+            
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked = Settings1.Default.AudioCancelSetting;
 
@@ -233,7 +234,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text = Settings1.Default.whisperModel;
 
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked = Settings1.Default.VRCOnRecieve;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked = Settings1.Default.VRCOnRecieve;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked = Settings1.Default.VRCAFK;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked = Settings1.Default.VRCSpamLog;
@@ -243,7 +244,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text = Settings1.Default.AFKMsg;
             VoiceWizardWindow.MainFormGlobal.textBoxVRChatOSCPort.Text = Settings1.Default.VRCPort;
             VRChatListener.FromVRChatPort = Settings1.Default.VRCPort;
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked = Settings1.Default.VRCListemOnStart;
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCActivate.Checked = Settings1.Default.VRCListemOnStart;
 
 
             VoiceWizardWindow.MainFormGlobal.textBoxCounter1.Text = Settings1.Default.Counter1Para;

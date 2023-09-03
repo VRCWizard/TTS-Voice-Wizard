@@ -493,7 +493,7 @@
             textBoxCounterMessage3 = new TextBox();
             label89 = new Label();
             label95 = new Label();
-            this.rjToggleButton13 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonOutputVRCCountersOnContact = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label88 = new Label();
             textBoxCounter2 = new TextBox();
             textBoxCounterMessage2 = new TextBox();
@@ -511,7 +511,7 @@
             label92 = new Label();
             this.rjToggleButtonVRCSpamLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label86 = new Label();
-            this.rjToggleButton11 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonVRCActivate = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label87 = new Label();
             button32 = new Button();
             button33 = new Button();
@@ -1692,7 +1692,7 @@
             comboBoxTranslationLanguage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTranslationLanguage.ForeColor = Color.Black;
             comboBoxTranslationLanguage.FormattingEnabled = true;
-            comboBoxTranslationLanguage.Items.AddRange(new object[] { "No Translation (Default)", "Arabic [ar]", "Chinese [zh]", "Czech [cs]", "Danish [da]", "Dutch [nl]", "English [en]", "Estonian [et]", "Filipino [fil]", "Finnish [fi]", "French [fr]", "German [de]", "Hindi [hi]", "Hungarian [hu]", "Indonesian [id]", "Irish [ga]", "Italian [it]", "Japanese [ja]", "Korean [ko]", "Norwegian [nb]", "Persian [fa]", "Polish [pl]", "Portuguese [pt]", "Russian [ru]", "Spanish [es]", "Swedish [sv]", "Thai [th]", "Ukrainian [uk]", "Vietnamese [vi]" });
+            comboBoxTranslationLanguage.Items.AddRange(new object[] { "No Translation (Default)" });
             comboBoxTranslationLanguage.Location = new Point(18, 411);
             comboBoxTranslationLanguage.Margin = new Padding(3, 2, 3, 2);
             comboBoxTranslationLanguage.Name = "comboBoxTranslationLanguage";
@@ -1721,7 +1721,6 @@
             comboBoxSpokenLanguage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSpokenLanguage.ForeColor = Color.Black;
             comboBoxSpokenLanguage.FormattingEnabled = true;
-            comboBoxSpokenLanguage.Items.AddRange(new object[] { "Arabic [ar-EG]", "Chinese [zh-CN]", "Czech [cs-CZ]", "Danish [da-DK]", "Dutch [nl-NL]", "English [en-US] (Default)", "Estonian [et-EE]", "Filipino [fil-PH]", "Finnish [fi-FI]", "French [fr-FR]", "German [de-DE]", "Hindi [hi-IN]", "Hungarian [hu-HU]", "Indonesian [id-ID]", "Irish [ga-IE]", "Italian [it-IT]", "Japanese [ja-JP]", "Korean [ko-KR]", "Norwegian [nb-NO]", "Persian [fa-IR]", "Polish [pl-PL]", "Portuguese [pt-BR]", "Russian [ru-RU]", "Spanish [es-MX]", "Swedish [sv-SE]", "Thai [th-TH]", "Ukrainian [uk-UA]", "Vietnamese [vi-VN]" });
             comboBoxSpokenLanguage.Location = new Point(18, 353);
             comboBoxSpokenLanguage.Margin = new Padding(3, 2, 3, 2);
             comboBoxSpokenLanguage.Name = "comboBoxSpokenLanguage";
@@ -1738,7 +1737,7 @@
             comboBoxTTSMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTTSMode.ForeColor = Color.Black;
             comboBoxTTSMode.FormattingEnabled = true;
-            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "Glados", "No TTS" });
+            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "Locally Hosted", "No TTS" });
             comboBoxTTSMode.Location = new Point(18, 21);
             comboBoxTTSMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -7118,7 +7117,7 @@
             groupBox37.Controls.Add(textBoxCounterMessage3);
             groupBox37.Controls.Add(label89);
             groupBox37.Controls.Add(label95);
-            groupBox37.Controls.Add(this.rjToggleButton13);
+            groupBox37.Controls.Add(this.rjToggleButtonOutputVRCCountersOnContact);
             groupBox37.Controls.Add(label88);
             groupBox37.Controls.Add(textBoxCounter2);
             groupBox37.Controls.Add(textBoxCounterMessage2);
@@ -7485,22 +7484,22 @@
             label95.TabIndex = 130;
             label95.Text = "Message";
             // 
-            // rjToggleButton13
+            // rjToggleButtonOutputVRCCountersOnContact
             // 
-            this.rjToggleButton13.AutoSize = true;
-            this.rjToggleButton13.Checked = true;
-            this.rjToggleButton13.CheckState = CheckState.Checked;
-            this.rjToggleButton13.Location = new Point(5, 299);
-            this.rjToggleButton13.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton13.MinimumSize = new Size(39, 16);
-            this.rjToggleButton13.Name = "rjToggleButton13";
-            this.rjToggleButton13.OffBackColor = Color.Gray;
-            this.rjToggleButton13.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton13.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton13.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton13.Size = new Size(39, 16);
-            this.rjToggleButton13.TabIndex = 51;
-            this.rjToggleButton13.UseVisualStyleBackColor = true;
+            this.rjToggleButtonOutputVRCCountersOnContact.AutoSize = true;
+            this.rjToggleButtonOutputVRCCountersOnContact.Checked = true;
+            this.rjToggleButtonOutputVRCCountersOnContact.CheckState = CheckState.Checked;
+            this.rjToggleButtonOutputVRCCountersOnContact.Location = new Point(5, 299);
+            this.rjToggleButtonOutputVRCCountersOnContact.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleButtonOutputVRCCountersOnContact.MinimumSize = new Size(39, 16);
+            this.rjToggleButtonOutputVRCCountersOnContact.Name = "rjToggleButtonOutputVRCCountersOnContact";
+            this.rjToggleButtonOutputVRCCountersOnContact.OffBackColor = Color.Gray;
+            this.rjToggleButtonOutputVRCCountersOnContact.OffToggleColor = Color.Gainsboro;
+            this.rjToggleButtonOutputVRCCountersOnContact.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleButtonOutputVRCCountersOnContact.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleButtonOutputVRCCountersOnContact.Size = new Size(39, 16);
+            this.rjToggleButtonOutputVRCCountersOnContact.TabIndex = 51;
+            this.rjToggleButtonOutputVRCCountersOnContact.UseVisualStyleBackColor = true;
             // 
             // label88
             // 
@@ -7648,7 +7647,7 @@
             groupBox25.Controls.Add(label92);
             groupBox25.Controls.Add(this.rjToggleButtonVRCSpamLog);
             groupBox25.Controls.Add(label86);
-            groupBox25.Controls.Add(this.rjToggleButton11);
+            groupBox25.Controls.Add(this.rjToggleButtonVRCActivate);
             groupBox25.Controls.Add(label87);
             groupBox25.Controls.Add(button32);
             groupBox25.Controls.Add(button33);
@@ -7700,20 +7699,20 @@
             label86.TabIndex = 100;
             label86.Text = "Activate VRChat Listener on Start";
             // 
-            // rjToggleButton11
+            // rjToggleButtonVRCActivate
             // 
-            this.rjToggleButton11.AutoSize = true;
-            this.rjToggleButton11.Location = new Point(154, 19);
-            this.rjToggleButton11.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton11.MinimumSize = new Size(39, 16);
-            this.rjToggleButton11.Name = "rjToggleButton11";
-            this.rjToggleButton11.OffBackColor = Color.Gray;
-            this.rjToggleButton11.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton11.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton11.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton11.Size = new Size(39, 16);
-            this.rjToggleButton11.TabIndex = 99;
-            this.rjToggleButton11.UseVisualStyleBackColor = true;
+            this.rjToggleButtonVRCActivate.AutoSize = true;
+            this.rjToggleButtonVRCActivate.Location = new Point(154, 19);
+            this.rjToggleButtonVRCActivate.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleButtonVRCActivate.MinimumSize = new Size(39, 16);
+            this.rjToggleButtonVRCActivate.Name = "rjToggleButtonVRCActivate";
+            this.rjToggleButtonVRCActivate.OffBackColor = Color.Gray;
+            this.rjToggleButtonVRCActivate.OffToggleColor = Color.Gainsboro;
+            this.rjToggleButtonVRCActivate.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleButtonVRCActivate.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleButtonVRCActivate.Size = new Size(39, 16);
+            this.rjToggleButtonVRCActivate.TabIndex = 99;
+            this.rjToggleButtonVRCActivate.UseVisualStyleBackColor = true;
             // 
             // label87
             // 
@@ -8788,7 +8787,7 @@
             this.iconButton55.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new Point(565, 20);
+            this.iconButton55.Location = new Point(531, 20);
             this.iconButton55.Margin = new Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new Size(53, 53);
@@ -10052,11 +10051,11 @@
         public RJControls.RJToggleButton rjToggleButtonAFK;
         private GroupBox groupBox25;
         private Label label86;
-        public RJControls.RJToggleButton rjToggleButton11;
+        public RJControls.RJToggleButton rjToggleButtonVRCActivate;
         private Label label87;
         private Button button32;
         private Label label89;
-        public RJControls.RJToggleButton rjToggleButton13;
+        public RJControls.RJToggleButton rjToggleButtonOutputVRCCountersOnContact;
         private Label label93;
         private Label label94;
         private TabPage LocalSpeech;

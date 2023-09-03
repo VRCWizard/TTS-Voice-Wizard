@@ -584,5 +584,11 @@
     <Setting Name="KatLineLength" Type="System.String" Scope="User">
       <Value Profile="(Default)">32</Value>
     </Setting>
+    <Setting Name="voiceLanguageNew" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English [en]</Value>
+    </Setting>
+    <Setting Name="langSpokenSettingNew" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English [en-US] (Default)</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -15,6 +15,8 @@ using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using FontAwesome.Sharp;
+using OSCVRCWiz.Services.Speech.TranslationAPIs;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
 
@@ -38,13 +40,14 @@ namespace OSCVRCWiz
 
             try
             {
-                StartUps.OnAppStart();
-
                 mainTabControl.Appearance = TabAppearance.FlatButtons;
                 mainTabControl.ItemSize = new System.Drawing.Size(0, 1);
                 mainTabControl.SizeMode = TabSizeMode.Fixed;
                 labelCharCount.Text = richTextBox3.Text.ToString().Length.ToString();
                 navbarHome.BackColor = SelectedNavBar;//make home button appear selected   
+
+                StartUps.OnAppStart();
+                LanguageSelect.loadLanguages(comboBoxSpokenLanguage, comboBoxTranslationLanguage);
             }
             catch (Exception ex)
             {
@@ -65,12 +68,11 @@ namespace OSCVRCWiz
         private void Form1_Load(object sender, EventArgs e)
         {
 
-
             try
             {
                 try
                 {
-                    LoadSettings.LoadingSettings();// this is the source of the configuration error //add a try catch
+                   LoadSettings.LoadingSettings();// this is the source of the configuration error //add a try catch
                 }
                 catch (Exception ex)
                 {
@@ -795,10 +797,10 @@ namespace OSCVRCWiz
 
                     break;
 
-                case "Glados":
+                case "Locally Hosted":
 
                     comboBoxVoiceSelect.Items.Clear();
-                    comboBoxVoiceSelect.Items.Add("Glados");
+                    comboBoxVoiceSelect.Items.Add("Local 1");
                     comboBoxVoiceSelect.SelectedIndex = 0;
                     comboBoxStyleSelect.SelectedIndex = 0;
                     comboBoxStyleSelect.Enabled = false;
@@ -810,9 +812,9 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Glados";
+                    DoSpeech.TTSModeSaved = "Locally Hosted";
 
-                    OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+                    OutputText.outputLog("[Here is an example of a project that can be used with Local: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS . This method works by sending a GET request to http://127.0.0.1:8124/synthesize/ with the string parameter 'text'. If you create compatible projects or models, feel free to share them in the Discord server.]", Color.DarkOrange);
 
                     break;
 
@@ -912,6 +914,21 @@ namespace OSCVRCWiz
                     // Set the translation language to position 0 (no translation)
                     comboBoxTranslationLanguage.SelectedIndex = 0;
                 }
+                // added: change language -chrisk
+                switch (comboBoxSTT.Text.ToString())
+                {
+                    case "Whisper":
+                        string language = "";
+
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            language = comboBoxSpokenLanguage.SelectedItem.ToString();
+                        });
+                        Task.Run(() => WhisperRecognition.setLanguage(language));
+
+                        break;
+                }
+
             }
 
 
@@ -933,6 +950,7 @@ namespace OSCVRCWiz
                     // Set the translation language to position 0 (no translation)
                     comboBoxTranslationLanguage.SelectedIndex = 0;
                 }
+
             }
         }
 
@@ -1667,10 +1685,21 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonHideDelay2_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+            try
             {
-                OutputText.katRefreshTimer.Change(2000, 0);
+                if (OutputText.katRefreshTimer != null)
+                {
+                    if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+                    {
+                        OutputText.katRefreshTimer.Change(2000, 0);
+                    }
+                }
             }
+            catch
+            {
+                OutputText.outputLog("KAT Timer was not initalized yet", Color.Red);
+            }
+
         }
 
         private void button46_Click(object sender, EventArgs e)
@@ -1737,9 +1766,19 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonAutoRefreshKAT_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+            try
             {
-                OutputText.katRefreshTimer.Change(2000, 0);
+                if (OutputText.katRefreshTimer != null)
+                {
+                    if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+                    {
+                        OutputText.katRefreshTimer.Change(2000, 0);
+                    }
+                }
+            }
+            catch
+            {
+                OutputText.outputLog("KAT Timer was not initalized yet", Color.Red);
             }
         }
 
@@ -2817,7 +2856,12 @@ namespace OSCVRCWiz
         private void button49_Click(object sender, EventArgs e)
         {
             string path = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text.ToString();
-            TextFileReader.FileToTTS(path);
+
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string relativePath = path;
+            string absPath = Path.Combine(basePath, relativePath);
+
+            TextFileReader.FileToTTS(absPath);
         }
 
         private void rjToggleButton14_CheckedChanged(object sender, EventArgs e)

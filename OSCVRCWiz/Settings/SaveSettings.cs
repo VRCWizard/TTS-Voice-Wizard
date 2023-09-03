@@ -62,13 +62,17 @@ namespace OSCVRCWiz
             Settings1.Default.voiceBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex;
             Settings1.Default.styleBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedIndex;
 
-            Settings1.Default.voiceLanguage = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex;//voice language (make this save)
+           // Settings1.Default.voiceLanguage = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex;//voice language (make this save)
+            Settings1.Default.voiceLanguageNew = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem.ToString();
             Settings1.Default.langToBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedIndex;
+
             Settings1.Default.langSpokenSetting = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedIndex;
 
+            Settings1.Default.langSpokenSettingNew = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
 
 
- 
+
+
 
             Settings1.Default.pitchNew = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
             Settings1.Default.volumeNew = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
@@ -190,9 +194,9 @@ namespace OSCVRCWiz
 
 
 
-            Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked;
+            Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked;
             Settings1.Default.VRCAFK = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked;
-            Settings1.Default.VRCListemOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked;
+            Settings1.Default.VRCListemOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCActivate.Checked;
             Settings1.Default.VRCSpamLog = VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked;
 
             Settings1.Default.AFKMsg = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();

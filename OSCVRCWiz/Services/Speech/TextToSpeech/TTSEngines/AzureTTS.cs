@@ -64,6 +64,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 List<string> localList = new List<string>();  //keep commented voices and release if they are widely requested (idea with new releasing all voices is to reduce load time)
                 switch (fromLanguageFullname)
                 {
+                    case "Afrikaans [af]": localList.Add("af-ZA"); break;
                     case "Arabic [ar]":
                         //   localList.Add("ar-AE");
 
@@ -85,12 +86,20 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         //  localList.Add("ar-TN");
                         //  localList.Add("ar-YE");
                         break;
+                    case "Armenian [hy]": localList.Add("hy-AM"); break;
+                    case "Azerbaijani [az]": localList.Add("az-AZ"); break;
+                    case "Bosnian [bs]": localList.Add("bs-BA"); break;
+                    case "Bulgarian [bg]": localList.Add("bg-BG"); break;
+                    case "Cantonese [yue]": localList.Add("yue-CN"); break;
+                    case "Catalan [ca]": localList.Add("ca-ES"); break;
+
 
                     case "Chinese [zh]":
                         localList.Add("zh-CN");
                         localList.Add("zh-CN-SICHUAN");
                         localList.Add("zh-HK");
                         localList.Add("zh-TW"); break;
+                    case "Croatian [hr]": localList.Add("hr-HR"); break;
                     case "Czech [cs]": localList.Add("cs-CZ"); break;
                     case "Danish [da]": localList.Add("da-DK"); break;
                     case "Dutch [nl]":
@@ -124,21 +133,41 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         localList.Add("fr-CH");
 
                         break;
+                    case "Galician [gl]": localList.Add("gl-ES"); break;
                     case "German [de]":
                         localList.Add("de-AT");
                         localList.Add("de-CH");
                         localList.Add("de-DE");
                         break;
+                    case "Greek [el]": localList.Add("el-GR"); break;
+                    case "Hebrew [he]": localList.Add("he-IL"); break;
+                    
+
 
                     case "Hindi [hi]": localList.Add("hi-IN"); break;
                     case "Hungarian [hu]": localList.Add("hu-HU"); break;
+                    case "Icelandic [is]": localList.Add("is-IS"); break;
                     case "Indonesian [id]": localList.Add("id-ID"); break;
 
                     case "Irish [ga]": localList.Add("ga-IE"); break;
                     case "Italian [it]": localList.Add("it-IT"); break;
 
                     case "Japanese [ja]": localList.Add("ja-JP"); break;
+
+                    case "Kannada [kn]": localList.Add("kn-IN"); break;
+                    case "Kazakh [kk]": localList.Add("kk-KZ"); break;
+                 
+
                     case "Korean [ko]": localList.Add("ko-KR"); break;
+                    case "Latvian [lv]": localList.Add("lv-LV"); break;
+                    case "Lithuanian [lt]": localList.Add("lt-LT"); break;
+                    case "Macedonian [mk]": localList.Add("mk-MK"); break;
+                    case "Malay [ms]": localList.Add("ms-MY"); break;
+                    case "Marathi [mr]": localList.Add("mr-IN"); break;
+                    case "Nepali [ne]": localList.Add("ne-NP"); break;
+                 
+
+
                     case "Norwegian [nb]": localList.Add("nb-NO"); break;
 
                     case "Persian [fa]": localList.Add("fa-IR"); break;
@@ -147,7 +176,17 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     case "Portuguese [pt]":
                         localList.Add("pt-BR");
                         localList.Add("pt-PT"); break;
+                   // case "Punjabi [pa]": localList.Add(""); break;
+                    case "Romanian [ro]": localList.Add(""); break;
+
                     case "Russian [ru]": localList.Add("ru-RU"); break;
+                    case "Serbian [sr]": 
+                        localList.Add("sr-LATN-RS");
+                        localList.Add("sr-RS");
+                        break;
+                    case "Slovak [sk]": localList.Add("sk-SK"); break;
+                    case "Slovenian [sl]": localList.Add("sl-SI"); break;
+       
                     case "Spanish [es]":
                         localList.Add("es-MX");
                         localList.Add("es-ES");
@@ -175,10 +214,29 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         //  localList.Add("es-AR");
                         // 
                         break;
+                    case "Swahili [sw]": 
+                        localList.Add("sw-KE");
+                        localList.Add("sw-TZ");
+                        break;
                     case "Swedish [sv]": localList.Add("sv-SE"); break;
+                    case "Tamil [ta]": 
+                        localList.Add("ta-IN");
+                        localList.Add("ta-LK");
+                        localList.Add("ta-MY");
+                        localList.Add("ta-IN");
+                        break;
+                    case "Telugu [te]": localList.Add("te-IN"); break;
+ 
                     case "Thai [th]": localList.Add("th-TH"); break;
+                    case "Turkish [tr]": localList.Add("tr-TR"); break;
                     case "Ukrainian [uk]": localList.Add("uk-UA"); break;
+                    case "Urdu [ur]": 
+                        localList.Add("ur-IN");
+                        localList.Add("ur-PK");
+                        break;
+                    case "Uzbek [uz]": localList.Add("uz-UZ"); break;
                     case "Vietnamese [vi]": localList.Add("vi-VN"); break;
+                    case "Welsh [cy]": localList.Add("cy-GB"); break;
 
 
                     default: localList.Add("en-US"); break; // if translation to english happens something is wrong
@@ -225,8 +283,15 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                    }*/
                 foreach (var locale in localList)
                 {
+                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                    string relativePath = "Assets/voices/azureVoices.json";
+
+                    string fullPath = Path.Combine(basePath, relativePath);
+
+
                     // replace with the path to the JSON file
-                    string jsonFilePath = "Assets/voices/azureVoices.json";
+                    string jsonFilePath = fullPath;
 
                     // read the JSON data from the file
                     string jsonData = "";
@@ -292,8 +357,15 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             if (firstVoiceLoad == true)
             {
                 //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: setting voice and style to saved values]");
-                VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
-                VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+                try
+                {
+                    VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex = Settings1.Default.voiceBoxSetting;//voice
+                    VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedIndex = Settings1.Default.styleBoxSetting;//style (must be set after voice)
+                }
+                catch (Exception ex) 
+                {
+                    OutputText.outputLog("[Error selecting voice presets (Consider editing and re-saving your voice presets): " + ex.Message + "]", Color.Red);
+                }
                 firstVoiceLoad = false;
 
             }
@@ -472,8 +544,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
             var voiceAccents = new List<string>()
                     {
+                       "Afrikaans [af]",
                         "Arabic [ar]",
+                        "Armenian [hy]",
+                        "Azerbaijani [az]",
+                        "Bosnian [bs]",
+                        "Bulgarian [bg]",
+                        "Cantonese [yue]",
+                        "Catalan [ca]",
                         "Chinese [zh]",
+                        "Croatian [hr]",
                         "Czech [cs]",
                         "Danish [da]",
                         "Dutch [nl]",
@@ -482,30 +562,53 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         "Filipino [fil]",
                         "Finnish [fi]",
                         "French [fr]",
+                        "Galician [gl]",
                         "German [de]",
+                        "Greek [el]",
+                        "Hebrew [he]",
                         "Hindi [hi]",
                         "Hungarian [hu]",
+                        "Icelandic [is]",
                         "Indonesian [id]",
                         "Irish [ga]",
                         "Italian [it]",
                         "Japanese [ja]",
+                        "Kannada [kn]",
+                        "Kazakh [kk]",
                         "Korean [ko]",
+                        "Latvian [lv]",
+                        "Lithuanian [lt]",
+                        "Macedonian [mk]",
+                        "Malay [ms]",
+                        "Marathi [mr]",
+                        "Nepali [ne]",
                         "Norwegian [nb]",
                         "Persian [fa]",
                         "Polish [pl]",
                         "Portuguese [pt]",
+                        "Romanian [ro]",
                         "Russian [ru]",
+                        "Serbian [sr]",
+                        "Slovak [sk]",
+                        "Slovenian [sl]",
                         "Spanish [es]",
+                        "Swahili [sw]",
                         "Swedish [sv]",
+                        "Tamil [ta]",
+                        "Telugu [te]",
                         "Thai [th]",
+                        "Turkish [tr]",
                         "Ukrainian [uk]",
-                        "Vietnamese [vi]"
+                        "Urdu [ur]",
+                        "Uzbek [uz]",
+                        "Vietnamese [vi]",
+                        "Welsh [cy]",
                     };
             foreach (var accent in voiceAccents)
             {
                 accents.Items.Add(accent);
             }
-            accents.SelectedIndex = 5;
+            accents.SelectedItem = "English [en]";
 
 
             AzureTTS.SynthesisGetAvailableVoicesAsync(accents.Text.ToString());

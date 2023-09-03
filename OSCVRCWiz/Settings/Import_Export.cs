@@ -14,7 +14,14 @@ namespace OSCVRCWiz.Settings
             try
             {
                 string contents = "";
-                using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                string relativePath = path;
+
+                string absPath = Path.Combine(basePath, relativePath);
+
+                using (FileStream stream = new FileStream(absPath, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {
@@ -34,8 +41,13 @@ namespace OSCVRCWiz.Settings
 
         public static void ExportList(string folderPath, string listType, string data)
         {
+
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string absFolderPath = Path.Combine(basePath, folderPath);
+
+
             string fileName = "TTSVoiceWiz_Export_" + listType + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
-            string filePath = Path.Combine(folderPath, fileName);
+            string filePath = Path.Combine(absFolderPath, fileName);
 
             File.WriteAllText(filePath, data);
 

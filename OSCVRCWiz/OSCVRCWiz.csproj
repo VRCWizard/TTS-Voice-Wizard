@@ -99,7 +99,7 @@
     <None Update="Assets\KAT Emoji Texture Sheet\Readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Assets\Languages\LanguagesInfo.txt">
+    <None Update="Assets\languages\languages.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\models\Models.txt">

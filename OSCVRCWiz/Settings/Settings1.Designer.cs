@@ -2350,5 +2350,29 @@ namespace OSCVRCWiz.Settings {
                 this["KatLineLength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("English [en]")]
+        public string voiceLanguageNew {
+            get {
+                return ((string)(this["voiceLanguageNew"]));
+            }
+            set {
+                this["voiceLanguageNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("English [en-US] (Default)")]
+        public string langSpokenSettingNew {
+            get {
+                return ((string)(this["langSpokenSettingNew"]));
+            }
+            set {
+                this["langSpokenSettingNew"] = value;
+            }
+        }
     }
 }

@@ -19,9 +19,19 @@ namespace OSCVRCWiz.Services.Text
         static DateTime lastDateTime = DateTime.Now;
         public static string lastKatString = "";
         public static string numKATSyncParameters = "4";
-        public static int debugDelayValue = Convert.ToInt32(Settings1.Default.delayDebugValueSetting);// Recommended delay of 250ms 
+        public static int debugDelayValue = Convert.ToInt32(Settings1.Default.delayDebugValueSetting);// Recommended delay of 250ms //this is the first call i see now
         public static int eraseDelay = Convert.ToInt32(Settings1.Default.hideDelayValue);
         public static bool EraserRunning = false;
+
+
+
+
+        public static void loadTextDelays()
+        {
+            debugDelayValue = Convert.ToInt32(Settings1.Default.delayDebugValueSetting);
+            eraseDelay = Convert.ToInt32(Settings1.Default.hideDelayValue);
+
+        }
         public static async void outputLog(string textstring, Color? color = null)
         {
             //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
@@ -47,10 +57,7 @@ namespace OSCVRCWiz.Services.Text
 
                 foreach (var word in words)
                 {
-                    //if (word.Length > maximumLineLength)
-                    //{
-                    //    perfectString += word.ToString();
-                    //  }
+
                     if (line.Length + word.Length >= maximumLineLength)
                     {
                         System.Diagnostics.Debug.WriteLine(line.ToString());
@@ -86,9 +93,15 @@ namespace OSCVRCWiz.Services.Text
         {
             try
             {
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                string relativePath = filepath;
+
+                string fullPath = Path.Combine(basePath, relativePath);
+
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true)
                 {
-                    await File.WriteAllTextAsync(filepath, textstring);
+                    await File.WriteAllTextAsync(fullPath, textstring);
 
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonHideDelay2.Checked) //hide
                     {
@@ -107,7 +120,6 @@ namespace OSCVRCWiz.Services.Text
         {
             try
             {
-
 
 
                 // byte[] bytes = Encoding.Default.GetBytes(textstring);

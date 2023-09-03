@@ -7,7 +7,7 @@ namespace OSCVRCWiz.Resources.StartUp
     public class Updater
     {
 
-        public static string currentVersion = "1.5.4";
+        public static string currentVersion = "1.5.5";
         public static string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml";
 
         public static async void getGithubInfo()
@@ -64,9 +64,16 @@ namespace OSCVRCWiz.Resources.StartUp
         }
         public static void UpdateButtonClicked()
         {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            string relativePath = @"updates";
+
+            string fullPath = Path.Combine(basePath, relativePath);
+
+
             AutoUpdater.Start(updateXMLName);
             AutoUpdater.InstalledVersion = new Version(currentVersion);
-            AutoUpdater.DownloadPath = @"updates";
+            AutoUpdater.DownloadPath = fullPath;
             AutoUpdater.ShowSkipButton = false;
             AutoUpdater.ShowRemindLaterButton = false;
         }

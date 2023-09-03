@@ -1,5 +1,6 @@
 ﻿using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Speech_Recognition;
+using System.Diagnostics;
 using Whisper;
 
 
@@ -13,6 +14,8 @@ namespace OSCVRCWiz.Resources.Whisper
         {
             try
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 callbacks = new TranscribeCallbacks(args);
                 this.context = context;
                 this.source = source;
@@ -37,6 +40,10 @@ namespace OSCVRCWiz.Resources.Whisper
                 {
                     OutputText.outputLog("[Whisper Listening]");
                 }
+                stopwatch.Stop();
+                TimeSpan elapsedTime = stopwatch.Elapsed;
+                OutputText.outputLog($"Startup Processes Time: {elapsedTime.TotalMilliseconds} ms");
+            
 
             }
             catch (Exception ex)

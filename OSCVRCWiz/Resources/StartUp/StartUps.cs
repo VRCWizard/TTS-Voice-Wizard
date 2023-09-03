@@ -27,10 +27,7 @@ namespace OSCVRCWiz.Resources.StartUp
             AudioDevices.InitializeAudioDevices();
             SystemSpeechTTS.InitializeSystemSpeech();
 
-            VRChatListener.initiateTimer();
-            WhisperRecognition.initiateTimer();
-            ToastNotification.initiateTimer();
-            OutputText.initiateTextTimers();
+         
 
 
 
@@ -41,7 +38,18 @@ namespace OSCVRCWiz.Resources.StartUp
         public static void OnFormLoad() //delayed until form is loaded correctly
         {
             OSC.InitializeOSC();
+
+            OutputText.loadTextDelays();
+            OutputText.initiateTextTimers();
+            VRChatListener.initiateTimer();
+            SpotifyAddon.initiateTimer();
+            WhisperRecognition.initiateTimer();
+            ToastNotification.initiateTimer();
+
+            //timers
             
+
+
 
             Updater.getGithubInfo();
             Hotkeys.InitiateHotkeys();

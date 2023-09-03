@@ -30,7 +30,7 @@ namespace OSCVRCWiz.Services.Integrations
 
         public static void OnStartUp()
         {
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked == true)//turn on vrchat listener on start
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCActivate.Checked == true)//turn on vrchat listener on start
             {
                 try
                 {
@@ -224,7 +224,7 @@ namespace OSCVRCWiz.Services.Integrations
                 }
 
 
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked == true && VoiceWizardWindow.MainFormGlobal.button33.Enabled == false)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked == true && VoiceWizardWindow.MainFormGlobal.button33.Enabled == false)
                 {
 
 

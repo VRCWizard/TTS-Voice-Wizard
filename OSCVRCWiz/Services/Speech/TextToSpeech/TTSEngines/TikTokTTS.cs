@@ -129,9 +129,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             if (TiktokfirstVoiceLoad)
             {
 
-               
-                    // replace with the path to the JSON file
-                    string jsonFilePath = "Assets/voices/TiktokVoices.json";
+
+                // replace with the path to the JSON file
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                string relativePath = "Assets/voices/TiktokVoices.json";
+
+                string jsonFilePath = Path.Combine(basePath, relativePath);
+
+
+                //string jsonFilePath = "Assets/voices/TiktokVoices.json";
 
                     // read the JSON data from the file
                     string jsonData = "";
@@ -162,7 +169,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     }
 
 
-                // TiktokRememberLanguageVoices.Add(fromLanguageFullname, voiceList.ToArray());
+              
                 TiktokfirstVoiceLoad = false;
 
             }
