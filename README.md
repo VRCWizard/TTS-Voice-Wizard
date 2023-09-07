@@ -87,7 +87,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 - [🗣️ How to do Voice Commands?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Voice-Commands)
 - [🫵 How to setup VRChat Counters?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VRChat-Listener)
 - [🔀 How to do Word Replacements](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Word-Replacements)
-- [💓 How to set up Heartrate for VRChat Chatbox?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#how-to-connect-hrtovrchat_osc-heartrate-osc-data)
+- [💓 How to set up Heartrate for VRChat Chatbox?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Heartrate-Integration)
 - [🔋 How to set up Tracker/Controller Battery Life for VRChat Chatbox?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#how-to-connect-xsoverlay-battery-life-osc-data-does-not-support-quest-battery-life)
 
 
