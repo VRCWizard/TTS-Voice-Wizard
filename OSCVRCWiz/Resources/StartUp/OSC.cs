@@ -30,7 +30,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
             {
                 OSCSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(Settings1.Default.OSCPort));//9000
              //   OSCReSender = new UDPSender(Settings1.Default.OSCAddress, Convert.ToInt32(OSCListener.OSCReceiveport));
-                VoiceWizardWindow.MainFormGlobal.textBoxOSCAddress.Text = Settings1.Default.rememberAddress;
+                VoiceWizardWindow.MainFormGlobal.textBoxOSCAddress.Text = Settings1.Default.OSCAddress;
                 VoiceWizardWindow.MainFormGlobal.textBoxOSCPort.Text = Settings1.Default.OSCPort;
             }
             catch (Exception ex) { MessageBox.Show("OSC Startup Error: " + ex.Message); }

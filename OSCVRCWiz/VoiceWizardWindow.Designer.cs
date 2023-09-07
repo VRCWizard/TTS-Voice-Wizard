@@ -190,6 +190,24 @@
             label49 = new Label();
             this.iconButton31 = new global::FontAwesome.Sharp.IconButton();
             tabHeartBeat = new TabPage();
+            groupBox43 = new GroupBox();
+            this.rjToggleOutputHeartrateDirect = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            label38 = new Label();
+            label37 = new Label();
+            this.rjToggleOSCListenerSpamLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            groupBox42 = new GroupBox();
+            label192 = new Label();
+            this.iconButton4 = new global::FontAwesome.Sharp.IconButton();
+            label191 = new Label();
+            this.rjToggleActivatePulsoidStart = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            buttonPulsoidInterval = new Button();
+            labelHeartIntervalTooFast = new Label();
+            label196 = new Label();
+            this.iconButtonPulsoidHideKey = new global::FontAwesome.Sharp.IconButton();
+            label194 = new Label();
+            pulsoidAuthToken = new TextBox();
+            buttonPulsoidConnect = new Button();
+            textBoxPulsoidInterval = new TextBox();
             groupBoxHead = new GroupBox();
             labelHead = new Label();
             groupBoxRight = new GroupBox();
@@ -206,19 +224,15 @@
             label140 = new Label();
             this.rjToggleButtonForwardData = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label130 = new Label();
-            this.rjToggleButton8 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleActivateOSCListenerStart = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.iconButton39 = new global::FontAwesome.Sharp.IconButton();
             label46 = new Label();
             button8 = new Button();
-            this.rjToggleButton2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
             button7 = new Button();
             HRInterval = new TextBox();
             HRIntervalChange = new Button();
             textBoxHRPort = new TextBox();
-            label37 = new Label();
-            this.rjToggleButton1 = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label39 = new Label();
-            label38 = new Label();
-            this.iconButton39 = new global::FontAwesome.Sharp.IconButton();
             label42 = new Label();
             label35 = new Label();
             APIs = new TabPage();
@@ -242,8 +256,11 @@
             this.rjToggleButtonChatBox = new global::OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonShowKeyboard = new global::OSCVRCWiz.RJControls.RJToggleButton();
             groupBox18 = new GroupBox();
+            label190 = new Label();
+            this.rjToggleButtonUniqueWavNames = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.iconButton3 = new global::FontAwesome.Sharp.IconButton();
+            this.iconButtonAudioFiles = new global::FontAwesome.Sharp.IconButton();
             label175 = new Label();
-            button3 = new Button();
             this.OBSLink = new global::FontAwesome.Sharp.IconButton();
             this.rjToggleButtonSaveToWav = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label102 = new Label();
@@ -493,7 +510,7 @@
             textBoxCounterMessage3 = new TextBox();
             label89 = new Label();
             label95 = new Label();
-            this.rjToggleButton13 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonOutputVRCCountersOnContact = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label88 = new Label();
             textBoxCounter2 = new TextBox();
             textBoxCounterMessage2 = new TextBox();
@@ -511,7 +528,7 @@
             label92 = new Label();
             this.rjToggleButtonVRCSpamLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label86 = new Label();
-            this.rjToggleButton11 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleButtonVRCActivate = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label87 = new Label();
             button32 = new Button();
             button33 = new Button();
@@ -674,6 +691,8 @@
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             tabHeartBeat.SuspendLayout();
+            groupBox43.SuspendLayout();
+            groupBox42.SuspendLayout();
             groupBoxHead.SuspendLayout();
             groupBoxRight.SuspendLayout();
             groupBoxOSCtoTTS.SuspendLayout();
@@ -1692,7 +1711,7 @@
             comboBoxTranslationLanguage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTranslationLanguage.ForeColor = Color.Black;
             comboBoxTranslationLanguage.FormattingEnabled = true;
-            comboBoxTranslationLanguage.Items.AddRange(new object[] { "No Translation (Default)", "Arabic [ar]", "Chinese [zh]", "Czech [cs]", "Danish [da]", "Dutch [nl]", "English [en]", "Estonian [et]", "Filipino [fil]", "Finnish [fi]", "French [fr]", "German [de]", "Hindi [hi]", "Hungarian [hu]", "Indonesian [id]", "Irish [ga]", "Italian [it]", "Japanese [ja]", "Korean [ko]", "Norwegian [nb]", "Persian [fa]", "Polish [pl]", "Portuguese [pt]", "Russian [ru]", "Spanish [es]", "Swedish [sv]", "Thai [th]", "Ukrainian [uk]", "Vietnamese [vi]" });
+            comboBoxTranslationLanguage.Items.AddRange(new object[] { "No Translation (Default)" });
             comboBoxTranslationLanguage.Location = new Point(18, 411);
             comboBoxTranslationLanguage.Margin = new Padding(3, 2, 3, 2);
             comboBoxTranslationLanguage.Name = "comboBoxTranslationLanguage";
@@ -1721,7 +1740,6 @@
             comboBoxSpokenLanguage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSpokenLanguage.ForeColor = Color.Black;
             comboBoxSpokenLanguage.FormattingEnabled = true;
-            comboBoxSpokenLanguage.Items.AddRange(new object[] { "Arabic [ar-EG]", "Chinese [zh-CN]", "Czech [cs-CZ]", "Danish [da-DK]", "Dutch [nl-NL]", "English [en-US] (Default)", "Estonian [et-EE]", "Filipino [fil-PH]", "Finnish [fi-FI]", "French [fr-FR]", "German [de-DE]", "Hindi [hi-IN]", "Hungarian [hu-HU]", "Indonesian [id-ID]", "Irish [ga-IE]", "Italian [it-IT]", "Japanese [ja-JP]", "Korean [ko-KR]", "Norwegian [nb-NO]", "Persian [fa-IR]", "Polish [pl-PL]", "Portuguese [pt-BR]", "Russian [ru-RU]", "Spanish [es-MX]", "Swedish [sv-SE]", "Thai [th-TH]", "Ukrainian [uk-UA]", "Vietnamese [vi-VN]" });
             comboBoxSpokenLanguage.Location = new Point(18, 353);
             comboBoxSpokenLanguage.Margin = new Padding(3, 2, 3, 2);
             comboBoxSpokenLanguage.Name = "comboBoxSpokenLanguage";
@@ -1738,7 +1756,7 @@
             comboBoxTTSMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTTSMode.ForeColor = Color.Black;
             comboBoxTTSMode.FormattingEnabled = true;
-            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "Glados", "No TTS" });
+            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "Locally Hosted", "No TTS" });
             comboBoxTTSMode.Location = new Point(18, 21);
             comboBoxTTSMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -2037,9 +2055,9 @@
             this.iconButton10.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             this.iconButton10.Dock = DockStyle.Top;
             this.iconButton10.FlatAppearance.BorderSize = 0;
-            this.iconButton10.ForeColor = Color.Snow;
-            this.iconButton10.IconChar = global::FontAwesome.Sharp.IconChar.Link;
-            this.iconButton10.IconColor = Color.White;
+            this.iconButton10.ForeColor = Color.Cyan;
+            this.iconButton10.IconChar = global::FontAwesome.Sharp.IconChar.Heartbeat;
+            this.iconButton10.IconColor = Color.Cyan;
             this.iconButton10.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
             this.iconButton10.ImageAlign = ContentAlignment.MiddleLeft;
             this.iconButton10.Location = new Point(0, 75);
@@ -2047,7 +2065,7 @@
             this.iconButton10.Name = "iconButton10";
             this.iconButton10.Size = new Size(763, 75);
             this.iconButton10.TabIndex = 10;
-            this.iconButton10.Text = "OSC Listener - (Heartrate, BatteryLife)";
+            this.iconButton10.Text = "Heartrate (Powered by Pulsoid) + OSC Listener";
             this.iconButton10.TextAlign = ContentAlignment.MiddleLeft;
             this.iconButton10.TextImageRelation = TextImageRelation.ImageBeforeText;
             this.iconButton10.UseVisualStyleBackColor = false;
@@ -3195,6 +3213,8 @@
             // 
             tabHeartBeat.AutoScroll = true;
             tabHeartBeat.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabHeartBeat.Controls.Add(groupBox43);
+            tabHeartBeat.Controls.Add(groupBox42);
             tabHeartBeat.Controls.Add(groupBoxHead);
             tabHeartBeat.Controls.Add(groupBoxRight);
             tabHeartBeat.Controls.Add(groupBoxOSCtoTTS);
@@ -3202,7 +3222,6 @@
             tabHeartBeat.Controls.Add(groupBoxHeartrate);
             tabHeartBeat.Controls.Add(groupBoxTrackers);
             tabHeartBeat.Controls.Add(groupBox21);
-            tabHeartBeat.Controls.Add(this.iconButton39);
             tabHeartBeat.Controls.Add(label42);
             tabHeartBeat.Controls.Add(label35);
             tabHeartBeat.Location = new Point(4, 24);
@@ -3212,13 +3231,264 @@
             tabHeartBeat.TabIndex = 7;
             tabHeartBeat.Text = "Heartbeat";
             // 
+            // groupBox43
+            // 
+            groupBox43.Controls.Add(this.rjToggleOutputHeartrateDirect);
+            groupBox43.Controls.Add(label38);
+            groupBox43.Controls.Add(label37);
+            groupBox43.Controls.Add(this.rjToggleOSCListenerSpamLog);
+            groupBox43.ForeColor = SystemColors.Window;
+            groupBox43.Location = new Point(419, 81);
+            groupBox43.Name = "groupBox43";
+            groupBox43.Size = new Size(322, 103);
+            groupBox43.TabIndex = 114;
+            groupBox43.TabStop = false;
+            groupBox43.Text = "General Settings";
+            // 
+            // rjToggleOutputHeartrateDirect
+            // 
+            this.rjToggleOutputHeartrateDirect.AutoSize = true;
+            this.rjToggleOutputHeartrateDirect.Checked = true;
+            this.rjToggleOutputHeartrateDirect.CheckState = CheckState.Checked;
+            this.rjToggleOutputHeartrateDirect.Location = new Point(17, 29);
+            this.rjToggleOutputHeartrateDirect.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleOutputHeartrateDirect.MinimumSize = new Size(39, 16);
+            this.rjToggleOutputHeartrateDirect.Name = "rjToggleOutputHeartrateDirect";
+            this.rjToggleOutputHeartrateDirect.OffBackColor = Color.Gray;
+            this.rjToggleOutputHeartrateDirect.OffToggleColor = Color.Gainsboro;
+            this.rjToggleOutputHeartrateDirect.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleOutputHeartrateDirect.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleOutputHeartrateDirect.Size = new Size(39, 16);
+            this.rjToggleOutputHeartrateDirect.TabIndex = 51;
+            this.rjToggleOutputHeartrateDirect.UseVisualStyleBackColor = true;
+            this.rjToggleOutputHeartrateDirect.CheckedChanged += this.rjToggleButton1_CheckedChanged;
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.ForeColor = Color.Snow;
+            label38.Location = new Point(62, 59);
+            label38.Name = "label38";
+            label38.Size = new Size(82, 15);
+            label38.TabIndex = 55;
+            label38.Text = "Output to Log";
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.ForeColor = Color.Snow;
+            label37.Location = new Point(62, 31);
+            label37.Name = "label37";
+            label37.Size = new Size(140, 15);
+            label37.TabIndex = 52;
+            label37.Text = "Output Heartrate Directly";
+            // 
+            // rjToggleOSCListenerSpamLog
+            // 
+            this.rjToggleOSCListenerSpamLog.AutoSize = true;
+            this.rjToggleOSCListenerSpamLog.Checked = true;
+            this.rjToggleOSCListenerSpamLog.CheckState = CheckState.Checked;
+            this.rjToggleOSCListenerSpamLog.Location = new Point(17, 58);
+            this.rjToggleOSCListenerSpamLog.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleOSCListenerSpamLog.MinimumSize = new Size(39, 16);
+            this.rjToggleOSCListenerSpamLog.Name = "rjToggleOSCListenerSpamLog";
+            this.rjToggleOSCListenerSpamLog.OffBackColor = Color.Gray;
+            this.rjToggleOSCListenerSpamLog.OffToggleColor = Color.Gainsboro;
+            this.rjToggleOSCListenerSpamLog.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleOSCListenerSpamLog.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleOSCListenerSpamLog.Size = new Size(39, 16);
+            this.rjToggleOSCListenerSpamLog.TabIndex = 54;
+            this.rjToggleOSCListenerSpamLog.UseVisualStyleBackColor = true;
+            this.rjToggleOSCListenerSpamLog.CheckedChanged += this.rjToggleButton2_CheckedChanged;
+            // 
+            // groupBox42
+            // 
+            groupBox42.Controls.Add(label192);
+            groupBox42.Controls.Add(this.iconButton4);
+            groupBox42.Controls.Add(label191);
+            groupBox42.Controls.Add(this.rjToggleActivatePulsoidStart);
+            groupBox42.Controls.Add(buttonPulsoidInterval);
+            groupBox42.Controls.Add(labelHeartIntervalTooFast);
+            groupBox42.Controls.Add(label196);
+            groupBox42.Controls.Add(this.iconButtonPulsoidHideKey);
+            groupBox42.Controls.Add(label194);
+            groupBox42.Controls.Add(pulsoidAuthToken);
+            groupBox42.Controls.Add(buttonPulsoidConnect);
+            groupBox42.Controls.Add(textBoxPulsoidInterval);
+            groupBox42.ForeColor = Color.White;
+            groupBox42.Location = new Point(24, 81);
+            groupBox42.Margin = new Padding(3, 2, 3, 2);
+            groupBox42.Name = "groupBox42";
+            groupBox42.Padding = new Padding(3, 2, 3, 2);
+            groupBox42.Size = new Size(381, 257);
+            groupBox42.TabIndex = 112;
+            groupBox42.TabStop = false;
+            groupBox42.Text = "Pulsoid Settings";
+            // 
+            // label192
+            // 
+            label192.AutoSize = true;
+            label192.Cursor = Cursors.Hand;
+            label192.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label192.ForeColor = Color.Cyan;
+            label192.Location = new Point(194, 15);
+            label192.Name = "label192";
+            label192.Size = new Size(176, 15);
+            label192.TabIndex = 161;
+            label192.Text = "Get Pulsoid Authorization Token";
+            label192.Click += this.label192_Click;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.FlatAppearance.BorderSize = 0;
+            this.iconButton4.FlatStyle = FlatStyle.Flat;
+            this.iconButton4.ForeColor = Color.Snow;
+            this.iconButton4.IconChar = global::FontAwesome.Sharp.IconChar.Question;
+            this.iconButton4.IconColor = Color.White;
+            this.iconButton4.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
+            this.iconButton4.Location = new Point(321, 201);
+            this.iconButton4.Margin = new Padding(3, 2, 3, 2);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Size = new Size(54, 50);
+            this.iconButton4.TabIndex = 134;
+            this.iconButton4.TextAlign = ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            this.iconButton4.UseVisualStyleBackColor = true;
+            this.iconButton4.Click += this.iconButton4_Click_1;
+            // 
+            // label191
+            // 
+            label191.AutoSize = true;
+            label191.ForeColor = Color.Snow;
+            label191.Location = new Point(65, 220);
+            label191.Name = "label191";
+            label191.Size = new Size(197, 15);
+            label191.TabIndex = 133;
+            label191.Text = "Activate Pulsoid Websocket on Start";
+            // 
+            // rjToggleActivatePulsoidStart
+            // 
+            this.rjToggleActivatePulsoidStart.AutoSize = true;
+            this.rjToggleActivatePulsoidStart.Location = new Point(20, 219);
+            this.rjToggleActivatePulsoidStart.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleActivatePulsoidStart.MinimumSize = new Size(39, 16);
+            this.rjToggleActivatePulsoidStart.Name = "rjToggleActivatePulsoidStart";
+            this.rjToggleActivatePulsoidStart.OffBackColor = Color.Gray;
+            this.rjToggleActivatePulsoidStart.OffToggleColor = Color.Gainsboro;
+            this.rjToggleActivatePulsoidStart.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleActivatePulsoidStart.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleActivatePulsoidStart.Size = new Size(39, 16);
+            this.rjToggleActivatePulsoidStart.TabIndex = 132;
+            this.rjToggleActivatePulsoidStart.UseVisualStyleBackColor = true;
+            // 
+            // buttonPulsoidInterval
+            // 
+            buttonPulsoidInterval.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonPulsoidInterval.FlatStyle = FlatStyle.Flat;
+            buttonPulsoidInterval.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonPulsoidInterval.ForeColor = Color.Snow;
+            buttonPulsoidInterval.Location = new Point(140, 164);
+            buttonPulsoidInterval.Margin = new Padding(3, 2, 3, 2);
+            buttonPulsoidInterval.Name = "buttonPulsoidInterval";
+            buttonPulsoidInterval.Size = new Size(50, 25);
+            buttonPulsoidInterval.TabIndex = 131;
+            buttonPulsoidInterval.Text = "Apply";
+            buttonPulsoidInterval.UseVisualStyleBackColor = false;
+            buttonPulsoidInterval.Click += this.buttonPulsoidInterval_Click;
+            // 
+            // labelHeartIntervalTooFast
+            // 
+            labelHeartIntervalTooFast.AutoSize = true;
+            labelHeartIntervalTooFast.ForeColor = Color.Red;
+            labelHeartIntervalTooFast.Location = new Point(20, 191);
+            labelHeartIntervalTooFast.Name = "labelHeartIntervalTooFast";
+            labelHeartIntervalTooFast.Size = new Size(202, 15);
+            labelHeartIntervalTooFast.TabIndex = 130;
+            labelHeartIntervalTooFast.Text = "too fast to output directly to chatbox";
+            labelHeartIntervalTooFast.Visible = false;
+            // 
+            // label196
+            // 
+            label196.AutoSize = true;
+            label196.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label196.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label196.ForeColor = Color.Snow;
+            label196.Location = new Point(20, 148);
+            label196.Name = "label196";
+            label196.Size = new Size(114, 15);
+            label196.TabIndex = 128;
+            label196.Text = "Update Interval (ms)";
+            // 
+            // iconButtonPulsoidHideKey
+            // 
+            this.iconButtonPulsoidHideKey.BackColor = Color.White;
+            this.iconButtonPulsoidHideKey.FlatAppearance.BorderSize = 0;
+            this.iconButtonPulsoidHideKey.FlatStyle = FlatStyle.Flat;
+            this.iconButtonPulsoidHideKey.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            this.iconButtonPulsoidHideKey.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
+            this.iconButtonPulsoidHideKey.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            this.iconButtonPulsoidHideKey.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
+            this.iconButtonPulsoidHideKey.IconSize = 15;
+            this.iconButtonPulsoidHideKey.Location = new Point(335, 57);
+            this.iconButtonPulsoidHideKey.Margin = new Padding(3, 2, 3, 2);
+            this.iconButtonPulsoidHideKey.Name = "iconButtonPulsoidHideKey";
+            this.iconButtonPulsoidHideKey.Size = new Size(31, 18);
+            this.iconButtonPulsoidHideKey.TabIndex = 127;
+            this.iconButtonPulsoidHideKey.UseVisualStyleBackColor = false;
+            this.iconButtonPulsoidHideKey.Click += this.iconButtonPulsoidHideKey_Click;
+            // 
+            // label194
+            // 
+            label194.AutoSize = true;
+            label194.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label194.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label194.ForeColor = Color.Snow;
+            label194.Location = new Point(20, 31);
+            label194.Name = "label194";
+            label194.Size = new Size(113, 15);
+            label194.TabIndex = 126;
+            label194.Text = "Authorization Token";
+            // 
+            // pulsoidAuthToken
+            // 
+            pulsoidAuthToken.Location = new Point(23, 55);
+            pulsoidAuthToken.Margin = new Padding(3, 2, 3, 2);
+            pulsoidAuthToken.Name = "pulsoidAuthToken";
+            pulsoidAuthToken.PasswordChar = '*';
+            pulsoidAuthToken.Size = new Size(347, 23);
+            pulsoidAuthToken.TabIndex = 125;
+            // 
+            // buttonPulsoidConnect
+            // 
+            buttonPulsoidConnect.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonPulsoidConnect.FlatStyle = FlatStyle.Flat;
+            buttonPulsoidConnect.ForeColor = Color.Snow;
+            buttonPulsoidConnect.Location = new Point(23, 80);
+            buttonPulsoidConnect.Margin = new Padding(3, 2, 3, 2);
+            buttonPulsoidConnect.Name = "buttonPulsoidConnect";
+            buttonPulsoidConnect.Size = new Size(347, 28);
+            buttonPulsoidConnect.TabIndex = 124;
+            buttonPulsoidConnect.Text = "Connect Pulsoid";
+            buttonPulsoidConnect.UseVisualStyleBackColor = false;
+            buttonPulsoidConnect.Click += this.buttonPulsoidConnect_Click;
+            // 
+            // textBoxPulsoidInterval
+            // 
+            textBoxPulsoidInterval.Location = new Point(20, 166);
+            textBoxPulsoidInterval.Margin = new Padding(3, 2, 3, 2);
+            textBoxPulsoidInterval.Name = "textBoxPulsoidInterval";
+            textBoxPulsoidInterval.Size = new Size(114, 23);
+            textBoxPulsoidInterval.TabIndex = 103;
+            textBoxPulsoidInterval.Text = "1500";
+            // 
             // groupBoxHead
             // 
             groupBoxHead.Controls.Add(labelHead);
             groupBoxHead.ForeColor = Color.Red;
-            groupBoxHead.Location = new Point(199, 391);
+            groupBoxHead.Location = new Point(419, 414);
             groupBoxHead.Name = "groupBoxHead";
-            groupBoxHead.Size = new Size(158, 70);
+            groupBoxHead.Size = new Size(153, 70);
             groupBoxHead.TabIndex = 113;
             groupBoxHead.TabStop = false;
             groupBoxHead.Text = "Headset";
@@ -3228,7 +3498,7 @@
             labelHead.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelHead.Location = new Point(6, 17);
             labelHead.Name = "labelHead";
-            labelHead.Size = new Size(146, 48);
+            labelHead.Size = new Size(112, 48);
             labelHead.TabIndex = 1;
             labelHead.Text = "🔋 0%";
             // 
@@ -3236,7 +3506,7 @@
             // 
             groupBoxRight.Controls.Add(labelRight);
             groupBoxRight.ForeColor = Color.Red;
-            groupBoxRight.Location = new Point(381, 315);
+            groupBoxRight.Location = new Point(583, 414);
             groupBoxRight.Name = "groupBoxRight";
             groupBoxRight.Size = new Size(158, 70);
             groupBoxRight.TabIndex = 112;
@@ -3248,7 +3518,7 @@
             labelRight.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             labelRight.Location = new Point(6, 17);
             labelRight.Name = "labelRight";
-            labelRight.Size = new Size(146, 48);
+            labelRight.Size = new Size(140, 48);
             labelRight.TabIndex = 1;
             labelRight.Text = "🔋 0%";
             // 
@@ -3256,19 +3526,19 @@
             // 
             groupBoxOSCtoTTS.Controls.Add(labelOSCtoTTS);
             groupBoxOSCtoTTS.ForeColor = Color.Red;
-            groupBoxOSCtoTTS.Location = new Point(381, 391);
+            groupBoxOSCtoTTS.Location = new Point(419, 490);
             groupBoxOSCtoTTS.Name = "groupBoxOSCtoTTS";
-            groupBoxOSCtoTTS.Size = new Size(186, 70);
+            groupBoxOSCtoTTS.Size = new Size(322, 79);
             groupBoxOSCtoTTS.TabIndex = 111;
             groupBoxOSCtoTTS.TabStop = false;
             groupBoxOSCtoTTS.Text = "OSC to TTS";
             // 
             // labelOSCtoTTS
             // 
-            labelOSCtoTTS.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOSCtoTTS.Location = new Point(6, 28);
+            labelOSCtoTTS.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOSCtoTTS.Location = new Point(17, 32);
             labelOSCtoTTS.Name = "labelOSCtoTTS";
-            labelOSCtoTTS.Size = new Size(172, 21);
+            labelOSCtoTTS.Size = new Size(257, 21);
             labelOSCtoTTS.TabIndex = 0;
             labelOSCtoTTS.Text = "/TTSVoiceWizard/TextToSpeech";
             // 
@@ -3276,7 +3546,7 @@
             // 
             groupBoxControllers.Controls.Add(ControllerLabel);
             groupBoxControllers.ForeColor = Color.Red;
-            groupBoxControllers.Location = new Point(199, 315);
+            groupBoxControllers.Location = new Point(583, 339);
             groupBoxControllers.Name = "groupBoxControllers";
             groupBoxControllers.Size = new Size(158, 70);
             groupBoxControllers.TabIndex = 110;
@@ -3296,19 +3566,19 @@
             // 
             groupBoxHeartrate.Controls.Add(HeartrateLabel);
             groupBoxHeartrate.ForeColor = Color.Red;
-            groupBoxHeartrate.Location = new Point(18, 391);
+            groupBoxHeartrate.Location = new Point(419, 190);
             groupBoxHeartrate.Name = "groupBoxHeartrate";
-            groupBoxHeartrate.Size = new Size(158, 70);
+            groupBoxHeartrate.Size = new Size(322, 142);
             groupBoxHeartrate.TabIndex = 109;
             groupBoxHeartrate.TabStop = false;
             groupBoxHeartrate.Text = "Heartrate";
             // 
             // HeartrateLabel
             // 
-            HeartrateLabel.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            HeartrateLabel.Location = new Point(6, 20);
+            HeartrateLabel.Font = new Font("Segoe UI", 48F, FontStyle.Regular, GraphicsUnit.Point);
+            HeartrateLabel.Location = new Point(17, 25);
             HeartrateLabel.Name = "HeartrateLabel";
-            HeartrateLabel.Size = new Size(146, 40);
+            HeartrateLabel.Size = new Size(293, 90);
             HeartrateLabel.TabIndex = 0;
             HeartrateLabel.Text = "❤️ 0";
             // 
@@ -3316,9 +3586,9 @@
             // 
             groupBoxTrackers.Controls.Add(TrackerLabel);
             groupBoxTrackers.ForeColor = Color.Red;
-            groupBoxTrackers.Location = new Point(18, 315);
+            groupBoxTrackers.Location = new Point(419, 338);
             groupBoxTrackers.Name = "groupBoxTrackers";
-            groupBoxTrackers.Size = new Size(158, 70);
+            groupBoxTrackers.Size = new Size(152, 70);
             groupBoxTrackers.TabIndex = 108;
             groupBoxTrackers.TabStop = false;
             groupBoxTrackers.Text = "Trackers";
@@ -3328,7 +3598,7 @@
             TrackerLabel.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
             TrackerLabel.Location = new Point(6, 17);
             TrackerLabel.Name = "TrackerLabel";
-            TrackerLabel.Size = new Size(146, 42);
+            TrackerLabel.Size = new Size(140, 42);
             TrackerLabel.TabIndex = 1;
             TrackerLabel.Text = "🔋 0%";
             // 
@@ -3337,24 +3607,21 @@
             groupBox21.Controls.Add(label140);
             groupBox21.Controls.Add(this.rjToggleButtonForwardData);
             groupBox21.Controls.Add(label130);
-            groupBox21.Controls.Add(this.rjToggleButton8);
+            groupBox21.Controls.Add(this.rjToggleActivateOSCListenerStart);
+            groupBox21.Controls.Add(this.iconButton39);
             groupBox21.Controls.Add(label46);
             groupBox21.Controls.Add(button8);
-            groupBox21.Controls.Add(this.rjToggleButton2);
             groupBox21.Controls.Add(button7);
             groupBox21.Controls.Add(HRInterval);
             groupBox21.Controls.Add(HRIntervalChange);
             groupBox21.Controls.Add(textBoxHRPort);
-            groupBox21.Controls.Add(label37);
-            groupBox21.Controls.Add(this.rjToggleButton1);
             groupBox21.Controls.Add(label39);
-            groupBox21.Controls.Add(label38);
             groupBox21.ForeColor = Color.White;
-            groupBox21.Location = new Point(18, 56);
+            groupBox21.Location = new Point(24, 342);
             groupBox21.Margin = new Padding(3, 2, 3, 2);
             groupBox21.Name = "groupBox21";
             groupBox21.Padding = new Padding(3, 2, 3, 2);
-            groupBox21.Size = new Size(389, 236);
+            groupBox21.Size = new Size(381, 257);
             groupBox21.TabIndex = 105;
             groupBox21.TabStop = false;
             groupBox21.Text = "Listener Settings";
@@ -3363,7 +3630,7 @@
             // 
             label140.AutoSize = true;
             label140.ForeColor = Color.Snow;
-            label140.Location = new Point(62, 186);
+            label140.Location = new Point(65, 112);
             label140.Name = "label140";
             label140.Size = new Size(171, 15);
             label140.TabIndex = 102;
@@ -3372,7 +3639,7 @@
             // rjToggleButtonForwardData
             // 
             this.rjToggleButtonForwardData.AutoSize = true;
-            this.rjToggleButtonForwardData.Location = new Point(17, 184);
+            this.rjToggleButtonForwardData.Location = new Point(20, 110);
             this.rjToggleButtonForwardData.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButtonForwardData.MinimumSize = new Size(39, 16);
             this.rjToggleButtonForwardData.Name = "rjToggleButtonForwardData";
@@ -3389,33 +3656,52 @@
             // 
             label130.AutoSize = true;
             label130.ForeColor = Color.Snow;
-            label130.Location = new Point(62, 158);
+            label130.Location = new Point(65, 84);
             label130.Name = "label130";
             label130.Size = new Size(164, 15);
             label130.TabIndex = 100;
             label130.Text = "Activate OSC Listener on Start";
             // 
-            // rjToggleButton8
+            // rjToggleActivateOSCListenerStart
             // 
-            this.rjToggleButton8.AutoSize = true;
-            this.rjToggleButton8.Location = new Point(17, 157);
-            this.rjToggleButton8.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton8.MinimumSize = new Size(39, 16);
-            this.rjToggleButton8.Name = "rjToggleButton8";
-            this.rjToggleButton8.OffBackColor = Color.Gray;
-            this.rjToggleButton8.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton8.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton8.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton8.Size = new Size(39, 16);
-            this.rjToggleButton8.TabIndex = 99;
-            this.rjToggleButton8.UseVisualStyleBackColor = true;
-            this.rjToggleButton8.CheckedChanged += this.rjToggleButton8_CheckedChanged;
+            this.rjToggleActivateOSCListenerStart.AutoSize = true;
+            this.rjToggleActivateOSCListenerStart.Location = new Point(20, 83);
+            this.rjToggleActivateOSCListenerStart.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleActivateOSCListenerStart.MinimumSize = new Size(39, 16);
+            this.rjToggleActivateOSCListenerStart.Name = "rjToggleActivateOSCListenerStart";
+            this.rjToggleActivateOSCListenerStart.OffBackColor = Color.Gray;
+            this.rjToggleActivateOSCListenerStart.OffToggleColor = Color.Gainsboro;
+            this.rjToggleActivateOSCListenerStart.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleActivateOSCListenerStart.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleActivateOSCListenerStart.Size = new Size(39, 16);
+            this.rjToggleActivateOSCListenerStart.TabIndex = 99;
+            this.rjToggleActivateOSCListenerStart.UseVisualStyleBackColor = true;
+            this.rjToggleActivateOSCListenerStart.CheckedChanged += this.rjToggleButton8_CheckedChanged;
+            // 
+            // iconButton39
+            // 
+            this.iconButton39.FlatAppearance.BorderSize = 0;
+            this.iconButton39.FlatStyle = FlatStyle.Flat;
+            this.iconButton39.ForeColor = Color.Snow;
+            this.iconButton39.IconChar = global::FontAwesome.Sharp.IconChar.Question;
+            this.iconButton39.IconColor = Color.White;
+            this.iconButton39.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton39.ImageAlign = ContentAlignment.MiddleLeft;
+            this.iconButton39.Location = new Point(321, 201);
+            this.iconButton39.Margin = new Padding(3, 2, 3, 2);
+            this.iconButton39.Name = "iconButton39";
+            this.iconButton39.Size = new Size(54, 50);
+            this.iconButton39.TabIndex = 104;
+            this.iconButton39.TextAlign = ContentAlignment.MiddleLeft;
+            this.iconButton39.TextImageRelation = TextImageRelation.ImageBeforeText;
+            this.iconButton39.UseVisualStyleBackColor = true;
+            this.iconButton39.Click += this.iconButton39_Click;
             // 
             // label46
             // 
             label46.AutoSize = true;
             label46.ForeColor = Color.Snow;
-            label46.Location = new Point(187, 70);
+            label46.Location = new Point(23, 196);
             label46.Name = "label46";
             label46.Size = new Size(72, 15);
             label46.TabIndex = 64;
@@ -3427,7 +3713,7 @@
             button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button8.ForeColor = Color.Snow;
-            button8.Location = new Point(325, 87);
+            button8.Location = new Point(110, 213);
             button8.Margin = new Padding(3, 2, 3, 2);
             button8.Name = "button8";
             button8.Size = new Size(50, 25);
@@ -3436,33 +3722,15 @@
             button8.UseVisualStyleBackColor = false;
             button8.Click += this.button8_Click;
             // 
-            // rjToggleButton2
-            // 
-            this.rjToggleButton2.AutoSize = true;
-            this.rjToggleButton2.Checked = true;
-            this.rjToggleButton2.CheckState = CheckState.Checked;
-            this.rjToggleButton2.Location = new Point(17, 128);
-            this.rjToggleButton2.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton2.MinimumSize = new Size(39, 16);
-            this.rjToggleButton2.Name = "rjToggleButton2";
-            this.rjToggleButton2.OffBackColor = Color.Gray;
-            this.rjToggleButton2.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton2.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton2.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton2.Size = new Size(39, 16);
-            this.rjToggleButton2.TabIndex = 54;
-            this.rjToggleButton2.UseVisualStyleBackColor = true;
-            this.rjToggleButton2.CheckedChanged += this.rjToggleButton2_CheckedChanged;
-            // 
             // button7
             // 
             button7.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             button7.FlatStyle = FlatStyle.Flat;
             button7.ForeColor = Color.White;
-            button7.Location = new Point(26, 26);
+            button7.Location = new Point(20, 27);
             button7.Margin = new Padding(3, 2, 3, 2);
             button7.Name = "button7";
-            button7.Size = new Size(124, 46);
+            button7.Size = new Size(163, 35);
             button7.TabIndex = 53;
             button7.Text = "Activate OSC Listener";
             button7.UseVisualStyleBackColor = false;
@@ -3470,10 +3738,10 @@
             // 
             // HRInterval
             // 
-            HRInterval.Location = new Point(187, 35);
+            HRInterval.Location = new Point(23, 161);
             HRInterval.Margin = new Padding(3, 2, 3, 2);
             HRInterval.Name = "HRInterval";
-            HRInterval.Size = new Size(129, 23);
+            HRInterval.Size = new Size(75, 23);
             HRInterval.TabIndex = 56;
             HRInterval.Text = "3";
             // 
@@ -3483,7 +3751,7 @@
             HRIntervalChange.FlatStyle = FlatStyle.Flat;
             HRIntervalChange.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             HRIntervalChange.ForeColor = Color.Snow;
-            HRIntervalChange.Location = new Point(325, 35);
+            HRIntervalChange.Location = new Point(110, 159);
             HRIntervalChange.Margin = new Padding(3, 2, 3, 2);
             HRIntervalChange.Name = "HRIntervalChange";
             HRIntervalChange.Size = new Size(50, 25);
@@ -3494,90 +3762,32 @@
             // 
             // textBoxHRPort
             // 
-            textBoxHRPort.Location = new Point(187, 87);
+            textBoxHRPort.Location = new Point(23, 213);
             textBoxHRPort.Margin = new Padding(3, 2, 3, 2);
             textBoxHRPort.Name = "textBoxHRPort";
-            textBoxHRPort.Size = new Size(129, 23);
+            textBoxHRPort.Size = new Size(75, 23);
             textBoxHRPort.TabIndex = 48;
             textBoxHRPort.Text = "4026";
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.ForeColor = Color.Snow;
-            label37.Location = new Point(62, 101);
-            label37.Name = "label37";
-            label37.Size = new Size(97, 15);
-            label37.TabIndex = 52;
-            label37.Text = "Output Heartrate";
-            // 
-            // rjToggleButton1
-            // 
-            this.rjToggleButton1.AutoSize = true;
-            this.rjToggleButton1.Checked = true;
-            this.rjToggleButton1.CheckState = CheckState.Checked;
-            this.rjToggleButton1.Location = new Point(17, 99);
-            this.rjToggleButton1.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton1.MinimumSize = new Size(39, 16);
-            this.rjToggleButton1.Name = "rjToggleButton1";
-            this.rjToggleButton1.OffBackColor = Color.Gray;
-            this.rjToggleButton1.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton1.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton1.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton1.Size = new Size(39, 16);
-            this.rjToggleButton1.TabIndex = 51;
-            this.rjToggleButton1.UseVisualStyleBackColor = true;
-            this.rjToggleButton1.CheckedChanged += this.rjToggleButton1_CheckedChanged;
             // 
             // label39
             // 
             label39.AutoSize = true;
             label39.ForeColor = Color.Snow;
-            label39.Location = new Point(187, 18);
+            label39.Location = new Point(23, 144);
             label39.Name = "label39";
             label39.Size = new Size(81, 15);
             label39.TabIndex = 57;
             label39.Text = "HR Interval (s)";
             // 
-            // label38
-            // 
-            label38.AutoSize = true;
-            label38.ForeColor = Color.Snow;
-            label38.Location = new Point(62, 129);
-            label38.Name = "label38";
-            label38.Size = new Size(86, 15);
-            label38.TabIndex = 55;
-            label38.Text = "OSC Spam Log";
-            // 
-            // iconButton39
-            // 
-            this.iconButton39.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton39.FlatAppearance.BorderSize = 0;
-            this.iconButton39.FlatStyle = FlatStyle.Flat;
-            this.iconButton39.ForeColor = Color.Snow;
-            this.iconButton39.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton39.IconColor = Color.White;
-            this.iconButton39.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton39.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton39.Location = new Point(713, 2);
-            this.iconButton39.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton39.Name = "iconButton39";
-            this.iconButton39.Size = new Size(54, 50);
-            this.iconButton39.TabIndex = 104;
-            this.iconButton39.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton39.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton39.UseVisualStyleBackColor = true;
-            this.iconButton39.Click += this.iconButton39_Click;
-            // 
             // label42
             // 
             label42.AutoSize = true;
             label42.ForeColor = Color.Snow;
-            label42.Location = new Point(135, 32);
+            label42.Location = new Point(197, 31);
             label42.Name = "label42";
-            label42.Size = new Size(558, 15);
+            label42.Size = new Size(455, 30);
             label42.TabIndex = 61;
-            label42.Text = "This feature will allow for receiving HR BPM from HRtoVRChat_OSC and Battery Life date from XSOverlay";
+            label42.Text = "Connect HR device directly via Pulsoid / receive HR data from HRtoVRChat_OSC and \r\ntracker battery Life data from XSOverlay";
             // 
             // label35
             // 
@@ -3586,9 +3796,9 @@
             label35.ForeColor = Color.Snow;
             label35.Location = new Point(18, 28);
             label35.Name = "label35";
-            label35.Size = new Size(92, 20);
+            label35.Size = new Size(173, 20);
             label35.TabIndex = 46;
-            label35.Text = "OSC Listener";
+            label35.Text = "Heartrate + OSC Listener";
             // 
             // APIs
             // 
@@ -3932,14 +4142,17 @@
             // 
             // groupBox18
             // 
+            groupBox18.Controls.Add(label190);
+            groupBox18.Controls.Add(this.rjToggleButtonUniqueWavNames);
+            groupBox18.Controls.Add(this.iconButton3);
+            groupBox18.Controls.Add(this.iconButtonAudioFiles);
             groupBox18.Controls.Add(label175);
-            groupBox18.Controls.Add(button3);
             groupBox18.Controls.Add(this.OBSLink);
             groupBox18.Controls.Add(this.rjToggleButtonSaveToWav);
             groupBox18.Controls.Add(label102);
             groupBox18.Controls.Add(this.rjToggleButtonOBSText);
             groupBox18.ForeColor = Color.White;
-            groupBox18.Location = new Point(19, 1388);
+            groupBox18.Location = new Point(20, 1354);
             groupBox18.Margin = new Padding(3, 2, 3, 2);
             groupBox18.Name = "groupBox18";
             groupBox18.Padding = new Padding(3, 2, 3, 2);
@@ -3948,32 +4161,86 @@
             groupBox18.TabStop = false;
             groupBox18.Text = "Output";
             // 
+            // label190
+            // 
+            label190.AutoSize = true;
+            label190.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label190.ForeColor = Color.Snow;
+            label190.Location = new Point(60, 89);
+            label190.Name = "label190";
+            label190.Size = new Size(252, 15);
+            label190.TabIndex = 160;
+            label190.Text = "Wave File Unique Names (Don't Override Files)";
+            // 
+            // rjToggleButtonUniqueWavNames
+            // 
+            this.rjToggleButtonUniqueWavNames.AutoSize = true;
+            this.rjToggleButtonUniqueWavNames.Location = new Point(12, 89);
+            this.rjToggleButtonUniqueWavNames.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleButtonUniqueWavNames.MinimumSize = new Size(39, 16);
+            this.rjToggleButtonUniqueWavNames.Name = "rjToggleButtonUniqueWavNames";
+            this.rjToggleButtonUniqueWavNames.OffBackColor = Color.Gray;
+            this.rjToggleButtonUniqueWavNames.OffToggleColor = Color.Gainsboro;
+            this.rjToggleButtonUniqueWavNames.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleButtonUniqueWavNames.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleButtonUniqueWavNames.Size = new Size(39, 16);
+            this.rjToggleButtonUniqueWavNames.TabIndex = 161;
+            this.rjToggleButtonUniqueWavNames.UseVisualStyleBackColor = true;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            this.iconButton3.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            this.iconButton3.FlatStyle = FlatStyle.Flat;
+            this.iconButton3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            this.iconButton3.ForeColor = Color.Snow;
+            this.iconButton3.IconChar = global::FontAwesome.Sharp.IconChar.FileAlt;
+            this.iconButton3.IconColor = Color.White;
+            this.iconButton3.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 30;
+            this.iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
+            this.iconButton3.Location = new Point(501, 88);
+            this.iconButton3.Margin = new Padding(3, 2, 3, 2);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Size = new Size(200, 35);
+            this.iconButton3.TabIndex = 159;
+            this.iconButton3.Text = "Open Text Output Folder";
+            this.iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            this.iconButton3.Click += this.button3_Click;
+            // 
+            // iconButtonAudioFiles
+            // 
+            this.iconButtonAudioFiles.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            this.iconButtonAudioFiles.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            this.iconButtonAudioFiles.FlatStyle = FlatStyle.Flat;
+            this.iconButtonAudioFiles.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            this.iconButtonAudioFiles.ForeColor = Color.Snow;
+            this.iconButtonAudioFiles.IconChar = global::FontAwesome.Sharp.IconChar.FileAudio;
+            this.iconButtonAudioFiles.IconColor = Color.White;
+            this.iconButtonAudioFiles.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
+            this.iconButtonAudioFiles.IconSize = 30;
+            this.iconButtonAudioFiles.ImageAlign = ContentAlignment.MiddleLeft;
+            this.iconButtonAudioFiles.Location = new Point(501, 42);
+            this.iconButtonAudioFiles.Margin = new Padding(3, 2, 3, 2);
+            this.iconButtonAudioFiles.Name = "iconButtonAudioFiles";
+            this.iconButtonAudioFiles.Size = new Size(200, 35);
+            this.iconButtonAudioFiles.TabIndex = 158;
+            this.iconButtonAudioFiles.Text = "Open Audio Output Folder";
+            this.iconButtonAudioFiles.TextImageRelation = TextImageRelation.ImageBeforeText;
+            this.iconButtonAudioFiles.UseVisualStyleBackColor = false;
+            this.iconButtonAudioFiles.Click += this.iconButtonAudioFiles_Click;
+            // 
             // label175
             // 
             label175.AutoSize = true;
             label175.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label175.ForeColor = Color.Snow;
-            label175.Location = new Point(62, 68);
+            label175.Location = new Point(60, 61);
             label175.Name = "label175";
             label175.Size = new Size(173, 15);
             label175.TabIndex = 156;
             label175.Text = "Save TTS Messages to Wave File";
-            // 
-            // button3
-            // 
-            button3.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button3.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = Color.Snow;
-            button3.Location = new Point(556, 98);
-            button3.Margin = new Padding(3, 2, 3, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(144, 28);
-            button3.TabIndex = 135;
-            button3.Text = "Open OBS Text folder";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += this.button3_Click;
             // 
             // OBSLink
             // 
@@ -3998,7 +4265,7 @@
             // rjToggleButtonSaveToWav
             // 
             this.rjToggleButtonSaveToWav.AutoSize = true;
-            this.rjToggleButtonSaveToWav.Location = new Point(14, 68);
+            this.rjToggleButtonSaveToWav.Location = new Point(12, 61);
             this.rjToggleButtonSaveToWav.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButtonSaveToWav.MinimumSize = new Size(39, 16);
             this.rjToggleButtonSaveToWav.Name = "rjToggleButtonSaveToWav";
@@ -7118,7 +7385,7 @@
             groupBox37.Controls.Add(textBoxCounterMessage3);
             groupBox37.Controls.Add(label89);
             groupBox37.Controls.Add(label95);
-            groupBox37.Controls.Add(this.rjToggleButton13);
+            groupBox37.Controls.Add(this.rjToggleButtonOutputVRCCountersOnContact);
             groupBox37.Controls.Add(label88);
             groupBox37.Controls.Add(textBoxCounter2);
             groupBox37.Controls.Add(textBoxCounterMessage2);
@@ -7485,22 +7752,22 @@
             label95.TabIndex = 130;
             label95.Text = "Message";
             // 
-            // rjToggleButton13
+            // rjToggleButtonOutputVRCCountersOnContact
             // 
-            this.rjToggleButton13.AutoSize = true;
-            this.rjToggleButton13.Checked = true;
-            this.rjToggleButton13.CheckState = CheckState.Checked;
-            this.rjToggleButton13.Location = new Point(5, 299);
-            this.rjToggleButton13.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton13.MinimumSize = new Size(39, 16);
-            this.rjToggleButton13.Name = "rjToggleButton13";
-            this.rjToggleButton13.OffBackColor = Color.Gray;
-            this.rjToggleButton13.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton13.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton13.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton13.Size = new Size(39, 16);
-            this.rjToggleButton13.TabIndex = 51;
-            this.rjToggleButton13.UseVisualStyleBackColor = true;
+            this.rjToggleButtonOutputVRCCountersOnContact.AutoSize = true;
+            this.rjToggleButtonOutputVRCCountersOnContact.Checked = true;
+            this.rjToggleButtonOutputVRCCountersOnContact.CheckState = CheckState.Checked;
+            this.rjToggleButtonOutputVRCCountersOnContact.Location = new Point(5, 299);
+            this.rjToggleButtonOutputVRCCountersOnContact.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleButtonOutputVRCCountersOnContact.MinimumSize = new Size(39, 16);
+            this.rjToggleButtonOutputVRCCountersOnContact.Name = "rjToggleButtonOutputVRCCountersOnContact";
+            this.rjToggleButtonOutputVRCCountersOnContact.OffBackColor = Color.Gray;
+            this.rjToggleButtonOutputVRCCountersOnContact.OffToggleColor = Color.Gainsboro;
+            this.rjToggleButtonOutputVRCCountersOnContact.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleButtonOutputVRCCountersOnContact.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleButtonOutputVRCCountersOnContact.Size = new Size(39, 16);
+            this.rjToggleButtonOutputVRCCountersOnContact.TabIndex = 51;
+            this.rjToggleButtonOutputVRCCountersOnContact.UseVisualStyleBackColor = true;
             // 
             // label88
             // 
@@ -7648,7 +7915,7 @@
             groupBox25.Controls.Add(label92);
             groupBox25.Controls.Add(this.rjToggleButtonVRCSpamLog);
             groupBox25.Controls.Add(label86);
-            groupBox25.Controls.Add(this.rjToggleButton11);
+            groupBox25.Controls.Add(this.rjToggleButtonVRCActivate);
             groupBox25.Controls.Add(label87);
             groupBox25.Controls.Add(button32);
             groupBox25.Controls.Add(button33);
@@ -7700,20 +7967,20 @@
             label86.TabIndex = 100;
             label86.Text = "Activate VRChat Listener on Start";
             // 
-            // rjToggleButton11
+            // rjToggleButtonVRCActivate
             // 
-            this.rjToggleButton11.AutoSize = true;
-            this.rjToggleButton11.Location = new Point(154, 19);
-            this.rjToggleButton11.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton11.MinimumSize = new Size(39, 16);
-            this.rjToggleButton11.Name = "rjToggleButton11";
-            this.rjToggleButton11.OffBackColor = Color.Gray;
-            this.rjToggleButton11.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton11.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton11.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton11.Size = new Size(39, 16);
-            this.rjToggleButton11.TabIndex = 99;
-            this.rjToggleButton11.UseVisualStyleBackColor = true;
+            this.rjToggleButtonVRCActivate.AutoSize = true;
+            this.rjToggleButtonVRCActivate.Location = new Point(154, 19);
+            this.rjToggleButtonVRCActivate.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleButtonVRCActivate.MinimumSize = new Size(39, 16);
+            this.rjToggleButtonVRCActivate.Name = "rjToggleButtonVRCActivate";
+            this.rjToggleButtonVRCActivate.OffBackColor = Color.Gray;
+            this.rjToggleButtonVRCActivate.OffToggleColor = Color.Gainsboro;
+            this.rjToggleButtonVRCActivate.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleButtonVRCActivate.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleButtonVRCActivate.Size = new Size(39, 16);
+            this.rjToggleButtonVRCActivate.TabIndex = 99;
+            this.rjToggleButtonVRCActivate.UseVisualStyleBackColor = true;
             // 
             // label87
             // 
@@ -8779,7 +9046,6 @@
             // 
             // iconButton55
             // 
-            this.iconButton55.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
             this.iconButton55.FlatAppearance.BorderSize = 0;
             this.iconButton55.FlatStyle = FlatStyle.Flat;
             this.iconButton55.ForeColor = Color.Snow;
@@ -8788,7 +9054,7 @@
             this.iconButton55.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton55.IconSize = 40;
             this.iconButton55.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new Point(565, 20);
+            this.iconButton55.Location = new Point(693, 5);
             this.iconButton55.Margin = new Padding(3, 2, 3, 2);
             this.iconButton55.Name = "iconButton55";
             this.iconButton55.Size = new Size(53, 53);
@@ -9600,6 +9866,10 @@
             groupBox2.PerformLayout();
             tabHeartBeat.ResumeLayout(false);
             tabHeartBeat.PerformLayout();
+            groupBox43.ResumeLayout(false);
+            groupBox43.PerformLayout();
+            groupBox42.ResumeLayout(false);
+            groupBox42.PerformLayout();
             groupBoxHead.ResumeLayout(false);
             groupBoxRight.ResumeLayout(false);
             groupBoxOSCtoTTS.ResumeLayout(false);
@@ -9759,10 +10029,10 @@
         private FontAwesome.Sharp.IconButton ttsTrash;
         private FontAwesome.Sharp.IconButton logTrash;
         private Label label37;
-        public RJControls.RJToggleButton rjToggleButton1;
+        public RJControls.RJToggleButton rjToggleOutputHeartrateDirect;
         private Label label35;
         private Label label38;
-        public RJControls.RJToggleButton rjToggleButton2;
+        public RJControls.RJToggleButton rjToggleOSCListenerSpamLog;
         private Label label39;
         private Button HRIntervalChange;
         private TextBox HRInterval;
@@ -9862,7 +10132,7 @@
         private Button button17;
         private Button button16;
         private Label label130;
-        public RJControls.RJToggleButton rjToggleButton8;
+        public RJControls.RJToggleButton rjToggleActivateOSCListenerStart;
         private Label label132;
         public RJControls.RJToggleButton rjToggleButtonNoTTSKAT;
         private Label label134;
@@ -10052,11 +10322,11 @@
         public RJControls.RJToggleButton rjToggleButtonAFK;
         private GroupBox groupBox25;
         private Label label86;
-        public RJControls.RJToggleButton rjToggleButton11;
+        public RJControls.RJToggleButton rjToggleButtonVRCActivate;
         private Label label87;
         private Button button32;
         private Label label89;
-        public RJControls.RJToggleButton rjToggleButton13;
+        public RJControls.RJToggleButton rjToggleButtonOutputVRCCountersOnContact;
         private Label label93;
         private Label label94;
         private TabPage LocalSpeech;
@@ -10153,7 +10423,6 @@
         private Button button44;
         private Panel logPanel;
         private Button button45;
-        private Button button3;
         private Button button46;
         private Button button47;
         private Label label28;
@@ -10322,6 +10591,24 @@
         public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonSpotifyKatDisable;
         private Label label189;
         public TextBox KATLineLengthTextBox;
+        private global::FontAwesome.Sharp.IconButton iconButtonAudioFiles;
+        private global::FontAwesome.Sharp.IconButton iconButton3;
+        private Label label190;
+        public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonUniqueWavNames;
+        private GroupBox groupBox42;
+        private global::FontAwesome.Sharp.IconButton iconButtonPulsoidHideKey;
+        private Label label194;
+        public TextBox pulsoidAuthToken;
+        public Button buttonPulsoidConnect;
+        private Label label196;
+        public TextBox textBoxPulsoidInterval;
+        public Label labelHeartIntervalTooFast;
+        private GroupBox groupBox43;
+        private Button buttonPulsoidInterval;
+        private Label label191;
+        public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleActivatePulsoidStart;
+        private global::FontAwesome.Sharp.IconButton iconButton4;
+        private Label label192;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

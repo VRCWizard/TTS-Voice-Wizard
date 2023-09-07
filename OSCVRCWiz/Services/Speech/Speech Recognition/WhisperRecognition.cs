@@ -4,6 +4,7 @@ using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Resources.Whisper;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
+using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Text;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -36,7 +37,8 @@ namespace OSCVRCWiz.Speech_Recognition
                 string UseThisMic = getWhisperInputDevice().ToString();
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
-                    fromLanguageID(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString());//set lang code for recognition
+                    langcode = LanguageSelect.fromLanguageNew(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString(), "sourceLanguage", "Whisper");
+                   // fromLanguageID(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString());//set lang code for recognition
 
                 });
 
@@ -153,7 +155,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
         }
 
-        public static void fromLanguageID(string fullname)
+    /*    public static void fromLanguageID(string fullname)
         {
             langcode = "en-US";
             switch (fullname)
@@ -192,7 +194,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 case "Vietnamese [vi-VN]": langcode = "vi"; break;
                 default: langcode = "en"; break; // if translation to english happens something is wrong
             }
-        }
+        }*/
 
         public static void StopWhisper()
         {
@@ -201,6 +203,63 @@ namespace OSCVRCWiz.Speech_Recognition
             ctt = null;
         }
 
+        // changed to static here -chrisk
+        static CommandLineArgs cla;
+        static Whisper.Context context;
+        static iAudioCapture captureDev;
+      //  static CaptureThread whisperThread;
+
+        // added: set language -chrisk
+        public static void setLanguage(string language)
+        {
+            if (context != null)
+            {
+                langcode = LanguageSelect.fromLanguageNew(language, "sourceLanguage", "Whisper");
+                eLanguage? elang = Library.languageFromCode(langcode);
+                if (elang != null)
+                {
+                    Stopwatch stopwatch = new Stopwatch();
+
+                    // Start the stopwatch
+                    stopwatch.Start();
+                    if (ctt != null && WhisperAllowStop == true)
+                    {
+                       // DoSpeech.speechToTextOffSound();
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug:";
+                        });
+                        try
+                        {
+                            WhisperString = "";
+                            StopWhisper();
+                            OutputText.outputLog("[Whisper Switching Languages]");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            OutputText.outputLog("[Error switch input language (manual): " + ex.Message + " ]", System.Drawing.Color.Red);
+                        }
+                    }
+                    else
+                    {
+                        OutputText.outputLog("[Could not switch input language (slow down)]", System.Drawing.Color.Red);
+                    }
+
+                    context.parameters.language = (eLanguage)elang;
+
+                    stopwatch.Stop();
+                    TimeSpan elapsedTime = stopwatch.Elapsed;
+                    elapsedTime = stopwatch.Elapsed;
+                  //  OutputText.outputLog($"Startup Time: {elapsedTime.TotalMilliseconds} ms");
+                    DoSpeech.speechToTextOnSound();
+                    ctt = new CaptureThread(cla, context, captureDev);
+                   
+                    ctt?.join();
+
+                }
+            }
+        }
 
 
 
@@ -210,7 +269,11 @@ namespace OSCVRCWiz.Speech_Recognition
 
             try
            {
-                CommandLineArgs cla;
+                Stopwatch stopwatch = new Stopwatch();
+
+                // Start the stopwatch
+                stopwatch.Start();
+                // CommandLineArgs cla;
                 try
                 {
                     cla = new CommandLineArgs(args);
@@ -265,23 +328,30 @@ namespace OSCVRCWiz.Speech_Recognition
 
                 if (cla.diarize)
                     cp.flags |= eCaptureFlags.Stereo;
-                using iAudioCapture captureDev = mf.openCaptureDevice(devices[cla.captureDeviceIndex], cp);
+                captureDev = mf.openCaptureDevice(devices[cla.captureDeviceIndex], cp);
                 
                 using iModel model = Library.loadModel(cla.model);
-                using Whisper.Context context = model.createContext();
+                context = model.createContext();
 
                 
 
 
                 cla.apply(ref context.parameters);
-
+                stopwatch.Stop();
+                TimeSpan elapsedTime = stopwatch.Elapsed;
+               // OutputText.outputLog($"Startup Processes Time: {elapsedTime.TotalMilliseconds} ms");
+                stopwatch.Restart();
                 WhisperAllowStop = false;
                 ctt = new CaptureThread(cla, context, captureDev);
-                
-                Thread.Sleep(3000);
-                WhisperAllowStop = true;
+                stopwatch.Stop();
+                elapsedTime = stopwatch.Elapsed;
+              //  OutputText.outputLog($"Capture Thread start Time: {elapsedTime.TotalMilliseconds} ms");
 
+                Thread.Sleep(500);
+                WhisperAllowStop = true;
+                
                 ctt?.join();
+               
 
 
 

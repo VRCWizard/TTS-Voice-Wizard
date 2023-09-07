@@ -9,6 +9,7 @@ using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Speech;
+using OSCVRCWiz.Services.Speech.TranslationAPIs;
 
 namespace OSCVRCWiz
 {
@@ -29,7 +30,7 @@ namespace OSCVRCWiz
         public static string YourServiceRegion;
         
 
-        public static void fromLanguageID(string fullname)
+     /*   public static void fromLanguageID(string fullname)
         {
              fromLanguage = "en-US";
             switch (fullname)
@@ -105,7 +106,7 @@ namespace OSCVRCWiz
                 case "Vietnamese [vi]": toLanguage = "vi"; break;
                 default: toLanguage = "en"; break; // if translation to english happens something is wrong
             }
-        }
+        }*/
 
         public static void speechSetup(string toLanguageFullname, string fromLanguageFullname)//speech to text setup
 
@@ -117,10 +118,11 @@ namespace OSCVRCWiz
             {
                 speechConfig = SpeechConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
                 translationConfig = SpeechTranslationConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
-               // speechConfig.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt"); //This line of code was the cause for an outstanding bug, if the log file becomes too full it causes issue. Further testing required before adding logging back as a feature.
-
-                fromLanguageID(fromLanguageFullname); //Convert information from selected spoken language and sets fromLanuage to the ID
-                toLanguageID(toLanguageFullname);//Convert information from selected translation language and sets toLanuage to the ID
+                // speechConfig.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt"); //This line of code was the cause for an outstanding bug, if the log file becomes too full it causes issue. Further testing required before adding logging back as a feature.
+                fromLanguage = LanguageSelect.fromLanguageNew(fromLanguageFullname, "sourceLanguage", "Azure");
+                toLanguage = LanguageSelect.fromLanguageNew(toLanguageFullname, "targetLanguage", "Azure");
+              //  fromLanguageID(fromLanguageFullname); //Convert information from selected spoken language and sets fromLanuage to the ID
+              //  toLanguageID(toLanguageFullname);//Convert information from selected translation language and sets toLanuage to the ID
 
 
                 speechConfig.SpeechRecognitionLanguage = fromLanguage;

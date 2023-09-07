@@ -15,6 +15,10 @@ using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using FontAwesome.Sharp;
+using OSCVRCWiz.Services.Speech.TranslationAPIs;
+using OSCVRCWiz.Services.Integrations.Heartrate;
+using System.Configuration;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
 
@@ -34,17 +38,19 @@ namespace OSCVRCWiz
             catch (Exception ex) { System.Windows.Forms.MessageBox.Show("Initalization Error: " + ex.Message); }
             MainFormGlobal = this;
 
-
+            //Finally a fix to user.configs getting corrupted. This is what should save you from the Configuration Failed To Initialize from now on.
+            StartUps.saveBackupOfSettings();
 
             try
             {
-                StartUps.OnAppStart();
-
                 mainTabControl.Appearance = TabAppearance.FlatButtons;
                 mainTabControl.ItemSize = new System.Drawing.Size(0, 1);
                 mainTabControl.SizeMode = TabSizeMode.Fixed;
                 labelCharCount.Text = richTextBox3.Text.ToString().Length.ToString();
                 navbarHome.BackColor = SelectedNavBar;//make home button appear selected   
+
+                StartUps.OnAppStart();
+                LanguageSelect.loadLanguages(comboBoxSpokenLanguage, comboBoxTranslationLanguage);
             }
             catch (Exception ex)
             {
@@ -64,7 +70,6 @@ namespace OSCVRCWiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
 
             try
             {
@@ -99,6 +104,7 @@ namespace OSCVRCWiz
                     }
                 }
                 StartUps.OnFormLoad();
+                StartUps.BackupStatus();
             }
             catch (Exception ex)
             {
@@ -126,6 +132,7 @@ namespace OSCVRCWiz
             }
             MoonbaseTTS.CloseMoonbaseTerminal();
             StopAllRecogntion();
+            HeartratePulsoid.PulsoidStop();
 
 
         }
@@ -795,10 +802,10 @@ namespace OSCVRCWiz
 
                     break;
 
-                case "Glados":
+                case "Locally Hosted":
 
                     comboBoxVoiceSelect.Items.Clear();
-                    comboBoxVoiceSelect.Items.Add("Glados");
+                    comboBoxVoiceSelect.Items.Add("Local 1");
                     comboBoxVoiceSelect.SelectedIndex = 0;
                     comboBoxStyleSelect.SelectedIndex = 0;
                     comboBoxStyleSelect.Enabled = false;
@@ -810,9 +817,9 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Glados";
+                    DoSpeech.TTSModeSaved = "Locally Hosted";
 
-                    OutputText.outputLog("[Glados Voice setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS ]", Color.DarkOrange);
+                    OutputText.outputLog("[Here is an example of a project that can be used with Local: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS . This method works by sending a GET request to http://127.0.0.1:8124/synthesize/ with the string parameter 'text'. If you create compatible projects or models, feel free to share them in the Discord server.]", Color.DarkOrange);
 
                     break;
 
@@ -912,6 +919,21 @@ namespace OSCVRCWiz
                     // Set the translation language to position 0 (no translation)
                     comboBoxTranslationLanguage.SelectedIndex = 0;
                 }
+                // added: change language -chrisk
+                switch (comboBoxSTT.Text.ToString())
+                {
+                    case "Whisper":
+                        string language = "";
+
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            language = comboBoxSpokenLanguage.SelectedItem.ToString();
+                        });
+                        Task.Run(() => WhisperRecognition.setLanguage(language));
+
+                        break;
+                }
+
             }
 
 
@@ -933,6 +955,7 @@ namespace OSCVRCWiz
                     // Set the translation language to position 0 (no translation)
                     comboBoxTranslationLanguage.SelectedIndex = 0;
                 }
+
             }
         }
 
@@ -1430,6 +1453,7 @@ namespace OSCVRCWiz
                 ProShowKey.BackColor = DarkModeColor;
                 UberDuckShowPassword.BackColor = DarkModeColor;
                 UberDuckShowSecretPassword.BackColor = DarkModeColor;
+                iconButtonPulsoidHideKey.BackColor = DarkModeColor;
 
 
 
@@ -1452,6 +1476,7 @@ namespace OSCVRCWiz
                 ProShowKey.IconColor = Color.White;
                 UberDuckShowPassword.IconColor = Color.White;
                 UberDuckShowSecretPassword.IconColor = Color.White;
+                iconButtonPulsoidHideKey.IconColor = Color.White;
 
             }
             if (rjToggleDarkMode.Checked == false)//light mode
@@ -1496,6 +1521,7 @@ namespace OSCVRCWiz
                 ProShowKey.BackColor = Color.White;
                 UberDuckShowPassword.BackColor = Color.White;
                 UberDuckShowSecretPassword.BackColor = Color.White;
+                iconButtonPulsoidHideKey.BackColor = Color.White;
 
 
 
@@ -1522,6 +1548,7 @@ namespace OSCVRCWiz
                 ProShowKey.IconColor = LightModeColor;
                 UberDuckShowPassword.IconColor = LightModeColor;
                 UberDuckShowSecretPassword.IconColor = LightModeColor;
+                iconButtonPulsoidHideKey.IconColor = LightModeColor;
 
 
 
@@ -1667,10 +1694,21 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonHideDelay2_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+            try
             {
-                OutputText.katRefreshTimer.Change(2000, 0);
+                if (OutputText.katRefreshTimer != null)
+                {
+                    if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+                    {
+                        OutputText.katRefreshTimer.Change(2000, 0);
+                    }
+                }
             }
+            catch
+            {
+                OutputText.outputLog("KAT Timer was not initalized yet", Color.Red);
+            }
+
         }
 
         private void button46_Click(object sender, EventArgs e)
@@ -1737,9 +1775,19 @@ namespace OSCVRCWiz
 
         private void rjToggleButtonAutoRefreshKAT_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+            try
             {
-                OutputText.katRefreshTimer.Change(2000, 0);
+                if (OutputText.katRefreshTimer != null)
+                {
+                    if (rjToggleButtonHideDelay2.Checked == false && rjToggleButtonAutoRefreshKAT.Checked == true)
+                    {
+                        OutputText.katRefreshTimer.Change(2000, 0);
+                    }
+                }
+            }
+            catch
+            {
+                OutputText.outputLog("KAT Timer was not initalized yet", Color.Red);
             }
         }
 
@@ -1806,9 +1854,21 @@ namespace OSCVRCWiz
 
         #region Output Section
 
+        private void iconButtonAudioFiles_Click(object sender, EventArgs e)
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string relativePath = "Output\\AudioOutput";
+            string fullPath = Path.Combine(basePath, relativePath);
+            Process.Start("explorer.exe", fullPath);
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", "Output\\TextOutput");
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string relativePath = "Output\\TextOutput";
+            string fullPath = Path.Combine(basePath, relativePath);
+            OutputText.outputLog(fullPath);
+            Process.Start("explorer.exe", fullPath);
         }
 
         private void OBSLink_Click(object sender, EventArgs e)
@@ -1876,6 +1936,7 @@ namespace OSCVRCWiz
         {
             mainTabControl.SelectTab(tabEmoji);
         }
+
 
         #endregion
 
@@ -2060,6 +2121,46 @@ namespace OSCVRCWiz
 
         #region OSCListener
 
+
+        private void buttonPulsoidConnect_Click(object sender, EventArgs e)
+        {
+            if (!HeartratePulsoid.pulsoidEnabled)
+            {
+                HeartratePulsoid.PulsoidHeartRate(VoiceWizardWindow.MainFormGlobal.pulsoidAuthToken.Text.ToString());
+            }
+            else
+            {
+                HeartratePulsoid.PulsoidStop();
+            }
+        }
+
+        private void iconButtonPulsoidHideKey_Click(object sender, EventArgs e)
+        {
+            ShowHidePassword(pulsoidAuthToken, iconButtonPulsoidHideKey);
+        }
+        private void iconButton4_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Heartrate-Integration");
+        }
+
+        private void buttonPulsoidInterval_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                HeartratePulsoid.heartrateIntervalPulsoid = textBoxPulsoidInterval.Text;
+            }
+            catch (Exception ex) { OutputText.outputLog("[Error Changing HR Interval: " + ex.Message + "]", Color.Red); }
+
+
+        }
+
+        private void label192_Click(object sender, EventArgs e)
+        {
+            string url = "https://pulsoid.net/login?redirect=%2Foauth2%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3D9a40a67d-a9d8-4cd2-82de-360b34bad3f8%26redirect_uri%3D%26scope%3Ddata%3Aheart_rate%3Aread%26state%3D9a40a67d-a9d8-4cd2-82de-360b34bad3f8%26response_mode%3Dweb_page";
+            //System.Diagnostics.Process.Start("explorer.exe", url);
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });//this link doesnt like the other method
+        }
+
         private void rjToggleButton8_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -2077,12 +2178,12 @@ namespace OSCVRCWiz
         }
         private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButton1.Checked == true)
+            if (rjToggleOutputHeartrateDirect.Checked == true)
             {
 
                 OSCListener.stopBPM = false;
             }
-            if (rjToggleButton1.Checked == false)
+            if (rjToggleOutputHeartrateDirect.Checked == false)
             {
                 OSCListener.stopBPM = true;
 
@@ -2100,11 +2201,11 @@ namespace OSCVRCWiz
         }
         private void rjToggleButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (rjToggleButton2.Checked == true)
+            if (rjToggleOSCListenerSpamLog.Checked == true)
             {
                 OSCListener.OSCReceiveSpamLog = true;
             }
-            if (rjToggleButton2.Checked == false)
+            if (rjToggleOSCListenerSpamLog.Checked == false)
             {
                 OSCListener.OSCReceiveSpamLog = false;
             }
@@ -2817,7 +2918,12 @@ namespace OSCVRCWiz
         private void button49_Click(object sender, EventArgs e)
         {
             string path = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text.ToString();
-            TextFileReader.FileToTTS(path);
+
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string relativePath = path;
+            string absPath = Path.Combine(basePath, relativePath);
+
+            TextFileReader.FileToTTS(absPath);
         }
 
         private void rjToggleButton14_CheckedChanged(object sender, EventArgs e)
@@ -2919,6 +3025,9 @@ namespace OSCVRCWiz
 
         #endregion
         #endregion
+
+
+
     }
 
 

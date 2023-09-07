@@ -2350,5 +2350,77 @@ namespace OSCVRCWiz.Settings {
                 this["KatLineLength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("English [en]")]
+        public string voiceLanguageNew {
+            get {
+                return ((string)(this["voiceLanguageNew"]));
+            }
+            set {
+                this["voiceLanguageNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("English [en-US] (Default)")]
+        public string langSpokenSettingNew {
+            get {
+                return ((string)(this["langSpokenSettingNew"]));
+            }
+            set {
+                this["langSpokenSettingNew"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PulsoidAuthToken {
+            get {
+                return ((string)(this["PulsoidAuthToken"]));
+            }
+            set {
+                this["PulsoidAuthToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public string PulsoidUpdateInterval {
+            get {
+                return ((string)(this["PulsoidUpdateInterval"]));
+            }
+            set {
+                this["PulsoidUpdateInterval"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PulsoidOnStart {
+            get {
+                return ((bool)(this["PulsoidOnStart"]));
+            }
+            set {
+                this["PulsoidOnStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WaveUniqueNames {
+            get {
+                return ((bool)(this["WaveUniqueNames"]));
+            }
+            set {
+                this["WaveUniqueNames"] = value;
+            }
+        }
     }
 }

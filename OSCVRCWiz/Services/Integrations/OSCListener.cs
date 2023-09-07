@@ -51,16 +51,9 @@ namespace OSCVRCWiz.Services.Integrations
         public static void OnStartUp()
         {
 
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked == true)//turn on osc listener on start
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleActivatePulsoidStart.Checked == true)//turn on osc listener on start
             {
-                try
-                {
                     Task.Run(() => OSCListener.OSCRecieveHeartRate());
-
-                }
-                catch (Exception ex) { OutputText.outputLog("[OSC Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
-                VoiceWizardWindow.MainFormGlobal.button7.Enabled = false;
-
             }
         }
 
@@ -70,7 +63,11 @@ namespace OSCVRCWiz.Services.Integrations
             int skipper = 0;
             // var ot = new OutputText();
             // The cabllback function
-            OutputText.outputLog("[OSC Listener Activated]", Color.Green);
+            OutputText.outputLog($"[OSC Listener Activated ({OSCReceiveport})]", Color.Green);
+            if(OSCReceiveport==9000)
+            {
+                OutputText.outputLog($"VRChat normally listens on port 9000 so unless you know what you are doing this is probably a mistake.", Color.Red);
+            }
 
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
@@ -402,7 +399,7 @@ namespace OSCVRCWiz.Services.Integrations
                                     // var ot = new OutputText();
                                     if (OSCReceiveSpamLog == true)
                                     {
-                                        OutputText.outputLog("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm");
+                                        OutputText.outputLog("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm");
 
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
@@ -412,12 +409,12 @@ namespace OSCVRCWiz.Services.Integrations
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == false && VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                                     {
-                                        OutputText.outputVRChat("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+                                        OutputText.outputVRChat("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
 
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                                     {
-                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartbeat: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
+                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
 
 
                                     }
