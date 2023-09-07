@@ -230,7 +230,7 @@ namespace OSCVRCWiz.Services.Speech
                             case "NovelAI":
                               //  Task.Run(() => NovelAITTS.NovelAITextAsSpeech(TTSMessageQueued, speechCt.Token));
                                 break;
-                            case "Glados":
+                            case "Locally Hosted":
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                 {
                                     voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));

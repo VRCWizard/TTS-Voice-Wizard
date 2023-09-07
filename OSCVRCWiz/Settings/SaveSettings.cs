@@ -1,6 +1,7 @@
 ﻿using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Integrations;
+using OSCVRCWiz.Services.Integrations.Heartrate;
 using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Settings;
 using Settings;
@@ -58,17 +59,21 @@ namespace OSCVRCWiz
             Settings1.Default.SpotifyOutputSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked;
             Settings1.Default.HRIntervalSetting = OSCListener.HRInternalValue.ToString();
             Settings1.Default.HRPortSetting = OSCListener.OSCReceiveport.ToString();
-            Settings1.Default.BPMSpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton2.Checked;
+            Settings1.Default.BPMSpamSetting = VoiceWizardWindow.MainFormGlobal.rjToggleOSCListenerSpamLog.Checked;
             Settings1.Default.voiceBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex;
             Settings1.Default.styleBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.SelectedIndex;
 
-            Settings1.Default.voiceLanguage = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex;//voice language (make this save)
+           // Settings1.Default.voiceLanguage = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex;//voice language (make this save)
+            Settings1.Default.voiceLanguageNew = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem.ToString();
             Settings1.Default.langToBoxSetting = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.SelectedIndex;
+
             Settings1.Default.langSpokenSetting = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedIndex;
 
+            Settings1.Default.langSpokenSettingNew = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
 
 
- 
+
+
 
             Settings1.Default.pitchNew = VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value;
             Settings1.Default.volumeNew = VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value;
@@ -109,7 +114,7 @@ namespace OSCVRCWiz
 
 
 
-            Settings1.Default.activateOSCStart = VoiceWizardWindow.MainFormGlobal.rjToggleButton8.Checked;
+            Settings1.Default.activateOSCStart = VoiceWizardWindow.MainFormGlobal.rjToggleActivateOSCListenerStart.Checked;
 
 
 
@@ -119,7 +124,7 @@ namespace OSCVRCWiz
             Settings1.Default.SpotifyNoUseChatbox = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked;
             Settings1.Default.SpotifyNoUseKat = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked;
 
-            Settings1.Default.heartrateOutput = VoiceWizardWindow.MainFormGlobal.rjToggleButton1.Checked;
+            Settings1.Default.heartrateOutput = VoiceWizardWindow.MainFormGlobal.rjToggleOutputHeartrateDirect.Checked;
 
             Settings1.Default.enableMedia = VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked;
 
@@ -190,9 +195,9 @@ namespace OSCVRCWiz
 
 
 
-            Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked;
+            Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked;
             Settings1.Default.VRCAFK = VoiceWizardWindow.MainFormGlobal.rjToggleButtonAFK.Checked;
-            Settings1.Default.VRCListemOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked;
+            Settings1.Default.VRCListemOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCActivate.Checked;
             Settings1.Default.VRCSpamLog = VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCSpamLog.Checked;
 
             Settings1.Default.AFKMsg = VoiceWizardWindow.MainFormGlobal.textBoxAFK.Text.ToString();
@@ -284,7 +289,12 @@ namespace OSCVRCWiz
             Settings1.Default.ProAPIBranch = VoiceWizardWindow.MainFormGlobal.comboBoxProBranch.Text.ToString();
 
             Settings1.Default.KatLineLength = VoiceWizardWindow.MainFormGlobal.KATLineLengthTextBox.Text.ToString();
-           
+
+            Settings1.Default.PulsoidAuthToken = VoiceWizardWindow.MainFormGlobal.pulsoidAuthToken.Text.ToString();
+            Settings1.Default.PulsoidUpdateInterval = HeartratePulsoid.heartrateIntervalPulsoid;
+            Settings1.Default.PulsoidOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleActivatePulsoidStart.Checked;
+            Settings1.Default.WaveUniqueNames = VoiceWizardWindow.MainFormGlobal.rjToggleButtonUniqueWavNames.Checked;
+
 
 
             Settings1.Default.Save();

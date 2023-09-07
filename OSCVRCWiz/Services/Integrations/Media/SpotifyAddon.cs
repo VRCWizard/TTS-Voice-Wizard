@@ -12,6 +12,7 @@ using OSCVRCWiz.Resources;
 using static System.Net.Mime.MediaTypeNames;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.RJControls;
+using Newtonsoft.Json.Linq;
 
 namespace OSCVRCWiz.Services.Integrations.Media
 {
@@ -99,6 +100,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     //  var m_testing2 = await myClient.Player.GetCurrentPlayback();
                     title = "";
                     var artist = "";
+                    var allArtists = "";
                     var duration = "";
                     var progress = "";
                     var durationHours = "";
@@ -128,6 +130,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             }
 
                             artist = m_currentTrack.Artists[0].Name.ToString();
+                            allArtists = string.Join(", ", m_currentTrack.Artists.Select(artist => artist.Name.ToString()));
 
                             progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
                             duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
@@ -165,6 +168,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{spotifySymbol}", spotifySymbol);
                         theString = theString.Replace("{title}", title);
                         theString = theString.Replace("{artist}", artist);
+                        theString = theString.Replace("{allArtists}", allArtists);
                         theString = theString.Replace("{progressMinutes}", progress);
                         theString = theString.Replace("{durationMinutes}", duration);
                         theString = theString.Replace("{progressHours}", progressHours);
@@ -190,6 +194,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{counter4}", VRChatListener.counter4.ToString());
                         theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                         theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
+                       
 
                         if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
@@ -210,6 +215,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                             {
+                              //  theString = LineBreakerChatbox(theString, 28);//must always be the last
                                 Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "spotify")); //original
 
                             }
@@ -433,6 +439,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {
+              //  text = LineBreakerChatbox(text, 28);//must always be the last
                 Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, "media")); //original
 
             }
@@ -639,6 +646,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
             }
         }
+      
+
 
 
 

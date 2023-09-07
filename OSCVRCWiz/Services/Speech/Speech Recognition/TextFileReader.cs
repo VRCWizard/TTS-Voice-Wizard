@@ -21,10 +21,16 @@ namespace OSCVRCWiz.Speech_Recognition
             {
                 string path = VoiceWizardWindow.MainFormGlobal.textBoxReadFromTXTFile.Text.ToString();
 
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+                string relativePath = path;
+
+                string absPath = Path.Combine(basePath, relativePath);
+
                 // Create a new FileSystemWatcher and set its properties
                 watcher = new FileSystemWatcher();
-                watcher.Path = Path.GetDirectoryName(path);
-                watcher.Filter = Path.GetFileName(path);
+                watcher.Path = Path.GetDirectoryName(absPath);
+                watcher.Filter = Path.GetFileName(absPath);
                 watcher.NotifyFilter = NotifyFilters.LastWrite;
 
                 // Add event handlers for the Changed and Error events
@@ -64,12 +70,13 @@ namespace OSCVRCWiz.Speech_Recognition
         }
 
 
-        public static void FileToTTS(string path)
+        public static void FileToTTS(string absPath)
         {
             try
             {
-               
-                using (FileStream stream = new FileStream(path, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+
+
+                using (FileStream stream = new FileStream(absPath, System.IO.FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                 {
                     using (StreamReader reader = new StreamReader(stream))
                     {

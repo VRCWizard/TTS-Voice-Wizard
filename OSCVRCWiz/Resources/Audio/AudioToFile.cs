@@ -19,10 +19,22 @@ namespace OSCVRCWiz.Resources.Audio
 
     public class AudioToFile
     {
-        public static void WriteAudioToOutput(MemoryStream stream, AudioFormat format)
+        public static void WriteAudioToOutput(MemoryStream stream, AudioFormat format,bool uniqueNames)
         {
             try
             {
+                DateTime timestamp = DateTime.Now;
+                string timestampString = "";
+                if (uniqueNames)
+                {
+                    timestampString = timestamp.ToString("-yyyyMMdd_HHmmss");
+                }
+
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string relativePath = "Output\\AudioOutput\\TTSVoiceWizard" + timestampString + ".wav";
+                string fullPath = Path.Combine(basePath, relativePath);
+
+
                 WaveStream pcmStream;
 
                 switch (format)
@@ -31,7 +43,8 @@ namespace OSCVRCWiz.Resources.Audio
                         using (Mp3FileReader mp3Reader = new Mp3FileReader(stream))
                         {
                             pcmStream = WaveFormatConversionStream.CreatePcmStream(mp3Reader);
-                            WaveFileWriter.CreateWaveFile("Output\\AudioOutput\\TTSVoiceWizard-output.wav", pcmStream);
+                            WaveFileWriter.CreateWaveFile(fullPath, pcmStream);
+                            OutputText.outputLog("[Audio File Saved]");
                         }
                         break;
 
@@ -39,7 +52,8 @@ namespace OSCVRCWiz.Resources.Audio
                         using (RawSourceWaveStream rawReader = new RawSourceWaveStream(stream, new WaveFormat(11000, 16, 1)))
                         {
                             pcmStream = WaveFormatConversionStream.CreatePcmStream(rawReader);
-                            WaveFileWriter.CreateWaveFile("Output\\AudioOutput\\TTSVoiceWizard-output.wav", pcmStream);
+                            WaveFileWriter.CreateWaveFile(fullPath, pcmStream);
+                            OutputText.outputLog("[Audio File Saved]");
                         }
                         break;
 
@@ -47,7 +61,8 @@ namespace OSCVRCWiz.Resources.Audio
                         using (WaveFileReader wavReader = new WaveFileReader(stream))
                         {
                             pcmStream = WaveFormatConversionStream.CreatePcmStream(wavReader);
-                            WaveFileWriter.CreateWaveFile("Output\\AudioOutput\\TTSVoiceWizard-output.wav", pcmStream);
+                            WaveFileWriter.CreateWaveFile(fullPath, pcmStream);
+                            OutputText.outputLog("[Audio File Saved]");
                         }
                         break;
 

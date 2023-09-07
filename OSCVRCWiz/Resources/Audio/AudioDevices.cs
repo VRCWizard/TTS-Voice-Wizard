@@ -303,7 +303,7 @@ namespace OSCVRCWiz.Resources.Audio
 
                     saveStream.Flush();
                     saveStream.Seek(0, SeekOrigin.Begin);
-                    AudioToFile.WriteAudioToOutput(saveStream, audioFormat);
+                    AudioToFile.WriteAudioToOutput(saveStream, audioFormat, VoiceWizardWindow.MainFormGlobal.rjToggleButtonUniqueWavNames.Checked);
                 }
 
                 memoryStream.Flush();

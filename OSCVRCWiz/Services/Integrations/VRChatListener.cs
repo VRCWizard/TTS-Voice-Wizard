@@ -30,7 +30,7 @@ namespace OSCVRCWiz.Services.Integrations
 
         public static void OnStartUp()
         {
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton11.Checked == true)//turn on vrchat listener on start
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVRCActivate.Checked == true)//turn on vrchat listener on start
             {
                 try
                 {
@@ -53,8 +53,12 @@ namespace OSCVRCWiz.Services.Integrations
             {
                 VoiceWizardWindow.MainFormGlobal.button33.Enabled = false;
                 VoiceWizardWindow.MainFormGlobal.button33.ForeColor = Color.Green;
-                OutputText.outputLog("[VRChat OSC Listener Activated]", Color.Green);
-                OutputText.outputLog($"[VRChat OSC Listener: Remember that only one program can listen on a UDP port. TTS Voice Wizard is listening on port {FromVRChatPort}.", Color.DarkOrange);
+                OutputText.outputLog($"[VRChat Listener Activated ({FromVRChatPort})]", Color.Green);
+                OutputText.outputLog($"[VRChat Listener: Remember that only one program can listen on a UDP port. TTS Voice Wizard is listening on port {FromVRChatPort}.", Color.DarkOrange);
+                if (FromVRChatPort == "9000")
+                {
+                    OutputText.outputLog($"VRChat normally listens on port 9000 so unless you know what you are doing this is probably a mistake.", Color.Red);
+                }
             });
 
             HandleOscPacket callback = delegate (OscPacket packet)
@@ -224,7 +228,7 @@ namespace OSCVRCWiz.Services.Integrations
                 }
 
 
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButton13.Checked == true && VoiceWizardWindow.MainFormGlobal.button33.Enabled == false)
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked == true && VoiceWizardWindow.MainFormGlobal.button33.Enabled == false)
                 {
 
 

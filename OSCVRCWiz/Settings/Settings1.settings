@@ -584,5 +584,23 @@
     <Setting Name="KatLineLength" Type="System.String" Scope="User">
       <Value Profile="(Default)">32</Value>
     </Setting>
+    <Setting Name="voiceLanguageNew" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English [en]</Value>
+    </Setting>
+    <Setting Name="langSpokenSettingNew" Type="System.String" Scope="User">
+      <Value Profile="(Default)">English [en-US] (Default)</Value>
+    </Setting>
+    <Setting Name="PulsoidAuthToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PulsoidUpdateInterval" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
+    <Setting Name="PulsoidOnStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WaveUniqueNames" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
