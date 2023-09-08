@@ -144,22 +144,6 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
                 currentHR = heartRateResponse.data.heart_rate;
                 OSCListener.globalBPM = currentHR.ToString();
 
-                
-
-                var message0 = new CoreOSC.OscMessage("/avatar/parameters/HR", currentHR);
-                OSC.OSCSender.Send(message0);
-
-                int hundreds = currentHR / 100;
-                int tens = (currentHR / 10) % 10;
-                int ones = currentHR % 10;
-
-                var message1 = new CoreOSC.OscMessage("/avatar/parameters/onesHR", ones);
-                OSC.OSCSender.Send(message1);
-                var message2 = new CoreOSC.OscMessage("/avatar/parameters/tensHR", tens);
-                OSC.OSCSender.Send(message2);
-                var message3 = new CoreOSC.OscMessage("/avatar/parameters/hundredsHR", hundreds);
-                OSC.OSCSender.Send(message3);
-
 
 
             }
@@ -186,9 +170,23 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
         private static async void doHeartrateTimerTick()
         {
 
+            var message0 = new CoreOSC.OscMessage("/avatar/parameters/HR", currentHR);
+            OSC.OSCSender.Send(message0);
+
+            int hundreds = currentHR / 100;
+            int tens = (currentHR / 10) % 10;
+            int ones = currentHR % 10;
+
+            var message1 = new CoreOSC.OscMessage("/avatar/parameters/onesHR", ones);
+            OSC.OSCSender.Send(message1);
+            var message2 = new CoreOSC.OscMessage("/avatar/parameters/tensHR", tens);
+            OSC.OSCSender.Send(message2);
+            var message3 = new CoreOSC.OscMessage("/avatar/parameters/hundredsHR", hundreds);
+            OSC.OSCSender.Send(message3);
 
 
-            Debug.WriteLine(currentHR + "--" + HRPrevious);
+
+          //  Debug.WriteLine(currentHR + "--" + HRPrevious);
 
             var labelBattery = $"❤️ {OSCListener.globalBPM}";
 

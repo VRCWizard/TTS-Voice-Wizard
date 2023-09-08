@@ -3320,7 +3320,7 @@
             groupBox42.Margin = new Padding(3, 2, 3, 2);
             groupBox42.Name = "groupBox42";
             groupBox42.Padding = new Padding(3, 2, 3, 2);
-            groupBox42.Size = new Size(381, 257);
+            groupBox42.Size = new Size(381, 251);
             groupBox42.TabIndex = 112;
             groupBox42.TabStop = false;
             groupBox42.Text = "Pulsoid Settings";
@@ -3347,7 +3347,7 @@
             this.iconButton4.IconColor = Color.White;
             this.iconButton4.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new Point(321, 201);
+            this.iconButton4.Location = new Point(316, 158);
             this.iconButton4.Margin = new Padding(3, 2, 3, 2);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new Size(54, 50);
@@ -3361,7 +3361,7 @@
             // 
             label191.AutoSize = true;
             label191.ForeColor = Color.Snow;
-            label191.Location = new Point(65, 220);
+            label191.Location = new Point(68, 120);
             label191.Name = "label191";
             label191.Size = new Size(197, 15);
             label191.TabIndex = 133;
@@ -3370,7 +3370,7 @@
             // rjToggleActivatePulsoidStart
             // 
             this.rjToggleActivatePulsoidStart.AutoSize = true;
-            this.rjToggleActivatePulsoidStart.Location = new Point(20, 219);
+            this.rjToggleActivatePulsoidStart.Location = new Point(23, 119);
             this.rjToggleActivatePulsoidStart.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleActivatePulsoidStart.MinimumSize = new Size(39, 16);
             this.rjToggleActivatePulsoidStart.Name = "rjToggleActivatePulsoidStart";
@@ -3388,7 +3388,7 @@
             buttonPulsoidInterval.FlatStyle = FlatStyle.Flat;
             buttonPulsoidInterval.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             buttonPulsoidInterval.ForeColor = Color.Snow;
-            buttonPulsoidInterval.Location = new Point(140, 164);
+            buttonPulsoidInterval.Location = new Point(143, 166);
             buttonPulsoidInterval.Margin = new Padding(3, 2, 3, 2);
             buttonPulsoidInterval.Name = "buttonPulsoidInterval";
             buttonPulsoidInterval.Size = new Size(50, 25);
@@ -3401,7 +3401,7 @@
             // 
             labelHeartIntervalTooFast.AutoSize = true;
             labelHeartIntervalTooFast.ForeColor = Color.Red;
-            labelHeartIntervalTooFast.Location = new Point(20, 191);
+            labelHeartIntervalTooFast.Location = new Point(23, 193);
             labelHeartIntervalTooFast.Name = "labelHeartIntervalTooFast";
             labelHeartIntervalTooFast.Size = new Size(202, 15);
             labelHeartIntervalTooFast.TabIndex = 130;
@@ -3414,7 +3414,7 @@
             label196.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
             label196.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label196.ForeColor = Color.Snow;
-            label196.Location = new Point(20, 148);
+            label196.Location = new Point(23, 150);
             label196.Name = "label196";
             label196.Size = new Size(114, 15);
             label196.TabIndex = 128;
@@ -3475,7 +3475,7 @@
             // 
             // textBoxPulsoidInterval
             // 
-            textBoxPulsoidInterval.Location = new Point(20, 166);
+            textBoxPulsoidInterval.Location = new Point(23, 168);
             textBoxPulsoidInterval.Margin = new Padding(3, 2, 3, 2);
             textBoxPulsoidInterval.Name = "textBoxPulsoidInterval";
             textBoxPulsoidInterval.Size = new Size(114, 23);
@@ -3617,7 +3617,7 @@
             groupBox21.Controls.Add(textBoxHRPort);
             groupBox21.Controls.Add(label39);
             groupBox21.ForeColor = Color.White;
-            groupBox21.Location = new Point(24, 342);
+            groupBox21.Location = new Point(24, 338);
             groupBox21.Margin = new Padding(3, 2, 3, 2);
             groupBox21.Name = "groupBox21";
             groupBox21.Padding = new Padding(3, 2, 3, 2);
