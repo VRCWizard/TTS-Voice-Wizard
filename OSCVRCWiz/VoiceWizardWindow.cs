@@ -705,47 +705,48 @@ namespace OSCVRCWiz
             switch (comboBoxTTSMode.Text.ToString())
             {
                 case "Moonbase":
+                    DoSpeech.TTSModeSaved = "Moonbase";
                     MoonbaseTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Moonbase";
+                    trackBarSpeed.Enabled = true;                
                     OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
 
 
                     break;
                 case "TikTok":
-
+                    DoSpeech.TTSModeSaved = "TikTok";
                     TikTokTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "TikTok";
+                   
 
 
                     break;
                 case "System Speech":
+                    DoSpeech.TTSModeSaved = "System Speech";
                     SystemSpeechTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "System Speech";
+                    
 
                     break;
                 case "Azure":
+                    DoSpeech.TTSModeSaved = "Azure";
                     AzureTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = true;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Azure";
 
                     if (textBoxAzureKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
@@ -757,13 +758,14 @@ namespace OSCVRCWiz
                     break;
 
                 case "Google (Pro Only)":
+                    DoSpeech.TTSModeSaved = "Google (Pro Only)";
                     GoogleTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = true;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Google (Pro Only)";
+                    
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
@@ -774,13 +776,13 @@ namespace OSCVRCWiz
                     break;
 
                 case "IBM Watson (Pro Only)":
+                    DoSpeech.TTSModeSaved = "IBM Watson (Pro Only)";
                     IBMWatsonTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = true;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "IBM Watson (Pro Only)";
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
@@ -791,19 +793,23 @@ namespace OSCVRCWiz
                     break;
 
                 case "Uberduck":
+                    DoSpeech.TTSModeSaved = "Uberduck";
                     UberDuckTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = true;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Uberduck";
+                    trackBarSpeed.Enabled = true;            
 
+                    if (textBoxUberKey.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an Uberduck Key: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Uberduck-TTS ]", Color.DarkOrange);
+                    }
 
                     break;
 
                 case "Locally Hosted":
-
+                    DoSpeech.TTSModeSaved = "Locally Hosted";
                     comboBoxVoiceSelect.Items.Clear();
                     comboBoxVoiceSelect.Items.Add("Local 1");
                     comboBoxVoiceSelect.SelectedIndex = 0;
@@ -817,13 +823,14 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Locally Hosted";
+                    
 
                     OutputText.outputLog("[Here is an example of a project that can be used with Local: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS . This method works by sending a GET request to http://127.0.0.1:8124/synthesize/ with the string parameter 'text'. If you create compatible projects or models, feel free to share them in the Discord server.]", Color.DarkOrange);
 
                     break;
 
                 case "ElevenLabs":
+                    DoSpeech.TTSModeSaved = "ElevenLabs";
 
                     ElevenLabsTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
 
@@ -831,8 +838,7 @@ namespace OSCVRCWiz
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "ElevenLabs";
+                    trackBarSpeed.Enabled = true;          
 
                     if (textBoxElevenLabsKey.Text.ToString() == "")
                     {
@@ -843,7 +849,7 @@ namespace OSCVRCWiz
 
 
                 case "Amazon Polly":
-
+                    DoSpeech.TTSModeSaved = "Amazon Polly";
                     AmazonPollyTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
 
                     comboBoxTranslationLanguage.Enabled = true;
@@ -851,7 +857,7 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    DoSpeech.TTSModeSaved = "Amazon Polly";
+                    
 
                     if (textBoxAmazonKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {

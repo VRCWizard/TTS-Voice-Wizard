@@ -120,7 +120,7 @@ namespace OSCVRCWiz
                 translationConfig = SpeechTranslationConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
                 // speechConfig.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt"); //This line of code was the cause for an outstanding bug, if the log file becomes too full it causes issue. Further testing required before adding logging back as a feature.
                 fromLanguage = LanguageSelect.fromLanguageNew(fromLanguageFullname, "sourceLanguage", "Azure");
-                toLanguage = LanguageSelect.fromLanguageNew(toLanguageFullname, "targetLanguage", "Azure");
+                toLanguage = LanguageSelect.fromLanguageNew(toLanguageFullname, "targetLanguage", "Pro");
               //  fromLanguageID(fromLanguageFullname); //Convert information from selected spoken language and sets fromLanuage to the ID
               //  toLanguageID(toLanguageFullname);//Convert information from selected translation language and sets toLanuage to the ID
 
@@ -336,6 +336,7 @@ namespace OSCVRCWiz
                 System.Diagnostics.Debug.WriteLine($"we'll translate into '{toLanguage}'.\n");
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    DoSpeech.speechToTextOnSound();
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
                         OSCListener.pauseBPM = true;
@@ -366,7 +367,7 @@ namespace OSCVRCWiz
 
 
                     TTSMessageQueue.QueueMessage(text, "Azure Translate", translatedString);
-
+                    DoSpeech.speechToTextButtonOff();
 
                 }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true && continuousListening == false)

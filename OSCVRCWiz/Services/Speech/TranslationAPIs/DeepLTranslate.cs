@@ -31,6 +31,13 @@ namespace OSCVRCWiz.Services.Speech.TranslationAPIs
                 var from = LanguageSelect.fromLanguageNew(fullFromLanguage, "sourceLanguage", "DeepL");
                 var to = LanguageSelect.fromLanguageNew(fullToLanguage, "targetLanguage", "DeepL");
 
+                switch (to)
+                {
+
+                    case "en": to = "en-US"; break;
+                }
+
+
                 var translatedText = await translator.TranslateTextAsync(text, from, to);
                 System.Diagnostics.Debug.WriteLine(translatedText);
                 //System.Diagnostics.Debug.WriteLine(LanguageCode.English);

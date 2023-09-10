@@ -122,8 +122,21 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     {
                         VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.Items.Add(cat);
                     }
+
+                   
                 }
 
+                if (changedMethods)
+                {
+                    VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex = 0;
+                    VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Items.Clear();
+                }
+
+                if (currentCategory == "")
+                {
+
+                    currentCategory = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.Text.ToString();
+                }
 
                 foreach (KeyValuePair<string, string> voice in UberNameAndCategory)
                 {
@@ -132,11 +145,28 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         //Console.WriteLine("Voice " + voice.Key + " belongs to category " + currentCategory);
                         VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Items.Add(voice.Key);
                     }
+
                 }
 
+
+
+
+
+            }
+            try
+            {
+                if (VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect != null)
+                {
+
+
+                    VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex) 
+            {
+                OutputText.outputLog("[Uberduck Voice Load Error: "+ex.Message+"]", Color.Red);
             }
 
-            VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex = 0;
 
 
 
@@ -259,10 +289,14 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
         {
             accents.Items.Clear();
+            voices.Items.Clear();
             UberDuckTTS.SynthesisGetAvailableVoicesAsync(accents.Text.ToString(), true);
+            
             styles.SelectedIndex = 0;
             styles.Enabled = false;
             voices.Enabled = true;
+
+           // accents.SelectedIndex = 0;
         }
 
       }
