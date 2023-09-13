@@ -2132,7 +2132,7 @@ namespace OSCVRCWiz
         {
             if (!HeartratePulsoid.pulsoidEnabled)
             {
-                HeartratePulsoid.PulsoidHeartRate(VoiceWizardWindow.MainFormGlobal.pulsoidAuthToken.Text.ToString());
+                HeartratePulsoid.ConnectToPulsoid(VoiceWizardWindow.MainFormGlobal.pulsoidAuthToken.Text.ToString());
             }
             else
             {

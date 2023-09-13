@@ -91,6 +91,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     //   Console.WriteLine("Voice " + voice.Key + " belongs to category " + categoryName);
                 }
                 VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedIndex = 0;
+                VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Items.Clear();
                 foreach (KeyValuePair<string, string> voice in UberNameAndCategory)
                 {
                     if (voice.Value == VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.SelectedItem.ToString())

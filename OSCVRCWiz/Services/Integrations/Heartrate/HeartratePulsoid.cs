@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.WebSockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
@@ -23,7 +24,7 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
         static int currentHR = 0;
         public static bool pulsoidEnabled = false;
 
-        static CancellationTokenSource  PulsoidCt = new();
+        static CancellationTokenSource PulsoidCt = new();
 
 
 
@@ -35,7 +36,7 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
             {
                 if (!HeartratePulsoid.pulsoidEnabled)
                 {
-                    HeartratePulsoid.PulsoidHeartRate(VoiceWizardWindow.MainFormGlobal.pulsoidAuthToken.Text.ToString());
+                    ConnectToPulsoid(VoiceWizardWindow.MainFormGlobal.pulsoidAuthToken.Text.ToString());
                 }
 
             }
@@ -67,9 +68,11 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
 
         }
 
-        public static async Task PulsoidHeartRate(string accessToken)
+        public static async Task ConnectToPulsoid(string accessToken)
         {
-           
+
+
+
             PulsoidCt = new();
 
 
@@ -79,51 +82,89 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
             {
                 try
                 {
-                    await clientWebSocket.ConnectAsync(uri, PulsoidCt.Token);
-
-                    //make heart green
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                    {
-                        VoiceWizardWindow.MainFormGlobal.buttonPulsoidConnect.ForeColor = Color.Green;
-                        if (VoiceWizardWindow.MainFormGlobal.groupBoxHeartrate.ForeColor != Color.Green)
-                        {
-                            VoiceWizardWindow.MainFormGlobal.groupBoxHeartrate.ForeColor = Color.Green;
-                            VoiceWizardWindow.MainFormGlobal.HeartrateLabel.ForeColor = Color.Green;
-                        }
-                    });
-                    var message1 = new CoreOSC.OscMessage("/avatar/parameters/isHRConnected", true);
-                    OSC.OSCSender.Send(message1);
-
-                    OutputText.outputLog($"[Pulsoid WebSocket Activated]",Color.Green);
-                    StartHeartTimer();
-                    pulsoidEnabled = true;
-
-                    while (clientWebSocket.State == WebSocketState.Open)
-                    {
-
-                        if (PulsoidCt.Token.IsCancellationRequested)
-                        {
-                            // Perform cleanup and close the WebSocket gracefully
-                            await clientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Cancellation requested", CancellationToken.None);
-                            break; // Exit the loop
-                        }
-
-                        await ReceiveData(clientWebSocket);
-                    }
+                    await clientWebSocket.ConnectAsync(uri, PulsoidCt.Token);//try to connect
+                    await HeartrateConnected(clientWebSocket);//upon successful connection
                 }
-                catch (WebSocketException ex)
+                catch (WebSocketException ex) when (ex.Message.Contains("403"))//incorrect accesstoken
                 {
-                    OutputText.outputLog($"Pulsoid WebSocketException: {ex.Message}",Color.Red);
-                    OutputText.outputLog($"Try re-adding your Pulsoid authorization token", Color.Orange);
+                    // Handle URL/connection errors (e.g., incorrect access token) here
+                    OutputText.outputLog($"Pulsoid WebSocketException: {ex.Message}", Color.Red);
+                    OutputText.outputLog($"Your authorization token may be invalid, try re-copying it.", Color.Orange);
+
                     pulsoidEnabled = false;
                     VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                     {
-                        VoiceWizardWindow.MainFormGlobal.buttonPulsoidConnect.BackColor = Color.Red;                  
+                        VoiceWizardWindow.MainFormGlobal.buttonPulsoidConnect.ForeColor = Color.Red;
+                    });
+                }
+                catch (WebSocketException ex)// reconnection logic
+                {
+
+                    OutputText.outputLog($"Pulsoid WebSocketException: {ex.Message}", Color.Red);
+                    OutputText.outputLog($"Attempting to reconnect...", Color.Orange);
+                    pulsoidEnabled = true;
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        VoiceWizardWindow.MainFormGlobal.buttonPulsoidConnect.ForeColor = Color.Orange;
+                    });
+                    await Task.Delay(TimeSpan.FromSeconds(5)); 
+                    if (PulsoidCt.Token.IsCancellationRequested)
+                    {
+                        return;
+                    }
+                    ConnectToPulsoid(accessToken);
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    // Handle other exceptions
+                    OutputText.outputLog($"Heartrate Error: {ex.Message}", Color.Red);
+                    pulsoidEnabled = false;
+                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    {
+                        VoiceWizardWindow.MainFormGlobal.buttonPulsoidConnect.ForeColor = Color.Red;
                     });
                 }
             }
 
 
+        }
+
+
+
+        private static async Task HeartrateConnected(ClientWebSocket clientWebSocket)
+        {
+            // Make the heart green
+            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            {
+                VoiceWizardWindow.MainFormGlobal.buttonPulsoidConnect.ForeColor = Color.Green;
+                if (VoiceWizardWindow.MainFormGlobal.groupBoxHeartrate.ForeColor != Color.Green)
+                {
+                    VoiceWizardWindow.MainFormGlobal.groupBoxHeartrate.ForeColor = Color.Green;
+                    VoiceWizardWindow.MainFormGlobal.HeartrateLabel.ForeColor = Color.Green;
+                }
+            });
+
+            var message1 = new CoreOSC.OscMessage("/avatar/parameters/isHRConnected", true);
+            OSC.OSCSender.Send(message1);
+
+            OutputText.outputLog("[Pulsoid WebSocket Connected]", Color.Green);
+            StartHeartTimer();
+            pulsoidEnabled = true;
+
+            while (clientWebSocket.State == WebSocketState.Open)
+            {
+                if (PulsoidCt.Token.IsCancellationRequested)
+                {
+                    // Perform cleanup and close the WebSocket gracefully
+                    await clientWebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Cancellation requested", CancellationToken.None);
+                    break; // Exit the loop
+                }
+
+                await ReceiveData(clientWebSocket);
+            }
         }
 
         static async Task ReceiveData(ClientWebSocket clientWebSocket)
@@ -140,25 +181,27 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
                 // Deserialize JSON and extract the heart rate value
                 HeartRateResponse heartRateResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<HeartRateResponse>(jsonMessage);
 
-
                 currentHR = heartRateResponse.data.heart_rate;
                 OSCListener.globalBPM = currentHR.ToString();
-
-
-
             }
 
         }
+
+
+
         public static void StartHeartTimer()
         {
             heartRateTimer = new System.Threading.Timer(heartratetimertick);
             heartRateTimer.Change(Int32.Parse(heartrateIntervalPulsoid), 0);
 
-        
+
         }
         public static void StopHeartTimer()
         {
-            heartRateTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            if (heartRateTimer != null)
+            {
+                heartRateTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
         }
 
         public static void heartratetimertick(object sender)
@@ -186,7 +229,7 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
 
 
 
-          //  Debug.WriteLine(currentHR + "--" + HRPrevious);
+            //  Debug.WriteLine(currentHR + "--" + HRPrevious);
 
             var labelBattery = $"❤️ {OSCListener.globalBPM}";
 
@@ -267,12 +310,12 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
             }
 
 
-                heartRateTimer.Change(Int32.Parse(heartrateIntervalPulsoid), 0);
-            
+            heartRateTimer.Change(Int32.Parse(heartrateIntervalPulsoid), 0);
+
 
 
         }
-       
+
     }
 
     class HeartRateResponse
