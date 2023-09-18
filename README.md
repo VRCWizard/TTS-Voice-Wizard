@@ -51,7 +51,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 🔋 Display **tracker and controller battery life** in conjunction with [XSOverlay](https://store.steampowered.com/app/1173510/XSOverlay/) <br />
 
-❤️ Use in conjuntion with [HRtoVRChat_OSC](https://github.com/200Tigersbloxed/HRtoVRChat_OSC) to enable you to display your **heartrate** in VRChat's Chatbox <br />
+❤️ Use in conjuntion with [Pulsoid](https://pulsoid.net/) or [HRtoVRChat_OSC](https://github.com/200Tigersbloxed/HRtoVRChat_OSC) to enable you to display your **heartrate** in VRChat's Chatbox <br />
 
 🗣️ Control VRChat avatar parameters with **voice commands**
 
