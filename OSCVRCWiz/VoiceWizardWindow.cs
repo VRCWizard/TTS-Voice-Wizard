@@ -18,6 +18,7 @@ using FontAwesome.Sharp;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Integrations.Heartrate;
 using System.Configuration;
+using OSCVRCWiz.Services.Speech.Speech_Recognition;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
@@ -711,7 +712,7 @@ namespace OSCVRCWiz
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = true;                
+                    trackBarSpeed.Enabled = true;
                     OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
 
 
@@ -724,7 +725,7 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                   
+
 
 
                     break;
@@ -736,7 +737,7 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    
+
 
                     break;
                 case "Azure":
@@ -765,7 +766,7 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    
+
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
@@ -799,7 +800,7 @@ namespace OSCVRCWiz
                     comboBoxAccentSelect.Enabled = true;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = true;            
+                    trackBarSpeed.Enabled = true;
 
                     if (textBoxUberKey.Text.ToString() == "")
                     {
@@ -823,7 +824,7 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    
+
 
                     OutputText.outputLog("[Here is an example of a project that can be used with Local: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS . This method works by sending a GET request to http://127.0.0.1:8124/synthesize/ with the string parameter 'text'. If you create compatible projects or models, feel free to share them in the Discord server.]", Color.DarkOrange);
 
@@ -838,7 +839,7 @@ namespace OSCVRCWiz
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
-                    trackBarSpeed.Enabled = true;          
+                    trackBarSpeed.Enabled = true;
 
                     if (textBoxElevenLabsKey.Text.ToString() == "")
                     {
@@ -857,7 +858,7 @@ namespace OSCVRCWiz
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    
+
 
                     if (textBoxAmazonKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
@@ -919,11 +920,14 @@ namespace OSCVRCWiz
                 // Get the language code from the selected translation language
                 string translationLanguageCode = comboBoxTranslationLanguage.SelectedItem.ToString().Substring(0, comboBoxTranslationLanguage.SelectedItem.ToString().IndexOf(' '));
 
-                // Check if the selected spoken language is the same as the selected translation language
-                if (spokenLanguageCode == translationLanguageCode)
+                if (!rjToggleTranslateSameLanguage.Checked)
                 {
-                    // Set the translation language to position 0 (no translation)
-                    comboBoxTranslationLanguage.SelectedIndex = 0;
+                    // Check if the selected spoken language is the same as the selected translation language
+                    if (spokenLanguageCode == translationLanguageCode)
+                    {
+                        // Set the translation language to position 0 (no translation)
+                        comboBoxTranslationLanguage.SelectedIndex = 0;
+                    }
                 }
                 // added: change language -chrisk
                 switch (comboBoxSTT.Text.ToString())
@@ -955,11 +959,15 @@ namespace OSCVRCWiz
                 // Get the language code from the selected translation language
                 string translationLanguageCode = comboBoxTranslationLanguage.SelectedItem.ToString().Substring(0, comboBoxTranslationLanguage.SelectedItem.ToString().IndexOf(' '));
 
-                // Check if the selected spoken language is the same as the selected translation language
-                if (spokenLanguageCode == translationLanguageCode)
+
+                if (!rjToggleTranslateSameLanguage.Checked)
                 {
-                    // Set the translation language to position 0 (no translation)
-                    comboBoxTranslationLanguage.SelectedIndex = 0;
+                    // Check if the selected spoken language is the same as the selected translation language
+                    if (spokenLanguageCode == translationLanguageCode)
+                    {
+                        // Set the translation language to position 0 (no translation)
+                        comboBoxTranslationLanguage.SelectedIndex = 0;
+                    }
                 }
 
             }
@@ -3032,8 +3040,25 @@ namespace OSCVRCWiz
         #endregion
         #endregion
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            WebSocketServer.ToggleServer();
+        }
 
+        private void label195_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://vrcwizard.github.io/TTS-Voice-Wizard-React/");
+        }
 
+        private void iconButton5_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#websocket-to-text-to-speech");
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            WebSocketServer.WebSocketServerPort = WebsocketServerPortText.Text.ToString();
+        }
     }
 
 

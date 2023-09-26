@@ -3,6 +3,7 @@ using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Integrations.Heartrate;
 using OSCVRCWiz.Services.Integrations.Media;
+using OSCVRCWiz.Services.Speech.Speech_Recognition;
 using OSCVRCWiz.Settings;
 using Settings;
 
@@ -295,6 +296,11 @@ namespace OSCVRCWiz
             Settings1.Default.PulsoidOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleActivatePulsoidStart.Checked;
             Settings1.Default.WaveUniqueNames = VoiceWizardWindow.MainFormGlobal.rjToggleButtonUniqueWavNames.Checked;
 
+            Settings1.Default.cheatAzureTranslation = VoiceWizardWindow.MainFormGlobal.rjToggleTranslateSameLanguage.Checked;
+            Settings1.Default.websocketOnStart = VoiceWizardWindow.MainFormGlobal.rjToggleActivateWebsocketOnStart.Checked;
+            Settings1.Default.websocketPort = WebSocketServer.WebSocketServerPort;
+
+            Settings1.Default.showSpotifyURi = VoiceWizardWindow.MainFormGlobal.rjToggleShowConnectURISpotify.Checked;
 
 
             Settings1.Default.Save();

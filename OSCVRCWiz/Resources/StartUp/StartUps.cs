@@ -3,6 +3,7 @@ using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Integrations.Heartrate;
 using OSCVRCWiz.Services.Integrations.Media;
+using OSCVRCWiz.Services.Speech.Speech_Recognition;
 using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Speech_Recognition;
@@ -48,7 +49,7 @@ namespace OSCVRCWiz.Resources.StartUp
             SpotifyAddon.initiateTimer();
             WhisperRecognition.initiateTimer();
             ToastNotification.initiateTimer();
-           // HeartratePulsoid.initiateTimer();
+            
 
             //timers
             
@@ -68,6 +69,7 @@ namespace OSCVRCWiz.Resources.StartUp
             MinimizeSystemTray.StartInSystemTray();
             OutputText.EmptyTextOutput();
             WindowsMedia.addSoundPad();
+            WebSocketServer.ActivateOnStartUp();
 
 
             OutputText.outputLog("[QuickStart Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide ]");

@@ -55,6 +55,12 @@ namespace OSCVRCWiz.Services.Integrations
             {
                     Task.Run(() => OSCListener.OSCRecieveHeartRate());
             }
+
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleActivateOSCListenerStart.Checked == true)//turn on osc listener on start
+            {
+                Task.Run(() => OSCListener.OSCRecieveHeartRate());
+            }
         }
 
             public static void OSCRecieveHeartRate()

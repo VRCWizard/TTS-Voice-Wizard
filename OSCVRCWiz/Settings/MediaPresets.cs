@@ -42,6 +42,8 @@ namespace Settings
 
         public static void presetSaveButton()
         {
+            string text = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString().Replace(":", "{colon}").Replace(";", "{semi}");
+
             if (editingPreset == false)
             {
                 mediapresetnum++;
@@ -55,7 +57,7 @@ namespace Settings
 
                 }
                 saveThisPreset.PresetName = nameToCheck;
-                saveThisPreset.mediaText = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text;
+                saveThisPreset.mediaText = text;
                 saveThisPreset.updateInterval = SpotifyAddon.spotifyInterval;
                 saveThisPreset.OutputContinuously = boolToString(VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked);
                 saveThisPreset.StopPaused = boolToString(VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked);
@@ -84,7 +86,7 @@ namespace Settings
                 }
                 saveThisPreset.PresetName = nameToCheck;
                // saveThisPreset.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem.ToString();
-                saveThisPreset.mediaText = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text;
+                saveThisPreset.mediaText = text;
                 saveThisPreset.updateInterval = SpotifyAddon.spotifyInterval;
                 saveThisPreset.OutputContinuously = boolToString(VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked);
                 saveThisPreset.StopPaused = boolToString(VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked);
@@ -141,7 +143,7 @@ namespace Settings
 
                        
 
-                      VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text =kvp.Value.mediaText;
+                      VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text =kvp.Value.mediaText.ToString().Replace("{colon}", ":").Replace("{semi}", ";"); ;
                       SpotifyAddon.spotifyInterval = kvp.Value.updateInterval;
                         VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked = stringToBool(kvp.Value.OutputContinuously);
                         VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked = stringToBool(kvp.Value.StopPaused);

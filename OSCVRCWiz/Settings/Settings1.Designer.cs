@@ -2422,5 +2422,53 @@ namespace OSCVRCWiz.Settings {
                 this["WaveUniqueNames"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool cheatAzureTranslation {
+            get {
+                return ((bool)(this["cheatAzureTranslation"]));
+            }
+            set {
+                this["cheatAzureTranslation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool websocketOnStart {
+            get {
+                return ((bool)(this["websocketOnStart"]));
+            }
+            set {
+                this["websocketOnStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9008")]
+        public string websocketPort {
+            get {
+                return ((string)(this["websocketPort"]));
+            }
+            set {
+                this["websocketPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool showSpotifyURi {
+            get {
+                return ((bool)(this["showSpotifyURi"]));
+            }
+            set {
+                this["showSpotifyURi"] = value;
+            }
+        }
     }
 }
