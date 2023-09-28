@@ -30,9 +30,12 @@ namespace OSCVRCWiz
 
                 try
                 {
-                    
-                        File.WriteAllTextAsync(@"CrashDump\CrashReport"+ DateTime.Now.ToString("-MM-dd_h-mm-ss") + ".txt", errorMsg);
-                    
+                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                    string relativePath = "Assets/CrashDump/CrashReport" + DateTime.Now.ToString("-MM-dd_h-mm-ss") + ".txt";
+                    string FullFilePath = Path.Combine(basePath, relativePath);
+
+                    File.WriteAllTextAsync(FullFilePath, errorMsg);
+
                 }
                 catch (Exception exx)
                 {
@@ -60,8 +63,11 @@ namespace OSCVRCWiz
 
                try
                 {
+                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                    string relativePath = "Assets/CrashDump/CrashReport" + DateTime.Now.ToString("-MM-dd_h-mm-ss") + ".txt";
+                    string FullFilePath = Path.Combine(basePath, relativePath);
 
-                    File.WriteAllTextAsync(@"CrashDump\CrashReport" + DateTime.Now.ToString("-MM-dd_h-mm-ss") + ".txt", errorMsg);
+                    File.WriteAllTextAsync(FullFilePath, errorMsg);
 
                 }
                 catch (Exception exx)

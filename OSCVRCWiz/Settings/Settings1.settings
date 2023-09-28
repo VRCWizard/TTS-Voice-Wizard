@@ -602,5 +602,17 @@
     <Setting Name="WaveUniqueNames" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="cheatAzureTranslation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="websocketOnStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="websocketPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9008</Value>
+    </Setting>
+    <Setting Name="showSpotifyURi" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
