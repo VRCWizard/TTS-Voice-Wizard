@@ -16,6 +16,8 @@
   <a href="https://discord.com/invite/YjgR9SWPnW"><img alt="Discord" src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
   <a href="https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features"><img alt="Trello" src="https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white"></a>
   <a href="https://ko-fi.com/ttsvoicewizard"><img alt="Ko-Fi" src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white"></a>
+  <a href="https://www.patreon.com/ttsvoicewizard"><img alt="Ko-Fi" src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white"></a>
+
   
  
  </p>
