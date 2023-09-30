@@ -66,25 +66,25 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 {
                     case "Afrikaans [af]": localList.Add("af-ZA"); break;
                     case "Arabic [ar]":
-                        //   localList.Add("ar-AE");
+                           localList.Add("ar-AE");
 
-                        //  localList.Add("ar-BH");
+                          localList.Add("ar-BH");
                         localList.Add("ar-DZ");
                         localList.Add("ar-EG");
-                        //  localList.Add("ar-IL");
+                          localList.Add("ar-IL");
                         localList.Add("ar-IQ");
-                        //  localList.Add("ar-JO");
-                        //   localList.Add("ar-KW");
-                        //  localList.Add("ar-LB");
-                        //  localList.Add("ar-LY");
-                        //  localList.Add("ar-MA");
-                        //  localList.Add("ar-OM");
-                        //  localList.Add("ar-PS");
-                        //  localList.Add("ar-QA");
-                        //  localList.Add("ar-SA");
-                        // localList.Add("ar-SY");
-                        //  localList.Add("ar-TN");
-                        //  localList.Add("ar-YE");
+                          localList.Add("ar-JO");
+                           localList.Add("ar-KW");
+                          localList.Add("ar-LB");
+                         localList.Add("ar-LY");
+                          localList.Add("ar-MA");
+                         localList.Add("ar-OM");
+                          localList.Add("ar-PS");
+                          localList.Add("ar-QA");
+                          localList.Add("ar-SA");
+                         localList.Add("ar-SY");
+                          localList.Add("ar-TN");
+                          localList.Add("ar-YE");
                         break;
                     case "Armenian [hy]": localList.Add("hy-AM"); break;
                     case "Azerbaijani [az]": localList.Add("az-AZ"); break;
@@ -181,7 +181,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                     case "Russian [ru]": localList.Add("ru-RU"); break;
                     case "Serbian [sr]": 
-                        localList.Add("sr-LATN-RS");
+                        localList.Add("sr-Latn-RS");
                         localList.Add("sr-RS");
                         break;
                     case "Slovak [sk]": localList.Add("sk-SK"); break;
@@ -191,27 +191,27 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         localList.Add("es-MX");
                         localList.Add("es-ES");
                         localList.Add("es-US");
-                        //  localList.Add("es-AR");
-                        // localList.Add("es-BO");
-                        // localList.Add("es-CL");
-                        //localList.Add("es-CO");
-                        // localList.Add("es-CR");
-                        // localList.Add("es-CU");
-                        // localList.Add("es-DO");
-                        // localList.Add("es-EC");
+                          localList.Add("es-AR");
+                         localList.Add("es-BO");
+                         localList.Add("es-CL");
+                        localList.Add("es-CO");
+                         localList.Add("es-CR");
+                         localList.Add("es-CU");
+                        localList.Add("es-DO");
+                         localList.Add("es-EC");
 
-                        //  //localList.Add("es-GQ");
-                        // localList.Add("es-GT");
-                        //  localList.Add("es-HN");
+                         localList.Add("es-GQ");
+                         localList.Add("es-GT");
+                          localList.Add("es-HN");
 
-                        //  localList.Add("es-PE");
-                        //   localList.Add("es-PR");
-                        //  localList.Add("es-PY");
-                        //  localList.Add("es-SV");
+                          localList.Add("es-PE");
+                           localList.Add("es-PR");
+                        localList.Add("es-PY");
+                         localList.Add("es-SV");
 
-                        //   localList.Add("es-UY");
-                        //   localList.Add("es-VE");
-                        //  localList.Add("es-AR");
+                           localList.Add("es-UY");
+                          localList.Add("es-VE");
+
                         // 
                         break;
                     case "Swahili [sw]": 

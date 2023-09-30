@@ -4,6 +4,7 @@ using static OSCVRCWiz.Services.Speech.TextToSpeech.TTSMessageQueue;
 using System.Net.Http.Headers;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
+using MeaMod.DNS.Server;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
@@ -65,8 +66,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     //  voiceList.Add(voice.display_name);
                     try
                     {
+                        string categoryFix = voice.category;
+                        if(categoryFix =="")
+                        {
+                            categoryFix = "Uncategorized";
+                        }
                         UberVoiceNameAndID.Add(voice.display_name, voice.voicemodel_uuid);
-                        UberNameAndCategory.Add(voice.display_name, voice.category);
+                        UberNameAndCategory.Add(voice.display_name, categoryFix);
                     }
                     catch (ArgumentException e) { }
                 }
@@ -76,6 +82,10 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 foreach (KeyValuePair<string, string> voice in sortedList)
                 {
                     string categoryName = voice.Value;
+                    if(categoryName =="")
+                    {
+                        categoryName = "Uncategorized";
+                    }
 
                     // If this is a new category, do something
                     if (!seenCategories.Contains(categoryName))
