@@ -55,6 +55,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 int optimize = 0;
                 int stabilities = 0;
                 int similarities = 0;
+                int styles = 0;
+                bool boost = true;
                 string modelID = "eleven_monolingual_v1";
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
@@ -64,6 +66,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     stabilities = VoiceWizardWindow.MainFormGlobal.trackBarStability.Value;
                     similarities = VoiceWizardWindow.MainFormGlobal.trackBarSimilarity.Value;
                     modelID = VoiceWizardWindow.MainFormGlobal.comboBoxLabsModelID.SelectedItem.ToString();
+                    styles = VoiceWizardWindow.MainFormGlobal.trackBarStyleExaggeration.Value;
+                    boost= VoiceWizardWindow.MainFormGlobal.rjToggleSpeakerBoost.Checked;
 
                     Debug.WriteLine(optimize);
                     Debug.WriteLine(stabilities);
@@ -76,6 +80,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                 var similarityFloat = similarities * 0.01f;
                 var stabilityFloat = stabilities * 0.01f;
+                var styleFloat = styles * 0.01f;
 
                 var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}?optimize_streaming_latency={optimize}";
                 //  var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}";
@@ -90,7 +95,9 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     voice_settings = new
                     {
                         stability = stabilityFloat,
-                        similarity_boost = similarityFloat
+                        similarity_boost = similarityFloat,
+                        style = styleFloat,
+                        use_speaker_boost = boost
                     }
                 });
 

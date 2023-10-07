@@ -269,6 +269,8 @@ namespace OSCVRCWiz
             Settings1.Default.labsOptimize = VoiceWizardWindow.MainFormGlobal.comboBoxLabsOptimize.SelectedIndex;
             Settings1.Default.labsSimboost = VoiceWizardWindow.MainFormGlobal.trackBarSimilarity.Value;
             Settings1.Default.labsStability = VoiceWizardWindow.MainFormGlobal.trackBarStability.Value;
+            Settings1.Default.labsStyleExagg = VoiceWizardWindow.MainFormGlobal.trackBarStyleExaggeration.Value;
+            Settings1.Default.labsSpeakerBoost = VoiceWizardWindow.MainFormGlobal.rjToggleSpeakerBoost.Checked;
 
             Settings1.Default.saveToWav = VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked;
 

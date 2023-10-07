@@ -145,6 +145,8 @@
             button44 = new Button();
             volumeStats = new Button();
             groupBox4 = new GroupBox();
+            label199 = new Label();
+            this.rjToggleShowConnectURISpotify = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label155 = new Label();
             this.rjToggleButtonForceMedia = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label108 = new Label();
@@ -586,6 +588,11 @@
             comboBoxSysSpeechRecog = new ComboBox();
             elevenLabs = new TabPage();
             groupBox30 = new GroupBox();
+            labelStyleExagg = new Label();
+            trackBarStyleExaggeration = new TrackBar();
+            label202 = new Label();
+            label200 = new Label();
+            this.rjToggleSpeakerBoost = new global::OSCVRCWiz.RJControls.RJToggleButton();
             button51 = new Button();
             labelStability = new Label();
             labelSimboost = new Label();
@@ -674,8 +681,6 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
-            label199 = new Label();
-            this.rjToggleShowConnectURISpotify = new global::OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             ((global::System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -751,6 +756,7 @@
             groupBox28.SuspendLayout();
             elevenLabs.SuspendLayout();
             groupBox30.SuspendLayout();
+            ((global::System.ComponentModel.ISupportInitialize)(trackBarStyleExaggeration)).BeginInit();
             ((global::System.ComponentModel.ISupportInitialize)(trackBarSimilarity)).BeginInit();
             ((global::System.ComponentModel.ISupportInitialize)(trackBarStability)).BeginInit();
             groupBox39.SuspendLayout();
@@ -2624,6 +2630,33 @@
             groupBox4.TabIndex = 139;
             groupBox4.TabStop = false;
             groupBox4.Text = "Advanced Text Settings";
+            // 
+            // label199
+            // 
+            label199.AutoSize = true;
+            label199.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label199.ForeColor = Color.Snow;
+            label199.Location = new Point(60, 150);
+            label199.Name = "label199";
+            label199.Size = new Size(251, 15);
+            label199.TabIndex = 126;
+            label199.Text = "Show Spotify Connect URI in Log (don't share)";
+            // 
+            // rjToggleShowConnectURISpotify
+            // 
+            this.rjToggleShowConnectURISpotify.AutoSize = true;
+            this.rjToggleShowConnectURISpotify.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
+            this.rjToggleShowConnectURISpotify.Location = new Point(16, 150);
+            this.rjToggleShowConnectURISpotify.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleShowConnectURISpotify.MinimumSize = new Size(39, 16);
+            this.rjToggleShowConnectURISpotify.Name = "rjToggleShowConnectURISpotify";
+            this.rjToggleShowConnectURISpotify.OffBackColor = Color.Gray;
+            this.rjToggleShowConnectURISpotify.OffToggleColor = Color.Gainsboro;
+            this.rjToggleShowConnectURISpotify.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleShowConnectURISpotify.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleShowConnectURISpotify.Size = new Size(39, 16);
+            this.rjToggleShowConnectURISpotify.TabIndex = 127;
+            this.rjToggleShowConnectURISpotify.UseVisualStyleBackColor = false;
             // 
             // label155
             // 
@@ -6325,7 +6358,7 @@
             this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton29.IconSize = 40;
             this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(608, 2);
+            this.iconButton29.Location = new Point(540, 2);
             this.iconButton29.Margin = new Padding(3, 2, 3, 2);
             this.iconButton29.Name = "iconButton29";
             this.iconButton29.Size = new Size(44, 46);
@@ -8752,6 +8785,11 @@
             // 
             // groupBox30
             // 
+            groupBox30.Controls.Add(labelStyleExagg);
+            groupBox30.Controls.Add(trackBarStyleExaggeration);
+            groupBox30.Controls.Add(label202);
+            groupBox30.Controls.Add(label200);
+            groupBox30.Controls.Add(this.rjToggleSpeakerBoost);
             groupBox30.Controls.Add(button51);
             groupBox30.Controls.Add(labelStability);
             groupBox30.Controls.Add(labelSimboost);
@@ -8765,21 +8803,79 @@
             groupBox30.Controls.Add(comboBoxLabsModelID);
             groupBox30.Controls.Add(this.iconButton54);
             groupBox30.ForeColor = Color.White;
-            groupBox30.Location = new Point(18, 171);
+            groupBox30.Location = new Point(18, 142);
             groupBox30.Margin = new Padding(3, 2, 3, 2);
             groupBox30.Name = "groupBox30";
             groupBox30.Padding = new Padding(3, 2, 3, 2);
-            groupBox30.Size = new Size(725, 360);
+            groupBox30.Size = new Size(725, 449);
             groupBox30.TabIndex = 127;
             groupBox30.TabStop = false;
             groupBox30.Text = "Eleven Labs Customization";
+            // 
+            // labelStyleExagg
+            // 
+            labelStyleExagg.AutoSize = true;
+            labelStyleExagg.ForeColor = Color.Snow;
+            labelStyleExagg.Location = new Point(664, 297);
+            labelStyleExagg.Name = "labelStyleExagg";
+            labelStyleExagg.Size = new Size(23, 15);
+            labelStyleExagg.TabIndex = 195;
+            labelStyleExagg.Text = "0%";
+            // 
+            // trackBarStyleExaggeration
+            // 
+            trackBarStyleExaggeration.LargeChange = 10;
+            trackBarStyleExaggeration.Location = new Point(10, 315);
+            trackBarStyleExaggeration.Maximum = 100;
+            trackBarStyleExaggeration.Name = "trackBarStyleExaggeration";
+            trackBarStyleExaggeration.Size = new Size(694, 45);
+            trackBarStyleExaggeration.TabIndex = 194;
+            trackBarStyleExaggeration.TickFrequency = 2;
+            trackBarStyleExaggeration.Scroll += this.trackBarStyleExaggeration_Scroll;
+            // 
+            // label202
+            // 
+            label202.AutoSize = true;
+            label202.ForeColor = Color.Snow;
+            label202.Location = new Point(12, 297);
+            label202.Name = "label202";
+            label202.Size = new Size(104, 15);
+            label202.TabIndex = 193;
+            label202.Text = "Style Exaggeration";
+            // 
+            // label200
+            // 
+            label200.AutoSize = true;
+            label200.ForeColor = Color.Snow;
+            label200.Location = new Point(57, 375);
+            label200.Name = "label200";
+            label200.Size = new Size(81, 15);
+            label200.TabIndex = 192;
+            label200.Text = "Speaker Boost";
+            // 
+            // rjToggleSpeakerBoost
+            // 
+            this.rjToggleSpeakerBoost.AutoSize = true;
+            this.rjToggleSpeakerBoost.Checked = true;
+            this.rjToggleSpeakerBoost.CheckState = CheckState.Checked;
+            this.rjToggleSpeakerBoost.Location = new Point(12, 373);
+            this.rjToggleSpeakerBoost.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleSpeakerBoost.MinimumSize = new Size(39, 16);
+            this.rjToggleSpeakerBoost.Name = "rjToggleSpeakerBoost";
+            this.rjToggleSpeakerBoost.OffBackColor = Color.Gray;
+            this.rjToggleSpeakerBoost.OffToggleColor = Color.Gainsboro;
+            this.rjToggleSpeakerBoost.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleSpeakerBoost.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleSpeakerBoost.Size = new Size(39, 16);
+            this.rjToggleSpeakerBoost.TabIndex = 191;
+            this.rjToggleSpeakerBoost.UseVisualStyleBackColor = true;
             // 
             // button51
             // 
             button51.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             button51.FlatStyle = FlatStyle.Flat;
             button51.ForeColor = Color.Snow;
-            button51.Location = new Point(12, 315);
+            button51.Location = new Point(12, 401);
             button51.Margin = new Padding(3, 2, 3, 2);
             button51.Name = "button51";
             button51.Size = new Size(96, 30);
@@ -8796,7 +8892,7 @@
             labelStability.Name = "labelStability";
             labelStability.Size = new Size(29, 15);
             labelStability.TabIndex = 189;
-            labelStability.Text = "75%";
+            labelStability.Text = "50%";
             // 
             // labelSimboost
             // 
@@ -8839,7 +8935,7 @@
             trackBarStability.Size = new Size(694, 45);
             trackBarStability.TabIndex = 187;
             trackBarStability.TickFrequency = 2;
-            trackBarStability.Value = 75;
+            trackBarStability.Value = 50;
             trackBarStability.Scroll += this.trackBarStability_Scroll;
             // 
             // label174
@@ -8891,7 +8987,7 @@
             comboBoxLabsModelID.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxLabsModelID.FlatStyle = FlatStyle.Flat;
             comboBoxLabsModelID.FormattingEnabled = true;
-            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1" });
+            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2" });
             comboBoxLabsModelID.Location = new Point(21, 40);
             comboBoxLabsModelID.Margin = new Padding(3, 2, 3, 2);
             comboBoxLabsModelID.Name = "comboBoxLabsModelID";
@@ -9983,33 +10079,6 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += this.button45_Click;
             // 
-            // label199
-            // 
-            label199.AutoSize = true;
-            label199.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            label199.ForeColor = Color.Snow;
-            label199.Location = new Point(60, 150);
-            label199.Name = "label199";
-            label199.Size = new Size(251, 15);
-            label199.TabIndex = 126;
-            label199.Text = "Show Spotify Connect URI in Log (don't share)";
-            // 
-            // rjToggleShowConnectURISpotify
-            // 
-            this.rjToggleShowConnectURISpotify.AutoSize = true;
-            this.rjToggleShowConnectURISpotify.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleShowConnectURISpotify.Location = new Point(16, 150);
-            this.rjToggleShowConnectURISpotify.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleShowConnectURISpotify.MinimumSize = new Size(39, 16);
-            this.rjToggleShowConnectURISpotify.Name = "rjToggleShowConnectURISpotify";
-            this.rjToggleShowConnectURISpotify.OffBackColor = Color.Gray;
-            this.rjToggleShowConnectURISpotify.OffToggleColor = Color.Gainsboro;
-            this.rjToggleShowConnectURISpotify.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleShowConnectURISpotify.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleShowConnectURISpotify.Size = new Size(39, 16);
-            this.rjToggleShowConnectURISpotify.TabIndex = 127;
-            this.rjToggleShowConnectURISpotify.UseVisualStyleBackColor = false;
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -10152,6 +10221,7 @@
             elevenLabs.PerformLayout();
             groupBox30.ResumeLayout(false);
             groupBox30.PerformLayout();
+            ((global::System.ComponentModel.ISupportInitialize)(trackBarStyleExaggeration)).EndInit();
             ((global::System.ComponentModel.ISupportInitialize)(trackBarSimilarity)).EndInit();
             ((global::System.ComponentModel.ISupportInitialize)(trackBarStability)).EndInit();
             groupBox39.ResumeLayout(false);
@@ -10825,6 +10895,11 @@
         public TextBox WebsocketServerPortText;
         private Label label199;
         public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleShowConnectURISpotify;
+        private Label label200;
+        public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleSpeakerBoost;
+        private Label labelStyleExagg;
+        public TrackBar trackBarStyleExaggeration;
+        private Label label202;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

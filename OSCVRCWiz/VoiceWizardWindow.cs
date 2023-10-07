@@ -1088,6 +1088,7 @@ namespace OSCVRCWiz
 
             labelStability.Text = trackBarStability.Value + "%";
             labelSimboost.Text = trackBarSimilarity.Value + "%";
+            labelStyleExagg.Text = trackBarStyleExaggeration.Value + "%";
         }
 
         #region Voice Presets
@@ -2136,6 +2137,27 @@ namespace OSCVRCWiz
         #region OSCListener
 
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            WebSocketServer.ToggleServer();
+        }
+
+        private void label195_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://vrcwizard.github.io/TTS-Voice-Wizard-React/");
+        }
+
+        private void iconButton5_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#websocket-to-text-to-speech");
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            WebSocketServer.WebSocketServerPort = WebsocketServerPortText.Text.ToString();
+        }
+
+
         private void buttonPulsoidConnect_Click(object sender, EventArgs e)
         {
             if (!HeartratePulsoid.pulsoidEnabled)
@@ -2818,15 +2840,23 @@ namespace OSCVRCWiz
             labelSimboost.Text = trackBarSimilarity.Value + "%";
         }
 
+        private void trackBarStyleExaggeration_Scroll(object sender, EventArgs e)
+        {
+            labelStyleExagg.Text = trackBarStyleExaggeration.Value + "%";
+        }
+
         private void button51_Click(object sender, EventArgs e)
         {
             comboBoxLabsModelID.SelectedIndex = 0;
             comboBoxLabsOptimize.SelectedIndex = 0;
-            trackBarStability.Value = 75;
+            trackBarStability.Value = 50;
             trackBarSimilarity.Value = 75;
+            trackBarStyleExaggeration.Value = 0;
 
             labelStability.Text = trackBarStability.Value + "%";
             labelSimboost.Text = trackBarSimilarity.Value + "%";
+            labelStyleExagg.Text = trackBarStyleExaggeration.Value + "%";
+            rjToggleSpeakerBoost.Checked = true;
         }
 
 
@@ -3040,25 +3070,8 @@ namespace OSCVRCWiz
         #endregion
         #endregion
 
-        private void button20_Click(object sender, EventArgs e)
-        {
-            WebSocketServer.ToggleServer();
-        }
 
-        private void label195_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("explorer.exe", "https://vrcwizard.github.io/TTS-Voice-Wizard-React/");
-        }
 
-        private void iconButton5_Click_1(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#websocket-to-text-to-speech");
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            WebSocketServer.WebSocketServerPort = WebsocketServerPortText.Text.ToString();
-        }
     }
 
 

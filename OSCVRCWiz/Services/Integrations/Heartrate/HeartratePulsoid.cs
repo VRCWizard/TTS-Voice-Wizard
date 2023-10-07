@@ -1,17 +1,7 @@
-﻿using Octokit;
-using OSCVRCWiz.Resources.StartUp.StartUp;
-using OSCVRCWiz.Services.Integrations.Media;
+﻿using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Text;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Markup;
 
 
 namespace OSCVRCWiz.Services.Integrations.Heartrate

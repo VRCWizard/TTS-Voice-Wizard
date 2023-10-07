@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CoreOSC;
+﻿using CoreOSC;
 using OSCVRCWiz.Resources.StartUp.StartUp;
-using OSCVRCWiz.RJControls;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
-using OSCVRCWiz.Settings;
 
 
 
@@ -50,12 +43,6 @@ namespace OSCVRCWiz.Services.Integrations
 
         public static void OnStartUp()
         {
-
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleActivatePulsoidStart.Checked == true)//turn on osc listener on start
-            {
-                    Task.Run(() => OSCListener.OSCRecieveHeartRate());
-            }
-
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleActivateOSCListenerStart.Checked == true)//turn on osc listener on start
             {

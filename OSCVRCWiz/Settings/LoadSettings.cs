@@ -329,6 +329,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.trackBarSimilarity.Value = Settings1.Default.labsSimboost;
             VoiceWizardWindow.MainFormGlobal.trackBarStability.Value = Settings1.Default.labsStability;
 
+            VoiceWizardWindow.MainFormGlobal.trackBarStyleExaggeration.Value = Settings1.Default.labsStyleExagg;
+            VoiceWizardWindow.MainFormGlobal.rjToggleSpeakerBoost.Checked = Settings1.Default.labsSpeakerBoost;
+
+
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonSaveToWav.Checked = Settings1.Default.saveToWav;
 
             VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text = Settings1.Default.charsUsed;

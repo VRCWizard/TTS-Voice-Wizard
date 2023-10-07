@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SpotifyAPI.Web.Auth;
-using SpotifyAPI.Web;
+﻿using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Auth;
 using System.Diagnostics;
-using System.Windows;
-using OSCVRCWiz.Resources;
-using static System.Net.Mime.MediaTypeNames;
-using OSCVRCWiz.Services.Text;
-using OSCVRCWiz.RJControls;
-using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace OSCVRCWiz.Services.Integrations.Media
 {
@@ -37,7 +28,41 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
         public static string previousError = "";
 
+        static DateTime tokenExpirationTime;
 
+
+        //  check if the token is expired
+        private static bool IsTokenExpired()
+        {
+            if (myPKCEToken != null)
+            {
+                // DateTime tokenExpirationTime = DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn);
+                
+               // OutputText.outputLog("checking if token expired: "+ (tokenExpirationTime <= DateTime.Now).ToString());
+                return (tokenExpirationTime <= DateTime.Now);
+            }
+            else 
+            {
+                Debug.WriteLine("----- updating tokens -----");
+                return true; 
+            }
+        }
+
+        // refresh the access token
+        private static async Task<PKCETokenResponse> RefreshAccessToken()
+        {
+            OutputText.outputLog("Debug: Updating Spotify Tokens");
+            string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
+            Debug.WriteLine("----Spotify token refresh Attempt-----");
+            PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
+            PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+            myPKCEToken = refreshResponse;
+            OutputText.outputLog("Debug: Your Spotify Token will refresh in "+((myPKCEToken.ExpiresIn/60)-1)+" minutes");
+
+            tokenExpirationTime = DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn-60);
+           // OutputText.outputLog((DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn - 60) <= DateTime.Now).ToString());
+            return refreshResponse;
+        }
 
         public static async Task spotifyGetCurrentSongInfo()
         {
@@ -48,34 +73,22 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 if (myClient == null)
                 {
                     myClient = new SpotifyClient(Settings1.Default.PKCEAccessToken);
+                    
                 }
-                if (myClient != null)
+                else
                 {
                     try
                     {
-                        if (legacyState == true)
+                        bool tokenExpired = IsTokenExpired();
+                        if (tokenExpired)
                         {
-                            Debug.WriteLine("----Spotify token refreshed Attempt-----");
-                            PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientIdLegacy, Settings1.Default.PKCERefreshToken);
-                            PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
+                            Debug.WriteLine("----Spotify token needs refreshing-----");
+                            PKCETokenResponse refreshResponse = await RefreshAccessToken();
                             myClient = new SpotifyClient(refreshResponse.AccessToken);
                             Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
                             Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
                             Settings1.Default.Save();
-                            Debug.WriteLine("----Spotify token refreshed Successful-----");
-                        }
-                        else
-                        {
-                            string clientId = Settings1.Default.SpotifyKey;
-                            Debug.WriteLine("----Spotify token refreshed Attempt-----");
-                            PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
-                            PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
-                            myClient = new SpotifyClient(refreshResponse.AccessToken);
-                            Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
-                            Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
-                            Settings1.Default.Save();
-                            Debug.WriteLine("----Spotify token refreshed Successful-----");
-
+                            Debug.WriteLine("----Spotify token refreshed Successfully-----");
                         }
 
                         if (spotifyConnect == false)
@@ -89,7 +102,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     catch (APIException ex)
                     {
-                        Debug.WriteLine("-----Spotify token doesn't need to refresh-----" + ex.Response.Body.ToString());
+                        Debug.WriteLine("-----Spotify error-----" + ex.Response.Body.ToString());
 
                     }
                     FullTrack m_currentTrack;
@@ -478,27 +491,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
             globalVerifier = verifier;
 
             //  var loginRequest = new LoginRequest(_server.BaseUri, clientId,LoginRequest.ResponseType.Code)
-            if (legacyState == true)
-            {
-                var loginRequest = new LoginRequest(_server.BaseUri, clientIdLegacy, LoginRequest.ResponseType.Code)
-                {
-                    CodeChallengeMethod = "S256",
-                    CodeChallenge = challenge,
-                    Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
-                };
-                //  BrowserUtil.Open(loginRequest.ToUri());
-                string url = loginRequest.ToUri().ToString();
-                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });//this link doesnt like the other method
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleShowConnectURISpotify.Checked)
-                {
-                    OutputText.outputLog(loginRequest.ToUri().ToString());
-                }
-
-            }
-            else
-            {
-                string clientId = Settings1.Default.SpotifyKey;
-                var loginRequest = new LoginRequest(_server.BaseUri, clientId, LoginRequest.ResponseType.Code)
+            string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
+            var loginRequest = new LoginRequest(_server.BaseUri, clientId, LoginRequest.ResponseType.Code)
                 {
                     CodeChallengeMethod = "S256",
                     CodeChallenge = challenge,
@@ -514,32 +508,23 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     OutputText.outputLog(loginRequest.ToUri().ToString());
                 }
 
-            }
+            
 
 
         }
 
         // This method should be called from your web-server when the user visits "http://localhost:5000/callback"
-        public static async Task GetCallback(object sender, AuthorizationCodeResponse response)
+        public static async Task GetCallback(object sender, AuthorizationCodeResponse response) //this function gets and saves the 
         {
             Debug.WriteLine("Getcallback code: " + response.Code.ToString());
 
-            if (legacyState == true)
-            {
-                var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientIdLegacy, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
-                Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
-                Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
-                Settings1.Default.Save();
-
-            }
-            else
-            {
-                string clientId = Settings1.Default.SpotifyKey;
+                string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
                 var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
                 Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
                 Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
                 Settings1.Default.Save();
-            }
+            
+            
 
         }
         public static string Base64Encode(string plainText)

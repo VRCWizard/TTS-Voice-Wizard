@@ -1,13 +1,8 @@
 ﻿using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Net.WebSockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace OSCVRCWiz.Services.Speech.Speech_Recognition
 {
