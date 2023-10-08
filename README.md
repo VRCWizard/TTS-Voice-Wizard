@@ -105,12 +105,15 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 -  Check the [Trello](https://trello.com/b/cUhN6eF0/ttsvoicewizard-planned-features) page to see what features will be coming out next!
 
 
-## Donate
+## Support the Project
 - Leave me a Github Star ⭐ (it's free) or get<br />
 
 ### 🔑 VoiceWizardPro
 
-The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, and the new Google Cloud voices without the need to create and manage multiple accounts. By choosing a tier and becoming a member on [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers), you will receive an allotted amount of TTS and Translation characters that refresh monthly. This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
+The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, Google Cloud, and IBM Watson voices without the need to create and manage multiple accounts. By choosing a tier and becoming a member on the [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard), you will receive an allotted amount of TTS and Translation characters that refresh monthly. This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
+
+[![image](https://github.com/VRCWizard/TTS-Voice-Wizard/assets/101527472/6421f8bc-303f-4d66-9515-e96f3ba2119b)](https://www.yourlink.com)
+
 
 
 <p align="center">
