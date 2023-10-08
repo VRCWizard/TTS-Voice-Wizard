@@ -109,8 +109,20 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 - Leave me a Github Star ⭐ (it's free) or get<br />
 
 ### 🔑 VoiceWizardPro
+Subscribe to the [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard) and receive an allotted amount of TTS and Translation characters that refresh monthly!
 
-The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, Google Cloud, and IBM Watson voices without the need to create and manage multiple accounts. By choosing a tier and becoming a member on the [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard), you will receive an allotted amount of TTS and Translation characters that refresh monthly. This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
+Instant access to hundreds of voices from popular cloud services such as:
+- Microsoft Azure
+- Amazon Polly
+- Google Cloud
+- IBM Watson
+
+Translation your voices one of the [70+ supported languages](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Supported-Languages)
+
+Access to speech recognition via [DeepGrams Nova-2 model](https://deepgram.com/learn/nova-2-speech-to-text-api), the fastest, most accurate speech-to-text API
+
+This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. 
+For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
 
 
 
