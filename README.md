@@ -114,7 +114,7 @@ The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, 
 
 
 
-<a href="https://www.patreon.com/ttsvoicewizard"><img alt="Patreon" src="https://github.com/VRCWizard/TTS-Voice-Wizard/assets/101527472/6421f8bc-303f-4d66-9515-e96f3ba2119b"></a>
+<a href="https://www.patreon.com/ttsvoicewizard"><img alt="Patreon" src="https://github-production-user-asset-6210df.s3.amazonaws.com/101527472/273461878-6421f8bc-303f-4d66-9515-e96f3ba2119b.png"></a>
 
 <p align="center">
 <a href='https://ko-fi.com/ttsvoicewizard/tiers' target='_blank'><img height='56' style='border:0px;height:56px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
