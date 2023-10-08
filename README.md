@@ -108,23 +108,26 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 ## Support the Project
 - Leave me a Github Star ⭐ (it's free) or get<br />
 
-### 🔑 VoiceWizardPro
-Subscribe to the [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard) and receive an allotted amount of TTS and Translation characters that refresh monthly!
+### 🔑 Unlock VoiceWizardPro Benefits!
+Subscribe to [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard) and experience a world of powerful features that will transform your TTS and translation experience:
 
-Instant access to hundreds of voices from popular cloud services such as:
-- Microsoft Azure
-- Amazon Polly
-- Google Cloud
-- IBM Watson
+- ✨ **Instant Access to Premium Voices:** Enjoy hundreds of voices from leading cloud services, including:
+    - Microsoft Azure
+    - Amazon Polly
+    - Google Cloud
+    - IBM Watson
 
-Translation your voices one of the [70+ supported languages](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Supported-Languages)
+- 🌍 **Multilingual Magic:** Translate your voices into [70+ supported languages](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Supported-Languages), talk to your friends from all over the world
 
-Access to speech recognition via [DeepGrams Nova-2 model](https://deepgram.com/learn/nova-2-speech-to-text-api), the fastest, most accurate speech-to-text API
+- 🎤 **Crystal-Clear Transcriptions:** Gain access to speech recognition through [DeepGram's Nova-2 model](https://deepgram.com/learn/nova-2-speech-to-text-api), the fastest and most accurate speech-to-text API.
 
-This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. 
-For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
+Your subscription not only enhances your capabilities but also supports future development:
 
+- 💪 **Empower Ongoing Development:** Your contribution assists in server upkeep, covers character costs from premium APIs, and fuels future software innovations.
 
+Ready to elevate your TTS game? Dive into VoiceWizardPro now! For detailed insights, explore our [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro).
+
+Unlock the power of VoiceWizardPro today! 🚀
 
 <a href="https://www.patreon.com/ttsvoicewizard"><img alt="Patreon" src="https://github-production-user-asset-6210df.s3.amazonaws.com/101527472/273461878-6421f8bc-303f-4d66-9515-e96f3ba2119b.png"></a>
 
