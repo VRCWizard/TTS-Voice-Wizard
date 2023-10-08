@@ -112,9 +112,9 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 The VoiceWizardPro API, will allow you to access Microsoft Azure, Amazon Polly, Google Cloud, and IBM Watson voices without the need to create and manage multiple accounts. By choosing a tier and becoming a member on the [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard), you will receive an allotted amount of TTS and Translation characters that refresh monthly. This money goes toward server upkeep costs, paying for characters from the respective APIs, and funding future software development. For more information, please visit the [VoiceWizardPro GitHub Wiki page](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro)
 
-[![image](https://github.com/VRCWizard/TTS-Voice-Wizard/assets/101527472/6421f8bc-303f-4d66-9515-e96f3ba2119b)](https://www.yourlink.com)
 
 
+<a href="https://www.patreon.com/ttsvoicewizard"><img alt="Patreon" src="https://github.com/VRCWizard/TTS-Voice-Wizard/assets/101527472/6421f8bc-303f-4d66-9515-e96f3ba2119b"></a>
 
 <p align="center">
 <a href='https://ko-fi.com/ttsvoicewizard/tiers' target='_blank'><img height='56' style='border:0px;height:56px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
