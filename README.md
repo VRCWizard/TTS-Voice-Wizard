@@ -106,7 +106,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 
 ## Support the Project
-- Leave me a Github Star ⭐ (it's free) or get<br />
+- Leave me a Github Star ⭐ (it's free) or<br />
 
 ### 🔑 Unlock VoiceWizardPro Benefits!
 Subscribe to [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard) and experience a world of powerful features that will transform your TTS and translation experience:
