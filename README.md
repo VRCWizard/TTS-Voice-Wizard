@@ -43,7 +43,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 🎙️ You can convert your **Speech-to-Text** and back to Speech through various Speech Recognition and **Text-to-Speech methods** <br />
 
-💬 You can send what you say as OSC messages to VRChat to be displayed on your avatar using **[KillFrenzyAvatarText](https://github.com/killfrenzy96/KillFrenzyAvatarText) or VRChats Chatbox** <br />
+💬 You can send what you say as OSC messages to VRChat to be displayed on your avatar using **[KillFrenzyAvatarText](https://github.com/killfrenzy96/KillFrenzyAvatarText)/[Frosty's Billboard](https://github.com/Frosty704/Billboard) or VRChats Chatbox** <br />
 
 🌐 The app can **translate** your speech from one language to over **50 other supported languages** <br />
 
