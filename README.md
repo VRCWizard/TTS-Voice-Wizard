@@ -109,6 +109,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 - Leave me a Github Star ⭐ (it's free) or<br />
 
 ### 🔑 Unlock VoiceWizardPro Benefits!
+
 Subscribe to [Ko-Fi](https://ko-fi.com/ttsvoicewizard/tiers) or [Patreon](https://www.patreon.com/ttsvoicewizard) and experience a world of powerful features that will transform your TTS and translation experience:
 
 - ✨ **Instant Access to Premium Voices:** Enjoy hundreds of voices from leading cloud services, including:
@@ -129,11 +130,12 @@ Ready to elevate your TTS game? Dive into VoiceWizardPro now! For detailed insig
 
 Unlock the power of VoiceWizardPro today! 🚀
 
-<a href="https://www.patreon.com/ttsvoicewizard"><img alt="Patreon" src="https://github-production-user-asset-6210df.s3.amazonaws.com/101527472/273461878-6421f8bc-303f-4d66-9515-e96f3ba2119b.png"></a>
+<p align="center"> 
+  <a href="https://ko-fi.com/ttsvoicewizard"><img alt="Ko-Fi" src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white"></a>
+  <a href="https://www.patreon.com/ttsvoicewizard"><img alt="Ko-Fi" src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white"></a>
+<p/>
 
-<p align="center">
-<a href='https://ko-fi.com/ttsvoicewizard/tiers' target='_blank'><img height='56' style='border:0px;height:56px;' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
- </p>
+<a href="https://www.patreon.com/ttsvoicewizard"><img alt="Patreon" src="https://github-production-user-asset-6210df.s3.amazonaws.com/101527472/273461878-6421f8bc-303f-4d66-9515-e96f3ba2119b.png"></a>
 
 ## Partners
 - [TalaTora](https://www.twitch.tv/talatora) - TalaTora the talented tiger VTuber, check them out on twitch
