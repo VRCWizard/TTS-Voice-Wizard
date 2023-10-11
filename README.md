@@ -68,7 +68,9 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 <a href="https://youtu.be/Q4kaXcA74Bo"><img alt="Getting Started with TTS Voice Wizard" src="https://cdn.discordapp.com/attachments/719824324973821972/1108809206125043832/Screenshot_2023-05-18_004402.png"></a>
 
-
+## Requirements
+- Windows 10/11 (compatibility not guarenteed with older version of Windows)
+- Microsoft Edge must be installed
 
 ## GitHub Wiki Table of Contents
 ### Quick Start Guide
