@@ -133,6 +133,7 @@
             tabSpotify = new TabPage();
             this.iconButton1 = new global::FontAwesome.Sharp.IconButton();
             groupBox5 = new GroupBox();
+            button22 = new Button();
             this.buttonExportMedia = new global::FontAwesome.Sharp.IconButton();
             this.buttonImportMedia = new global::FontAwesome.Sharp.IconButton();
             textBoxMediaPresetEdit = new TextBox();
@@ -2393,7 +2394,7 @@
             this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
             this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(549, 3);
+            this.iconButton1.Location = new Point(511, 3);
             this.iconButton1.Margin = new Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = RightToLeft.No;
@@ -2406,6 +2407,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(button22);
             groupBox5.Controls.Add(this.buttonExportMedia);
             groupBox5.Controls.Add(this.buttonImportMedia);
             groupBox5.Controls.Add(textBoxMediaPresetEdit);
@@ -2438,10 +2440,24 @@
             groupBox5.Margin = new Padding(3, 2, 3, 2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(3, 2, 3, 2);
-            groupBox5.Size = new Size(758, 348);
+            groupBox5.Size = new Size(737, 382);
             groupBox5.TabIndex = 140;
             groupBox5.TabStop = false;
             groupBox5.Text = "General Media Settings";
+            // 
+            // button22
+            // 
+            button22.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button22.FlatStyle = FlatStyle.Flat;
+            button22.ForeColor = Color.Snow;
+            button22.Location = new Point(15, 309);
+            button22.Margin = new Padding(3, 2, 3, 2);
+            button22.Name = "button22";
+            button22.Size = new Size(182, 25);
+            button22.TabIndex = 159;
+            button22.Text = "Manually Display Media Text";
+            button22.UseVisualStyleBackColor = false;
+            button22.Click += this.button22_Click_1;
             // 
             // buttonExportMedia
             // 
@@ -2570,7 +2586,7 @@
             label149.AutoSize = true;
             label149.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
             label149.ForeColor = Color.Snow;
-            label149.Location = new Point(173, 312);
+            label149.Location = new Point(203, 353);
             label149.Name = "label149";
             label149.Size = new Size(196, 15);
             label149.TabIndex = 142;
@@ -2581,12 +2597,12 @@
             button44.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             button44.FlatStyle = FlatStyle.Flat;
             button44.ForeColor = Color.Snow;
-            button44.Location = new Point(23, 306);
+            button44.Location = new Point(16, 347);
             button44.Margin = new Padding(3, 2, 3, 2);
             button44.Name = "button44";
-            button44.Size = new Size(144, 25);
+            button44.Size = new Size(181, 25);
             button44.TabIndex = 141;
-            button44.Text = "Display Current Time";
+            button44.Text = "Manually Display Current Time";
             button44.UseVisualStyleBackColor = false;
             button44.Click += this.button44_Click;
             // 
@@ -2596,7 +2612,7 @@
             volumeStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             volumeStats.FlatStyle = FlatStyle.Flat;
             volumeStats.ForeColor = Color.Snow;
-            volumeStats.Location = new Point(661, 74);
+            volumeStats.Location = new Point(640, 74);
             volumeStats.Margin = new Padding(3, 2, 3, 2);
             volumeStats.Name = "volumeStats";
             volumeStats.Size = new Size(25, 25);
@@ -2622,11 +2638,11 @@
             groupBox4.Controls.Add(label132);
             groupBox4.Controls.Add(this.rjToggleButtonNoTTSKAT);
             groupBox4.ForeColor = Color.White;
-            groupBox4.Location = new Point(433, 162);
+            groupBox4.Location = new Point(418, 164);
             groupBox4.Margin = new Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 2, 3, 2);
-            groupBox4.Size = new Size(317, 182);
+            groupBox4.Size = new Size(313, 182);
             groupBox4.TabIndex = 139;
             groupBox4.TabStop = false;
             groupBox4.Text = "Advanced Text Settings";
@@ -2826,7 +2842,7 @@
             heartRateStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             heartRateStats.FlatStyle = FlatStyle.Flat;
             heartRateStats.ForeColor = Color.Snow;
-            heartRateStats.Location = new Point(725, 74);
+            heartRateStats.Location = new Point(704, 74);
             heartRateStats.Margin = new Padding(3, 2, 3, 2);
             heartRateStats.Name = "heartRateStats";
             heartRateStats.Size = new Size(25, 25);
@@ -2841,7 +2857,7 @@
             batteryStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             batteryStats.FlatStyle = FlatStyle.Flat;
             batteryStats.ForeColor = Color.Snow;
-            batteryStats.Location = new Point(694, 74);
+            batteryStats.Location = new Point(673, 74);
             batteryStats.Margin = new Padding(3, 2, 3, 2);
             batteryStats.Name = "batteryStats";
             batteryStats.Size = new Size(25, 25);
@@ -2856,7 +2872,7 @@
             durationStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             durationStats.FlatStyle = FlatStyle.Flat;
             durationStats.ForeColor = Color.Snow;
-            durationStats.Location = new Point(630, 74);
+            durationStats.Location = new Point(609, 74);
             durationStats.Margin = new Padding(3, 2, 3, 2);
             durationStats.Name = "durationStats";
             durationStats.Size = new Size(25, 25);
@@ -2871,7 +2887,7 @@
             songStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             songStats.FlatStyle = FlatStyle.Flat;
             songStats.ForeColor = Color.Snow;
-            songStats.Location = new Point(598, 74);
+            songStats.Location = new Point(577, 74);
             songStats.Margin = new Padding(3, 2, 3, 2);
             songStats.Name = "songStats";
             songStats.Size = new Size(25, 25);
@@ -2924,7 +2940,7 @@
             textBoxCustomSpot.Location = new Point(19, 47);
             textBoxCustomSpot.Margin = new Padding(3, 2, 3, 2);
             textBoxCustomSpot.Name = "textBoxCustomSpot";
-            textBoxCustomSpot.Size = new Size(733, 23);
+            textBoxCustomSpot.Size = new Size(712, 23);
             textBoxCustomSpot.TabIndex = 62;
             textBoxCustomSpot.Text = "{spotifySymbol} Listening to '{title}' by '{artist}' {progressMinutes}/{durationMinutes} on Spotify";
             // 
@@ -3029,7 +3045,7 @@
             groupBox3.Controls.Add(this.rjToggleButtonCurrentSong);
             groupBox3.Controls.Add(buttonSpotify);
             groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(21, 39);
+            groupBox3.Location = new Point(3, 39);
             groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 2, 3, 2);
@@ -3157,11 +3173,11 @@
             groupBox2.Controls.Add(label137);
             groupBox2.Controls.Add(this.rjToggleButtonWindowsMedia);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(436, 39);
+            groupBox2.Location = new Point(419, 39);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(325, 189);
+            groupBox2.Size = new Size(321, 189);
             groupBox2.TabIndex = 137;
             groupBox2.TabStop = false;
             groupBox2.Text = "Windows Media";
@@ -3248,7 +3264,7 @@
             this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(717, 2);
+            this.iconButton31.Location = new Point(679, 3);
             this.iconButton31.Margin = new Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new Size(44, 38);
@@ -6358,7 +6374,7 @@
             this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton29.IconSize = 40;
             this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(540, 2);
+            this.iconButton29.Location = new Point(506, 2);
             this.iconButton29.Margin = new Padding(3, 2, 3, 2);
             this.iconButton29.Name = "iconButton29";
             this.iconButton29.Size = new Size(44, 46);
@@ -10900,6 +10916,7 @@
         private Label labelStyleExagg;
         public TrackBar trackBarStyleExaggeration;
         private Label label202;
+        private Button button22;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

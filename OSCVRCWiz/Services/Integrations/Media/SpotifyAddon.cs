@@ -28,6 +28,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
         public static string previousError = "";
 
+
         static DateTime tokenExpirationTime;
 
 
@@ -57,14 +58,14 @@ namespace OSCVRCWiz.Services.Integrations.Media
             PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
             PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
             myPKCEToken = refreshResponse;
-            OutputText.outputLog("Debug: Your Spotify Token will refresh in "+((myPKCEToken.ExpiresIn/60)-1)+" minutes");
+            OutputText.outputLog("[Your Spotify Token will refresh in "+((myPKCEToken.ExpiresIn/60)-1)+" minutes]", Color.Green);
 
             tokenExpirationTime = DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn-60);
            // OutputText.outputLog((DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn - 60) <= DateTime.Now).ToString());
             return refreshResponse;
         }
 
-        public static async Task spotifyGetCurrentSongInfo()
+        public static async Task spotifyGetCurrentSongInfo(bool playOnce)
         {
             try
             {
@@ -153,13 +154,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             album = m_currentTrack.Album.Name.ToString();
                         }
                     }
-                    if ((lastSong != title || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true) && !string.IsNullOrWhiteSpace(title) && title != "" && pauseSpotify != true)
+                    if ((lastSong != title || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true || playOnce) && !string.IsNullOrWhiteSpace(title) && title != "" && pauseSpotify != true)
                     {
                         // VoiceWizardWindow.pauseBPM = true; pause removed to fix with spotify 
                         // lastSong = title;
                         var spotifyPausedIndicator = "▶️";
 
-                        if (fullSongPauseCheck != progress)
+                        if (fullSongPauseCheck != progress|| playOnce)
                         {
                             spotifyPausedIndicator = "▶️";
                         }
@@ -286,7 +287,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         catch { }
                         // if (ex.Message.Contains("The access token expired"))
                         // {
-                        OutputText.outputLog("[Spotify access token may be expired. Click the Connect Spotify button again.]", Color.DarkOrange);
+                        OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
 
                         VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                         {
@@ -561,7 +562,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked == true)
             {
-                Task.Run(() => SpotifyAddon.spotifyGetCurrentSongInfo());
+                Task.Run(() => SpotifyAddon.spotifyGetCurrentSongInfo(false));
             }
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked == true)
@@ -598,7 +599,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     else
                     {
 
-                        if (WindowsMedia.mediaTitle != "")
+                        if (WindowsMedia.mediaTitle != "" && WindowsMedia.mediaTitle != WindowsMedia.previousTitle)
                         {
                             Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                         }
@@ -630,6 +631,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
         }
 
+
+
         public static void ChangeMediaUpdateInterval()
         {
             var mills = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSpotifyTime.Text.ToString());
@@ -645,7 +648,58 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
             }
         }
-      
+
+
+        public static void printMediaOnce()
+        {
+
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked == true)
+            {
+                
+                Task.Run(() => SpotifyAddon.spotifyGetCurrentSongInfo(true));
+            }
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWindowsMedia.Checked == true)
+            {
+                bool soundpad = false;
+                foreach (object Item in VoiceWizardWindow.MainFormGlobal.checkedListBoxApproved.CheckedItems)
+                {
+                    if (Item.ToString() == "Soundpad")
+                    {
+                        soundpad = true;
+                    }
+
+                }
+
+                if (soundpad == true)
+                {
+                    Task.Run(() => WindowsMedia.GetSoundPadMedia());                  
+                    Task.Run(() => SpotifyAddon.soundpadGetSongInfo());
+                      
+
+                }
+
+                else
+                {
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked == true)
+                    {
+                        if (WindowsMedia.mediaManager != null)
+                        {
+                            WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
+                            Debug.WriteLine("forced media");
+                        }
+                    } 
+                        Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                }
+
+            }
+
+           
+
+
+        }
+
 
 
 

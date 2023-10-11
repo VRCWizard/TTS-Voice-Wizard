@@ -3072,6 +3072,10 @@ namespace OSCVRCWiz
 
 
 
+        private void button22_Click_1(object sender, EventArgs e)
+        {
+            SpotifyAddon.printMediaOnce();
+        }
     }
 
 

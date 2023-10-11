@@ -272,7 +272,19 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[Uberduck TTS  Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[Uberduck TTS Error: " + ex.Message + "]", Color.Red);
+                try
+                {
+                    if (ex.InnerException != null)
+                    {
+                        OutputText.outputLog("[Uberduck TTS Inner Exception: " + ex.InnerException + "]", Color.Red);
+                    }
+                   
+                }
+                catch (Exception exx) 
+                {
+
+                }
               
                PlayNextInQueue();
             }
