@@ -225,12 +225,12 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
                             {
 
-                                Task.Run(() => OutputText.outputVRChat(textTime, "spotify"));
+                                Task.Run(() => OutputText.outputVRChat(textTime, OutputText.DisplayTextType.Spotify));
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                             {
                               //  theString = LineBreakerChatbox(theString, 28);//must always be the last
-                                Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "spotify")); //original
+                                Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, OutputText.DisplayTextType.Spotify)); //original
 
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
@@ -241,6 +241,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                         // lastSong = title;
                         // MainForm.justShowTheSong = false;
+                        SpotifyAddon.lastSong = SpotifyAddon.title;
+                       // WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
                         fullSongPauseCheck = progress;
 
 
@@ -449,18 +451,19 @@ namespace OSCVRCWiz.Services.Integrations.Media
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
             {
 
-                Task.Run(() => OutputText.outputVRChat(textTime, "spotify"));
+                Task.Run(() => OutputText.outputVRChat(textTime, OutputText.DisplayTextType.WindowsMedia));
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {
               //  text = LineBreakerChatbox(text, 28);//must always be the last
-                Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, "media")); //original
+                Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, OutputText.DisplayTextType.WindowsMedia)); //original
 
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
             {
                 OutputText.outputTextFile(text, @"Output\TextOut\OBSText.txt");
             }
+            WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
 
         }
 

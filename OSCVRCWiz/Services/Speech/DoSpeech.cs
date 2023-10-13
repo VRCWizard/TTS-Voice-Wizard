@@ -385,13 +385,13 @@ namespace OSCVRCWiz.Services.Speech
                     {
                         OSCListener.pauseBPM = true;
                         SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChat(writeText, "tts"));
+                        Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
                     {
                         OSCListener.pauseBPM = true;
                         SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, "tts")); //original
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
 
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true && TTSMessageQueued.TTSMode == "No TTS")

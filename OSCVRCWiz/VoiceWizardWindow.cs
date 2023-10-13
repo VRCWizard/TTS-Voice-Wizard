@@ -1862,7 +1862,7 @@ namespace OSCVRCWiz
 
         private void button2_Click_1(object sender, EventArgs e)//replay
         {
-            OutputText.outputVRChat(OutputText.lastKatString, "tttAdd");
+            OutputText.outputVRChat(OutputText.lastKatString, OutputText.DisplayTextType.UpdateText);
         }
 
         #endregion
@@ -2024,11 +2024,11 @@ namespace OSCVRCWiz
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
             {
 
-                Task.Run(() => OutputText.outputVRChat(currentTime, "time"));
+                Task.Run(() => OutputText.outputVRChat(currentTime, OutputText.DisplayTextType.Time));
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {
-                Task.Run(() => OutputText.outputVRChatSpeechBubbles(currentTime, "time")); //original
+                Task.Run(() => OutputText.outputVRChatSpeechBubbles(currentTime, OutputText.DisplayTextType.Time)); //original
 
             }
         }
