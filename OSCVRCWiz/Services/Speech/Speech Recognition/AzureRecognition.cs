@@ -10,6 +10,8 @@ using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
+using System;
+using System.Diagnostics;
 
 namespace OSCVRCWiz
 {
@@ -28,85 +30,13 @@ namespace OSCVRCWiz
 
         public static string YourSubscriptionKey;
         public static string YourServiceRegion;
-        
 
-     /*   public static void fromLanguageID(string fullname)
-        {
-             fromLanguage = "en-US";
-            switch (fullname)
-            {
-                case "Arabic [ar-EG]": fromLanguage = "ar-EG"; break;
-                case "Chinese [zh-CN]": fromLanguage = "zh-CN"; break;
-                case "Czech [cs-CZ]": fromLanguage = "cs-CZ"; break;
-                case "Danish [da-DK]": fromLanguage = "da-DK"; break;
-                case "Dutch [nl-NL]": fromLanguage = "nl-NL"; break;
-                case "English [en-US] (Default)": fromLanguage = "en-US"; break;
-                case "Estonian [et-EE]": fromLanguage = "et-EE"; break;
-                case "Filipino [fil-PH]": fromLanguage = "fil-PH"; break;
-                case "Finnish [fi-FI]": fromLanguage = "fi-FI"; break;
-                case "French [fr-FR]": fromLanguage = "fr-FR"; break;
-                case "German [de-DE]": fromLanguage = "de-DE"; break;
-                case "Hindi [hi-IN]": fromLanguage = "hi-IN"; break;
-                case "Hungarian [hu-HU]": fromLanguage = "hu-HU"; break;
-                case "Indonesian [id-ID]": fromLanguage = "id-ID"; break;
-                case "Irish [ga-IE]": fromLanguage = "ga-IE"; break;
-                case "Italian [it-IT]": fromLanguage = "it-IT"; break;
-                case "Japanese [ja-JP]": fromLanguage = "ja-JP"; break;
-                case "Korean [ko-KR]": fromLanguage = "ko-KR"; break;
-                case "Norwegian [nb-NO]": fromLanguage = "nb-NO"; break;
+        public static System.Threading.Timer AzureTypingTimer;
+        public static string AzureTypingInterval = "2000";
+        private static string AzureTyping = "";
+     
 
-                case "Persian [fa-IR]": fromLanguage = "fa-IR"; break;//new
-                case "Polish [pl-PL]": fromLanguage = "pl-PL"; break;
-                case "Portuguese [pt-BR]": fromLanguage = "pt-BR"; break;
-                //place holder^^
-                case "Russian [ru-RU]": fromLanguage = "ru-RU"; break;
-                case "Spanish [es-MX]": fromLanguage = "es-MX"; break;
-                //place holder^^
-                case "Swedish [sv-SE]": fromLanguage = "sv-SE"; break;
-                case "Thai [th-TH]": fromLanguage = "th-TH"; break;
-                case "Ukrainian [uk-UA]": fromLanguage = "uk-UA"; break;
-                case "Vietnamese [vi-VN]": fromLanguage = "vi-VN"; break;
-                default: fromLanguage = "en-US"; break; // if translation to english happens something is wrong
-            }       
-        }
 
-        public static void toLanguageID(string fullname)
-        {
-            toLanguage = "en";
-          
-
-            switch (fullname)
-            {
-                case "Arabic [ar]": toLanguage = "ar"; break;
-                case "Chinese [zh]": toLanguage = "zh-Hans"; break;
-                case "Czech [cs]": toLanguage = "cs"; break;
-                case "Danish [da]": toLanguage = "da"; break;
-                case "Dutch [nl]": toLanguage = "nl"; break;
-                case "English [en]": toLanguage = "en"; break;
-                case "Estonian [et]": toLanguage = "et"; break;
-                case "Filipino [fil]": toLanguage = "fil"; break;
-                case "Finnish [fi]": toLanguage = "fi"; break;
-                case "French [fr]": toLanguage = "fr"; break;
-                case "German [de]": toLanguage = "de"; break;
-                case "Hindi [hi]": toLanguage = "hi"; break;
-                case "Hungarian [hu]": toLanguage = "hu"; break;
-                case "Indonesian [id]": toLanguage = "id"; break;
-                case "Irish [ga]": toLanguage = "ga"; break;
-                case "Italian [it]": toLanguage = "it"; break;
-                case "Japanese [ja]": toLanguage = "ja"; break;
-                case "Korean [ko]": toLanguage = "ko"; break;
-                case "Norwegian [nb]": toLanguage = "nb"; break;
-                case "Polish [pl]": toLanguage = "pl"; break;
-                case "Portuguese [pt]": toLanguage = "pt"; break;
-                case "Russian [ru]": toLanguage = "ru"; break;
-                case "Spanish [es]": toLanguage = "es"; break;
-                case "Swedish [sv]": toLanguage = "sv"; break;
-                case "Thai [th]": toLanguage = "th"; break;
-                case "Ukrainian [uk]": toLanguage = "uk"; break;
-                case "Vietnamese [vi]": toLanguage = "vi"; break;
-                default: toLanguage = "en"; break; // if translation to english happens something is wrong
-            }
-        }*/
 
         public static void speechSetup(string toLanguageFullname, string fromLanguageFullname)//speech to text setup
 
@@ -177,14 +107,25 @@ namespace OSCVRCWiz
                         string translatedString = speechRecognitionResult.Translations[toLanguage]; //Dictation string tranlated
 
 
-                
 
+                      //  StopAzureTypingTimer();
                         TTSMessageQueue.QueueMessage(text, "Azure Translate", translatedString);
 
                       
 
                     }
 
+                };
+                translationRecognizer1.Recognizing += (sender, eventArgs) =>
+                {
+                    AzureTyping = eventArgs.Result.Text;
+                  //  OutputText.outputLog(eventArgs.Result.Text);
+                };
+
+                speechRecognizer1.Recognizing += (sender, eventArgs) =>
+                {
+                    AzureTyping = eventArgs.Result.Text;
+                   // OutputText.outputLog(eventArgs.Result.Text);
                 };
                 speechRecognizer1.Canceled += (sender, eventArgs) =>
                 {
@@ -208,8 +149,9 @@ namespace OSCVRCWiz
 
 
                         //    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
-
+                       // StopAzureTypingTimer();
                         TTSMessageQueue.QueueMessage(text, "Azure");
+
 
 
 
@@ -249,6 +191,7 @@ namespace OSCVRCWiz
       
         public static async void speechTTTS(string fromLanguageFullname)//speech to text
         {
+            StartAzureTypingTimer();
 
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
             try
@@ -273,6 +216,8 @@ namespace OSCVRCWiz
                     var speechRecognitionResult = await speechRecognizer1.RecognizeOnceAsync();
                     var text = speechRecognitionResult.Text; //Dictation string
 
+                    StopAzureTypingTimer();
+                    AzureTyping = "";
                     TTSMessageQueue.QueueMessage(text, "Azure");
                     DoSpeech.speechToTextButtonOff();
 
@@ -365,7 +310,8 @@ namespace OSCVRCWiz
 
                     // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
 
-
+                    StopAzureTypingTimer();
+                    AzureTyping = "";
                     TTSMessageQueue.QueueMessage(text, "Azure Translate", translatedString);
                     DoSpeech.speechToTextButtonOff();
 
@@ -423,7 +369,8 @@ namespace OSCVRCWiz
         {
             if (continuousListening == true)
             {
-
+                StopAzureTypingTimer();
+                AzureTyping = "";
                 continuousListening = false;
                 // Make the following call at some point to stop recognition:
                 System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
@@ -441,5 +388,49 @@ namespace OSCVRCWiz
         }
 
 
-    }
+        public static void StartAzureTypingTimer()
+        {
+           AzureTypingTimer = new System.Threading.Timer(heartratetimertick);
+           AzureTypingTimer.Change(Int32.Parse(AzureTypingInterval), Int32.Parse(AzureTypingInterval)-1000);
+          
+
+
+        }
+        public static void StopAzureTypingTimer()
+        {
+            
+            if (AzureTypingTimer != null)
+            {
+                AzureTypingTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            }
+        }
+
+        public static void heartratetimertick(object sender)
+        {
+            Thread t = new Thread(doAzureTypingTimerTick);
+            t.Start();
+        }
+
+        private static async void doAzureTypingTimerTick()
+        {
+            if (VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked)
+            {
+                if (AzureTyping != "")
+                {
+
+
+
+                    var messageSpeechBubble = new OscMessage("/chatbox/input", AzureTyping, true, false);
+                    OSC.OSCSender.Send(messageSpeechBubble);
+                    OutputText.outputLog($"[Partial Results]: {AzureTyping}");
+
+                    AzureTypingTimer.Change(Int32.Parse(AzureTypingInterval), 0);
+                }
+            }
+            
+            
+        }
+
+
+     }
 }

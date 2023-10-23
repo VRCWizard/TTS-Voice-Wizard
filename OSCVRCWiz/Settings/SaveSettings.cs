@@ -305,6 +305,12 @@ namespace OSCVRCWiz
             Settings1.Default.showSpotifyURi = VoiceWizardWindow.MainFormGlobal.rjToggleShowConnectURISpotify.Checked;
 
 
+            Settings1.Default.SyncParaValue = VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex;
+
+            Settings1.Default.delayBeforeOuput = VoiceWizardWindow.MainFormGlobal.textBoxDelayBeforeAudio.Text;
+
+            Settings1.Default.azurePartialResults = VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked;
+
             Settings1.Default.Save();
             //emojiSettings.Default.Save();
             VoiceWizardWindow.MainFormGlobal.webView21.Dispose();

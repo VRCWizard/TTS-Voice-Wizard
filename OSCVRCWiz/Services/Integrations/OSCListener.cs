@@ -397,17 +397,17 @@ namespace OSCVRCWiz.Services.Integrations
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                                     {
-                                        OutputText.outputVRChat("ぬ" + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //ぬ means heart emoji
+                                        OutputText.outputVRChat("ぬ" + messageReceived.Arguments[0].ToString() + " bpm", OutputText.DisplayTextType.HeartRate);  //ぬ means heart emoji
 
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButton3.Checked == false && VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                                     {
-                                        OutputText.outputVRChat("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm");  //add pack emoji toggle (add emoji selection page
+                                        OutputText.outputVRChat("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", OutputText.DisplayTextType.HeartRate);  //add pack emoji toggle (add emoji selection page
 
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                                     {
-                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", "bpm")); //original
+                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", OutputText.DisplayTextType.HeartRate)); //original
 
 
                                     }

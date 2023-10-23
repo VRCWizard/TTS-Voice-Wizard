@@ -1810,13 +1810,13 @@ namespace OSCVRCWiz
 
         private void comboBoxPara_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.Invoke((MethodInvoker)delegate ()
-            {
-                OutputText.numKATSyncParameters = comboBoxPara.SelectedItem.ToString();
-                Settings1.Default.SyncParaValue = comboBoxPara.SelectedIndex;
+            //  this.Invoke((MethodInvoker)delegate ()
+            //   {
+            OutputText.numKATSyncParameters = comboBoxPara.SelectedItem.ToString();
+            Settings1.Default.SyncParaValue = comboBoxPara.SelectedIndex;
 
-                Settings1.Default.Save();
-            });
+            //Settings1.Default.Save();
+            // });
 
         }
 
@@ -1862,7 +1862,7 @@ namespace OSCVRCWiz
 
         private void button2_Click_1(object sender, EventArgs e)//replay
         {
-            OutputText.outputVRChat(OutputText.lastKatString, "tttAdd");
+            OutputText.outputVRChat(OutputText.lastKatString, OutputText.DisplayTextType.UpdateText);
         }
 
         #endregion
@@ -2024,11 +2024,11 @@ namespace OSCVRCWiz
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
             {
 
-                Task.Run(() => OutputText.outputVRChat(currentTime, "time"));
+                Task.Run(() => OutputText.outputVRChat(currentTime, OutputText.DisplayTextType.Time));
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {
-                Task.Run(() => OutputText.outputVRChatSpeechBubbles(currentTime, "time")); //original
+                Task.Run(() => OutputText.outputVRChatSpeechBubbles(currentTime, OutputText.DisplayTextType.Time)); //original
 
             }
         }
@@ -2098,6 +2098,13 @@ namespace OSCVRCWiz
             textBoxCustomSpot.Text = currentText;
         }
 
+        private void button21_Click(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "{nline}";
+            textBoxCustomSpot.Text = currentText;
+        }
+
         private void comboBoxMediaPreset_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxMediaPreset.SelectedIndex == 0)
@@ -2130,6 +2137,11 @@ namespace OSCVRCWiz
         private void buttonExportMedia_Click(object sender, EventArgs e)
         {
             Import_Export.ExportList("Output\\Exports", "MediaPreset", MediaPresets.mediaPresetsStored);
+        }
+
+        private void button22_Click_1(object sender, EventArgs e)
+        {
+            SpotifyAddon.printMediaOnce();
         }
 
         #endregion
@@ -3071,11 +3083,6 @@ namespace OSCVRCWiz
         #endregion
 
 
-
-        private void button22_Click_1(object sender, EventArgs e)
-        {
-            SpotifyAddon.printMediaOnce();
-        }
     }
 
 

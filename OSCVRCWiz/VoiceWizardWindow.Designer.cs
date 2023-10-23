@@ -133,6 +133,7 @@
             tabSpotify = new TabPage();
             this.iconButton1 = new global::FontAwesome.Sharp.IconButton();
             groupBox5 = new GroupBox();
+            button21 = new Button();
             button22 = new Button();
             this.buttonExportMedia = new global::FontAwesome.Sharp.IconButton();
             this.buttonImportMedia = new global::FontAwesome.Sharp.IconButton();
@@ -319,6 +320,8 @@
             label105 = new Label();
             this.rjToggleButtonSounds = new global::OSCVRCWiz.RJControls.RJToggleButton();
             groupBox1 = new GroupBox();
+            label201 = new Label();
+            textBoxDelayBeforeAudio = new TextBox();
             this.iconButton2 = new global::FontAwesome.Sharp.IconButton();
             button14 = new Button();
             this.rjToggleButtonAutoSend = new global::OSCVRCWiz.RJControls.RJToggleButton();
@@ -682,6 +685,8 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
+            this.rjTogglePartialResults = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            label203 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             ((global::System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
@@ -2394,7 +2399,7 @@
             this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
             this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(511, 3);
+            this.iconButton1.Location = new Point(460, 3);
             this.iconButton1.Margin = new Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = RightToLeft.No;
@@ -2407,6 +2412,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(button21);
             groupBox5.Controls.Add(button22);
             groupBox5.Controls.Add(this.buttonExportMedia);
             groupBox5.Controls.Add(this.buttonImportMedia);
@@ -2444,6 +2450,21 @@
             groupBox5.TabIndex = 140;
             groupBox5.TabStop = false;
             groupBox5.Text = "General Media Settings";
+            // 
+            // button21
+            // 
+            button21.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            button21.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button21.FlatStyle = FlatStyle.Flat;
+            button21.ForeColor = Color.Snow;
+            button21.Location = new Point(705, 74);
+            button21.Margin = new Padding(3, 2, 3, 2);
+            button21.Name = "button21";
+            button21.Size = new Size(25, 25);
+            button21.TabIndex = 160;
+            button21.Text = "\U0001f90f";
+            button21.UseVisualStyleBackColor = false;
+            button21.Click += this.button21_Click;
             // 
             // button22
             // 
@@ -2612,7 +2633,7 @@
             volumeStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             volumeStats.FlatStyle = FlatStyle.Flat;
             volumeStats.ForeColor = Color.Snow;
-            volumeStats.Location = new Point(640, 74);
+            volumeStats.Location = new Point(610, 74);
             volumeStats.Margin = new Padding(3, 2, 3, 2);
             volumeStats.Name = "volumeStats";
             volumeStats.Size = new Size(25, 25);
@@ -2842,7 +2863,7 @@
             heartRateStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             heartRateStats.FlatStyle = FlatStyle.Flat;
             heartRateStats.ForeColor = Color.Snow;
-            heartRateStats.Location = new Point(704, 74);
+            heartRateStats.Location = new Point(674, 74);
             heartRateStats.Margin = new Padding(3, 2, 3, 2);
             heartRateStats.Name = "heartRateStats";
             heartRateStats.Size = new Size(25, 25);
@@ -2857,7 +2878,7 @@
             batteryStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             batteryStats.FlatStyle = FlatStyle.Flat;
             batteryStats.ForeColor = Color.Snow;
-            batteryStats.Location = new Point(673, 74);
+            batteryStats.Location = new Point(643, 74);
             batteryStats.Margin = new Padding(3, 2, 3, 2);
             batteryStats.Name = "batteryStats";
             batteryStats.Size = new Size(25, 25);
@@ -2872,7 +2893,7 @@
             durationStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             durationStats.FlatStyle = FlatStyle.Flat;
             durationStats.ForeColor = Color.Snow;
-            durationStats.Location = new Point(609, 74);
+            durationStats.Location = new Point(579, 74);
             durationStats.Margin = new Padding(3, 2, 3, 2);
             durationStats.Name = "durationStats";
             durationStats.Size = new Size(25, 25);
@@ -2887,7 +2908,7 @@
             songStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
             songStats.FlatStyle = FlatStyle.Flat;
             songStats.ForeColor = Color.Snow;
-            songStats.Location = new Point(577, 74);
+            songStats.Location = new Point(547, 74);
             songStats.Margin = new Padding(3, 2, 3, 2);
             songStats.Name = "songStats";
             songStats.Size = new Size(25, 25);
@@ -3264,7 +3285,7 @@
             this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(679, 3);
+            this.iconButton31.Location = new Point(628, 3);
             this.iconButton31.Margin = new Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new Size(44, 38);
@@ -4210,7 +4231,7 @@
             groupBox17.Controls.Add(this.rjToggleButtonChatBox);
             groupBox17.Controls.Add(this.rjToggleButtonShowKeyboard);
             groupBox17.ForeColor = Color.White;
-            groupBox17.Location = new Point(19, 1040);
+            groupBox17.Location = new Point(19, 1071);
             groupBox17.Margin = new Padding(3, 2, 3, 2);
             groupBox17.Name = "groupBox17";
             groupBox17.Padding = new Padding(3, 2, 3, 2);
@@ -4343,7 +4364,7 @@
             groupBox18.Controls.Add(label102);
             groupBox18.Controls.Add(this.rjToggleButtonOBSText);
             groupBox18.ForeColor = Color.White;
-            groupBox18.Location = new Point(20, 1354);
+            groupBox18.Location = new Point(20, 1386);
             groupBox18.Margin = new Padding(3, 2, 3, 2);
             groupBox18.Name = "groupBox18";
             groupBox18.Padding = new Padding(3, 2, 3, 2);
@@ -4512,7 +4533,7 @@
             groupBox19.Controls.Add(button1);
             groupBox19.Controls.Add(textBoxErase);
             groupBox19.ForeColor = Color.White;
-            groupBox19.Location = new Point(19, 863);
+            groupBox19.Location = new Point(19, 894);
             groupBox19.Margin = new Padding(3, 2, 3, 2);
             groupBox19.Name = "groupBox19";
             groupBox19.Padding = new Padding(3, 2, 3, 2);
@@ -4695,7 +4716,7 @@
             groupBox20.Controls.Add(buttonDelayHere);
             groupBox20.Controls.Add(textBoxDelay);
             groupBox20.ForeColor = Color.White;
-            groupBox20.Location = new Point(19, 1154);
+            groupBox20.Location = new Point(19, 1186);
             groupBox20.Margin = new Padding(3, 2, 3, 2);
             groupBox20.Name = "groupBox20";
             groupBox20.Padding = new Padding(3, 2, 3, 2);
@@ -4852,7 +4873,7 @@
             groupBox13.Controls.Add(label105);
             groupBox13.Controls.Add(this.rjToggleButtonSounds);
             groupBox13.ForeColor = Color.White;
-            groupBox13.Location = new Point(19, 588);
+            groupBox13.Location = new Point(19, 619);
             groupBox13.Margin = new Padding(3, 2, 3, 2);
             groupBox13.Name = "groupBox13";
             groupBox13.Padding = new Padding(3, 2, 3, 2);
@@ -5068,6 +5089,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label201);
+            groupBox1.Controls.Add(textBoxDelayBeforeAudio);
             groupBox1.Controls.Add(this.iconButton2);
             groupBox1.Controls.Add(button14);
             groupBox1.Controls.Add(this.rjToggleButtonAutoSend);
@@ -5132,10 +5155,30 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(706, 582);
+            groupBox1.Size = new Size(706, 613);
             groupBox1.TabIndex = 100;
             groupBox1.TabStop = false;
             groupBox1.Text = "General";
+            // 
+            // label201
+            // 
+            label201.AutoSize = true;
+            label201.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label201.ForeColor = Color.Snow;
+            label201.Location = new Point(9, 549);
+            label201.Name = "label201";
+            label201.Size = new Size(135, 15);
+            label201.TabIndex = 165;
+            label201.Text = "Delay Before Audio (ms)";
+            // 
+            // textBoxDelayBeforeAudio
+            // 
+            textBoxDelayBeforeAudio.Location = new Point(10, 566);
+            textBoxDelayBeforeAudio.Margin = new Padding(3, 2, 3, 2);
+            textBoxDelayBeforeAudio.Name = "textBoxDelayBeforeAudio";
+            textBoxDelayBeforeAudio.Size = new Size(110, 23);
+            textBoxDelayBeforeAudio.TabIndex = 164;
+            textBoxDelayBeforeAudio.Text = "0";
             // 
             // iconButton2
             // 
@@ -5165,7 +5208,7 @@
             button14.FlatStyle = FlatStyle.Flat;
             button14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button14.ForeColor = Color.Snow;
-            button14.Location = new Point(545, 505);
+            button14.Location = new Point(545, 536);
             button14.Margin = new Padding(3, 2, 3, 2);
             button14.Name = "button14";
             button14.Size = new Size(155, 28);
@@ -5284,7 +5327,7 @@
             button38.FlatStyle = FlatStyle.Flat;
             button38.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button38.ForeColor = Color.Snow;
-            button38.Location = new Point(544, 466);
+            button38.Location = new Point(544, 497);
             button38.Margin = new Padding(3, 2, 3, 2);
             button38.Name = "button38";
             button38.Size = new Size(155, 28);
@@ -5494,7 +5537,7 @@
             button47.FlatStyle = FlatStyle.Flat;
             button47.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button47.ForeColor = Color.Snow;
-            button47.Location = new Point(544, 546);
+            button47.Location = new Point(544, 577);
             button47.Margin = new Padding(3, 2, 3, 2);
             button47.Name = "button47";
             button47.Size = new Size(155, 28);
@@ -5962,6 +6005,8 @@
             // 
             // groupBox12
             // 
+            groupBox12.Controls.Add(this.rjTogglePartialResults);
+            groupBox12.Controls.Add(label203);
             groupBox12.Controls.Add(this.rjToggleTranslateSameLanguage);
             groupBox12.Controls.Add(label193);
             groupBox12.Controls.Add(this.buttonExportDict);
@@ -5983,7 +6028,7 @@
             groupBox12.Margin = new Padding(3, 2, 3, 2);
             groupBox12.Name = "groupBox12";
             groupBox12.Padding = new Padding(3, 2, 3, 2);
-            groupBox12.Size = new Size(620, 433);
+            groupBox12.Size = new Size(620, 462);
             groupBox12.TabIndex = 109;
             groupBox12.TabStop = false;
             groupBox12.Text = "Azure Settings";
@@ -5992,7 +6037,7 @@
             // 
             this.rjToggleTranslateSameLanguage.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjToggleTranslateSameLanguage.AutoSize = true;
-            this.rjToggleTranslateSameLanguage.Location = new Point(5, 316);
+            this.rjToggleTranslateSameLanguage.Location = new Point(8, 302);
             this.rjToggleTranslateSameLanguage.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleTranslateSameLanguage.MinimumSize = new Size(39, 16);
             this.rjToggleTranslateSameLanguage.Name = "rjToggleTranslateSameLanguage";
@@ -6010,7 +6055,7 @@
             label193.AutoSize = true;
             label193.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label193.ForeColor = Color.Snow;
-            label193.Location = new Point(52, 315);
+            label193.Location = new Point(55, 301);
             label193.Name = "label193";
             label193.Size = new Size(198, 15);
             label193.TabIndex = 121;
@@ -6027,7 +6072,7 @@
             this.buttonExportDict.IconColor = Color.White;
             this.buttonExportDict.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.buttonExportDict.IconSize = 15;
-            this.buttonExportDict.Location = new Point(101, 230);
+            this.buttonExportDict.Location = new Point(99, 213);
             this.buttonExportDict.Margin = new Padding(3, 2, 3, 2);
             this.buttonExportDict.Name = "buttonExportDict";
             this.buttonExportDict.Size = new Size(87, 25);
@@ -6048,7 +6093,7 @@
             this.buttonImportDict.IconColor = Color.White;
             this.buttonImportDict.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.buttonImportDict.IconSize = 15;
-            this.buttonImportDict.Location = new Point(8, 230);
+            this.buttonImportDict.Location = new Point(6, 213);
             this.buttonImportDict.Margin = new Padding(3, 2, 3, 2);
             this.buttonImportDict.Name = "buttonImportDict";
             this.buttonImportDict.Size = new Size(87, 25);
@@ -6062,7 +6107,7 @@
             // 
             this.rjToggleButtonStyle.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjToggleButtonStyle.AutoSize = true;
-            this.rjToggleButtonStyle.Location = new Point(6, 347);
+            this.rjToggleButtonStyle.Location = new Point(9, 333);
             this.rjToggleButtonStyle.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButtonStyle.MinimumSize = new Size(39, 16);
             this.rjToggleButtonStyle.Name = "rjToggleButtonStyle";
@@ -6080,7 +6125,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label30.ForeColor = Color.Snow;
-            label30.Location = new Point(54, 348);
+            label30.Location = new Point(57, 334);
             label30.Name = "label30";
             label30.Size = new Size(260, 30);
             label30.TabIndex = 108;
@@ -6112,7 +6157,7 @@
             label47.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             label47.AutoSize = true;
             label47.ForeColor = Color.Snow;
-            label47.Location = new Point(5, 418);
+            label47.Location = new Point(9, 425);
             label47.Name = "label47";
             label47.Size = new Size(403, 15);
             label47.TabIndex = 84;
@@ -6138,7 +6183,7 @@
             label48.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             label48.AutoSize = true;
             label48.ForeColor = Color.Snow;
-            label48.Location = new Point(5, 403);
+            label48.Location = new Point(9, 410);
             label48.Name = "label48";
             label48.Size = new Size(511, 15);
             label48.TabIndex = 85;
@@ -6150,7 +6195,7 @@
             richTextBoxAzureDict.Location = new Point(8, 60);
             richTextBoxAzureDict.Margin = new Padding(3, 2, 3, 2);
             richTextBoxAzureDict.Name = "richTextBoxAzureDict";
-            richTextBoxAzureDict.Size = new Size(568, 160);
+            richTextBoxAzureDict.Size = new Size(568, 121);
             richTextBoxAzureDict.TabIndex = 63;
             richTextBoxAzureDict.Text = "";
             // 
@@ -6160,7 +6205,7 @@
             this.rjToggleButtonProfan.AutoSize = true;
             this.rjToggleButtonProfan.Checked = true;
             this.rjToggleButtonProfan.CheckState = CheckState.Checked;
-            this.rjToggleButtonProfan.Location = new Point(6, 285);
+            this.rjToggleButtonProfan.Location = new Point(9, 271);
             this.rjToggleButtonProfan.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButtonProfan.MinimumSize = new Size(39, 16);
             this.rjToggleButtonProfan.Name = "rjToggleButtonProfan";
@@ -6179,7 +6224,7 @@
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label20.ForeColor = Color.Snow;
-            label20.Location = new Point(53, 284);
+            label20.Location = new Point(56, 270);
             label20.Name = "label20";
             label20.Size = new Size(182, 15);
             label20.TabIndex = 48;
@@ -6189,7 +6234,7 @@
             // 
             this.rjToggleButton4.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjToggleButton4.AutoSize = true;
-            this.rjToggleButton4.Location = new Point(5, 383);
+            this.rjToggleButton4.Location = new Point(9, 390);
             this.rjToggleButton4.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButton4.MinimumSize = new Size(39, 16);
             this.rjToggleButton4.Name = "rjToggleButton4";
@@ -6208,7 +6253,7 @@
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label36.ForeColor = Color.Snow;
-            label36.Location = new Point(53, 383);
+            label36.Location = new Point(57, 390);
             label36.Name = "label36";
             label36.Size = new Size(177, 15);
             label36.TabIndex = 82;
@@ -6374,7 +6419,7 @@
             this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton29.IconSize = 40;
             this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(506, 2);
+            this.iconButton29.Location = new Point(455, 2);
             this.iconButton29.Margin = new Padding(3, 2, 3, 2);
             this.iconButton29.Name = "iconButton29";
             this.iconButton29.Size = new Size(44, 46);
@@ -10095,6 +10140,34 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += this.button45_Click;
             // 
+            // rjTogglePartialResults
+            // 
+            this.rjTogglePartialResults.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            this.rjTogglePartialResults.AutoSize = true;
+            this.rjTogglePartialResults.Location = new Point(9, 361);
+            this.rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
+            this.rjTogglePartialResults.MinimumSize = new Size(39, 16);
+            this.rjTogglePartialResults.Name = "rjTogglePartialResults";
+            this.rjTogglePartialResults.OffBackColor = Color.Gray;
+            this.rjTogglePartialResults.OffToggleColor = Color.Gainsboro;
+            this.rjTogglePartialResults.OnBackColor = Color.MediumSlateBlue;
+            this.rjTogglePartialResults.OnToggleColor = Color.WhiteSmoke;
+            this.rjTogglePartialResults.Size = new Size(39, 16);
+            this.rjTogglePartialResults.TabIndex = 124;
+            this.rjTogglePartialResults.UseVisualStyleBackColor = true;
+            // 
+            // label203
+            // 
+            label203.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label203.AutoSize = true;
+            label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label203.ForeColor = Color.Snow;
+            label203.Location = new Point(57, 362);
+            label203.Name = "label203";
+            label203.Size = new Size(113, 15);
+            label203.TabIndex = 123;
+            label203.Text = "Allow Partial Results";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -10917,6 +10990,11 @@
         public TrackBar trackBarStyleExaggeration;
         private Label label202;
         private Button button22;
+        private Label label201;
+        public TextBox textBoxDelayBeforeAudio;
+        private Button button21;
+        public global::OSCVRCWiz.RJControls.RJToggleButton rjTogglePartialResults;
+        private Label label203;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

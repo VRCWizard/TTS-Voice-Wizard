@@ -219,11 +219,11 @@ namespace OSCVRCWiz.Services.Integrations
                     }////////////////////////////////////////////////////
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, OutputText.DisplayTextType.Counters));
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                     {
-                        Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                        Task.Run(() => OutputText.outputVRChat(theString, OutputText.DisplayTextType.Counters));
                     }
                 }
 
@@ -287,11 +287,11 @@ namespace OSCVRCWiz.Services.Integrations
 
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
                             {
-                                Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, "bpm"));
+                                Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, OutputText.DisplayTextType.Counters));
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
                             {
-                                Task.Run(() => OutputText.outputVRChat(theString, "bpm"));
+                                Task.Run(() => OutputText.outputVRChat(theString, OutputText.DisplayTextType.Counters,i));
                             }
                         }
                     }

@@ -217,6 +217,10 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
             var message3 = new CoreOSC.OscMessage("/avatar/parameters/hundredsHR", hundreds);
             OSC.OSCSender.Send(message3);
 
+            float HRPercent = (float)currentHR / 256;
+            var message4 = new CoreOSC.OscMessage("/avatar/parameters/HRPercent", (float)HRPercent);
+            OSC.OSCSender.Send(message4);
+
 
 
             //  Debug.WriteLine(currentHR + "--" + HRPrevious);
@@ -285,12 +289,12 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
                         }
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                         {
-                            OutputText.outputVRChat("Heartrate: " + currentHR.ToString() + " bpm", "bpm");
+                            OutputText.outputVRChat("Heartrate: " + currentHR.ToString() + " bpm", OutputText.DisplayTextType.HeartRate);
 
                         }
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                         {
-                            Task.Run(() => OutputText.outputVRChatSpeechBubbles("💓 " + currentHR.ToString() + " bpm", "bpm"));
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles("💓 " + currentHR.ToString() + " bpm", OutputText.DisplayTextType.HeartRate));
 
 
                         }

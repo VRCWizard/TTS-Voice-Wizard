@@ -283,6 +283,16 @@ namespace OSCVRCWiz.Resources.Audio
         {
             try
             {
+                //delay before audio
+                int delayBeforeAudio = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxDelayBeforeAudio.Text.ToString());
+                Thread.Sleep(delayBeforeAudio);
+
+                if(delayBeforeAudio != 0)
+                {
+                    OutputText.outputLog("[Playing Delayed Audio]");
+                }
+
+
                 MemoryStream memoryStream = new MemoryStream();
                 audioStream.Flush();
                 audioStream.Seek(0, SeekOrigin.Begin);
