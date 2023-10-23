@@ -2494,5 +2494,29 @@ namespace OSCVRCWiz.Settings {
                 this["labsSpeakerBoost"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string delayBeforeOuput {
+            get {
+                return ((string)(this["delayBeforeOuput"]));
+            }
+            set {
+                this["delayBeforeOuput"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool azurePartialResults {
+            get {
+                return ((bool)(this["azurePartialResults"]));
+            }
+            set {
+                this["azurePartialResults"] = value;
+            }
+        }
     }
 }

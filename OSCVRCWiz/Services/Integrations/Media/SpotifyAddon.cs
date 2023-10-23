@@ -202,6 +202,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
                         theString = theString.Replace("{album}", album);
+                        theString = theString.Replace("{nline}", "\u2028");
                         theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
                         theString = theString.Replace("{counter2}", VRChatListener.counter2.ToString());
                         theString = theString.Replace("{counter3}", VRChatListener.counter3.ToString());
@@ -350,6 +351,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
                     theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
                     theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+                    theString = theString.Replace("{nline}", "\u2028");
                     theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
                     theString = theString.Replace("{counter2}", VRChatListener.counter2.ToString());
                     theString = theString.Replace("{counter3}", VRChatListener.counter3.ToString());
@@ -421,6 +423,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
                     theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
                     theString = theString.Replace("{spotifySymbol}", spotifySymbol);
+                    theString = theString.Replace("{nline}", "\u2028");
                     theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
                     theString = theString.Replace("{counter2}", VRChatListener.counter2.ToString());
                     theString = theString.Replace("{counter3}", VRChatListener.counter3.ToString());

@@ -345,11 +345,19 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.counterOutputInterval.Text = Settings1.Default.CounterOutputInterval;
 
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            //  VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            //   {
+            try
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex = Settings1.Default.SyncParaValue;
+            }
+            catch 
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxPara.SelectedIndex = 0;
+            }
 
-            });
+           // });
+
             VoiceWizardWindow.MainFormGlobal.comboBoxSTT.SelectedItem = Settings1.Default.STTModeSave;
             VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.SelectedItem = Settings1.Default.ttsMode;
 
@@ -379,7 +387,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleShowConnectURISpotify.Checked = Settings1.Default.showSpotifyURi;
 
 
+            VoiceWizardWindow.MainFormGlobal.textBoxDelayBeforeAudio.Text = Settings1.Default.delayBeforeOuput;
 
+
+            VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked = Settings1.Default.azurePartialResults;
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;
             try

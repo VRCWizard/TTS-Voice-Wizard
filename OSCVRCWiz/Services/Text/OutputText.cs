@@ -11,6 +11,7 @@ using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using Amazon.Polly.Model;
 using System.Threading;
+using System.Diagnostics;
 
 namespace OSCVRCWiz.Services.Text
 {
@@ -145,7 +146,7 @@ namespace OSCVRCWiz.Services.Text
                 // textstring = Encoding.UTF8.GetString(bytes);
 
 
-                System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
+              //  System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
 
 
                 var typingbubbleOff = new OscMessage("/chatbox/typing", false);//this is turned on as soon as you press the STTTS button and turned off here
@@ -269,10 +270,10 @@ namespace OSCVRCWiz.Services.Text
 
 
 
-                if (type == DisplayTextType.TextToSpeech || type == DisplayTextType.UpdateText)//remember last message
-                {
+              //  if (type == DisplayTextType.TextToSpeech || type == DisplayTextType.UpdateText || type == DisplayTextType.WindowsMedia || type == DisplayTextType.Spotify)//remember last message
+              //  {
                     lastKatString = textstringbefore;
-                }
+               // }
 
                
 
@@ -344,6 +345,7 @@ namespace OSCVRCWiz.Services.Text
                         {
                             if ((DateTime.Now - lastDateTime).Seconds <= 1)//collision prevention
                             {
+                                OutputText.outputLog("[KAT collision prevented]");
                                 Task.Delay(debugDelayValue * lastStringPoint).Wait();
                             }  
                             OSC.OSCSender.Send(OSCClearKatEraseAll);
@@ -378,11 +380,15 @@ namespace OSCVRCWiz.Services.Text
                     case DisplayTextType.TextToSpeech://dont clear all
                         if ((DateTime.Now - lastDateTime).Seconds <= 1)//collision prevention
                         {
-                            Task.Delay(debugDelayValue * lastStringPoint).Wait();
+                            OutputText.outputLog("[KAT collision prevented]");
+                            Task.Delay(debugDelayValue * (lastStringPoint+1)).Wait();
+                            
                         }
                         
                         OSC.OSCSender.Send(OSCClearKatEraseAll);
 
+                        break;
+                    case DisplayTextType.TextToText://dont clear all
                         break;
                     case DisplayTextType.UpdateText://dont clear all
                                                     break;
@@ -660,8 +666,20 @@ namespace OSCVRCWiz.Services.Text
                 }
                 if (EraserRunning == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonAutoRefreshKAT.Checked == true)
                 {
+                    if((type == DisplayTextType.WindowsMedia || type == DisplayTextType.Spotify) && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked)
+                    {
+                        return;
+                    }
+                    if(type == DisplayTextType.Counters || type== DisplayTextType.HeartRate || type == DisplayTextType.TextToText) 
+                    {
+                        return;
+                    }
+
+
                     Task.Delay(2000).Wait();
                     outputVRChat(lastKatString, DisplayTextType.RepeatText);
+                    System.Diagnostics.Debug.WriteLine("--Repeating Kat Text");
+
 
                 }
             }
@@ -790,7 +808,7 @@ namespace OSCVRCWiz.Services.Text
                         {
                             OSCListener.pauseBPM = true;
                             SpotifyAddon.pauseSpotify = true;
-                            Task.Run(() => OutputText.outputVRChat(theString, DisplayTextType.UpdateText)); //original     
+                            Task.Run(() => OutputText.outputVRChat(theString, DisplayTextType.TextToText)); //original     
                         }
                     }
                     typingBox = false;
