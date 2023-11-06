@@ -42,7 +42,6 @@
     <PackageReference Include="MeaMod.DNS" Version="1.0.70" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.25.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1518.46" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="Octokit" Version="5.0.0" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />

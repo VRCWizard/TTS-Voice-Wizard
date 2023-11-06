@@ -44,19 +44,22 @@
             buttonDelayHere = new Button();
             mainTabControl = new TabControl();
             tabPage4 = new TabPage();
-            this.webView21 = new global::Microsoft.Web.WebView2.WinForms.WebView2();
             panel4 = new Panel();
             this.iconButton33 = new global::FontAwesome.Sharp.IconButton();
             this.iconButton34 = new global::FontAwesome.Sharp.IconButton();
             this.iconButton17 = new global::FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
+            buttonPreviousBanner = new Button();
+            buttonNextBanner = new Button();
             pictureBox2 = new PictureBox();
             richTextBox4 = new RichTextBox();
             this.iconButton13 = new global::FontAwesome.Sharp.IconButton();
             this.iconButton14 = new global::FontAwesome.Sharp.IconButton();
             this.iconButton26 = new global::FontAwesome.Sharp.IconButton();
             button10 = new Button();
-            button9 = new Button();
+           
+            panel5 = new Panel();
+            pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
             tabPage1 = new TabPage();
             groupBox7 = new GroupBox();
@@ -376,13 +379,15 @@
             label21 = new Label();
             label66 = new Label();
             this.rjToggleButtonLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleButton5 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            this.rjToggleBannerOff = new global::OSCVRCWiz.RJControls.RJToggleButton();
             this.rjToggleButtonOnTop2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
             textBox4 = new TextBox();
             label22 = new Label();
             label11 = new Label();
             AzureSet = new TabPage();
             groupBox12 = new GroupBox();
+            this.rjTogglePartialResults = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            label203 = new Label();
             this.rjToggleTranslateSameLanguage = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label193 = new Label();
             this.buttonExportDict = new global::FontAwesome.Sharp.IconButton();
@@ -685,14 +690,13 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
-            this.rjTogglePartialResults = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            label203 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(this.webView21)).BeginInit();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             ((global::System.ComponentModel.ISupportInitialize)(pictureBox2)).BeginInit();
+            panel5.SuspendLayout();
+            ((global::System.ComponentModel.ISupportInitialize)(pictureBox5)).BeginInit();
             ((global::System.ComponentModel.ISupportInitialize)(pictureBox4)).BeginInit();
             tabPage1.SuspendLayout();
             groupBox7.SuspendLayout();
@@ -976,10 +980,9 @@
             // tabPage4
             // 
             tabPage4.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            tabPage4.Controls.Add(this.webView21);
             tabPage4.Controls.Add(panel4);
             tabPage4.Controls.Add(panel3);
-            tabPage4.Controls.Add(pictureBox4);
+            tabPage4.Controls.Add(panel5);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Margin = new Padding(3, 2, 3, 2);
             tabPage4.Name = "tabPage4";
@@ -987,20 +990,6 @@
             tabPage4.Size = new Size(769, 587);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Dashboard";
-            // 
-            // webView21
-            // 
-            this.webView21.AllowExternalDrop = false;
-            this.webView21.CreationProperties = null;
-            this.webView21.DefaultBackgroundColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.webView21.Dock = DockStyle.Fill;
-            this.webView21.Location = new Point(3, 98);
-            this.webView21.Margin = new Padding(3, 2, 3, 2);
-            this.webView21.Name = "webView21";
-            this.webView21.Size = new Size(763, 417);
-            this.webView21.Source = new Uri("https://voicewizardpro.carrd.co/", UriKind.Absolute);
-            this.webView21.TabIndex = 0;
-            this.webView21.ZoomFactor = 0.95D;
             // 
             // panel4
             // 
@@ -1084,18 +1073,53 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(buttonPreviousBanner);
+            panel3.Controls.Add(buttonNextBanner);
             panel3.Controls.Add(pictureBox2);
             panel3.Controls.Add(richTextBox4);
             panel3.Controls.Add(this.iconButton13);
             panel3.Controls.Add(this.iconButton14);
             panel3.Controls.Add(this.iconButton26);
             panel3.Controls.Add(button10);
-            panel3.Controls.Add(button9);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(3, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(763, 96);
             panel3.TabIndex = 108;
+            // 
+            // buttonPreviousBanner
+            // 
+            buttonPreviousBanner.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            buttonPreviousBanner.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonPreviousBanner.FlatAppearance.BorderSize = 0;
+            buttonPreviousBanner.FlatStyle = FlatStyle.Flat;
+            buttonPreviousBanner.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonPreviousBanner.ForeColor = Color.Snow;
+            buttonPreviousBanner.Location = new Point(652, 74);
+            buttonPreviousBanner.Margin = new Padding(3, 2, 3, 2);
+            buttonPreviousBanner.Name = "buttonPreviousBanner";
+            buttonPreviousBanner.Size = new Size(33, 30);
+            buttonPreviousBanner.TabIndex = 108;
+            buttonPreviousBanner.Text = "◀️";
+            buttonPreviousBanner.UseVisualStyleBackColor = false;
+            buttonPreviousBanner.Click += this.buttonPreviousBanner_Click;
+            // 
+            // buttonNextBanner
+            // 
+            buttonNextBanner.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            buttonNextBanner.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonNextBanner.FlatAppearance.BorderSize = 0;
+            buttonNextBanner.FlatStyle = FlatStyle.Flat;
+            buttonNextBanner.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonNextBanner.ForeColor = Color.Snow;
+            buttonNextBanner.Location = new Point(691, 74);
+            buttonNextBanner.Margin = new Padding(3, 2, 3, 2);
+            buttonNextBanner.Name = "buttonNextBanner";
+            buttonNextBanner.Size = new Size(33, 30);
+            buttonNextBanner.TabIndex = 107;
+            buttonNextBanner.Text = "▶️";
+            buttonNextBanner.UseVisualStyleBackColor = false;
+            buttonNextBanner.Click += this.buttonNextBanner_Click;
             // 
             // pictureBox2
             // 
@@ -1188,36 +1212,41 @@
             button10.FlatStyle = FlatStyle.Flat;
             button10.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             button10.ForeColor = Color.Snow;
-            button10.Location = new Point(724, 74);
+            button10.Location = new Point(730, 74);
             button10.Margin = new Padding(3, 2, 3, 2);
             button10.Name = "button10";
             button10.Size = new Size(33, 30);
             button10.TabIndex = 28;
             button10.Text = "X";
             button10.UseVisualStyleBackColor = false;
-            button10.Click += this.button10_Click;
+            button10.Click += this.button10_Click;    
             // 
-            // button9
+            // panel5
             // 
-            button9.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button9.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            button9.FlatAppearance.BorderSize = 0;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button9.ForeColor = Color.Snow;
-            button9.Location = new Point(686, 74);
-            button9.Margin = new Padding(3, 2, 3, 2);
-            button9.Name = "button9";
-            button9.Size = new Size(32, 30);
-            button9.TabIndex = 27;
-            button9.Text = "🔄";
-            button9.UseVisualStyleBackColor = false;
-            button9.Click += this.button9_Click;
+            panel5.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            panel5.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            panel5.Controls.Add(pictureBox5);
+            panel5.Controls.Add(pictureBox4);
+            panel5.Location = new Point(3, 95);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(763, 417);
+            panel5.TabIndex = 163;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Dock = DockStyle.Fill;
+            pictureBox5.Location = new Point(0, 0);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(763, 417);
+            pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox5.TabIndex = 162;
+            pictureBox5.TabStop = false;
+            pictureBox5.Click += this.pictureBox5_Click;
             // 
             // pictureBox4
             // 
             pictureBox4.Image = (Image)(resources.GetObject("pictureBox4.Image"));
-            pictureBox4.Location = new Point(181, 280);
+            pictureBox4.Location = new Point(143, 178);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(428, 71);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -2399,7 +2428,7 @@
             this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
             this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(460, 3);
+            this.iconButton1.Location = new Point(154, 3);
             this.iconButton1.Margin = new Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = RightToLeft.No;
@@ -3285,7 +3314,7 @@
             this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(628, 3);
+            this.iconButton31.Location = new Point(322, 3);
             this.iconButton31.Margin = new Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new Size(44, 38);
@@ -3410,9 +3439,9 @@
             label197.ForeColor = Color.Snow;
             label197.Location = new Point(64, 78);
             label197.Name = "label197";
-            label197.Size = new Size(197, 15);
+            label197.Size = new Size(190, 15);
             label197.TabIndex = 133;
-            label197.Text = "Activate Pulsoid Websocket on Start";
+            label197.Text = "Activate Websocket Server on Start";
             // 
             // rjToggleActivateWebsocketOnStart
             // 
@@ -5145,7 +5174,7 @@
             groupBox1.Controls.Add(label21);
             groupBox1.Controls.Add(label66);
             groupBox1.Controls.Add(this.rjToggleButtonLog);
-            groupBox1.Controls.Add(this.rjToggleButton5);
+            groupBox1.Controls.Add(this.rjToggleBannerOff);
             groupBox1.Controls.Add(this.rjToggleButtonOnTop2);
             groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(label22);
@@ -5921,20 +5950,20 @@
             this.rjToggleButtonLog.UseVisualStyleBackColor = true;
             this.rjToggleButtonLog.CheckedChanged += this.rjToggleButtonLog_CheckedChanged;
             // 
-            // rjToggleButton5
+            // rjToggleBannerOff
             // 
-            this.rjToggleButton5.AutoSize = true;
-            this.rjToggleButton5.Location = new Point(5, 79);
-            this.rjToggleButton5.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton5.MinimumSize = new Size(39, 16);
-            this.rjToggleButton5.Name = "rjToggleButton5";
-            this.rjToggleButton5.OffBackColor = Color.Gray;
-            this.rjToggleButton5.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton5.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton5.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton5.Size = new Size(39, 16);
-            this.rjToggleButton5.TabIndex = 89;
-            this.rjToggleButton5.UseVisualStyleBackColor = true;
+            this.rjToggleBannerOff.AutoSize = true;
+            this.rjToggleBannerOff.Location = new Point(5, 79);
+            this.rjToggleBannerOff.Margin = new Padding(3, 2, 3, 2);
+            this.rjToggleBannerOff.MinimumSize = new Size(39, 16);
+            this.rjToggleBannerOff.Name = "rjToggleBannerOff";
+            this.rjToggleBannerOff.OffBackColor = Color.Gray;
+            this.rjToggleBannerOff.OffToggleColor = Color.Gainsboro;
+            this.rjToggleBannerOff.OnBackColor = Color.MediumSlateBlue;
+            this.rjToggleBannerOff.OnToggleColor = Color.WhiteSmoke;
+            this.rjToggleBannerOff.Size = new Size(39, 16);
+            this.rjToggleBannerOff.TabIndex = 89;
+            this.rjToggleBannerOff.UseVisualStyleBackColor = true;
             // 
             // rjToggleButtonOnTop2
             // 
@@ -6032,6 +6061,34 @@
             groupBox12.TabIndex = 109;
             groupBox12.TabStop = false;
             groupBox12.Text = "Azure Settings";
+            // 
+            // rjTogglePartialResults
+            // 
+            this.rjTogglePartialResults.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            this.rjTogglePartialResults.AutoSize = true;
+            this.rjTogglePartialResults.Location = new Point(9, 361);
+            this.rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
+            this.rjTogglePartialResults.MinimumSize = new Size(39, 16);
+            this.rjTogglePartialResults.Name = "rjTogglePartialResults";
+            this.rjTogglePartialResults.OffBackColor = Color.Gray;
+            this.rjTogglePartialResults.OffToggleColor = Color.Gainsboro;
+            this.rjTogglePartialResults.OnBackColor = Color.MediumSlateBlue;
+            this.rjTogglePartialResults.OnToggleColor = Color.WhiteSmoke;
+            this.rjTogglePartialResults.Size = new Size(39, 16);
+            this.rjTogglePartialResults.TabIndex = 124;
+            this.rjTogglePartialResults.UseVisualStyleBackColor = true;
+            // 
+            // label203
+            // 
+            label203.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label203.AutoSize = true;
+            label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label203.ForeColor = Color.Snow;
+            label203.Location = new Point(57, 362);
+            label203.Name = "label203";
+            label203.Size = new Size(113, 15);
+            label203.TabIndex = 123;
+            label203.Text = "Allow Partial Results";
             // 
             // rjToggleTranslateSameLanguage
             // 
@@ -6419,7 +6476,7 @@
             this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton29.IconSize = 40;
             this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(455, 2);
+            this.iconButton29.Location = new Point(149, 2);
             this.iconButton29.Margin = new Padding(3, 2, 3, 2);
             this.iconButton29.Name = "iconButton29";
             this.iconButton29.Size = new Size(44, 46);
@@ -10140,34 +10197,6 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += this.button45_Click;
             // 
-            // rjTogglePartialResults
-            // 
-            this.rjTogglePartialResults.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjTogglePartialResults.AutoSize = true;
-            this.rjTogglePartialResults.Location = new Point(9, 361);
-            this.rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
-            this.rjTogglePartialResults.MinimumSize = new Size(39, 16);
-            this.rjTogglePartialResults.Name = "rjTogglePartialResults";
-            this.rjTogglePartialResults.OffBackColor = Color.Gray;
-            this.rjTogglePartialResults.OffToggleColor = Color.Gainsboro;
-            this.rjTogglePartialResults.OnBackColor = Color.MediumSlateBlue;
-            this.rjTogglePartialResults.OnToggleColor = Color.WhiteSmoke;
-            this.rjTogglePartialResults.Size = new Size(39, 16);
-            this.rjTogglePartialResults.TabIndex = 124;
-            this.rjTogglePartialResults.UseVisualStyleBackColor = true;
-            // 
-            // label203
-            // 
-            label203.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            label203.AutoSize = true;
-            label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label203.ForeColor = Color.Snow;
-            label203.Location = new Point(57, 362);
-            label203.Name = "label203";
-            label203.Size = new Size(113, 15);
-            label203.TabIndex = 123;
-            label203.Text = "Allow Partial Results";
-            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -10187,10 +10216,11 @@
             this.Resize += this.VoiceWizardWindow_Resize;
             mainTabControl.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
-            ((global::System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((global::System.ComponentModel.ISupportInitialize)(pictureBox2)).EndInit();
+            panel5.ResumeLayout(false);
+            ((global::System.ComponentModel.ISupportInitialize)(pictureBox5)).EndInit();
             ((global::System.ComponentModel.ISupportInitialize)(pictureBox4)).EndInit();
             tabPage1.ResumeLayout(false);
             groupBox7.ResumeLayout(false);
@@ -10428,7 +10458,7 @@
         public RJControls.RJToggleButton rjToggleButtonSpotifySpam;
         private FontAwesome.Sharp.IconButton iconButton14;
         private FontAwesome.Sharp.IconButton iconButton13;
-        public RJControls.RJToggleButton rjToggleButton5;
+        public RJControls.RJToggleButton rjToggleBannerOff;
         private Label label66;
         private Label label68;
         public RJControls.RJToggleButton rjToggleSpotLegacy;
@@ -10470,9 +10500,7 @@
         public TextBox textBox3;
         public Button buttonSpotify;
         public RJControls.RJToggleButton rjToggleButtonCurrentSong;
-        public Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         public Button button10;
-        public Button button9;
         public RJControls.RJToggleButton rjToggleButtonClear;
         public TextBox textBoxSpotifyTime;
         public NotifyIcon notifyIcon1;
@@ -10995,6 +11023,10 @@
         private Button button21;
         public global::OSCVRCWiz.RJControls.RJToggleButton rjTogglePartialResults;
         private Label label203;
+        public PictureBox pictureBox5;
+        private Panel panel5;
+        public Button buttonNextBanner;
+        public Button buttonPreviousBanner;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

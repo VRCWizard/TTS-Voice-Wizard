@@ -126,8 +126,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             catch (Exception ex) { }
         }
 
-        public static void SetVoices(ComboBox voices, ComboBox styles)
+        public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
         {
+            accents.Items.Clear();
+            accents.Items.Add("default");
+            accents.SelectedIndex = 0;
+
+
             voices.Items.Clear();
             voices.Items.Add("Betty");
             voices.Items.Add("Dennis");

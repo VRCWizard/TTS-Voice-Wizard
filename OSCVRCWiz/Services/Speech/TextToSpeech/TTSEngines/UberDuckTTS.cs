@@ -312,6 +312,10 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
         {
             accents.Items.Clear();
+            accents.Items.Add("default");
+            accents.SelectedIndex = 0;
+
+
             voices.Items.Clear();
             UberDuckTTS.SynthesisGetAvailableVoicesAsync(accents.Text.ToString(), true);
             

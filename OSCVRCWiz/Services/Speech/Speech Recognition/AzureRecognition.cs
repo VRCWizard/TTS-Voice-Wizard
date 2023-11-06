@@ -108,7 +108,8 @@ namespace OSCVRCWiz
 
 
 
-                      //  StopAzureTypingTimer();
+           
+                        AzureTyping = "";
                         TTSMessageQueue.QueueMessage(text, "Azure Translate", translatedString);
 
                       
@@ -149,7 +150,8 @@ namespace OSCVRCWiz
 
 
                         //    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
-                       // StopAzureTypingTimer();
+                    
+                        AzureTyping = "";
                         TTSMessageQueue.QueueMessage(text, "Azure");
 
 
@@ -191,7 +193,7 @@ namespace OSCVRCWiz
       
         public static async void speechTTTS(string fromLanguageFullname)//speech to text
         {
-            StartAzureTypingTimer();
+            
 
             System.Diagnostics.Debug.WriteLine("Speak into your microphone.");
             try
@@ -199,6 +201,7 @@ namespace OSCVRCWiz
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    StartAzureTypingTimer();
                     DoSpeech.speechToTextOnSound();
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
@@ -217,7 +220,7 @@ namespace OSCVRCWiz
                     var text = speechRecognitionResult.Text; //Dictation string
 
                     StopAzureTypingTimer();
-                    AzureTyping = "";
+                    
                     TTSMessageQueue.QueueMessage(text, "Azure");
                     DoSpeech.speechToTextButtonOff();
 
@@ -226,6 +229,7 @@ namespace OSCVRCWiz
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true && continuousListening == false)
                 {
+                    StartAzureTypingTimer();
                     DoSpeech.speechToTextOnSound();
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
@@ -245,9 +249,13 @@ namespace OSCVRCWiz
                 {
                     DoSpeech.speechToTextOffSound();
                     continuousListening = false;
+                    StopAzureTypingTimer();
                     // Make the following call at some point to stop recognition:
                     System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
                     await speechRecognizer1.StopContinuousRecognitionAsync();
+
+
+
                     OutputText.outputLog("[Azure Continuous Listening Disabled]");
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
@@ -281,6 +289,7 @@ namespace OSCVRCWiz
                 System.Diagnostics.Debug.WriteLine($"we'll translate into '{toLanguage}'.\n");
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false)
                 {
+                    StartAzureTypingTimer();
                     DoSpeech.speechToTextOnSound();
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                     {
@@ -311,13 +320,14 @@ namespace OSCVRCWiz
                     // Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "Azure Translate",translatedString));
 
                     StopAzureTypingTimer();
-                    AzureTyping = "";
+                   
                     TTSMessageQueue.QueueMessage(text, "Azure Translate", translatedString);
                     DoSpeech.speechToTextButtonOff();
 
                 }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true && continuousListening == false)
                 {
+                    StartAzureTypingTimer();
                     DoSpeech.speechToTextOnSound();
                     continuousListening = true;
                     System.Diagnostics.Debug.WriteLine("continuousListening Enabled------------------------------");
@@ -340,7 +350,11 @@ namespace OSCVRCWiz
                     // Make the following call at some point to stop recognition:
                     System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
 
+                    StopAzureTypingTimer();
+
                     await translationRecognizer1.StopContinuousRecognitionAsync();
+
+                    
                     //   speechRecognizer1.Dispose();
                     //  var ot = new OutputText();
                     OutputText.outputLog("[Azure Continuous Listening Disabled (Translating)]");
@@ -370,7 +384,7 @@ namespace OSCVRCWiz
             if (continuousListening == true)
             {
                 StopAzureTypingTimer();
-                AzureTyping = "";
+              
                 continuousListening = false;
                 // Make the following call at some point to stop recognition:
                 System.Diagnostics.Debug.WriteLine("continuousListening Disabled------------------------------");
@@ -403,6 +417,7 @@ namespace OSCVRCWiz
             {
                 AzureTypingTimer.Change(Timeout.Infinite, Timeout.Infinite);
             }
+           AzureTyping = "";
         }
 
         public static void heartratetimertick(object sender)
@@ -413,6 +428,7 @@ namespace OSCVRCWiz
 
         private static async void doAzureTypingTimerTick()
         {
+            //OutputText.outputLog($"partial timer still going");
             if (VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked)
             {
                 if (AzureTyping != "")
@@ -424,8 +440,9 @@ namespace OSCVRCWiz
                     OSC.OSCSender.Send(messageSpeechBubble);
                     OutputText.outputLog($"[Partial Results]: {AzureTyping}");
 
-                    AzureTypingTimer.Change(Int32.Parse(AzureTypingInterval), 0);
+                   
                 }
+                AzureTypingTimer.Change(Int32.Parse(AzureTypingInterval), 0);
             }
             
             

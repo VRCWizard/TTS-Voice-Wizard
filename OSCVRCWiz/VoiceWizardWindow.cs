@@ -425,7 +425,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarHome.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabPage4);//Dashboard
-            webView21.Show();
+                                               //    webView21.Show();
 
 
         }
@@ -434,7 +434,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarTextToSpeech.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabPage1);//sttts
-            webView21.Hide();
+                                               //    webView21.Hide();
 
 
         }
@@ -444,7 +444,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarTextToText.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabPage3);//ttt
-            webView21.Hide();
+                                               // webView21.Hide();
         }
 
 
@@ -453,7 +453,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarSettings.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(General);//settings
-            webView21.Hide();
+                                              //  webView21.Hide();
         }
 
 
@@ -463,7 +463,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarIntegrations.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabAddons); //addon
-            webView21.Hide();
+                                                 // webView21.Hide();
 
 
         }
@@ -473,7 +473,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarSpeechProvider.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(APIs);//provider
-            webView21.Hide();
+                                           //   webView21.Hide();
         }
 
 
@@ -589,17 +589,30 @@ namespace OSCVRCWiz
 
         #region WebViewer Buttons
 
-        private void button9_Click(object sender, EventArgs e)//Refresh
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
-            Uri uri = new Uri("https://voicewizardpro.carrd.co/");
-            webView21.Source = uri;
+            System.Diagnostics.Process.Start("explorer.exe", HomeScreenBanner.websiteLink);
         }
 
         private void button10_Click(object sender, EventArgs e)//Close
         {
-            webView21.Dispose();
+            //webView21.Dispose();
+            HomeScreenBanner.stopTimer();
+            pictureBox5.Dispose();
+            buttonPreviousBanner.Dispose();
+            buttonNextBanner.Dispose();
             button10.Dispose();
-            button9.Dispose();
+
+        }
+
+        private void buttonPreviousBanner_Click(object sender, EventArgs e)
+        {
+            HomeScreenBanner.previousBanner();
+        }
+
+        private void buttonNextBanner_Click(object sender, EventArgs e)
+        {
+            HomeScreenBanner.nextBanner();
         }
         #endregion
 
@@ -707,19 +720,19 @@ namespace OSCVRCWiz
             {
                 case "Moonbase":
                     DoSpeech.TTSModeSaved = "Moonbase";
-                    MoonbaseTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
+                    MoonbaseTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
-                    OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Moonbase-TTS ]", Color.DarkOrange);
+                    OutputText.outputLog("[Make sure you have downloaded the Moonbase Voice dependencies: https://ttsvoicewizard.com/docs/TTSMethods/Moonbase ]", Color.DarkOrange);
 
 
                     break;
                 case "TikTok":
                     DoSpeech.TTSModeSaved = "TikTok";
-                    TikTokTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
+                    TikTokTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
@@ -731,7 +744,7 @@ namespace OSCVRCWiz
                     break;
                 case "System Speech":
                     DoSpeech.TTSModeSaved = "System Speech";
-                    SystemSpeechTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
+                    SystemSpeechTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
                     trackBarPitch.Enabled = true;
@@ -751,8 +764,8 @@ namespace OSCVRCWiz
 
                     if (textBoxAzureKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
-                        OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an Azure Key, follow the steps here to get an Azure key or become a member of VoiceWizardPro: https://ttsvoicewizard.com/docs/TTSMethods/AzureTTS ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing a VoiceWizardPro Key, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
                     }
 
 
@@ -804,7 +817,7 @@ namespace OSCVRCWiz
 
                     if (textBoxUberKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an Uberduck Key: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Uberduck-TTS ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an Uberduck Key: https://ttsvoicewizard.com/docs/TTSMethods/Uberduck ]", Color.DarkOrange);
                     }
 
                     break;
@@ -826,14 +839,14 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
 
 
-                    OutputText.outputLog("[Here is an example of a project that can be used with Local: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Glados-TTS . This method works by sending a GET request to http://127.0.0.1:8124/synthesize/ with the string parameter 'text'. If you create compatible projects or models, feel free to share them in the Discord server.]", Color.DarkOrange);
+                    OutputText.outputLog("[Learn more about the locally hosted option here: https://ttsvoicewizard.com/docs/TTSMethods/LocallyHosted]", Color.DarkOrange);
 
                     break;
 
                 case "ElevenLabs":
                     DoSpeech.TTSModeSaved = "ElevenLabs";
 
-                    ElevenLabsTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect);
+                    ElevenLabsTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
 
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
@@ -843,7 +856,7 @@ namespace OSCVRCWiz
 
                     if (textBoxElevenLabsKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an ElevenLabs Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an ElevenLabs Key, make sure to follow the setup guide: https://ttsvoicewizard.com/docs/TTSMethods/ElevenLabs ]", Color.DarkOrange);
                     }
 
                     break;
@@ -862,8 +875,8 @@ namespace OSCVRCWiz
 
                     if (textBoxAmazonKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
-                        OutputText.outputLog("[You appear to be missing an Amazon Polly Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly ]", Color.DarkOrange);
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an Amazon Polly Key, for the steps here to get an Amazon Polly key or become a VoiceWizardPro member: https://ttsvoicewizard.com/docs/TTSMethods/AmazonPolly ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing a VoiceWizardPro Key, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
                     }
 
                     break;
@@ -876,6 +889,12 @@ namespace OSCVRCWiz
                     DoSpeech.TTSModeSaved = "No TTS";
                     comboBoxVoiceSelect.Items.Clear();
                     comboBoxVoiceSelect.Items.Add("no voice");
+
+
+                    comboBoxAccentSelect.Items.Clear();
+                    comboBoxAccentSelect.Items.Add("default");
+                    comboBoxAccentSelect.SelectedIndex = 0;
+
                     comboBoxVoiceSelect.SelectedIndex = 0;
                     comboBoxStyleSelect.Items.Clear();
                     comboBoxStyleSelect.Items.Add("default");
@@ -1156,7 +1175,7 @@ namespace OSCVRCWiz
 
         private void iconButton2_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Settings");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/Settings/GeneralSettings");
         }
 
         private void button14_Click_2(object sender, EventArgs e)
@@ -1591,12 +1610,12 @@ namespace OSCVRCWiz
 
         private void iconButton41_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#speech-to-text-and-tts");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/getting-started/speechToText");
         }
 
         private void iconButton16_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Virtual-Cable");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/getting-started/VirtualCable");
         }
 
         private void button43_Click(object sender, EventArgs e)
@@ -1660,19 +1679,19 @@ namespace OSCVRCWiz
                 case "Whisper":
                     if (whisperModelTextBox.Text.ToString() == "no model selected")
                     {
-                        OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ]", Color.DarkOrange);
+                        OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/Whisper ]", Color.DarkOrange);
 
                     }
                     iconButtonMute.Visible = true;
                     WhisperDebugLabel.Visible = true;
                     break;
 
-                case "Web Captioner": OutputText.outputLog("[Web Captioner selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Web-Captioner ]", Color.DarkOrange); break;
+                case "Web Captioner": OutputText.outputLog("[Web Captioner selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/WebCaptioner ]", Color.DarkOrange); break;
 
                 case "Vosk":
                     if (modelTextBox.Text.ToString() == "no folder selected")
                     {
-                        OutputText.outputLog("[Vosk selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Vosk ]", Color.DarkOrange);
+                        OutputText.outputLog("[Vosk selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/Vosk ]", Color.DarkOrange);
                     }
                     break;
 
@@ -1680,7 +1699,7 @@ namespace OSCVRCWiz
                 case "Azure":
                     if (textBoxAzureKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[Azure selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                        OutputText.outputLog("[Azure selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/AzureSTT ]", Color.DarkOrange);
                     }
                     break;
                 default:
@@ -1888,7 +1907,7 @@ namespace OSCVRCWiz
 
         private void OBSLink_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#obs-text-for-streaming-and-recording-videos");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/getting-started/Text4Streaming");
 
         }
 
@@ -1974,7 +1993,7 @@ namespace OSCVRCWiz
 
         private void iconButton31_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/MediaIntegration");
 
         }
 
@@ -2156,12 +2175,12 @@ namespace OSCVRCWiz
 
         private void label195_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://vrcwizard.github.io/TTS-Voice-Wizard-React/");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/WebApp");
         }
 
         private void iconButton5_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#websocket-to-text-to-speech");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/ReceivingData/Websocket");
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -2188,7 +2207,7 @@ namespace OSCVRCWiz
         }
         private void iconButton4_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Heartrate-Integration");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/HeartRate/HeartrateWithPulsoid");
         }
 
         private void buttonPulsoidInterval_Click(object sender, EventArgs e)
@@ -2278,7 +2297,7 @@ namespace OSCVRCWiz
 
         private void iconButton47_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VRChat-Listener");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/ReceivingData/VRChatListener/VRChat");
         }
 
         private void rjToggleButtonResetButtonsCounter_CheckedChanged(object sender, EventArgs e)
@@ -2443,7 +2462,7 @@ namespace OSCVRCWiz
 
         private void iconButton40_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Voice-Commands");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/VoiceCommands");
         }
 
         private void buttonImportVC_Click(object sender, EventArgs e)
@@ -2519,7 +2538,7 @@ namespace OSCVRCWiz
 
         private void iconButton45_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Word-Replacements");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/Word%20Replacements");
         }
 
 
@@ -2535,7 +2554,7 @@ namespace OSCVRCWiz
 
         private void iconButton44_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Discord-Integration");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/DiscordIntegration");
         }
 
 
@@ -2563,7 +2582,7 @@ namespace OSCVRCWiz
 
         private void iconButton32_Click(object sender, EventArgs e)//help
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Emoji-Setup");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/Shader%20Based%20Textbox/Emoji");
         }
 
 
@@ -2651,7 +2670,7 @@ namespace OSCVRCWiz
 
         private void iconButton55_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/VoiceWizardPro/HowToGetKey");
 
         }
 
@@ -2749,7 +2768,7 @@ namespace OSCVRCWiz
 
         private void iconButton29_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/TTSMethods/AzureTTS");
         }
 
         #endregion
@@ -2767,7 +2786,7 @@ namespace OSCVRCWiz
 
         private void iconButton18_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Amazon-Polly");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/TTSMethods/AmazonPolly");
         }
 
         private void button31_Click(object sender, EventArgs e)//access key
@@ -2816,7 +2835,7 @@ namespace OSCVRCWiz
 
         private void iconButton43_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/Translation/DeepL");
         }
 
         private void button18_Click_1(object sender, EventArgs e)
@@ -2874,7 +2893,7 @@ namespace OSCVRCWiz
 
         private void iconButton35_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/TTSMethods/ElevenLabs");
         }
 
 
@@ -2956,7 +2975,7 @@ namespace OSCVRCWiz
 
         private void iconButton53_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Uberduck-TTS");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/TTSMethods/Uberduck");
         }
 
         #endregion
@@ -3070,17 +3089,19 @@ namespace OSCVRCWiz
 
         private void voskLink_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Vosk");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/Vosk");
         }
 
         private void whisperLink_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/Whisper");
 
         }
 
         #endregion
         #endregion
+
+
 
 
     }

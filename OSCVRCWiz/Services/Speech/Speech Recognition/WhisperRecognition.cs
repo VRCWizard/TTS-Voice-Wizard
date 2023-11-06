@@ -30,29 +30,26 @@ namespace OSCVRCWiz.Speech_Recognition
         {
             if (WhisperEnabled == false )
             {
-
                 DoSpeech.speechToTextOnSound();
-
                 WhisperEnabled = true;
                 string UseThisMic = getWhisperInputDevice().ToString();
+                OutputText.outputLog("[Whisper Mic Selected]");
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     langcode = LanguageSelect.fromLanguageNew(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString(), "sourceLanguage", "Whisper");
                    // fromLanguageID(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString());//set lang code for recognition
 
                 });
+                OutputText.outputLog("[Whisper Language Selected]");
 
-                    string[] args = {
+                string[] args = {
                 "-c",UseThisMic,
                 "-m",  VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text,
                 "-l", langcode,
                  };
                 OutputText.outputLog("[Starting Whisper]");
                 Task.Run(() => doWhisper(args));
-               // OutputText.outputLog("[test output]");
 
-
-                // }
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                 {
                     var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
