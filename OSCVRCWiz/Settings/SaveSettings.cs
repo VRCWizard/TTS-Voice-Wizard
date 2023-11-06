@@ -93,7 +93,7 @@ namespace OSCVRCWiz
             Settings1.Default.AudioCancelSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButtonStopCurrentTTS.Checked;
    
 
-            Settings1.Default.bannerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked;
+            Settings1.Default.bannerSetting = VoiceWizardWindow.MainFormGlobal.rjToggleBannerOff.Checked;
 
             Settings1.Default.SpotifyKey = VoiceWizardWindow.MainFormGlobal.textBoxSpotKey.Text.ToString();
             Settings1.Default.SpotifyLegacySetting = VoiceWizardWindow.MainFormGlobal.rjToggleSpotLegacy.Checked;
@@ -313,7 +313,7 @@ namespace OSCVRCWiz
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();
-            VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
+         //   VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
         }
     }
 }

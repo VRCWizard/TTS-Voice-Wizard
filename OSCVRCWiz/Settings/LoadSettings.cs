@@ -71,12 +71,14 @@ namespace OSCVRCWiz
 
 
 
-            VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked = Settings1.Default.bannerSetting;
-            if (VoiceWizardWindow.MainFormGlobal.rjToggleButton5.Checked == true)
+            VoiceWizardWindow.MainFormGlobal.rjToggleBannerOff.Checked = Settings1.Default.bannerSetting;
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleBannerOff.Checked == true)
             {
-                VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
+             //   VoiceWizardWindow.MainFormGlobal.webView21.Dispose();
                 VoiceWizardWindow.MainFormGlobal.button10.Dispose();
-                VoiceWizardWindow.MainFormGlobal.button9.Dispose();
+                VoiceWizardWindow.MainFormGlobal.buttonPreviousBanner.Dispose();
+                VoiceWizardWindow.MainFormGlobal.buttonNextBanner.Dispose();
+                VoiceWizardWindow.MainFormGlobal.pictureBox5.Dispose();
             }
 
 

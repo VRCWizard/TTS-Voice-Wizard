@@ -41,8 +41,10 @@ namespace OSCVRCWiz.Resources.StartUp
 
         public static void OnFormLoad() //delayed until form is loaded correctly
         {
+           // VoiceWizardWindow.MainFormGlobal.pictureBox5.Load("https://github.com/VRCWizard/TTS-Voice-Wizard/assets/101527472/a60a93bf-de76-4872-924a-6bd2efec2b3e");
             OSC.InitializeOSC();
 
+            HomeScreenBanner.initiateTimer();
             OutputText.loadTextDelays();
             OutputText.initiateTextTimers();
             VRChatListener.initiateTimer();
