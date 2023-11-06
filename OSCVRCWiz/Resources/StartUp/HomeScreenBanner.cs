@@ -103,6 +103,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
         private static void doRotationTimerTick()
         {
+           
             currentIndex++;
 
             if (currentIndex >= imageUrls.Count)
@@ -112,15 +113,18 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
             if (currentIndex < imageUrls.Count)
             {
-                // Update the PictureBox with the next image
-                try
+                if (VoiceWizardWindow.MainFormGlobal.pictureBox5.Visible == true)
                 {
-                    VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]);
-                    websiteLink = websiteLinks[currentIndex];
-                }
-                catch (Exception ex)
-                {
-                    OutputText.outputLog($"Error Loading Image {currentIndex}: {ex.Message}", Color.Red);
+                    // Update the PictureBox with the next image
+                    try
+                    {
+                        VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]);
+                        websiteLink = websiteLinks[currentIndex];
+                    }
+                    catch (Exception ex)
+                    {
+                        OutputText.outputLog($"Error Loading Image {currentIndex}: {ex.Message}", Color.Red);
+                    }
                 }
 
                 // Update the web browser control with the corresponding link

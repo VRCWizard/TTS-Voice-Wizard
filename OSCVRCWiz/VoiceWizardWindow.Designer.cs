@@ -57,7 +57,6 @@
             this.iconButton14 = new global::FontAwesome.Sharp.IconButton();
             this.iconButton26 = new global::FontAwesome.Sharp.IconButton();
             button10 = new Button();
-           
             panel5 = new Panel();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
@@ -1219,7 +1218,7 @@
             button10.TabIndex = 28;
             button10.Text = "X";
             button10.UseVisualStyleBackColor = false;
-            button10.Click += this.button10_Click;    
+            button10.Click += this.button10_Click;
             // 
             // panel5
             // 
@@ -1234,6 +1233,7 @@
             // 
             // pictureBox5
             // 
+            pictureBox5.Cursor = Cursors.Hand;
             pictureBox5.Dock = DockStyle.Fill;
             pictureBox5.Location = new Point(0, 0);
             pictureBox5.Name = "pictureBox5";
@@ -2428,7 +2428,7 @@
             this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
             this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(154, 3);
+            this.iconButton1.Location = new Point(137, 3);
             this.iconButton1.Margin = new Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = RightToLeft.No;
@@ -3314,7 +3314,7 @@
             this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(322, 3);
+            this.iconButton31.Location = new Point(305, 3);
             this.iconButton31.Margin = new Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new Size(44, 38);
@@ -6476,7 +6476,7 @@
             this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton29.IconSize = 40;
             this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(149, 2);
+            this.iconButton29.Location = new Point(132, 2);
             this.iconButton29.Margin = new Padding(3, 2, 3, 2);
             this.iconButton29.Name = "iconButton29";
             this.iconButton29.Size = new Size(44, 46);

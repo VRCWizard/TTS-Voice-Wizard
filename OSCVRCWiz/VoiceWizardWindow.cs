@@ -425,6 +425,7 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarHome.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabPage4);//Dashboard
+            pictureBox5.Show();
                                                //    webView21.Show();
 
 
@@ -434,7 +435,8 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarTextToSpeech.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabPage1);//sttts
-                                               //    webView21.Hide();
+            pictureBox5.Hide();
+            //    webView21.Hide();
 
 
         }
@@ -444,7 +446,8 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarTextToText.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabPage3);//ttt
-                                               // webView21.Hide();
+            pictureBox5.Hide();
+            // webView21.Hide();
         }
 
 
@@ -453,7 +456,8 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarSettings.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(General);//settings
-                                              //  webView21.Hide();
+            pictureBox5.Hide();
+            //  webView21.Hide();
         }
 
 
@@ -463,7 +467,8 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarIntegrations.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(tabAddons); //addon
-                                                 // webView21.Hide();
+            pictureBox5.Hide();
+            // webView21.Hide();
 
 
         }
@@ -473,7 +478,8 @@ namespace OSCVRCWiz
             allButtonColorReset();
             navbarSpeechProvider.BackColor = SelectedNavBar;
             mainTabControl.SelectTab(APIs);//provider
-                                           //   webView21.Hide();
+            pictureBox5.Hide();
+            //   webView21.Hide();
         }
 
 
