@@ -490,7 +490,7 @@ namespace OSCVRCWiz
 
         private void iconButton12_Click(object sender, EventArgs e) //Ko-fi
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
+            System.Diagnostics.Process.Start("explorer.exe", "https://www.patreon.com/ttsvoicewizard");
         }
 
         private void iconButton8_Click(object sender, EventArgs e)//Updater Button
@@ -630,7 +630,7 @@ namespace OSCVRCWiz
 
         private void iconButton17_Click_1(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://ko-fi.com/ttsvoicewizard/tiers");
+            System.Diagnostics.Process.Start("explorer.exe", "https://www.patreon.com/ttsvoicewizard");
         }
 
         #endregion
@@ -765,7 +765,7 @@ namespace OSCVRCWiz
                     if (textBoxAzureKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
                         OutputText.outputLog("[You appear to be missing an Azure Key, follow the steps here to get an Azure key or become a member of VoiceWizardPro: https://ttsvoicewizard.com/docs/TTSMethods/AzureTTS ]", Color.DarkOrange);
-                        OutputText.outputLog("[You appear to be missing a VoiceWizardPro Key, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing a VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
 
@@ -783,7 +783,7 @@ namespace OSCVRCWiz
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
 
@@ -800,7 +800,7 @@ namespace OSCVRCWiz
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
 
@@ -876,7 +876,7 @@ namespace OSCVRCWiz
                     if (textBoxAmazonKey.Text.ToString() == "" && rjToggleButtonUsePro.Checked == false)
                     {
                         OutputText.outputLog("[You appear to be missing an Amazon Polly Key, for the steps here to get an Amazon Polly key or become a VoiceWizardPro member: https://ttsvoicewizard.com/docs/TTSMethods/AmazonPolly ]", Color.DarkOrange);
-                        OutputText.outputLog("[You appear to be missing a VoiceWizardPro Key, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing a VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
                     break;
