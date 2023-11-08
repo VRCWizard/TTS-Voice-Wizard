@@ -443,12 +443,12 @@ namespace OSCVRCWiz
                         OutputText.outputLog($"[Partial Results]: {AzureTyping}");
 
                    
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
                     {
 
                         Task.Run(() => OutputText.outputVRChat(AzureTyping, DisplayTextType.TextToText));
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
                     {
                         //  theString = LineBreakerChatbox(theString, 28);//must always be the last
                         Task.Run(() => OutputText.outputVRChatSpeechBubbles(AzureTyping, DisplayTextType.TextToText)); //original
