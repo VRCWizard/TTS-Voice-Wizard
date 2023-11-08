@@ -311,6 +311,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.azurePartialResults = VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked;
 
+            Settings1.Default.partialResultsInterval = VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text.ToString();
+
             Settings1.Default.Save();
             //emojiSettings.Default.Save();
          //   VoiceWizardWindow.MainFormGlobal.webView21.Dispose();

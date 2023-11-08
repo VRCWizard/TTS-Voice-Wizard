@@ -394,6 +394,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked = Settings1.Default.azurePartialResults;
 
+            VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text = Settings1.Default.partialResultsInterval;
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;
             try
             {

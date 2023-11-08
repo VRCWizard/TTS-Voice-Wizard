@@ -626,5 +626,8 @@
     <Setting Name="azurePartialResults" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="partialResultsInterval" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

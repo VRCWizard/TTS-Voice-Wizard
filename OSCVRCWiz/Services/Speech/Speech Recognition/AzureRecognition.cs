@@ -12,6 +12,8 @@ using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using System;
 using System.Diagnostics;
+using static OSCVRCWiz.Services.Text.OutputText;
+using OSCVRCWiz.Settings;
 
 namespace OSCVRCWiz
 {
@@ -32,7 +34,7 @@ namespace OSCVRCWiz
         public static string YourServiceRegion;
 
         public static System.Threading.Timer AzureTypingTimer;
-        public static string AzureTypingInterval = "2000";
+       // public static string AzureTypingInterval = "2000";
         private static string AzureTyping = "";
      
 
@@ -405,7 +407,7 @@ namespace OSCVRCWiz
         public static void StartAzureTypingTimer()
         {
            AzureTypingTimer = new System.Threading.Timer(heartratetimertick);
-           AzureTypingTimer.Change(Int32.Parse(AzureTypingInterval), Int32.Parse(AzureTypingInterval)-1000);
+           AzureTypingTimer.Change(Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text.ToString()),0);
           
 
 
@@ -433,16 +435,30 @@ namespace OSCVRCWiz
             {
                 if (AzureTyping != "")
                 {
+                    // var messageSpeechBubble = new OscMessage("/chatbox/input", AzureTyping, true, false);
+                    // OSC.OSCSender.Send(messageSpeechBubble);
 
 
 
-                    var messageSpeechBubble = new OscMessage("/chatbox/input", AzureTyping, true, false);
-                    OSC.OSCSender.Send(messageSpeechBubble);
-                    OutputText.outputLog($"[Partial Results]: {AzureTyping}");
+                        OutputText.outputLog($"[Partial Results]: {AzureTyping}");
 
                    
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyKatDisable.Checked == false)
+                    {
+
+                        Task.Run(() => OutputText.outputVRChat(AzureTyping, DisplayTextType.TextToText));
+                    }
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
+                    {
+                        //  theString = LineBreakerChatbox(theString, 28);//must always be the last
+                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(AzureTyping, DisplayTextType.TextToText)); //original
+
+                    }
+
+
+
                 }
-                AzureTypingTimer.Change(Int32.Parse(AzureTypingInterval), 0);
+                AzureTypingTimer.Change(Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text.ToString()), 0);
             }
             
             

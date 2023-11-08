@@ -140,33 +140,36 @@ namespace OSCVRCWiz.Services.Text
         {
             try
             {
+                bool keyboardOff = true;
+                bool notificationSound = false;
+
+
+                if (type == DisplayTextType.TextToSpeech)
+                {
+                    keyboardOff = !VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked;
+                    notificationSound = VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked;
+                }
+
+                
 
 
                 // byte[] bytes = Encoding.Default.GetBytes(textstring);
                 // textstring = Encoding.UTF8.GetString(bytes);
 
 
-              //  System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
+                //  System.Diagnostics.Debug.WriteLine("Encoded UTF-8: " + textstring);
 
 
                 var typingbubbleOff = new OscMessage("/chatbox/typing", false);//this is turned on as soon as you press the STTTS button and turned off here
-                var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, false);
+                var messageSpeechBubble = new OscMessage("/chatbox/input", textstring, keyboardOff, notificationSound);
                 //   var messageSpeechBubble = new SharpOSC.OscMessage("/chatbox/input", textstring);
                 //testing if error message appears /what value is defaulted to if not specified
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
-                {
-                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, false);
 
-                }
-                if (type == DisplayTextType.TextToSpeech && VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked == true) //handles sound notification output so it is only sent for TTS messages (i dont know how annoying this will be) //also if message is not tts keyboard can not be shown
-                {
-                    messageSpeechBubble = new OscMessage("/chatbox/input", textstring, true, true);
 
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonShowKeyboard.Checked == true)
-                    {
-                        messageSpeechBubble = new OscMessage("/chatbox/input", textstring, false, true);
-                    }
-                }
+
+
+
+
                 if (type == DisplayTextType.TextToSpeech)// so in otherowrds if type is tts it disables typing indicator
                 {
                     OSC.OSCSender.Send(typingbubbleOff);
@@ -269,6 +272,10 @@ namespace OSCVRCWiz.Services.Text
 
 
 
+                if(VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked == true) 
+                {
+                    type = DisplayTextType.TextToText;
+                }
 
               //  if (type == DisplayTextType.TextToSpeech || type == DisplayTextType.UpdateText || type == DisplayTextType.WindowsMedia || type == DisplayTextType.Spotify)//remember last message
               //  {
@@ -345,7 +352,7 @@ namespace OSCVRCWiz.Services.Text
                         {
                             if ((DateTime.Now - lastDateTime).Seconds <= 1)//collision prevention
                             {
-                                OutputText.outputLog("[KAT collision prevented]");
+                                OutputText.outputLog("[Debug: KAT Collision Prevented]");
                                 Task.Delay(debugDelayValue * lastStringPoint).Wait();
                             }  
                             OSC.OSCSender.Send(OSCClearKatEraseAll);
@@ -380,7 +387,7 @@ namespace OSCVRCWiz.Services.Text
                     case DisplayTextType.TextToSpeech://dont clear all
                         if ((DateTime.Now - lastDateTime).Seconds <= 1)//collision prevention
                         {
-                            OutputText.outputLog("[KAT collision prevented]");
+                            OutputText.outputLog("[Debug: KAT Collision Prevented]");
                             Task.Delay(debugDelayValue * (lastStringPoint+1)).Wait();
                             
                         }

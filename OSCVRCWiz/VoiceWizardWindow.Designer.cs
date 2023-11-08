@@ -385,6 +385,8 @@
             label11 = new Label();
             AzureSet = new TabPage();
             groupBox12 = new GroupBox();
+            label204 = new Label();
+            textBoxPartialResultsInterval = new TextBox();
             this.rjTogglePartialResults = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label203 = new Label();
             this.rjToggleTranslateSameLanguage = new global::OSCVRCWiz.RJControls.RJToggleButton();
@@ -2428,7 +2430,7 @@
             this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
             this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(137, 3);
+            this.iconButton1.Location = new Point(103, 3);
             this.iconButton1.Margin = new Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = RightToLeft.No;
@@ -3314,7 +3316,7 @@
             this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(305, 3);
+            this.iconButton31.Location = new Point(271, 3);
             this.iconButton31.Margin = new Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new Size(44, 38);
@@ -6023,7 +6025,6 @@
             AzureSet.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
             AzureSet.Controls.Add(groupBox12);
             AzureSet.Controls.Add(groupBox11);
-            AzureSet.Controls.Add(this.iconButton29);
             AzureSet.Controls.Add(label10);
             AzureSet.Location = new Point(4, 24);
             AzureSet.Margin = new Padding(3, 2, 3, 2);
@@ -6034,6 +6035,8 @@
             // 
             // groupBox12
             // 
+            groupBox12.Controls.Add(label204);
+            groupBox12.Controls.Add(textBoxPartialResultsInterval);
             groupBox12.Controls.Add(this.rjTogglePartialResults);
             groupBox12.Controls.Add(label203);
             groupBox12.Controls.Add(this.rjToggleTranslateSameLanguage);
@@ -6062,11 +6065,31 @@
             groupBox12.TabStop = false;
             groupBox12.Text = "Azure Settings";
             // 
+            // label204
+            // 
+            label204.AutoSize = true;
+            label204.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label204.ForeColor = Color.Snow;
+            label204.Location = new Point(9, 346);
+            label204.Name = "label204";
+            label204.Size = new Size(149, 15);
+            label204.TabIndex = 167;
+            label204.Text = "Partial Results Interval (ms)";
+            // 
+            // textBoxPartialResultsInterval
+            // 
+            textBoxPartialResultsInterval.Location = new Point(10, 363);
+            textBoxPartialResultsInterval.Margin = new Padding(3, 2, 3, 2);
+            textBoxPartialResultsInterval.Name = "textBoxPartialResultsInterval";
+            textBoxPartialResultsInterval.Size = new Size(110, 23);
+            textBoxPartialResultsInterval.TabIndex = 166;
+            textBoxPartialResultsInterval.Text = "2000";
+            // 
             // rjTogglePartialResults
             // 
             this.rjTogglePartialResults.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjTogglePartialResults.AutoSize = true;
-            this.rjTogglePartialResults.Location = new Point(9, 361);
+            this.rjTogglePartialResults.Location = new Point(9, 316);
             this.rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
             this.rjTogglePartialResults.MinimumSize = new Size(39, 16);
             this.rjTogglePartialResults.Name = "rjTogglePartialResults";
@@ -6084,7 +6107,7 @@
             label203.AutoSize = true;
             label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label203.ForeColor = Color.Snow;
-            label203.Location = new Point(57, 362);
+            label203.Location = new Point(57, 317);
             label203.Name = "label203";
             label203.Size = new Size(113, 15);
             label203.TabIndex = 123;
@@ -6094,7 +6117,7 @@
             // 
             this.rjToggleTranslateSameLanguage.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjToggleTranslateSameLanguage.AutoSize = true;
-            this.rjToggleTranslateSameLanguage.Location = new Point(8, 302);
+            this.rjToggleTranslateSameLanguage.Location = new Point(8, 257);
             this.rjToggleTranslateSameLanguage.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleTranslateSameLanguage.MinimumSize = new Size(39, 16);
             this.rjToggleTranslateSameLanguage.Name = "rjToggleTranslateSameLanguage";
@@ -6112,7 +6135,7 @@
             label193.AutoSize = true;
             label193.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label193.ForeColor = Color.Snow;
-            label193.Location = new Point(55, 301);
+            label193.Location = new Point(55, 256);
             label193.Name = "label193";
             label193.Size = new Size(198, 15);
             label193.TabIndex = 121;
@@ -6129,7 +6152,7 @@
             this.buttonExportDict.IconColor = Color.White;
             this.buttonExportDict.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.buttonExportDict.IconSize = 15;
-            this.buttonExportDict.Location = new Point(99, 213);
+            this.buttonExportDict.Location = new Point(99, 191);
             this.buttonExportDict.Margin = new Padding(3, 2, 3, 2);
             this.buttonExportDict.Name = "buttonExportDict";
             this.buttonExportDict.Size = new Size(87, 25);
@@ -6150,7 +6173,7 @@
             this.buttonImportDict.IconColor = Color.White;
             this.buttonImportDict.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.buttonImportDict.IconSize = 15;
-            this.buttonImportDict.Location = new Point(6, 213);
+            this.buttonImportDict.Location = new Point(6, 191);
             this.buttonImportDict.Margin = new Padding(3, 2, 3, 2);
             this.buttonImportDict.Name = "buttonImportDict";
             this.buttonImportDict.Size = new Size(87, 25);
@@ -6164,7 +6187,7 @@
             // 
             this.rjToggleButtonStyle.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjToggleButtonStyle.AutoSize = true;
-            this.rjToggleButtonStyle.Location = new Point(9, 333);
+            this.rjToggleButtonStyle.Location = new Point(9, 288);
             this.rjToggleButtonStyle.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButtonStyle.MinimumSize = new Size(39, 16);
             this.rjToggleButtonStyle.Name = "rjToggleButtonStyle";
@@ -6182,7 +6205,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label30.ForeColor = Color.Snow;
-            label30.Location = new Point(57, 334);
+            label30.Location = new Point(57, 289);
             label30.Name = "label30";
             label30.Size = new Size(260, 30);
             label30.TabIndex = 108;
@@ -6214,7 +6237,7 @@
             label47.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             label47.AutoSize = true;
             label47.ForeColor = Color.Snow;
-            label47.Location = new Point(9, 425);
+            label47.Location = new Point(9, 441);
             label47.Name = "label47";
             label47.Size = new Size(403, 15);
             label47.TabIndex = 84;
@@ -6240,7 +6263,7 @@
             label48.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             label48.AutoSize = true;
             label48.ForeColor = Color.Snow;
-            label48.Location = new Point(9, 410);
+            label48.Location = new Point(9, 426);
             label48.Name = "label48";
             label48.Size = new Size(511, 15);
             label48.TabIndex = 85;
@@ -6262,7 +6285,7 @@
             this.rjToggleButtonProfan.AutoSize = true;
             this.rjToggleButtonProfan.Checked = true;
             this.rjToggleButtonProfan.CheckState = CheckState.Checked;
-            this.rjToggleButtonProfan.Location = new Point(9, 271);
+            this.rjToggleButtonProfan.Location = new Point(8, 226);
             this.rjToggleButtonProfan.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButtonProfan.MinimumSize = new Size(39, 16);
             this.rjToggleButtonProfan.Name = "rjToggleButtonProfan";
@@ -6281,7 +6304,7 @@
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label20.ForeColor = Color.Snow;
-            label20.Location = new Point(56, 270);
+            label20.Location = new Point(56, 225);
             label20.Name = "label20";
             label20.Size = new Size(182, 15);
             label20.TabIndex = 48;
@@ -6291,7 +6314,7 @@
             // 
             this.rjToggleButton4.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
             this.rjToggleButton4.AutoSize = true;
-            this.rjToggleButton4.Location = new Point(9, 390);
+            this.rjToggleButton4.Location = new Point(9, 406);
             this.rjToggleButton4.Margin = new Padding(3, 2, 3, 2);
             this.rjToggleButton4.MinimumSize = new Size(39, 16);
             this.rjToggleButton4.Name = "rjToggleButton4";
@@ -6310,7 +6333,7 @@
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label36.ForeColor = Color.Snow;
-            label36.Location = new Point(57, 390);
+            label36.Location = new Point(57, 406);
             label36.Name = "label36";
             label36.Size = new Size(177, 15);
             label36.TabIndex = 82;
@@ -6320,6 +6343,7 @@
             // 
             groupBox11.Controls.Add(this.ShowAzurePassword);
             groupBox11.Controls.Add(button13);
+            groupBox11.Controls.Add(this.iconButton29);
             groupBox11.Controls.Add(label19);
             groupBox11.Controls.Add(this.rjToggleButtonKeyRegion2);
             groupBox11.Controls.Add(label9);
@@ -6476,7 +6500,7 @@
             this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton29.IconSize = 40;
             this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(132, 2);
+            this.iconButton29.Location = new Point(486, 98);
             this.iconButton29.Margin = new Padding(3, 2, 3, 2);
             this.iconButton29.Name = "iconButton29";
             this.iconButton29.Size = new Size(44, 46);
@@ -11027,6 +11051,8 @@
         private Panel panel5;
         public Button buttonNextBanner;
         public Button buttonPreviousBanner;
+        private Label label204;
+        public TextBox textBoxPartialResultsInterval;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

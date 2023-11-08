@@ -2518,5 +2518,17 @@ namespace OSCVRCWiz.Settings {
                 this["azurePartialResults"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public string partialResultsInterval {
+            get {
+                return ((string)(this["partialResultsInterval"]));
+            }
+            set {
+                this["partialResultsInterval"] = value;
+            }
+        }
     }
 }
