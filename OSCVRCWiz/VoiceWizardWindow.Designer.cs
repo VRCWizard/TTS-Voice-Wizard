@@ -408,6 +408,7 @@
             groupBox11 = new GroupBox();
             this.ShowAzurePassword = new global::FontAwesome.Sharp.IconButton();
             button13 = new Button();
+            this.iconButton29 = new global::FontAwesome.Sharp.IconButton();
             label19 = new Label();
             this.rjToggleButtonKeyRegion2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
             label9 = new Label();
@@ -416,7 +417,6 @@
             label8 = new Label();
             button5 = new Button();
             textBoxAzureKey = new TextBox();
-            this.iconButton29 = new global::FontAwesome.Sharp.IconButton();
             label10 = new Label();
             tabPage2 = new TabPage();
             groupBox22 = new GroupBox();
@@ -2430,7 +2430,7 @@
             this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
             this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(103, 3);
+            this.iconButton1.Location = new Point(530, 3);
             this.iconButton1.Margin = new Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.RightToLeft = RightToLeft.No;
@@ -3316,7 +3316,7 @@
             this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
             this.iconButton31.IconSize = 35;
             this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(271, 3);
+            this.iconButton31.Location = new Point(698, 3);
             this.iconButton31.Margin = new Padding(3, 2, 3, 2);
             this.iconButton31.Name = "iconButton31";
             this.iconButton31.Size = new Size(44, 38);
@@ -6395,6 +6395,27 @@
             button13.UseVisualStyleBackColor = false;
             button13.Click += this.button13_Click;
             // 
+            // iconButton29
+            // 
+            this.iconButton29.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            this.iconButton29.FlatAppearance.BorderSize = 0;
+            this.iconButton29.FlatStyle = FlatStyle.Flat;
+            this.iconButton29.ForeColor = Color.Snow;
+            this.iconButton29.IconChar = global::FontAwesome.Sharp.IconChar.Question;
+            this.iconButton29.IconColor = Color.White;
+            this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton29.IconSize = 40;
+            this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
+            this.iconButton29.Location = new Point(486, 98);
+            this.iconButton29.Margin = new Padding(3, 2, 3, 2);
+            this.iconButton29.Name = "iconButton29";
+            this.iconButton29.Size = new Size(44, 46);
+            this.iconButton29.TabIndex = 103;
+            this.iconButton29.TextAlign = ContentAlignment.MiddleLeft;
+            this.iconButton29.TextImageRelation = TextImageRelation.ImageBeforeText;
+            this.iconButton29.UseVisualStyleBackColor = true;
+            this.iconButton29.Click += this.iconButton29_Click;
+            // 
             // label19
             // 
             label19.AutoSize = true;
@@ -6488,27 +6509,6 @@
             textBoxAzureKey.PasswordChar = '*';
             textBoxAzureKey.Size = new Size(312, 23);
             textBoxAzureKey.TabIndex = 27;
-            // 
-            // iconButton29
-            // 
-            this.iconButton29.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton29.FlatAppearance.BorderSize = 0;
-            this.iconButton29.FlatStyle = FlatStyle.Flat;
-            this.iconButton29.ForeColor = Color.Snow;
-            this.iconButton29.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton29.IconColor = Color.White;
-            this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton29.IconSize = 40;
-            this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(486, 98);
-            this.iconButton29.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton29.Name = "iconButton29";
-            this.iconButton29.Size = new Size(44, 46);
-            this.iconButton29.TabIndex = 103;
-            this.iconButton29.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton29.UseVisualStyleBackColor = true;
-            this.iconButton29.Click += this.iconButton29_Click;
             // 
             // label10
             // 
