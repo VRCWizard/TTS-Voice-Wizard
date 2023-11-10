@@ -840,7 +840,7 @@ namespace OSCVRCWiz.Services.Text
                     if (AzureRecognition.AzureTyping == "")
                     {
                         OutputText.outputVRChat(OutputText.lastKatString, DisplayTextType.UpdateText);
-                        outputLog("doing AutoRefresh KAT");
+                       // outputLog("doing AutoRefresh KAT");
                     }
                 }
 
