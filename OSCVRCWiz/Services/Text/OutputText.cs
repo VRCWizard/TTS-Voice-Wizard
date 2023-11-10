@@ -837,7 +837,11 @@ namespace OSCVRCWiz.Services.Text
             {
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true)
                 {
-                    OutputText.outputVRChat(OutputText.lastKatString, DisplayTextType.UpdateText);
+                    if (AzureRecognition.AzureTyping == "")
+                    {
+                        OutputText.outputVRChat(OutputText.lastKatString, DisplayTextType.UpdateText);
+                        outputLog("doing AutoRefresh KAT");
+                    }
                 }
 
 

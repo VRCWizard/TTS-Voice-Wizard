@@ -35,7 +35,9 @@ namespace OSCVRCWiz
 
         public static System.Threading.Timer AzureTypingTimer;
        // public static string AzureTypingInterval = "2000";
-        private static string AzureTyping = "";
+        public static string AzureTyping = "";
+
+        private static bool firstRecognizing = false;
      
 
 
@@ -96,6 +98,8 @@ namespace OSCVRCWiz
                         var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                         OSC.OSCSender.Send(sttListening);
                     }
+                    AzureTyping = "";
+                    firstRecognizing = true;
                 };
 
                 translationRecognizer1.Recognized += (sender, eventArgs) =>
@@ -110,8 +114,9 @@ namespace OSCVRCWiz
 
 
 
-           
+
                         AzureTyping = "";
+                        firstRecognizing = true;
                         TTSMessageQueue.QueueMessage(text, "Azure Translate", translatedString);
 
                       
@@ -121,12 +126,32 @@ namespace OSCVRCWiz
                 };
                 translationRecognizer1.Recognizing += (sender, eventArgs) =>
                 {
+                    if(firstRecognizing==true)
+                    {
+                        firstRecognizing = false;
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked)
+                        {
+                            OutputText.lastKatString = "";
+                            var OSCClearKatEraseAll = new OscMessage("/avatar/parameters/KAT_Pointer", 255);
+                            OSC.OSCSender.Send(OSCClearKatEraseAll);
+                        }
+                    }
                     AzureTyping = eventArgs.Result.Text;
                   //  OutputText.outputLog(eventArgs.Result.Text);
                 };
 
                 speechRecognizer1.Recognizing += (sender, eventArgs) =>
                 {
+                    if (firstRecognizing == true)
+                    {
+                        firstRecognizing = false;
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked)
+                        {
+                            OutputText.lastKatString = "";
+                            var OSCClearKatEraseAll = new OscMessage("/avatar/parameters/KAT_Pointer", 255);
+                            OSC.OSCSender.Send(OSCClearKatEraseAll);
+                        }
+                    }
                     AzureTyping = eventArgs.Result.Text;
                    // OutputText.outputLog(eventArgs.Result.Text);
                 };
@@ -142,6 +167,8 @@ namespace OSCVRCWiz
                         var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
                         OSC.OSCSender.Send(sttListening);
                     }
+                    AzureTyping = "";
+                    firstRecognizing = true;
 
                 };
                 speechRecognizer1.Recognized += (sender, eventArgs) =>
@@ -152,8 +179,9 @@ namespace OSCVRCWiz
 
 
                         //    Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text,"Azure"));
-                    
+
                         AzureTyping = "";
+                        firstRecognizing = true;
                         TTSMessageQueue.QueueMessage(text, "Azure");
 
 
@@ -408,7 +436,15 @@ namespace OSCVRCWiz
         {
            AzureTypingTimer = new System.Threading.Timer(heartratetimertick);
            AzureTypingTimer.Change(Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text.ToString()),0);
-          
+
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked) 
+            {
+                OutputText.lastKatString = "";
+                var OSCClearKatEraseAll = new OscMessage("/avatar/parameters/KAT_Pointer", 255);
+                OSC.OSCSender.Send(OSCClearKatEraseAll);
+            }
+            
+
 
 
         }

@@ -67,7 +67,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
                     try
                     {
-                        VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]);
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
                         websiteLink = websiteLinks[currentIndex];
                     }
                     catch (Exception ex)
@@ -118,7 +118,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
                     // Update the PictureBox with the next image
                     try
                     {
-                        VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]);
+                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
                         websiteLink = websiteLinks[currentIndex];
                     }
                     catch (Exception ex)
@@ -146,7 +146,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
                 // Update the PictureBox with the next image
                 try
                 {
-                    VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]);
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
                     websiteLink = websiteLinks[currentIndex];
                 }
                 catch (Exception ex)
@@ -174,7 +174,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
                 // Update the PictureBox with the next image
                 try
                 {
-                    VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]);
+                    Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
                     websiteLink = websiteLinks[currentIndex];
                 }
                 catch (Exception ex)
