@@ -7,7 +7,7 @@ namespace OSCVRCWiz.Resources.StartUp
     public class Updater
     {
 
-        public static string currentVersion = "1.6.0.7";
+        public static string currentVersion = "1.6.0.8";
         public static string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml";
 
         public static async void getGithubInfo()

@@ -4,6 +4,8 @@ using SpotifyAPI.Web;
 using SpotifyAPI.Web.Auth;
 using System.Diagnostics;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace OSCVRCWiz.Services.Integrations.Media
 {
@@ -120,6 +122,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     var durationHours = "";
                     var progressHours = "";
                     var album = "";
+                    var progressBar = "";
+                    TimeSpan progressT = TimeSpan.FromMinutes(0);
+                    TimeSpan durationT = TimeSpan.FromMinutes(0);
+
                     //  var deviceType = "";
                     var deviceVolume = "";
                     if (m_currentlyPlaying != null)
@@ -146,8 +152,14 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             artist = m_currentTrack.Artists[0].Name.ToString();
                             allArtists = string.Join(", ", m_currentTrack.Artists.Select(artist => artist.Name.ToString()));
 
-                            progress = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"mm\:ss");
-                            duration = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"mm\:ss");
+                            progressT = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs);
+                            durationT = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs);
+
+                            progress = progressT.ToString(@"mm\:ss");
+                            duration = durationT.ToString(@"mm\:ss");
+
+                           
+
                             progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
 
@@ -209,7 +221,37 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{counter4}", VRChatListener.counter4.ToString());
                         theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                         theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
+
+                        try
+                        {
+                            string pattern = @"\{progressBar E:(?<Emoji>.*?) L:(?<LValue>\d+)\}";
+                            Match match = Regex.Match(theString, pattern);
+
+                            if (match.Success)
+                            {
+
+                                string emojiValue = match.Groups["Emoji"].Value;
+                                int lValue = int.Parse(match.Groups["LValue"].Value);
+
+
+
+                                //Debug.WriteLine("Extracted Emoji Value: " + emojiValue);
+                               // Debug.WriteLine("Extracted L Value: " + lValue);
+
+                                progressBar = songProgressBar(progressT, durationT, emojiValue, lValue);
+                                theString = Regex.Replace(theString, pattern, progressBar);
+
+                            }
+                        } 
+                        catch (Exception e) 
+                        {
+                            OutputText.outputLog("Error Creating ProgressBar: "+e.Message, Color.Red);
+                            OutputText.outputLog(e.StackTrace,Color.Red);
+                           
+                        }
                        
+   
+
 
                         if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
                         {
@@ -704,6 +746,48 @@ namespace OSCVRCWiz.Services.Integrations.Media
            
 
 
+        }
+
+
+        static string songProgressBar(TimeSpan progress, TimeSpan duration, string emoji, int progressBarLength)
+        {
+
+            // Calculate the position of the circle in the progress bar
+            int circlePosition = CalculateCirclePosition(progress, duration, progressBarLength);
+
+            // Display the progress bar
+            string bar = DisplayProgressBar(circlePosition, progressBarLength,emoji);
+            return bar;
+
+        }
+
+
+        static int CalculateCirclePosition(TimeSpan progress, TimeSpan duration, int progressBarLength)
+        {
+            double progressRatio = progress.TotalSeconds / duration.TotalSeconds;
+            int circlePosition = (int)Math.Round(progressRatio * (progressBarLength - 1));
+            return circlePosition;
+        }
+
+        static string DisplayProgressBar(int circlePosition, int progressBarLength, string emoji)
+        {
+            string bar = "|";
+
+
+            for (int i = 0; i < progressBarLength; i++)
+            {
+                if (i == circlePosition)
+                {
+                    bar+= emoji;
+                }
+                else
+                {
+                    bar += "-";
+                }
+            }
+
+            bar += "|";
+            return bar;
         }
 
 
