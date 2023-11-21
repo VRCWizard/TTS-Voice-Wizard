@@ -62,8 +62,8 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 📹 For a more detailed look at the app's features, check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) (although it's a bit outdated)
 
 ## GETTING STARTED
-<a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.6.0.6/TTSVoiceWizard-v1.6.0.6-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
--  ### **Please read the [Quickstart Guide](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide)** or watch the [Tutorial Video](https://youtu.be/Q4kaXcA74Bo) for instructions on how to set up the basic features of TTS Voice Wizard. 
+<a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.6.1/TTSVoiceWizard-v1.6.1-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
+-  ### **Please read the [Quickstart Guide](https://ttsvoicewizard.com/docs/getting-started/gettingStarted)** or watch the [Tutorial Video](https://youtu.be/Q4kaXcA74Bo) for instructions on how to set up the basic features of TTS Voice Wizard. 
 
 
 <a href="https://youtu.be/Q4kaXcA74Bo"><img alt="Getting Started with TTS Voice Wizard" src="https://cdn.discordapp.com/attachments/719824324973821972/1108809206125043832/Screenshot_2023-05-18_004402.png"></a>
