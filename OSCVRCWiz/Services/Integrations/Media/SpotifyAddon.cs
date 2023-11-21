@@ -229,18 +229,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                             if (match.Success)
                             {
-
                                 string emojiValue = match.Groups["Emoji"].Value;
                                 int lValue = int.Parse(match.Groups["LValue"].Value);
-
-
-
-                                //Debug.WriteLine("Extracted Emoji Value: " + emojiValue);
-                               // Debug.WriteLine("Extracted L Value: " + lValue);
-
                                 progressBar = songProgressBar(progressT, durationT, emojiValue, lValue);
                                 theString = Regex.Replace(theString, pattern, progressBar);
-
                             }
                         } 
                         catch (Exception e) 
@@ -371,6 +363,11 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     var spotifySymbol = "ふ";
                     var theString = "";
+
+                    TimeSpan progressT = WindowsMedia.getMediaProgress();
+                    TimeSpan durationT = WindowsMedia.getMediaDuration();
+
+
                     theString = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString();
 
                     theString = theString.Replace("{bpm}", OSCListener.globalBPM);
@@ -388,10 +385,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
-                    theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());
-                    theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
-                    theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
-                    theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+                    theString = theString.Replace("{progressMinutes}", progressT.ToString(@"mm\:ss"));
+                    theString = theString.Replace("{durationMinutes}", durationT.ToString(@"mm\:ss"));
+                    theString = theString.Replace("{progressHours}", progressT.ToString(@"hh\:mm\:ss"));
+                    theString = theString.Replace("{durationHours}", durationT.ToString(@"hh\:mm\:ss"));
                     theString = theString.Replace("{spotifySymbol}", spotifySymbol);
                     theString = theString.Replace("{nline}", "\u2028");
                     theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
@@ -400,6 +397,32 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{counter4}", VRChatListener.counter4.ToString());
                     theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                     theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
+
+
+
+                    try
+                    {
+                        
+                        string pattern = @"\{progressBar E:(?<Emoji>.*?) L:(?<LValue>\d+)\}";
+                        Match match = Regex.Match(theString, pattern);
+
+                        if (match.Success)
+                        {
+                            string emojiValue = match.Groups["Emoji"].Value;
+                            int lValue = int.Parse(match.Groups["LValue"].Value);
+                            var progressBar = songProgressBar(progressT, durationT, emojiValue, lValue);
+                            theString = Regex.Replace(theString, pattern, progressBar);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        OutputText.outputLog("Error Creating ProgressBar: " + e.Message, Color.Red);
+                        OutputText.outputLog(e.StackTrace, Color.Red);
+
+                    }
+
+
+
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true)
                     {
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
@@ -443,6 +466,9 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     var spotifySymbol = "ふ";
                     var theString = "";
+                    TimeSpan progressT = WindowsMedia.getMediaProgress();
+                    TimeSpan durationT = WindowsMedia.getMediaDuration();
+
                     theString = VoiceWizardWindow.MainFormGlobal.textBoxCustomSpot.Text.ToString();
 
                     theString = theString.Replace("{bpm}", OSCListener.globalBPM);
@@ -460,10 +486,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
-                    theString = theString.Replace("{progressMinutes}", WindowsMedia.getMediaProgress());
-                    theString = theString.Replace("{durationMinutes}", WindowsMedia.getMediaDuration());
-                    theString = theString.Replace("{progressHours}", WindowsMedia.getMediaProgressHours());
-                    theString = theString.Replace("{durationHours}", WindowsMedia.getMediaDurationHours());
+                    theString = theString.Replace("{progressMinutes}", progressT.ToString(@"mm\:ss"));
+                    theString = theString.Replace("{durationMinutes}", durationT.ToString(@"mm\:ss"));
+                    theString = theString.Replace("{progressHours}", progressT.ToString(@"hh\:mm\:ss"));
+                    theString = theString.Replace("{durationHours}", durationT.ToString(@"hh\:mm\:ss"));
                     theString = theString.Replace("{spotifySymbol}", spotifySymbol);
                     theString = theString.Replace("{nline}", "\u2028");
                     theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());

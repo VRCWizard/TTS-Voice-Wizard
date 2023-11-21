@@ -58,17 +58,19 @@ namespace OSCVRCWiz.Services.Integrations.Media
         //if time "" then there is no session
         // if time 00:00/00:00 could not get time
         //if time -/- then there was an error
-        public static string getMediaProgress()
+        public static TimeSpan getMediaProgress()
         {
+            TimeSpan time = TimeSpan.FromMinutes(0);
             try
             {
-                var time = "";
+                
                 if (getSession != null)
                 {
                     if (getSession.ControlSession != null)
                     {
 
-                        time = getSession.ControlSession.GetTimelineProperties().Position.ToString(@"mm\:ss").ToString();
+                        //  time = getSession.ControlSession.GetTimelineProperties().Position.ToString(@"mm\:ss").ToString();
+                        time = getSession.ControlSession.GetTimelineProperties().Position;
 
                     }
                 }
@@ -78,20 +80,21 @@ namespace OSCVRCWiz.Services.Integrations.Media
             {
                 OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
             }
-            return "-:-";
+            return time;
         }
-        public static string getMediaDuration()
+        public static TimeSpan getMediaDuration()
         {
+            TimeSpan time = TimeSpan.FromMinutes(0);
             try
             {
 
-                var time = "";
+              
                 if (getSession != null)
                 {
                     if (getSession.ControlSession != null)
                     {
 
-                        time = getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"mm\:ss").ToString();
+                        time = getSession.ControlSession.GetTimelineProperties().EndTime;
 
                     }
                 }
@@ -101,55 +104,9 @@ namespace OSCVRCWiz.Services.Integrations.Media
             {
                 OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
             }
-            return "-:-";
+            return time;
         }
-        public static string getMediaProgressHours()
-        {
-            try
-            {
-                var time = "";
-                if (getSession != null)
-                {
-                    if (getSession.ControlSession != null)
-                    {
-
-                        time = getSession.ControlSession.GetTimelineProperties().Position.ToString(@"hh\:mm\:ss").ToString();
-
-                    }
-                }
-                return time;
-
-            }
-            catch (Exception ex)
-            {
-                OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
-            }
-            return "-:-";
-        }
-        public static string getMediaDurationHours()
-        {
-            try
-            {
-                var time = "";
-                if (getSession != null)
-                {
-                    if (getSession.ControlSession != null)
-                    {
-
-                        time = getSession.ControlSession.GetTimelineProperties().EndTime.ToString(@"hh\:mm\:ss").ToString();
-
-                    }
-                }
-                return time;
-
-            }
-            catch (Exception ex)
-            {
-                OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
-
-            }
-            return "-:-";
-        }
+       
         public static void MediaManager_OnAnySessionOpened(MediaSession session)
         {
 

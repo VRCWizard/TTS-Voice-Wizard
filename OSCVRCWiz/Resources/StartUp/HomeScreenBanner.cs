@@ -20,12 +20,15 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
         public static string websiteLink;
 
+        private static object lockObject = new object();
+
         private static async Task LoadDataFromJsonFile(string jsonFileUrl)
         {
-            using (HttpClient httpClient = new HttpClient())
+            try
             {
-                try
+                using (HttpClient httpClient = new HttpClient())
                 {
+               
                     HttpResponseMessage response = await httpClient.GetAsync(jsonFileUrl);
 
                     if (response.IsSuccessStatusCode)
@@ -47,11 +50,12 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
                     {
                         OutputText.outputLog("Failed to retrieve banner JSON data. HTTP Status Code: " + response.StatusCode);
                     }
+               
                 }
-                catch (Exception ex)
-                {
-                    OutputText.outputLog("An error occurred loading banner: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("An error occurred loading banner: " + ex.Message);
             }
 
         }
@@ -67,8 +71,9 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
                     try
                     {
-                        Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
-                        websiteLink = websiteLinks[currentIndex];
+                            Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
+                            websiteLink = websiteLinks[currentIndex];
+                        
                     }
                     catch (Exception ex)
                     {
@@ -89,9 +94,15 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
         public static void stopTimer()
         {
-
-            rotationTimer.Change(Timeout.Infinite, Timeout.Infinite);
-            VoiceWizardWindow.MainFormGlobal.pictureBox5.Hide();
+            try
+            {
+                rotationTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                VoiceWizardWindow.MainFormGlobal.pictureBox5.Hide();
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog($"Error Stopping Image Rotation: {ex.Message}", Color.Red);
+            }
         }
 
         public static void rotationtimertick(object sender)
@@ -113,22 +124,25 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
             if (currentIndex < imageUrls.Count)
             {
-                if (VoiceWizardWindow.MainFormGlobal.pictureBox5.Visible == true)
+                try
                 {
-                    // Update the PictureBox with the next image
-                    try
+                    if (VoiceWizardWindow.MainFormGlobal.pictureBox5.Visible == true)
                     {
+                        // Update the PictureBox with the next image
+
                         Task.Run(() => VoiceWizardWindow.MainFormGlobal.pictureBox5.Load(imageUrls[currentIndex]));
                         websiteLink = websiteLinks[currentIndex];
-                    }
-                    catch (Exception ex)
-                    {
-                        OutputText.outputLog($"Error Loading Image {currentIndex}: {ex.Message}", Color.Red);
+
                     }
                 }
 
+                catch (Exception ex)
+                {
+                    OutputText.outputLog($"Error Loading Image {currentIndex}: {ex.Message}", Color.Red);
+                }
+
                 // Update the web browser control with the corresponding link
-               
+
 
             }
             rotationTimer.Change(15000, 0);
