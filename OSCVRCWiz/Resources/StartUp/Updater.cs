@@ -1,13 +1,15 @@
 ﻿using AutoUpdaterDotNET;
 using Octokit;
 using OSCVRCWiz.Services.Text;
+using System.Diagnostics;
+using Windows.Media.Protection.PlayReady;
 
 namespace OSCVRCWiz.Resources.StartUp
 {
     public class Updater
     {
 
-        public static string currentVersion = "1.6.1";
+        public static string currentVersion = "1.6.1.2";
         public static string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml";
 
         public static async void getGithubInfo()
@@ -19,6 +21,13 @@ namespace OSCVRCWiz.Resources.StartUp
 
 
                 var release = githubClient.Repository.Release.GetLatest("VRCWizard", "TTS-Voice-Wizard").Result;
+
+              /*  var releases = githubClient.Repository.Release.GetAll("VRCWizard", "TTS-Voice-Wizard"); //can be used for grabbing pre-releases
+                var latest = (await releases)[1];
+                Debug.WriteLine(
+                    "The latest release is tagged at {0} and is named {1}",
+                    latest.TagName,
+                    latest.Name); */
 
                 //   System.Diagnostics.Debug.WriteLine(release.TagName.ToString());
                 string releaseText = release.TagName.ToString();

@@ -77,6 +77,25 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
         }
 
+        public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
+        {
+            accents.Items.Clear();
+            accents.Items.Add("default");
+            accents.SelectedIndex = 0;
+
+            voices.Items.Clear();
+            voices.Items.Add("Local 1");
+            voices.SelectedIndex = 0;
+
+            styles.Items.Clear();
+            styles.Items.Add("default");
+            styles.SelectedIndex = 0;
+
+            styles.Enabled = false;
+            voices.Enabled = true;
+
+        }
+
 
 
 

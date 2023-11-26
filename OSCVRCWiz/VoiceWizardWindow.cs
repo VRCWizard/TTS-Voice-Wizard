@@ -815,6 +815,7 @@ namespace OSCVRCWiz
                 case "Uberduck":
                     DoSpeech.TTSModeSaved = "Uberduck";
                     UberDuckTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = true;
                     trackBarPitch.Enabled = true;
@@ -830,13 +831,7 @@ namespace OSCVRCWiz
 
                 case "Locally Hosted":
                     DoSpeech.TTSModeSaved = "Locally Hosted";
-                    comboBoxVoiceSelect.Items.Clear();
-                    comboBoxVoiceSelect.Items.Add("Local 1");
-                    comboBoxVoiceSelect.SelectedIndex = 0;
-                    comboBoxStyleSelect.SelectedIndex = 0;
-                    comboBoxStyleSelect.Enabled = false;
-                    comboBoxVoiceSelect.Enabled = true;
-
+                    GladosTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
 
                     comboBoxTranslationLanguage.Enabled = true;
                     comboBoxAccentSelect.Enabled = false;
@@ -1040,6 +1035,23 @@ namespace OSCVRCWiz
 
 
                 case "Google (Pro Only)": break;
+
+                case "IBM Watson (Pro Only)":
+                    comboBoxStyleSelect.Items.Clear();
+                    comboBoxStyleSelect.Items.Add("normal");
+
+                   // Debug.WriteLine("please work: "+comboBoxVoiceSelect.SelectedItem.ToString());
+                    if (comboBoxVoiceSelect.SelectedItem.ToString().Contains("Expressive"))
+                    {
+                        
+                        comboBoxStyleSelect.Items.Add("cheerful");
+                        comboBoxStyleSelect.Items.Add("empathetic");
+                        comboBoxStyleSelect.Items.Add("neutral");
+                        comboBoxStyleSelect.Items.Add("uncertain");
+                    }
+
+                    comboBoxStyleSelect.SelectedIndex = 0;
+                    break;
 
 
 

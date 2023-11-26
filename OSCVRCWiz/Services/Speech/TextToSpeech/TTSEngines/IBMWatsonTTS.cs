@@ -50,7 +50,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
           SynthesisGetAvailableVoicesAsync(voices, accents.Text.ToString());
             // comboBox2.SelectedIndex = 0;
             styles.SelectedIndex = 0;
-            styles.Enabled = false;
+            styles.Enabled = true;
             voices.Enabled = true;
         }
 
