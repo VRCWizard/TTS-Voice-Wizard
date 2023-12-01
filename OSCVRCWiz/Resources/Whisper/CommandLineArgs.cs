@@ -29,7 +29,7 @@ namespace OSCVRCWiz.Resources.Whisper
         public bool print_special = false;
         public bool print_progress = true;
         public bool print_colors = false;
-        public bool no_timestamps = true;
+        public bool no_timestamps = false;
         public int[]? prompt = null;
         public int captureDeviceIndex = 0;
 
@@ -63,7 +63,7 @@ namespace OSCVRCWiz.Resources.Whisper
 
         public eResultFlags resultFlags()
         {
-            eResultFlags flags = eResultFlags.None;
+            eResultFlags flags = eResultFlags.Timestamps;
             return flags;
         }
 

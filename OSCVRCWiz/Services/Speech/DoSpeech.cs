@@ -80,14 +80,14 @@ namespace OSCVRCWiz.Services.Speech
 
 
 
+                    
+                    var language = TTSMessageQueued.TranslateLang;
+                  //  VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                  //  {
 
-                    var language = "";
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                    {
+                      //  language = TTSMessageQueued.TranslateLang;
 
-                        language = TTSMessageQueued.TranslateLang;
-
-                    });
+                   // });
 
                     string selectedTTSMode = TTSModeSaved;
                     //VoiceCommand task
@@ -381,6 +381,31 @@ namespace OSCVRCWiz.Services.Speech
                         }
 
                     }
+                    if (language != "No Translation (Default)" && VoiceWizardWindow.MainFormGlobal.rjToggleBothLanguages.Checked)
+                    {
+                        string customText = VoiceWizardWindow.MainFormGlobal.textBoxCustomTranslationOuput.Text.ToString();
+
+                        string inputLanguage = TTSMessageQueued.SpokenLang;
+                        string outputLanguage = TTSMessageQueued.TranslateLang;
+
+                        var (inputLangName,inputLangCode) = LanguageSelect.ExtractLanguageNameAndCode(inputLanguage);
+                        var (outputLangName, outputLangCode) = LanguageSelect.ExtractLanguageNameAndCode(outputLanguage);
+
+
+
+                        customText = customText.Replace("{inputLangName}", inputLangName);
+                        customText = customText.Replace("{inputLangCode}", inputLangCode);
+                        customText = customText.Replace("{outputLangName}", outputLangName);
+                        customText = customText.Replace("{outputLangCode}", outputLangCode);
+                        customText = customText.Replace("{originalText}", originalText);
+                        customText = customText.Replace("{translatedText}", newText);
+                        customText = customText.Replace("{nline}", "\u2028");
+
+                        writeText = customText;
+                    }
+
+
+
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
                     {
                         OSCListener.pauseBPM = true;

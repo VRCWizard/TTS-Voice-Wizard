@@ -45,6 +45,26 @@ namespace OSCVRCWiz.Resources.Whisper
             WhisperStartedListening = true;
             return true;
         }
+        public static string printTime(TimeSpan ts) =>
+            ts.ToString("hh':'mm':'ss'.'fff", CultureInfo.InvariantCulture);
+
+
+        private bool IsSegmentInVoiceActivation(TimeSpan segmentStart, TimeSpan segmentEnd)
+        {
+            foreach (var activationTime in WhisperRecognition.voiceActivationTimes)
+            {
+                TimeSpan start = activationTime.Item1;
+                TimeSpan end = activationTime.Item2;
+
+                // Check for overlap
+                if (segmentStart < end && segmentEnd > start)
+                {
+                    return true; // Overlapping
+                }
+            }
+
+            return false; // No overlap
+        }
 
 
         protected override void onNewSegment(Context sender, int countNew)
@@ -65,11 +85,34 @@ namespace OSCVRCWiz.Resources.Whisper
                 for (int i = s0; i < res.segments.Length; i++)
                 {
                     sSegment seg = res.segments[i];
+                   
 
                     stuff = seg.text.ToString().Trim();
                     Debug.WriteLine($"segment {s0}: {stuff}");
 
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
+
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked)
+                    {
+                        TimeSpan segmentStart = seg.time.begin + WhisperRecognition.WhisperStartTime;
+                        TimeSpan segmentEnd = seg.time.end + WhisperRecognition.WhisperStartTime;
+                        Debug.WriteLine(printTime(seg.time.begin + WhisperRecognition.WhisperStartTime) + " - " + printTime(seg.time.end + WhisperRecognition.WhisperStartTime));
+                        if (IsSegmentInVoiceActivation(seg.time.begin + WhisperRecognition.WhisperStartTime, seg.time.end + WhisperRecognition.WhisperStartTime) || WhisperRecognition.isVoiceDetected)
+                        {
+                           // OutputText.outputLog($"segment approved by VAD", Color.Blue);
+                        }
+                        else
+                        {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                            {
+                                OutputText.outputLog($"VAD (FILTERED): {stuff}", Color.Orange);
+                            }
+                            return;
+                        }
+                    }
+
+
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked == true)
                     {
 
                         if (!stuff.StartsWith('[') && stuff != "Audio" && !stuff.EndsWith(']') && !stuff.StartsWith('(') && !stuff.EndsWith(')') && !stuff.StartsWith('*') && !stuff.EndsWith('*'))
@@ -82,7 +125,7 @@ namespace OSCVRCWiz.Resources.Whisper
                             {
 
 
-                                OutputText.outputLog("Whisper (FILTERED): " + stuff);
+                                OutputText.outputLog("Whisper (FILTERED): " + stuff, Color.Orange);
                             }
                         }
                     }
@@ -106,6 +149,7 @@ namespace OSCVRCWiz.Resources.Whisper
                     WhisperRecognition.whisperTimer.Change(250, 0);
 
                 }
+               
             }
             catch (Exception ex)
             {

@@ -313,6 +313,15 @@ namespace OSCVRCWiz
 
             Settings1.Default.partialResultsInterval = VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text.ToString();
 
+            Settings1.Default.WhisperVADMode = VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
+            Settings1.Default.WhisperGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
+
+            Settings1.Default.VADForWhisper = VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked;
+
+            Settings1.Default.bothLanguages = VoiceWizardWindow.MainFormGlobal.rjToggleBothLanguages.Checked;
+
+            Settings1.Default.customTranslateText= VoiceWizardWindow.MainFormGlobal.textBoxCustomTranslationOuput.Text;
+
             Settings1.Default.Save();
             //emojiSettings.Default.Save();
          //   VoiceWizardWindow.MainFormGlobal.webView21.Dispose();

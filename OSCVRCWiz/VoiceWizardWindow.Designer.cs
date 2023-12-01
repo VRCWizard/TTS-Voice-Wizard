@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new global::System.ComponentModel.Container();
-            global::System.ComponentModel.ComponentResourceManager resources = new global::System.ComponentModel.ComponentResourceManager(typeof(global::OSCVRCWiz.VoiceWizardWindow));
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VoiceWizardWindow));
             richTextBox1 = new RichTextBox();
             comboBoxStyleSelect = new ComboBox();
             label1 = new Label();
@@ -45,40 +45,39 @@
             mainTabControl = new TabControl();
             tabPage4 = new TabPage();
             panel4 = new Panel();
-            this.iconButton33 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton34 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton17 = new global::FontAwesome.Sharp.IconButton();
+            iconButton33 = new FontAwesome.Sharp.IconButton();
+            iconButton34 = new FontAwesome.Sharp.IconButton();
+            iconButton17 = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
             buttonPreviousBanner = new Button();
             buttonNextBanner = new Button();
             pictureBox2 = new PictureBox();
             richTextBox4 = new RichTextBox();
-            this.iconButton13 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton14 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton26 = new global::FontAwesome.Sharp.IconButton();
+            iconButton13 = new FontAwesome.Sharp.IconButton();
+            iconButton14 = new FontAwesome.Sharp.IconButton();
+            iconButton26 = new FontAwesome.Sharp.IconButton();
             button10 = new Button();
             panel5 = new Panel();
             pictureBox5 = new PictureBox();
             pictureBox4 = new PictureBox();
             tabPage1 = new TabPage();
             groupBox7 = new GroupBox();
-            this.iconButtonMute = new global::FontAwesome.Sharp.IconButton();
-            this.SpeechToTextBigButton = new global::FontAwesome.Sharp.IconButton();
-            this.StopButton = new global::FontAwesome.Sharp.IconButton();
-            this.TTSButton = new global::FontAwesome.Sharp.IconButton();
+            SpeechToTextBigButton = new FontAwesome.Sharp.IconButton();
+            StopButton = new FontAwesome.Sharp.IconButton();
+            TTSButton = new FontAwesome.Sharp.IconButton();
             label81 = new Label();
             labelQueueSize = new Label();
             buttonQueueClear = new Button();
             labelCharCount = new Label();
-            this.iconButton37 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton36 = new global::FontAwesome.Sharp.IconButton();
-            this.ttsTrash = new global::FontAwesome.Sharp.IconButton();
+            iconButton37 = new FontAwesome.Sharp.IconButton();
+            iconButton36 = new FontAwesome.Sharp.IconButton();
+            ttsTrash = new FontAwesome.Sharp.IconButton();
             richTextBox3 = new RichTextBox();
             panelCustomize = new Panel();
             groupBox8 = new GroupBox();
             panel2 = new Panel();
-            this.buttonExportVoicePresets = new global::FontAwesome.Sharp.IconButton();
-            this.buttonImportVoicePresets = new global::FontAwesome.Sharp.IconButton();
+            buttonExportVoicePresets = new FontAwesome.Sharp.IconButton();
+            buttonImportVoicePresets = new FontAwesome.Sharp.IconButton();
             buttonDeletePreset = new Button();
             labelVolumeNum = new Label();
             buttonEditPreset = new Button();
@@ -103,22 +102,22 @@
             tabPage3 = new TabPage();
             groupBox10 = new GroupBox();
             label110 = new Label();
-            this.iconButton22 = new global::FontAwesome.Sharp.IconButton();
+            iconButton22 = new FontAwesome.Sharp.IconButton();
             richTextBox9 = new RichTextBox();
             tabAddons = new TabPage();
-            this.translucentPanel1 = new global::OSCVRCWiz.RJControls.TranslucentPanel();
-            this.iconButton11 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton25 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton42 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton27 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton24 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton10 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton9 = new global::FontAwesome.Sharp.IconButton();
+            translucentPanel1 = new OSCVRCWiz.RJControls.TranslucentPanel();
+            iconButton11 = new FontAwesome.Sharp.IconButton();
+            iconButton25 = new FontAwesome.Sharp.IconButton();
+            iconButton42 = new FontAwesome.Sharp.IconButton();
+            iconButton27 = new FontAwesome.Sharp.IconButton();
+            iconButton24 = new FontAwesome.Sharp.IconButton();
+            iconButton10 = new FontAwesome.Sharp.IconButton();
+            iconButton9 = new FontAwesome.Sharp.IconButton();
             label72 = new Label();
             tabEmoji = new TabPage();
             groupBox34 = new GroupBox();
-            this.buttonExportEmoji = new global::FontAwesome.Sharp.IconButton();
-            this.buttonImportEmoji = new global::FontAwesome.Sharp.IconButton();
+            buttonExportEmoji = new FontAwesome.Sharp.IconButton();
+            buttonImportEmoji = new FontAwesome.Sharp.IconButton();
             button25 = new Button();
             checkedListBox2 = new CheckedListBox();
             groupBox35 = new GroupBox();
@@ -127,18 +126,18 @@
             label80 = new Label();
             button26 = new Button();
             textBox7 = new TextBox();
-            this.rjToggleButton3 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButton3 = new OSCVRCWiz.RJControls.RJToggleButton();
             label43 = new Label();
-            this.iconButton32 = new global::FontAwesome.Sharp.IconButton();
+            iconButton32 = new FontAwesome.Sharp.IconButton();
             label44 = new Label();
             label45 = new Label();
             tabSpotify = new TabPage();
-            this.iconButton1 = new global::FontAwesome.Sharp.IconButton();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             groupBox5 = new GroupBox();
             button21 = new Button();
             button22 = new Button();
-            this.buttonExportMedia = new global::FontAwesome.Sharp.IconButton();
-            this.buttonImportMedia = new global::FontAwesome.Sharp.IconButton();
+            buttonExportMedia = new FontAwesome.Sharp.IconButton();
+            buttonImportMedia = new FontAwesome.Sharp.IconButton();
             textBoxMediaPresetEdit = new TextBox();
             buttonMediaPresetDeleteNew = new Button();
             buttonMediaPresetEditNew = new Button();
@@ -150,75 +149,75 @@
             volumeStats = new Button();
             groupBox4 = new GroupBox();
             label199 = new Label();
-            this.rjToggleShowConnectURISpotify = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleShowConnectURISpotify = new OSCVRCWiz.RJControls.RJToggleButton();
             label155 = new Label();
-            this.rjToggleButtonForceMedia = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonForceMedia = new OSCVRCWiz.RJControls.RJToggleButton();
             label108 = new Label();
-            this.rjToggleButtonMedia4OBS = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonMedia4OBS = new OSCVRCWiz.RJControls.RJToggleButton();
             label136 = new Label();
-            this.rjToggleButtonNoTTSChat = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonNoTTSChat = new OSCVRCWiz.RJControls.RJToggleButton();
             label134 = new Label();
-            this.rjToggleButtonSpotifyChatboxDisable = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonSpotifyChatboxDisable = new OSCVRCWiz.RJControls.RJToggleButton();
             label133 = new Label();
-            this.rjToggleButtonSpotifyKatDisable = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonSpotifyKatDisable = new OSCVRCWiz.RJControls.RJToggleButton();
             label132 = new Label();
-            this.rjToggleButtonNoTTSKAT = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonNoTTSKAT = new OSCVRCWiz.RJControls.RJToggleButton();
             heartRateStats = new Button();
             batteryStats = new Button();
             durationStats = new Button();
             songStats = new Button();
             label60 = new Label();
-            this.rjToggleButtonPlayPaused = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonPlayPaused = new OSCVRCWiz.RJControls.RJToggleButton();
             label103 = new Label();
             textBoxCustomSpot = new TextBox();
             label57 = new Label();
-            this.rjToggleButtonSpotifySpam = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonSpotifySpam = new OSCVRCWiz.RJControls.RJToggleButton();
             label56 = new Label();
-            this.rjToggleButtonPeriodic = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonPeriodic = new OSCVRCWiz.RJControls.RJToggleButton();
             label55 = new Label();
             button4 = new Button();
             textBoxSpotifyTime = new TextBox();
             groupBox3 = new GroupBox();
-            this.ShowSpotifyPassword = new global::FontAwesome.Sharp.IconButton();
+            ShowSpotifyPassword = new FontAwesome.Sharp.IconButton();
             label68 = new Label();
-            this.rjToggleSpotLegacy = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleSpotLegacy = new OSCVRCWiz.RJControls.RJToggleButton();
             label67 = new Label();
             textBoxSpotKey = new TextBox();
             label34 = new Label();
-            this.rjToggleButtonCurrentSong = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonCurrentSong = new OSCVRCWiz.RJControls.RJToggleButton();
             buttonSpotify = new Button();
             groupBox2 = new GroupBox();
             labelMediaPaused = new Label();
             checkedListBoxApproved = new CheckedListBox();
             label18 = new Label();
             label137 = new Label();
-            this.rjToggleButtonWindowsMedia = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonWindowsMedia = new OSCVRCWiz.RJControls.RJToggleButton();
             label49 = new Label();
-            this.iconButton31 = new global::FontAwesome.Sharp.IconButton();
+            iconButton31 = new FontAwesome.Sharp.IconButton();
             tabHeartBeat = new TabPage();
             groupBox41 = new GroupBox();
             label198 = new Label();
             button3 = new Button();
             WebsocketServerPortText = new TextBox();
             label195 = new Label();
-            this.iconButton5 = new global::FontAwesome.Sharp.IconButton();
+            iconButton5 = new FontAwesome.Sharp.IconButton();
             label197 = new Label();
-            this.rjToggleActivateWebsocketOnStart = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleActivateWebsocketOnStart = new OSCVRCWiz.RJControls.RJToggleButton();
             button20 = new Button();
             groupBox43 = new GroupBox();
-            this.rjToggleOutputHeartrateDirect = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleOutputHeartrateDirect = new OSCVRCWiz.RJControls.RJToggleButton();
             label38 = new Label();
             label37 = new Label();
-            this.rjToggleOSCListenerSpamLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleOSCListenerSpamLog = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox42 = new GroupBox();
             label192 = new Label();
-            this.iconButton4 = new global::FontAwesome.Sharp.IconButton();
+            iconButton4 = new FontAwesome.Sharp.IconButton();
             label191 = new Label();
-            this.rjToggleActivatePulsoidStart = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleActivatePulsoidStart = new OSCVRCWiz.RJControls.RJToggleButton();
             buttonPulsoidInterval = new Button();
             labelHeartIntervalTooFast = new Label();
             label196 = new Label();
-            this.iconButtonPulsoidHideKey = new global::FontAwesome.Sharp.IconButton();
+            iconButtonPulsoidHideKey = new FontAwesome.Sharp.IconButton();
             label194 = new Label();
             pulsoidAuthToken = new TextBox();
             buttonPulsoidConnect = new Button();
@@ -237,10 +236,10 @@
             TrackerLabel = new Label();
             groupBox21 = new GroupBox();
             label140 = new Label();
-            this.rjToggleButtonForwardData = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonForwardData = new OSCVRCWiz.RJControls.RJToggleButton();
             label130 = new Label();
-            this.rjToggleActivateOSCListenerStart = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.iconButton39 = new global::FontAwesome.Sharp.IconButton();
+            rjToggleActivateOSCListenerStart = new OSCVRCWiz.RJControls.RJToggleButton();
+            iconButton39 = new FontAwesome.Sharp.IconButton();
             label46 = new Label();
             button8 = new Button();
             button7 = new Button();
@@ -251,35 +250,35 @@
             label42 = new Label();
             label35 = new Label();
             APIs = new TabPage();
-            this.translucentPanel2 = new global::OSCVRCWiz.RJControls.TranslucentPanel();
-            this.iconButton30 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton52 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton28 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton21 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton19 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton20 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton50 = new global::FontAwesome.Sharp.IconButton();
+            translucentPanel2 = new OSCVRCWiz.RJControls.TranslucentPanel();
+            iconButton30 = new FontAwesome.Sharp.IconButton();
+            iconButton52 = new FontAwesome.Sharp.IconButton();
+            iconButton28 = new FontAwesome.Sharp.IconButton();
+            iconButton21 = new FontAwesome.Sharp.IconButton();
+            iconButton19 = new FontAwesome.Sharp.IconButton();
+            iconButton20 = new FontAwesome.Sharp.IconButton();
+            iconButton50 = new FontAwesome.Sharp.IconButton();
             label73 = new Label();
             General = new TabPage();
             groupBox17 = new GroupBox();
             label106 = new Label();
-            this.rjToggleButtonChatBoxUseDelay = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonChatBoxUseDelay = new OSCVRCWiz.RJControls.RJToggleButton();
             label78 = new Label();
-            this.rjToggleSoundNotification = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleSoundNotification = new OSCVRCWiz.RJControls.RJToggleButton();
             label69 = new Label();
             label32 = new Label();
-            this.rjToggleButtonChatBox = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleButtonShowKeyboard = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonChatBox = new OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonShowKeyboard = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox18 = new GroupBox();
             label190 = new Label();
-            this.rjToggleButtonUniqueWavNames = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.iconButton3 = new global::FontAwesome.Sharp.IconButton();
-            this.iconButtonAudioFiles = new global::FontAwesome.Sharp.IconButton();
+            rjToggleButtonUniqueWavNames = new OSCVRCWiz.RJControls.RJToggleButton();
+            iconButton3 = new FontAwesome.Sharp.IconButton();
+            iconButtonAudioFiles = new FontAwesome.Sharp.IconButton();
             label175 = new Label();
-            this.OBSLink = new global::FontAwesome.Sharp.IconButton();
-            this.rjToggleButtonSaveToWav = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            OBSLink = new FontAwesome.Sharp.IconButton();
+            rjToggleButtonSaveToWav = new OSCVRCWiz.RJControls.RJToggleButton();
             label102 = new Label();
-            this.rjToggleButtonOBSText = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonOBSText = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox19 = new GroupBox();
             button46 = new Button();
             button17 = new Button();
@@ -291,28 +290,28 @@
             textBoxOSCPort = new TextBox();
             textBoxOSCAddress = new TextBox();
             label26 = new Label();
-            this.rjToggleButtonHideDelay2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonHideDelay2 = new OSCVRCWiz.RJControls.RJToggleButton();
             button1 = new Button();
             textBoxErase = new TextBox();
             groupBox20 = new GroupBox();
             label189 = new Label();
             KATLineLengthTextBox = new TextBox();
             label63 = new Label();
-            this.rjToggleButtonAutoRefreshKAT = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonAutoRefreshKAT = new OSCVRCWiz.RJControls.RJToggleButton();
             button2 = new Button();
             button12 = new Button();
             label15 = new Label();
             label23 = new Label();
-            this.rjToggleButtonOSC = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonOSC = new OSCVRCWiz.RJControls.RJToggleButton();
             comboBoxPara = new ComboBox();
             groupBox13 = new GroupBox();
-            this.VirtualCableHelp = new global::FontAwesome.Sharp.IconButton();
+            VirtualCableHelp = new FontAwesome.Sharp.IconButton();
             RefreshAudioDevicesButton = new Button();
             label135 = new Label();
-            this.rjToggleButtonUse2ndOutput = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonUse2ndOutput = new OSCVRCWiz.RJControls.RJToggleButton();
             label125 = new Label();
             comboBoxOutput2 = new ComboBox();
-            this.SpeechToTextHelp = new global::FontAwesome.Sharp.IconButton();
+            SpeechToTextHelp = new FontAwesome.Sharp.IconButton();
             label17 = new Label();
             comboBoxSTT = new ComboBox();
             label145 = new Label();
@@ -320,66 +319,66 @@
             comboBoxOutput = new ComboBox();
             comboBoxInput = new ComboBox();
             label105 = new Label();
-            this.rjToggleButtonSounds = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonSounds = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox1 = new GroupBox();
             label201 = new Label();
             textBoxDelayBeforeAudio = new TextBox();
-            this.iconButton2 = new global::FontAwesome.Sharp.IconButton();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
             button14 = new Button();
-            this.rjToggleButtonAutoSend = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonAutoSend = new OSCVRCWiz.RJControls.RJToggleButton();
             label187 = new Label();
             label186 = new Label();
             textBoxSSSCharLimit = new TextBox();
             label185 = new Label();
-            this.rjToggleButtonSmartStringSplit = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleButtonRefocus = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonSmartStringSplit = new OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonRefocus = new OSCVRCWiz.RJControls.RJToggleButton();
             label158 = new Label();
             button38 = new Button();
             label156 = new Label();
             textBoxQuickType2 = new TextBox();
             buttonQuickTypeEdit = new Button();
             buttonQuickTypeSave = new Button();
-            this.rjToggleButtonQuickTypeEnabled = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonQuickTypeEnabled = new OSCVRCWiz.RJControls.RJToggleButton();
             textBoxQuickType1 = new TextBox();
             label157 = new Label();
             label154 = new Label();
-            this.rjToggleButtonQueueTypedText = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonQueueTypedText = new OSCVRCWiz.RJControls.RJToggleButton();
             label150 = new Label();
             label151 = new Label();
             textBoxQueueDelayBeforeNext = new TextBox();
             textBoxDelayAfterNoTTS = new TextBox();
             label79 = new Label();
-            this.rjToggleButtonQueueSystem = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonQueueSystem = new OSCVRCWiz.RJControls.RJToggleButton();
             button47 = new Button();
             label28 = new Label();
-            this.rjToggleButtonStopCurrentTTS = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonStopCurrentTTS = new OSCVRCWiz.RJControls.RJToggleButton();
             label123 = new Label();
             textBoxStopTTS2 = new TextBox();
             button39 = new Button();
             button40 = new Button();
-            this.rjToggleButton12 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButton12 = new OSCVRCWiz.RJControls.RJToggleButton();
             textBoxStopTTS1 = new TextBox();
             label124 = new Label();
             label122 = new Label();
-            this.rjToggleButtonDisableWindowsMedia = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonDisableWindowsMedia = new OSCVRCWiz.RJControls.RJToggleButton();
             label12 = new Label();
             textBox1 = new TextBox();
             button28 = new Button();
             button27 = new Button();
-            this.rjToggleButton9 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButton9 = new OSCVRCWiz.RJControls.RJToggleButton();
             label27 = new Label();
-            this.rjToggleDarkMode = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleDarkMode = new OSCVRCWiz.RJControls.RJToggleButton();
             label104 = new Label();
-            this.rjToggleButtonSystemTray = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonSystemTray = new OSCVRCWiz.RJControls.RJToggleButton();
             label77 = new Label();
-            this.rjToggleButton6 = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleButtonClear = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButton6 = new OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonClear = new OSCVRCWiz.RJControls.RJToggleButton();
             label25 = new Label();
             label21 = new Label();
             label66 = new Label();
-            this.rjToggleButtonLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleBannerOff = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.rjToggleButtonOnTop2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonLog = new OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleBannerOff = new OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonOnTop2 = new OSCVRCWiz.RJControls.RJToggleButton();
             textBox4 = new TextBox();
             label22 = new Label();
             label11 = new Label();
@@ -387,30 +386,30 @@
             groupBox12 = new GroupBox();
             label204 = new Label();
             textBoxPartialResultsInterval = new TextBox();
-            this.rjTogglePartialResults = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjTogglePartialResults = new OSCVRCWiz.RJControls.RJToggleButton();
             label203 = new Label();
-            this.rjToggleTranslateSameLanguage = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleTranslateSameLanguage = new OSCVRCWiz.RJControls.RJToggleButton();
             label193 = new Label();
-            this.buttonExportDict = new global::FontAwesome.Sharp.IconButton();
-            this.buttonImportDict = new global::FontAwesome.Sharp.IconButton();
-            this.rjToggleButtonStyle = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            buttonExportDict = new FontAwesome.Sharp.IconButton();
+            buttonImportDict = new FontAwesome.Sharp.IconButton();
+            rjToggleButtonStyle = new OSCVRCWiz.RJControls.RJToggleButton();
             label30 = new Label();
             label113 = new Label();
             label13 = new Label();
             label47 = new Label();
-            this.rjToggleButtonPhraseList2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonPhraseList2 = new OSCVRCWiz.RJControls.RJToggleButton();
             label48 = new Label();
             richTextBoxAzureDict = new RichTextBox();
-            this.rjToggleButtonProfan = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonProfan = new OSCVRCWiz.RJControls.RJToggleButton();
             label20 = new Label();
-            this.rjToggleButton4 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButton4 = new OSCVRCWiz.RJControls.RJToggleButton();
             label36 = new Label();
             groupBox11 = new GroupBox();
-            this.ShowAzurePassword = new global::FontAwesome.Sharp.IconButton();
+            ShowAzurePassword = new FontAwesome.Sharp.IconButton();
             button13 = new Button();
-            this.iconButton29 = new global::FontAwesome.Sharp.IconButton();
+            iconButton29 = new FontAwesome.Sharp.IconButton();
             label19 = new Label();
-            this.rjToggleButtonKeyRegion2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonKeyRegion2 = new OSCVRCWiz.RJControls.RJToggleButton();
             label9 = new Label();
             button6 = new Button();
             textBox3 = new TextBox();
@@ -420,12 +419,12 @@
             label10 = new Label();
             tabPage2 = new TabPage();
             groupBox22 = new GroupBox();
-            this.buttonExportVC = new global::FontAwesome.Sharp.IconButton();
-            this.buttonImportVC = new global::FontAwesome.Sharp.IconButton();
+            buttonExportVC = new FontAwesome.Sharp.IconButton();
+            buttonImportVC = new FontAwesome.Sharp.IconButton();
             checkedListBox1 = new CheckedListBox();
             button24 = new Button();
             label117 = new Label();
-            this.deleteCommandsToggle = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            deleteCommandsToggle = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox15 = new GroupBox();
             label143 = new Label();
             label141 = new Label();
@@ -436,27 +435,30 @@
             label139 = new Label();
             buttonAddVoiceCommand = new Button();
             textBox1Spoken = new TextBox();
-            this.iconButton40 = new global::FontAwesome.Sharp.IconButton();
+            iconButton40 = new FontAwesome.Sharp.IconButton();
             label115 = new Label();
             label131 = new Label();
             DeepLTab = new TabPage();
             groupBox27 = new GroupBox();
-            this.rjToggleButtonAsTranslated2 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            textBoxCustomTranslationOuput = new TextBox();
+            rjToggleBothLanguages = new OSCVRCWiz.RJControls.RJToggleButton();
+            label208 = new Label();
+            rjToggleButtonAsTranslated2 = new OSCVRCWiz.RJControls.RJToggleButton();
             label16 = new Label();
             label24 = new Label();
             label118 = new Label();
-            this.rjToggleButtonVoiceWhatLang = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonVoiceWhatLang = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox26 = new GroupBox();
-            this.ShowDeepLPassword = new global::FontAwesome.Sharp.IconButton();
+            ShowDeepLPassword = new FontAwesome.Sharp.IconButton();
             label51 = new Label();
-            this.iconButton43 = new global::FontAwesome.Sharp.IconButton();
+            iconButton43 = new FontAwesome.Sharp.IconButton();
             button18 = new Button();
             textBoxDeepLKey = new TextBox();
             label53 = new Label();
             discordTab = new TabPage();
             label59 = new Label();
             groupBox29 = new GroupBox();
-            this.iconButton44 = new global::FontAwesome.Sharp.IconButton();
+            iconButton44 = new FontAwesome.Sharp.IconButton();
             label58 = new Label();
             button15 = new Button();
             label31 = new Label();
@@ -464,19 +466,19 @@
             textBoxDiscTimer = new TextBox();
             textBoxDiscordPara = new TextBox();
             label33 = new Label();
-            this.rjToggleDiscordToast = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleDiscordToast = new OSCVRCWiz.RJControls.RJToggleButton();
             Replacements = new TabPage();
-            this.iconButton45 = new global::FontAwesome.Sharp.IconButton();
+            iconButton45 = new FontAwesome.Sharp.IconButton();
             groupBox33 = new GroupBox();
             label62 = new Label();
-            this.rjToggleReplaceBeforeTTS = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleReplaceBeforeTTS = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox31 = new GroupBox();
-            this.buttonExportWR = new global::FontAwesome.Sharp.IconButton();
-            this.buttonImportWR = new global::FontAwesome.Sharp.IconButton();
+            buttonExportWR = new FontAwesome.Sharp.IconButton();
+            buttonImportWR = new FontAwesome.Sharp.IconButton();
             button19 = new Button();
             checkedListBoxReplacements = new CheckedListBox();
             label61 = new Label();
-            this.rjToggleButton7 = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButton7 = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox32 = new GroupBox();
             label64 = new Label();
             textBoxReplaceWord = new TextBox();
@@ -487,10 +489,10 @@
             label71 = new Label();
             AmazonPolly = new TabPage();
             groupBox16 = new GroupBox();
-            this.ShowAmazonSecretPassword = new global::FontAwesome.Sharp.IconButton();
-            this.ShowAmazonKeyPassword = new global::FontAwesome.Sharp.IconButton();
+            ShowAmazonSecretPassword = new FontAwesome.Sharp.IconButton();
+            ShowAmazonKeyPassword = new FontAwesome.Sharp.IconButton();
             label74 = new Label();
-            this.iconButton18 = new global::FontAwesome.Sharp.IconButton();
+            iconButton18 = new FontAwesome.Sharp.IconButton();
             button29 = new Button();
             textBoxAmazonSecret = new TextBox();
             label75 = new Label();
@@ -501,7 +503,7 @@
             textBoxAmazonKey = new TextBox();
             label83 = new Label();
             VRCOSC = new TabPage();
-            this.iconButton47 = new global::FontAwesome.Sharp.IconButton();
+            iconButton47 = new FontAwesome.Sharp.IconButton();
             groupBox37 = new GroupBox();
             counterOutputInterval = new TextBox();
             label183 = new Label();
@@ -512,7 +514,7 @@
             buttonResetCounter2 = new Button();
             buttonResetCounter1 = new Button();
             label166 = new Label();
-            this.rjToggleButtonResetButtonsCounter = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonResetButtonsCounter = new OSCVRCWiz.RJControls.RJToggleButton();
             buttonResetCounterAll = new Button();
             label119 = new Label();
             textBoxCounter6 = new TextBox();
@@ -523,7 +525,7 @@
             textBoxCounterMessage5 = new TextBox();
             label116 = new Label();
             label112 = new Label();
-            this.rjToggleButtonCounterSaver = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonCounterSaver = new OSCVRCWiz.RJControls.RJToggleButton();
             label96 = new Label();
             textBoxCounter4 = new TextBox();
             textBoxCounterMessage4 = new TextBox();
@@ -533,7 +535,7 @@
             textBoxCounterMessage3 = new TextBox();
             label89 = new Label();
             label95 = new Label();
-            this.rjToggleButtonOutputVRCCountersOnContact = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonOutputVRCCountersOnContact = new OSCVRCWiz.RJControls.RJToggleButton();
             label88 = new Label();
             textBoxCounter2 = new TextBox();
             textBoxCounterMessage2 = new TextBox();
@@ -546,12 +548,12 @@
             textBoxAFK = new TextBox();
             label99 = new Label();
             label98 = new Label();
-            this.rjToggleButtonAFK = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonAFK = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox25 = new GroupBox();
             label92 = new Label();
-            this.rjToggleButtonVRCSpamLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonVRCSpamLog = new OSCVRCWiz.RJControls.RJToggleButton();
             label86 = new Label();
-            this.rjToggleButtonVRCActivate = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonVRCActivate = new OSCVRCWiz.RJControls.RJToggleButton();
             label87 = new Label();
             button32 = new Button();
             button33 = new Button();
@@ -563,12 +565,18 @@
             button49 = new Button();
             label153 = new Label();
             label152 = new Label();
-            this.rjToggleButtonReadFromFile = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonReadFromFile = new OSCVRCWiz.RJControls.RJToggleButton();
             button48 = new Button();
             textBoxReadFromTXTFile = new TextBox();
             groupBox38 = new GroupBox();
+            label207 = new Label();
+            comboBoxGPUSelection = new ComboBox();
+            label206 = new Label();
+            comboBoxVADMode = new ComboBox();
+            label205 = new Label();
+            rjToggleVAD = new OSCVRCWiz.RJControls.RJToggleButton();
             label146 = new Label();
-            this.rjToggleButtonWhisperFilterInLog = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonWhisperFilterInLog = new OSCVRCWiz.RJControls.RJToggleButton();
             modelLabel = new Label();
             label148 = new Label();
             button42 = new Button();
@@ -584,14 +592,14 @@
             label40 = new Label();
             textBoxWhisperMinDuration = new TextBox();
             label121 = new Label();
-            this.rjToggleButtonFilterNoiseWhisper = new global::OSCVRCWiz.RJControls.RJToggleButton();
-            this.whisperLink = new global::FontAwesome.Sharp.IconButton();
+            rjToggleButtonFilterNoiseWhisper = new OSCVRCWiz.RJControls.RJToggleButton();
+            whisperLink = new FontAwesome.Sharp.IconButton();
             button34 = new Button();
             whisperModelTextBox = new TextBox();
             label100 = new Label();
             label101 = new Label();
             groupBox24 = new GroupBox();
-            this.voskLink = new global::FontAwesome.Sharp.IconButton();
+            voskLink = new FontAwesome.Sharp.IconButton();
             button11 = new Button();
             modelTextBox = new TextBox();
             groupBox28 = new GroupBox();
@@ -602,7 +610,7 @@
             trackBarStyleExaggeration = new TrackBar();
             label202 = new Label();
             label200 = new Label();
-            this.rjToggleSpeakerBoost = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleSpeakerBoost = new OSCVRCWiz.RJControls.RJToggleButton();
             button51 = new Button();
             labelStability = new Label();
             labelSimboost = new Label();
@@ -614,10 +622,10 @@
             comboBoxLabsOptimize = new ComboBox();
             label172 = new Label();
             comboBoxLabsModelID = new ComboBox();
-            this.iconButton54 = new global::FontAwesome.Sharp.IconButton();
+            iconButton54 = new FontAwesome.Sharp.IconButton();
             groupBox39 = new GroupBox();
-            this.ShowElevenLabsPassword = new global::FontAwesome.Sharp.IconButton();
-            this.iconButton35 = new global::FontAwesome.Sharp.IconButton();
+            ShowElevenLabsPassword = new FontAwesome.Sharp.IconButton();
+            iconButton35 = new FontAwesome.Sharp.IconButton();
             button35 = new Button();
             label111 = new Label();
             button37 = new Button();
@@ -627,7 +635,7 @@
             groupBox40 = new GroupBox();
             label182 = new Label();
             label177 = new Label();
-            this.pot1 = new global::NAudio.Gui.Pot();
+            pot1 = new NAudio.Gui.Pot();
             textBoxSilence = new TextBox();
             minimumAudio = new TextBox();
             label181 = new Label();
@@ -639,54 +647,55 @@
             label176 = new Label();
             trackBarSilence = new TrackBar();
             SpeechHoursUsed = new Label();
-            this.iconButton55 = new global::FontAwesome.Sharp.IconButton();
+            iconButton55 = new FontAwesome.Sharp.IconButton();
             pictureBox3 = new PictureBox();
             label165 = new Label();
             groupBox23 = new GroupBox();
             label188 = new Label();
             comboBoxProBranch = new ComboBox();
-            this.ProShowKey = new global::FontAwesome.Sharp.IconButton();
+            ProShowKey = new FontAwesome.Sharp.IconButton();
             label168 = new Label();
-            this.rjToggleButtonProTranslation = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonProTranslation = new OSCVRCWiz.RJControls.RJToggleButton();
             labelTranslationCharacters = new Label();
             labelTTSCharacters = new Label();
             label164 = new Label();
-            this.rjToggleButtonUsePro = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonUsePro = new OSCVRCWiz.RJControls.RJToggleButton();
             label159 = new Label();
-            this.rjToggleButtonProAmazon = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonProAmazon = new OSCVRCWiz.RJControls.RJToggleButton();
             label162 = new Label();
             label161 = new Label();
             textBoxWizardProKey = new TextBox();
-            this.rjToggleButtonProAzure = new global::OSCVRCWiz.RJControls.RJToggleButton();
+            rjToggleButtonProAzure = new OSCVRCWiz.RJControls.RJToggleButton();
             label163 = new Label();
             uberduck = new TabPage();
             groupBox14 = new GroupBox();
-            this.UberDuckShowSecretPassword = new global::FontAwesome.Sharp.IconButton();
-            this.UberDuckShowPassword = new global::FontAwesome.Sharp.IconButton();
+            UberDuckShowSecretPassword = new FontAwesome.Sharp.IconButton();
+            UberDuckShowPassword = new FontAwesome.Sharp.IconButton();
             label160 = new Label();
-            this.iconButton53 = new global::FontAwesome.Sharp.IconButton();
+            iconButton53 = new FontAwesome.Sharp.IconButton();
             textBoxUberSecret = new TextBox();
             label170 = new Label();
             textBoxUberKey = new TextBox();
             label171 = new Label();
             WhisperDebugLabel = new Label();
             groupBox9 = new GroupBox();
-            this.logTrash = new global::FontAwesome.Sharp.IconButton();
+            labelVADIndicator = new Label();
+            logTrash = new FontAwesome.Sharp.IconButton();
             panel1 = new Panel();
             versionLabel = new Label();
-            this.navbarUpdates = new global::FontAwesome.Sharp.IconButton();
-            this.navbarDonate = new global::FontAwesome.Sharp.IconButton();
-            this.navbarGithub = new global::FontAwesome.Sharp.IconButton();
-            this.navbarDiscord = new global::FontAwesome.Sharp.IconButton();
-            this.navbarSpeechProvider = new global::FontAwesome.Sharp.IconButton();
-            this.navbarIntegrations = new global::FontAwesome.Sharp.IconButton();
-            this.navbarSettings = new global::FontAwesome.Sharp.IconButton();
-            this.navbarTextToText = new global::FontAwesome.Sharp.IconButton();
-            this.navbarTextToSpeech = new global::FontAwesome.Sharp.IconButton();
-            this.navbarHome = new global::FontAwesome.Sharp.IconButton();
+            navbarUpdates = new FontAwesome.Sharp.IconButton();
+            navbarDonate = new FontAwesome.Sharp.IconButton();
+            navbarGithub = new FontAwesome.Sharp.IconButton();
+            navbarDiscord = new FontAwesome.Sharp.IconButton();
+            navbarSpeechProvider = new FontAwesome.Sharp.IconButton();
+            navbarIntegrations = new FontAwesome.Sharp.IconButton();
+            navbarSettings = new FontAwesome.Sharp.IconButton();
+            navbarTextToText = new FontAwesome.Sharp.IconButton();
+            navbarTextToSpeech = new FontAwesome.Sharp.IconButton();
+            navbarHome = new FontAwesome.Sharp.IconButton();
             panel2Logo = new Panel();
             pictureBox1 = new PictureBox();
-            notifyIcon1 = new NotifyIcon(this.components);
+            notifyIcon1 = new NotifyIcon(components);
             folderBrowserDialog1 = new FolderBrowserDialog();
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
@@ -695,22 +704,22 @@
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel5.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox5)).BeginInit();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             tabPage1.SuspendLayout();
             groupBox7.SuspendLayout();
             panelCustomize.SuspendLayout();
             groupBox8.SuspendLayout();
             panel2.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarVolume)).BeginInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarPitch)).BeginInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarVolume).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarPitch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarSpeed).BeginInit();
             tabPage3.SuspendLayout();
             groupBox10.SuspendLayout();
             tabAddons.SuspendLayout();
-            this.translucentPanel1.SuspendLayout();
+            translucentPanel1.SuspendLayout();
             tabEmoji.SuspendLayout();
             groupBox34.SuspendLayout();
             groupBox35.SuspendLayout();
@@ -731,7 +740,7 @@
             groupBoxTrackers.SuspendLayout();
             groupBox21.SuspendLayout();
             APIs.SuspendLayout();
-            this.translucentPanel2.SuspendLayout();
+            translucentPanel2.SuspendLayout();
             General.SuspendLayout();
             groupBox17.SuspendLayout();
             groupBox18.SuspendLayout();
@@ -767,27 +776,27 @@
             groupBox28.SuspendLayout();
             elevenLabs.SuspendLayout();
             groupBox30.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarStyleExaggeration)).BeginInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarSimilarity)).BeginInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarStability)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarStyleExaggeration).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarSimilarity).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarStability).BeginInit();
             groupBox39.SuspendLayout();
             VoiceWizPro.SuspendLayout();
             groupBox40.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarSilence)).BeginInit();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarSilence).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             groupBox23.SuspendLayout();
             uberduck.SuspendLayout();
             groupBox14.SuspendLayout();
             groupBox9.SuspendLayout();
             panel1.SuspendLayout();
             panel2Logo.SuspendLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             logPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
             // 
-            richTextBox1.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            richTextBox1.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             richTextBox1.BackColor = Color.White;
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -799,12 +808,12 @@
             richTextBox1.Size = new Size(263, 586);
             richTextBox1.TabIndex = 4;
             richTextBox1.Text = "";
-            richTextBox1.LinkClicked += this.richTextBox1_LinkClicked;
-            richTextBox1.TextChanged += this.richTextBox1_TextChanged;
+            richTextBox1.LinkClicked += (this.richTextBox1_LinkClicked);
+            richTextBox1.TextChanged += (this.richTextBox1_TextChanged);
             // 
             // comboBoxStyleSelect
             // 
-            comboBoxStyleSelect.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxStyleSelect.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxStyleSelect.BackColor = Color.White;
             comboBoxStyleSelect.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxStyleSelect.FlatStyle = FlatStyle.Flat;
@@ -820,7 +829,7 @@
             // 
             // label1
             // 
-            label1.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label1.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Snow;
@@ -832,7 +841,7 @@
             // 
             // label2
             // 
-            label2.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label2.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Snow;
@@ -844,7 +853,7 @@
             // 
             // comboBoxVoiceSelect
             // 
-            comboBoxVoiceSelect.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxVoiceSelect.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxVoiceSelect.BackColor = Color.White;
             comboBoxVoiceSelect.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxVoiceSelect.FlatStyle = FlatStyle.Flat;
@@ -858,12 +867,12 @@
             comboBoxVoiceSelect.Size = new Size(266, 29);
             comboBoxVoiceSelect.TabIndex = 13;
             comboBoxVoiceSelect.Tag = "Sara";
-            comboBoxVoiceSelect.SelectedIndexChanged += this.comboBox2_SelectedIndexChanged;
+            comboBoxVoiceSelect.SelectedIndexChanged += (this.comboBox2_SelectedIndexChanged);
             // 
             // hideVRCTextButton
             // 
-            hideVRCTextButton.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            hideVRCTextButton.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            hideVRCTextButton.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            hideVRCTextButton.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             hideVRCTextButton.FlatStyle = FlatStyle.Flat;
             hideVRCTextButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             hideVRCTextButton.ForeColor = Color.Snow;
@@ -874,11 +883,11 @@
             hideVRCTextButton.TabIndex = 16;
             hideVRCTextButton.Text = "Hide KAT";
             hideVRCTextButton.UseVisualStyleBackColor = false;
-            hideVRCTextButton.Click += this.hideVRCTextButton_Click;
+            hideVRCTextButton.Click += (this.hideVRCTextButton_Click);
             // 
             // label4
             // 
-            label4.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label4.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Snow;
@@ -890,7 +899,7 @@
             // 
             // label5
             // 
-            label5.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label5.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Snow;
@@ -902,7 +911,7 @@
             // 
             // label6
             // 
-            label6.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label6.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Snow;
@@ -920,7 +929,7 @@
             textBoxDelay.Size = new Size(83, 23);
             textBoxDelay.TabIndex = 24;
             textBoxDelay.Text = "250";
-            textBoxDelay.TextChanged += this.textBoxDelay_TextChanged;
+            textBoxDelay.TextChanged += (this.textBoxDelay_TextChanged);
             // 
             // label7
             // 
@@ -935,7 +944,7 @@
             // 
             // buttonDelayHere
             // 
-            buttonDelayHere.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonDelayHere.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonDelayHere.FlatStyle = FlatStyle.Flat;
             buttonDelayHere.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             buttonDelayHere.ForeColor = Color.Snow;
@@ -946,7 +955,7 @@
             buttonDelayHere.TabIndex = 26;
             buttonDelayHere.Text = "Apply";
             buttonDelayHere.UseVisualStyleBackColor = false;
-            buttonDelayHere.Click += this.buttonDelayHere_Click;
+            buttonDelayHere.Click += (this.buttonDelayHere_Click);
             // 
             // mainTabControl
             // 
@@ -980,7 +989,7 @@
             // 
             // tabPage4
             // 
-            tabPage4.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabPage4.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             tabPage4.Controls.Add(panel4);
             tabPage4.Controls.Add(panel3);
             tabPage4.Controls.Add(panel5);
@@ -994,9 +1003,9 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(this.iconButton33);
-            panel4.Controls.Add(this.iconButton34);
-            panel4.Controls.Add(this.iconButton17);
+            panel4.Controls.Add(iconButton33);
+            panel4.Controls.Add(iconButton34);
+            panel4.Controls.Add(iconButton17);
             panel4.Dock = DockStyle.Bottom;
             panel4.Location = new Point(3, 515);
             panel4.Name = "panel4";
@@ -1005,72 +1014,72 @@
             // 
             // iconButton33
             // 
-            this.iconButton33.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton33.FlatAppearance.BorderSize = 3;
-            this.iconButton33.FlatStyle = FlatStyle.Flat;
-            this.iconButton33.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButton33.ForeColor = Color.Snow;
-            this.iconButton33.IconChar = global::FontAwesome.Sharp.IconChar.Play;
-            this.iconButton33.IconColor = Color.White;
-            this.iconButton33.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton33.IconSize = 40;
-            this.iconButton33.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton33.Location = new Point(3, 2);
-            this.iconButton33.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton33.Name = "iconButton33";
-            this.iconButton33.RightToLeft = RightToLeft.No;
-            this.iconButton33.Size = new Size(259, 65);
-            this.iconButton33.TabIndex = 106;
-            this.iconButton33.Text = "Watch Tutorial";
-            this.iconButton33.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton33.UseVisualStyleBackColor = false;
-            this.iconButton33.Click += this.iconButton33_Click_1;
+            iconButton33.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton33.FlatAppearance.BorderSize = 3;
+            iconButton33.FlatStyle = FlatStyle.Flat;
+            iconButton33.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton33.ForeColor = Color.Snow;
+            iconButton33.IconChar = FontAwesome.Sharp.IconChar.Play;
+            iconButton33.IconColor = Color.White;
+            iconButton33.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton33.IconSize = 40;
+            iconButton33.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton33.Location = new Point(3, 2);
+            iconButton33.Margin = new Padding(3, 2, 3, 2);
+            iconButton33.Name = "iconButton33";
+            iconButton33.RightToLeft = RightToLeft.No;
+            iconButton33.Size = new Size(259, 65);
+            iconButton33.TabIndex = 106;
+            iconButton33.Text = "Watch Tutorial";
+            iconButton33.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton33.UseVisualStyleBackColor = false;
+            iconButton33.Click += (this.iconButton33_Click_1);
             // 
             // iconButton34
             // 
-            this.iconButton34.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton34.FlatAppearance.BorderSize = 3;
-            this.iconButton34.FlatStyle = FlatStyle.Flat;
-            this.iconButton34.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButton34.ForeColor = Color.Snow;
-            this.iconButton34.IconChar = global::FontAwesome.Sharp.IconChar.Discord;
-            this.iconButton34.IconColor = Color.White;
-            this.iconButton34.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton34.IconSize = 40;
-            this.iconButton34.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton34.Location = new Point(265, 2);
-            this.iconButton34.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton34.Name = "iconButton34";
-            this.iconButton34.RightToLeft = RightToLeft.No;
-            this.iconButton34.Size = new Size(186, 65);
-            this.iconButton34.TabIndex = 107;
-            this.iconButton34.Text = "Get Help";
-            this.iconButton34.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton34.UseVisualStyleBackColor = false;
-            this.iconButton34.Click += this.iconButton34_Click_1;
+            iconButton34.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton34.FlatAppearance.BorderSize = 3;
+            iconButton34.FlatStyle = FlatStyle.Flat;
+            iconButton34.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton34.ForeColor = Color.Snow;
+            iconButton34.IconChar = FontAwesome.Sharp.IconChar.Discord;
+            iconButton34.IconColor = Color.White;
+            iconButton34.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton34.IconSize = 40;
+            iconButton34.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton34.Location = new Point(265, 2);
+            iconButton34.Margin = new Padding(3, 2, 3, 2);
+            iconButton34.Name = "iconButton34";
+            iconButton34.RightToLeft = RightToLeft.No;
+            iconButton34.Size = new Size(186, 65);
+            iconButton34.TabIndex = 107;
+            iconButton34.Text = "Get Help";
+            iconButton34.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton34.UseVisualStyleBackColor = false;
+            iconButton34.Click += (this.iconButton34_Click_1);
             // 
             // iconButton17
             // 
-            this.iconButton17.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton17.FlatAppearance.BorderSize = 3;
-            this.iconButton17.FlatStyle = FlatStyle.Flat;
-            this.iconButton17.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButton17.ForeColor = Color.Gold;
-            this.iconButton17.IconChar = global::FontAwesome.Sharp.IconChar.HandHoldingHeart;
-            this.iconButton17.IconColor = Color.Gold;
-            this.iconButton17.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton17.IconSize = 40;
-            this.iconButton17.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton17.Location = new Point(454, 2);
-            this.iconButton17.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton17.Name = "iconButton17";
-            this.iconButton17.RightToLeft = RightToLeft.No;
-            this.iconButton17.Size = new Size(300, 65);
-            this.iconButton17.TabIndex = 13;
-            this.iconButton17.Text = "Get VoiceWizardPro";
-            this.iconButton17.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton17.UseVisualStyleBackColor = false;
-            this.iconButton17.Click += this.iconButton17_Click_1;
+            iconButton17.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton17.FlatAppearance.BorderSize = 3;
+            iconButton17.FlatStyle = FlatStyle.Flat;
+            iconButton17.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton17.ForeColor = Color.Gold;
+            iconButton17.IconChar = FontAwesome.Sharp.IconChar.HandHoldingHeart;
+            iconButton17.IconColor = Color.Gold;
+            iconButton17.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton17.IconSize = 40;
+            iconButton17.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton17.Location = new Point(454, 2);
+            iconButton17.Margin = new Padding(3, 2, 3, 2);
+            iconButton17.Name = "iconButton17";
+            iconButton17.RightToLeft = RightToLeft.No;
+            iconButton17.Size = new Size(300, 65);
+            iconButton17.TabIndex = 13;
+            iconButton17.Text = "Get VoiceWizardPro";
+            iconButton17.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton17.UseVisualStyleBackColor = false;
+            iconButton17.Click += (this.iconButton17_Click_1);
             // 
             // panel3
             // 
@@ -1078,9 +1087,9 @@
             panel3.Controls.Add(buttonNextBanner);
             panel3.Controls.Add(pictureBox2);
             panel3.Controls.Add(richTextBox4);
-            panel3.Controls.Add(this.iconButton13);
-            panel3.Controls.Add(this.iconButton14);
-            panel3.Controls.Add(this.iconButton26);
+            panel3.Controls.Add(iconButton13);
+            panel3.Controls.Add(iconButton14);
+            panel3.Controls.Add(iconButton26);
             panel3.Controls.Add(button10);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(3, 2);
@@ -1090,8 +1099,8 @@
             // 
             // buttonPreviousBanner
             // 
-            buttonPreviousBanner.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            buttonPreviousBanner.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonPreviousBanner.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonPreviousBanner.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonPreviousBanner.FlatAppearance.BorderSize = 0;
             buttonPreviousBanner.FlatStyle = FlatStyle.Flat;
             buttonPreviousBanner.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -1103,12 +1112,12 @@
             buttonPreviousBanner.TabIndex = 108;
             buttonPreviousBanner.Text = "◀️";
             buttonPreviousBanner.UseVisualStyleBackColor = false;
-            buttonPreviousBanner.Click += this.buttonPreviousBanner_Click;
+            buttonPreviousBanner.Click += (this.buttonPreviousBanner_Click);
             // 
             // buttonNextBanner
             // 
-            buttonNextBanner.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            buttonNextBanner.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonNextBanner.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonNextBanner.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonNextBanner.FlatAppearance.BorderSize = 0;
             buttonNextBanner.FlatStyle = FlatStyle.Flat;
             buttonNextBanner.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -1120,11 +1129,11 @@
             buttonNextBanner.TabIndex = 107;
             buttonNextBanner.Text = "▶️";
             buttonNextBanner.UseVisualStyleBackColor = false;
-            buttonNextBanner.Click += this.buttonNextBanner_Click;
+            buttonNextBanner.Click += (this.buttonNextBanner_Click);
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = global::OSCVRCWiz.Properties.Resources.VRChatTTSBWBanner1;
+            pictureBox2.Image = OSCVRCWiz.Properties.Resources.VRChatTTSBWBanner1;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
@@ -1135,7 +1144,7 @@
             // 
             // richTextBox4
             // 
-            richTextBox4.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            richTextBox4.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             richTextBox4.BorderStyle = BorderStyle.None;
             richTextBox4.Font = new Font("Segoe UI", 22.2F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox4.ForeColor = Color.White;
@@ -1150,65 +1159,65 @@
             // 
             // iconButton13
             // 
-            this.iconButton13.FlatAppearance.BorderSize = 0;
-            this.iconButton13.FlatStyle = FlatStyle.Flat;
-            this.iconButton13.ForeColor = Color.Snow;
-            this.iconButton13.IconChar = global::FontAwesome.Sharp.IconChar.Youtube;
-            this.iconButton13.IconColor = Color.White;
-            this.iconButton13.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton13.IconSize = 55;
-            this.iconButton13.Location = new Point(454, 14);
-            this.iconButton13.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton13.Name = "iconButton13";
-            this.iconButton13.Size = new Size(60, 60);
-            this.iconButton13.TabIndex = 11;
-            this.iconButton13.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton13.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton13.UseVisualStyleBackColor = true;
-            this.iconButton13.Click += this.iconButton13_Click;
+            iconButton13.FlatAppearance.BorderSize = 0;
+            iconButton13.FlatStyle = FlatStyle.Flat;
+            iconButton13.ForeColor = Color.Snow;
+            iconButton13.IconChar = FontAwesome.Sharp.IconChar.Youtube;
+            iconButton13.IconColor = Color.White;
+            iconButton13.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton13.IconSize = 55;
+            iconButton13.Location = new Point(454, 14);
+            iconButton13.Margin = new Padding(3, 2, 3, 2);
+            iconButton13.Name = "iconButton13";
+            iconButton13.Size = new Size(60, 60);
+            iconButton13.TabIndex = 11;
+            iconButton13.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton13.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton13.UseVisualStyleBackColor = true;
+            iconButton13.Click += (this.iconButton13_Click);
             // 
             // iconButton14
             // 
-            this.iconButton14.FlatAppearance.BorderSize = 0;
-            this.iconButton14.FlatStyle = FlatStyle.Flat;
-            this.iconButton14.ForeColor = Color.Snow;
-            this.iconButton14.IconChar = global::FontAwesome.Sharp.IconChar.Twitter;
-            this.iconButton14.IconColor = Color.White;
-            this.iconButton14.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton14.IconSize = 55;
-            this.iconButton14.Location = new Point(520, 14);
-            this.iconButton14.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton14.Name = "iconButton14";
-            this.iconButton14.Size = new Size(60, 60);
-            this.iconButton14.TabIndex = 12;
-            this.iconButton14.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton14.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton14.UseVisualStyleBackColor = true;
-            this.iconButton14.Click += this.iconButton14_Click;
+            iconButton14.FlatAppearance.BorderSize = 0;
+            iconButton14.FlatStyle = FlatStyle.Flat;
+            iconButton14.ForeColor = Color.Snow;
+            iconButton14.IconChar = FontAwesome.Sharp.IconChar.Twitter;
+            iconButton14.IconColor = Color.White;
+            iconButton14.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton14.IconSize = 55;
+            iconButton14.Location = new Point(520, 14);
+            iconButton14.Margin = new Padding(3, 2, 3, 2);
+            iconButton14.Name = "iconButton14";
+            iconButton14.Size = new Size(60, 60);
+            iconButton14.TabIndex = 12;
+            iconButton14.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton14.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton14.UseVisualStyleBackColor = true;
+            iconButton14.Click += (this.iconButton14_Click);
             // 
             // iconButton26
             // 
-            this.iconButton26.FlatAppearance.BorderSize = 0;
-            this.iconButton26.FlatStyle = FlatStyle.Flat;
-            this.iconButton26.ForeColor = Color.Snow;
-            this.iconButton26.IconChar = global::FontAwesome.Sharp.IconChar.Trello;
-            this.iconButton26.IconColor = Color.White;
-            this.iconButton26.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton26.IconSize = 55;
-            this.iconButton26.Location = new Point(586, 18);
-            this.iconButton26.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton26.Name = "iconButton26";
-            this.iconButton26.Size = new Size(60, 52);
-            this.iconButton26.TabIndex = 30;
-            this.iconButton26.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton26.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton26.UseVisualStyleBackColor = true;
-            this.iconButton26.Click += this.iconButton26_Click;
+            iconButton26.FlatAppearance.BorderSize = 0;
+            iconButton26.FlatStyle = FlatStyle.Flat;
+            iconButton26.ForeColor = Color.Snow;
+            iconButton26.IconChar = FontAwesome.Sharp.IconChar.Trello;
+            iconButton26.IconColor = Color.White;
+            iconButton26.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton26.IconSize = 55;
+            iconButton26.Location = new Point(586, 18);
+            iconButton26.Margin = new Padding(3, 2, 3, 2);
+            iconButton26.Name = "iconButton26";
+            iconButton26.Size = new Size(60, 52);
+            iconButton26.TabIndex = 30;
+            iconButton26.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton26.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton26.UseVisualStyleBackColor = true;
+            iconButton26.Click += (this.iconButton26_Click);
             // 
             // button10
             // 
-            button10.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button10.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button10.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button10.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button10.FlatAppearance.BorderSize = 0;
             button10.FlatStyle = FlatStyle.Flat;
             button10.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -1220,12 +1229,12 @@
             button10.TabIndex = 28;
             button10.Text = "X";
             button10.UseVisualStyleBackColor = false;
-            button10.Click += this.button10_Click;
+            button10.Click += (this.button10_Click);
             // 
             // panel5
             // 
-            panel5.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
-            panel5.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            panel5.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            panel5.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             panel5.Controls.Add(pictureBox5);
             panel5.Controls.Add(pictureBox4);
             panel5.Location = new Point(3, 95);
@@ -1243,23 +1252,23 @@
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 162;
             pictureBox5.TabStop = false;
-            pictureBox5.Click += this.pictureBox5_Click;
+            pictureBox5.Click += (this.pictureBox5_Click);
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = (Image)(resources.GetObject("pictureBox4.Image"));
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(143, 178);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(428, 71);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 161;
             pictureBox4.TabStop = false;
-            pictureBox4.Click += this.pictureBox4_Click;
+            pictureBox4.Click += (this.pictureBox4_Click);
             // 
             // tabPage1
             // 
             tabPage1.AutoScroll = true;
-            tabPage1.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabPage1.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             tabPage1.Controls.Add(groupBox7);
             tabPage1.Controls.Add(panelCustomize);
             tabPage1.Location = new Point(4, 24);
@@ -1272,17 +1281,16 @@
             // 
             // groupBox7
             // 
-            groupBox7.Controls.Add(this.iconButtonMute);
-            groupBox7.Controls.Add(this.SpeechToTextBigButton);
-            groupBox7.Controls.Add(this.StopButton);
-            groupBox7.Controls.Add(this.TTSButton);
+            groupBox7.Controls.Add(SpeechToTextBigButton);
+            groupBox7.Controls.Add(StopButton);
+            groupBox7.Controls.Add(TTSButton);
             groupBox7.Controls.Add(label81);
             groupBox7.Controls.Add(labelQueueSize);
             groupBox7.Controls.Add(buttonQueueClear);
             groupBox7.Controls.Add(labelCharCount);
-            groupBox7.Controls.Add(this.iconButton37);
-            groupBox7.Controls.Add(this.iconButton36);
-            groupBox7.Controls.Add(this.ttsTrash);
+            groupBox7.Controls.Add(iconButton37);
+            groupBox7.Controls.Add(iconButton36);
+            groupBox7.Controls.Add(ttsTrash);
             groupBox7.Controls.Add(richTextBox3);
             groupBox7.Dock = DockStyle.Fill;
             groupBox7.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -1296,95 +1304,74 @@
             groupBox7.TabStop = false;
             groupBox7.Text = "Text to Speech";
             // 
-            // iconButtonMute
-            // 
-            this.iconButtonMute.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.iconButtonMute.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButtonMute.FlatStyle = FlatStyle.Flat;
-            this.iconButtonMute.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButtonMute.ForeColor = Color.Snow;
-            this.iconButtonMute.IconChar = global::FontAwesome.Sharp.IconChar.Microphone;
-            this.iconButtonMute.IconColor = Color.White;
-            this.iconButtonMute.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButtonMute.IconSize = 30;
-            this.iconButtonMute.Location = new Point(366, 444);
-            this.iconButtonMute.Margin = new Padding(3, 2, 3, 2);
-            this.iconButtonMute.Name = "iconButtonMute";
-            this.iconButtonMute.Size = new Size(60, 58);
-            this.iconButtonMute.TabIndex = 116;
-            this.iconButtonMute.Text = "Mute";
-            this.iconButtonMute.TextImageRelation = TextImageRelation.ImageAboveText;
-            this.iconButtonMute.UseVisualStyleBackColor = false;
-            this.iconButtonMute.Visible = false;
-            // 
             // SpeechToTextBigButton
             // 
-            this.SpeechToTextBigButton.Anchor = (AnchorStyles)(((AnchorStyles.Bottom) | (AnchorStyles.Left)) | (AnchorStyles.Right));
-            this.SpeechToTextBigButton.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.SpeechToTextBigButton.FlatStyle = FlatStyle.Flat;
-            this.SpeechToTextBigButton.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            this.SpeechToTextBigButton.ForeColor = Color.Snow;
-            this.SpeechToTextBigButton.IconChar = global::FontAwesome.Sharp.IconChar.Microphone;
-            this.SpeechToTextBigButton.IconColor = Color.White;
-            this.SpeechToTextBigButton.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.SpeechToTextBigButton.IconSize = 40;
-            this.SpeechToTextBigButton.ImageAlign = ContentAlignment.MiddleRight;
-            this.SpeechToTextBigButton.Location = new Point(10, 513);
-            this.SpeechToTextBigButton.Margin = new Padding(3, 2, 3, 2);
-            this.SpeechToTextBigButton.Name = "SpeechToTextBigButton";
-            this.SpeechToTextBigButton.Size = new Size(416, 58);
-            this.SpeechToTextBigButton.TabIndex = 13;
-            this.SpeechToTextBigButton.Text = "Speech to Text to Speech";
-            this.SpeechToTextBigButton.TextAlign = ContentAlignment.MiddleLeft;
-            this.SpeechToTextBigButton.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.SpeechToTextBigButton.UseVisualStyleBackColor = false;
-            this.SpeechToTextBigButton.Click += this.speechTTSButton_Click;
+            SpeechToTextBigButton.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            SpeechToTextBigButton.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            SpeechToTextBigButton.FlatStyle = FlatStyle.Flat;
+            SpeechToTextBigButton.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            SpeechToTextBigButton.ForeColor = Color.Snow;
+            SpeechToTextBigButton.IconChar = FontAwesome.Sharp.IconChar.Microphone;
+            SpeechToTextBigButton.IconColor = Color.White;
+            SpeechToTextBigButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            SpeechToTextBigButton.IconSize = 40;
+            SpeechToTextBigButton.ImageAlign = ContentAlignment.MiddleRight;
+            SpeechToTextBigButton.Location = new Point(10, 513);
+            SpeechToTextBigButton.Margin = new Padding(3, 2, 3, 2);
+            SpeechToTextBigButton.Name = "SpeechToTextBigButton";
+            SpeechToTextBigButton.Size = new Size(416, 58);
+            SpeechToTextBigButton.TabIndex = 13;
+            SpeechToTextBigButton.Text = "Speech to Text to Speech";
+            SpeechToTextBigButton.TextAlign = ContentAlignment.MiddleLeft;
+            SpeechToTextBigButton.TextImageRelation = TextImageRelation.ImageBeforeText;
+            SpeechToTextBigButton.UseVisualStyleBackColor = false;
+            SpeechToTextBigButton.Click += (this.speechTTSButton_Click);
             // 
             // StopButton
             // 
-            this.StopButton.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.StopButton.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.StopButton.FlatStyle = FlatStyle.Flat;
-            this.StopButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            this.StopButton.ForeColor = Color.Snow;
-            this.StopButton.IconChar = global::FontAwesome.Sharp.IconChar.Stop;
-            this.StopButton.IconColor = Color.White;
-            this.StopButton.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.StopButton.IconSize = 30;
-            this.StopButton.Location = new Point(364, 95);
-            this.StopButton.Margin = new Padding(3, 2, 3, 2);
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new Size(60, 55);
-            this.StopButton.TabIndex = 115;
-            this.StopButton.Text = "Stop";
-            this.StopButton.TextImageRelation = TextImageRelation.ImageAboveText;
-            this.StopButton.UseVisualStyleBackColor = false;
-            this.StopButton.Click += this.button38_Click;
+            StopButton.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            StopButton.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            StopButton.FlatStyle = FlatStyle.Flat;
+            StopButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            StopButton.ForeColor = Color.Snow;
+            StopButton.IconChar = FontAwesome.Sharp.IconChar.Stop;
+            StopButton.IconColor = Color.White;
+            StopButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            StopButton.IconSize = 30;
+            StopButton.Location = new Point(364, 95);
+            StopButton.Margin = new Padding(3, 2, 3, 2);
+            StopButton.Name = "StopButton";
+            StopButton.Size = new Size(60, 55);
+            StopButton.TabIndex = 115;
+            StopButton.Text = "Stop";
+            StopButton.TextImageRelation = TextImageRelation.ImageAboveText;
+            StopButton.UseVisualStyleBackColor = false;
+            StopButton.Click += (this.button38_Click);
             // 
             // TTSButton
             // 
-            this.TTSButton.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.TTSButton.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.TTSButton.FlatStyle = FlatStyle.Flat;
-            this.TTSButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            this.TTSButton.ForeColor = Color.Snow;
-            this.TTSButton.IconChar = global::FontAwesome.Sharp.IconChar.Play;
-            this.TTSButton.IconColor = Color.White;
-            this.TTSButton.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.TTSButton.IconSize = 30;
-            this.TTSButton.Location = new Point(364, 22);
-            this.TTSButton.Margin = new Padding(3, 2, 3, 2);
-            this.TTSButton.Name = "TTSButton";
-            this.TTSButton.Size = new Size(60, 61);
-            this.TTSButton.TabIndex = 114;
-            this.TTSButton.Text = "Play";
-            this.TTSButton.TextImageRelation = TextImageRelation.ImageAboveText;
-            this.TTSButton.UseVisualStyleBackColor = false;
-            this.TTSButton.Click += this.TTSButton_Click;
+            TTSButton.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            TTSButton.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            TTSButton.FlatStyle = FlatStyle.Flat;
+            TTSButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            TTSButton.ForeColor = Color.Snow;
+            TTSButton.IconChar = FontAwesome.Sharp.IconChar.Play;
+            TTSButton.IconColor = Color.White;
+            TTSButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            TTSButton.IconSize = 30;
+            TTSButton.Location = new Point(364, 22);
+            TTSButton.Margin = new Padding(3, 2, 3, 2);
+            TTSButton.Name = "TTSButton";
+            TTSButton.Size = new Size(60, 61);
+            TTSButton.TabIndex = 114;
+            TTSButton.Text = "Play";
+            TTSButton.TextImageRelation = TextImageRelation.ImageAboveText;
+            TTSButton.UseVisualStyleBackColor = false;
+            TTSButton.Click += (this.TTSButton_Click);
             // 
             // label81
             // 
-            label81.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label81.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label81.AutoSize = true;
             label81.Location = new Point(372, 230);
             label81.Name = "label81";
@@ -1396,7 +1383,7 @@
             // 
             // labelQueueSize
             // 
-            labelQueueSize.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            labelQueueSize.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             labelQueueSize.AutoSize = true;
             labelQueueSize.Location = new Point(387, 265);
             labelQueueSize.Name = "labelQueueSize";
@@ -1407,8 +1394,8 @@
             // 
             // buttonQueueClear
             // 
-            buttonQueueClear.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            buttonQueueClear.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonQueueClear.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonQueueClear.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonQueueClear.FlatStyle = FlatStyle.Flat;
             buttonQueueClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             buttonQueueClear.ForeColor = Color.Snow;
@@ -1420,14 +1407,14 @@
             buttonQueueClear.Text = "Clear Queue";
             buttonQueueClear.UseVisualStyleBackColor = false;
             buttonQueueClear.Visible = false;
-            buttonQueueClear.Click += this.buttonQueueClear_Click;
+            buttonQueueClear.Click += (this.buttonQueueClear_Click);
             // 
             // labelCharCount
             // 
-            labelCharCount.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            labelCharCount.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             labelCharCount.AutoSize = true;
             labelCharCount.BackColor = Color.White;
-            labelCharCount.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            labelCharCount.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             labelCharCount.Location = new Point(21, 477);
             labelCharCount.Name = "labelCharCount";
             labelCharCount.Size = new Size(22, 17);
@@ -1436,69 +1423,69 @@
             // 
             // iconButton37
             // 
-            this.iconButton37.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.iconButton37.BackColor = Color.White;
-            this.iconButton37.FlatAppearance.BorderSize = 0;
-            this.iconButton37.FlatStyle = FlatStyle.Flat;
-            this.iconButton37.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButton37.IconChar = global::FontAwesome.Sharp.IconChar.ArrowDown;
-            this.iconButton37.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButton37.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton37.IconSize = 15;
-            this.iconButton37.Location = new Point(251, 470);
-            this.iconButton37.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton37.Name = "iconButton37";
-            this.iconButton37.Size = new Size(39, 25);
-            this.iconButton37.TabIndex = 105;
-            this.iconButton37.Text = "🗛";
-            this.iconButton37.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton37.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton37.UseVisualStyleBackColor = false;
-            this.iconButton37.Click += this.iconButton37_Click;
+            iconButton37.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            iconButton37.BackColor = Color.White;
+            iconButton37.FlatAppearance.BorderSize = 0;
+            iconButton37.FlatStyle = FlatStyle.Flat;
+            iconButton37.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton37.IconChar = FontAwesome.Sharp.IconChar.ArrowDown;
+            iconButton37.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton37.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton37.IconSize = 15;
+            iconButton37.Location = new Point(251, 470);
+            iconButton37.Margin = new Padding(3, 2, 3, 2);
+            iconButton37.Name = "iconButton37";
+            iconButton37.Size = new Size(39, 25);
+            iconButton37.TabIndex = 105;
+            iconButton37.Text = "🗛";
+            iconButton37.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton37.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton37.UseVisualStyleBackColor = false;
+            iconButton37.Click += (this.iconButton37_Click);
             // 
             // iconButton36
             // 
-            this.iconButton36.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.iconButton36.BackColor = Color.White;
-            this.iconButton36.FlatAppearance.BorderSize = 0;
-            this.iconButton36.FlatStyle = FlatStyle.Flat;
-            this.iconButton36.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButton36.IconChar = global::FontAwesome.Sharp.IconChar.ArrowUp;
-            this.iconButton36.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButton36.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton36.IconSize = 15;
-            this.iconButton36.Location = new Point(207, 470);
-            this.iconButton36.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton36.Name = "iconButton36";
-            this.iconButton36.Size = new Size(38, 26);
-            this.iconButton36.TabIndex = 104;
-            this.iconButton36.Text = "🗚";
-            this.iconButton36.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton36.UseVisualStyleBackColor = false;
-            this.iconButton36.Click += this.iconButton36_Click;
+            iconButton36.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            iconButton36.BackColor = Color.White;
+            iconButton36.FlatAppearance.BorderSize = 0;
+            iconButton36.FlatStyle = FlatStyle.Flat;
+            iconButton36.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton36.IconChar = FontAwesome.Sharp.IconChar.ArrowUp;
+            iconButton36.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton36.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton36.IconSize = 15;
+            iconButton36.Location = new Point(207, 470);
+            iconButton36.Margin = new Padding(3, 2, 3, 2);
+            iconButton36.Name = "iconButton36";
+            iconButton36.Size = new Size(38, 26);
+            iconButton36.TabIndex = 104;
+            iconButton36.Text = "🗚";
+            iconButton36.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton36.UseVisualStyleBackColor = false;
+            iconButton36.Click += (this.iconButton36_Click);
             // 
             // ttsTrash
             // 
-            this.ttsTrash.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ttsTrash.BackColor = Color.White;
-            this.ttsTrash.FlatAppearance.BorderSize = 0;
-            this.ttsTrash.FlatStyle = FlatStyle.Flat;
-            this.ttsTrash.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ttsTrash.IconChar = global::FontAwesome.Sharp.IconChar.Trash;
-            this.ttsTrash.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ttsTrash.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ttsTrash.IconSize = 15;
-            this.ttsTrash.Location = new Point(296, 473);
-            this.ttsTrash.Margin = new Padding(3, 2, 3, 2);
-            this.ttsTrash.Name = "ttsTrash";
-            this.ttsTrash.Size = new Size(31, 22);
-            this.ttsTrash.TabIndex = 31;
-            this.ttsTrash.UseVisualStyleBackColor = false;
-            this.ttsTrash.Click += this.ttsTrash_Click;
+            ttsTrash.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ttsTrash.BackColor = Color.White;
+            ttsTrash.FlatAppearance.BorderSize = 0;
+            ttsTrash.FlatStyle = FlatStyle.Flat;
+            ttsTrash.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ttsTrash.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            ttsTrash.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ttsTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ttsTrash.IconSize = 15;
+            ttsTrash.Location = new Point(296, 473);
+            ttsTrash.Margin = new Padding(3, 2, 3, 2);
+            ttsTrash.Name = "ttsTrash";
+            ttsTrash.Size = new Size(31, 22);
+            ttsTrash.TabIndex = 31;
+            ttsTrash.UseVisualStyleBackColor = false;
+            ttsTrash.Click += (this.ttsTrash_Click);
             // 
             // richTextBox3
             // 
-            richTextBox3.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            richTextBox3.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             richTextBox3.BackColor = Color.White;
             richTextBox3.BorderStyle = BorderStyle.FixedSingle;
             richTextBox3.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
@@ -1509,7 +1496,7 @@
             richTextBox3.Size = new Size(348, 482);
             richTextBox3.TabIndex = 30;
             richTextBox3.Text = "Read this aloud.";
-            richTextBox3.TextChanged += this.richTextBox3_TextChanged;
+            richTextBox3.TextChanged += (this.richTextBox3_TextChanged);
             // 
             // panelCustomize
             // 
@@ -1539,8 +1526,8 @@
             // panel2
             // 
             panel2.AutoScroll = true;
-            panel2.Controls.Add(this.buttonExportVoicePresets);
-            panel2.Controls.Add(this.buttonImportVoicePresets);
+            panel2.Controls.Add(buttonExportVoicePresets);
+            panel2.Controls.Add(buttonImportVoicePresets);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(buttonDeletePreset);
             panel2.Controls.Add(labelVolumeNum);
@@ -1576,47 +1563,47 @@
             // 
             // buttonExportVoicePresets
             // 
-            this.buttonExportVoicePresets.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonExportVoicePresets.FlatStyle = FlatStyle.Flat;
-            this.buttonExportVoicePresets.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonExportVoicePresets.ForeColor = Color.Snow;
-            this.buttonExportVoicePresets.IconChar = global::FontAwesome.Sharp.IconChar.FileExport;
-            this.buttonExportVoicePresets.IconColor = Color.White;
-            this.buttonExportVoicePresets.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonExportVoicePresets.IconSize = 15;
-            this.buttonExportVoicePresets.Location = new Point(107, 549);
-            this.buttonExportVoicePresets.Margin = new Padding(3, 2, 3, 2);
-            this.buttonExportVoicePresets.Name = "buttonExportVoicePresets";
-            this.buttonExportVoicePresets.Size = new Size(87, 25);
-            this.buttonExportVoicePresets.TabIndex = 118;
-            this.buttonExportVoicePresets.Text = "Export";
-            this.buttonExportVoicePresets.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonExportVoicePresets.UseVisualStyleBackColor = false;
-            this.buttonExportVoicePresets.Click += this.buttonExportVoicePresets_Click;
+            buttonExportVoicePresets.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonExportVoicePresets.FlatStyle = FlatStyle.Flat;
+            buttonExportVoicePresets.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExportVoicePresets.ForeColor = Color.Snow;
+            buttonExportVoicePresets.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            buttonExportVoicePresets.IconColor = Color.White;
+            buttonExportVoicePresets.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonExportVoicePresets.IconSize = 15;
+            buttonExportVoicePresets.Location = new Point(107, 549);
+            buttonExportVoicePresets.Margin = new Padding(3, 2, 3, 2);
+            buttonExportVoicePresets.Name = "buttonExportVoicePresets";
+            buttonExportVoicePresets.Size = new Size(87, 25);
+            buttonExportVoicePresets.TabIndex = 118;
+            buttonExportVoicePresets.Text = "Export";
+            buttonExportVoicePresets.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExportVoicePresets.UseVisualStyleBackColor = false;
+            buttonExportVoicePresets.Click += (this.buttonExportVoicePresets_Click);
             // 
             // buttonImportVoicePresets
             // 
-            this.buttonImportVoicePresets.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonImportVoicePresets.FlatStyle = FlatStyle.Flat;
-            this.buttonImportVoicePresets.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonImportVoicePresets.ForeColor = Color.Snow;
-            this.buttonImportVoicePresets.IconChar = global::FontAwesome.Sharp.IconChar.FileImport;
-            this.buttonImportVoicePresets.IconColor = Color.White;
-            this.buttonImportVoicePresets.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonImportVoicePresets.IconSize = 15;
-            this.buttonImportVoicePresets.Location = new Point(14, 549);
-            this.buttonImportVoicePresets.Margin = new Padding(3, 2, 3, 2);
-            this.buttonImportVoicePresets.Name = "buttonImportVoicePresets";
-            this.buttonImportVoicePresets.Size = new Size(87, 25);
-            this.buttonImportVoicePresets.TabIndex = 117;
-            this.buttonImportVoicePresets.Text = "Import";
-            this.buttonImportVoicePresets.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonImportVoicePresets.UseVisualStyleBackColor = false;
-            this.buttonImportVoicePresets.Click += this.buttonImportVoicePresets_Click;
+            buttonImportVoicePresets.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonImportVoicePresets.FlatStyle = FlatStyle.Flat;
+            buttonImportVoicePresets.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonImportVoicePresets.ForeColor = Color.Snow;
+            buttonImportVoicePresets.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            buttonImportVoicePresets.IconColor = Color.White;
+            buttonImportVoicePresets.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonImportVoicePresets.IconSize = 15;
+            buttonImportVoicePresets.Location = new Point(14, 549);
+            buttonImportVoicePresets.Margin = new Padding(3, 2, 3, 2);
+            buttonImportVoicePresets.Name = "buttonImportVoicePresets";
+            buttonImportVoicePresets.Size = new Size(87, 25);
+            buttonImportVoicePresets.TabIndex = 117;
+            buttonImportVoicePresets.Text = "Import";
+            buttonImportVoicePresets.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonImportVoicePresets.UseVisualStyleBackColor = false;
+            buttonImportVoicePresets.Click += (this.buttonImportVoicePresets_Click);
             // 
             // buttonDeletePreset
             // 
-            buttonDeletePreset.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonDeletePreset.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonDeletePreset.FlatStyle = FlatStyle.Flat;
             buttonDeletePreset.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             buttonDeletePreset.ForeColor = Color.Snow;
@@ -1627,11 +1614,11 @@
             buttonDeletePreset.TabIndex = 105;
             buttonDeletePreset.Text = "Delete";
             buttonDeletePreset.UseVisualStyleBackColor = false;
-            buttonDeletePreset.Click += this.button25_Click_1;
+            buttonDeletePreset.Click += (this.button25_Click_1);
             // 
             // labelVolumeNum
             // 
-            labelVolumeNum.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            labelVolumeNum.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             labelVolumeNum.AutoSize = true;
             labelVolumeNum.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelVolumeNum.ForeColor = Color.Snow;
@@ -1643,7 +1630,7 @@
             // 
             // buttonEditPreset
             // 
-            buttonEditPreset.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonEditPreset.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonEditPreset.FlatStyle = FlatStyle.Flat;
             buttonEditPreset.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             buttonEditPreset.ForeColor = Color.Snow;
@@ -1654,11 +1641,11 @@
             buttonEditPreset.TabIndex = 104;
             buttonEditPreset.Text = "Edit";
             buttonEditPreset.UseVisualStyleBackColor = false;
-            buttonEditPreset.Click += this.button19_Click;
+            buttonEditPreset.Click += (this.button19_Click);
             // 
             // label52
             // 
-            label52.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label52.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label52.AutoSize = true;
             label52.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label52.ForeColor = Color.Snow;
@@ -1681,7 +1668,7 @@
             // 
             // buttonSavePreset
             // 
-            buttonSavePreset.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonSavePreset.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonSavePreset.FlatStyle = FlatStyle.Flat;
             buttonSavePreset.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSavePreset.ForeColor = Color.Snow;
@@ -1692,11 +1679,11 @@
             buttonSavePreset.TabIndex = 103;
             buttonSavePreset.Text = "Save";
             buttonSavePreset.UseVisualStyleBackColor = false;
-            buttonSavePreset.Click += this.button15_Click;
+            buttonSavePreset.Click += (this.button15_Click);
             // 
             // labelSpeedNum
             // 
-            labelSpeedNum.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            labelSpeedNum.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             labelSpeedNum.AutoSize = true;
             labelSpeedNum.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelSpeedNum.ForeColor = Color.Snow;
@@ -1708,7 +1695,7 @@
             // 
             // comboBoxPreset
             // 
-            comboBoxPreset.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxPreset.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxPreset.BackColor = Color.White;
             comboBoxPreset.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPreset.FlatStyle = FlatStyle.Flat;
@@ -1721,11 +1708,11 @@
             comboBoxPreset.Name = "comboBoxPreset";
             comboBoxPreset.Size = new Size(217, 29);
             comboBoxPreset.TabIndex = 100;
-            comboBoxPreset.SelectedIndexChanged += this.comboBoxPreset_SelectedIndexChanged;
+            comboBoxPreset.SelectedIndexChanged += (this.comboBoxPreset_SelectedIndexChanged);
             // 
             // label50
             // 
-            label50.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label50.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label50.AutoSize = true;
             label50.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label50.ForeColor = Color.Snow;
@@ -1737,7 +1724,7 @@
             // 
             // labelPitchNum
             // 
-            labelPitchNum.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            labelPitchNum.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             labelPitchNum.AutoSize = true;
             labelPitchNum.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             labelPitchNum.ForeColor = Color.Snow;
@@ -1749,7 +1736,7 @@
             // 
             // label3
             // 
-            label3.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label3.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Snow;
@@ -1761,7 +1748,7 @@
             // 
             // comboBoxTranslationLanguage
             // 
-            comboBoxTranslationLanguage.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxTranslationLanguage.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxTranslationLanguage.BackColor = Color.White;
             comboBoxTranslationLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTranslationLanguage.FlatStyle = FlatStyle.Flat;
@@ -1774,11 +1761,11 @@
             comboBoxTranslationLanguage.Name = "comboBoxTranslationLanguage";
             comboBoxTranslationLanguage.Size = new Size(266, 29);
             comboBoxTranslationLanguage.TabIndex = 25;
-            comboBoxTranslationLanguage.SelectedIndexChanged += this.comboBox3_SelectedIndexChanged;
+            comboBoxTranslationLanguage.SelectedIndexChanged += (this.comboBox3_SelectedIndexChanged);
             // 
             // label14
             // 
-            label14.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label14.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label14.ForeColor = Color.Snow;
@@ -1790,7 +1777,7 @@
             // 
             // comboBoxSpokenLanguage
             // 
-            comboBoxSpokenLanguage.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxSpokenLanguage.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxSpokenLanguage.BackColor = Color.White;
             comboBoxSpokenLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSpokenLanguage.FlatStyle = FlatStyle.Flat;
@@ -1802,11 +1789,11 @@
             comboBoxSpokenLanguage.Name = "comboBoxSpokenLanguage";
             comboBoxSpokenLanguage.Size = new Size(266, 29);
             comboBoxSpokenLanguage.TabIndex = 27;
-            comboBoxSpokenLanguage.SelectedIndexChanged += this.comboBox4_SelectedIndexChanged;
+            comboBoxSpokenLanguage.SelectedIndexChanged += (this.comboBox4_SelectedIndexChanged);
             // 
             // comboBoxTTSMode
             // 
-            comboBoxTTSMode.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxTTSMode.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxTTSMode.BackColor = Color.White;
             comboBoxTTSMode.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTTSMode.FlatStyle = FlatStyle.Flat;
@@ -1819,11 +1806,11 @@
             comboBoxTTSMode.Name = "comboBoxTTSMode";
             comboBoxTTSMode.Size = new Size(266, 29);
             comboBoxTTSMode.TabIndex = 98;
-            comboBoxTTSMode.SelectedIndexChanged += this.comboBoxTTSMode_SelectedIndexChanged;
+            comboBoxTTSMode.SelectedIndexChanged += (this.comboBoxTTSMode_SelectedIndexChanged);
             // 
             // label109
             // 
-            label109.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            label109.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             label109.AutoSize = true;
             label109.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label109.ForeColor = Color.Snow;
@@ -1835,7 +1822,7 @@
             // 
             // comboBoxAccentSelect
             // 
-            comboBoxAccentSelect.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left));
+            comboBoxAccentSelect.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left);
             comboBoxAccentSelect.BackColor = Color.White;
             comboBoxAccentSelect.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxAccentSelect.FlatStyle = FlatStyle.Flat;
@@ -1848,7 +1835,7 @@
             comboBoxAccentSelect.Name = "comboBoxAccentSelect";
             comboBoxAccentSelect.Size = new Size(132, 29);
             comboBoxAccentSelect.TabIndex = 35;
-            comboBoxAccentSelect.SelectedIndexChanged += this.comboBox5_SelectedIndexChanged;
+            comboBoxAccentSelect.SelectedIndexChanged += (this.comboBox5_SelectedIndexChanged);
             // 
             // trackBarVolume
             // 
@@ -1859,7 +1846,7 @@
             trackBarVolume.Size = new Size(266, 45);
             trackBarVolume.TabIndex = 107;
             trackBarVolume.Value = 10;
-            trackBarVolume.Scroll += this.trackBarVolume_Scroll;
+            trackBarVolume.Scroll += (this.trackBarVolume_Scroll);
             // 
             // trackBarPitch
             // 
@@ -1872,7 +1859,7 @@
             trackBarPitch.SmallChange = 5;
             trackBarPitch.TabIndex = 33;
             trackBarPitch.TickFrequency = 10;
-            trackBarPitch.Scroll += this.trackBarPitch_Scroll;
+            trackBarPitch.Scroll += (this.trackBarPitch_Scroll);
             // 
             // trackBarSpeed
             // 
@@ -1885,7 +1872,7 @@
             trackBarSpeed.SmallChange = 5;
             trackBarSpeed.TabIndex = 106;
             trackBarSpeed.TickFrequency = 10;
-            trackBarSpeed.Scroll += this.trackBarSpeed_Scroll;
+            trackBarSpeed.Scroll += (this.trackBarSpeed_Scroll);
             // 
             // button50
             // 
@@ -1900,11 +1887,11 @@
             button50.Text = "🢂🢂🢂";
             button50.TextAlign = ContentAlignment.TopCenter;
             button50.UseVisualStyleBackColor = true;
-            button50.Click += this.button50_Click;
+            button50.Click += (this.button50_Click);
             // 
             // tabPage3
             // 
-            tabPage3.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabPage3.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             tabPage3.Controls.Add(groupBox10);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Margin = new Padding(3, 2, 3, 2);
@@ -1916,7 +1903,7 @@
             // groupBox10
             // 
             groupBox10.Controls.Add(label110);
-            groupBox10.Controls.Add(this.iconButton22);
+            groupBox10.Controls.Add(iconButton22);
             groupBox10.Controls.Add(richTextBox9);
             groupBox10.Dock = DockStyle.Fill;
             groupBox10.ForeColor = Color.White;
@@ -1941,26 +1928,26 @@
             // 
             // iconButton22
             // 
-            this.iconButton22.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.iconButton22.BackColor = Color.White;
-            this.iconButton22.FlatAppearance.BorderSize = 0;
-            this.iconButton22.FlatStyle = FlatStyle.Flat;
-            this.iconButton22.ForeColor = SystemColors.ActiveCaptionText;
-            this.iconButton22.IconChar = global::FontAwesome.Sharp.IconChar.Trash;
-            this.iconButton22.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButton22.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton22.IconSize = 32;
-            this.iconButton22.Location = new Point(698, 525);
-            this.iconButton22.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton22.Name = "iconButton22";
-            this.iconButton22.Size = new Size(45, 37);
-            this.iconButton22.TabIndex = 33;
-            this.iconButton22.UseVisualStyleBackColor = false;
-            this.iconButton22.Click += this.iconButton22_Click;
+            iconButton22.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            iconButton22.BackColor = Color.White;
+            iconButton22.FlatAppearance.BorderSize = 0;
+            iconButton22.FlatStyle = FlatStyle.Flat;
+            iconButton22.ForeColor = SystemColors.ActiveCaptionText;
+            iconButton22.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            iconButton22.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton22.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton22.IconSize = 32;
+            iconButton22.Location = new Point(698, 525);
+            iconButton22.Margin = new Padding(3, 2, 3, 2);
+            iconButton22.Name = "iconButton22";
+            iconButton22.Size = new Size(45, 37);
+            iconButton22.TabIndex = 33;
+            iconButton22.UseVisualStyleBackColor = false;
+            iconButton22.Click += (this.iconButton22_Click);
             // 
             // richTextBox9
             // 
-            richTextBox9.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            richTextBox9.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             richTextBox9.BorderStyle = BorderStyle.FixedSingle;
             richTextBox9.Font = new Font("Segoe UI", 36F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox9.Location = new Point(10, 46);
@@ -1969,12 +1956,12 @@
             richTextBox9.Size = new Size(746, 530);
             richTextBox9.TabIndex = 32;
             richTextBox9.Text = "";
-            richTextBox9.TextChanged += this.richTextBox9_TextChanged;
+            richTextBox9.TextChanged += (this.richTextBox9_TextChanged);
             // 
             // tabAddons
             // 
-            tabAddons.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            tabAddons.Controls.Add(this.translucentPanel1);
+            tabAddons.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            tabAddons.Controls.Add(translucentPanel1);
             tabAddons.Controls.Add(label72);
             tabAddons.Location = new Point(4, 24);
             tabAddons.Margin = new Padding(3, 2, 3, 2);
@@ -1986,168 +1973,168 @@
             // 
             // translucentPanel1
             // 
-            this.translucentPanel1.AutoScroll = true;
-            this.translucentPanel1.BackColor = Color.Transparent;
-            this.translucentPanel1.Controls.Add(this.iconButton11);
-            this.translucentPanel1.Controls.Add(this.iconButton25);
-            this.translucentPanel1.Controls.Add(this.iconButton42);
-            this.translucentPanel1.Controls.Add(this.iconButton27);
-            this.translucentPanel1.Controls.Add(this.iconButton24);
-            this.translucentPanel1.Controls.Add(this.iconButton10);
-            this.translucentPanel1.Controls.Add(this.iconButton9);
-            this.translucentPanel1.Dock = DockStyle.Fill;
-            this.translucentPanel1.Location = new Point(3, 22);
-            this.translucentPanel1.Margin = new Padding(3, 2, 3, 2);
-            this.translucentPanel1.Name = "translucentPanel1";
-            this.translucentPanel1.Size = new Size(763, 563);
-            this.translucentPanel1.TabIndex = 0;
+            translucentPanel1.AutoScroll = true;
+            translucentPanel1.BackColor = Color.Transparent;
+            translucentPanel1.Controls.Add(iconButton11);
+            translucentPanel1.Controls.Add(iconButton25);
+            translucentPanel1.Controls.Add(iconButton42);
+            translucentPanel1.Controls.Add(iconButton27);
+            translucentPanel1.Controls.Add(iconButton24);
+            translucentPanel1.Controls.Add(iconButton10);
+            translucentPanel1.Controls.Add(iconButton9);
+            translucentPanel1.Dock = DockStyle.Fill;
+            translucentPanel1.Location = new Point(3, 22);
+            translucentPanel1.Margin = new Padding(3, 2, 3, 2);
+            translucentPanel1.Name = "translucentPanel1";
+            translucentPanel1.Size = new Size(763, 563);
+            translucentPanel1.TabIndex = 0;
             // 
             // iconButton11
             // 
-            this.iconButton11.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton11.Dock = DockStyle.Top;
-            this.iconButton11.FlatAppearance.BorderSize = 0;
-            this.iconButton11.ForeColor = Color.Snow;
-            this.iconButton11.IconChar = global::FontAwesome.Sharp.IconChar.SmileWink;
-            this.iconButton11.IconColor = Color.White;
-            this.iconButton11.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton11.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton11.Location = new Point(0, 450);
-            this.iconButton11.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton11.Name = "iconButton11";
-            this.iconButton11.Size = new Size(763, 75);
-            this.iconButton11.TabIndex = 11;
-            this.iconButton11.Text = "Emojis (KAT)";
-            this.iconButton11.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton11.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton11.UseVisualStyleBackColor = false;
-            this.iconButton11.Click += this.iconButton11_Click;
+            iconButton11.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton11.Dock = DockStyle.Top;
+            iconButton11.FlatAppearance.BorderSize = 0;
+            iconButton11.ForeColor = Color.Snow;
+            iconButton11.IconChar = FontAwesome.Sharp.IconChar.SmileWink;
+            iconButton11.IconColor = Color.White;
+            iconButton11.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton11.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton11.Location = new Point(0, 450);
+            iconButton11.Margin = new Padding(3, 2, 3, 2);
+            iconButton11.Name = "iconButton11";
+            iconButton11.Size = new Size(763, 75);
+            iconButton11.TabIndex = 11;
+            iconButton11.Text = "Emojis (KAT)";
+            iconButton11.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton11.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton11.UseVisualStyleBackColor = false;
+            iconButton11.Click += (this.iconButton11_Click);
             // 
             // iconButton25
             // 
-            this.iconButton25.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton25.Dock = DockStyle.Top;
-            this.iconButton25.FlatAppearance.BorderSize = 0;
-            this.iconButton25.ForeColor = Color.Snow;
-            this.iconButton25.IconChar = global::FontAwesome.Sharp.IconChar.Discord;
-            this.iconButton25.IconColor = Color.White;
-            this.iconButton25.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton25.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton25.Location = new Point(0, 375);
-            this.iconButton25.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton25.Name = "iconButton25";
-            this.iconButton25.Size = new Size(763, 75);
-            this.iconButton25.TabIndex = 13;
-            this.iconButton25.Text = "OSC Discord Integration";
-            this.iconButton25.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton25.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton25.UseVisualStyleBackColor = false;
-            this.iconButton25.Click += this.iconButton25_Click;
+            iconButton25.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton25.Dock = DockStyle.Top;
+            iconButton25.FlatAppearance.BorderSize = 0;
+            iconButton25.ForeColor = Color.Snow;
+            iconButton25.IconChar = FontAwesome.Sharp.IconChar.Discord;
+            iconButton25.IconColor = Color.White;
+            iconButton25.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton25.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton25.Location = new Point(0, 375);
+            iconButton25.Margin = new Padding(3, 2, 3, 2);
+            iconButton25.Name = "iconButton25";
+            iconButton25.Size = new Size(763, 75);
+            iconButton25.TabIndex = 13;
+            iconButton25.Text = "OSC Discord Integration";
+            iconButton25.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton25.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton25.UseVisualStyleBackColor = false;
+            iconButton25.Click += (this.iconButton25_Click);
             // 
             // iconButton42
             // 
-            this.iconButton42.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton42.Dock = DockStyle.Top;
-            this.iconButton42.FlatAppearance.BorderSize = 0;
-            this.iconButton42.ForeColor = Color.Snow;
-            this.iconButton42.IconChar = global::FontAwesome.Sharp.IconChar.Retweet;
-            this.iconButton42.IconColor = Color.White;
-            this.iconButton42.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton42.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton42.Location = new Point(0, 300);
-            this.iconButton42.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton42.Name = "iconButton42";
-            this.iconButton42.Size = new Size(763, 75);
-            this.iconButton42.TabIndex = 14;
-            this.iconButton42.Text = "Word Replacements";
-            this.iconButton42.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton42.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton42.UseVisualStyleBackColor = false;
-            this.iconButton42.Click += this.iconButton42_Click;
+            iconButton42.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton42.Dock = DockStyle.Top;
+            iconButton42.FlatAppearance.BorderSize = 0;
+            iconButton42.ForeColor = Color.Snow;
+            iconButton42.IconChar = FontAwesome.Sharp.IconChar.Retweet;
+            iconButton42.IconColor = Color.White;
+            iconButton42.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton42.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton42.Location = new Point(0, 300);
+            iconButton42.Margin = new Padding(3, 2, 3, 2);
+            iconButton42.Name = "iconButton42";
+            iconButton42.Size = new Size(763, 75);
+            iconButton42.TabIndex = 14;
+            iconButton42.Text = "Word Replacements";
+            iconButton42.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton42.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton42.UseVisualStyleBackColor = false;
+            iconButton42.Click += (this.iconButton42_Click);
             // 
             // iconButton27
             // 
-            this.iconButton27.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton27.Dock = DockStyle.Top;
-            this.iconButton27.FlatAppearance.BorderSize = 0;
-            this.iconButton27.ForeColor = Color.Snow;
-            this.iconButton27.IconChar = global::FontAwesome.Sharp.IconChar.Terminal;
-            this.iconButton27.IconColor = Color.White;
-            this.iconButton27.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton27.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton27.Location = new Point(0, 225);
-            this.iconButton27.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton27.Name = "iconButton27";
-            this.iconButton27.Size = new Size(763, 75);
-            this.iconButton27.TabIndex = 12;
-            this.iconButton27.Text = "Voice Commands";
-            this.iconButton27.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton27.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton27.UseVisualStyleBackColor = false;
-            this.iconButton27.Click += this.iconButton27_Click_1;
+            iconButton27.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton27.Dock = DockStyle.Top;
+            iconButton27.FlatAppearance.BorderSize = 0;
+            iconButton27.ForeColor = Color.Snow;
+            iconButton27.IconChar = FontAwesome.Sharp.IconChar.Terminal;
+            iconButton27.IconColor = Color.White;
+            iconButton27.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton27.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton27.Location = new Point(0, 225);
+            iconButton27.Margin = new Padding(3, 2, 3, 2);
+            iconButton27.Name = "iconButton27";
+            iconButton27.Size = new Size(763, 75);
+            iconButton27.TabIndex = 12;
+            iconButton27.Text = "Voice Commands";
+            iconButton27.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton27.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton27.UseVisualStyleBackColor = false;
+            iconButton27.Click += (this.iconButton27_Click_1);
             // 
             // iconButton24
             // 
-            this.iconButton24.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton24.Dock = DockStyle.Top;
-            this.iconButton24.FlatAppearance.BorderSize = 0;
-            this.iconButton24.ForeColor = Color.Snow;
-            this.iconButton24.IconChar = global::FontAwesome.Sharp.IconChar.Gamepad;
-            this.iconButton24.IconColor = Color.White;
-            this.iconButton24.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton24.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton24.Location = new Point(0, 150);
-            this.iconButton24.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton24.Name = "iconButton24";
-            this.iconButton24.Size = new Size(763, 75);
-            this.iconButton24.TabIndex = 15;
-            this.iconButton24.Text = "VRChat - (Counters, AFK)";
-            this.iconButton24.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton24.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton24.UseVisualStyleBackColor = false;
-            this.iconButton24.Click += this.iconButton24_Click;
+            iconButton24.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton24.Dock = DockStyle.Top;
+            iconButton24.FlatAppearance.BorderSize = 0;
+            iconButton24.ForeColor = Color.Snow;
+            iconButton24.IconChar = FontAwesome.Sharp.IconChar.Gamepad;
+            iconButton24.IconColor = Color.White;
+            iconButton24.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton24.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton24.Location = new Point(0, 150);
+            iconButton24.Margin = new Padding(3, 2, 3, 2);
+            iconButton24.Name = "iconButton24";
+            iconButton24.Size = new Size(763, 75);
+            iconButton24.TabIndex = 15;
+            iconButton24.Text = "VRChat - (Counters, AFK)";
+            iconButton24.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton24.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton24.UseVisualStyleBackColor = false;
+            iconButton24.Click += (this.iconButton24_Click);
             // 
             // iconButton10
             // 
-            this.iconButton10.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton10.Dock = DockStyle.Top;
-            this.iconButton10.FlatAppearance.BorderSize = 0;
-            this.iconButton10.ForeColor = Color.Cyan;
-            this.iconButton10.IconChar = global::FontAwesome.Sharp.IconChar.Heartbeat;
-            this.iconButton10.IconColor = Color.Cyan;
-            this.iconButton10.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton10.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton10.Location = new Point(0, 75);
-            this.iconButton10.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Size = new Size(763, 75);
-            this.iconButton10.TabIndex = 10;
-            this.iconButton10.Text = "Heartrate (Powered by Pulsoid) + OSC Listener";
-            this.iconButton10.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton10.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton10.UseVisualStyleBackColor = false;
-            this.iconButton10.Click += this.iconButton10_Click;
+            iconButton10.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton10.Dock = DockStyle.Top;
+            iconButton10.FlatAppearance.BorderSize = 0;
+            iconButton10.ForeColor = Color.Cyan;
+            iconButton10.IconChar = FontAwesome.Sharp.IconChar.Heartbeat;
+            iconButton10.IconColor = Color.Cyan;
+            iconButton10.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton10.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton10.Location = new Point(0, 75);
+            iconButton10.Margin = new Padding(3, 2, 3, 2);
+            iconButton10.Name = "iconButton10";
+            iconButton10.Size = new Size(763, 75);
+            iconButton10.TabIndex = 10;
+            iconButton10.Text = "Heartrate (Powered by Pulsoid) + OSC Listener";
+            iconButton10.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton10.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton10.UseVisualStyleBackColor = false;
+            iconButton10.Click += (this.iconButton10_Click);
             // 
             // iconButton9
             // 
-            this.iconButton9.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton9.Dock = DockStyle.Top;
-            this.iconButton9.FlatAppearance.BorderSize = 0;
-            this.iconButton9.ForeColor = Color.Snow;
-            this.iconButton9.IconChar = global::FontAwesome.Sharp.IconChar.Music;
-            this.iconButton9.IconColor = Color.White;
-            this.iconButton9.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton9.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton9.Location = new Point(0, 0);
-            this.iconButton9.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new Size(763, 75);
-            this.iconButton9.TabIndex = 9;
-            this.iconButton9.Text = "Media Integration";
-            this.iconButton9.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton9.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton9.UseVisualStyleBackColor = false;
-            this.iconButton9.Click += this.iconButton9_Click;
+            iconButton9.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton9.Dock = DockStyle.Top;
+            iconButton9.FlatAppearance.BorderSize = 0;
+            iconButton9.ForeColor = Color.Snow;
+            iconButton9.IconChar = FontAwesome.Sharp.IconChar.Music;
+            iconButton9.IconColor = Color.White;
+            iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton9.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton9.Location = new Point(0, 0);
+            iconButton9.Margin = new Padding(3, 2, 3, 2);
+            iconButton9.Name = "iconButton9";
+            iconButton9.Size = new Size(763, 75);
+            iconButton9.TabIndex = 9;
+            iconButton9.Text = "Media Integration";
+            iconButton9.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton9.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton9.UseVisualStyleBackColor = false;
+            iconButton9.Click += (this.iconButton9_Click);
             // 
             // label72
             // 
@@ -2163,10 +2150,10 @@
             // 
             // tabEmoji
             // 
-            tabEmoji.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabEmoji.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             tabEmoji.Controls.Add(groupBox34);
             tabEmoji.Controls.Add(groupBox35);
-            tabEmoji.Controls.Add(this.iconButton32);
+            tabEmoji.Controls.Add(iconButton32);
             tabEmoji.Controls.Add(label44);
             tabEmoji.Controls.Add(label45);
             tabEmoji.Location = new Point(4, 24);
@@ -2179,9 +2166,9 @@
             // 
             // groupBox34
             // 
-            groupBox34.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
-            groupBox34.Controls.Add(this.buttonExportEmoji);
-            groupBox34.Controls.Add(this.buttonImportEmoji);
+            groupBox34.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            groupBox34.Controls.Add(buttonExportEmoji);
+            groupBox34.Controls.Add(buttonImportEmoji);
             groupBox34.Controls.Add(button25);
             groupBox34.Controls.Add(checkedListBox2);
             groupBox34.ForeColor = Color.White;
@@ -2196,50 +2183,50 @@
             // 
             // buttonExportEmoji
             // 
-            this.buttonExportEmoji.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonExportEmoji.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonExportEmoji.FlatStyle = FlatStyle.Flat;
-            this.buttonExportEmoji.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonExportEmoji.ForeColor = Color.Snow;
-            this.buttonExportEmoji.IconChar = global::FontAwesome.Sharp.IconChar.FileExport;
-            this.buttonExportEmoji.IconColor = Color.White;
-            this.buttonExportEmoji.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonExportEmoji.IconSize = 15;
-            this.buttonExportEmoji.Location = new Point(98, 328);
-            this.buttonExportEmoji.Margin = new Padding(3, 2, 3, 2);
-            this.buttonExportEmoji.Name = "buttonExportEmoji";
-            this.buttonExportEmoji.Size = new Size(87, 25);
-            this.buttonExportEmoji.TabIndex = 162;
-            this.buttonExportEmoji.Text = "Export";
-            this.buttonExportEmoji.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonExportEmoji.UseVisualStyleBackColor = false;
-            this.buttonExportEmoji.Click += this.buttonExportEmoji_Click;
+            buttonExportEmoji.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonExportEmoji.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonExportEmoji.FlatStyle = FlatStyle.Flat;
+            buttonExportEmoji.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExportEmoji.ForeColor = Color.Snow;
+            buttonExportEmoji.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            buttonExportEmoji.IconColor = Color.White;
+            buttonExportEmoji.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonExportEmoji.IconSize = 15;
+            buttonExportEmoji.Location = new Point(98, 328);
+            buttonExportEmoji.Margin = new Padding(3, 2, 3, 2);
+            buttonExportEmoji.Name = "buttonExportEmoji";
+            buttonExportEmoji.Size = new Size(87, 25);
+            buttonExportEmoji.TabIndex = 162;
+            buttonExportEmoji.Text = "Export";
+            buttonExportEmoji.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExportEmoji.UseVisualStyleBackColor = false;
+            buttonExportEmoji.Click += (this.buttonExportEmoji_Click);
             // 
             // buttonImportEmoji
             // 
-            this.buttonImportEmoji.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonImportEmoji.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonImportEmoji.FlatStyle = FlatStyle.Flat;
-            this.buttonImportEmoji.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonImportEmoji.ForeColor = Color.Snow;
-            this.buttonImportEmoji.IconChar = global::FontAwesome.Sharp.IconChar.FileImport;
-            this.buttonImportEmoji.IconColor = Color.White;
-            this.buttonImportEmoji.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonImportEmoji.IconSize = 15;
-            this.buttonImportEmoji.Location = new Point(6, 328);
-            this.buttonImportEmoji.Margin = new Padding(3, 2, 3, 2);
-            this.buttonImportEmoji.Name = "buttonImportEmoji";
-            this.buttonImportEmoji.Size = new Size(87, 25);
-            this.buttonImportEmoji.TabIndex = 161;
-            this.buttonImportEmoji.Text = "Import";
-            this.buttonImportEmoji.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonImportEmoji.UseVisualStyleBackColor = false;
-            this.buttonImportEmoji.Click += this.buttonImportEmoji_Click;
+            buttonImportEmoji.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonImportEmoji.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonImportEmoji.FlatStyle = FlatStyle.Flat;
+            buttonImportEmoji.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonImportEmoji.ForeColor = Color.Snow;
+            buttonImportEmoji.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            buttonImportEmoji.IconColor = Color.White;
+            buttonImportEmoji.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonImportEmoji.IconSize = 15;
+            buttonImportEmoji.Location = new Point(6, 328);
+            buttonImportEmoji.Margin = new Padding(3, 2, 3, 2);
+            buttonImportEmoji.Name = "buttonImportEmoji";
+            buttonImportEmoji.Size = new Size(87, 25);
+            buttonImportEmoji.TabIndex = 161;
+            buttonImportEmoji.Text = "Import";
+            buttonImportEmoji.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonImportEmoji.UseVisualStyleBackColor = false;
+            buttonImportEmoji.Click += (this.buttonImportEmoji_Click);
             // 
             // button25
             // 
-            button25.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button25.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button25.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button25.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button25.FlatStyle = FlatStyle.Flat;
             button25.ForeColor = Color.Snow;
             button25.Location = new Point(597, 368);
@@ -2249,11 +2236,11 @@
             button25.TabIndex = 160;
             button25.Text = "Debug Reset Config";
             button25.UseVisualStyleBackColor = false;
-            button25.Click += this.button25_Click_2;
+            button25.Click += (this.button25_Click_2);
             // 
             // checkedListBox2
             // 
-            checkedListBox2.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            checkedListBox2.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             checkedListBox2.Font = new Font("Segoe UI", 7.2F, FontStyle.Regular, GraphicsUnit.Point);
             checkedListBox2.FormattingEnabled = true;
             checkedListBox2.Location = new Point(5, 20);
@@ -2261,17 +2248,17 @@
             checkedListBox2.Name = "checkedListBox2";
             checkedListBox2.Size = new Size(731, 304);
             checkedListBox2.TabIndex = 142;
-            checkedListBox2.SelectedIndexChanged += this.checkedListBox2_SelectedIndexChanged;
+            checkedListBox2.SelectedIndexChanged += (this.checkedListBox2_SelectedIndexChanged);
             // 
             // groupBox35
             // 
-            groupBox35.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            groupBox35.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             groupBox35.Controls.Add(label76);
             groupBox35.Controls.Add(textBox6);
             groupBox35.Controls.Add(label80);
             groupBox35.Controls.Add(button26);
             groupBox35.Controls.Add(textBox7);
-            groupBox35.Controls.Add(this.rjToggleButton3);
+            groupBox35.Controls.Add(rjToggleButton3);
             groupBox35.Controls.Add(label43);
             groupBox35.ForeColor = Color.White;
             groupBox35.Location = new Point(22, 64);
@@ -2313,7 +2300,7 @@
             // 
             // button26
             // 
-            button26.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button26.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button26.FlatStyle = FlatStyle.Flat;
             button26.ForeColor = Color.Snow;
             button26.Location = new Point(677, 64);
@@ -2323,7 +2310,7 @@
             button26.TabIndex = 133;
             button26.Text = "Edit";
             button26.UseVisualStyleBackColor = false;
-            button26.Click += this.button26_Click;
+            button26.Click += (this.button26_Click);
             // 
             // textBox7
             // 
@@ -2336,18 +2323,18 @@
             // 
             // rjToggleButton3
             // 
-            this.rjToggleButton3.AutoSize = true;
-            this.rjToggleButton3.Location = new Point(15, 20);
-            this.rjToggleButton3.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton3.MinimumSize = new Size(39, 16);
-            this.rjToggleButton3.Name = "rjToggleButton3";
-            this.rjToggleButton3.OffBackColor = Color.Gray;
-            this.rjToggleButton3.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton3.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton3.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton3.Size = new Size(39, 16);
-            this.rjToggleButton3.TabIndex = 47;
-            this.rjToggleButton3.UseVisualStyleBackColor = true;
+            rjToggleButton3.AutoSize = true;
+            rjToggleButton3.Location = new Point(15, 20);
+            rjToggleButton3.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButton3.MinimumSize = new Size(39, 16);
+            rjToggleButton3.Name = "rjToggleButton3";
+            rjToggleButton3.OffBackColor = Color.Gray;
+            rjToggleButton3.OffToggleColor = Color.Gainsboro;
+            rjToggleButton3.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButton3.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton3.Size = new Size(39, 16);
+            rjToggleButton3.TabIndex = 47;
+            rjToggleButton3.UseVisualStyleBackColor = true;
             // 
             // label43
             // 
@@ -2361,23 +2348,23 @@
             // 
             // iconButton32
             // 
-            this.iconButton32.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton32.FlatAppearance.BorderSize = 0;
-            this.iconButton32.FlatStyle = FlatStyle.Flat;
-            this.iconButton32.ForeColor = Color.Snow;
-            this.iconButton32.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton32.IconColor = Color.White;
-            this.iconButton32.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton32.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton32.Location = new Point(713, 5);
-            this.iconButton32.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton32.Name = "iconButton32";
-            this.iconButton32.Size = new Size(44, 56);
-            this.iconButton32.TabIndex = 110;
-            this.iconButton32.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton32.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton32.UseVisualStyleBackColor = true;
-            this.iconButton32.Click += this.iconButton32_Click;
+            iconButton32.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton32.FlatAppearance.BorderSize = 0;
+            iconButton32.FlatStyle = FlatStyle.Flat;
+            iconButton32.ForeColor = Color.Snow;
+            iconButton32.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton32.IconColor = Color.White;
+            iconButton32.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton32.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton32.Location = new Point(713, 5);
+            iconButton32.Margin = new Padding(3, 2, 3, 2);
+            iconButton32.Name = "iconButton32";
+            iconButton32.Size = new Size(44, 56);
+            iconButton32.TabIndex = 110;
+            iconButton32.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton32.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton32.UseVisualStyleBackColor = true;
+            iconButton32.Click += (this.iconButton32_Click);
             // 
             // label44
             // 
@@ -2403,13 +2390,13 @@
             // tabSpotify
             // 
             tabSpotify.AutoScroll = true;
-            tabSpotify.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            tabSpotify.Controls.Add(this.iconButton1);
+            tabSpotify.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            tabSpotify.Controls.Add(iconButton1);
             tabSpotify.Controls.Add(groupBox5);
             tabSpotify.Controls.Add(groupBox3);
             tabSpotify.Controls.Add(groupBox2);
             tabSpotify.Controls.Add(label49);
-            tabSpotify.Controls.Add(this.iconButton31);
+            tabSpotify.Controls.Add(iconButton31);
             tabSpotify.Location = new Point(4, 24);
             tabSpotify.Margin = new Padding(3, 2, 3, 2);
             tabSpotify.Name = "tabSpotify";
@@ -2419,34 +2406,34 @@
             // 
             // iconButton1
             // 
-            this.iconButton1.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton1.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton1.FlatAppearance.BorderSize = 3;
-            this.iconButton1.FlatStyle = FlatStyle.Flat;
-            this.iconButton1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButton1.ForeColor = Color.Snow;
-            this.iconButton1.IconChar = global::FontAwesome.Sharp.IconChar.Play;
-            this.iconButton1.IconColor = Color.White;
-            this.iconButton1.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 25;
-            this.iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new Point(513, 3);
-            this.iconButton1.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.RightToLeft = RightToLeft.No;
-            this.iconButton1.Size = new Size(162, 37);
-            this.iconButton1.TabIndex = 141;
-            this.iconButton1.Text = "Watch Tutorial";
-            this.iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += this.iconButton1_Click_1;
+            iconButton1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton1.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton1.FlatAppearance.BorderSize = 3;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton1.ForeColor = Color.Snow;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Play;
+            iconButton1.IconColor = Color.White;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.IconSize = 25;
+            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton1.Location = new Point(343, 3);
+            iconButton1.Margin = new Padding(3, 2, 3, 2);
+            iconButton1.Name = "iconButton1";
+            iconButton1.RightToLeft = RightToLeft.No;
+            iconButton1.Size = new Size(162, 37);
+            iconButton1.TabIndex = 141;
+            iconButton1.Text = "Watch Tutorial";
+            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += (this.iconButton1_Click_1);
             // 
             // groupBox5
             // 
             groupBox5.Controls.Add(button21);
             groupBox5.Controls.Add(button22);
-            groupBox5.Controls.Add(this.buttonExportMedia);
-            groupBox5.Controls.Add(this.buttonImportMedia);
+            groupBox5.Controls.Add(buttonExportMedia);
+            groupBox5.Controls.Add(buttonImportMedia);
             groupBox5.Controls.Add(textBoxMediaPresetEdit);
             groupBox5.Controls.Add(buttonMediaPresetDeleteNew);
             groupBox5.Controls.Add(buttonMediaPresetEditNew);
@@ -2462,13 +2449,13 @@
             groupBox5.Controls.Add(durationStats);
             groupBox5.Controls.Add(songStats);
             groupBox5.Controls.Add(label60);
-            groupBox5.Controls.Add(this.rjToggleButtonPlayPaused);
+            groupBox5.Controls.Add(rjToggleButtonPlayPaused);
             groupBox5.Controls.Add(label103);
             groupBox5.Controls.Add(textBoxCustomSpot);
             groupBox5.Controls.Add(label57);
-            groupBox5.Controls.Add(this.rjToggleButtonSpotifySpam);
+            groupBox5.Controls.Add(rjToggleButtonSpotifySpam);
             groupBox5.Controls.Add(label56);
-            groupBox5.Controls.Add(this.rjToggleButtonPeriodic);
+            groupBox5.Controls.Add(rjToggleButtonPeriodic);
             groupBox5.Controls.Add(label55);
             groupBox5.Controls.Add(button4);
             groupBox5.Controls.Add(textBoxSpotifyTime);
@@ -2484,8 +2471,8 @@
             // 
             // button21
             // 
-            button21.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button21.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button21.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button21.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button21.FlatStyle = FlatStyle.Flat;
             button21.ForeColor = Color.Snow;
             button21.Location = new Point(705, 74);
@@ -2495,11 +2482,11 @@
             button21.TabIndex = 160;
             button21.Text = "\U0001f90f";
             button21.UseVisualStyleBackColor = false;
-            button21.Click += this.button21_Click;
+            button21.Click += (this.button21_Click);
             // 
             // button22
             // 
-            button22.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button22.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button22.FlatStyle = FlatStyle.Flat;
             button22.ForeColor = Color.Snow;
             button22.Location = new Point(15, 309);
@@ -2509,47 +2496,47 @@
             button22.TabIndex = 159;
             button22.Text = "Manually Display Media Text";
             button22.UseVisualStyleBackColor = false;
-            button22.Click += this.button22_Click_1;
+            button22.Click += (this.button22_Click_1);
             // 
             // buttonExportMedia
             // 
-            this.buttonExportMedia.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonExportMedia.FlatStyle = FlatStyle.Flat;
-            this.buttonExportMedia.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonExportMedia.ForeColor = Color.Snow;
-            this.buttonExportMedia.IconChar = global::FontAwesome.Sharp.IconChar.FileExport;
-            this.buttonExportMedia.IconColor = Color.White;
-            this.buttonExportMedia.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonExportMedia.IconSize = 15;
-            this.buttonExportMedia.Location = new Point(266, 263);
-            this.buttonExportMedia.Margin = new Padding(3, 2, 3, 2);
-            this.buttonExportMedia.Name = "buttonExportMedia";
-            this.buttonExportMedia.Size = new Size(87, 25);
-            this.buttonExportMedia.TabIndex = 156;
-            this.buttonExportMedia.Text = "Export";
-            this.buttonExportMedia.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonExportMedia.UseVisualStyleBackColor = false;
-            this.buttonExportMedia.Click += this.buttonExportMedia_Click;
+            buttonExportMedia.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonExportMedia.FlatStyle = FlatStyle.Flat;
+            buttonExportMedia.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExportMedia.ForeColor = Color.Snow;
+            buttonExportMedia.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            buttonExportMedia.IconColor = Color.White;
+            buttonExportMedia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonExportMedia.IconSize = 15;
+            buttonExportMedia.Location = new Point(266, 263);
+            buttonExportMedia.Margin = new Padding(3, 2, 3, 2);
+            buttonExportMedia.Name = "buttonExportMedia";
+            buttonExportMedia.Size = new Size(87, 25);
+            buttonExportMedia.TabIndex = 156;
+            buttonExportMedia.Text = "Export";
+            buttonExportMedia.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExportMedia.UseVisualStyleBackColor = false;
+            buttonExportMedia.Click += (this.buttonExportMedia_Click);
             // 
             // buttonImportMedia
             // 
-            this.buttonImportMedia.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonImportMedia.FlatStyle = FlatStyle.Flat;
-            this.buttonImportMedia.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonImportMedia.ForeColor = Color.Snow;
-            this.buttonImportMedia.IconChar = global::FontAwesome.Sharp.IconChar.FileImport;
-            this.buttonImportMedia.IconColor = Color.White;
-            this.buttonImportMedia.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonImportMedia.IconSize = 15;
-            this.buttonImportMedia.Location = new Point(173, 263);
-            this.buttonImportMedia.Margin = new Padding(3, 2, 3, 2);
-            this.buttonImportMedia.Name = "buttonImportMedia";
-            this.buttonImportMedia.Size = new Size(87, 25);
-            this.buttonImportMedia.TabIndex = 155;
-            this.buttonImportMedia.Text = "Import";
-            this.buttonImportMedia.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonImportMedia.UseVisualStyleBackColor = false;
-            this.buttonImportMedia.Click += this.buttonImportMedia_Click;
+            buttonImportMedia.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonImportMedia.FlatStyle = FlatStyle.Flat;
+            buttonImportMedia.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonImportMedia.ForeColor = Color.Snow;
+            buttonImportMedia.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            buttonImportMedia.IconColor = Color.White;
+            buttonImportMedia.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonImportMedia.IconSize = 15;
+            buttonImportMedia.Location = new Point(173, 263);
+            buttonImportMedia.Margin = new Padding(3, 2, 3, 2);
+            buttonImportMedia.Name = "buttonImportMedia";
+            buttonImportMedia.Size = new Size(87, 25);
+            buttonImportMedia.TabIndex = 155;
+            buttonImportMedia.Text = "Import";
+            buttonImportMedia.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonImportMedia.UseVisualStyleBackColor = false;
+            buttonImportMedia.Click += (this.buttonImportMedia_Click);
             // 
             // textBoxMediaPresetEdit
             // 
@@ -2563,7 +2550,7 @@
             // 
             // buttonMediaPresetDeleteNew
             // 
-            buttonMediaPresetDeleteNew.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonMediaPresetDeleteNew.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonMediaPresetDeleteNew.Enabled = false;
             buttonMediaPresetDeleteNew.FlatStyle = FlatStyle.Flat;
             buttonMediaPresetDeleteNew.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
@@ -2575,11 +2562,11 @@
             buttonMediaPresetDeleteNew.TabIndex = 150;
             buttonMediaPresetDeleteNew.Text = "Delete";
             buttonMediaPresetDeleteNew.UseVisualStyleBackColor = false;
-            buttonMediaPresetDeleteNew.Click += this.buttonMediaPresetDeleteNew_Click;
+            buttonMediaPresetDeleteNew.Click += (this.buttonMediaPresetDeleteNew_Click);
             // 
             // buttonMediaPresetEditNew
             // 
-            buttonMediaPresetEditNew.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonMediaPresetEditNew.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonMediaPresetEditNew.Enabled = false;
             buttonMediaPresetEditNew.FlatStyle = FlatStyle.Flat;
             buttonMediaPresetEditNew.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
@@ -2591,11 +2578,11 @@
             buttonMediaPresetEditNew.TabIndex = 149;
             buttonMediaPresetEditNew.Text = "Edit";
             buttonMediaPresetEditNew.UseVisualStyleBackColor = false;
-            buttonMediaPresetEditNew.Click += this.buttonMediaPresetEditNew_Click;
+            buttonMediaPresetEditNew.Click += (this.buttonMediaPresetEditNew_Click);
             // 
             // buttonMediaPresetSaveNew
             // 
-            buttonMediaPresetSaveNew.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonMediaPresetSaveNew.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonMediaPresetSaveNew.FlatStyle = FlatStyle.Flat;
             buttonMediaPresetSaveNew.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             buttonMediaPresetSaveNew.ForeColor = Color.Snow;
@@ -2606,12 +2593,12 @@
             buttonMediaPresetSaveNew.TabIndex = 148;
             buttonMediaPresetSaveNew.Text = "Save";
             buttonMediaPresetSaveNew.UseVisualStyleBackColor = false;
-            buttonMediaPresetSaveNew.Click += this.buttonMediaPresetSaveNew_Click;
+            buttonMediaPresetSaveNew.Click += (this.buttonMediaPresetSaveNew_Click);
             // 
             // label184
             // 
             label184.AutoSize = true;
-            label184.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label184.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label184.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label184.ForeColor = Color.Snow;
             label184.Location = new Point(23, 210);
@@ -2631,12 +2618,12 @@
             comboBoxMediaPreset.Name = "comboBoxMediaPreset";
             comboBoxMediaPreset.Size = new Size(126, 23);
             comboBoxMediaPreset.TabIndex = 144;
-            comboBoxMediaPreset.SelectedIndexChanged += this.comboBoxMediaPreset_SelectedIndexChanged;
+            comboBoxMediaPreset.SelectedIndexChanged += (this.comboBoxMediaPreset_SelectedIndexChanged);
             // 
             // label149
             // 
             label149.AutoSize = true;
-            label149.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label149.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label149.ForeColor = Color.Snow;
             label149.Location = new Point(203, 353);
             label149.Name = "label149";
@@ -2646,7 +2633,7 @@
             // 
             // button44
             // 
-            button44.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button44.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button44.FlatStyle = FlatStyle.Flat;
             button44.ForeColor = Color.Snow;
             button44.Location = new Point(16, 347);
@@ -2656,12 +2643,12 @@
             button44.TabIndex = 141;
             button44.Text = "Manually Display Current Time";
             button44.UseVisualStyleBackColor = false;
-            button44.Click += this.button44_Click;
+            button44.Click += (this.button44_Click);
             // 
             // volumeStats
             // 
-            volumeStats.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            volumeStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            volumeStats.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            volumeStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             volumeStats.FlatStyle = FlatStyle.Flat;
             volumeStats.ForeColor = Color.Snow;
             volumeStats.Location = new Point(610, 74);
@@ -2671,24 +2658,24 @@
             volumeStats.TabIndex = 140;
             volumeStats.Text = "🔊";
             volumeStats.UseVisualStyleBackColor = false;
-            volumeStats.Click += this.button14_Click;
+            volumeStats.Click += (this.button14_Click);
             // 
             // groupBox4
             // 
             groupBox4.Controls.Add(label199);
-            groupBox4.Controls.Add(this.rjToggleShowConnectURISpotify);
+            groupBox4.Controls.Add(rjToggleShowConnectURISpotify);
             groupBox4.Controls.Add(label155);
-            groupBox4.Controls.Add(this.rjToggleButtonForceMedia);
+            groupBox4.Controls.Add(rjToggleButtonForceMedia);
             groupBox4.Controls.Add(label108);
-            groupBox4.Controls.Add(this.rjToggleButtonMedia4OBS);
+            groupBox4.Controls.Add(rjToggleButtonMedia4OBS);
             groupBox4.Controls.Add(label136);
-            groupBox4.Controls.Add(this.rjToggleButtonNoTTSChat);
+            groupBox4.Controls.Add(rjToggleButtonNoTTSChat);
             groupBox4.Controls.Add(label134);
-            groupBox4.Controls.Add(this.rjToggleButtonSpotifyChatboxDisable);
+            groupBox4.Controls.Add(rjToggleButtonSpotifyChatboxDisable);
             groupBox4.Controls.Add(label133);
-            groupBox4.Controls.Add(this.rjToggleButtonSpotifyKatDisable);
+            groupBox4.Controls.Add(rjToggleButtonSpotifyKatDisable);
             groupBox4.Controls.Add(label132);
-            groupBox4.Controls.Add(this.rjToggleButtonNoTTSKAT);
+            groupBox4.Controls.Add(rjToggleButtonNoTTSKAT);
             groupBox4.ForeColor = Color.White;
             groupBox4.Location = new Point(418, 164);
             groupBox4.Margin = new Padding(3, 2, 3, 2);
@@ -2702,7 +2689,7 @@
             // label199
             // 
             label199.AutoSize = true;
-            label199.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label199.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label199.ForeColor = Color.Snow;
             label199.Location = new Point(60, 150);
             label199.Name = "label199";
@@ -2712,24 +2699,24 @@
             // 
             // rjToggleShowConnectURISpotify
             // 
-            this.rjToggleShowConnectURISpotify.AutoSize = true;
-            this.rjToggleShowConnectURISpotify.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleShowConnectURISpotify.Location = new Point(16, 150);
-            this.rjToggleShowConnectURISpotify.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleShowConnectURISpotify.MinimumSize = new Size(39, 16);
-            this.rjToggleShowConnectURISpotify.Name = "rjToggleShowConnectURISpotify";
-            this.rjToggleShowConnectURISpotify.OffBackColor = Color.Gray;
-            this.rjToggleShowConnectURISpotify.OffToggleColor = Color.Gainsboro;
-            this.rjToggleShowConnectURISpotify.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleShowConnectURISpotify.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleShowConnectURISpotify.Size = new Size(39, 16);
-            this.rjToggleShowConnectURISpotify.TabIndex = 127;
-            this.rjToggleShowConnectURISpotify.UseVisualStyleBackColor = false;
+            rjToggleShowConnectURISpotify.AutoSize = true;
+            rjToggleShowConnectURISpotify.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleShowConnectURISpotify.Location = new Point(16, 150);
+            rjToggleShowConnectURISpotify.Margin = new Padding(3, 2, 3, 2);
+            rjToggleShowConnectURISpotify.MinimumSize = new Size(39, 16);
+            rjToggleShowConnectURISpotify.Name = "rjToggleShowConnectURISpotify";
+            rjToggleShowConnectURISpotify.OffBackColor = Color.Gray;
+            rjToggleShowConnectURISpotify.OffToggleColor = Color.Gainsboro;
+            rjToggleShowConnectURISpotify.OnBackColor = Color.MediumSlateBlue;
+            rjToggleShowConnectURISpotify.OnToggleColor = Color.WhiteSmoke;
+            rjToggleShowConnectURISpotify.Size = new Size(39, 16);
+            rjToggleShowConnectURISpotify.TabIndex = 127;
+            rjToggleShowConnectURISpotify.UseVisualStyleBackColor = false;
             // 
             // label155
             // 
             label155.AutoSize = true;
-            label155.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label155.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label155.ForeColor = Color.Snow;
             label155.Location = new Point(60, 128);
             label155.Name = "label155";
@@ -2739,24 +2726,24 @@
             // 
             // rjToggleButtonForceMedia
             // 
-            this.rjToggleButtonForceMedia.AutoSize = true;
-            this.rjToggleButtonForceMedia.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleButtonForceMedia.Location = new Point(16, 128);
-            this.rjToggleButtonForceMedia.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonForceMedia.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonForceMedia.Name = "rjToggleButtonForceMedia";
-            this.rjToggleButtonForceMedia.OffBackColor = Color.Gray;
-            this.rjToggleButtonForceMedia.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonForceMedia.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonForceMedia.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonForceMedia.Size = new Size(39, 16);
-            this.rjToggleButtonForceMedia.TabIndex = 125;
-            this.rjToggleButtonForceMedia.UseVisualStyleBackColor = false;
+            rjToggleButtonForceMedia.AutoSize = true;
+            rjToggleButtonForceMedia.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleButtonForceMedia.Location = new Point(16, 128);
+            rjToggleButtonForceMedia.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonForceMedia.MinimumSize = new Size(39, 16);
+            rjToggleButtonForceMedia.Name = "rjToggleButtonForceMedia";
+            rjToggleButtonForceMedia.OffBackColor = Color.Gray;
+            rjToggleButtonForceMedia.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonForceMedia.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonForceMedia.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonForceMedia.Size = new Size(39, 16);
+            rjToggleButtonForceMedia.TabIndex = 125;
+            rjToggleButtonForceMedia.UseVisualStyleBackColor = false;
             // 
             // label108
             // 
             label108.AutoSize = true;
-            label108.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label108.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label108.ForeColor = Color.Snow;
             label108.Location = new Point(60, 108);
             label108.Name = "label108";
@@ -2766,24 +2753,24 @@
             // 
             // rjToggleButtonMedia4OBS
             // 
-            this.rjToggleButtonMedia4OBS.AutoSize = true;
-            this.rjToggleButtonMedia4OBS.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleButtonMedia4OBS.Location = new Point(16, 108);
-            this.rjToggleButtonMedia4OBS.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonMedia4OBS.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonMedia4OBS.Name = "rjToggleButtonMedia4OBS";
-            this.rjToggleButtonMedia4OBS.OffBackColor = Color.Gray;
-            this.rjToggleButtonMedia4OBS.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonMedia4OBS.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonMedia4OBS.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonMedia4OBS.Size = new Size(39, 16);
-            this.rjToggleButtonMedia4OBS.TabIndex = 123;
-            this.rjToggleButtonMedia4OBS.UseVisualStyleBackColor = false;
+            rjToggleButtonMedia4OBS.AutoSize = true;
+            rjToggleButtonMedia4OBS.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleButtonMedia4OBS.Location = new Point(16, 108);
+            rjToggleButtonMedia4OBS.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonMedia4OBS.MinimumSize = new Size(39, 16);
+            rjToggleButtonMedia4OBS.Name = "rjToggleButtonMedia4OBS";
+            rjToggleButtonMedia4OBS.OffBackColor = Color.Gray;
+            rjToggleButtonMedia4OBS.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonMedia4OBS.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonMedia4OBS.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonMedia4OBS.Size = new Size(39, 16);
+            rjToggleButtonMedia4OBS.TabIndex = 123;
+            rjToggleButtonMedia4OBS.UseVisualStyleBackColor = false;
             // 
             // label136
             // 
             label136.AutoSize = true;
-            label136.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label136.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label136.ForeColor = Color.Snow;
             label136.Location = new Point(60, 43);
             label136.Name = "label136";
@@ -2793,24 +2780,24 @@
             // 
             // rjToggleButtonNoTTSChat
             // 
-            this.rjToggleButtonNoTTSChat.AutoSize = true;
-            this.rjToggleButtonNoTTSChat.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleButtonNoTTSChat.Location = new Point(16, 43);
-            this.rjToggleButtonNoTTSChat.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonNoTTSChat.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonNoTTSChat.Name = "rjToggleButtonNoTTSChat";
-            this.rjToggleButtonNoTTSChat.OffBackColor = Color.Gray;
-            this.rjToggleButtonNoTTSChat.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonNoTTSChat.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonNoTTSChat.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonNoTTSChat.Size = new Size(39, 16);
-            this.rjToggleButtonNoTTSChat.TabIndex = 121;
-            this.rjToggleButtonNoTTSChat.UseVisualStyleBackColor = false;
+            rjToggleButtonNoTTSChat.AutoSize = true;
+            rjToggleButtonNoTTSChat.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleButtonNoTTSChat.Location = new Point(16, 43);
+            rjToggleButtonNoTTSChat.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonNoTTSChat.MinimumSize = new Size(39, 16);
+            rjToggleButtonNoTTSChat.Name = "rjToggleButtonNoTTSChat";
+            rjToggleButtonNoTTSChat.OffBackColor = Color.Gray;
+            rjToggleButtonNoTTSChat.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonNoTTSChat.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonNoTTSChat.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonNoTTSChat.Size = new Size(39, 16);
+            rjToggleButtonNoTTSChat.TabIndex = 121;
+            rjToggleButtonNoTTSChat.UseVisualStyleBackColor = false;
             // 
             // label134
             // 
             label134.AutoSize = true;
-            label134.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label134.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label134.ForeColor = Color.Snow;
             label134.Location = new Point(60, 86);
             label134.Name = "label134";
@@ -2820,24 +2807,24 @@
             // 
             // rjToggleButtonSpotifyChatboxDisable
             // 
-            this.rjToggleButtonSpotifyChatboxDisable.AutoSize = true;
-            this.rjToggleButtonSpotifyChatboxDisable.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleButtonSpotifyChatboxDisable.Location = new Point(16, 86);
-            this.rjToggleButtonSpotifyChatboxDisable.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSpotifyChatboxDisable.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSpotifyChatboxDisable.Name = "rjToggleButtonSpotifyChatboxDisable";
-            this.rjToggleButtonSpotifyChatboxDisable.OffBackColor = Color.Gray;
-            this.rjToggleButtonSpotifyChatboxDisable.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSpotifyChatboxDisable.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSpotifyChatboxDisable.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSpotifyChatboxDisable.Size = new Size(39, 16);
-            this.rjToggleButtonSpotifyChatboxDisable.TabIndex = 118;
-            this.rjToggleButtonSpotifyChatboxDisable.UseVisualStyleBackColor = false;
+            rjToggleButtonSpotifyChatboxDisable.AutoSize = true;
+            rjToggleButtonSpotifyChatboxDisable.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleButtonSpotifyChatboxDisable.Location = new Point(16, 86);
+            rjToggleButtonSpotifyChatboxDisable.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSpotifyChatboxDisable.MinimumSize = new Size(39, 16);
+            rjToggleButtonSpotifyChatboxDisable.Name = "rjToggleButtonSpotifyChatboxDisable";
+            rjToggleButtonSpotifyChatboxDisable.OffBackColor = Color.Gray;
+            rjToggleButtonSpotifyChatboxDisable.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSpotifyChatboxDisable.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSpotifyChatboxDisable.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSpotifyChatboxDisable.Size = new Size(39, 16);
+            rjToggleButtonSpotifyChatboxDisable.TabIndex = 118;
+            rjToggleButtonSpotifyChatboxDisable.UseVisualStyleBackColor = false;
             // 
             // label133
             // 
             label133.AutoSize = true;
-            label133.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label133.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label133.ForeColor = Color.Snow;
             label133.Location = new Point(60, 65);
             label133.Name = "label133";
@@ -2847,24 +2834,24 @@
             // 
             // rjToggleButtonSpotifyKatDisable
             // 
-            this.rjToggleButtonSpotifyKatDisable.AutoSize = true;
-            this.rjToggleButtonSpotifyKatDisable.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleButtonSpotifyKatDisable.Location = new Point(16, 65);
-            this.rjToggleButtonSpotifyKatDisable.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSpotifyKatDisable.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSpotifyKatDisable.Name = "rjToggleButtonSpotifyKatDisable";
-            this.rjToggleButtonSpotifyKatDisable.OffBackColor = Color.Gray;
-            this.rjToggleButtonSpotifyKatDisable.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSpotifyKatDisable.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSpotifyKatDisable.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSpotifyKatDisable.Size = new Size(39, 16);
-            this.rjToggleButtonSpotifyKatDisable.TabIndex = 116;
-            this.rjToggleButtonSpotifyKatDisable.UseVisualStyleBackColor = false;
+            rjToggleButtonSpotifyKatDisable.AutoSize = true;
+            rjToggleButtonSpotifyKatDisable.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleButtonSpotifyKatDisable.Location = new Point(16, 65);
+            rjToggleButtonSpotifyKatDisable.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSpotifyKatDisable.MinimumSize = new Size(39, 16);
+            rjToggleButtonSpotifyKatDisable.Name = "rjToggleButtonSpotifyKatDisable";
+            rjToggleButtonSpotifyKatDisable.OffBackColor = Color.Gray;
+            rjToggleButtonSpotifyKatDisable.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSpotifyKatDisable.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSpotifyKatDisable.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSpotifyKatDisable.Size = new Size(39, 16);
+            rjToggleButtonSpotifyKatDisable.TabIndex = 116;
+            rjToggleButtonSpotifyKatDisable.UseVisualStyleBackColor = false;
             // 
             // label132
             // 
             label132.AutoSize = true;
-            label132.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label132.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label132.ForeColor = Color.Snow;
             label132.Location = new Point(60, 20);
             label132.Name = "label132";
@@ -2874,24 +2861,24 @@
             // 
             // rjToggleButtonNoTTSKAT
             // 
-            this.rjToggleButtonNoTTSKAT.AutoSize = true;
-            this.rjToggleButtonNoTTSKAT.BackColor = Color.FromArgb((int)((byte)(255)), (int)((byte)(255)), (int)((byte)(192)));
-            this.rjToggleButtonNoTTSKAT.Location = new Point(16, 20);
-            this.rjToggleButtonNoTTSKAT.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonNoTTSKAT.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonNoTTSKAT.Name = "rjToggleButtonNoTTSKAT";
-            this.rjToggleButtonNoTTSKAT.OffBackColor = Color.Gray;
-            this.rjToggleButtonNoTTSKAT.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonNoTTSKAT.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonNoTTSKAT.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonNoTTSKAT.Size = new Size(39, 16);
-            this.rjToggleButtonNoTTSKAT.TabIndex = 114;
-            this.rjToggleButtonNoTTSKAT.UseVisualStyleBackColor = false;
+            rjToggleButtonNoTTSKAT.AutoSize = true;
+            rjToggleButtonNoTTSKAT.BackColor = Color.FromArgb((int)(byte)255, (int)(byte)255, (int)(byte)192);
+            rjToggleButtonNoTTSKAT.Location = new Point(16, 20);
+            rjToggleButtonNoTTSKAT.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonNoTTSKAT.MinimumSize = new Size(39, 16);
+            rjToggleButtonNoTTSKAT.Name = "rjToggleButtonNoTTSKAT";
+            rjToggleButtonNoTTSKAT.OffBackColor = Color.Gray;
+            rjToggleButtonNoTTSKAT.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonNoTTSKAT.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonNoTTSKAT.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonNoTTSKAT.Size = new Size(39, 16);
+            rjToggleButtonNoTTSKAT.TabIndex = 114;
+            rjToggleButtonNoTTSKAT.UseVisualStyleBackColor = false;
             // 
             // heartRateStats
             // 
-            heartRateStats.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            heartRateStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            heartRateStats.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            heartRateStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             heartRateStats.FlatStyle = FlatStyle.Flat;
             heartRateStats.ForeColor = Color.Snow;
             heartRateStats.Location = new Point(674, 74);
@@ -2901,12 +2888,12 @@
             heartRateStats.TabIndex = 136;
             heartRateStats.Text = "💓";
             heartRateStats.UseVisualStyleBackColor = false;
-            heartRateStats.Click += this.button22_Click;
+            heartRateStats.Click += (this.button22_Click);
             // 
             // batteryStats
             // 
-            batteryStats.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            batteryStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            batteryStats.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            batteryStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             batteryStats.FlatStyle = FlatStyle.Flat;
             batteryStats.ForeColor = Color.Snow;
             batteryStats.Location = new Point(643, 74);
@@ -2916,12 +2903,12 @@
             batteryStats.TabIndex = 135;
             batteryStats.Text = "🔋";
             batteryStats.UseVisualStyleBackColor = false;
-            batteryStats.Click += this.button23_Click_1;
+            batteryStats.Click += (this.button23_Click_1);
             // 
             // durationStats
             // 
-            durationStats.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            durationStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            durationStats.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            durationStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             durationStats.FlatStyle = FlatStyle.Flat;
             durationStats.ForeColor = Color.Snow;
             durationStats.Location = new Point(579, 74);
@@ -2931,12 +2918,12 @@
             durationStats.TabIndex = 134;
             durationStats.Text = "⏰";
             durationStats.UseVisualStyleBackColor = false;
-            durationStats.Click += this.button21_Click_1;
+            durationStats.Click += (this.button21_Click_1);
             // 
             // songStats
             // 
-            songStats.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            songStats.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            songStats.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            songStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             songStats.FlatStyle = FlatStyle.Flat;
             songStats.ForeColor = Color.Snow;
             songStats.Location = new Point(547, 74);
@@ -2946,12 +2933,12 @@
             songStats.TabIndex = 133;
             songStats.Text = "♫";
             songStats.UseVisualStyleBackColor = false;
-            songStats.Click += this.button20_Click_1;
+            songStats.Click += (this.button20_Click_1);
             // 
             // label60
             // 
             label60.AutoSize = true;
-            label60.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label60.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label60.ForeColor = Color.Snow;
             label60.Location = new Point(66, 164);
             label60.Name = "label60";
@@ -2961,23 +2948,23 @@
             // 
             // rjToggleButtonPlayPaused
             // 
-            this.rjToggleButtonPlayPaused.AutoSize = true;
-            this.rjToggleButtonPlayPaused.Location = new Point(21, 162);
-            this.rjToggleButtonPlayPaused.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonPlayPaused.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonPlayPaused.Name = "rjToggleButtonPlayPaused";
-            this.rjToggleButtonPlayPaused.OffBackColor = Color.Gray;
-            this.rjToggleButtonPlayPaused.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonPlayPaused.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonPlayPaused.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonPlayPaused.Size = new Size(39, 16);
-            this.rjToggleButtonPlayPaused.TabIndex = 131;
-            this.rjToggleButtonPlayPaused.UseVisualStyleBackColor = true;
+            rjToggleButtonPlayPaused.AutoSize = true;
+            rjToggleButtonPlayPaused.Location = new Point(21, 162);
+            rjToggleButtonPlayPaused.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonPlayPaused.MinimumSize = new Size(39, 16);
+            rjToggleButtonPlayPaused.Name = "rjToggleButtonPlayPaused";
+            rjToggleButtonPlayPaused.OffBackColor = Color.Gray;
+            rjToggleButtonPlayPaused.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonPlayPaused.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonPlayPaused.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonPlayPaused.Size = new Size(39, 16);
+            rjToggleButtonPlayPaused.TabIndex = 131;
+            rjToggleButtonPlayPaused.UseVisualStyleBackColor = true;
             // 
             // label103
             // 
             label103.AutoSize = true;
-            label103.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label103.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label103.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label103.ForeColor = Color.Snow;
             label103.Location = new Point(16, 30);
@@ -2988,7 +2975,7 @@
             // 
             // textBoxCustomSpot
             // 
-            textBoxCustomSpot.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            textBoxCustomSpot.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             textBoxCustomSpot.Location = new Point(19, 47);
             textBoxCustomSpot.Margin = new Padding(3, 2, 3, 2);
             textBoxCustomSpot.Name = "textBoxCustomSpot";
@@ -2999,7 +2986,7 @@
             // label57
             // 
             label57.AutoSize = true;
-            label57.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label57.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label57.ForeColor = Color.Snow;
             label57.Location = new Point(66, 185);
             label57.Name = "label57";
@@ -3009,25 +2996,25 @@
             // 
             // rjToggleButtonSpotifySpam
             // 
-            this.rjToggleButtonSpotifySpam.AutoSize = true;
-            this.rjToggleButtonSpotifySpam.Checked = true;
-            this.rjToggleButtonSpotifySpam.CheckState = CheckState.Checked;
-            this.rjToggleButtonSpotifySpam.Location = new Point(21, 183);
-            this.rjToggleButtonSpotifySpam.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSpotifySpam.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSpotifySpam.Name = "rjToggleButtonSpotifySpam";
-            this.rjToggleButtonSpotifySpam.OffBackColor = Color.Gray;
-            this.rjToggleButtonSpotifySpam.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSpotifySpam.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSpotifySpam.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSpotifySpam.Size = new Size(39, 16);
-            this.rjToggleButtonSpotifySpam.TabIndex = 54;
-            this.rjToggleButtonSpotifySpam.UseVisualStyleBackColor = true;
+            rjToggleButtonSpotifySpam.AutoSize = true;
+            rjToggleButtonSpotifySpam.Checked = true;
+            rjToggleButtonSpotifySpam.CheckState = CheckState.Checked;
+            rjToggleButtonSpotifySpam.Location = new Point(21, 183);
+            rjToggleButtonSpotifySpam.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSpotifySpam.MinimumSize = new Size(39, 16);
+            rjToggleButtonSpotifySpam.Name = "rjToggleButtonSpotifySpam";
+            rjToggleButtonSpotifySpam.OffBackColor = Color.Gray;
+            rjToggleButtonSpotifySpam.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSpotifySpam.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSpotifySpam.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSpotifySpam.Size = new Size(39, 16);
+            rjToggleButtonSpotifySpam.TabIndex = 54;
+            rjToggleButtonSpotifySpam.UseVisualStyleBackColor = true;
             // 
             // label56
             // 
             label56.AutoSize = true;
-            label56.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label56.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label56.ForeColor = Color.Snow;
             label56.Location = new Point(66, 139);
             label56.Name = "label56";
@@ -3037,23 +3024,23 @@
             // 
             // rjToggleButtonPeriodic
             // 
-            this.rjToggleButtonPeriodic.AutoSize = true;
-            this.rjToggleButtonPeriodic.Location = new Point(21, 141);
-            this.rjToggleButtonPeriodic.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonPeriodic.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonPeriodic.Name = "rjToggleButtonPeriodic";
-            this.rjToggleButtonPeriodic.OffBackColor = Color.Gray;
-            this.rjToggleButtonPeriodic.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonPeriodic.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonPeriodic.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonPeriodic.Size = new Size(39, 16);
-            this.rjToggleButtonPeriodic.TabIndex = 52;
-            this.rjToggleButtonPeriodic.UseVisualStyleBackColor = true;
+            rjToggleButtonPeriodic.AutoSize = true;
+            rjToggleButtonPeriodic.Location = new Point(21, 141);
+            rjToggleButtonPeriodic.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonPeriodic.MinimumSize = new Size(39, 16);
+            rjToggleButtonPeriodic.Name = "rjToggleButtonPeriodic";
+            rjToggleButtonPeriodic.OffBackColor = Color.Gray;
+            rjToggleButtonPeriodic.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonPeriodic.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonPeriodic.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonPeriodic.Size = new Size(39, 16);
+            rjToggleButtonPeriodic.TabIndex = 52;
+            rjToggleButtonPeriodic.UseVisualStyleBackColor = true;
             // 
             // label55
             // 
             label55.AutoSize = true;
-            label55.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label55.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label55.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label55.ForeColor = Color.Snow;
             label55.Location = new Point(19, 89);
@@ -3064,7 +3051,7 @@
             // 
             // button4
             // 
-            button4.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button4.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button4.ForeColor = Color.Snow;
@@ -3075,7 +3062,7 @@
             button4.TabIndex = 50;
             button4.Text = "Apply";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += this.button4_Click_1;
+            button4.Click += (this.button4_Click_1);
             // 
             // textBoxSpotifyTime
             // 
@@ -3088,13 +3075,13 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(this.ShowSpotifyPassword);
+            groupBox3.Controls.Add(ShowSpotifyPassword);
             groupBox3.Controls.Add(label68);
-            groupBox3.Controls.Add(this.rjToggleSpotLegacy);
+            groupBox3.Controls.Add(rjToggleSpotLegacy);
             groupBox3.Controls.Add(label67);
             groupBox3.Controls.Add(textBoxSpotKey);
             groupBox3.Controls.Add(label34);
-            groupBox3.Controls.Add(this.rjToggleButtonCurrentSong);
+            groupBox3.Controls.Add(rjToggleButtonCurrentSong);
             groupBox3.Controls.Add(buttonSpotify);
             groupBox3.ForeColor = Color.White;
             groupBox3.Location = new Point(3, 39);
@@ -3108,27 +3095,27 @@
             // 
             // ShowSpotifyPassword
             // 
-            this.ShowSpotifyPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ShowSpotifyPassword.BackColor = Color.White;
-            this.ShowSpotifyPassword.FlatAppearance.BorderSize = 0;
-            this.ShowSpotifyPassword.FlatStyle = FlatStyle.Flat;
-            this.ShowSpotifyPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowSpotifyPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ShowSpotifyPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowSpotifyPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ShowSpotifyPassword.IconSize = 15;
-            this.ShowSpotifyPassword.Location = new Point(246, 106);
-            this.ShowSpotifyPassword.Margin = new Padding(3, 2, 3, 2);
-            this.ShowSpotifyPassword.Name = "ShowSpotifyPassword";
-            this.ShowSpotifyPassword.Size = new Size(31, 18);
-            this.ShowSpotifyPassword.TabIndex = 123;
-            this.ShowSpotifyPassword.UseVisualStyleBackColor = false;
-            this.ShowSpotifyPassword.Click += this.ShowSpotifyPassword_Click;
+            ShowSpotifyPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ShowSpotifyPassword.BackColor = Color.White;
+            ShowSpotifyPassword.FlatAppearance.BorderSize = 0;
+            ShowSpotifyPassword.FlatStyle = FlatStyle.Flat;
+            ShowSpotifyPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowSpotifyPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ShowSpotifyPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowSpotifyPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ShowSpotifyPassword.IconSize = 15;
+            ShowSpotifyPassword.Location = new Point(246, 106);
+            ShowSpotifyPassword.Margin = new Padding(3, 2, 3, 2);
+            ShowSpotifyPassword.Name = "ShowSpotifyPassword";
+            ShowSpotifyPassword.Size = new Size(31, 18);
+            ShowSpotifyPassword.TabIndex = 123;
+            ShowSpotifyPassword.UseVisualStyleBackColor = false;
+            ShowSpotifyPassword.Click += (this.ShowSpotifyPassword_Click);
             // 
             // label68
             // 
             label68.AutoSize = true;
-            label68.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label68.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label68.ForeColor = Color.Snow;
             label68.Location = new Point(60, 49);
             label68.Name = "label68";
@@ -3138,25 +3125,25 @@
             // 
             // rjToggleSpotLegacy
             // 
-            this.rjToggleSpotLegacy.AutoSize = true;
-            this.rjToggleSpotLegacy.BackColor = Color.Yellow;
-            this.rjToggleSpotLegacy.Location = new Point(16, 49);
-            this.rjToggleSpotLegacy.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleSpotLegacy.MinimumSize = new Size(39, 16);
-            this.rjToggleSpotLegacy.Name = "rjToggleSpotLegacy";
-            this.rjToggleSpotLegacy.OffBackColor = Color.Gray;
-            this.rjToggleSpotLegacy.OffToggleColor = Color.Gainsboro;
-            this.rjToggleSpotLegacy.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleSpotLegacy.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleSpotLegacy.Size = new Size(39, 16);
-            this.rjToggleSpotLegacy.TabIndex = 59;
-            this.rjToggleSpotLegacy.UseVisualStyleBackColor = false;
-            this.rjToggleSpotLegacy.CheckedChanged += this.rjToggleSpotLegacy_CheckedChanged;
+            rjToggleSpotLegacy.AutoSize = true;
+            rjToggleSpotLegacy.BackColor = Color.Yellow;
+            rjToggleSpotLegacy.Location = new Point(16, 49);
+            rjToggleSpotLegacy.Margin = new Padding(3, 2, 3, 2);
+            rjToggleSpotLegacy.MinimumSize = new Size(39, 16);
+            rjToggleSpotLegacy.Name = "rjToggleSpotLegacy";
+            rjToggleSpotLegacy.OffBackColor = Color.Gray;
+            rjToggleSpotLegacy.OffToggleColor = Color.Gainsboro;
+            rjToggleSpotLegacy.OnBackColor = Color.MediumSlateBlue;
+            rjToggleSpotLegacy.OnToggleColor = Color.WhiteSmoke;
+            rjToggleSpotLegacy.Size = new Size(39, 16);
+            rjToggleSpotLegacy.TabIndex = 59;
+            rjToggleSpotLegacy.UseVisualStyleBackColor = false;
+            rjToggleSpotLegacy.CheckedChanged += (this.rjToggleSpotLegacy_CheckedChanged);
             // 
             // label67
             // 
             label67.AutoSize = true;
-            label67.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label67.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label67.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label67.ForeColor = Color.Snow;
             label67.Location = new Point(16, 80);
@@ -3173,12 +3160,12 @@
             textBoxSpotKey.PasswordChar = '*';
             textBoxSpotKey.Size = new Size(263, 23);
             textBoxSpotKey.TabIndex = 55;
-            textBoxSpotKey.TextChanged += this.textBoxSpotKey_TextChanged;
+            textBoxSpotKey.TextChanged += (this.textBoxSpotKey_TextChanged);
             // 
             // label34
             // 
             label34.AutoSize = true;
-            label34.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label34.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label34.ForeColor = Color.Snow;
             label34.Location = new Point(60, 23);
             label34.Name = "label34";
@@ -3188,24 +3175,24 @@
             // 
             // rjToggleButtonCurrentSong
             // 
-            this.rjToggleButtonCurrentSong.AutoSize = true;
-            this.rjToggleButtonCurrentSong.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.rjToggleButtonCurrentSong.Location = new Point(16, 23);
-            this.rjToggleButtonCurrentSong.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonCurrentSong.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonCurrentSong.Name = "rjToggleButtonCurrentSong";
-            this.rjToggleButtonCurrentSong.OffBackColor = Color.Gray;
-            this.rjToggleButtonCurrentSong.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonCurrentSong.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonCurrentSong.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonCurrentSong.Size = new Size(39, 16);
-            this.rjToggleButtonCurrentSong.TabIndex = 45;
-            this.rjToggleButtonCurrentSong.UseVisualStyleBackColor = false;
-            this.rjToggleButtonCurrentSong.CheckedChanged += this.rjToggleButtonCurrentSong_CheckedChanged;
+            rjToggleButtonCurrentSong.AutoSize = true;
+            rjToggleButtonCurrentSong.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            rjToggleButtonCurrentSong.Location = new Point(16, 23);
+            rjToggleButtonCurrentSong.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonCurrentSong.MinimumSize = new Size(39, 16);
+            rjToggleButtonCurrentSong.Name = "rjToggleButtonCurrentSong";
+            rjToggleButtonCurrentSong.OffBackColor = Color.Gray;
+            rjToggleButtonCurrentSong.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonCurrentSong.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonCurrentSong.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonCurrentSong.Size = new Size(39, 16);
+            rjToggleButtonCurrentSong.TabIndex = 45;
+            rjToggleButtonCurrentSong.UseVisualStyleBackColor = false;
+            rjToggleButtonCurrentSong.CheckedChanged += (this.rjToggleButtonCurrentSong_CheckedChanged);
             // 
             // buttonSpotify
             // 
-            buttonSpotify.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonSpotify.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonSpotify.FlatStyle = FlatStyle.Flat;
             buttonSpotify.ForeColor = Color.Snow;
             buttonSpotify.Location = new Point(19, 129);
@@ -3215,7 +3202,7 @@
             buttonSpotify.TabIndex = 31;
             buttonSpotify.Text = "Connect Spotify";
             buttonSpotify.UseVisualStyleBackColor = false;
-            buttonSpotify.Click += this.buttonSpotify_Click;
+            buttonSpotify.Click += (this.buttonSpotify_Click);
             // 
             // groupBox2
             // 
@@ -3223,7 +3210,7 @@
             groupBox2.Controls.Add(checkedListBoxApproved);
             groupBox2.Controls.Add(label18);
             groupBox2.Controls.Add(label137);
-            groupBox2.Controls.Add(this.rjToggleButtonWindowsMedia);
+            groupBox2.Controls.Add(rjToggleButtonWindowsMedia);
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(419, 39);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
@@ -3237,7 +3224,7 @@
             // labelMediaPaused
             // 
             labelMediaPaused.AutoSize = true;
-            labelMediaPaused.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            labelMediaPaused.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             labelMediaPaused.ForeColor = Color.Snow;
             labelMediaPaused.Location = new Point(236, 162);
             labelMediaPaused.Name = "labelMediaPaused";
@@ -3258,7 +3245,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label18.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label18.ForeColor = Color.Snow;
             label18.Location = new Point(16, 42);
             label18.Name = "label18";
@@ -3269,7 +3256,7 @@
             // label137
             // 
             label137.AutoSize = true;
-            label137.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label137.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label137.ForeColor = Color.Snow;
             label137.Location = new Point(60, 20);
             label137.Name = "label137";
@@ -3279,24 +3266,24 @@
             // 
             // rjToggleButtonWindowsMedia
             // 
-            this.rjToggleButtonWindowsMedia.AutoSize = true;
-            this.rjToggleButtonWindowsMedia.Location = new Point(16, 20);
-            this.rjToggleButtonWindowsMedia.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonWindowsMedia.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonWindowsMedia.Name = "rjToggleButtonWindowsMedia";
-            this.rjToggleButtonWindowsMedia.OffBackColor = Color.Gray;
-            this.rjToggleButtonWindowsMedia.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonWindowsMedia.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonWindowsMedia.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonWindowsMedia.Size = new Size(39, 16);
-            this.rjToggleButtonWindowsMedia.TabIndex = 123;
-            this.rjToggleButtonWindowsMedia.UseVisualStyleBackColor = true;
-            this.rjToggleButtonWindowsMedia.CheckedChanged += this.rjToggleButton10_CheckedChanged;
+            rjToggleButtonWindowsMedia.AutoSize = true;
+            rjToggleButtonWindowsMedia.Location = new Point(16, 20);
+            rjToggleButtonWindowsMedia.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonWindowsMedia.MinimumSize = new Size(39, 16);
+            rjToggleButtonWindowsMedia.Name = "rjToggleButtonWindowsMedia";
+            rjToggleButtonWindowsMedia.OffBackColor = Color.Gray;
+            rjToggleButtonWindowsMedia.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonWindowsMedia.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonWindowsMedia.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonWindowsMedia.Size = new Size(39, 16);
+            rjToggleButtonWindowsMedia.TabIndex = 123;
+            rjToggleButtonWindowsMedia.UseVisualStyleBackColor = true;
+            rjToggleButtonWindowsMedia.CheckedChanged += (this.rjToggleButton10_CheckedChanged);
             // 
             // label49
             // 
             label49.AutoSize = true;
-            label49.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label49.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label49.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point);
             label49.ForeColor = Color.Snow;
             label49.Location = new Point(18, 11);
@@ -3307,29 +3294,29 @@
             // 
             // iconButton31
             // 
-            this.iconButton31.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton31.FlatAppearance.BorderSize = 0;
-            this.iconButton31.FlatStyle = FlatStyle.Flat;
-            this.iconButton31.ForeColor = Color.Snow;
-            this.iconButton31.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton31.IconColor = Color.White;
-            this.iconButton31.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton31.IconSize = 35;
-            this.iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.Location = new Point(681, 3);
-            this.iconButton31.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton31.Name = "iconButton31";
-            this.iconButton31.Size = new Size(44, 38);
-            this.iconButton31.TabIndex = 108;
-            this.iconButton31.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton31.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton31.UseVisualStyleBackColor = true;
-            this.iconButton31.Click += this.iconButton31_Click;
+            iconButton31.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton31.FlatAppearance.BorderSize = 0;
+            iconButton31.FlatStyle = FlatStyle.Flat;
+            iconButton31.ForeColor = Color.Snow;
+            iconButton31.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton31.IconColor = Color.White;
+            iconButton31.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton31.IconSize = 35;
+            iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton31.Location = new Point(511, 3);
+            iconButton31.Margin = new Padding(3, 2, 3, 2);
+            iconButton31.Name = "iconButton31";
+            iconButton31.Size = new Size(44, 38);
+            iconButton31.TabIndex = 108;
+            iconButton31.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton31.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton31.UseVisualStyleBackColor = true;
+            iconButton31.Click += (this.iconButton31_Click);
             // 
             // tabHeartBeat
             // 
             tabHeartBeat.AutoScroll = true;
-            tabHeartBeat.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabHeartBeat.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             tabHeartBeat.Controls.Add(groupBox41);
             tabHeartBeat.Controls.Add(groupBox43);
             tabHeartBeat.Controls.Add(groupBox42);
@@ -3355,9 +3342,9 @@
             groupBox41.Controls.Add(button3);
             groupBox41.Controls.Add(WebsocketServerPortText);
             groupBox41.Controls.Add(label195);
-            groupBox41.Controls.Add(this.iconButton5);
+            groupBox41.Controls.Add(iconButton5);
             groupBox41.Controls.Add(label197);
-            groupBox41.Controls.Add(this.rjToggleActivateWebsocketOnStart);
+            groupBox41.Controls.Add(rjToggleActivateWebsocketOnStart);
             groupBox41.Controls.Add(button20);
             groupBox41.ForeColor = Color.White;
             groupBox41.Location = new Point(24, 607);
@@ -3381,7 +3368,7 @@
             // 
             // button3
             // 
-            button3.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button3.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button3.ForeColor = Color.Snow;
@@ -3392,7 +3379,7 @@
             button3.TabIndex = 163;
             button3.Text = "Apply";
             button3.UseVisualStyleBackColor = false;
-            button3.Click += this.button3_Click_1;
+            button3.Click += (this.button3_Click_1);
             // 
             // WebsocketServerPortText
             // 
@@ -3414,26 +3401,26 @@
             label195.Size = new Size(147, 15);
             label195.TabIndex = 161;
             label195.Text = "TTS Voice Wizard Web App";
-            label195.Click += this.label195_Click;
+            label195.Click += (this.label195_Click);
             // 
             // iconButton5
             // 
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = FlatStyle.Flat;
-            this.iconButton5.ForeColor = Color.Snow;
-            this.iconButton5.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton5.IconColor = Color.White;
-            this.iconButton5.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton5.Location = new Point(316, 113);
-            this.iconButton5.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new Size(54, 50);
-            this.iconButton5.TabIndex = 134;
-            this.iconButton5.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton5.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton5.UseVisualStyleBackColor = true;
-            this.iconButton5.Click += this.iconButton5_Click_1;
+            iconButton5.FlatAppearance.BorderSize = 0;
+            iconButton5.FlatStyle = FlatStyle.Flat;
+            iconButton5.ForeColor = Color.Snow;
+            iconButton5.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton5.IconColor = Color.White;
+            iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton5.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton5.Location = new Point(316, 113);
+            iconButton5.Margin = new Padding(3, 2, 3, 2);
+            iconButton5.Name = "iconButton5";
+            iconButton5.Size = new Size(54, 50);
+            iconButton5.TabIndex = 134;
+            iconButton5.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton5.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton5.UseVisualStyleBackColor = true;
+            iconButton5.Click += (this.iconButton5_Click_1);
             // 
             // label197
             // 
@@ -3447,22 +3434,22 @@
             // 
             // rjToggleActivateWebsocketOnStart
             // 
-            this.rjToggleActivateWebsocketOnStart.AutoSize = true;
-            this.rjToggleActivateWebsocketOnStart.Location = new Point(19, 77);
-            this.rjToggleActivateWebsocketOnStart.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleActivateWebsocketOnStart.MinimumSize = new Size(39, 16);
-            this.rjToggleActivateWebsocketOnStart.Name = "rjToggleActivateWebsocketOnStart";
-            this.rjToggleActivateWebsocketOnStart.OffBackColor = Color.Gray;
-            this.rjToggleActivateWebsocketOnStart.OffToggleColor = Color.Gainsboro;
-            this.rjToggleActivateWebsocketOnStart.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleActivateWebsocketOnStart.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleActivateWebsocketOnStart.Size = new Size(39, 16);
-            this.rjToggleActivateWebsocketOnStart.TabIndex = 132;
-            this.rjToggleActivateWebsocketOnStart.UseVisualStyleBackColor = true;
+            rjToggleActivateWebsocketOnStart.AutoSize = true;
+            rjToggleActivateWebsocketOnStart.Location = new Point(19, 77);
+            rjToggleActivateWebsocketOnStart.Margin = new Padding(3, 2, 3, 2);
+            rjToggleActivateWebsocketOnStart.MinimumSize = new Size(39, 16);
+            rjToggleActivateWebsocketOnStart.Name = "rjToggleActivateWebsocketOnStart";
+            rjToggleActivateWebsocketOnStart.OffBackColor = Color.Gray;
+            rjToggleActivateWebsocketOnStart.OffToggleColor = Color.Gainsboro;
+            rjToggleActivateWebsocketOnStart.OnBackColor = Color.MediumSlateBlue;
+            rjToggleActivateWebsocketOnStart.OnToggleColor = Color.WhiteSmoke;
+            rjToggleActivateWebsocketOnStart.Size = new Size(39, 16);
+            rjToggleActivateWebsocketOnStart.TabIndex = 132;
+            rjToggleActivateWebsocketOnStart.UseVisualStyleBackColor = true;
             // 
             // button20
             // 
-            button20.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button20.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button20.FlatStyle = FlatStyle.Flat;
             button20.ForeColor = Color.Snow;
             button20.Location = new Point(19, 39);
@@ -3472,14 +3459,14 @@
             button20.TabIndex = 124;
             button20.Text = "Activate Websocket Server";
             button20.UseVisualStyleBackColor = false;
-            button20.Click += this.button20_Click;
+            button20.Click += (this.button20_Click);
             // 
             // groupBox43
             // 
-            groupBox43.Controls.Add(this.rjToggleOutputHeartrateDirect);
+            groupBox43.Controls.Add(rjToggleOutputHeartrateDirect);
             groupBox43.Controls.Add(label38);
             groupBox43.Controls.Add(label37);
-            groupBox43.Controls.Add(this.rjToggleOSCListenerSpamLog);
+            groupBox43.Controls.Add(rjToggleOSCListenerSpamLog);
             groupBox43.ForeColor = SystemColors.Window;
             groupBox43.Location = new Point(419, 81);
             groupBox43.Name = "groupBox43";
@@ -3490,21 +3477,21 @@
             // 
             // rjToggleOutputHeartrateDirect
             // 
-            this.rjToggleOutputHeartrateDirect.AutoSize = true;
-            this.rjToggleOutputHeartrateDirect.Checked = true;
-            this.rjToggleOutputHeartrateDirect.CheckState = CheckState.Checked;
-            this.rjToggleOutputHeartrateDirect.Location = new Point(17, 29);
-            this.rjToggleOutputHeartrateDirect.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleOutputHeartrateDirect.MinimumSize = new Size(39, 16);
-            this.rjToggleOutputHeartrateDirect.Name = "rjToggleOutputHeartrateDirect";
-            this.rjToggleOutputHeartrateDirect.OffBackColor = Color.Gray;
-            this.rjToggleOutputHeartrateDirect.OffToggleColor = Color.Gainsboro;
-            this.rjToggleOutputHeartrateDirect.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleOutputHeartrateDirect.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleOutputHeartrateDirect.Size = new Size(39, 16);
-            this.rjToggleOutputHeartrateDirect.TabIndex = 51;
-            this.rjToggleOutputHeartrateDirect.UseVisualStyleBackColor = true;
-            this.rjToggleOutputHeartrateDirect.CheckedChanged += this.rjToggleButton1_CheckedChanged;
+            rjToggleOutputHeartrateDirect.AutoSize = true;
+            rjToggleOutputHeartrateDirect.Checked = true;
+            rjToggleOutputHeartrateDirect.CheckState = CheckState.Checked;
+            rjToggleOutputHeartrateDirect.Location = new Point(17, 29);
+            rjToggleOutputHeartrateDirect.Margin = new Padding(3, 2, 3, 2);
+            rjToggleOutputHeartrateDirect.MinimumSize = new Size(39, 16);
+            rjToggleOutputHeartrateDirect.Name = "rjToggleOutputHeartrateDirect";
+            rjToggleOutputHeartrateDirect.OffBackColor = Color.Gray;
+            rjToggleOutputHeartrateDirect.OffToggleColor = Color.Gainsboro;
+            rjToggleOutputHeartrateDirect.OnBackColor = Color.MediumSlateBlue;
+            rjToggleOutputHeartrateDirect.OnToggleColor = Color.WhiteSmoke;
+            rjToggleOutputHeartrateDirect.Size = new Size(39, 16);
+            rjToggleOutputHeartrateDirect.TabIndex = 51;
+            rjToggleOutputHeartrateDirect.UseVisualStyleBackColor = true;
+            rjToggleOutputHeartrateDirect.CheckedChanged += (this.rjToggleButton1_CheckedChanged);
             // 
             // label38
             // 
@@ -3528,32 +3515,32 @@
             // 
             // rjToggleOSCListenerSpamLog
             // 
-            this.rjToggleOSCListenerSpamLog.AutoSize = true;
-            this.rjToggleOSCListenerSpamLog.Checked = true;
-            this.rjToggleOSCListenerSpamLog.CheckState = CheckState.Checked;
-            this.rjToggleOSCListenerSpamLog.Location = new Point(17, 58);
-            this.rjToggleOSCListenerSpamLog.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleOSCListenerSpamLog.MinimumSize = new Size(39, 16);
-            this.rjToggleOSCListenerSpamLog.Name = "rjToggleOSCListenerSpamLog";
-            this.rjToggleOSCListenerSpamLog.OffBackColor = Color.Gray;
-            this.rjToggleOSCListenerSpamLog.OffToggleColor = Color.Gainsboro;
-            this.rjToggleOSCListenerSpamLog.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleOSCListenerSpamLog.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleOSCListenerSpamLog.Size = new Size(39, 16);
-            this.rjToggleOSCListenerSpamLog.TabIndex = 54;
-            this.rjToggleOSCListenerSpamLog.UseVisualStyleBackColor = true;
-            this.rjToggleOSCListenerSpamLog.CheckedChanged += this.rjToggleButton2_CheckedChanged;
+            rjToggleOSCListenerSpamLog.AutoSize = true;
+            rjToggleOSCListenerSpamLog.Checked = true;
+            rjToggleOSCListenerSpamLog.CheckState = CheckState.Checked;
+            rjToggleOSCListenerSpamLog.Location = new Point(17, 58);
+            rjToggleOSCListenerSpamLog.Margin = new Padding(3, 2, 3, 2);
+            rjToggleOSCListenerSpamLog.MinimumSize = new Size(39, 16);
+            rjToggleOSCListenerSpamLog.Name = "rjToggleOSCListenerSpamLog";
+            rjToggleOSCListenerSpamLog.OffBackColor = Color.Gray;
+            rjToggleOSCListenerSpamLog.OffToggleColor = Color.Gainsboro;
+            rjToggleOSCListenerSpamLog.OnBackColor = Color.MediumSlateBlue;
+            rjToggleOSCListenerSpamLog.OnToggleColor = Color.WhiteSmoke;
+            rjToggleOSCListenerSpamLog.Size = new Size(39, 16);
+            rjToggleOSCListenerSpamLog.TabIndex = 54;
+            rjToggleOSCListenerSpamLog.UseVisualStyleBackColor = true;
+            rjToggleOSCListenerSpamLog.CheckedChanged += (this.rjToggleButton2_CheckedChanged);
             // 
             // groupBox42
             // 
             groupBox42.Controls.Add(label192);
-            groupBox42.Controls.Add(this.iconButton4);
+            groupBox42.Controls.Add(iconButton4);
             groupBox42.Controls.Add(label191);
-            groupBox42.Controls.Add(this.rjToggleActivatePulsoidStart);
+            groupBox42.Controls.Add(rjToggleActivatePulsoidStart);
             groupBox42.Controls.Add(buttonPulsoidInterval);
             groupBox42.Controls.Add(labelHeartIntervalTooFast);
             groupBox42.Controls.Add(label196);
-            groupBox42.Controls.Add(this.iconButtonPulsoidHideKey);
+            groupBox42.Controls.Add(iconButtonPulsoidHideKey);
             groupBox42.Controls.Add(label194);
             groupBox42.Controls.Add(pulsoidAuthToken);
             groupBox42.Controls.Add(buttonPulsoidConnect);
@@ -3579,26 +3566,26 @@
             label192.Size = new Size(176, 15);
             label192.TabIndex = 161;
             label192.Text = "Get Pulsoid Authorization Token";
-            label192.Click += this.label192_Click;
+            label192.Click += (this.label192_Click);
             // 
             // iconButton4
             // 
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = FlatStyle.Flat;
-            this.iconButton4.ForeColor = Color.Snow;
-            this.iconButton4.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton4.IconColor = Color.White;
-            this.iconButton4.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new Point(316, 158);
-            this.iconButton4.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new Size(54, 50);
-            this.iconButton4.TabIndex = 134;
-            this.iconButton4.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = true;
-            this.iconButton4.Click += this.iconButton4_Click_1;
+            iconButton4.FlatAppearance.BorderSize = 0;
+            iconButton4.FlatStyle = FlatStyle.Flat;
+            iconButton4.ForeColor = Color.Snow;
+            iconButton4.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton4.IconColor = Color.White;
+            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton4.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton4.Location = new Point(316, 158);
+            iconButton4.Margin = new Padding(3, 2, 3, 2);
+            iconButton4.Name = "iconButton4";
+            iconButton4.Size = new Size(54, 50);
+            iconButton4.TabIndex = 134;
+            iconButton4.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton4.UseVisualStyleBackColor = true;
+            iconButton4.Click += (this.iconButton4_Click_1);
             // 
             // label191
             // 
@@ -3612,22 +3599,22 @@
             // 
             // rjToggleActivatePulsoidStart
             // 
-            this.rjToggleActivatePulsoidStart.AutoSize = true;
-            this.rjToggleActivatePulsoidStart.Location = new Point(23, 119);
-            this.rjToggleActivatePulsoidStart.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleActivatePulsoidStart.MinimumSize = new Size(39, 16);
-            this.rjToggleActivatePulsoidStart.Name = "rjToggleActivatePulsoidStart";
-            this.rjToggleActivatePulsoidStart.OffBackColor = Color.Gray;
-            this.rjToggleActivatePulsoidStart.OffToggleColor = Color.Gainsboro;
-            this.rjToggleActivatePulsoidStart.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleActivatePulsoidStart.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleActivatePulsoidStart.Size = new Size(39, 16);
-            this.rjToggleActivatePulsoidStart.TabIndex = 132;
-            this.rjToggleActivatePulsoidStart.UseVisualStyleBackColor = true;
+            rjToggleActivatePulsoidStart.AutoSize = true;
+            rjToggleActivatePulsoidStart.Location = new Point(23, 119);
+            rjToggleActivatePulsoidStart.Margin = new Padding(3, 2, 3, 2);
+            rjToggleActivatePulsoidStart.MinimumSize = new Size(39, 16);
+            rjToggleActivatePulsoidStart.Name = "rjToggleActivatePulsoidStart";
+            rjToggleActivatePulsoidStart.OffBackColor = Color.Gray;
+            rjToggleActivatePulsoidStart.OffToggleColor = Color.Gainsboro;
+            rjToggleActivatePulsoidStart.OnBackColor = Color.MediumSlateBlue;
+            rjToggleActivatePulsoidStart.OnToggleColor = Color.WhiteSmoke;
+            rjToggleActivatePulsoidStart.Size = new Size(39, 16);
+            rjToggleActivatePulsoidStart.TabIndex = 132;
+            rjToggleActivatePulsoidStart.UseVisualStyleBackColor = true;
             // 
             // buttonPulsoidInterval
             // 
-            buttonPulsoidInterval.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonPulsoidInterval.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonPulsoidInterval.FlatStyle = FlatStyle.Flat;
             buttonPulsoidInterval.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             buttonPulsoidInterval.ForeColor = Color.Snow;
@@ -3638,7 +3625,7 @@
             buttonPulsoidInterval.TabIndex = 131;
             buttonPulsoidInterval.Text = "Apply";
             buttonPulsoidInterval.UseVisualStyleBackColor = false;
-            buttonPulsoidInterval.Click += this.buttonPulsoidInterval_Click;
+            buttonPulsoidInterval.Click += (this.buttonPulsoidInterval_Click);
             // 
             // labelHeartIntervalTooFast
             // 
@@ -3654,7 +3641,7 @@
             // label196
             // 
             label196.AutoSize = true;
-            label196.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label196.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label196.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label196.ForeColor = Color.Snow;
             label196.Location = new Point(23, 150);
@@ -3665,26 +3652,26 @@
             // 
             // iconButtonPulsoidHideKey
             // 
-            this.iconButtonPulsoidHideKey.BackColor = Color.White;
-            this.iconButtonPulsoidHideKey.FlatAppearance.BorderSize = 0;
-            this.iconButtonPulsoidHideKey.FlatStyle = FlatStyle.Flat;
-            this.iconButtonPulsoidHideKey.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButtonPulsoidHideKey.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.iconButtonPulsoidHideKey.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.iconButtonPulsoidHideKey.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButtonPulsoidHideKey.IconSize = 15;
-            this.iconButtonPulsoidHideKey.Location = new Point(335, 57);
-            this.iconButtonPulsoidHideKey.Margin = new Padding(3, 2, 3, 2);
-            this.iconButtonPulsoidHideKey.Name = "iconButtonPulsoidHideKey";
-            this.iconButtonPulsoidHideKey.Size = new Size(31, 18);
-            this.iconButtonPulsoidHideKey.TabIndex = 127;
-            this.iconButtonPulsoidHideKey.UseVisualStyleBackColor = false;
-            this.iconButtonPulsoidHideKey.Click += this.iconButtonPulsoidHideKey_Click;
+            iconButtonPulsoidHideKey.BackColor = Color.White;
+            iconButtonPulsoidHideKey.FlatAppearance.BorderSize = 0;
+            iconButtonPulsoidHideKey.FlatStyle = FlatStyle.Flat;
+            iconButtonPulsoidHideKey.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButtonPulsoidHideKey.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            iconButtonPulsoidHideKey.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButtonPulsoidHideKey.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonPulsoidHideKey.IconSize = 15;
+            iconButtonPulsoidHideKey.Location = new Point(335, 57);
+            iconButtonPulsoidHideKey.Margin = new Padding(3, 2, 3, 2);
+            iconButtonPulsoidHideKey.Name = "iconButtonPulsoidHideKey";
+            iconButtonPulsoidHideKey.Size = new Size(31, 18);
+            iconButtonPulsoidHideKey.TabIndex = 127;
+            iconButtonPulsoidHideKey.UseVisualStyleBackColor = false;
+            iconButtonPulsoidHideKey.Click += (this.iconButtonPulsoidHideKey_Click);
             // 
             // label194
             // 
             label194.AutoSize = true;
-            label194.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            label194.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             label194.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label194.ForeColor = Color.Snow;
             label194.Location = new Point(20, 31);
@@ -3704,7 +3691,7 @@
             // 
             // buttonPulsoidConnect
             // 
-            buttonPulsoidConnect.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonPulsoidConnect.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonPulsoidConnect.FlatStyle = FlatStyle.Flat;
             buttonPulsoidConnect.ForeColor = Color.Snow;
             buttonPulsoidConnect.Location = new Point(23, 80);
@@ -3714,7 +3701,7 @@
             buttonPulsoidConnect.TabIndex = 124;
             buttonPulsoidConnect.Text = "Connect Pulsoid";
             buttonPulsoidConnect.UseVisualStyleBackColor = false;
-            buttonPulsoidConnect.Click += this.buttonPulsoidConnect_Click;
+            buttonPulsoidConnect.Click += (this.buttonPulsoidConnect_Click);
             // 
             // textBoxPulsoidInterval
             // 
@@ -3848,10 +3835,10 @@
             // groupBox21
             // 
             groupBox21.Controls.Add(label140);
-            groupBox21.Controls.Add(this.rjToggleButtonForwardData);
+            groupBox21.Controls.Add(rjToggleButtonForwardData);
             groupBox21.Controls.Add(label130);
-            groupBox21.Controls.Add(this.rjToggleActivateOSCListenerStart);
-            groupBox21.Controls.Add(this.iconButton39);
+            groupBox21.Controls.Add(rjToggleActivateOSCListenerStart);
+            groupBox21.Controls.Add(iconButton39);
             groupBox21.Controls.Add(label46);
             groupBox21.Controls.Add(button8);
             groupBox21.Controls.Add(button7);
@@ -3881,19 +3868,19 @@
             // 
             // rjToggleButtonForwardData
             // 
-            this.rjToggleButtonForwardData.AutoSize = true;
-            this.rjToggleButtonForwardData.Location = new Point(20, 110);
-            this.rjToggleButtonForwardData.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonForwardData.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonForwardData.Name = "rjToggleButtonForwardData";
-            this.rjToggleButtonForwardData.OffBackColor = Color.Gray;
-            this.rjToggleButtonForwardData.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonForwardData.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonForwardData.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonForwardData.Size = new Size(39, 16);
-            this.rjToggleButtonForwardData.TabIndex = 101;
-            this.rjToggleButtonForwardData.UseVisualStyleBackColor = true;
-            this.rjToggleButtonForwardData.CheckedChanged += this.rjToggleButtonForwardData_CheckedChanged;
+            rjToggleButtonForwardData.AutoSize = true;
+            rjToggleButtonForwardData.Location = new Point(20, 110);
+            rjToggleButtonForwardData.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonForwardData.MinimumSize = new Size(39, 16);
+            rjToggleButtonForwardData.Name = "rjToggleButtonForwardData";
+            rjToggleButtonForwardData.OffBackColor = Color.Gray;
+            rjToggleButtonForwardData.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonForwardData.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonForwardData.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonForwardData.Size = new Size(39, 16);
+            rjToggleButtonForwardData.TabIndex = 101;
+            rjToggleButtonForwardData.UseVisualStyleBackColor = true;
+            rjToggleButtonForwardData.CheckedChanged += (this.rjToggleButtonForwardData_CheckedChanged);
             // 
             // label130
             // 
@@ -3907,38 +3894,38 @@
             // 
             // rjToggleActivateOSCListenerStart
             // 
-            this.rjToggleActivateOSCListenerStart.AutoSize = true;
-            this.rjToggleActivateOSCListenerStart.Location = new Point(20, 83);
-            this.rjToggleActivateOSCListenerStart.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleActivateOSCListenerStart.MinimumSize = new Size(39, 16);
-            this.rjToggleActivateOSCListenerStart.Name = "rjToggleActivateOSCListenerStart";
-            this.rjToggleActivateOSCListenerStart.OffBackColor = Color.Gray;
-            this.rjToggleActivateOSCListenerStart.OffToggleColor = Color.Gainsboro;
-            this.rjToggleActivateOSCListenerStart.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleActivateOSCListenerStart.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleActivateOSCListenerStart.Size = new Size(39, 16);
-            this.rjToggleActivateOSCListenerStart.TabIndex = 99;
-            this.rjToggleActivateOSCListenerStart.UseVisualStyleBackColor = true;
-            this.rjToggleActivateOSCListenerStart.CheckedChanged += this.rjToggleButton8_CheckedChanged;
+            rjToggleActivateOSCListenerStart.AutoSize = true;
+            rjToggleActivateOSCListenerStart.Location = new Point(20, 83);
+            rjToggleActivateOSCListenerStart.Margin = new Padding(3, 2, 3, 2);
+            rjToggleActivateOSCListenerStart.MinimumSize = new Size(39, 16);
+            rjToggleActivateOSCListenerStart.Name = "rjToggleActivateOSCListenerStart";
+            rjToggleActivateOSCListenerStart.OffBackColor = Color.Gray;
+            rjToggleActivateOSCListenerStart.OffToggleColor = Color.Gainsboro;
+            rjToggleActivateOSCListenerStart.OnBackColor = Color.MediumSlateBlue;
+            rjToggleActivateOSCListenerStart.OnToggleColor = Color.WhiteSmoke;
+            rjToggleActivateOSCListenerStart.Size = new Size(39, 16);
+            rjToggleActivateOSCListenerStart.TabIndex = 99;
+            rjToggleActivateOSCListenerStart.UseVisualStyleBackColor = true;
+            rjToggleActivateOSCListenerStart.CheckedChanged += (this.rjToggleButton8_CheckedChanged);
             // 
             // iconButton39
             // 
-            this.iconButton39.FlatAppearance.BorderSize = 0;
-            this.iconButton39.FlatStyle = FlatStyle.Flat;
-            this.iconButton39.ForeColor = Color.Snow;
-            this.iconButton39.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton39.IconColor = Color.White;
-            this.iconButton39.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton39.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton39.Location = new Point(321, 201);
-            this.iconButton39.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton39.Name = "iconButton39";
-            this.iconButton39.Size = new Size(54, 50);
-            this.iconButton39.TabIndex = 104;
-            this.iconButton39.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton39.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton39.UseVisualStyleBackColor = true;
-            this.iconButton39.Click += this.iconButton39_Click;
+            iconButton39.FlatAppearance.BorderSize = 0;
+            iconButton39.FlatStyle = FlatStyle.Flat;
+            iconButton39.ForeColor = Color.Snow;
+            iconButton39.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton39.IconColor = Color.White;
+            iconButton39.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton39.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton39.Location = new Point(321, 201);
+            iconButton39.Margin = new Padding(3, 2, 3, 2);
+            iconButton39.Name = "iconButton39";
+            iconButton39.Size = new Size(54, 50);
+            iconButton39.TabIndex = 104;
+            iconButton39.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton39.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton39.UseVisualStyleBackColor = true;
+            iconButton39.Click += (this.iconButton39_Click);
             // 
             // label46
             // 
@@ -3952,7 +3939,7 @@
             // 
             // button8
             // 
-            button8.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button8.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button8.FlatStyle = FlatStyle.Flat;
             button8.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button8.ForeColor = Color.Snow;
@@ -3963,11 +3950,11 @@
             button8.TabIndex = 63;
             button8.Text = "Apply";
             button8.UseVisualStyleBackColor = false;
-            button8.Click += this.button8_Click;
+            button8.Click += (this.button8_Click);
             // 
             // button7
             // 
-            button7.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button7.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button7.FlatStyle = FlatStyle.Flat;
             button7.ForeColor = Color.White;
             button7.Location = new Point(20, 27);
@@ -3977,7 +3964,7 @@
             button7.TabIndex = 53;
             button7.Text = "Activate OSC Listener";
             button7.UseVisualStyleBackColor = false;
-            button7.Click += this.button7_Click;
+            button7.Click += (this.button7_Click);
             // 
             // HRInterval
             // 
@@ -3990,7 +3977,7 @@
             // 
             // HRIntervalChange
             // 
-            HRIntervalChange.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            HRIntervalChange.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             HRIntervalChange.FlatStyle = FlatStyle.Flat;
             HRIntervalChange.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             HRIntervalChange.ForeColor = Color.Snow;
@@ -4001,7 +3988,7 @@
             HRIntervalChange.TabIndex = 58;
             HRIntervalChange.Text = "Apply";
             HRIntervalChange.UseVisualStyleBackColor = false;
-            HRIntervalChange.Click += this.HRIntervalChange_Click;
+            HRIntervalChange.Click += (this.HRIntervalChange_Click);
             // 
             // textBoxHRPort
             // 
@@ -4045,8 +4032,8 @@
             // 
             // APIs
             // 
-            APIs.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            APIs.Controls.Add(this.translucentPanel2);
+            APIs.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            APIs.Controls.Add(translucentPanel2);
             APIs.Controls.Add(label73);
             APIs.Location = new Point(4, 24);
             APIs.Margin = new Padding(3, 2, 3, 2);
@@ -4058,169 +4045,169 @@
             // 
             // translucentPanel2
             // 
-            this.translucentPanel2.AutoScroll = true;
-            this.translucentPanel2.BackColor = Color.Transparent;
-            this.translucentPanel2.Controls.Add(this.iconButton30);
-            this.translucentPanel2.Controls.Add(this.iconButton52);
-            this.translucentPanel2.Controls.Add(this.iconButton28);
-            this.translucentPanel2.Controls.Add(this.iconButton21);
-            this.translucentPanel2.Controls.Add(this.iconButton19);
-            this.translucentPanel2.Controls.Add(this.iconButton20);
-            this.translucentPanel2.Controls.Add(this.iconButton50);
-            this.translucentPanel2.Dock = DockStyle.Fill;
-            this.translucentPanel2.Location = new Point(3, 22);
-            this.translucentPanel2.Margin = new Padding(3, 2, 3, 2);
-            this.translucentPanel2.Name = "translucentPanel2";
-            this.translucentPanel2.Size = new Size(763, 563);
-            this.translucentPanel2.TabIndex = 1;
+            translucentPanel2.AutoScroll = true;
+            translucentPanel2.BackColor = Color.Transparent;
+            translucentPanel2.Controls.Add(iconButton30);
+            translucentPanel2.Controls.Add(iconButton52);
+            translucentPanel2.Controls.Add(iconButton28);
+            translucentPanel2.Controls.Add(iconButton21);
+            translucentPanel2.Controls.Add(iconButton19);
+            translucentPanel2.Controls.Add(iconButton20);
+            translucentPanel2.Controls.Add(iconButton50);
+            translucentPanel2.Dock = DockStyle.Fill;
+            translucentPanel2.Location = new Point(3, 22);
+            translucentPanel2.Margin = new Padding(3, 2, 3, 2);
+            translucentPanel2.Name = "translucentPanel2";
+            translucentPanel2.Size = new Size(763, 563);
+            translucentPanel2.TabIndex = 1;
             // 
             // iconButton30
             // 
-            this.iconButton30.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton30.Dock = DockStyle.Top;
-            this.iconButton30.FlatAppearance.BorderSize = 0;
-            this.iconButton30.ForeColor = Color.Snow;
-            this.iconButton30.IconChar = global::FontAwesome.Sharp.IconChar.LocationArrow;
-            this.iconButton30.IconColor = Color.White;
-            this.iconButton30.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton30.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton30.Location = new Point(0, 450);
-            this.iconButton30.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton30.Name = "iconButton30";
-            this.iconButton30.Size = new Size(763, 75);
-            this.iconButton30.TabIndex = 14;
-            this.iconButton30.Text = "Local - (System Speech, Vosk, Whisper)";
-            this.iconButton30.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton30.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton30.UseVisualStyleBackColor = false;
-            this.iconButton30.Click += this.iconButton30_Click_1;
+            iconButton30.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton30.Dock = DockStyle.Top;
+            iconButton30.FlatAppearance.BorderSize = 0;
+            iconButton30.ForeColor = Color.Snow;
+            iconButton30.IconChar = FontAwesome.Sharp.IconChar.LocationArrow;
+            iconButton30.IconColor = Color.White;
+            iconButton30.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton30.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton30.Location = new Point(0, 450);
+            iconButton30.Margin = new Padding(3, 2, 3, 2);
+            iconButton30.Name = "iconButton30";
+            iconButton30.Size = new Size(763, 75);
+            iconButton30.TabIndex = 14;
+            iconButton30.Text = "Local - (System Speech, Vosk, Whisper)";
+            iconButton30.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton30.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton30.UseVisualStyleBackColor = false;
+            iconButton30.Click += (this.iconButton30_Click_1);
             // 
             // iconButton52
             // 
-            this.iconButton52.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton52.Dock = DockStyle.Top;
-            this.iconButton52.FlatAppearance.BorderSize = 0;
-            this.iconButton52.ForeColor = Color.Snow;
-            this.iconButton52.IconChar = global::FontAwesome.Sharp.IconChar.Cube;
-            this.iconButton52.IconColor = Color.White;
-            this.iconButton52.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton52.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton52.Location = new Point(0, 375);
-            this.iconButton52.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton52.Name = "iconButton52";
-            this.iconButton52.Size = new Size(763, 75);
-            this.iconButton52.TabIndex = 16;
-            this.iconButton52.Text = "Uberduck";
-            this.iconButton52.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton52.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton52.UseVisualStyleBackColor = false;
-            this.iconButton52.Click += this.iconButton52_Click;
+            iconButton52.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton52.Dock = DockStyle.Top;
+            iconButton52.FlatAppearance.BorderSize = 0;
+            iconButton52.ForeColor = Color.Snow;
+            iconButton52.IconChar = FontAwesome.Sharp.IconChar.Cube;
+            iconButton52.IconColor = Color.White;
+            iconButton52.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton52.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton52.Location = new Point(0, 375);
+            iconButton52.Margin = new Padding(3, 2, 3, 2);
+            iconButton52.Name = "iconButton52";
+            iconButton52.Size = new Size(763, 75);
+            iconButton52.TabIndex = 16;
+            iconButton52.Text = "Uberduck";
+            iconButton52.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton52.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton52.UseVisualStyleBackColor = false;
+            iconButton52.Click += (this.iconButton52_Click);
             // 
             // iconButton28
             // 
-            this.iconButton28.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton28.Dock = DockStyle.Top;
-            this.iconButton28.FlatAppearance.BorderSize = 0;
-            this.iconButton28.ForeColor = Color.Snow;
-            this.iconButton28.IconChar = global::FontAwesome.Sharp.IconChar.Flask;
-            this.iconButton28.IconColor = Color.White;
-            this.iconButton28.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton28.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton28.Location = new Point(0, 300);
-            this.iconButton28.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton28.Name = "iconButton28";
-            this.iconButton28.Size = new Size(763, 75);
-            this.iconButton28.TabIndex = 13;
-            this.iconButton28.Text = "ElevenLabs";
-            this.iconButton28.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton28.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton28.UseVisualStyleBackColor = false;
-            this.iconButton28.Click += this.iconButton28_Click_2;
+            iconButton28.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton28.Dock = DockStyle.Top;
+            iconButton28.FlatAppearance.BorderSize = 0;
+            iconButton28.ForeColor = Color.Snow;
+            iconButton28.IconChar = FontAwesome.Sharp.IconChar.Flask;
+            iconButton28.IconColor = Color.White;
+            iconButton28.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton28.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton28.Location = new Point(0, 300);
+            iconButton28.Margin = new Padding(3, 2, 3, 2);
+            iconButton28.Name = "iconButton28";
+            iconButton28.Size = new Size(763, 75);
+            iconButton28.TabIndex = 13;
+            iconButton28.Text = "ElevenLabs";
+            iconButton28.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton28.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton28.UseVisualStyleBackColor = false;
+            iconButton28.Click += (this.iconButton28_Click_2);
             // 
             // iconButton21
             // 
-            this.iconButton21.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton21.Dock = DockStyle.Top;
-            this.iconButton21.FlatAppearance.BorderSize = 0;
-            this.iconButton21.ForeColor = Color.Snow;
-            this.iconButton21.IconChar = global::FontAwesome.Sharp.IconChar.Language;
-            this.iconButton21.IconColor = Color.White;
-            this.iconButton21.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton21.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton21.Location = new Point(0, 225);
-            this.iconButton21.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton21.Name = "iconButton21";
-            this.iconButton21.Size = new Size(763, 75);
-            this.iconButton21.TabIndex = 12;
-            this.iconButton21.Text = "Translation";
-            this.iconButton21.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton21.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton21.UseVisualStyleBackColor = false;
-            this.iconButton21.Click += this.iconButton21_Click;
+            iconButton21.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton21.Dock = DockStyle.Top;
+            iconButton21.FlatAppearance.BorderSize = 0;
+            iconButton21.ForeColor = Color.Snow;
+            iconButton21.IconChar = FontAwesome.Sharp.IconChar.Language;
+            iconButton21.IconColor = Color.White;
+            iconButton21.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton21.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton21.Location = new Point(0, 225);
+            iconButton21.Margin = new Padding(3, 2, 3, 2);
+            iconButton21.Name = "iconButton21";
+            iconButton21.Size = new Size(763, 75);
+            iconButton21.TabIndex = 12;
+            iconButton21.Text = "Translation";
+            iconButton21.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton21.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton21.UseVisualStyleBackColor = false;
+            iconButton21.Click += (this.iconButton21_Click);
             // 
             // iconButton19
             // 
-            this.iconButton19.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton19.Dock = DockStyle.Top;
-            this.iconButton19.FlatAppearance.BorderSize = 0;
-            this.iconButton19.ForeColor = Color.Snow;
-            this.iconButton19.IconChar = global::FontAwesome.Sharp.IconChar.Amazon;
-            this.iconButton19.IconColor = Color.White;
-            this.iconButton19.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton19.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton19.Location = new Point(0, 150);
-            this.iconButton19.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton19.Name = "iconButton19";
-            this.iconButton19.Size = new Size(763, 75);
-            this.iconButton19.TabIndex = 10;
-            this.iconButton19.Text = "Amazon Polly";
-            this.iconButton19.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton19.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton19.UseVisualStyleBackColor = false;
-            this.iconButton19.Click += this.iconButton19_Click;
+            iconButton19.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton19.Dock = DockStyle.Top;
+            iconButton19.FlatAppearance.BorderSize = 0;
+            iconButton19.ForeColor = Color.Snow;
+            iconButton19.IconChar = FontAwesome.Sharp.IconChar.Amazon;
+            iconButton19.IconColor = Color.White;
+            iconButton19.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton19.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton19.Location = new Point(0, 150);
+            iconButton19.Margin = new Padding(3, 2, 3, 2);
+            iconButton19.Name = "iconButton19";
+            iconButton19.Size = new Size(763, 75);
+            iconButton19.TabIndex = 10;
+            iconButton19.Text = "Amazon Polly";
+            iconButton19.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton19.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton19.UseVisualStyleBackColor = false;
+            iconButton19.Click += (this.iconButton19_Click);
             // 
             // iconButton20
             // 
-            this.iconButton20.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton20.Dock = DockStyle.Top;
-            this.iconButton20.FlatAppearance.BorderSize = 0;
-            this.iconButton20.ForeColor = Color.Snow;
-            this.iconButton20.IconChar = global::FontAwesome.Sharp.IconChar.Windows;
-            this.iconButton20.IconColor = Color.White;
-            this.iconButton20.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton20.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton20.Location = new Point(0, 75);
-            this.iconButton20.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton20.Name = "iconButton20";
-            this.iconButton20.Size = new Size(763, 75);
-            this.iconButton20.TabIndex = 9;
-            this.iconButton20.Text = "Azure Cognitive Services";
-            this.iconButton20.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton20.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton20.UseVisualStyleBackColor = false;
-            this.iconButton20.Click += this.iconButton20_Click;
+            iconButton20.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton20.Dock = DockStyle.Top;
+            iconButton20.FlatAppearance.BorderSize = 0;
+            iconButton20.ForeColor = Color.Snow;
+            iconButton20.IconChar = FontAwesome.Sharp.IconChar.Windows;
+            iconButton20.IconColor = Color.White;
+            iconButton20.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton20.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton20.Location = new Point(0, 75);
+            iconButton20.Margin = new Padding(3, 2, 3, 2);
+            iconButton20.Name = "iconButton20";
+            iconButton20.Size = new Size(763, 75);
+            iconButton20.TabIndex = 9;
+            iconButton20.Text = "Azure Cognitive Services";
+            iconButton20.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton20.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton20.UseVisualStyleBackColor = false;
+            iconButton20.Click += (this.iconButton20_Click);
             // 
             // iconButton50
             // 
-            this.iconButton50.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton50.Dock = DockStyle.Top;
-            this.iconButton50.FlatAppearance.BorderSize = 0;
-            this.iconButton50.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButton50.ForeColor = Color.Gold;
-            this.iconButton50.IconChar = global::FontAwesome.Sharp.IconChar.Magic;
-            this.iconButton50.IconColor = Color.Gold;
-            this.iconButton50.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton50.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton50.Location = new Point(0, 0);
-            this.iconButton50.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton50.Name = "iconButton50";
-            this.iconButton50.Size = new Size(763, 75);
-            this.iconButton50.TabIndex = 15;
-            this.iconButton50.Text = "Voice Wizard Pro - (Instant access to Azure, Amazon, and Google voices with one API key)";
-            this.iconButton50.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton50.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton50.UseVisualStyleBackColor = false;
-            this.iconButton50.Click += this.iconButton50_Click;
+            iconButton50.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton50.Dock = DockStyle.Top;
+            iconButton50.FlatAppearance.BorderSize = 0;
+            iconButton50.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton50.ForeColor = Color.Gold;
+            iconButton50.IconChar = FontAwesome.Sharp.IconChar.Magic;
+            iconButton50.IconColor = Color.Gold;
+            iconButton50.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton50.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton50.Location = new Point(0, 0);
+            iconButton50.Margin = new Padding(3, 2, 3, 2);
+            iconButton50.Name = "iconButton50";
+            iconButton50.Size = new Size(763, 75);
+            iconButton50.TabIndex = 15;
+            iconButton50.Text = "Voice Wizard Pro - (Instant access to Azure, Amazon, and Google voices with one API key)";
+            iconButton50.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton50.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton50.UseVisualStyleBackColor = false;
+            iconButton50.Click += (this.iconButton50_Click);
             // 
             // label73
             // 
@@ -4237,7 +4224,7 @@
             // General
             // 
             General.AutoScroll = true;
-            General.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            General.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             General.Controls.Add(groupBox17);
             General.Controls.Add(groupBox18);
             General.Controls.Add(groupBox19);
@@ -4254,13 +4241,13 @@
             // groupBox17
             // 
             groupBox17.Controls.Add(label106);
-            groupBox17.Controls.Add(this.rjToggleButtonChatBoxUseDelay);
+            groupBox17.Controls.Add(rjToggleButtonChatBoxUseDelay);
             groupBox17.Controls.Add(label78);
-            groupBox17.Controls.Add(this.rjToggleSoundNotification);
+            groupBox17.Controls.Add(rjToggleSoundNotification);
             groupBox17.Controls.Add(label69);
             groupBox17.Controls.Add(label32);
-            groupBox17.Controls.Add(this.rjToggleButtonChatBox);
-            groupBox17.Controls.Add(this.rjToggleButtonShowKeyboard);
+            groupBox17.Controls.Add(rjToggleButtonChatBox);
+            groupBox17.Controls.Add(rjToggleButtonShowKeyboard);
             groupBox17.ForeColor = Color.White;
             groupBox17.Location = new Point(19, 1071);
             groupBox17.Margin = new Padding(3, 2, 3, 2);
@@ -4284,19 +4271,19 @@
             // 
             // rjToggleButtonChatBoxUseDelay
             // 
-            this.rjToggleButtonChatBoxUseDelay.AutoSize = true;
-            this.rjToggleButtonChatBoxUseDelay.Location = new Point(7, 82);
-            this.rjToggleButtonChatBoxUseDelay.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonChatBoxUseDelay.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonChatBoxUseDelay.Name = "rjToggleButtonChatBoxUseDelay";
-            this.rjToggleButtonChatBoxUseDelay.OffBackColor = Color.Gray;
-            this.rjToggleButtonChatBoxUseDelay.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonChatBoxUseDelay.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonChatBoxUseDelay.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonChatBoxUseDelay.Size = new Size(39, 16);
-            this.rjToggleButtonChatBoxUseDelay.TabIndex = 110;
-            this.rjToggleButtonChatBoxUseDelay.UseVisualStyleBackColor = true;
-            this.rjToggleButtonChatBoxUseDelay.CheckedChanged += this.rjToggleButtonChatBoxUseDelay_CheckedChanged;
+            rjToggleButtonChatBoxUseDelay.AutoSize = true;
+            rjToggleButtonChatBoxUseDelay.Location = new Point(7, 82);
+            rjToggleButtonChatBoxUseDelay.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonChatBoxUseDelay.MinimumSize = new Size(39, 16);
+            rjToggleButtonChatBoxUseDelay.Name = "rjToggleButtonChatBoxUseDelay";
+            rjToggleButtonChatBoxUseDelay.OffBackColor = Color.Gray;
+            rjToggleButtonChatBoxUseDelay.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonChatBoxUseDelay.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonChatBoxUseDelay.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonChatBoxUseDelay.Size = new Size(39, 16);
+            rjToggleButtonChatBoxUseDelay.TabIndex = 110;
+            rjToggleButtonChatBoxUseDelay.UseVisualStyleBackColor = true;
+            rjToggleButtonChatBoxUseDelay.CheckedChanged += (this.rjToggleButtonChatBoxUseDelay_CheckedChanged);
             // 
             // label78
             // 
@@ -4311,21 +4298,21 @@
             // 
             // rjToggleSoundNotification
             // 
-            this.rjToggleSoundNotification.AutoSize = true;
-            this.rjToggleSoundNotification.Checked = true;
-            this.rjToggleSoundNotification.CheckState = CheckState.Checked;
-            this.rjToggleSoundNotification.Location = new Point(7, 62);
-            this.rjToggleSoundNotification.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleSoundNotification.MinimumSize = new Size(39, 16);
-            this.rjToggleSoundNotification.Name = "rjToggleSoundNotification";
-            this.rjToggleSoundNotification.OffBackColor = Color.Gray;
-            this.rjToggleSoundNotification.OffToggleColor = Color.Gainsboro;
-            this.rjToggleSoundNotification.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleSoundNotification.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleSoundNotification.Size = new Size(39, 16);
-            this.rjToggleSoundNotification.TabIndex = 106;
-            this.rjToggleSoundNotification.UseVisualStyleBackColor = true;
-            this.rjToggleSoundNotification.CheckedChanged += this.rjToggleSoundNotification_CheckedChanged;
+            rjToggleSoundNotification.AutoSize = true;
+            rjToggleSoundNotification.Checked = true;
+            rjToggleSoundNotification.CheckState = CheckState.Checked;
+            rjToggleSoundNotification.Location = new Point(7, 62);
+            rjToggleSoundNotification.Margin = new Padding(3, 2, 3, 2);
+            rjToggleSoundNotification.MinimumSize = new Size(39, 16);
+            rjToggleSoundNotification.Name = "rjToggleSoundNotification";
+            rjToggleSoundNotification.OffBackColor = Color.Gray;
+            rjToggleSoundNotification.OffToggleColor = Color.Gainsboro;
+            rjToggleSoundNotification.OnBackColor = Color.MediumSlateBlue;
+            rjToggleSoundNotification.OnToggleColor = Color.WhiteSmoke;
+            rjToggleSoundNotification.Size = new Size(39, 16);
+            rjToggleSoundNotification.TabIndex = 106;
+            rjToggleSoundNotification.UseVisualStyleBackColor = true;
+            rjToggleSoundNotification.CheckedChanged += (this.rjToggleSoundNotification_CheckedChanged);
             // 
             // label69
             // 
@@ -4351,49 +4338,49 @@
             // 
             // rjToggleButtonChatBox
             // 
-            this.rjToggleButtonChatBox.AutoSize = true;
-            this.rjToggleButtonChatBox.Checked = true;
-            this.rjToggleButtonChatBox.CheckState = CheckState.Checked;
-            this.rjToggleButtonChatBox.Location = new Point(7, 20);
-            this.rjToggleButtonChatBox.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonChatBox.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonChatBox.Name = "rjToggleButtonChatBox";
-            this.rjToggleButtonChatBox.OffBackColor = Color.Gray;
-            this.rjToggleButtonChatBox.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonChatBox.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonChatBox.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonChatBox.Size = new Size(39, 16);
-            this.rjToggleButtonChatBox.TabIndex = 91;
-            this.rjToggleButtonChatBox.UseVisualStyleBackColor = true;
-            this.rjToggleButtonChatBox.CheckedChanged += this.rjToggleButtonChatBox_CheckedChanged;
+            rjToggleButtonChatBox.AutoSize = true;
+            rjToggleButtonChatBox.Checked = true;
+            rjToggleButtonChatBox.CheckState = CheckState.Checked;
+            rjToggleButtonChatBox.Location = new Point(7, 20);
+            rjToggleButtonChatBox.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonChatBox.MinimumSize = new Size(39, 16);
+            rjToggleButtonChatBox.Name = "rjToggleButtonChatBox";
+            rjToggleButtonChatBox.OffBackColor = Color.Gray;
+            rjToggleButtonChatBox.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonChatBox.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonChatBox.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonChatBox.Size = new Size(39, 16);
+            rjToggleButtonChatBox.TabIndex = 91;
+            rjToggleButtonChatBox.UseVisualStyleBackColor = true;
+            rjToggleButtonChatBox.CheckedChanged += (this.rjToggleButtonChatBox_CheckedChanged);
             // 
             // rjToggleButtonShowKeyboard
             // 
-            this.rjToggleButtonShowKeyboard.AutoSize = true;
-            this.rjToggleButtonShowKeyboard.Location = new Point(7, 40);
-            this.rjToggleButtonShowKeyboard.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonShowKeyboard.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonShowKeyboard.Name = "rjToggleButtonShowKeyboard";
-            this.rjToggleButtonShowKeyboard.OffBackColor = Color.Gray;
-            this.rjToggleButtonShowKeyboard.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonShowKeyboard.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonShowKeyboard.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonShowKeyboard.Size = new Size(39, 16);
-            this.rjToggleButtonShowKeyboard.TabIndex = 93;
-            this.rjToggleButtonShowKeyboard.UseVisualStyleBackColor = true;
-            this.rjToggleButtonShowKeyboard.CheckedChanged += this.rjToggleButtonShowKeyboard_CheckedChanged;
+            rjToggleButtonShowKeyboard.AutoSize = true;
+            rjToggleButtonShowKeyboard.Location = new Point(7, 40);
+            rjToggleButtonShowKeyboard.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonShowKeyboard.MinimumSize = new Size(39, 16);
+            rjToggleButtonShowKeyboard.Name = "rjToggleButtonShowKeyboard";
+            rjToggleButtonShowKeyboard.OffBackColor = Color.Gray;
+            rjToggleButtonShowKeyboard.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonShowKeyboard.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonShowKeyboard.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonShowKeyboard.Size = new Size(39, 16);
+            rjToggleButtonShowKeyboard.TabIndex = 93;
+            rjToggleButtonShowKeyboard.UseVisualStyleBackColor = true;
+            rjToggleButtonShowKeyboard.CheckedChanged += (this.rjToggleButtonShowKeyboard_CheckedChanged);
             // 
             // groupBox18
             // 
             groupBox18.Controls.Add(label190);
-            groupBox18.Controls.Add(this.rjToggleButtonUniqueWavNames);
-            groupBox18.Controls.Add(this.iconButton3);
-            groupBox18.Controls.Add(this.iconButtonAudioFiles);
+            groupBox18.Controls.Add(rjToggleButtonUniqueWavNames);
+            groupBox18.Controls.Add(iconButton3);
+            groupBox18.Controls.Add(iconButtonAudioFiles);
             groupBox18.Controls.Add(label175);
-            groupBox18.Controls.Add(this.OBSLink);
-            groupBox18.Controls.Add(this.rjToggleButtonSaveToWav);
+            groupBox18.Controls.Add(OBSLink);
+            groupBox18.Controls.Add(rjToggleButtonSaveToWav);
             groupBox18.Controls.Add(label102);
-            groupBox18.Controls.Add(this.rjToggleButtonOBSText);
+            groupBox18.Controls.Add(rjToggleButtonOBSText);
             groupBox18.ForeColor = Color.White;
             groupBox18.Location = new Point(20, 1386);
             groupBox18.Margin = new Padding(3, 2, 3, 2);
@@ -4417,62 +4404,62 @@
             // 
             // rjToggleButtonUniqueWavNames
             // 
-            this.rjToggleButtonUniqueWavNames.AutoSize = true;
-            this.rjToggleButtonUniqueWavNames.Location = new Point(12, 89);
-            this.rjToggleButtonUniqueWavNames.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonUniqueWavNames.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonUniqueWavNames.Name = "rjToggleButtonUniqueWavNames";
-            this.rjToggleButtonUniqueWavNames.OffBackColor = Color.Gray;
-            this.rjToggleButtonUniqueWavNames.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonUniqueWavNames.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonUniqueWavNames.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonUniqueWavNames.Size = new Size(39, 16);
-            this.rjToggleButtonUniqueWavNames.TabIndex = 161;
-            this.rjToggleButtonUniqueWavNames.UseVisualStyleBackColor = true;
+            rjToggleButtonUniqueWavNames.AutoSize = true;
+            rjToggleButtonUniqueWavNames.Location = new Point(12, 89);
+            rjToggleButtonUniqueWavNames.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonUniqueWavNames.MinimumSize = new Size(39, 16);
+            rjToggleButtonUniqueWavNames.Name = "rjToggleButtonUniqueWavNames";
+            rjToggleButtonUniqueWavNames.OffBackColor = Color.Gray;
+            rjToggleButtonUniqueWavNames.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonUniqueWavNames.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonUniqueWavNames.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonUniqueWavNames.Size = new Size(39, 16);
+            rjToggleButtonUniqueWavNames.TabIndex = 161;
+            rjToggleButtonUniqueWavNames.UseVisualStyleBackColor = true;
             // 
             // iconButton3
             // 
-            this.iconButton3.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton3.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButton3.FlatStyle = FlatStyle.Flat;
-            this.iconButton3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButton3.ForeColor = Color.Snow;
-            this.iconButton3.IconChar = global::FontAwesome.Sharp.IconChar.FileAlt;
-            this.iconButton3.IconColor = Color.White;
-            this.iconButton3.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 30;
-            this.iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton3.Location = new Point(501, 88);
-            this.iconButton3.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new Size(200, 35);
-            this.iconButton3.TabIndex = 159;
-            this.iconButton3.Text = "Open Text Output Folder";
-            this.iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton3.UseVisualStyleBackColor = false;
-            this.iconButton3.Click += this.button3_Click;
+            iconButton3.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton3.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton3.FlatStyle = FlatStyle.Flat;
+            iconButton3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButton3.ForeColor = Color.Snow;
+            iconButton3.IconChar = FontAwesome.Sharp.IconChar.FileAlt;
+            iconButton3.IconColor = Color.White;
+            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton3.IconSize = 30;
+            iconButton3.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton3.Location = new Point(501, 88);
+            iconButton3.Margin = new Padding(3, 2, 3, 2);
+            iconButton3.Name = "iconButton3";
+            iconButton3.Size = new Size(200, 35);
+            iconButton3.TabIndex = 159;
+            iconButton3.Text = "Open Text Output Folder";
+            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton3.UseVisualStyleBackColor = false;
+            iconButton3.Click += (this.button3_Click);
             // 
             // iconButtonAudioFiles
             // 
-            this.iconButtonAudioFiles.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButtonAudioFiles.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.iconButtonAudioFiles.FlatStyle = FlatStyle.Flat;
-            this.iconButtonAudioFiles.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            this.iconButtonAudioFiles.ForeColor = Color.Snow;
-            this.iconButtonAudioFiles.IconChar = global::FontAwesome.Sharp.IconChar.FileAudio;
-            this.iconButtonAudioFiles.IconColor = Color.White;
-            this.iconButtonAudioFiles.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButtonAudioFiles.IconSize = 30;
-            this.iconButtonAudioFiles.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButtonAudioFiles.Location = new Point(501, 42);
-            this.iconButtonAudioFiles.Margin = new Padding(3, 2, 3, 2);
-            this.iconButtonAudioFiles.Name = "iconButtonAudioFiles";
-            this.iconButtonAudioFiles.Size = new Size(200, 35);
-            this.iconButtonAudioFiles.TabIndex = 158;
-            this.iconButtonAudioFiles.Text = "Open Audio Output Folder";
-            this.iconButtonAudioFiles.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButtonAudioFiles.UseVisualStyleBackColor = false;
-            this.iconButtonAudioFiles.Click += this.iconButtonAudioFiles_Click;
+            iconButtonAudioFiles.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButtonAudioFiles.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButtonAudioFiles.FlatStyle = FlatStyle.Flat;
+            iconButtonAudioFiles.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconButtonAudioFiles.ForeColor = Color.Snow;
+            iconButtonAudioFiles.IconChar = FontAwesome.Sharp.IconChar.FileAudio;
+            iconButtonAudioFiles.IconColor = Color.White;
+            iconButtonAudioFiles.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButtonAudioFiles.IconSize = 30;
+            iconButtonAudioFiles.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButtonAudioFiles.Location = new Point(501, 42);
+            iconButtonAudioFiles.Margin = new Padding(3, 2, 3, 2);
+            iconButtonAudioFiles.Name = "iconButtonAudioFiles";
+            iconButtonAudioFiles.Size = new Size(200, 35);
+            iconButtonAudioFiles.TabIndex = 158;
+            iconButtonAudioFiles.Text = "Open Audio Output Folder";
+            iconButtonAudioFiles.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButtonAudioFiles.UseVisualStyleBackColor = false;
+            iconButtonAudioFiles.Click += (this.iconButtonAudioFiles_Click);
             // 
             // label175
             // 
@@ -4487,39 +4474,39 @@
             // 
             // OBSLink
             // 
-            this.OBSLink.FlatAppearance.BorderSize = 0;
-            this.OBSLink.FlatStyle = FlatStyle.Flat;
-            this.OBSLink.ForeColor = Color.Snow;
-            this.OBSLink.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.OBSLink.IconColor = Color.White;
-            this.OBSLink.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.OBSLink.IconSize = 30;
-            this.OBSLink.ImageAlign = ContentAlignment.MiddleLeft;
-            this.OBSLink.Location = new Point(240, 20);
-            this.OBSLink.Margin = new Padding(3, 2, 3, 2);
-            this.OBSLink.Name = "OBSLink";
-            this.OBSLink.Size = new Size(44, 30);
-            this.OBSLink.TabIndex = 134;
-            this.OBSLink.TextAlign = ContentAlignment.MiddleLeft;
-            this.OBSLink.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.OBSLink.UseVisualStyleBackColor = true;
-            this.OBSLink.Click += this.OBSLink_Click;
+            OBSLink.FlatAppearance.BorderSize = 0;
+            OBSLink.FlatStyle = FlatStyle.Flat;
+            OBSLink.ForeColor = Color.Snow;
+            OBSLink.IconChar = FontAwesome.Sharp.IconChar.Question;
+            OBSLink.IconColor = Color.White;
+            OBSLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            OBSLink.IconSize = 30;
+            OBSLink.ImageAlign = ContentAlignment.MiddleLeft;
+            OBSLink.Location = new Point(240, 20);
+            OBSLink.Margin = new Padding(3, 2, 3, 2);
+            OBSLink.Name = "OBSLink";
+            OBSLink.Size = new Size(44, 30);
+            OBSLink.TabIndex = 134;
+            OBSLink.TextAlign = ContentAlignment.MiddleLeft;
+            OBSLink.TextImageRelation = TextImageRelation.ImageBeforeText;
+            OBSLink.UseVisualStyleBackColor = true;
+            OBSLink.Click += (this.OBSLink_Click);
             // 
             // rjToggleButtonSaveToWav
             // 
-            this.rjToggleButtonSaveToWav.AutoSize = true;
-            this.rjToggleButtonSaveToWav.Location = new Point(12, 61);
-            this.rjToggleButtonSaveToWav.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSaveToWav.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSaveToWav.Name = "rjToggleButtonSaveToWav";
-            this.rjToggleButtonSaveToWav.OffBackColor = Color.Gray;
-            this.rjToggleButtonSaveToWav.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSaveToWav.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSaveToWav.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSaveToWav.Size = new Size(39, 16);
-            this.rjToggleButtonSaveToWav.TabIndex = 157;
-            this.rjToggleButtonSaveToWav.UseVisualStyleBackColor = true;
-            this.rjToggleButtonSaveToWav.CheckedChanged += this.rjToggleButtonSaveToWav_CheckedChanged;
+            rjToggleButtonSaveToWav.AutoSize = true;
+            rjToggleButtonSaveToWav.Location = new Point(12, 61);
+            rjToggleButtonSaveToWav.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSaveToWav.MinimumSize = new Size(39, 16);
+            rjToggleButtonSaveToWav.Name = "rjToggleButtonSaveToWav";
+            rjToggleButtonSaveToWav.OffBackColor = Color.Gray;
+            rjToggleButtonSaveToWav.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSaveToWav.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSaveToWav.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSaveToWav.Size = new Size(39, 16);
+            rjToggleButtonSaveToWav.TabIndex = 157;
+            rjToggleButtonSaveToWav.UseVisualStyleBackColor = true;
+            rjToggleButtonSaveToWav.CheckedChanged += (this.rjToggleButtonSaveToWav_CheckedChanged);
             // 
             // label102
             // 
@@ -4534,19 +4521,19 @@
             // 
             // rjToggleButtonOBSText
             // 
-            this.rjToggleButtonOBSText.AutoSize = true;
-            this.rjToggleButtonOBSText.Location = new Point(12, 28);
-            this.rjToggleButtonOBSText.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonOBSText.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonOBSText.Name = "rjToggleButtonOBSText";
-            this.rjToggleButtonOBSText.OffBackColor = Color.Gray;
-            this.rjToggleButtonOBSText.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonOBSText.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonOBSText.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonOBSText.Size = new Size(39, 16);
-            this.rjToggleButtonOBSText.TabIndex = 105;
-            this.rjToggleButtonOBSText.UseVisualStyleBackColor = true;
-            this.rjToggleButtonOBSText.CheckedChanged += this.rjToggleButtonOBSText_CheckedChanged;
+            rjToggleButtonOBSText.AutoSize = true;
+            rjToggleButtonOBSText.Location = new Point(12, 28);
+            rjToggleButtonOBSText.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonOBSText.MinimumSize = new Size(39, 16);
+            rjToggleButtonOBSText.Name = "rjToggleButtonOBSText";
+            rjToggleButtonOBSText.OffBackColor = Color.Gray;
+            rjToggleButtonOBSText.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonOBSText.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonOBSText.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonOBSText.Size = new Size(39, 16);
+            rjToggleButtonOBSText.TabIndex = 105;
+            rjToggleButtonOBSText.UseVisualStyleBackColor = true;
+            rjToggleButtonOBSText.CheckedChanged += (this.rjToggleButtonOBSText_CheckedChanged);
             // 
             // groupBox19
             // 
@@ -4560,7 +4547,7 @@
             groupBox19.Controls.Add(textBoxOSCPort);
             groupBox19.Controls.Add(textBoxOSCAddress);
             groupBox19.Controls.Add(label26);
-            groupBox19.Controls.Add(this.rjToggleButtonHideDelay2);
+            groupBox19.Controls.Add(rjToggleButtonHideDelay2);
             groupBox19.Controls.Add(button1);
             groupBox19.Controls.Add(textBoxErase);
             groupBox19.ForeColor = Color.White;
@@ -4575,8 +4562,8 @@
             // 
             // button46
             // 
-            button46.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button46.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button46.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button46.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button46.FlatStyle = FlatStyle.Flat;
             button46.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button46.ForeColor = Color.Snow;
@@ -4587,11 +4574,11 @@
             button46.TabIndex = 136;
             button46.Text = "Open OSC Config Folder";
             button46.UseVisualStyleBackColor = false;
-            button46.Click += this.button46_Click;
+            button46.Click += (this.button46_Click);
             // 
             // button17
             // 
-            button17.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button17.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button17.FlatStyle = FlatStyle.Flat;
             button17.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button17.ForeColor = Color.Snow;
@@ -4602,11 +4589,11 @@
             button17.TabIndex = 118;
             button17.Text = "Apply";
             button17.UseVisualStyleBackColor = false;
-            button17.Click += this.button17_Click;
+            button17.Click += (this.button17_Click);
             // 
             // button16
             // 
-            button16.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button16.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button16.FlatStyle = FlatStyle.Flat;
             button16.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button16.ForeColor = Color.Snow;
@@ -4617,7 +4604,7 @@
             button16.TabIndex = 117;
             button16.Text = "Apply";
             button16.UseVisualStyleBackColor = false;
-            button16.Click += this.button16_Click;
+            button16.Click += (this.button16_Click);
             // 
             // label129
             // 
@@ -4692,23 +4679,23 @@
             // 
             // rjToggleButtonHideDelay2
             // 
-            this.rjToggleButtonHideDelay2.AutoSize = true;
-            this.rjToggleButtonHideDelay2.Location = new Point(9, 22);
-            this.rjToggleButtonHideDelay2.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonHideDelay2.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonHideDelay2.Name = "rjToggleButtonHideDelay2";
-            this.rjToggleButtonHideDelay2.OffBackColor = Color.Gray;
-            this.rjToggleButtonHideDelay2.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonHideDelay2.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonHideDelay2.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonHideDelay2.Size = new Size(39, 16);
-            this.rjToggleButtonHideDelay2.TabIndex = 78;
-            this.rjToggleButtonHideDelay2.UseVisualStyleBackColor = true;
-            this.rjToggleButtonHideDelay2.CheckedChanged += this.rjToggleButtonHideDelay2_CheckedChanged;
+            rjToggleButtonHideDelay2.AutoSize = true;
+            rjToggleButtonHideDelay2.Location = new Point(9, 22);
+            rjToggleButtonHideDelay2.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonHideDelay2.MinimumSize = new Size(39, 16);
+            rjToggleButtonHideDelay2.Name = "rjToggleButtonHideDelay2";
+            rjToggleButtonHideDelay2.OffBackColor = Color.Gray;
+            rjToggleButtonHideDelay2.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonHideDelay2.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonHideDelay2.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonHideDelay2.Size = new Size(39, 16);
+            rjToggleButtonHideDelay2.TabIndex = 78;
+            rjToggleButtonHideDelay2.UseVisualStyleBackColor = true;
+            rjToggleButtonHideDelay2.CheckedChanged += (this.rjToggleButtonHideDelay2_CheckedChanged);
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button1.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button1.ForeColor = Color.Snow;
@@ -4719,7 +4706,7 @@
             button1.TabIndex = 43;
             button1.Text = "Apply";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += this.buttonErase_Click;
+            button1.Click += (this.buttonErase_Click);
             // 
             // textBoxErase
             // 
@@ -4735,13 +4722,13 @@
             groupBox20.Controls.Add(label189);
             groupBox20.Controls.Add(KATLineLengthTextBox);
             groupBox20.Controls.Add(label63);
-            groupBox20.Controls.Add(this.rjToggleButtonAutoRefreshKAT);
+            groupBox20.Controls.Add(rjToggleButtonAutoRefreshKAT);
             groupBox20.Controls.Add(button2);
             groupBox20.Controls.Add(button12);
             groupBox20.Controls.Add(hideVRCTextButton);
             groupBox20.Controls.Add(label15);
             groupBox20.Controls.Add(label23);
-            groupBox20.Controls.Add(this.rjToggleButtonOSC);
+            groupBox20.Controls.Add(rjToggleButtonOSC);
             groupBox20.Controls.Add(comboBoxPara);
             groupBox20.Controls.Add(label7);
             groupBox20.Controls.Add(buttonDelayHere);
@@ -4789,24 +4776,24 @@
             // 
             // rjToggleButtonAutoRefreshKAT
             // 
-            this.rjToggleButtonAutoRefreshKAT.AutoSize = true;
-            this.rjToggleButtonAutoRefreshKAT.Location = new Point(10, 46);
-            this.rjToggleButtonAutoRefreshKAT.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonAutoRefreshKAT.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonAutoRefreshKAT.Name = "rjToggleButtonAutoRefreshKAT";
-            this.rjToggleButtonAutoRefreshKAT.OffBackColor = Color.Gray;
-            this.rjToggleButtonAutoRefreshKAT.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonAutoRefreshKAT.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonAutoRefreshKAT.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonAutoRefreshKAT.Size = new Size(39, 16);
-            this.rjToggleButtonAutoRefreshKAT.TabIndex = 110;
-            this.rjToggleButtonAutoRefreshKAT.UseVisualStyleBackColor = true;
-            this.rjToggleButtonAutoRefreshKAT.CheckedChanged += this.rjToggleButtonAutoRefreshKAT_CheckedChanged;
+            rjToggleButtonAutoRefreshKAT.AutoSize = true;
+            rjToggleButtonAutoRefreshKAT.Location = new Point(10, 46);
+            rjToggleButtonAutoRefreshKAT.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonAutoRefreshKAT.MinimumSize = new Size(39, 16);
+            rjToggleButtonAutoRefreshKAT.Name = "rjToggleButtonAutoRefreshKAT";
+            rjToggleButtonAutoRefreshKAT.OffBackColor = Color.Gray;
+            rjToggleButtonAutoRefreshKAT.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonAutoRefreshKAT.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonAutoRefreshKAT.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonAutoRefreshKAT.Size = new Size(39, 16);
+            rjToggleButtonAutoRefreshKAT.TabIndex = 110;
+            rjToggleButtonAutoRefreshKAT.UseVisualStyleBackColor = true;
+            rjToggleButtonAutoRefreshKAT.CheckedChanged += (this.rjToggleButtonAutoRefreshKAT_CheckedChanged);
             // 
             // button2
             // 
-            button2.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button2.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button2.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = Color.Snow;
@@ -4817,12 +4804,12 @@
             button2.TabIndex = 103;
             button2.Text = "Replay KAT";
             button2.UseVisualStyleBackColor = false;
-            button2.Click += this.button2_Click_1;
+            button2.Click += (this.button2_Click_1);
             // 
             // button12
             // 
-            button12.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button12.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button12.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button12.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button12.FlatStyle = FlatStyle.Flat;
             button12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button12.ForeColor = Color.Snow;
@@ -4833,7 +4820,7 @@
             button12.TabIndex = 108;
             button12.Text = "Clear KAT";
             button12.UseVisualStyleBackColor = false;
-            button12.Click += this.button12_Click;
+            button12.Click += (this.button12_Click);
             // 
             // label15
             // 
@@ -4859,19 +4846,19 @@
             // 
             // rjToggleButtonOSC
             // 
-            this.rjToggleButtonOSC.AutoSize = true;
-            this.rjToggleButtonOSC.Location = new Point(9, 20);
-            this.rjToggleButtonOSC.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonOSC.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonOSC.Name = "rjToggleButtonOSC";
-            this.rjToggleButtonOSC.OffBackColor = Color.Gray;
-            this.rjToggleButtonOSC.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonOSC.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonOSC.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonOSC.Size = new Size(39, 16);
-            this.rjToggleButtonOSC.TabIndex = 73;
-            this.rjToggleButtonOSC.UseVisualStyleBackColor = true;
-            this.rjToggleButtonOSC.CheckedChanged += this.rjToggleButtonOSC_CheckedChanged;
+            rjToggleButtonOSC.AutoSize = true;
+            rjToggleButtonOSC.Location = new Point(9, 20);
+            rjToggleButtonOSC.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonOSC.MinimumSize = new Size(39, 16);
+            rjToggleButtonOSC.Name = "rjToggleButtonOSC";
+            rjToggleButtonOSC.OffBackColor = Color.Gray;
+            rjToggleButtonOSC.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonOSC.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonOSC.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonOSC.Size = new Size(39, 16);
+            rjToggleButtonOSC.TabIndex = 73;
+            rjToggleButtonOSC.UseVisualStyleBackColor = true;
+            rjToggleButtonOSC.CheckedChanged += (this.rjToggleButtonOSC_CheckedChanged);
             // 
             // comboBoxPara
             // 
@@ -4884,17 +4871,17 @@
             comboBoxPara.Name = "comboBoxPara";
             comboBoxPara.Size = new Size(125, 23);
             comboBoxPara.TabIndex = 31;
-            comboBoxPara.SelectedIndexChanged += this.comboBoxPara_SelectedIndexChanged;
+            comboBoxPara.SelectedIndexChanged += (this.comboBoxPara_SelectedIndexChanged);
             // 
             // groupBox13
             // 
-            groupBox13.Controls.Add(this.VirtualCableHelp);
+            groupBox13.Controls.Add(VirtualCableHelp);
             groupBox13.Controls.Add(RefreshAudioDevicesButton);
             groupBox13.Controls.Add(label135);
-            groupBox13.Controls.Add(this.rjToggleButtonUse2ndOutput);
+            groupBox13.Controls.Add(rjToggleButtonUse2ndOutput);
             groupBox13.Controls.Add(label125);
             groupBox13.Controls.Add(comboBoxOutput2);
-            groupBox13.Controls.Add(this.SpeechToTextHelp);
+            groupBox13.Controls.Add(SpeechToTextHelp);
             groupBox13.Controls.Add(label17);
             groupBox13.Controls.Add(comboBoxSTT);
             groupBox13.Controls.Add(label145);
@@ -4902,7 +4889,7 @@
             groupBox13.Controls.Add(comboBoxOutput);
             groupBox13.Controls.Add(comboBoxInput);
             groupBox13.Controls.Add(label105);
-            groupBox13.Controls.Add(this.rjToggleButtonSounds);
+            groupBox13.Controls.Add(rjToggleButtonSounds);
             groupBox13.ForeColor = Color.White;
             groupBox13.Location = new Point(19, 619);
             groupBox13.Margin = new Padding(3, 2, 3, 2);
@@ -4915,28 +4902,28 @@
             // 
             // VirtualCableHelp
             // 
-            this.VirtualCableHelp.FlatAppearance.BorderSize = 0;
-            this.VirtualCableHelp.FlatStyle = FlatStyle.Flat;
-            this.VirtualCableHelp.ForeColor = Color.Snow;
-            this.VirtualCableHelp.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.VirtualCableHelp.IconColor = Color.White;
-            this.VirtualCableHelp.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.VirtualCableHelp.IconSize = 30;
-            this.VirtualCableHelp.ImageAlign = ContentAlignment.MiddleLeft;
-            this.VirtualCableHelp.Location = new Point(341, 225);
-            this.VirtualCableHelp.Margin = new Padding(3, 2, 3, 2);
-            this.VirtualCableHelp.Name = "VirtualCableHelp";
-            this.VirtualCableHelp.Size = new Size(44, 30);
-            this.VirtualCableHelp.TabIndex = 139;
-            this.VirtualCableHelp.TextAlign = ContentAlignment.MiddleLeft;
-            this.VirtualCableHelp.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.VirtualCableHelp.UseVisualStyleBackColor = true;
-            this.VirtualCableHelp.Click += this.iconButton16_Click_1;
+            VirtualCableHelp.FlatAppearance.BorderSize = 0;
+            VirtualCableHelp.FlatStyle = FlatStyle.Flat;
+            VirtualCableHelp.ForeColor = Color.Snow;
+            VirtualCableHelp.IconChar = FontAwesome.Sharp.IconChar.Question;
+            VirtualCableHelp.IconColor = Color.White;
+            VirtualCableHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            VirtualCableHelp.IconSize = 30;
+            VirtualCableHelp.ImageAlign = ContentAlignment.MiddleLeft;
+            VirtualCableHelp.Location = new Point(341, 225);
+            VirtualCableHelp.Margin = new Padding(3, 2, 3, 2);
+            VirtualCableHelp.Name = "VirtualCableHelp";
+            VirtualCableHelp.Size = new Size(44, 30);
+            VirtualCableHelp.TabIndex = 139;
+            VirtualCableHelp.TextAlign = ContentAlignment.MiddleLeft;
+            VirtualCableHelp.TextImageRelation = TextImageRelation.ImageBeforeText;
+            VirtualCableHelp.UseVisualStyleBackColor = true;
+            VirtualCableHelp.Click += (this.iconButton16_Click_1);
             // 
             // RefreshAudioDevicesButton
             // 
-            RefreshAudioDevicesButton.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            RefreshAudioDevicesButton.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            RefreshAudioDevicesButton.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            RefreshAudioDevicesButton.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             RefreshAudioDevicesButton.FlatStyle = FlatStyle.Flat;
             RefreshAudioDevicesButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             RefreshAudioDevicesButton.ForeColor = Color.Snow;
@@ -4947,7 +4934,7 @@
             RefreshAudioDevicesButton.TabIndex = 138;
             RefreshAudioDevicesButton.Text = "Refresh Audio Devices";
             RefreshAudioDevicesButton.UseVisualStyleBackColor = false;
-            RefreshAudioDevicesButton.Click += this.button43_Click;
+            RefreshAudioDevicesButton.Click += (this.button43_Click);
             // 
             // label135
             // 
@@ -4962,19 +4949,19 @@
             // 
             // rjToggleButtonUse2ndOutput
             // 
-            this.rjToggleButtonUse2ndOutput.AutoSize = true;
-            this.rjToggleButtonUse2ndOutput.Location = new Point(255, 233);
-            this.rjToggleButtonUse2ndOutput.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonUse2ndOutput.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonUse2ndOutput.Name = "rjToggleButtonUse2ndOutput";
-            this.rjToggleButtonUse2ndOutput.OffBackColor = Color.Gray;
-            this.rjToggleButtonUse2ndOutput.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonUse2ndOutput.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonUse2ndOutput.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonUse2ndOutput.Size = new Size(39, 16);
-            this.rjToggleButtonUse2ndOutput.TabIndex = 137;
-            this.rjToggleButtonUse2ndOutput.UseVisualStyleBackColor = true;
-            this.rjToggleButtonUse2ndOutput.CheckedChanged += this.rjToggleButtonUse2ndOutput_CheckedChanged;
+            rjToggleButtonUse2ndOutput.AutoSize = true;
+            rjToggleButtonUse2ndOutput.Location = new Point(255, 233);
+            rjToggleButtonUse2ndOutput.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonUse2ndOutput.MinimumSize = new Size(39, 16);
+            rjToggleButtonUse2ndOutput.Name = "rjToggleButtonUse2ndOutput";
+            rjToggleButtonUse2ndOutput.OffBackColor = Color.Gray;
+            rjToggleButtonUse2ndOutput.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonUse2ndOutput.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonUse2ndOutput.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonUse2ndOutput.Size = new Size(39, 16);
+            rjToggleButtonUse2ndOutput.TabIndex = 137;
+            rjToggleButtonUse2ndOutput.UseVisualStyleBackColor = true;
+            rjToggleButtonUse2ndOutput.CheckedChanged += (this.rjToggleButtonUse2ndOutput_CheckedChanged);
             // 
             // label125
             // 
@@ -4997,27 +4984,27 @@
             comboBoxOutput2.Name = "comboBoxOutput2";
             comboBoxOutput2.Size = new Size(236, 23);
             comboBoxOutput2.TabIndex = 134;
-            comboBoxOutput2.SelectedIndexChanged += this.comboBoxOutput2_SelectedIndexChanged;
+            comboBoxOutput2.SelectedIndexChanged += (this.comboBoxOutput2_SelectedIndexChanged);
             // 
             // SpeechToTextHelp
             // 
-            this.SpeechToTextHelp.FlatAppearance.BorderSize = 0;
-            this.SpeechToTextHelp.FlatStyle = FlatStyle.Flat;
-            this.SpeechToTextHelp.ForeColor = Color.Snow;
-            this.SpeechToTextHelp.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.SpeechToTextHelp.IconColor = Color.White;
-            this.SpeechToTextHelp.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.SpeechToTextHelp.IconSize = 30;
-            this.SpeechToTextHelp.ImageAlign = ContentAlignment.MiddleLeft;
-            this.SpeechToTextHelp.Location = new Point(255, 29);
-            this.SpeechToTextHelp.Margin = new Padding(3, 2, 3, 2);
-            this.SpeechToTextHelp.Name = "SpeechToTextHelp";
-            this.SpeechToTextHelp.Size = new Size(44, 30);
-            this.SpeechToTextHelp.TabIndex = 133;
-            this.SpeechToTextHelp.TextAlign = ContentAlignment.MiddleLeft;
-            this.SpeechToTextHelp.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.SpeechToTextHelp.UseVisualStyleBackColor = true;
-            this.SpeechToTextHelp.Click += this.iconButton41_Click;
+            SpeechToTextHelp.FlatAppearance.BorderSize = 0;
+            SpeechToTextHelp.FlatStyle = FlatStyle.Flat;
+            SpeechToTextHelp.ForeColor = Color.Snow;
+            SpeechToTextHelp.IconChar = FontAwesome.Sharp.IconChar.Question;
+            SpeechToTextHelp.IconColor = Color.White;
+            SpeechToTextHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            SpeechToTextHelp.IconSize = 30;
+            SpeechToTextHelp.ImageAlign = ContentAlignment.MiddleLeft;
+            SpeechToTextHelp.Location = new Point(255, 29);
+            SpeechToTextHelp.Margin = new Padding(3, 2, 3, 2);
+            SpeechToTextHelp.Name = "SpeechToTextHelp";
+            SpeechToTextHelp.Size = new Size(44, 30);
+            SpeechToTextHelp.TabIndex = 133;
+            SpeechToTextHelp.TextAlign = ContentAlignment.MiddleLeft;
+            SpeechToTextHelp.TextImageRelation = TextImageRelation.ImageBeforeText;
+            SpeechToTextHelp.UseVisualStyleBackColor = true;
+            SpeechToTextHelp.Click += (this.iconButton41_Click);
             // 
             // label17
             // 
@@ -5041,7 +5028,7 @@
             comboBoxSTT.Name = "comboBoxSTT";
             comboBoxSTT.Size = new Size(237, 23);
             comboBoxSTT.TabIndex = 131;
-            comboBoxSTT.SelectedIndexChanged += this.comboBoxSTT_SelectedIndexChanged;
+            comboBoxSTT.SelectedIndexChanged += (this.comboBoxSTT_SelectedIndexChanged);
             // 
             // label145
             // 
@@ -5075,7 +5062,7 @@
             comboBoxOutput.Name = "comboBoxOutput";
             comboBoxOutput.Size = new Size(277, 23);
             comboBoxOutput.TabIndex = 128;
-            comboBoxOutput.SelectedIndexChanged += this.comboBoxOutput_SelectedIndexChanged_1;
+            comboBoxOutput.SelectedIndexChanged += (this.comboBoxOutput_SelectedIndexChanged_1);
             // 
             // comboBoxInput
             // 
@@ -5087,7 +5074,7 @@
             comboBoxInput.Name = "comboBoxInput";
             comboBoxInput.Size = new Size(277, 23);
             comboBoxInput.TabIndex = 127;
-            comboBoxInput.SelectedIndexChanged += this.comboBoxInput_SelectedIndexChanged_1;
+            comboBoxInput.SelectedIndexChanged += (this.comboBoxInput_SelectedIndexChanged_1);
             // 
             // label105
             // 
@@ -5102,82 +5089,82 @@
             // 
             // rjToggleButtonSounds
             // 
-            this.rjToggleButtonSounds.AutoSize = true;
-            this.rjToggleButtonSounds.Checked = true;
-            this.rjToggleButtonSounds.CheckState = CheckState.Checked;
-            this.rjToggleButtonSounds.Location = new Point(13, 86);
-            this.rjToggleButtonSounds.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSounds.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSounds.Name = "rjToggleButtonSounds";
-            this.rjToggleButtonSounds.OffBackColor = Color.Gray;
-            this.rjToggleButtonSounds.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSounds.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSounds.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSounds.Size = new Size(39, 16);
-            this.rjToggleButtonSounds.TabIndex = 125;
-            this.rjToggleButtonSounds.UseVisualStyleBackColor = true;
-            this.rjToggleButtonSounds.CheckedChanged += this.rjToggleButtonSounds_CheckedChanged;
+            rjToggleButtonSounds.AutoSize = true;
+            rjToggleButtonSounds.Checked = true;
+            rjToggleButtonSounds.CheckState = CheckState.Checked;
+            rjToggleButtonSounds.Location = new Point(13, 86);
+            rjToggleButtonSounds.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSounds.MinimumSize = new Size(39, 16);
+            rjToggleButtonSounds.Name = "rjToggleButtonSounds";
+            rjToggleButtonSounds.OffBackColor = Color.Gray;
+            rjToggleButtonSounds.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSounds.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSounds.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSounds.Size = new Size(39, 16);
+            rjToggleButtonSounds.TabIndex = 125;
+            rjToggleButtonSounds.UseVisualStyleBackColor = true;
+            rjToggleButtonSounds.CheckedChanged += (this.rjToggleButtonSounds_CheckedChanged);
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(label201);
             groupBox1.Controls.Add(textBoxDelayBeforeAudio);
-            groupBox1.Controls.Add(this.iconButton2);
+            groupBox1.Controls.Add(iconButton2);
             groupBox1.Controls.Add(button14);
-            groupBox1.Controls.Add(this.rjToggleButtonAutoSend);
+            groupBox1.Controls.Add(rjToggleButtonAutoSend);
             groupBox1.Controls.Add(label187);
             groupBox1.Controls.Add(label186);
             groupBox1.Controls.Add(textBoxSSSCharLimit);
             groupBox1.Controls.Add(label185);
-            groupBox1.Controls.Add(this.rjToggleButtonSmartStringSplit);
-            groupBox1.Controls.Add(this.rjToggleButtonRefocus);
+            groupBox1.Controls.Add(rjToggleButtonSmartStringSplit);
+            groupBox1.Controls.Add(rjToggleButtonRefocus);
             groupBox1.Controls.Add(label158);
             groupBox1.Controls.Add(button38);
             groupBox1.Controls.Add(label156);
             groupBox1.Controls.Add(textBoxQuickType2);
             groupBox1.Controls.Add(buttonQuickTypeEdit);
             groupBox1.Controls.Add(buttonQuickTypeSave);
-            groupBox1.Controls.Add(this.rjToggleButtonQuickTypeEnabled);
+            groupBox1.Controls.Add(rjToggleButtonQuickTypeEnabled);
             groupBox1.Controls.Add(textBoxQuickType1);
             groupBox1.Controls.Add(label157);
             groupBox1.Controls.Add(label154);
-            groupBox1.Controls.Add(this.rjToggleButtonQueueTypedText);
+            groupBox1.Controls.Add(rjToggleButtonQueueTypedText);
             groupBox1.Controls.Add(label150);
             groupBox1.Controls.Add(label151);
             groupBox1.Controls.Add(textBoxQueueDelayBeforeNext);
             groupBox1.Controls.Add(textBoxDelayAfterNoTTS);
             groupBox1.Controls.Add(label79);
-            groupBox1.Controls.Add(this.rjToggleButtonQueueSystem);
+            groupBox1.Controls.Add(rjToggleButtonQueueSystem);
             groupBox1.Controls.Add(button47);
             groupBox1.Controls.Add(label28);
-            groupBox1.Controls.Add(this.rjToggleButtonStopCurrentTTS);
+            groupBox1.Controls.Add(rjToggleButtonStopCurrentTTS);
             groupBox1.Controls.Add(label123);
             groupBox1.Controls.Add(textBoxStopTTS2);
             groupBox1.Controls.Add(button39);
             groupBox1.Controls.Add(button40);
-            groupBox1.Controls.Add(this.rjToggleButton12);
+            groupBox1.Controls.Add(rjToggleButton12);
             groupBox1.Controls.Add(textBoxStopTTS1);
             groupBox1.Controls.Add(label124);
             groupBox1.Controls.Add(label122);
-            groupBox1.Controls.Add(this.rjToggleButtonDisableWindowsMedia);
+            groupBox1.Controls.Add(rjToggleButtonDisableWindowsMedia);
             groupBox1.Controls.Add(label12);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(button28);
             groupBox1.Controls.Add(button27);
-            groupBox1.Controls.Add(this.rjToggleButton9);
+            groupBox1.Controls.Add(rjToggleButton9);
             groupBox1.Controls.Add(label27);
-            groupBox1.Controls.Add(this.rjToggleDarkMode);
+            groupBox1.Controls.Add(rjToggleDarkMode);
             groupBox1.Controls.Add(label104);
-            groupBox1.Controls.Add(this.rjToggleButtonSystemTray);
+            groupBox1.Controls.Add(rjToggleButtonSystemTray);
             groupBox1.Controls.Add(label77);
-            groupBox1.Controls.Add(this.rjToggleButton6);
-            groupBox1.Controls.Add(this.rjToggleButtonClear);
+            groupBox1.Controls.Add(rjToggleButton6);
+            groupBox1.Controls.Add(rjToggleButtonClear);
             groupBox1.Controls.Add(label25);
             groupBox1.Controls.Add(label21);
             groupBox1.Controls.Add(label66);
-            groupBox1.Controls.Add(this.rjToggleButtonLog);
-            groupBox1.Controls.Add(this.rjToggleBannerOff);
-            groupBox1.Controls.Add(this.rjToggleButtonOnTop2);
+            groupBox1.Controls.Add(rjToggleButtonLog);
+            groupBox1.Controls.Add(rjToggleBannerOff);
+            groupBox1.Controls.Add(rjToggleButtonOnTop2);
             groupBox1.Controls.Add(textBox4);
             groupBox1.Controls.Add(label22);
             groupBox1.Controls.Add(label11);
@@ -5213,29 +5200,29 @@
             // 
             // iconButton2
             // 
-            this.iconButton2.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = FlatStyle.Flat;
-            this.iconButton2.ForeColor = Color.Snow;
-            this.iconButton2.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton2.IconColor = Color.White;
-            this.iconButton2.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new Point(654, 11);
-            this.iconButton2.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new Size(46, 34);
-            this.iconButton2.TabIndex = 163;
-            this.iconButton2.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
-            this.iconButton2.Click += this.iconButton2_Click_1;
+            iconButton2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton2.FlatAppearance.BorderSize = 0;
+            iconButton2.FlatStyle = FlatStyle.Flat;
+            iconButton2.ForeColor = Color.Snow;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton2.IconColor = Color.White;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.IconSize = 30;
+            iconButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton2.Location = new Point(654, 11);
+            iconButton2.Margin = new Padding(3, 2, 3, 2);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new Size(46, 34);
+            iconButton2.TabIndex = 163;
+            iconButton2.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton2.UseVisualStyleBackColor = true;
+            iconButton2.Click += (this.iconButton2_Click_1);
             // 
             // button14
             // 
-            button14.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button14.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button14.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button14.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button14.FlatStyle = FlatStyle.Flat;
             button14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button14.ForeColor = Color.Snow;
@@ -5246,22 +5233,22 @@
             button14.TabIndex = 162;
             button14.Text = "Open Exports Folder";
             button14.UseVisualStyleBackColor = false;
-            button14.Click += this.button14_Click_2;
+            button14.Click += (this.button14_Click_2);
             // 
             // rjToggleButtonAutoSend
             // 
-            this.rjToggleButtonAutoSend.AutoSize = true;
-            this.rjToggleButtonAutoSend.Location = new Point(5, 164);
-            this.rjToggleButtonAutoSend.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonAutoSend.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonAutoSend.Name = "rjToggleButtonAutoSend";
-            this.rjToggleButtonAutoSend.OffBackColor = Color.Gray;
-            this.rjToggleButtonAutoSend.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonAutoSend.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonAutoSend.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonAutoSend.Size = new Size(39, 16);
-            this.rjToggleButtonAutoSend.TabIndex = 161;
-            this.rjToggleButtonAutoSend.UseVisualStyleBackColor = true;
+            rjToggleButtonAutoSend.AutoSize = true;
+            rjToggleButtonAutoSend.Location = new Point(5, 164);
+            rjToggleButtonAutoSend.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonAutoSend.MinimumSize = new Size(39, 16);
+            rjToggleButtonAutoSend.Name = "rjToggleButtonAutoSend";
+            rjToggleButtonAutoSend.OffBackColor = Color.Gray;
+            rjToggleButtonAutoSend.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonAutoSend.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonAutoSend.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonAutoSend.Size = new Size(39, 16);
+            rjToggleButtonAutoSend.TabIndex = 161;
+            rjToggleButtonAutoSend.UseVisualStyleBackColor = true;
             // 
             // label187
             // 
@@ -5307,41 +5294,41 @@
             // 
             // rjToggleButtonSmartStringSplit
             // 
-            this.rjToggleButtonSmartStringSplit.AutoSize = true;
-            this.rjToggleButtonSmartStringSplit.Location = new Point(5, 466);
-            this.rjToggleButtonSmartStringSplit.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSmartStringSplit.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSmartStringSplit.Name = "rjToggleButtonSmartStringSplit";
-            this.rjToggleButtonSmartStringSplit.OffBackColor = Color.Gray;
-            this.rjToggleButtonSmartStringSplit.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSmartStringSplit.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSmartStringSplit.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSmartStringSplit.Size = new Size(39, 16);
-            this.rjToggleButtonSmartStringSplit.TabIndex = 157;
-            this.rjToggleButtonSmartStringSplit.UseVisualStyleBackColor = true;
+            rjToggleButtonSmartStringSplit.AutoSize = true;
+            rjToggleButtonSmartStringSplit.Location = new Point(5, 466);
+            rjToggleButtonSmartStringSplit.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSmartStringSplit.MinimumSize = new Size(39, 16);
+            rjToggleButtonSmartStringSplit.Name = "rjToggleButtonSmartStringSplit";
+            rjToggleButtonSmartStringSplit.OffBackColor = Color.Gray;
+            rjToggleButtonSmartStringSplit.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSmartStringSplit.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSmartStringSplit.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSmartStringSplit.Size = new Size(39, 16);
+            rjToggleButtonSmartStringSplit.TabIndex = 157;
+            rjToggleButtonSmartStringSplit.UseVisualStyleBackColor = true;
             // 
             // rjToggleButtonRefocus
             // 
-            this.rjToggleButtonRefocus.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.rjToggleButtonRefocus.AutoSize = true;
-            this.rjToggleButtonRefocus.Checked = true;
-            this.rjToggleButtonRefocus.CheckState = CheckState.Checked;
-            this.rjToggleButtonRefocus.Location = new Point(452, 225);
-            this.rjToggleButtonRefocus.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonRefocus.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonRefocus.Name = "rjToggleButtonRefocus";
-            this.rjToggleButtonRefocus.OffBackColor = Color.Gray;
-            this.rjToggleButtonRefocus.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonRefocus.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonRefocus.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonRefocus.Size = new Size(39, 16);
-            this.rjToggleButtonRefocus.TabIndex = 155;
-            this.rjToggleButtonRefocus.UseVisualStyleBackColor = true;
-            this.rjToggleButtonRefocus.CheckedChanged += this.rjToggleButtonRefocus_CheckedChanged;
+            rjToggleButtonRefocus.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            rjToggleButtonRefocus.AutoSize = true;
+            rjToggleButtonRefocus.Checked = true;
+            rjToggleButtonRefocus.CheckState = CheckState.Checked;
+            rjToggleButtonRefocus.Location = new Point(452, 225);
+            rjToggleButtonRefocus.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonRefocus.MinimumSize = new Size(39, 16);
+            rjToggleButtonRefocus.Name = "rjToggleButtonRefocus";
+            rjToggleButtonRefocus.OffBackColor = Color.Gray;
+            rjToggleButtonRefocus.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonRefocus.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonRefocus.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonRefocus.Size = new Size(39, 16);
+            rjToggleButtonRefocus.TabIndex = 155;
+            rjToggleButtonRefocus.UseVisualStyleBackColor = true;
+            rjToggleButtonRefocus.CheckedChanged += (this.rjToggleButtonRefocus_CheckedChanged);
             // 
             // label158
             // 
-            label158.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label158.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label158.AutoSize = true;
             label158.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label158.ForeColor = Color.Snow;
@@ -5353,8 +5340,8 @@
             // 
             // button38
             // 
-            button38.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button38.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button38.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button38.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button38.FlatStyle = FlatStyle.Flat;
             button38.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button38.ForeColor = Color.Snow;
@@ -5365,11 +5352,11 @@
             button38.TabIndex = 153;
             button38.Text = "Manually Save Config";
             button38.UseVisualStyleBackColor = false;
-            button38.Click += this.button38_Click_1;
+            button38.Click += (this.button38_Click_1);
             // 
             // label156
             // 
-            label156.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label156.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label156.AutoSize = true;
             label156.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label156.ForeColor = Color.Snow;
@@ -5381,7 +5368,7 @@
             // 
             // textBoxQuickType2
             // 
-            textBoxQuickType2.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            textBoxQuickType2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBoxQuickType2.Enabled = false;
             textBoxQuickType2.Location = new Point(534, 186);
             textBoxQuickType2.Margin = new Padding(3, 2, 3, 2);
@@ -5389,12 +5376,12 @@
             textBoxQuickType2.ReadOnly = true;
             textBoxQuickType2.Size = new Size(53, 23);
             textBoxQuickType2.TabIndex = 151;
-            textBoxQuickType2.KeyDown += this.textBoxQuickType2_KeyDown;
+            textBoxQuickType2.KeyDown += (this.textBoxQuickType2_KeyDown);
             // 
             // buttonQuickTypeEdit
             // 
-            buttonQuickTypeEdit.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            buttonQuickTypeEdit.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonQuickTypeEdit.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonQuickTypeEdit.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonQuickTypeEdit.FlatStyle = FlatStyle.Flat;
             buttonQuickTypeEdit.ForeColor = Color.Snow;
             buttonQuickTypeEdit.Location = new Point(592, 185);
@@ -5404,12 +5391,12 @@
             buttonQuickTypeEdit.TabIndex = 150;
             buttonQuickTypeEdit.Text = "Edit";
             buttonQuickTypeEdit.UseVisualStyleBackColor = false;
-            buttonQuickTypeEdit.Click += this.buttonQuickTypeEdit_Click;
+            buttonQuickTypeEdit.Click += (this.buttonQuickTypeEdit_Click);
             // 
             // buttonQuickTypeSave
             // 
-            buttonQuickTypeSave.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            buttonQuickTypeSave.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonQuickTypeSave.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonQuickTypeSave.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonQuickTypeSave.Enabled = false;
             buttonQuickTypeSave.FlatStyle = FlatStyle.Flat;
             buttonQuickTypeSave.ForeColor = Color.Snow;
@@ -5420,30 +5407,30 @@
             buttonQuickTypeSave.TabIndex = 149;
             buttonQuickTypeSave.Text = "Save";
             buttonQuickTypeSave.UseVisualStyleBackColor = false;
-            buttonQuickTypeSave.Click += this.buttonQuickTypeSave_Click;
+            buttonQuickTypeSave.Click += (this.buttonQuickTypeSave_Click);
             // 
             // rjToggleButtonQuickTypeEnabled
             // 
-            this.rjToggleButtonQuickTypeEnabled.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.rjToggleButtonQuickTypeEnabled.AutoSize = true;
-            this.rjToggleButtonQuickTypeEnabled.Checked = true;
-            this.rjToggleButtonQuickTypeEnabled.CheckState = CheckState.Checked;
-            this.rjToggleButtonQuickTypeEnabled.Location = new Point(452, 166);
-            this.rjToggleButtonQuickTypeEnabled.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonQuickTypeEnabled.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonQuickTypeEnabled.Name = "rjToggleButtonQuickTypeEnabled";
-            this.rjToggleButtonQuickTypeEnabled.OffBackColor = Color.Gray;
-            this.rjToggleButtonQuickTypeEnabled.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonQuickTypeEnabled.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonQuickTypeEnabled.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonQuickTypeEnabled.Size = new Size(39, 16);
-            this.rjToggleButtonQuickTypeEnabled.TabIndex = 148;
-            this.rjToggleButtonQuickTypeEnabled.UseVisualStyleBackColor = true;
-            this.rjToggleButtonQuickTypeEnabled.CheckedChanged += this.rjToggleButtonQuickTypeEnabled_CheckedChanged;
+            rjToggleButtonQuickTypeEnabled.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            rjToggleButtonQuickTypeEnabled.AutoSize = true;
+            rjToggleButtonQuickTypeEnabled.Checked = true;
+            rjToggleButtonQuickTypeEnabled.CheckState = CheckState.Checked;
+            rjToggleButtonQuickTypeEnabled.Location = new Point(452, 166);
+            rjToggleButtonQuickTypeEnabled.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonQuickTypeEnabled.MinimumSize = new Size(39, 16);
+            rjToggleButtonQuickTypeEnabled.Name = "rjToggleButtonQuickTypeEnabled";
+            rjToggleButtonQuickTypeEnabled.OffBackColor = Color.Gray;
+            rjToggleButtonQuickTypeEnabled.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonQuickTypeEnabled.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonQuickTypeEnabled.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonQuickTypeEnabled.Size = new Size(39, 16);
+            rjToggleButtonQuickTypeEnabled.TabIndex = 148;
+            rjToggleButtonQuickTypeEnabled.UseVisualStyleBackColor = true;
+            rjToggleButtonQuickTypeEnabled.CheckedChanged += (this.rjToggleButtonQuickTypeEnabled_CheckedChanged);
             // 
             // textBoxQuickType1
             // 
-            textBoxQuickType1.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            textBoxQuickType1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBoxQuickType1.Enabled = false;
             textBoxQuickType1.Location = new Point(452, 187);
             textBoxQuickType1.Margin = new Padding(3, 2, 3, 2);
@@ -5451,11 +5438,11 @@
             textBoxQuickType1.ReadOnly = true;
             textBoxQuickType1.Size = new Size(53, 23);
             textBoxQuickType1.TabIndex = 147;
-            textBoxQuickType1.KeyDown += this.textBoxQuickType1_KeyDown;
+            textBoxQuickType1.KeyDown += (this.textBoxQuickType1_KeyDown);
             // 
             // label157
             // 
-            label157.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label157.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label157.AutoSize = true;
             label157.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label157.ForeColor = Color.Snow;
@@ -5478,19 +5465,19 @@
             // 
             // rjToggleButtonQueueTypedText
             // 
-            this.rjToggleButtonQueueTypedText.AutoSize = true;
-            this.rjToggleButtonQueueTypedText.Location = new Point(5, 436);
-            this.rjToggleButtonQueueTypedText.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonQueueTypedText.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonQueueTypedText.Name = "rjToggleButtonQueueTypedText";
-            this.rjToggleButtonQueueTypedText.OffBackColor = Color.Gray;
-            this.rjToggleButtonQueueTypedText.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonQueueTypedText.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonQueueTypedText.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonQueueTypedText.Size = new Size(39, 16);
-            this.rjToggleButtonQueueTypedText.TabIndex = 145;
-            this.rjToggleButtonQueueTypedText.UseVisualStyleBackColor = true;
-            this.rjToggleButtonQueueTypedText.CheckedChanged += this.rjToggleButtonQueueTypedText_CheckedChanged;
+            rjToggleButtonQueueTypedText.AutoSize = true;
+            rjToggleButtonQueueTypedText.Location = new Point(5, 436);
+            rjToggleButtonQueueTypedText.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonQueueTypedText.MinimumSize = new Size(39, 16);
+            rjToggleButtonQueueTypedText.Name = "rjToggleButtonQueueTypedText";
+            rjToggleButtonQueueTypedText.OffBackColor = Color.Gray;
+            rjToggleButtonQueueTypedText.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonQueueTypedText.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonQueueTypedText.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonQueueTypedText.Size = new Size(39, 16);
+            rjToggleButtonQueueTypedText.TabIndex = 145;
+            rjToggleButtonQueueTypedText.UseVisualStyleBackColor = true;
+            rjToggleButtonQueueTypedText.CheckedChanged += (this.rjToggleButtonQueueTypedText_CheckedChanged);
             // 
             // label150
             // 
@@ -5522,7 +5509,7 @@
             textBoxQueueDelayBeforeNext.Size = new Size(110, 23);
             textBoxQueueDelayBeforeNext.TabIndex = 141;
             textBoxQueueDelayBeforeNext.Text = "0";
-            textBoxQueueDelayBeforeNext.TextChanged += this.textBoxQueueDelayBeforeNext_TextChanged;
+            textBoxQueueDelayBeforeNext.TextChanged += (this.textBoxQueueDelayBeforeNext_TextChanged);
             // 
             // textBoxDelayAfterNoTTS
             // 
@@ -5532,7 +5519,7 @@
             textBoxDelayAfterNoTTS.Size = new Size(110, 23);
             textBoxDelayAfterNoTTS.TabIndex = 140;
             textBoxDelayAfterNoTTS.Text = "5000";
-            textBoxDelayAfterNoTTS.TextChanged += this.textBoxDelayAfterNoTTS_TextChanged;
+            textBoxDelayAfterNoTTS.TextChanged += (this.textBoxDelayAfterNoTTS_TextChanged);
             // 
             // label79
             // 
@@ -5547,24 +5534,24 @@
             // 
             // rjToggleButtonQueueSystem
             // 
-            this.rjToggleButtonQueueSystem.AutoSize = true;
-            this.rjToggleButtonQueueSystem.Location = new Point(5, 315);
-            this.rjToggleButtonQueueSystem.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonQueueSystem.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonQueueSystem.Name = "rjToggleButtonQueueSystem";
-            this.rjToggleButtonQueueSystem.OffBackColor = Color.Gray;
-            this.rjToggleButtonQueueSystem.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonQueueSystem.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonQueueSystem.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonQueueSystem.Size = new Size(39, 16);
-            this.rjToggleButtonQueueSystem.TabIndex = 139;
-            this.rjToggleButtonQueueSystem.UseVisualStyleBackColor = true;
-            this.rjToggleButtonQueueSystem.CheckedChanged += this.rjToggleButtonQueueSystem_CheckedChanged;
+            rjToggleButtonQueueSystem.AutoSize = true;
+            rjToggleButtonQueueSystem.Location = new Point(5, 315);
+            rjToggleButtonQueueSystem.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonQueueSystem.MinimumSize = new Size(39, 16);
+            rjToggleButtonQueueSystem.Name = "rjToggleButtonQueueSystem";
+            rjToggleButtonQueueSystem.OffBackColor = Color.Gray;
+            rjToggleButtonQueueSystem.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonQueueSystem.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonQueueSystem.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonQueueSystem.Size = new Size(39, 16);
+            rjToggleButtonQueueSystem.TabIndex = 139;
+            rjToggleButtonQueueSystem.UseVisualStyleBackColor = true;
+            rjToggleButtonQueueSystem.CheckedChanged += (this.rjToggleButtonQueueSystem_CheckedChanged);
             // 
             // button47
             // 
-            button47.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button47.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button47.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button47.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button47.FlatStyle = FlatStyle.Flat;
             button47.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button47.ForeColor = Color.Snow;
@@ -5575,7 +5562,7 @@
             button47.TabIndex = 137;
             button47.Text = "Open Config Folder";
             button47.UseVisualStyleBackColor = false;
-            button47.Click += this.button47_Click;
+            button47.Click += (this.button47_Click);
             // 
             // label28
             // 
@@ -5590,23 +5577,23 @@
             // 
             // rjToggleButtonStopCurrentTTS
             // 
-            this.rjToggleButtonStopCurrentTTS.AutoSize = true;
-            this.rjToggleButtonStopCurrentTTS.Location = new Point(5, 286);
-            this.rjToggleButtonStopCurrentTTS.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonStopCurrentTTS.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonStopCurrentTTS.Name = "rjToggleButtonStopCurrentTTS";
-            this.rjToggleButtonStopCurrentTTS.OffBackColor = Color.Gray;
-            this.rjToggleButtonStopCurrentTTS.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonStopCurrentTTS.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonStopCurrentTTS.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonStopCurrentTTS.Size = new Size(39, 16);
-            this.rjToggleButtonStopCurrentTTS.TabIndex = 133;
-            this.rjToggleButtonStopCurrentTTS.UseVisualStyleBackColor = true;
-            this.rjToggleButtonStopCurrentTTS.CheckedChanged += this.rjToggleButtonStopCurrentTTS_CheckedChanged;
+            rjToggleButtonStopCurrentTTS.AutoSize = true;
+            rjToggleButtonStopCurrentTTS.Location = new Point(5, 286);
+            rjToggleButtonStopCurrentTTS.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonStopCurrentTTS.MinimumSize = new Size(39, 16);
+            rjToggleButtonStopCurrentTTS.Name = "rjToggleButtonStopCurrentTTS";
+            rjToggleButtonStopCurrentTTS.OffBackColor = Color.Gray;
+            rjToggleButtonStopCurrentTTS.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonStopCurrentTTS.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonStopCurrentTTS.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonStopCurrentTTS.Size = new Size(39, 16);
+            rjToggleButtonStopCurrentTTS.TabIndex = 133;
+            rjToggleButtonStopCurrentTTS.UseVisualStyleBackColor = true;
+            rjToggleButtonStopCurrentTTS.CheckedChanged += (this.rjToggleButtonStopCurrentTTS_CheckedChanged);
             // 
             // label123
             // 
-            label123.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label123.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label123.AutoSize = true;
             label123.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label123.ForeColor = Color.Snow;
@@ -5618,7 +5605,7 @@
             // 
             // textBoxStopTTS2
             // 
-            textBoxStopTTS2.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            textBoxStopTTS2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBoxStopTTS2.Enabled = false;
             textBoxStopTTS2.Location = new Point(534, 129);
             textBoxStopTTS2.Margin = new Padding(3, 2, 3, 2);
@@ -5626,12 +5613,12 @@
             textBoxStopTTS2.ReadOnly = true;
             textBoxStopTTS2.Size = new Size(53, 23);
             textBoxStopTTS2.TabIndex = 130;
-            textBoxStopTTS2.KeyDown += this.textBoxStopTTS2_KeyDown;
+            textBoxStopTTS2.KeyDown += (this.textBoxStopTTS2_KeyDown);
             // 
             // button39
             // 
-            button39.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button39.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button39.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button39.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button39.FlatStyle = FlatStyle.Flat;
             button39.ForeColor = Color.Snow;
             button39.Location = new Point(592, 128);
@@ -5641,12 +5628,12 @@
             button39.TabIndex = 129;
             button39.Text = "Edit";
             button39.UseVisualStyleBackColor = false;
-            button39.Click += this.button39_Click;
+            button39.Click += (this.button39_Click);
             // 
             // button40
             // 
-            button40.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button40.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button40.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button40.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button40.Enabled = false;
             button40.FlatStyle = FlatStyle.Flat;
             button40.ForeColor = Color.Snow;
@@ -5657,30 +5644,30 @@
             button40.TabIndex = 128;
             button40.Text = "Save";
             button40.UseVisualStyleBackColor = false;
-            button40.Click += this.button40_Click;
+            button40.Click += (this.button40_Click);
             // 
             // rjToggleButton12
             // 
-            this.rjToggleButton12.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.rjToggleButton12.AutoSize = true;
-            this.rjToggleButton12.Checked = true;
-            this.rjToggleButton12.CheckState = CheckState.Checked;
-            this.rjToggleButton12.Location = new Point(452, 109);
-            this.rjToggleButton12.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton12.MinimumSize = new Size(39, 16);
-            this.rjToggleButton12.Name = "rjToggleButton12";
-            this.rjToggleButton12.OffBackColor = Color.Gray;
-            this.rjToggleButton12.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton12.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton12.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton12.Size = new Size(39, 16);
-            this.rjToggleButton12.TabIndex = 127;
-            this.rjToggleButton12.UseVisualStyleBackColor = true;
-            this.rjToggleButton12.CheckedChanged += this.rjToggleButton12_CheckedChanged;
+            rjToggleButton12.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            rjToggleButton12.AutoSize = true;
+            rjToggleButton12.Checked = true;
+            rjToggleButton12.CheckState = CheckState.Checked;
+            rjToggleButton12.Location = new Point(452, 109);
+            rjToggleButton12.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButton12.MinimumSize = new Size(39, 16);
+            rjToggleButton12.Name = "rjToggleButton12";
+            rjToggleButton12.OffBackColor = Color.Gray;
+            rjToggleButton12.OffToggleColor = Color.Gainsboro;
+            rjToggleButton12.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButton12.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton12.Size = new Size(39, 16);
+            rjToggleButton12.TabIndex = 127;
+            rjToggleButton12.UseVisualStyleBackColor = true;
+            rjToggleButton12.CheckedChanged += (this.rjToggleButton12_CheckedChanged);
             // 
             // textBoxStopTTS1
             // 
-            textBoxStopTTS1.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            textBoxStopTTS1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBoxStopTTS1.Enabled = false;
             textBoxStopTTS1.Location = new Point(452, 130);
             textBoxStopTTS1.Margin = new Padding(3, 2, 3, 2);
@@ -5688,11 +5675,11 @@
             textBoxStopTTS1.ReadOnly = true;
             textBoxStopTTS1.Size = new Size(53, 23);
             textBoxStopTTS1.TabIndex = 126;
-            textBoxStopTTS1.KeyDown += this.textBoxStopTTS1_KeyDown;
+            textBoxStopTTS1.KeyDown += (this.textBoxStopTTS1_KeyDown);
             // 
             // label124
             // 
-            label124.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label124.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label124.AutoSize = true;
             label124.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label124.ForeColor = Color.Snow;
@@ -5715,23 +5702,23 @@
             // 
             // rjToggleButtonDisableWindowsMedia
             // 
-            this.rjToggleButtonDisableWindowsMedia.AutoSize = true;
-            this.rjToggleButtonDisableWindowsMedia.Location = new Point(5, 254);
-            this.rjToggleButtonDisableWindowsMedia.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonDisableWindowsMedia.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonDisableWindowsMedia.Name = "rjToggleButtonDisableWindowsMedia";
-            this.rjToggleButtonDisableWindowsMedia.OffBackColor = Color.Gray;
-            this.rjToggleButtonDisableWindowsMedia.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonDisableWindowsMedia.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonDisableWindowsMedia.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonDisableWindowsMedia.Size = new Size(39, 16);
-            this.rjToggleButtonDisableWindowsMedia.TabIndex = 124;
-            this.rjToggleButtonDisableWindowsMedia.UseVisualStyleBackColor = true;
-            this.rjToggleButtonDisableWindowsMedia.CheckedChanged += this.rjToggleButtonDisableWindowsMedia_CheckedChanged;
+            rjToggleButtonDisableWindowsMedia.AutoSize = true;
+            rjToggleButtonDisableWindowsMedia.Location = new Point(5, 254);
+            rjToggleButtonDisableWindowsMedia.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonDisableWindowsMedia.MinimumSize = new Size(39, 16);
+            rjToggleButtonDisableWindowsMedia.Name = "rjToggleButtonDisableWindowsMedia";
+            rjToggleButtonDisableWindowsMedia.OffBackColor = Color.Gray;
+            rjToggleButtonDisableWindowsMedia.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonDisableWindowsMedia.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonDisableWindowsMedia.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonDisableWindowsMedia.Size = new Size(39, 16);
+            rjToggleButtonDisableWindowsMedia.TabIndex = 124;
+            rjToggleButtonDisableWindowsMedia.UseVisualStyleBackColor = true;
+            rjToggleButtonDisableWindowsMedia.CheckedChanged += (this.rjToggleButtonDisableWindowsMedia_CheckedChanged);
             // 
             // label12
             // 
-            label12.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label12.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label12.ForeColor = Color.Snow;
@@ -5743,7 +5730,7 @@
             // 
             // textBox1
             // 
-            textBox1.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            textBox1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBox1.Enabled = false;
             textBox1.Location = new Point(534, 71);
             textBox1.Margin = new Padding(3, 2, 3, 2);
@@ -5751,13 +5738,13 @@
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(53, 23);
             textBox1.TabIndex = 121;
-            textBox1.TextChanged += this.textBox1_TextChanged;
-            textBox1.KeyDown += this.textBox1_KeyDown;
+            textBox1.TextChanged += (this.textBox1_TextChanged);
+            textBox1.KeyDown += (this.textBox1_KeyDown);
             // 
             // button28
             // 
-            button28.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button28.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button28.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button28.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button28.FlatStyle = FlatStyle.Flat;
             button28.ForeColor = Color.Snow;
             button28.Location = new Point(592, 70);
@@ -5767,12 +5754,12 @@
             button28.TabIndex = 120;
             button28.Text = "Edit";
             button28.UseVisualStyleBackColor = false;
-            button28.Click += this.button28_Click;
+            button28.Click += (this.button28_Click);
             // 
             // button27
             // 
-            button27.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button27.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button27.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button27.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button27.Enabled = false;
             button27.FlatStyle = FlatStyle.Flat;
             button27.ForeColor = Color.Snow;
@@ -5783,26 +5770,26 @@
             button27.TabIndex = 119;
             button27.Text = "Save";
             button27.UseVisualStyleBackColor = false;
-            button27.Click += this.button27_Click;
+            button27.Click += (this.button27_Click);
             // 
             // rjToggleButton9
             // 
-            this.rjToggleButton9.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.rjToggleButton9.AutoSize = true;
-            this.rjToggleButton9.Checked = true;
-            this.rjToggleButton9.CheckState = CheckState.Checked;
-            this.rjToggleButton9.Location = new Point(452, 51);
-            this.rjToggleButton9.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton9.MinimumSize = new Size(39, 16);
-            this.rjToggleButton9.Name = "rjToggleButton9";
-            this.rjToggleButton9.OffBackColor = Color.Gray;
-            this.rjToggleButton9.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton9.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton9.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton9.Size = new Size(39, 16);
-            this.rjToggleButton9.TabIndex = 102;
-            this.rjToggleButton9.UseVisualStyleBackColor = true;
-            this.rjToggleButton9.CheckedChanged += this.rjToggleButton9_CheckedChanged;
+            rjToggleButton9.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            rjToggleButton9.AutoSize = true;
+            rjToggleButton9.Checked = true;
+            rjToggleButton9.CheckState = CheckState.Checked;
+            rjToggleButton9.Location = new Point(452, 51);
+            rjToggleButton9.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButton9.MinimumSize = new Size(39, 16);
+            rjToggleButton9.Name = "rjToggleButton9";
+            rjToggleButton9.OffBackColor = Color.Gray;
+            rjToggleButton9.OffToggleColor = Color.Gainsboro;
+            rjToggleButton9.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButton9.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton9.Size = new Size(39, 16);
+            rjToggleButton9.TabIndex = 102;
+            rjToggleButton9.UseVisualStyleBackColor = true;
+            rjToggleButton9.CheckedChanged += (this.rjToggleButton9_CheckedChanged);
             // 
             // label27
             // 
@@ -5817,19 +5804,19 @@
             // 
             // rjToggleDarkMode
             // 
-            this.rjToggleDarkMode.AutoSize = true;
-            this.rjToggleDarkMode.Location = new Point(5, 20);
-            this.rjToggleDarkMode.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleDarkMode.MinimumSize = new Size(39, 16);
-            this.rjToggleDarkMode.Name = "rjToggleDarkMode";
-            this.rjToggleDarkMode.OffBackColor = Color.Gray;
-            this.rjToggleDarkMode.OffToggleColor = Color.Gainsboro;
-            this.rjToggleDarkMode.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleDarkMode.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleDarkMode.Size = new Size(39, 16);
-            this.rjToggleDarkMode.TabIndex = 101;
-            this.rjToggleDarkMode.UseVisualStyleBackColor = true;
-            this.rjToggleDarkMode.CheckedChanged += this.rjToggleButton7_CheckedChanged_1;
+            rjToggleDarkMode.AutoSize = true;
+            rjToggleDarkMode.Location = new Point(5, 20);
+            rjToggleDarkMode.Margin = new Padding(3, 2, 3, 2);
+            rjToggleDarkMode.MinimumSize = new Size(39, 16);
+            rjToggleDarkMode.Name = "rjToggleDarkMode";
+            rjToggleDarkMode.OffBackColor = Color.Gray;
+            rjToggleDarkMode.OffToggleColor = Color.Gainsboro;
+            rjToggleDarkMode.OnBackColor = Color.MediumSlateBlue;
+            rjToggleDarkMode.OnToggleColor = Color.WhiteSmoke;
+            rjToggleDarkMode.Size = new Size(39, 16);
+            rjToggleDarkMode.TabIndex = 101;
+            rjToggleDarkMode.UseVisualStyleBackColor = true;
+            rjToggleDarkMode.CheckedChanged += (this.rjToggleButton7_CheckedChanged_1);
             // 
             // label104
             // 
@@ -5844,19 +5831,19 @@
             // 
             // rjToggleButtonSystemTray
             // 
-            this.rjToggleButtonSystemTray.AutoSize = true;
-            this.rjToggleButtonSystemTray.Location = new Point(5, 223);
-            this.rjToggleButtonSystemTray.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonSystemTray.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonSystemTray.Name = "rjToggleButtonSystemTray";
-            this.rjToggleButtonSystemTray.OffBackColor = Color.Gray;
-            this.rjToggleButtonSystemTray.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonSystemTray.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonSystemTray.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonSystemTray.Size = new Size(39, 16);
-            this.rjToggleButtonSystemTray.TabIndex = 99;
-            this.rjToggleButtonSystemTray.UseVisualStyleBackColor = true;
-            this.rjToggleButtonSystemTray.CheckedChanged += this.rjToggleButtonSystemTray_CheckedChanged;
+            rjToggleButtonSystemTray.AutoSize = true;
+            rjToggleButtonSystemTray.Location = new Point(5, 223);
+            rjToggleButtonSystemTray.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonSystemTray.MinimumSize = new Size(39, 16);
+            rjToggleButtonSystemTray.Name = "rjToggleButtonSystemTray";
+            rjToggleButtonSystemTray.OffBackColor = Color.Gray;
+            rjToggleButtonSystemTray.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonSystemTray.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonSystemTray.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonSystemTray.Size = new Size(39, 16);
+            rjToggleButtonSystemTray.TabIndex = 99;
+            rjToggleButtonSystemTray.UseVisualStyleBackColor = true;
+            rjToggleButtonSystemTray.CheckedChanged += (this.rjToggleButtonSystemTray_CheckedChanged);
             // 
             // label77
             // 
@@ -5871,35 +5858,35 @@
             // 
             // rjToggleButton6
             // 
-            this.rjToggleButton6.AutoSize = true;
-            this.rjToggleButton6.Location = new Point(5, 194);
-            this.rjToggleButton6.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton6.MinimumSize = new Size(39, 16);
-            this.rjToggleButton6.Name = "rjToggleButton6";
-            this.rjToggleButton6.OffBackColor = Color.Gray;
-            this.rjToggleButton6.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton6.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton6.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton6.Size = new Size(39, 16);
-            this.rjToggleButton6.TabIndex = 97;
-            this.rjToggleButton6.UseVisualStyleBackColor = true;
-            this.rjToggleButton6.CheckedChanged += this.rjToggleButton6_CheckedChanged;
+            rjToggleButton6.AutoSize = true;
+            rjToggleButton6.Location = new Point(5, 194);
+            rjToggleButton6.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButton6.MinimumSize = new Size(39, 16);
+            rjToggleButton6.Name = "rjToggleButton6";
+            rjToggleButton6.OffBackColor = Color.Gray;
+            rjToggleButton6.OffToggleColor = Color.Gainsboro;
+            rjToggleButton6.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButton6.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton6.Size = new Size(39, 16);
+            rjToggleButton6.TabIndex = 97;
+            rjToggleButton6.UseVisualStyleBackColor = true;
+            rjToggleButton6.CheckedChanged += (this.rjToggleButton6_CheckedChanged);
             // 
             // rjToggleButtonClear
             // 
-            this.rjToggleButtonClear.AutoSize = true;
-            this.rjToggleButtonClear.Location = new Point(5, 137);
-            this.rjToggleButtonClear.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonClear.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonClear.Name = "rjToggleButtonClear";
-            this.rjToggleButtonClear.OffBackColor = Color.Gray;
-            this.rjToggleButtonClear.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonClear.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonClear.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonClear.Size = new Size(39, 16);
-            this.rjToggleButtonClear.TabIndex = 74;
-            this.rjToggleButtonClear.UseVisualStyleBackColor = true;
-            this.rjToggleButtonClear.CheckedChanged += this.rjToggleButtonClear_CheckedChanged;
+            rjToggleButtonClear.AutoSize = true;
+            rjToggleButtonClear.Location = new Point(5, 137);
+            rjToggleButtonClear.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonClear.MinimumSize = new Size(39, 16);
+            rjToggleButtonClear.Name = "rjToggleButtonClear";
+            rjToggleButtonClear.OffBackColor = Color.Gray;
+            rjToggleButtonClear.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonClear.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonClear.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonClear.Size = new Size(39, 16);
+            rjToggleButtonClear.TabIndex = 74;
+            rjToggleButtonClear.UseVisualStyleBackColor = true;
+            rjToggleButtonClear.CheckedChanged += (this.rjToggleButtonClear_CheckedChanged);
             // 
             // label25
             // 
@@ -5936,56 +5923,56 @@
             // 
             // rjToggleButtonLog
             // 
-            this.rjToggleButtonLog.AutoSize = true;
-            this.rjToggleButtonLog.Checked = true;
-            this.rjToggleButtonLog.CheckState = CheckState.Checked;
-            this.rjToggleButtonLog.Location = new Point(5, 108);
-            this.rjToggleButtonLog.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonLog.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonLog.Name = "rjToggleButtonLog";
-            this.rjToggleButtonLog.OffBackColor = Color.Gray;
-            this.rjToggleButtonLog.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonLog.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonLog.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonLog.Size = new Size(39, 16);
-            this.rjToggleButtonLog.TabIndex = 72;
-            this.rjToggleButtonLog.UseVisualStyleBackColor = true;
-            this.rjToggleButtonLog.CheckedChanged += this.rjToggleButtonLog_CheckedChanged;
+            rjToggleButtonLog.AutoSize = true;
+            rjToggleButtonLog.Checked = true;
+            rjToggleButtonLog.CheckState = CheckState.Checked;
+            rjToggleButtonLog.Location = new Point(5, 108);
+            rjToggleButtonLog.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonLog.MinimumSize = new Size(39, 16);
+            rjToggleButtonLog.Name = "rjToggleButtonLog";
+            rjToggleButtonLog.OffBackColor = Color.Gray;
+            rjToggleButtonLog.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonLog.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonLog.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonLog.Size = new Size(39, 16);
+            rjToggleButtonLog.TabIndex = 72;
+            rjToggleButtonLog.UseVisualStyleBackColor = true;
+            rjToggleButtonLog.CheckedChanged += (this.rjToggleButtonLog_CheckedChanged);
             // 
             // rjToggleBannerOff
             // 
-            this.rjToggleBannerOff.AutoSize = true;
-            this.rjToggleBannerOff.Location = new Point(5, 79);
-            this.rjToggleBannerOff.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleBannerOff.MinimumSize = new Size(39, 16);
-            this.rjToggleBannerOff.Name = "rjToggleBannerOff";
-            this.rjToggleBannerOff.OffBackColor = Color.Gray;
-            this.rjToggleBannerOff.OffToggleColor = Color.Gainsboro;
-            this.rjToggleBannerOff.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleBannerOff.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleBannerOff.Size = new Size(39, 16);
-            this.rjToggleBannerOff.TabIndex = 89;
-            this.rjToggleBannerOff.UseVisualStyleBackColor = true;
+            rjToggleBannerOff.AutoSize = true;
+            rjToggleBannerOff.Location = new Point(5, 79);
+            rjToggleBannerOff.Margin = new Padding(3, 2, 3, 2);
+            rjToggleBannerOff.MinimumSize = new Size(39, 16);
+            rjToggleBannerOff.Name = "rjToggleBannerOff";
+            rjToggleBannerOff.OffBackColor = Color.Gray;
+            rjToggleBannerOff.OffToggleColor = Color.Gainsboro;
+            rjToggleBannerOff.OnBackColor = Color.MediumSlateBlue;
+            rjToggleBannerOff.OnToggleColor = Color.WhiteSmoke;
+            rjToggleBannerOff.Size = new Size(39, 16);
+            rjToggleBannerOff.TabIndex = 89;
+            rjToggleBannerOff.UseVisualStyleBackColor = true;
             // 
             // rjToggleButtonOnTop2
             // 
-            this.rjToggleButtonOnTop2.AutoSize = true;
-            this.rjToggleButtonOnTop2.Location = new Point(5, 49);
-            this.rjToggleButtonOnTop2.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonOnTop2.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonOnTop2.Name = "rjToggleButtonOnTop2";
-            this.rjToggleButtonOnTop2.OffBackColor = Color.Gray;
-            this.rjToggleButtonOnTop2.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonOnTop2.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonOnTop2.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonOnTop2.Size = new Size(39, 16);
-            this.rjToggleButtonOnTop2.TabIndex = 75;
-            this.rjToggleButtonOnTop2.UseVisualStyleBackColor = true;
-            this.rjToggleButtonOnTop2.CheckedChanged += this.checkBox9_CheckedChanged;
+            rjToggleButtonOnTop2.AutoSize = true;
+            rjToggleButtonOnTop2.Location = new Point(5, 49);
+            rjToggleButtonOnTop2.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonOnTop2.MinimumSize = new Size(39, 16);
+            rjToggleButtonOnTop2.Name = "rjToggleButtonOnTop2";
+            rjToggleButtonOnTop2.OffBackColor = Color.Gray;
+            rjToggleButtonOnTop2.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonOnTop2.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonOnTop2.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonOnTop2.Size = new Size(39, 16);
+            rjToggleButtonOnTop2.TabIndex = 75;
+            rjToggleButtonOnTop2.UseVisualStyleBackColor = true;
+            rjToggleButtonOnTop2.CheckedChanged += (this.checkBox9_CheckedChanged);
             // 
             // textBox4
             // 
-            textBox4.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            textBox4.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBox4.Enabled = false;
             textBox4.Location = new Point(452, 72);
             textBox4.Margin = new Padding(3, 2, 3, 2);
@@ -5993,8 +5980,8 @@
             textBox4.ReadOnly = true;
             textBox4.Size = new Size(53, 23);
             textBox4.TabIndex = 33;
-            textBox4.TextChanged += this.textBox4_TextChanged;
-            textBox4.KeyDown += this.textBox4_KeyDown;
+            textBox4.TextChanged += (this.textBox4_TextChanged);
+            textBox4.KeyDown += (this.textBox4_KeyDown);
             // 
             // label22
             // 
@@ -6009,7 +5996,7 @@
             // 
             // label11
             // 
-            label11.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label11.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label11.ForeColor = Color.Snow;
@@ -6022,7 +6009,7 @@
             // AzureSet
             // 
             AzureSet.AutoScroll = true;
-            AzureSet.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            AzureSet.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             AzureSet.Controls.Add(groupBox12);
             AzureSet.Controls.Add(groupBox11);
             AzureSet.Controls.Add(label10);
@@ -6037,23 +6024,23 @@
             // 
             groupBox12.Controls.Add(label204);
             groupBox12.Controls.Add(textBoxPartialResultsInterval);
-            groupBox12.Controls.Add(this.rjTogglePartialResults);
+            groupBox12.Controls.Add(rjTogglePartialResults);
             groupBox12.Controls.Add(label203);
-            groupBox12.Controls.Add(this.rjToggleTranslateSameLanguage);
+            groupBox12.Controls.Add(rjToggleTranslateSameLanguage);
             groupBox12.Controls.Add(label193);
-            groupBox12.Controls.Add(this.buttonExportDict);
-            groupBox12.Controls.Add(this.buttonImportDict);
-            groupBox12.Controls.Add(this.rjToggleButtonStyle);
+            groupBox12.Controls.Add(buttonExportDict);
+            groupBox12.Controls.Add(buttonImportDict);
+            groupBox12.Controls.Add(rjToggleButtonStyle);
             groupBox12.Controls.Add(label30);
             groupBox12.Controls.Add(label113);
             groupBox12.Controls.Add(label13);
             groupBox12.Controls.Add(label47);
-            groupBox12.Controls.Add(this.rjToggleButtonPhraseList2);
+            groupBox12.Controls.Add(rjToggleButtonPhraseList2);
             groupBox12.Controls.Add(label48);
             groupBox12.Controls.Add(richTextBoxAzureDict);
-            groupBox12.Controls.Add(this.rjToggleButtonProfan);
+            groupBox12.Controls.Add(rjToggleButtonProfan);
             groupBox12.Controls.Add(label20);
-            groupBox12.Controls.Add(this.rjToggleButton4);
+            groupBox12.Controls.Add(rjToggleButton4);
             groupBox12.Controls.Add(label36);
             groupBox12.ForeColor = Color.White;
             groupBox12.Location = new Point(15, 199);
@@ -6087,23 +6074,23 @@
             // 
             // rjTogglePartialResults
             // 
-            this.rjTogglePartialResults.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjTogglePartialResults.AutoSize = true;
-            this.rjTogglePartialResults.Location = new Point(9, 316);
-            this.rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
-            this.rjTogglePartialResults.MinimumSize = new Size(39, 16);
-            this.rjTogglePartialResults.Name = "rjTogglePartialResults";
-            this.rjTogglePartialResults.OffBackColor = Color.Gray;
-            this.rjTogglePartialResults.OffToggleColor = Color.Gainsboro;
-            this.rjTogglePartialResults.OnBackColor = Color.MediumSlateBlue;
-            this.rjTogglePartialResults.OnToggleColor = Color.WhiteSmoke;
-            this.rjTogglePartialResults.Size = new Size(39, 16);
-            this.rjTogglePartialResults.TabIndex = 124;
-            this.rjTogglePartialResults.UseVisualStyleBackColor = true;
+            rjTogglePartialResults.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjTogglePartialResults.AutoSize = true;
+            rjTogglePartialResults.Location = new Point(9, 316);
+            rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
+            rjTogglePartialResults.MinimumSize = new Size(39, 16);
+            rjTogglePartialResults.Name = "rjTogglePartialResults";
+            rjTogglePartialResults.OffBackColor = Color.Gray;
+            rjTogglePartialResults.OffToggleColor = Color.Gainsboro;
+            rjTogglePartialResults.OnBackColor = Color.MediumSlateBlue;
+            rjTogglePartialResults.OnToggleColor = Color.WhiteSmoke;
+            rjTogglePartialResults.Size = new Size(39, 16);
+            rjTogglePartialResults.TabIndex = 124;
+            rjTogglePartialResults.UseVisualStyleBackColor = true;
             // 
             // label203
             // 
-            label203.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label203.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label203.AutoSize = true;
             label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label203.ForeColor = Color.Snow;
@@ -6115,23 +6102,23 @@
             // 
             // rjToggleTranslateSameLanguage
             // 
-            this.rjToggleTranslateSameLanguage.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleTranslateSameLanguage.AutoSize = true;
-            this.rjToggleTranslateSameLanguage.Location = new Point(8, 257);
-            this.rjToggleTranslateSameLanguage.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleTranslateSameLanguage.MinimumSize = new Size(39, 16);
-            this.rjToggleTranslateSameLanguage.Name = "rjToggleTranslateSameLanguage";
-            this.rjToggleTranslateSameLanguage.OffBackColor = Color.Gray;
-            this.rjToggleTranslateSameLanguage.OffToggleColor = Color.Gainsboro;
-            this.rjToggleTranslateSameLanguage.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleTranslateSameLanguage.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleTranslateSameLanguage.Size = new Size(39, 16);
-            this.rjToggleTranslateSameLanguage.TabIndex = 122;
-            this.rjToggleTranslateSameLanguage.UseVisualStyleBackColor = true;
+            rjToggleTranslateSameLanguage.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleTranslateSameLanguage.AutoSize = true;
+            rjToggleTranslateSameLanguage.Location = new Point(8, 257);
+            rjToggleTranslateSameLanguage.Margin = new Padding(3, 2, 3, 2);
+            rjToggleTranslateSameLanguage.MinimumSize = new Size(39, 16);
+            rjToggleTranslateSameLanguage.Name = "rjToggleTranslateSameLanguage";
+            rjToggleTranslateSameLanguage.OffBackColor = Color.Gray;
+            rjToggleTranslateSameLanguage.OffToggleColor = Color.Gainsboro;
+            rjToggleTranslateSameLanguage.OnBackColor = Color.MediumSlateBlue;
+            rjToggleTranslateSameLanguage.OnToggleColor = Color.WhiteSmoke;
+            rjToggleTranslateSameLanguage.Size = new Size(39, 16);
+            rjToggleTranslateSameLanguage.TabIndex = 122;
+            rjToggleTranslateSameLanguage.UseVisualStyleBackColor = true;
             // 
             // label193
             // 
-            label193.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label193.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label193.AutoSize = true;
             label193.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label193.ForeColor = Color.Snow;
@@ -6143,65 +6130,65 @@
             // 
             // buttonExportDict
             // 
-            this.buttonExportDict.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonExportDict.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonExportDict.FlatStyle = FlatStyle.Flat;
-            this.buttonExportDict.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonExportDict.ForeColor = Color.Snow;
-            this.buttonExportDict.IconChar = global::FontAwesome.Sharp.IconChar.FileExport;
-            this.buttonExportDict.IconColor = Color.White;
-            this.buttonExportDict.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonExportDict.IconSize = 15;
-            this.buttonExportDict.Location = new Point(99, 191);
-            this.buttonExportDict.Margin = new Padding(3, 2, 3, 2);
-            this.buttonExportDict.Name = "buttonExportDict";
-            this.buttonExportDict.Size = new Size(87, 25);
-            this.buttonExportDict.TabIndex = 120;
-            this.buttonExportDict.Text = "Export";
-            this.buttonExportDict.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonExportDict.UseVisualStyleBackColor = false;
-            this.buttonExportDict.Click += this.buttonExportDict_Click;
+            buttonExportDict.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonExportDict.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonExportDict.FlatStyle = FlatStyle.Flat;
+            buttonExportDict.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExportDict.ForeColor = Color.Snow;
+            buttonExportDict.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            buttonExportDict.IconColor = Color.White;
+            buttonExportDict.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonExportDict.IconSize = 15;
+            buttonExportDict.Location = new Point(99, 191);
+            buttonExportDict.Margin = new Padding(3, 2, 3, 2);
+            buttonExportDict.Name = "buttonExportDict";
+            buttonExportDict.Size = new Size(87, 25);
+            buttonExportDict.TabIndex = 120;
+            buttonExportDict.Text = "Export";
+            buttonExportDict.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExportDict.UseVisualStyleBackColor = false;
+            buttonExportDict.Click += (this.buttonExportDict_Click);
             // 
             // buttonImportDict
             // 
-            this.buttonImportDict.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonImportDict.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonImportDict.FlatStyle = FlatStyle.Flat;
-            this.buttonImportDict.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonImportDict.ForeColor = Color.Snow;
-            this.buttonImportDict.IconChar = global::FontAwesome.Sharp.IconChar.FileImport;
-            this.buttonImportDict.IconColor = Color.White;
-            this.buttonImportDict.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonImportDict.IconSize = 15;
-            this.buttonImportDict.Location = new Point(6, 191);
-            this.buttonImportDict.Margin = new Padding(3, 2, 3, 2);
-            this.buttonImportDict.Name = "buttonImportDict";
-            this.buttonImportDict.Size = new Size(87, 25);
-            this.buttonImportDict.TabIndex = 119;
-            this.buttonImportDict.Text = "Import";
-            this.buttonImportDict.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonImportDict.UseVisualStyleBackColor = false;
-            this.buttonImportDict.Click += this.buttonImportDict_Click;
+            buttonImportDict.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonImportDict.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonImportDict.FlatStyle = FlatStyle.Flat;
+            buttonImportDict.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonImportDict.ForeColor = Color.Snow;
+            buttonImportDict.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            buttonImportDict.IconColor = Color.White;
+            buttonImportDict.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonImportDict.IconSize = 15;
+            buttonImportDict.Location = new Point(6, 191);
+            buttonImportDict.Margin = new Padding(3, 2, 3, 2);
+            buttonImportDict.Name = "buttonImportDict";
+            buttonImportDict.Size = new Size(87, 25);
+            buttonImportDict.TabIndex = 119;
+            buttonImportDict.Text = "Import";
+            buttonImportDict.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonImportDict.UseVisualStyleBackColor = false;
+            buttonImportDict.Click += (this.buttonImportDict_Click);
             // 
             // rjToggleButtonStyle
             // 
-            this.rjToggleButtonStyle.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleButtonStyle.AutoSize = true;
-            this.rjToggleButtonStyle.Location = new Point(9, 288);
-            this.rjToggleButtonStyle.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonStyle.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonStyle.Name = "rjToggleButtonStyle";
-            this.rjToggleButtonStyle.OffBackColor = Color.Gray;
-            this.rjToggleButtonStyle.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonStyle.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonStyle.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonStyle.Size = new Size(39, 16);
-            this.rjToggleButtonStyle.TabIndex = 109;
-            this.rjToggleButtonStyle.UseVisualStyleBackColor = true;
+            rjToggleButtonStyle.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleButtonStyle.AutoSize = true;
+            rjToggleButtonStyle.Location = new Point(9, 288);
+            rjToggleButtonStyle.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonStyle.MinimumSize = new Size(39, 16);
+            rjToggleButtonStyle.Name = "rjToggleButtonStyle";
+            rjToggleButtonStyle.OffBackColor = Color.Gray;
+            rjToggleButtonStyle.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonStyle.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonStyle.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonStyle.Size = new Size(39, 16);
+            rjToggleButtonStyle.TabIndex = 109;
+            rjToggleButtonStyle.UseVisualStyleBackColor = true;
             // 
             // label30
             // 
-            label30.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label30.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label30.ForeColor = Color.Snow;
@@ -6234,7 +6221,7 @@
             // 
             // label47
             // 
-            label47.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label47.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label47.AutoSize = true;
             label47.ForeColor = Color.Snow;
             label47.Location = new Point(9, 441);
@@ -6245,22 +6232,22 @@
             // 
             // rjToggleButtonPhraseList2
             // 
-            this.rjToggleButtonPhraseList2.AutoSize = true;
-            this.rjToggleButtonPhraseList2.Location = new Point(8, 24);
-            this.rjToggleButtonPhraseList2.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonPhraseList2.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonPhraseList2.Name = "rjToggleButtonPhraseList2";
-            this.rjToggleButtonPhraseList2.OffBackColor = Color.Gray;
-            this.rjToggleButtonPhraseList2.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonPhraseList2.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonPhraseList2.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonPhraseList2.Size = new Size(39, 16);
-            this.rjToggleButtonPhraseList2.TabIndex = 79;
-            this.rjToggleButtonPhraseList2.UseVisualStyleBackColor = true;
+            rjToggleButtonPhraseList2.AutoSize = true;
+            rjToggleButtonPhraseList2.Location = new Point(8, 24);
+            rjToggleButtonPhraseList2.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonPhraseList2.MinimumSize = new Size(39, 16);
+            rjToggleButtonPhraseList2.Name = "rjToggleButtonPhraseList2";
+            rjToggleButtonPhraseList2.OffBackColor = Color.Gray;
+            rjToggleButtonPhraseList2.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonPhraseList2.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonPhraseList2.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonPhraseList2.Size = new Size(39, 16);
+            rjToggleButtonPhraseList2.TabIndex = 79;
+            rjToggleButtonPhraseList2.UseVisualStyleBackColor = true;
             // 
             // label48
             // 
-            label48.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label48.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label48.AutoSize = true;
             label48.ForeColor = Color.Snow;
             label48.Location = new Point(9, 426);
@@ -6271,7 +6258,7 @@
             // 
             // richTextBoxAzureDict
             // 
-            richTextBoxAzureDict.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            richTextBoxAzureDict.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             richTextBoxAzureDict.Location = new Point(8, 60);
             richTextBoxAzureDict.Margin = new Padding(3, 2, 3, 2);
             richTextBoxAzureDict.Name = "richTextBoxAzureDict";
@@ -6281,26 +6268,26 @@
             // 
             // rjToggleButtonProfan
             // 
-            this.rjToggleButtonProfan.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleButtonProfan.AutoSize = true;
-            this.rjToggleButtonProfan.Checked = true;
-            this.rjToggleButtonProfan.CheckState = CheckState.Checked;
-            this.rjToggleButtonProfan.Location = new Point(8, 226);
-            this.rjToggleButtonProfan.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonProfan.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonProfan.Name = "rjToggleButtonProfan";
-            this.rjToggleButtonProfan.OffBackColor = Color.Gray;
-            this.rjToggleButtonProfan.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonProfan.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonProfan.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonProfan.Size = new Size(39, 16);
-            this.rjToggleButtonProfan.TabIndex = 71;
-            this.rjToggleButtonProfan.UseVisualStyleBackColor = true;
-            this.rjToggleButtonProfan.CheckedChanged += this.checkBox5_CheckedChanged;
+            rjToggleButtonProfan.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleButtonProfan.AutoSize = true;
+            rjToggleButtonProfan.Checked = true;
+            rjToggleButtonProfan.CheckState = CheckState.Checked;
+            rjToggleButtonProfan.Location = new Point(8, 226);
+            rjToggleButtonProfan.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonProfan.MinimumSize = new Size(39, 16);
+            rjToggleButtonProfan.Name = "rjToggleButtonProfan";
+            rjToggleButtonProfan.OffBackColor = Color.Gray;
+            rjToggleButtonProfan.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonProfan.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonProfan.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonProfan.Size = new Size(39, 16);
+            rjToggleButtonProfan.TabIndex = 71;
+            rjToggleButtonProfan.UseVisualStyleBackColor = true;
+            rjToggleButtonProfan.CheckedChanged += (this.checkBox5_CheckedChanged);
             // 
             // label20
             // 
-            label20.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label20.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label20.ForeColor = Color.Snow;
@@ -6312,24 +6299,24 @@
             // 
             // rjToggleButton4
             // 
-            this.rjToggleButton4.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleButton4.AutoSize = true;
-            this.rjToggleButton4.Location = new Point(9, 406);
-            this.rjToggleButton4.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton4.MinimumSize = new Size(39, 16);
-            this.rjToggleButton4.Name = "rjToggleButton4";
-            this.rjToggleButton4.OffBackColor = Color.Gray;
-            this.rjToggleButton4.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton4.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton4.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton4.Size = new Size(39, 16);
-            this.rjToggleButton4.TabIndex = 83;
-            this.rjToggleButton4.UseVisualStyleBackColor = true;
-            this.rjToggleButton4.CheckedChanged += this.rjToggleButton4_CheckedChanged;
+            rjToggleButton4.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleButton4.AutoSize = true;
+            rjToggleButton4.Location = new Point(9, 406);
+            rjToggleButton4.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButton4.MinimumSize = new Size(39, 16);
+            rjToggleButton4.Name = "rjToggleButton4";
+            rjToggleButton4.OffBackColor = Color.Gray;
+            rjToggleButton4.OffToggleColor = Color.Gainsboro;
+            rjToggleButton4.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButton4.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton4.Size = new Size(39, 16);
+            rjToggleButton4.TabIndex = 83;
+            rjToggleButton4.UseVisualStyleBackColor = true;
+            rjToggleButton4.CheckedChanged += (this.rjToggleButton4_CheckedChanged);
             // 
             // label36
             // 
-            label36.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label36.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label36.ForeColor = Color.Snow;
@@ -6341,11 +6328,11 @@
             // 
             // groupBox11
             // 
-            groupBox11.Controls.Add(this.ShowAzurePassword);
+            groupBox11.Controls.Add(ShowAzurePassword);
             groupBox11.Controls.Add(button13);
-            groupBox11.Controls.Add(this.iconButton29);
+            groupBox11.Controls.Add(iconButton29);
             groupBox11.Controls.Add(label19);
-            groupBox11.Controls.Add(this.rjToggleButtonKeyRegion2);
+            groupBox11.Controls.Add(rjToggleButtonKeyRegion2);
             groupBox11.Controls.Add(label9);
             groupBox11.Controls.Add(button6);
             groupBox11.Controls.Add(textBox3);
@@ -6364,26 +6351,26 @@
             // 
             // ShowAzurePassword
             // 
-            this.ShowAzurePassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ShowAzurePassword.BackColor = Color.White;
-            this.ShowAzurePassword.FlatAppearance.BorderSize = 0;
-            this.ShowAzurePassword.FlatStyle = FlatStyle.Flat;
-            this.ShowAzurePassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowAzurePassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ShowAzurePassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowAzurePassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ShowAzurePassword.IconSize = 15;
-            this.ShowAzurePassword.Location = new Point(288, 36);
-            this.ShowAzurePassword.Margin = new Padding(3, 2, 3, 2);
-            this.ShowAzurePassword.Name = "ShowAzurePassword";
-            this.ShowAzurePassword.Size = new Size(31, 18);
-            this.ShowAzurePassword.TabIndex = 122;
-            this.ShowAzurePassword.UseVisualStyleBackColor = false;
-            this.ShowAzurePassword.Click += this.ShowAzurePassword_Click;
+            ShowAzurePassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ShowAzurePassword.BackColor = Color.White;
+            ShowAzurePassword.FlatAppearance.BorderSize = 0;
+            ShowAzurePassword.FlatStyle = FlatStyle.Flat;
+            ShowAzurePassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowAzurePassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ShowAzurePassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowAzurePassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ShowAzurePassword.IconSize = 15;
+            ShowAzurePassword.Location = new Point(288, 36);
+            ShowAzurePassword.Margin = new Padding(3, 2, 3, 2);
+            ShowAzurePassword.Name = "ShowAzurePassword";
+            ShowAzurePassword.Size = new Size(31, 18);
+            ShowAzurePassword.TabIndex = 122;
+            ShowAzurePassword.UseVisualStyleBackColor = false;
+            ShowAzurePassword.Click += (this.ShowAzurePassword_Click);
             // 
             // button13
             // 
-            button13.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button13.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button13.FlatStyle = FlatStyle.Flat;
             button13.ForeColor = Color.Snow;
             button13.Location = new Point(454, 20);
@@ -6393,28 +6380,28 @@
             button13.TabIndex = 88;
             button13.Text = "Reload Voices";
             button13.UseVisualStyleBackColor = false;
-            button13.Click += this.button13_Click;
+            button13.Click += (this.button13_Click);
             // 
             // iconButton29
             // 
-            this.iconButton29.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton29.FlatAppearance.BorderSize = 0;
-            this.iconButton29.FlatStyle = FlatStyle.Flat;
-            this.iconButton29.ForeColor = Color.Snow;
-            this.iconButton29.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton29.IconColor = Color.White;
-            this.iconButton29.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton29.IconSize = 40;
-            this.iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.Location = new Point(486, 98);
-            this.iconButton29.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton29.Name = "iconButton29";
-            this.iconButton29.Size = new Size(44, 46);
-            this.iconButton29.TabIndex = 103;
-            this.iconButton29.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton29.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton29.UseVisualStyleBackColor = true;
-            this.iconButton29.Click += this.iconButton29_Click;
+            iconButton29.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton29.FlatAppearance.BorderSize = 0;
+            iconButton29.FlatStyle = FlatStyle.Flat;
+            iconButton29.ForeColor = Color.Snow;
+            iconButton29.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton29.IconColor = Color.White;
+            iconButton29.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton29.IconSize = 40;
+            iconButton29.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton29.Location = new Point(486, 98);
+            iconButton29.Margin = new Padding(3, 2, 3, 2);
+            iconButton29.Name = "iconButton29";
+            iconButton29.Size = new Size(44, 46);
+            iconButton29.TabIndex = 103;
+            iconButton29.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton29.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton29.UseVisualStyleBackColor = true;
+            iconButton29.Click += (this.iconButton29_Click);
             // 
             // label19
             // 
@@ -6428,19 +6415,19 @@
             // 
             // rjToggleButtonKeyRegion2
             // 
-            this.rjToggleButtonKeyRegion2.AutoSize = true;
-            this.rjToggleButtonKeyRegion2.Location = new Point(9, 121);
-            this.rjToggleButtonKeyRegion2.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonKeyRegion2.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonKeyRegion2.Name = "rjToggleButtonKeyRegion2";
-            this.rjToggleButtonKeyRegion2.OffBackColor = Color.Gray;
-            this.rjToggleButtonKeyRegion2.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonKeyRegion2.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonKeyRegion2.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonKeyRegion2.Size = new Size(39, 16);
-            this.rjToggleButtonKeyRegion2.TabIndex = 38;
-            this.rjToggleButtonKeyRegion2.UseVisualStyleBackColor = true;
-            this.rjToggleButtonKeyRegion2.CheckedChanged += this.checkBox3_CheckedChanged;
+            rjToggleButtonKeyRegion2.AutoSize = true;
+            rjToggleButtonKeyRegion2.Location = new Point(9, 121);
+            rjToggleButtonKeyRegion2.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonKeyRegion2.MinimumSize = new Size(39, 16);
+            rjToggleButtonKeyRegion2.Name = "rjToggleButtonKeyRegion2";
+            rjToggleButtonKeyRegion2.OffBackColor = Color.Gray;
+            rjToggleButtonKeyRegion2.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonKeyRegion2.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonKeyRegion2.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonKeyRegion2.Size = new Size(39, 16);
+            rjToggleButtonKeyRegion2.TabIndex = 38;
+            rjToggleButtonKeyRegion2.UseVisualStyleBackColor = true;
+            rjToggleButtonKeyRegion2.CheckedChanged += (this.checkBox3_CheckedChanged);
             // 
             // label9
             // 
@@ -6454,7 +6441,7 @@
             // 
             // button6
             // 
-            button6.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button6.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button6.ForeColor = Color.Snow;
@@ -6465,7 +6452,7 @@
             button6.TabIndex = 32;
             button6.Text = "Apply";
             button6.UseVisualStyleBackColor = false;
-            button6.Click += this.button6_Click;
+            button6.Click += (this.button6_Click);
             // 
             // textBox3
             // 
@@ -6488,7 +6475,7 @@
             // 
             // button5
             // 
-            button5.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button5.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button5.ForeColor = Color.Snow;
@@ -6499,7 +6486,7 @@
             button5.TabIndex = 29;
             button5.Text = "Apply";
             button5.UseVisualStyleBackColor = false;
-            button5.Click += this.button5_Click;
+            button5.Click += (this.button5_Click);
             // 
             // textBoxAzureKey
             // 
@@ -6524,10 +6511,10 @@
             // tabPage2
             // 
             tabPage2.AutoScroll = true;
-            tabPage2.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            tabPage2.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             tabPage2.Controls.Add(groupBox22);
             tabPage2.Controls.Add(groupBox15);
-            tabPage2.Controls.Add(this.iconButton40);
+            tabPage2.Controls.Add(iconButton40);
             tabPage2.Controls.Add(label115);
             tabPage2.Controls.Add(label131);
             tabPage2.Location = new Point(4, 24);
@@ -6540,13 +6527,13 @@
             // 
             // groupBox22
             // 
-            groupBox22.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
-            groupBox22.Controls.Add(this.buttonExportVC);
-            groupBox22.Controls.Add(this.buttonImportVC);
+            groupBox22.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            groupBox22.Controls.Add(buttonExportVC);
+            groupBox22.Controls.Add(buttonImportVC);
             groupBox22.Controls.Add(checkedListBox1);
             groupBox22.Controls.Add(button24);
             groupBox22.Controls.Add(label117);
-            groupBox22.Controls.Add(this.deleteCommandsToggle);
+            groupBox22.Controls.Add(deleteCommandsToggle);
             groupBox22.ForeColor = Color.White;
             groupBox22.Location = new Point(10, 124);
             groupBox22.Margin = new Padding(3, 2, 3, 2);
@@ -6559,49 +6546,49 @@
             // 
             // buttonExportVC
             // 
-            this.buttonExportVC.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonExportVC.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonExportVC.FlatStyle = FlatStyle.Flat;
-            this.buttonExportVC.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonExportVC.ForeColor = Color.Snow;
-            this.buttonExportVC.IconChar = global::FontAwesome.Sharp.IconChar.FileExport;
-            this.buttonExportVC.IconColor = Color.White;
-            this.buttonExportVC.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonExportVC.IconSize = 15;
-            this.buttonExportVC.Location = new Point(101, 238);
-            this.buttonExportVC.Margin = new Padding(3, 2, 3, 2);
-            this.buttonExportVC.Name = "buttonExportVC";
-            this.buttonExportVC.Size = new Size(87, 25);
-            this.buttonExportVC.TabIndex = 154;
-            this.buttonExportVC.Text = "Export";
-            this.buttonExportVC.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonExportVC.UseVisualStyleBackColor = false;
-            this.buttonExportVC.Click += this.buttonExportVC_Click;
+            buttonExportVC.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonExportVC.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonExportVC.FlatStyle = FlatStyle.Flat;
+            buttonExportVC.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExportVC.ForeColor = Color.Snow;
+            buttonExportVC.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            buttonExportVC.IconColor = Color.White;
+            buttonExportVC.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonExportVC.IconSize = 15;
+            buttonExportVC.Location = new Point(101, 238);
+            buttonExportVC.Margin = new Padding(3, 2, 3, 2);
+            buttonExportVC.Name = "buttonExportVC";
+            buttonExportVC.Size = new Size(87, 25);
+            buttonExportVC.TabIndex = 154;
+            buttonExportVC.Text = "Export";
+            buttonExportVC.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExportVC.UseVisualStyleBackColor = false;
+            buttonExportVC.Click += (this.buttonExportVC_Click);
             // 
             // buttonImportVC
             // 
-            this.buttonImportVC.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonImportVC.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonImportVC.FlatStyle = FlatStyle.Flat;
-            this.buttonImportVC.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonImportVC.ForeColor = Color.Snow;
-            this.buttonImportVC.IconChar = global::FontAwesome.Sharp.IconChar.FileImport;
-            this.buttonImportVC.IconColor = Color.White;
-            this.buttonImportVC.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonImportVC.IconSize = 15;
-            this.buttonImportVC.Location = new Point(8, 238);
-            this.buttonImportVC.Margin = new Padding(3, 2, 3, 2);
-            this.buttonImportVC.Name = "buttonImportVC";
-            this.buttonImportVC.Size = new Size(87, 25);
-            this.buttonImportVC.TabIndex = 153;
-            this.buttonImportVC.Text = "Import";
-            this.buttonImportVC.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonImportVC.UseVisualStyleBackColor = false;
-            this.buttonImportVC.Click += this.buttonImportVC_Click;
+            buttonImportVC.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonImportVC.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonImportVC.FlatStyle = FlatStyle.Flat;
+            buttonImportVC.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonImportVC.ForeColor = Color.Snow;
+            buttonImportVC.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            buttonImportVC.IconColor = Color.White;
+            buttonImportVC.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonImportVC.IconSize = 15;
+            buttonImportVC.Location = new Point(8, 238);
+            buttonImportVC.Margin = new Padding(3, 2, 3, 2);
+            buttonImportVC.Name = "buttonImportVC";
+            buttonImportVC.Size = new Size(87, 25);
+            buttonImportVC.TabIndex = 153;
+            buttonImportVC.Text = "Import";
+            buttonImportVC.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonImportVC.UseVisualStyleBackColor = false;
+            buttonImportVC.Click += (this.buttonImportVC_Click);
             // 
             // checkedListBox1
             // 
-            checkedListBox1.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            checkedListBox1.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             checkedListBox1.Font = new Font("Segoe UI", 7.2F, FontStyle.Regular, GraphicsUnit.Point);
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(7, 20);
@@ -6609,12 +6596,12 @@
             checkedListBox1.Name = "checkedListBox1";
             checkedListBox1.Size = new Size(741, 214);
             checkedListBox1.TabIndex = 142;
-            checkedListBox1.MouseDoubleClick += this.checkedListBox1_MouseDoubleClick;
+            checkedListBox1.MouseDoubleClick += (this.checkedListBox1_MouseDoubleClick);
             // 
             // button24
             // 
-            button24.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button24.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button24.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button24.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button24.FlatStyle = FlatStyle.Flat;
             button24.ForeColor = Color.Snow;
             button24.Location = new Point(672, 273);
@@ -6624,11 +6611,11 @@
             button24.TabIndex = 141;
             button24.Text = "Clear All";
             button24.UseVisualStyleBackColor = false;
-            button24.Click += this.button24_Click;
+            button24.Click += (this.button24_Click);
             // 
             // label117
             // 
-            label117.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label117.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label117.AutoSize = true;
             label117.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label117.ForeColor = Color.Snow;
@@ -6640,23 +6627,23 @@
             // 
             // deleteCommandsToggle
             // 
-            this.deleteCommandsToggle.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.deleteCommandsToggle.AutoSize = true;
-            this.deleteCommandsToggle.Location = new Point(5, 278);
-            this.deleteCommandsToggle.Margin = new Padding(3, 2, 3, 2);
-            this.deleteCommandsToggle.MinimumSize = new Size(39, 16);
-            this.deleteCommandsToggle.Name = "deleteCommandsToggle";
-            this.deleteCommandsToggle.OffBackColor = Color.Gray;
-            this.deleteCommandsToggle.OffToggleColor = Color.Gainsboro;
-            this.deleteCommandsToggle.OnBackColor = Color.MediumSlateBlue;
-            this.deleteCommandsToggle.OnToggleColor = Color.WhiteSmoke;
-            this.deleteCommandsToggle.Size = new Size(39, 16);
-            this.deleteCommandsToggle.TabIndex = 152;
-            this.deleteCommandsToggle.UseVisualStyleBackColor = true;
+            deleteCommandsToggle.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            deleteCommandsToggle.AutoSize = true;
+            deleteCommandsToggle.Location = new Point(5, 278);
+            deleteCommandsToggle.Margin = new Padding(3, 2, 3, 2);
+            deleteCommandsToggle.MinimumSize = new Size(39, 16);
+            deleteCommandsToggle.Name = "deleteCommandsToggle";
+            deleteCommandsToggle.OffBackColor = Color.Gray;
+            deleteCommandsToggle.OffToggleColor = Color.Gainsboro;
+            deleteCommandsToggle.OnBackColor = Color.MediumSlateBlue;
+            deleteCommandsToggle.OnToggleColor = Color.WhiteSmoke;
+            deleteCommandsToggle.Size = new Size(39, 16);
+            deleteCommandsToggle.TabIndex = 152;
+            deleteCommandsToggle.UseVisualStyleBackColor = true;
             // 
             // groupBox15
             // 
-            groupBox15.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            groupBox15.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             groupBox15.Controls.Add(label143);
             groupBox15.Controls.Add(label141);
             groupBox15.Controls.Add(label138);
@@ -6748,7 +6735,7 @@
             // 
             // buttonAddVoiceCommand
             // 
-            buttonAddVoiceCommand.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonAddVoiceCommand.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonAddVoiceCommand.FlatStyle = FlatStyle.Flat;
             buttonAddVoiceCommand.ForeColor = Color.Snow;
             buttonAddVoiceCommand.Location = new Point(684, 45);
@@ -6758,7 +6745,7 @@
             buttonAddVoiceCommand.TabIndex = 133;
             buttonAddVoiceCommand.Text = "Add";
             buttonAddVoiceCommand.UseVisualStyleBackColor = false;
-            buttonAddVoiceCommand.Click += this.buttonAddVoiceCommand_Click;
+            buttonAddVoiceCommand.Click += (this.buttonAddVoiceCommand_Click);
             // 
             // textBox1Spoken
             // 
@@ -6771,24 +6758,24 @@
             // 
             // iconButton40
             // 
-            this.iconButton40.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton40.FlatAppearance.BorderSize = 0;
-            this.iconButton40.FlatStyle = FlatStyle.Flat;
-            this.iconButton40.ForeColor = Color.Snow;
-            this.iconButton40.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton40.IconColor = Color.White;
-            this.iconButton40.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton40.IconSize = 40;
-            this.iconButton40.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton40.Location = new Point(719, 2);
-            this.iconButton40.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton40.Name = "iconButton40";
-            this.iconButton40.Size = new Size(44, 50);
-            this.iconButton40.TabIndex = 150;
-            this.iconButton40.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton40.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton40.UseVisualStyleBackColor = true;
-            this.iconButton40.Click += this.iconButton40_Click;
+            iconButton40.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton40.FlatAppearance.BorderSize = 0;
+            iconButton40.FlatStyle = FlatStyle.Flat;
+            iconButton40.ForeColor = Color.Snow;
+            iconButton40.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton40.IconColor = Color.White;
+            iconButton40.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton40.IconSize = 40;
+            iconButton40.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton40.Location = new Point(719, 2);
+            iconButton40.Margin = new Padding(3, 2, 3, 2);
+            iconButton40.Name = "iconButton40";
+            iconButton40.Size = new Size(44, 50);
+            iconButton40.TabIndex = 150;
+            iconButton40.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton40.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton40.UseVisualStyleBackColor = true;
+            iconButton40.Click += (this.iconButton40_Click);
             // 
             // label115
             // 
@@ -6814,7 +6801,7 @@
             // DeepLTab
             // 
             DeepLTab.AutoScroll = true;
-            DeepLTab.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            DeepLTab.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             DeepLTab.Controls.Add(groupBox27);
             DeepLTab.Controls.Add(groupBox26);
             DeepLTab.Controls.Add(label53);
@@ -6828,44 +6815,83 @@
             // 
             // groupBox27
             // 
-            groupBox27.Controls.Add(this.rjToggleButtonAsTranslated2);
+            groupBox27.Controls.Add(textBoxCustomTranslationOuput);
+            groupBox27.Controls.Add(rjToggleBothLanguages);
+            groupBox27.Controls.Add(label208);
+            groupBox27.Controls.Add(rjToggleButtonAsTranslated2);
             groupBox27.Controls.Add(label16);
             groupBox27.Controls.Add(label24);
             groupBox27.Controls.Add(label118);
-            groupBox27.Controls.Add(this.rjToggleButtonVoiceWhatLang);
+            groupBox27.Controls.Add(rjToggleButtonVoiceWhatLang);
             groupBox27.ForeColor = Color.White;
             groupBox27.Location = new Point(11, 147);
             groupBox27.Margin = new Padding(3, 2, 3, 2);
             groupBox27.Name = "groupBox27";
             groupBox27.Padding = new Padding(3, 2, 3, 2);
-            groupBox27.Size = new Size(487, 131);
+            groupBox27.Size = new Size(724, 249);
             groupBox27.TabIndex = 112;
             groupBox27.TabStop = false;
             groupBox27.Text = "General Translation Settings";
             // 
+            // textBoxCustomTranslationOuput
+            // 
+            textBoxCustomTranslationOuput.Location = new Point(16, 171);
+            textBoxCustomTranslationOuput.Margin = new Padding(3, 2, 3, 2);
+            textBoxCustomTranslationOuput.Name = "textBoxCustomTranslationOuput";
+            textBoxCustomTranslationOuput.Size = new Size(655, 23);
+            textBoxCustomTranslationOuput.TabIndex = 114;
+            // 
+            // rjToggleBothLanguages
+            // 
+            rjToggleBothLanguages.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleBothLanguages.AutoSize = true;
+            rjToggleBothLanguages.Location = new Point(14, 143);
+            rjToggleBothLanguages.Margin = new Padding(3, 2, 3, 2);
+            rjToggleBothLanguages.MinimumSize = new Size(39, 16);
+            rjToggleBothLanguages.Name = "rjToggleBothLanguages";
+            rjToggleBothLanguages.OffBackColor = Color.Gray;
+            rjToggleBothLanguages.OffToggleColor = Color.Gainsboro;
+            rjToggleBothLanguages.OnBackColor = Color.MediumSlateBlue;
+            rjToggleBothLanguages.OnToggleColor = Color.WhiteSmoke;
+            rjToggleBothLanguages.Size = new Size(39, 16);
+            rjToggleBothLanguages.TabIndex = 113;
+            rjToggleBothLanguages.UseVisualStyleBackColor = true;
+            // 
+            // label208
+            // 
+            label208.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            label208.AutoSize = true;
+            label208.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label208.ForeColor = Color.Snow;
+            label208.Location = new Point(61, 142);
+            label208.Name = "label208";
+            label208.Size = new Size(230, 15);
+            label208.TabIndex = 112;
+            label208.Text = "Custom Translation Text Output (Override)";
+            // 
             // rjToggleButtonAsTranslated2
             // 
-            this.rjToggleButtonAsTranslated2.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleButtonAsTranslated2.AutoSize = true;
-            this.rjToggleButtonAsTranslated2.Location = new Point(22, 64);
-            this.rjToggleButtonAsTranslated2.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonAsTranslated2.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonAsTranslated2.Name = "rjToggleButtonAsTranslated2";
-            this.rjToggleButtonAsTranslated2.OffBackColor = Color.Gray;
-            this.rjToggleButtonAsTranslated2.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonAsTranslated2.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonAsTranslated2.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonAsTranslated2.Size = new Size(39, 16);
-            this.rjToggleButtonAsTranslated2.TabIndex = 77;
-            this.rjToggleButtonAsTranslated2.UseVisualStyleBackColor = true;
+            rjToggleButtonAsTranslated2.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleButtonAsTranslated2.AutoSize = true;
+            rjToggleButtonAsTranslated2.Location = new Point(14, 53);
+            rjToggleButtonAsTranslated2.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonAsTranslated2.MinimumSize = new Size(39, 16);
+            rjToggleButtonAsTranslated2.Name = "rjToggleButtonAsTranslated2";
+            rjToggleButtonAsTranslated2.OffBackColor = Color.Gray;
+            rjToggleButtonAsTranslated2.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonAsTranslated2.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonAsTranslated2.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonAsTranslated2.Size = new Size(39, 16);
+            rjToggleButtonAsTranslated2.TabIndex = 77;
+            rjToggleButtonAsTranslated2.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
-            label16.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label16.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label16.ForeColor = Color.Snow;
-            label16.Location = new Point(69, 63);
+            label16.Location = new Point(61, 52);
             label16.Name = "label16";
             label16.Size = new Size(152, 15);
             label16.TabIndex = 34;
@@ -6882,11 +6908,11 @@
             // 
             // label118
             // 
-            label118.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label118.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label118.AutoSize = true;
             label118.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label118.ForeColor = Color.Snow;
-            label118.Location = new Point(69, 94);
+            label118.Location = new Point(60, 84);
             label118.Name = "label118";
             label118.Size = new Size(180, 15);
             label118.TabIndex = 106;
@@ -6894,27 +6920,27 @@
             // 
             // rjToggleButtonVoiceWhatLang
             // 
-            this.rjToggleButtonVoiceWhatLang.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleButtonVoiceWhatLang.AutoSize = true;
-            this.rjToggleButtonVoiceWhatLang.Checked = true;
-            this.rjToggleButtonVoiceWhatLang.CheckState = CheckState.Checked;
-            this.rjToggleButtonVoiceWhatLang.Location = new Point(21, 94);
-            this.rjToggleButtonVoiceWhatLang.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonVoiceWhatLang.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonVoiceWhatLang.Name = "rjToggleButtonVoiceWhatLang";
-            this.rjToggleButtonVoiceWhatLang.OffBackColor = Color.Gray;
-            this.rjToggleButtonVoiceWhatLang.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonVoiceWhatLang.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonVoiceWhatLang.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonVoiceWhatLang.Size = new Size(39, 16);
-            this.rjToggleButtonVoiceWhatLang.TabIndex = 107;
-            this.rjToggleButtonVoiceWhatLang.UseVisualStyleBackColor = true;
+            rjToggleButtonVoiceWhatLang.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleButtonVoiceWhatLang.AutoSize = true;
+            rjToggleButtonVoiceWhatLang.Checked = true;
+            rjToggleButtonVoiceWhatLang.CheckState = CheckState.Checked;
+            rjToggleButtonVoiceWhatLang.Location = new Point(12, 84);
+            rjToggleButtonVoiceWhatLang.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonVoiceWhatLang.MinimumSize = new Size(39, 16);
+            rjToggleButtonVoiceWhatLang.Name = "rjToggleButtonVoiceWhatLang";
+            rjToggleButtonVoiceWhatLang.OffBackColor = Color.Gray;
+            rjToggleButtonVoiceWhatLang.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonVoiceWhatLang.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonVoiceWhatLang.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonVoiceWhatLang.Size = new Size(39, 16);
+            rjToggleButtonVoiceWhatLang.TabIndex = 107;
+            rjToggleButtonVoiceWhatLang.UseVisualStyleBackColor = true;
             // 
             // groupBox26
             // 
-            groupBox26.Controls.Add(this.ShowDeepLPassword);
+            groupBox26.Controls.Add(ShowDeepLPassword);
             groupBox26.Controls.Add(label51);
-            groupBox26.Controls.Add(this.iconButton43);
+            groupBox26.Controls.Add(iconButton43);
             groupBox26.Controls.Add(button18);
             groupBox26.Controls.Add(textBoxDeepLKey);
             groupBox26.ForeColor = Color.White;
@@ -6929,22 +6955,22 @@
             // 
             // ShowDeepLPassword
             // 
-            this.ShowDeepLPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ShowDeepLPassword.BackColor = Color.White;
-            this.ShowDeepLPassword.FlatAppearance.BorderSize = 0;
-            this.ShowDeepLPassword.FlatStyle = FlatStyle.Flat;
-            this.ShowDeepLPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowDeepLPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ShowDeepLPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowDeepLPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ShowDeepLPassword.IconSize = 15;
-            this.ShowDeepLPassword.Location = new Point(288, 36);
-            this.ShowDeepLPassword.Margin = new Padding(3, 2, 3, 2);
-            this.ShowDeepLPassword.Name = "ShowDeepLPassword";
-            this.ShowDeepLPassword.Size = new Size(31, 18);
-            this.ShowDeepLPassword.TabIndex = 122;
-            this.ShowDeepLPassword.UseVisualStyleBackColor = false;
-            this.ShowDeepLPassword.Click += this.ShowDeepLPassword_Click;
+            ShowDeepLPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ShowDeepLPassword.BackColor = Color.White;
+            ShowDeepLPassword.FlatAppearance.BorderSize = 0;
+            ShowDeepLPassword.FlatStyle = FlatStyle.Flat;
+            ShowDeepLPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowDeepLPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ShowDeepLPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowDeepLPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ShowDeepLPassword.IconSize = 15;
+            ShowDeepLPassword.Location = new Point(288, 36);
+            ShowDeepLPassword.Margin = new Padding(3, 2, 3, 2);
+            ShowDeepLPassword.Name = "ShowDeepLPassword";
+            ShowDeepLPassword.Size = new Size(31, 18);
+            ShowDeepLPassword.TabIndex = 122;
+            ShowDeepLPassword.UseVisualStyleBackColor = false;
+            ShowDeepLPassword.Click += (this.ShowDeepLPassword_Click);
             // 
             // label51
             // 
@@ -6958,28 +6984,28 @@
             // 
             // iconButton43
             // 
-            this.iconButton43.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton43.FlatAppearance.BorderSize = 0;
-            this.iconButton43.FlatStyle = FlatStyle.Flat;
-            this.iconButton43.ForeColor = Color.Snow;
-            this.iconButton43.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton43.IconColor = Color.White;
-            this.iconButton43.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton43.IconSize = 40;
-            this.iconButton43.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton43.Location = new Point(428, 17);
-            this.iconButton43.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton43.Name = "iconButton43";
-            this.iconButton43.Size = new Size(53, 53);
-            this.iconButton43.TabIndex = 110;
-            this.iconButton43.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton43.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton43.UseVisualStyleBackColor = true;
-            this.iconButton43.Click += this.iconButton43_Click;
+            iconButton43.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton43.FlatAppearance.BorderSize = 0;
+            iconButton43.FlatStyle = FlatStyle.Flat;
+            iconButton43.ForeColor = Color.Snow;
+            iconButton43.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton43.IconColor = Color.White;
+            iconButton43.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton43.IconSize = 40;
+            iconButton43.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton43.Location = new Point(428, 17);
+            iconButton43.Margin = new Padding(3, 2, 3, 2);
+            iconButton43.Name = "iconButton43";
+            iconButton43.Size = new Size(53, 53);
+            iconButton43.TabIndex = 110;
+            iconButton43.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton43.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton43.UseVisualStyleBackColor = true;
+            iconButton43.Click += (this.iconButton43_Click);
             // 
             // button18
             // 
-            button18.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button18.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button18.FlatStyle = FlatStyle.Flat;
             button18.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button18.ForeColor = Color.Snow;
@@ -6990,7 +7016,7 @@
             button18.TabIndex = 29;
             button18.Text = "Apply";
             button18.UseVisualStyleBackColor = false;
-            button18.Click += this.button18_Click_1;
+            button18.Click += (this.button18_Click_1);
             // 
             // textBoxDeepLKey
             // 
@@ -7015,7 +7041,7 @@
             // discordTab
             // 
             discordTab.AutoScroll = true;
-            discordTab.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            discordTab.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             discordTab.Controls.Add(label59);
             discordTab.Controls.Add(groupBox29);
             discordTab.Location = new Point(4, 24);
@@ -7039,7 +7065,7 @@
             // 
             // groupBox29
             // 
-            groupBox29.Controls.Add(this.iconButton44);
+            groupBox29.Controls.Add(iconButton44);
             groupBox29.Controls.Add(label58);
             groupBox29.Controls.Add(button15);
             groupBox29.Controls.Add(label31);
@@ -7047,7 +7073,7 @@
             groupBox29.Controls.Add(textBoxDiscTimer);
             groupBox29.Controls.Add(textBoxDiscordPara);
             groupBox29.Controls.Add(label33);
-            groupBox29.Controls.Add(this.rjToggleDiscordToast);
+            groupBox29.Controls.Add(rjToggleDiscordToast);
             groupBox29.ForeColor = Color.White;
             groupBox29.Location = new Point(23, 40);
             groupBox29.Margin = new Padding(3, 2, 3, 2);
@@ -7060,23 +7086,23 @@
             // 
             // iconButton44
             // 
-            this.iconButton44.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton44.FlatAppearance.BorderSize = 0;
-            this.iconButton44.FlatStyle = FlatStyle.Flat;
-            this.iconButton44.ForeColor = Color.Snow;
-            this.iconButton44.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton44.IconColor = Color.White;
-            this.iconButton44.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton44.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton44.Location = new Point(621, 17);
-            this.iconButton44.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton44.Name = "iconButton44";
-            this.iconButton44.Size = new Size(54, 57);
-            this.iconButton44.TabIndex = 111;
-            this.iconButton44.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton44.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton44.UseVisualStyleBackColor = true;
-            this.iconButton44.Click += this.iconButton44_Click;
+            iconButton44.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton44.FlatAppearance.BorderSize = 0;
+            iconButton44.FlatStyle = FlatStyle.Flat;
+            iconButton44.ForeColor = Color.Snow;
+            iconButton44.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton44.IconColor = Color.White;
+            iconButton44.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton44.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton44.Location = new Point(621, 17);
+            iconButton44.Margin = new Padding(3, 2, 3, 2);
+            iconButton44.Name = "iconButton44";
+            iconButton44.Size = new Size(54, 57);
+            iconButton44.TabIndex = 111;
+            iconButton44.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton44.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton44.UseVisualStyleBackColor = true;
+            iconButton44.Click += (this.iconButton44_Click);
             // 
             // label58
             // 
@@ -7089,7 +7115,7 @@
             // 
             // button15
             // 
-            button15.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button15.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button15.FlatStyle = FlatStyle.Flat;
             button15.ForeColor = Color.Snow;
             button15.Location = new Point(479, 117);
@@ -7099,7 +7125,7 @@
             button15.TabIndex = 119;
             button15.Text = "Get Free Compatible VRChat Asset";
             button15.UseVisualStyleBackColor = false;
-            button15.Click += this.button15_Click_1;
+            button15.Click += (this.button15_Click_1);
             // 
             // label31
             // 
@@ -7154,24 +7180,24 @@
             // 
             // rjToggleDiscordToast
             // 
-            this.rjToggleDiscordToast.AutoSize = true;
-            this.rjToggleDiscordToast.Location = new Point(5, 50);
-            this.rjToggleDiscordToast.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleDiscordToast.MinimumSize = new Size(39, 16);
-            this.rjToggleDiscordToast.Name = "rjToggleDiscordToast";
-            this.rjToggleDiscordToast.OffBackColor = Color.Gray;
-            this.rjToggleDiscordToast.OffToggleColor = Color.Gainsboro;
-            this.rjToggleDiscordToast.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleDiscordToast.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleDiscordToast.Size = new Size(39, 16);
-            this.rjToggleDiscordToast.TabIndex = 103;
-            this.rjToggleDiscordToast.UseVisualStyleBackColor = true;
+            rjToggleDiscordToast.AutoSize = true;
+            rjToggleDiscordToast.Location = new Point(5, 50);
+            rjToggleDiscordToast.Margin = new Padding(3, 2, 3, 2);
+            rjToggleDiscordToast.MinimumSize = new Size(39, 16);
+            rjToggleDiscordToast.Name = "rjToggleDiscordToast";
+            rjToggleDiscordToast.OffBackColor = Color.Gray;
+            rjToggleDiscordToast.OffToggleColor = Color.Gainsboro;
+            rjToggleDiscordToast.OnBackColor = Color.MediumSlateBlue;
+            rjToggleDiscordToast.OnToggleColor = Color.WhiteSmoke;
+            rjToggleDiscordToast.Size = new Size(39, 16);
+            rjToggleDiscordToast.TabIndex = 103;
+            rjToggleDiscordToast.UseVisualStyleBackColor = true;
             // 
             // Replacements
             // 
             Replacements.AutoScroll = true;
-            Replacements.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            Replacements.Controls.Add(this.iconButton45);
+            Replacements.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            Replacements.Controls.Add(iconButton45);
             Replacements.Controls.Add(groupBox33);
             Replacements.Controls.Add(groupBox31);
             Replacements.Controls.Add(groupBox32);
@@ -7187,29 +7213,29 @@
             // 
             // iconButton45
             // 
-            this.iconButton45.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton45.FlatAppearance.BorderSize = 0;
-            this.iconButton45.FlatStyle = FlatStyle.Flat;
-            this.iconButton45.ForeColor = Color.Snow;
-            this.iconButton45.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton45.IconColor = Color.White;
-            this.iconButton45.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton45.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton45.Location = new Point(706, 4);
-            this.iconButton45.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton45.Name = "iconButton45";
-            this.iconButton45.Size = new Size(51, 55);
-            this.iconButton45.TabIndex = 160;
-            this.iconButton45.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton45.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton45.UseVisualStyleBackColor = true;
-            this.iconButton45.Click += this.iconButton45_Click;
+            iconButton45.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton45.FlatAppearance.BorderSize = 0;
+            iconButton45.FlatStyle = FlatStyle.Flat;
+            iconButton45.ForeColor = Color.Snow;
+            iconButton45.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton45.IconColor = Color.White;
+            iconButton45.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton45.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton45.Location = new Point(706, 4);
+            iconButton45.Margin = new Padding(3, 2, 3, 2);
+            iconButton45.Name = "iconButton45";
+            iconButton45.Size = new Size(51, 55);
+            iconButton45.TabIndex = 160;
+            iconButton45.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton45.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton45.UseVisualStyleBackColor = true;
+            iconButton45.Click += (this.iconButton45_Click);
             // 
             // groupBox33
             // 
-            groupBox33.Anchor = (AnchorStyles)(((AnchorStyles.Bottom) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            groupBox33.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             groupBox33.Controls.Add(label62);
-            groupBox33.Controls.Add(this.rjToggleReplaceBeforeTTS);
+            groupBox33.Controls.Add(rjToggleReplaceBeforeTTS);
             groupBox33.ForeColor = Color.White;
             groupBox33.Location = new Point(11, 508);
             groupBox33.Margin = new Padding(3, 2, 3, 2);
@@ -7222,7 +7248,7 @@
             // 
             // label62
             // 
-            label62.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label62.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label62.AutoSize = true;
             label62.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label62.ForeColor = Color.Snow;
@@ -7234,31 +7260,31 @@
             // 
             // rjToggleReplaceBeforeTTS
             // 
-            this.rjToggleReplaceBeforeTTS.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleReplaceBeforeTTS.AutoSize = true;
-            this.rjToggleReplaceBeforeTTS.Checked = true;
-            this.rjToggleReplaceBeforeTTS.CheckState = CheckState.Checked;
-            this.rjToggleReplaceBeforeTTS.Location = new Point(7, 29);
-            this.rjToggleReplaceBeforeTTS.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleReplaceBeforeTTS.MinimumSize = new Size(39, 16);
-            this.rjToggleReplaceBeforeTTS.Name = "rjToggleReplaceBeforeTTS";
-            this.rjToggleReplaceBeforeTTS.OffBackColor = Color.Gray;
-            this.rjToggleReplaceBeforeTTS.OffToggleColor = Color.Gainsboro;
-            this.rjToggleReplaceBeforeTTS.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleReplaceBeforeTTS.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleReplaceBeforeTTS.Size = new Size(39, 16);
-            this.rjToggleReplaceBeforeTTS.TabIndex = 163;
-            this.rjToggleReplaceBeforeTTS.UseVisualStyleBackColor = true;
+            rjToggleReplaceBeforeTTS.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleReplaceBeforeTTS.AutoSize = true;
+            rjToggleReplaceBeforeTTS.Checked = true;
+            rjToggleReplaceBeforeTTS.CheckState = CheckState.Checked;
+            rjToggleReplaceBeforeTTS.Location = new Point(7, 29);
+            rjToggleReplaceBeforeTTS.Margin = new Padding(3, 2, 3, 2);
+            rjToggleReplaceBeforeTTS.MinimumSize = new Size(39, 16);
+            rjToggleReplaceBeforeTTS.Name = "rjToggleReplaceBeforeTTS";
+            rjToggleReplaceBeforeTTS.OffBackColor = Color.Gray;
+            rjToggleReplaceBeforeTTS.OffToggleColor = Color.Gainsboro;
+            rjToggleReplaceBeforeTTS.OnBackColor = Color.MediumSlateBlue;
+            rjToggleReplaceBeforeTTS.OnToggleColor = Color.WhiteSmoke;
+            rjToggleReplaceBeforeTTS.Size = new Size(39, 16);
+            rjToggleReplaceBeforeTTS.TabIndex = 163;
+            rjToggleReplaceBeforeTTS.UseVisualStyleBackColor = true;
             // 
             // groupBox31
             // 
-            groupBox31.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
-            groupBox31.Controls.Add(this.buttonExportWR);
-            groupBox31.Controls.Add(this.buttonImportWR);
+            groupBox31.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            groupBox31.Controls.Add(buttonExportWR);
+            groupBox31.Controls.Add(buttonImportWR);
             groupBox31.Controls.Add(button19);
             groupBox31.Controls.Add(checkedListBoxReplacements);
             groupBox31.Controls.Add(label61);
-            groupBox31.Controls.Add(this.rjToggleButton7);
+            groupBox31.Controls.Add(rjToggleButton7);
             groupBox31.ForeColor = Color.White;
             groupBox31.Location = new Point(11, 150);
             groupBox31.Margin = new Padding(3, 2, 3, 2);
@@ -7271,50 +7297,50 @@
             // 
             // buttonExportWR
             // 
-            this.buttonExportWR.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonExportWR.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonExportWR.FlatStyle = FlatStyle.Flat;
-            this.buttonExportWR.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonExportWR.ForeColor = Color.Snow;
-            this.buttonExportWR.IconChar = global::FontAwesome.Sharp.IconChar.FileExport;
-            this.buttonExportWR.IconColor = Color.White;
-            this.buttonExportWR.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonExportWR.IconSize = 15;
-            this.buttonExportWR.Location = new Point(100, 256);
-            this.buttonExportWR.Margin = new Padding(3, 2, 3, 2);
-            this.buttonExportWR.Name = "buttonExportWR";
-            this.buttonExportWR.Size = new Size(87, 25);
-            this.buttonExportWR.TabIndex = 163;
-            this.buttonExportWR.Text = "Export";
-            this.buttonExportWR.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonExportWR.UseVisualStyleBackColor = false;
-            this.buttonExportWR.Click += this.buttonExportWR_Click;
+            buttonExportWR.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonExportWR.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonExportWR.FlatStyle = FlatStyle.Flat;
+            buttonExportWR.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExportWR.ForeColor = Color.Snow;
+            buttonExportWR.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            buttonExportWR.IconColor = Color.White;
+            buttonExportWR.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonExportWR.IconSize = 15;
+            buttonExportWR.Location = new Point(100, 256);
+            buttonExportWR.Margin = new Padding(3, 2, 3, 2);
+            buttonExportWR.Name = "buttonExportWR";
+            buttonExportWR.Size = new Size(87, 25);
+            buttonExportWR.TabIndex = 163;
+            buttonExportWR.Text = "Export";
+            buttonExportWR.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonExportWR.UseVisualStyleBackColor = false;
+            buttonExportWR.Click += (this.buttonExportWR_Click);
             // 
             // buttonImportWR
             // 
-            this.buttonImportWR.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.buttonImportWR.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            this.buttonImportWR.FlatStyle = FlatStyle.Flat;
-            this.buttonImportWR.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            this.buttonImportWR.ForeColor = Color.Snow;
-            this.buttonImportWR.IconChar = global::FontAwesome.Sharp.IconChar.FileImport;
-            this.buttonImportWR.IconColor = Color.White;
-            this.buttonImportWR.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.buttonImportWR.IconSize = 15;
-            this.buttonImportWR.Location = new Point(7, 256);
-            this.buttonImportWR.Margin = new Padding(3, 2, 3, 2);
-            this.buttonImportWR.Name = "buttonImportWR";
-            this.buttonImportWR.Size = new Size(87, 25);
-            this.buttonImportWR.TabIndex = 162;
-            this.buttonImportWR.Text = "Import";
-            this.buttonImportWR.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.buttonImportWR.UseVisualStyleBackColor = false;
-            this.buttonImportWR.Click += this.buttonImportWR_Click;
+            buttonImportWR.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            buttonImportWR.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonImportWR.FlatStyle = FlatStyle.Flat;
+            buttonImportWR.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonImportWR.ForeColor = Color.Snow;
+            buttonImportWR.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            buttonImportWR.IconColor = Color.White;
+            buttonImportWR.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            buttonImportWR.IconSize = 15;
+            buttonImportWR.Location = new Point(7, 256);
+            buttonImportWR.Margin = new Padding(3, 2, 3, 2);
+            buttonImportWR.Name = "buttonImportWR";
+            buttonImportWR.Size = new Size(87, 25);
+            buttonImportWR.TabIndex = 162;
+            buttonImportWR.Text = "Import";
+            buttonImportWR.TextImageRelation = TextImageRelation.ImageBeforeText;
+            buttonImportWR.UseVisualStyleBackColor = false;
+            buttonImportWR.Click += (this.buttonImportWR_Click);
             // 
             // button19
             // 
-            button19.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            button19.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button19.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            button19.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button19.FlatStyle = FlatStyle.Flat;
             button19.ForeColor = Color.Snow;
             button19.Location = new Point(671, 319);
@@ -7324,11 +7350,11 @@
             button19.TabIndex = 159;
             button19.Text = "Clear All";
             button19.UseVisualStyleBackColor = false;
-            button19.Click += this.button19_Click_1;
+            button19.Click += (this.button19_Click_1);
             // 
             // checkedListBoxReplacements
             // 
-            checkedListBoxReplacements.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            checkedListBoxReplacements.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             checkedListBoxReplacements.Font = new Font("Segoe UI", 7.2F, FontStyle.Regular, GraphicsUnit.Point);
             checkedListBoxReplacements.FormattingEnabled = true;
             checkedListBoxReplacements.Location = new Point(7, 20);
@@ -7336,11 +7362,11 @@
             checkedListBoxReplacements.Name = "checkedListBoxReplacements";
             checkedListBoxReplacements.Size = new Size(740, 229);
             checkedListBoxReplacements.TabIndex = 142;
-            checkedListBoxReplacements.MouseDoubleClick += this.checkedListBoxReplacements_MouseDoubleClick;
+            checkedListBoxReplacements.MouseDoubleClick += (this.checkedListBoxReplacements_MouseDoubleClick);
             // 
             // label61
             // 
-            label61.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            label61.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label61.AutoSize = true;
             label61.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label61.ForeColor = Color.Snow;
@@ -7352,23 +7378,23 @@
             // 
             // rjToggleButton7
             // 
-            this.rjToggleButton7.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
-            this.rjToggleButton7.AutoSize = true;
-            this.rjToggleButton7.Location = new Point(7, 316);
-            this.rjToggleButton7.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButton7.MinimumSize = new Size(39, 16);
-            this.rjToggleButton7.Name = "rjToggleButton7";
-            this.rjToggleButton7.OffBackColor = Color.Gray;
-            this.rjToggleButton7.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButton7.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButton7.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButton7.Size = new Size(39, 16);
-            this.rjToggleButton7.TabIndex = 161;
-            this.rjToggleButton7.UseVisualStyleBackColor = true;
+            rjToggleButton7.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleButton7.AutoSize = true;
+            rjToggleButton7.Location = new Point(7, 316);
+            rjToggleButton7.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButton7.MinimumSize = new Size(39, 16);
+            rjToggleButton7.Name = "rjToggleButton7";
+            rjToggleButton7.OffBackColor = Color.Gray;
+            rjToggleButton7.OffToggleColor = Color.Gainsboro;
+            rjToggleButton7.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButton7.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButton7.Size = new Size(39, 16);
+            rjToggleButton7.TabIndex = 161;
+            rjToggleButton7.UseVisualStyleBackColor = true;
             // 
             // groupBox32
             // 
-            groupBox32.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            groupBox32.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             groupBox32.Controls.Add(label64);
             groupBox32.Controls.Add(textBoxReplaceWord);
             groupBox32.Controls.Add(label65);
@@ -7414,7 +7440,7 @@
             // 
             // buttonReplaceAdd
             // 
-            buttonReplaceAdd.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonReplaceAdd.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonReplaceAdd.FlatStyle = FlatStyle.Flat;
             buttonReplaceAdd.ForeColor = Color.Snow;
             buttonReplaceAdd.Location = new Point(671, 45);
@@ -7424,7 +7450,7 @@
             buttonReplaceAdd.TabIndex = 133;
             buttonReplaceAdd.Text = "Add";
             buttonReplaceAdd.UseVisualStyleBackColor = false;
-            buttonReplaceAdd.Click += this.buttonReplaceAdd_Click;
+            buttonReplaceAdd.Click += (this.buttonReplaceAdd_Click);
             // 
             // textBoxOriginalWord
             // 
@@ -7458,7 +7484,7 @@
             // AmazonPolly
             // 
             AmazonPolly.AutoScroll = true;
-            AmazonPolly.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            AmazonPolly.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             AmazonPolly.Controls.Add(groupBox16);
             AmazonPolly.Controls.Add(label83);
             AmazonPolly.Location = new Point(4, 24);
@@ -7471,10 +7497,10 @@
             // 
             // groupBox16
             // 
-            groupBox16.Controls.Add(this.ShowAmazonSecretPassword);
-            groupBox16.Controls.Add(this.ShowAmazonKeyPassword);
+            groupBox16.Controls.Add(ShowAmazonSecretPassword);
+            groupBox16.Controls.Add(ShowAmazonKeyPassword);
             groupBox16.Controls.Add(label74);
-            groupBox16.Controls.Add(this.iconButton18);
+            groupBox16.Controls.Add(iconButton18);
             groupBox16.Controls.Add(button29);
             groupBox16.Controls.Add(textBoxAmazonSecret);
             groupBox16.Controls.Add(label75);
@@ -7495,41 +7521,41 @@
             // 
             // ShowAmazonSecretPassword
             // 
-            this.ShowAmazonSecretPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ShowAmazonSecretPassword.BackColor = Color.White;
-            this.ShowAmazonSecretPassword.FlatAppearance.BorderSize = 0;
-            this.ShowAmazonSecretPassword.FlatStyle = FlatStyle.Flat;
-            this.ShowAmazonSecretPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowAmazonSecretPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ShowAmazonSecretPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowAmazonSecretPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ShowAmazonSecretPassword.IconSize = 15;
-            this.ShowAmazonSecretPassword.Location = new Point(288, 90);
-            this.ShowAmazonSecretPassword.Margin = new Padding(3, 2, 3, 2);
-            this.ShowAmazonSecretPassword.Name = "ShowAmazonSecretPassword";
-            this.ShowAmazonSecretPassword.Size = new Size(31, 18);
-            this.ShowAmazonSecretPassword.TabIndex = 123;
-            this.ShowAmazonSecretPassword.UseVisualStyleBackColor = false;
-            this.ShowAmazonSecretPassword.Click += this.ShowAmazonSecretPassword_Click;
+            ShowAmazonSecretPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ShowAmazonSecretPassword.BackColor = Color.White;
+            ShowAmazonSecretPassword.FlatAppearance.BorderSize = 0;
+            ShowAmazonSecretPassword.FlatStyle = FlatStyle.Flat;
+            ShowAmazonSecretPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowAmazonSecretPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ShowAmazonSecretPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowAmazonSecretPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ShowAmazonSecretPassword.IconSize = 15;
+            ShowAmazonSecretPassword.Location = new Point(288, 90);
+            ShowAmazonSecretPassword.Margin = new Padding(3, 2, 3, 2);
+            ShowAmazonSecretPassword.Name = "ShowAmazonSecretPassword";
+            ShowAmazonSecretPassword.Size = new Size(31, 18);
+            ShowAmazonSecretPassword.TabIndex = 123;
+            ShowAmazonSecretPassword.UseVisualStyleBackColor = false;
+            ShowAmazonSecretPassword.Click += (this.ShowAmazonSecretPassword_Click);
             // 
             // ShowAmazonKeyPassword
             // 
-            this.ShowAmazonKeyPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ShowAmazonKeyPassword.BackColor = Color.White;
-            this.ShowAmazonKeyPassword.FlatAppearance.BorderSize = 0;
-            this.ShowAmazonKeyPassword.FlatStyle = FlatStyle.Flat;
-            this.ShowAmazonKeyPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowAmazonKeyPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ShowAmazonKeyPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowAmazonKeyPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ShowAmazonKeyPassword.IconSize = 15;
-            this.ShowAmazonKeyPassword.Location = new Point(288, 36);
-            this.ShowAmazonKeyPassword.Margin = new Padding(3, 2, 3, 2);
-            this.ShowAmazonKeyPassword.Name = "ShowAmazonKeyPassword";
-            this.ShowAmazonKeyPassword.Size = new Size(31, 18);
-            this.ShowAmazonKeyPassword.TabIndex = 122;
-            this.ShowAmazonKeyPassword.UseVisualStyleBackColor = false;
-            this.ShowAmazonKeyPassword.Click += this.ShowAmazonKeyPassword_Click;
+            ShowAmazonKeyPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ShowAmazonKeyPassword.BackColor = Color.White;
+            ShowAmazonKeyPassword.FlatAppearance.BorderSize = 0;
+            ShowAmazonKeyPassword.FlatStyle = FlatStyle.Flat;
+            ShowAmazonKeyPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowAmazonKeyPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ShowAmazonKeyPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowAmazonKeyPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ShowAmazonKeyPassword.IconSize = 15;
+            ShowAmazonKeyPassword.Location = new Point(288, 36);
+            ShowAmazonKeyPassword.Margin = new Padding(3, 2, 3, 2);
+            ShowAmazonKeyPassword.Name = "ShowAmazonKeyPassword";
+            ShowAmazonKeyPassword.Size = new Size(31, 18);
+            ShowAmazonKeyPassword.TabIndex = 122;
+            ShowAmazonKeyPassword.UseVisualStyleBackColor = false;
+            ShowAmazonKeyPassword.Click += (this.ShowAmazonKeyPassword_Click);
             // 
             // label74
             // 
@@ -7543,27 +7569,27 @@
             // 
             // iconButton18
             // 
-            this.iconButton18.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton18.FlatAppearance.BorderSize = 0;
-            this.iconButton18.FlatStyle = FlatStyle.Flat;
-            this.iconButton18.ForeColor = Color.Snow;
-            this.iconButton18.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton18.IconColor = Color.White;
-            this.iconButton18.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton18.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton18.Location = new Point(429, 17);
-            this.iconButton18.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton18.Name = "iconButton18";
-            this.iconButton18.Size = new Size(55, 54);
-            this.iconButton18.TabIndex = 110;
-            this.iconButton18.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton18.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton18.UseVisualStyleBackColor = true;
-            this.iconButton18.Click += this.iconButton18_Click_1;
+            iconButton18.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton18.FlatAppearance.BorderSize = 0;
+            iconButton18.FlatStyle = FlatStyle.Flat;
+            iconButton18.ForeColor = Color.Snow;
+            iconButton18.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton18.IconColor = Color.White;
+            iconButton18.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton18.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton18.Location = new Point(429, 17);
+            iconButton18.Margin = new Padding(3, 2, 3, 2);
+            iconButton18.Name = "iconButton18";
+            iconButton18.Size = new Size(55, 54);
+            iconButton18.TabIndex = 110;
+            iconButton18.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton18.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton18.UseVisualStyleBackColor = true;
+            iconButton18.Click += (this.iconButton18_Click_1);
             // 
             // button29
             // 
-            button29.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button29.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button29.FlatStyle = FlatStyle.Flat;
             button29.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button29.ForeColor = Color.Snow;
@@ -7574,7 +7600,7 @@
             button29.TabIndex = 35;
             button29.Text = "Apply";
             button29.UseVisualStyleBackColor = false;
-            button29.Click += this.button29_Click;
+            button29.Click += (this.button29_Click);
             // 
             // textBoxAmazonSecret
             // 
@@ -7597,7 +7623,7 @@
             // 
             // button30
             // 
-            button30.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button30.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button30.FlatStyle = FlatStyle.Flat;
             button30.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button30.ForeColor = Color.Snow;
@@ -7608,7 +7634,7 @@
             button30.TabIndex = 32;
             button30.Text = "Apply";
             button30.UseVisualStyleBackColor = false;
-            button30.Click += this.button30_Click;
+            button30.Click += (this.button30_Click);
             // 
             // textBox8
             // 
@@ -7630,7 +7656,7 @@
             // 
             // button31
             // 
-            button31.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button31.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button31.FlatStyle = FlatStyle.Flat;
             button31.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button31.ForeColor = Color.Snow;
@@ -7641,7 +7667,7 @@
             button31.TabIndex = 29;
             button31.Text = "Apply";
             button31.UseVisualStyleBackColor = false;
-            button31.Click += this.button31_Click;
+            button31.Click += (this.button31_Click);
             // 
             // textBoxAmazonKey
             // 
@@ -7666,8 +7692,8 @@
             // VRCOSC
             // 
             VRCOSC.AutoScroll = true;
-            VRCOSC.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            VRCOSC.Controls.Add(this.iconButton47);
+            VRCOSC.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            VRCOSC.Controls.Add(iconButton47);
             VRCOSC.Controls.Add(groupBox37);
             VRCOSC.Controls.Add(groupBox36);
             VRCOSC.Controls.Add(groupBox25);
@@ -7683,24 +7709,24 @@
             // 
             // iconButton47
             // 
-            this.iconButton47.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton47.FlatAppearance.BorderSize = 0;
-            this.iconButton47.FlatStyle = FlatStyle.Flat;
-            this.iconButton47.ForeColor = Color.Snow;
-            this.iconButton47.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton47.IconColor = Color.White;
-            this.iconButton47.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton47.IconSize = 40;
-            this.iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton47.Location = new Point(713, 9);
-            this.iconButton47.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton47.Name = "iconButton47";
-            this.iconButton47.Size = new Size(44, 46);
-            this.iconButton47.TabIndex = 163;
-            this.iconButton47.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton47.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton47.UseVisualStyleBackColor = true;
-            this.iconButton47.Click += this.iconButton47_Click;
+            iconButton47.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton47.FlatAppearance.BorderSize = 0;
+            iconButton47.FlatStyle = FlatStyle.Flat;
+            iconButton47.ForeColor = Color.Snow;
+            iconButton47.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton47.IconColor = Color.White;
+            iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton47.IconSize = 40;
+            iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton47.Location = new Point(713, 9);
+            iconButton47.Margin = new Padding(3, 2, 3, 2);
+            iconButton47.Name = "iconButton47";
+            iconButton47.Size = new Size(44, 46);
+            iconButton47.TabIndex = 163;
+            iconButton47.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton47.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton47.UseVisualStyleBackColor = true;
+            iconButton47.Click += (this.iconButton47_Click);
             // 
             // groupBox37
             // 
@@ -7713,7 +7739,7 @@
             groupBox37.Controls.Add(buttonResetCounter2);
             groupBox37.Controls.Add(buttonResetCounter1);
             groupBox37.Controls.Add(label166);
-            groupBox37.Controls.Add(this.rjToggleButtonResetButtonsCounter);
+            groupBox37.Controls.Add(rjToggleButtonResetButtonsCounter);
             groupBox37.Controls.Add(buttonResetCounterAll);
             groupBox37.Controls.Add(label119);
             groupBox37.Controls.Add(textBoxCounter6);
@@ -7724,7 +7750,7 @@
             groupBox37.Controls.Add(textBoxCounterMessage5);
             groupBox37.Controls.Add(label116);
             groupBox37.Controls.Add(label112);
-            groupBox37.Controls.Add(this.rjToggleButtonCounterSaver);
+            groupBox37.Controls.Add(rjToggleButtonCounterSaver);
             groupBox37.Controls.Add(label96);
             groupBox37.Controls.Add(textBoxCounter4);
             groupBox37.Controls.Add(textBoxCounterMessage4);
@@ -7734,7 +7760,7 @@
             groupBox37.Controls.Add(textBoxCounterMessage3);
             groupBox37.Controls.Add(label89);
             groupBox37.Controls.Add(label95);
-            groupBox37.Controls.Add(this.rjToggleButtonOutputVRCCountersOnContact);
+            groupBox37.Controls.Add(rjToggleButtonOutputVRCCountersOnContact);
             groupBox37.Controls.Add(label88);
             groupBox37.Controls.Add(textBoxCounter2);
             groupBox37.Controls.Add(textBoxCounterMessage2);
@@ -7775,7 +7801,7 @@
             // 
             // buttonResetCounter6
             // 
-            buttonResetCounter6.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounter6.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounter6.Enabled = false;
             buttonResetCounter6.FlatStyle = FlatStyle.Flat;
             buttonResetCounter6.ForeColor = Color.Snow;
@@ -7786,11 +7812,11 @@
             buttonResetCounter6.TabIndex = 153;
             buttonResetCounter6.Text = "Reset";
             buttonResetCounter6.UseVisualStyleBackColor = false;
-            buttonResetCounter6.Click += this.buttonResetCounter6_Click;
+            buttonResetCounter6.Click += (this.buttonResetCounter6_Click);
             // 
             // buttonResetCounter5
             // 
-            buttonResetCounter5.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounter5.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounter5.Enabled = false;
             buttonResetCounter5.FlatStyle = FlatStyle.Flat;
             buttonResetCounter5.ForeColor = Color.Snow;
@@ -7801,11 +7827,11 @@
             buttonResetCounter5.TabIndex = 152;
             buttonResetCounter5.Text = "Reset";
             buttonResetCounter5.UseVisualStyleBackColor = false;
-            buttonResetCounter5.Click += this.buttonResetCounter5_Click;
+            buttonResetCounter5.Click += (this.buttonResetCounter5_Click);
             // 
             // buttonResetCounter4
             // 
-            buttonResetCounter4.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounter4.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounter4.Enabled = false;
             buttonResetCounter4.FlatStyle = FlatStyle.Flat;
             buttonResetCounter4.ForeColor = Color.Snow;
@@ -7816,11 +7842,11 @@
             buttonResetCounter4.TabIndex = 151;
             buttonResetCounter4.Text = "Reset";
             buttonResetCounter4.UseVisualStyleBackColor = false;
-            buttonResetCounter4.Click += this.buttonResetCounter4_Click;
+            buttonResetCounter4.Click += (this.buttonResetCounter4_Click);
             // 
             // buttonResetCounter3
             // 
-            buttonResetCounter3.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounter3.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounter3.Enabled = false;
             buttonResetCounter3.FlatStyle = FlatStyle.Flat;
             buttonResetCounter3.ForeColor = Color.Snow;
@@ -7831,11 +7857,11 @@
             buttonResetCounter3.TabIndex = 150;
             buttonResetCounter3.Text = "Reset";
             buttonResetCounter3.UseVisualStyleBackColor = false;
-            buttonResetCounter3.Click += this.buttonResetCounter3_Click;
+            buttonResetCounter3.Click += (this.buttonResetCounter3_Click);
             // 
             // buttonResetCounter2
             // 
-            buttonResetCounter2.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounter2.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounter2.Enabled = false;
             buttonResetCounter2.FlatStyle = FlatStyle.Flat;
             buttonResetCounter2.ForeColor = Color.Snow;
@@ -7846,11 +7872,11 @@
             buttonResetCounter2.TabIndex = 149;
             buttonResetCounter2.Text = "Reset";
             buttonResetCounter2.UseVisualStyleBackColor = false;
-            buttonResetCounter2.Click += this.buttonResetCounter2_Click;
+            buttonResetCounter2.Click += (this.buttonResetCounter2_Click);
             // 
             // buttonResetCounter1
             // 
-            buttonResetCounter1.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounter1.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounter1.Enabled = false;
             buttonResetCounter1.FlatStyle = FlatStyle.Flat;
             buttonResetCounter1.ForeColor = Color.Snow;
@@ -7861,7 +7887,7 @@
             buttonResetCounter1.TabIndex = 148;
             buttonResetCounter1.Text = "Reset";
             buttonResetCounter1.UseVisualStyleBackColor = false;
-            buttonResetCounter1.Click += this.buttonResetCounter1_Click;
+            buttonResetCounter1.Click += (this.buttonResetCounter1_Click);
             // 
             // label166
             // 
@@ -7875,23 +7901,23 @@
             // 
             // rjToggleButtonResetButtonsCounter
             // 
-            this.rjToggleButtonResetButtonsCounter.AutoSize = true;
-            this.rjToggleButtonResetButtonsCounter.Location = new Point(5, 354);
-            this.rjToggleButtonResetButtonsCounter.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonResetButtonsCounter.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonResetButtonsCounter.Name = "rjToggleButtonResetButtonsCounter";
-            this.rjToggleButtonResetButtonsCounter.OffBackColor = Color.Gray;
-            this.rjToggleButtonResetButtonsCounter.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonResetButtonsCounter.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonResetButtonsCounter.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonResetButtonsCounter.Size = new Size(39, 16);
-            this.rjToggleButtonResetButtonsCounter.TabIndex = 146;
-            this.rjToggleButtonResetButtonsCounter.UseVisualStyleBackColor = true;
-            this.rjToggleButtonResetButtonsCounter.CheckedChanged += this.rjToggleButtonResetButtonsCounter_CheckedChanged;
+            rjToggleButtonResetButtonsCounter.AutoSize = true;
+            rjToggleButtonResetButtonsCounter.Location = new Point(5, 354);
+            rjToggleButtonResetButtonsCounter.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonResetButtonsCounter.MinimumSize = new Size(39, 16);
+            rjToggleButtonResetButtonsCounter.Name = "rjToggleButtonResetButtonsCounter";
+            rjToggleButtonResetButtonsCounter.OffBackColor = Color.Gray;
+            rjToggleButtonResetButtonsCounter.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonResetButtonsCounter.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonResetButtonsCounter.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonResetButtonsCounter.Size = new Size(39, 16);
+            rjToggleButtonResetButtonsCounter.TabIndex = 146;
+            rjToggleButtonResetButtonsCounter.UseVisualStyleBackColor = true;
+            rjToggleButtonResetButtonsCounter.CheckedChanged += (this.rjToggleButtonResetButtonsCounter_CheckedChanged);
             // 
             // buttonResetCounterAll
             // 
-            buttonResetCounterAll.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            buttonResetCounterAll.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonResetCounterAll.Enabled = false;
             buttonResetCounterAll.FlatStyle = FlatStyle.Flat;
             buttonResetCounterAll.ForeColor = Color.Snow;
@@ -7902,7 +7928,7 @@
             buttonResetCounterAll.TabIndex = 145;
             buttonResetCounterAll.Text = "Reset All Counters";
             buttonResetCounterAll.UseVisualStyleBackColor = false;
-            buttonResetCounterAll.Click += this.button36_Click;
+            buttonResetCounterAll.Click += (this.button36_Click);
             // 
             // label119
             // 
@@ -7996,20 +8022,20 @@
             // 
             // rjToggleButtonCounterSaver
             // 
-            this.rjToggleButtonCounterSaver.AutoSize = true;
-            this.rjToggleButtonCounterSaver.Checked = true;
-            this.rjToggleButtonCounterSaver.CheckState = CheckState.Checked;
-            this.rjToggleButtonCounterSaver.Location = new Point(5, 327);
-            this.rjToggleButtonCounterSaver.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonCounterSaver.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonCounterSaver.Name = "rjToggleButtonCounterSaver";
-            this.rjToggleButtonCounterSaver.OffBackColor = Color.Gray;
-            this.rjToggleButtonCounterSaver.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonCounterSaver.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonCounterSaver.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonCounterSaver.Size = new Size(39, 16);
-            this.rjToggleButtonCounterSaver.TabIndex = 135;
-            this.rjToggleButtonCounterSaver.UseVisualStyleBackColor = true;
+            rjToggleButtonCounterSaver.AutoSize = true;
+            rjToggleButtonCounterSaver.Checked = true;
+            rjToggleButtonCounterSaver.CheckState = CheckState.Checked;
+            rjToggleButtonCounterSaver.Location = new Point(5, 327);
+            rjToggleButtonCounterSaver.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonCounterSaver.MinimumSize = new Size(39, 16);
+            rjToggleButtonCounterSaver.Name = "rjToggleButtonCounterSaver";
+            rjToggleButtonCounterSaver.OffBackColor = Color.Gray;
+            rjToggleButtonCounterSaver.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonCounterSaver.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonCounterSaver.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonCounterSaver.Size = new Size(39, 16);
+            rjToggleButtonCounterSaver.TabIndex = 135;
+            rjToggleButtonCounterSaver.UseVisualStyleBackColor = true;
             // 
             // label96
             // 
@@ -8103,20 +8129,20 @@
             // 
             // rjToggleButtonOutputVRCCountersOnContact
             // 
-            this.rjToggleButtonOutputVRCCountersOnContact.AutoSize = true;
-            this.rjToggleButtonOutputVRCCountersOnContact.Checked = true;
-            this.rjToggleButtonOutputVRCCountersOnContact.CheckState = CheckState.Checked;
-            this.rjToggleButtonOutputVRCCountersOnContact.Location = new Point(5, 299);
-            this.rjToggleButtonOutputVRCCountersOnContact.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonOutputVRCCountersOnContact.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonOutputVRCCountersOnContact.Name = "rjToggleButtonOutputVRCCountersOnContact";
-            this.rjToggleButtonOutputVRCCountersOnContact.OffBackColor = Color.Gray;
-            this.rjToggleButtonOutputVRCCountersOnContact.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonOutputVRCCountersOnContact.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonOutputVRCCountersOnContact.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonOutputVRCCountersOnContact.Size = new Size(39, 16);
-            this.rjToggleButtonOutputVRCCountersOnContact.TabIndex = 51;
-            this.rjToggleButtonOutputVRCCountersOnContact.UseVisualStyleBackColor = true;
+            rjToggleButtonOutputVRCCountersOnContact.AutoSize = true;
+            rjToggleButtonOutputVRCCountersOnContact.Checked = true;
+            rjToggleButtonOutputVRCCountersOnContact.CheckState = CheckState.Checked;
+            rjToggleButtonOutputVRCCountersOnContact.Location = new Point(5, 299);
+            rjToggleButtonOutputVRCCountersOnContact.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonOutputVRCCountersOnContact.MinimumSize = new Size(39, 16);
+            rjToggleButtonOutputVRCCountersOnContact.Name = "rjToggleButtonOutputVRCCountersOnContact";
+            rjToggleButtonOutputVRCCountersOnContact.OffBackColor = Color.Gray;
+            rjToggleButtonOutputVRCCountersOnContact.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonOutputVRCCountersOnContact.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonOutputVRCCountersOnContact.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonOutputVRCCountersOnContact.Size = new Size(39, 16);
+            rjToggleButtonOutputVRCCountersOnContact.TabIndex = 51;
+            rjToggleButtonOutputVRCCountersOnContact.UseVisualStyleBackColor = true;
             // 
             // label88
             // 
@@ -8203,7 +8229,7 @@
             groupBox36.Controls.Add(textBoxAFK);
             groupBox36.Controls.Add(label99);
             groupBox36.Controls.Add(label98);
-            groupBox36.Controls.Add(this.rjToggleButtonAFK);
+            groupBox36.Controls.Add(rjToggleButtonAFK);
             groupBox36.ForeColor = Color.White;
             groupBox36.Location = new Point(461, 64);
             groupBox36.Margin = new Padding(3, 2, 3, 2);
@@ -8246,25 +8272,25 @@
             // 
             // rjToggleButtonAFK
             // 
-            this.rjToggleButtonAFK.AutoSize = true;
-            this.rjToggleButtonAFK.Location = new Point(13, 21);
-            this.rjToggleButtonAFK.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonAFK.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonAFK.Name = "rjToggleButtonAFK";
-            this.rjToggleButtonAFK.OffBackColor = Color.Gray;
-            this.rjToggleButtonAFK.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonAFK.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonAFK.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonAFK.Size = new Size(39, 16);
-            this.rjToggleButtonAFK.TabIndex = 53;
-            this.rjToggleButtonAFK.UseVisualStyleBackColor = true;
+            rjToggleButtonAFK.AutoSize = true;
+            rjToggleButtonAFK.Location = new Point(13, 21);
+            rjToggleButtonAFK.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonAFK.MinimumSize = new Size(39, 16);
+            rjToggleButtonAFK.Name = "rjToggleButtonAFK";
+            rjToggleButtonAFK.OffBackColor = Color.Gray;
+            rjToggleButtonAFK.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonAFK.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonAFK.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonAFK.Size = new Size(39, 16);
+            rjToggleButtonAFK.TabIndex = 53;
+            rjToggleButtonAFK.UseVisualStyleBackColor = true;
             // 
             // groupBox25
             // 
             groupBox25.Controls.Add(label92);
-            groupBox25.Controls.Add(this.rjToggleButtonVRCSpamLog);
+            groupBox25.Controls.Add(rjToggleButtonVRCSpamLog);
             groupBox25.Controls.Add(label86);
-            groupBox25.Controls.Add(this.rjToggleButtonVRCActivate);
+            groupBox25.Controls.Add(rjToggleButtonVRCActivate);
             groupBox25.Controls.Add(label87);
             groupBox25.Controls.Add(button32);
             groupBox25.Controls.Add(button33);
@@ -8291,20 +8317,20 @@
             // 
             // rjToggleButtonVRCSpamLog
             // 
-            this.rjToggleButtonVRCSpamLog.AutoSize = true;
-            this.rjToggleButtonVRCSpamLog.Checked = true;
-            this.rjToggleButtonVRCSpamLog.CheckState = CheckState.Checked;
-            this.rjToggleButtonVRCSpamLog.Location = new Point(154, 45);
-            this.rjToggleButtonVRCSpamLog.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonVRCSpamLog.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonVRCSpamLog.Name = "rjToggleButtonVRCSpamLog";
-            this.rjToggleButtonVRCSpamLog.OffBackColor = Color.Gray;
-            this.rjToggleButtonVRCSpamLog.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonVRCSpamLog.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonVRCSpamLog.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonVRCSpamLog.Size = new Size(39, 16);
-            this.rjToggleButtonVRCSpamLog.TabIndex = 101;
-            this.rjToggleButtonVRCSpamLog.UseVisualStyleBackColor = true;
+            rjToggleButtonVRCSpamLog.AutoSize = true;
+            rjToggleButtonVRCSpamLog.Checked = true;
+            rjToggleButtonVRCSpamLog.CheckState = CheckState.Checked;
+            rjToggleButtonVRCSpamLog.Location = new Point(154, 45);
+            rjToggleButtonVRCSpamLog.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonVRCSpamLog.MinimumSize = new Size(39, 16);
+            rjToggleButtonVRCSpamLog.Name = "rjToggleButtonVRCSpamLog";
+            rjToggleButtonVRCSpamLog.OffBackColor = Color.Gray;
+            rjToggleButtonVRCSpamLog.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonVRCSpamLog.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonVRCSpamLog.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonVRCSpamLog.Size = new Size(39, 16);
+            rjToggleButtonVRCSpamLog.TabIndex = 101;
+            rjToggleButtonVRCSpamLog.UseVisualStyleBackColor = true;
             // 
             // label86
             // 
@@ -8318,18 +8344,18 @@
             // 
             // rjToggleButtonVRCActivate
             // 
-            this.rjToggleButtonVRCActivate.AutoSize = true;
-            this.rjToggleButtonVRCActivate.Location = new Point(154, 19);
-            this.rjToggleButtonVRCActivate.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonVRCActivate.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonVRCActivate.Name = "rjToggleButtonVRCActivate";
-            this.rjToggleButtonVRCActivate.OffBackColor = Color.Gray;
-            this.rjToggleButtonVRCActivate.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonVRCActivate.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonVRCActivate.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonVRCActivate.Size = new Size(39, 16);
-            this.rjToggleButtonVRCActivate.TabIndex = 99;
-            this.rjToggleButtonVRCActivate.UseVisualStyleBackColor = true;
+            rjToggleButtonVRCActivate.AutoSize = true;
+            rjToggleButtonVRCActivate.Location = new Point(154, 19);
+            rjToggleButtonVRCActivate.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonVRCActivate.MinimumSize = new Size(39, 16);
+            rjToggleButtonVRCActivate.Name = "rjToggleButtonVRCActivate";
+            rjToggleButtonVRCActivate.OffBackColor = Color.Gray;
+            rjToggleButtonVRCActivate.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonVRCActivate.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonVRCActivate.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonVRCActivate.Size = new Size(39, 16);
+            rjToggleButtonVRCActivate.TabIndex = 99;
+            rjToggleButtonVRCActivate.UseVisualStyleBackColor = true;
             // 
             // label87
             // 
@@ -8343,7 +8369,7 @@
             // 
             // button32
             // 
-            button32.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button32.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button32.FlatStyle = FlatStyle.Flat;
             button32.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button32.ForeColor = Color.Snow;
@@ -8354,11 +8380,11 @@
             button32.TabIndex = 63;
             button32.Text = "Apply";
             button32.UseVisualStyleBackColor = false;
-            button32.Click += this.button32_Click;
+            button32.Click += (this.button32_Click);
             // 
             // button33
             // 
-            button33.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button33.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button33.FlatStyle = FlatStyle.Flat;
             button33.ForeColor = Color.Snow;
             button33.Location = new Point(18, 43);
@@ -8368,7 +8394,7 @@
             button33.TabIndex = 53;
             button33.Text = "Activate VRChat Listener";
             button33.UseVisualStyleBackColor = false;
-            button33.Click += this.button33_Click;
+            button33.Click += (this.button33_Click);
             // 
             // textBoxVRChatOSCPort
             // 
@@ -8403,7 +8429,7 @@
             // LocalSpeech
             // 
             LocalSpeech.AutoScroll = true;
-            LocalSpeech.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            LocalSpeech.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             LocalSpeech.Controls.Add(groupBox6);
             LocalSpeech.Controls.Add(groupBox38);
             LocalSpeech.Controls.Add(label100);
@@ -8423,11 +8449,11 @@
             groupBox6.Controls.Add(button49);
             groupBox6.Controls.Add(label153);
             groupBox6.Controls.Add(label152);
-            groupBox6.Controls.Add(this.rjToggleButtonReadFromFile);
+            groupBox6.Controls.Add(rjToggleButtonReadFromFile);
             groupBox6.Controls.Add(button48);
             groupBox6.Controls.Add(textBoxReadFromTXTFile);
             groupBox6.ForeColor = Color.White;
-            groupBox6.Location = new Point(6, 504);
+            groupBox6.Location = new Point(6, 568);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);
@@ -8438,8 +8464,8 @@
             // 
             // button49
             // 
-            button49.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button49.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button49.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button49.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button49.FlatStyle = FlatStyle.Flat;
             button49.ForeColor = Color.Snow;
             button49.Location = new Point(563, 22);
@@ -8449,7 +8475,7 @@
             button49.TabIndex = 181;
             button49.Text = "Play Current Text";
             button49.UseVisualStyleBackColor = false;
-            button49.Click += this.button49_Click;
+            button49.Click += (this.button49_Click);
             // 
             // label153
             // 
@@ -8474,24 +8500,24 @@
             // 
             // rjToggleButtonReadFromFile
             // 
-            this.rjToggleButtonReadFromFile.AutoSize = true;
-            this.rjToggleButtonReadFromFile.Location = new Point(8, 20);
-            this.rjToggleButtonReadFromFile.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonReadFromFile.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonReadFromFile.Name = "rjToggleButtonReadFromFile";
-            this.rjToggleButtonReadFromFile.OffBackColor = Color.Gray;
-            this.rjToggleButtonReadFromFile.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonReadFromFile.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonReadFromFile.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonReadFromFile.Size = new Size(39, 16);
-            this.rjToggleButtonReadFromFile.TabIndex = 165;
-            this.rjToggleButtonReadFromFile.UseVisualStyleBackColor = true;
-            this.rjToggleButtonReadFromFile.CheckedChanged += this.rjToggleButton14_CheckedChanged;
+            rjToggleButtonReadFromFile.AutoSize = true;
+            rjToggleButtonReadFromFile.Location = new Point(8, 20);
+            rjToggleButtonReadFromFile.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonReadFromFile.MinimumSize = new Size(39, 16);
+            rjToggleButtonReadFromFile.Name = "rjToggleButtonReadFromFile";
+            rjToggleButtonReadFromFile.OffBackColor = Color.Gray;
+            rjToggleButtonReadFromFile.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonReadFromFile.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonReadFromFile.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonReadFromFile.Size = new Size(39, 16);
+            rjToggleButtonReadFromFile.TabIndex = 165;
+            rjToggleButtonReadFromFile.UseVisualStyleBackColor = true;
+            rjToggleButtonReadFromFile.CheckedChanged += (this.rjToggleButton14_CheckedChanged);
             // 
             // button48
             // 
-            button48.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button48.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button48.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button48.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button48.FlatStyle = FlatStyle.Flat;
             button48.ForeColor = Color.Snow;
             button48.Location = new Point(647, 70);
@@ -8501,11 +8527,11 @@
             button48.TabIndex = 103;
             button48.Text = "Browse";
             button48.UseVisualStyleBackColor = false;
-            button48.Click += this.button48_Click;
+            button48.Click += (this.button48_Click);
             // 
             // textBoxReadFromTXTFile
             // 
-            textBoxReadFromTXTFile.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            textBoxReadFromTXTFile.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             textBoxReadFromTXTFile.Location = new Point(7, 71);
             textBoxReadFromTXTFile.Margin = new Padding(3, 2, 3, 2);
             textBoxReadFromTXTFile.Name = "textBoxReadFromTXTFile";
@@ -8516,8 +8542,14 @@
             // 
             // groupBox38
             // 
+            groupBox38.Controls.Add(label207);
+            groupBox38.Controls.Add(comboBoxGPUSelection);
+            groupBox38.Controls.Add(label206);
+            groupBox38.Controls.Add(comboBoxVADMode);
+            groupBox38.Controls.Add(label205);
+            groupBox38.Controls.Add(rjToggleVAD);
             groupBox38.Controls.Add(label146);
-            groupBox38.Controls.Add(this.rjToggleButtonWhisperFilterInLog);
+            groupBox38.Controls.Add(rjToggleButtonWhisperFilterInLog);
             groupBox38.Controls.Add(modelLabel);
             groupBox38.Controls.Add(label148);
             groupBox38.Controls.Add(button42);
@@ -8533,8 +8565,8 @@
             groupBox38.Controls.Add(label40);
             groupBox38.Controls.Add(textBoxWhisperMinDuration);
             groupBox38.Controls.Add(label121);
-            groupBox38.Controls.Add(this.rjToggleButtonFilterNoiseWhisper);
-            groupBox38.Controls.Add(this.whisperLink);
+            groupBox38.Controls.Add(rjToggleButtonFilterNoiseWhisper);
+            groupBox38.Controls.Add(whisperLink);
             groupBox38.Controls.Add(button34);
             groupBox38.Controls.Add(whisperModelTextBox);
             groupBox38.ForeColor = Color.White;
@@ -8542,37 +8574,109 @@
             groupBox38.Margin = new Padding(3, 2, 3, 2);
             groupBox38.Name = "groupBox38";
             groupBox38.Padding = new Padding(3, 2, 3, 2);
-            groupBox38.Size = new Size(723, 264);
+            groupBox38.Size = new Size(723, 328);
             groupBox38.TabIndex = 159;
             groupBox38.TabStop = false;
             groupBox38.Text = "Whisper.cpp Model (BIN file)";
+            // 
+            // label207
+            // 
+            label207.AutoSize = true;
+            label207.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label207.ForeColor = Color.Snow;
+            label207.Location = new Point(418, 132);
+            label207.Name = "label207";
+            label207.Size = new Size(81, 15);
+            label207.TabIndex = 188;
+            label207.Text = "GPU Selection";
+            // 
+            // comboBoxGPUSelection
+            // 
+            comboBoxGPUSelection.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            comboBoxGPUSelection.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxGPUSelection.FlatStyle = FlatStyle.Flat;
+            comboBoxGPUSelection.FormattingEnabled = true;
+            comboBoxGPUSelection.Location = new Point(418, 149);
+            comboBoxGPUSelection.Margin = new Padding(3, 2, 3, 2);
+            comboBoxGPUSelection.Name = "comboBoxGPUSelection";
+            comboBoxGPUSelection.Size = new Size(179, 23);
+            comboBoxGPUSelection.TabIndex = 187;
+            // 
+            // label206
+            // 
+            label206.AutoSize = true;
+            label206.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label206.ForeColor = Color.Snow;
+            label206.Location = new Point(17, 185);
+            label206.Name = "label206";
+            label206.Size = new Size(96, 15);
+            label206.TabIndex = 186;
+            label206.Text = "VAD Noise Mode";
+            // 
+            // comboBoxVADMode
+            // 
+            comboBoxVADMode.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            comboBoxVADMode.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxVADMode.FlatStyle = FlatStyle.Flat;
+            comboBoxVADMode.FormattingEnabled = true;
+            comboBoxVADMode.Items.AddRange(new object[] { "HighQuality", "LowBitrate", "Aggressive", "VeryAggressve" });
+            comboBoxVADMode.Location = new Point(17, 202);
+            comboBoxVADMode.Margin = new Padding(3, 2, 3, 2);
+            comboBoxVADMode.Name = "comboBoxVADMode";
+            comboBoxVADMode.Size = new Size(127, 23);
+            comboBoxVADMode.TabIndex = 185;
+            // 
+            // label205
+            // 
+            label205.AutoSize = true;
+            label205.ForeColor = Color.Snow;
+            label205.Location = new Point(53, 162);
+            label205.Name = "label205";
+            label205.Size = new Size(146, 15);
+            label205.TabIndex = 184;
+            label205.Text = "Voice Activation Detection";
+            // 
+            // rjToggleVAD
+            // 
+            rjToggleVAD.AutoSize = true;
+            rjToggleVAD.Location = new Point(8, 160);
+            rjToggleVAD.Margin = new Padding(3, 2, 3, 2);
+            rjToggleVAD.MinimumSize = new Size(39, 16);
+            rjToggleVAD.Name = "rjToggleVAD";
+            rjToggleVAD.OffBackColor = Color.Gray;
+            rjToggleVAD.OffToggleColor = Color.Gainsboro;
+            rjToggleVAD.OnBackColor = Color.MediumSlateBlue;
+            rjToggleVAD.OnToggleColor = Color.WhiteSmoke;
+            rjToggleVAD.Size = new Size(39, 16);
+            rjToggleVAD.TabIndex = 183;
+            rjToggleVAD.UseVisualStyleBackColor = true;
             // 
             // label146
             // 
             label146.AutoSize = true;
             label146.ForeColor = Color.Snow;
-            label146.Location = new Point(51, 177);
+            label146.Location = new Point(52, 245);
             label146.Name = "label146";
-            label146.Size = new Size(152, 15);
+            label146.Size = new Size(192, 15);
             label146.TabIndex = 182;
-            label146.Text = "Filtered Text Appears in Log";
+            label146.Text = "Filtered/Debug Text Appears in Log";
             // 
             // rjToggleButtonWhisperFilterInLog
             // 
-            this.rjToggleButtonWhisperFilterInLog.AutoSize = true;
-            this.rjToggleButtonWhisperFilterInLog.Checked = true;
-            this.rjToggleButtonWhisperFilterInLog.CheckState = CheckState.Checked;
-            this.rjToggleButtonWhisperFilterInLog.Location = new Point(6, 175);
-            this.rjToggleButtonWhisperFilterInLog.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonWhisperFilterInLog.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonWhisperFilterInLog.Name = "rjToggleButtonWhisperFilterInLog";
-            this.rjToggleButtonWhisperFilterInLog.OffBackColor = Color.Gray;
-            this.rjToggleButtonWhisperFilterInLog.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonWhisperFilterInLog.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonWhisperFilterInLog.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonWhisperFilterInLog.Size = new Size(39, 16);
-            this.rjToggleButtonWhisperFilterInLog.TabIndex = 181;
-            this.rjToggleButtonWhisperFilterInLog.UseVisualStyleBackColor = true;
+            rjToggleButtonWhisperFilterInLog.AutoSize = true;
+            rjToggleButtonWhisperFilterInLog.Checked = true;
+            rjToggleButtonWhisperFilterInLog.CheckState = CheckState.Checked;
+            rjToggleButtonWhisperFilterInLog.Location = new Point(7, 244);
+            rjToggleButtonWhisperFilterInLog.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonWhisperFilterInLog.MinimumSize = new Size(39, 16);
+            rjToggleButtonWhisperFilterInLog.Name = "rjToggleButtonWhisperFilterInLog";
+            rjToggleButtonWhisperFilterInLog.OffBackColor = Color.Gray;
+            rjToggleButtonWhisperFilterInLog.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonWhisperFilterInLog.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonWhisperFilterInLog.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonWhisperFilterInLog.Size = new Size(39, 16);
+            rjToggleButtonWhisperFilterInLog.TabIndex = 181;
+            rjToggleButtonWhisperFilterInLog.UseVisualStyleBackColor = true;
             // 
             // modelLabel
             // 
@@ -8597,7 +8701,7 @@
             // 
             // button42
             // 
-            button42.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button42.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button42.FlatStyle = FlatStyle.Flat;
             button42.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button42.ForeColor = Color.Snow;
@@ -8608,7 +8712,7 @@
             button42.TabIndex = 178;
             button42.Text = "Download or Select";
             button42.UseVisualStyleBackColor = false;
-            button42.Click += this.button42_Click;
+            button42.Click += (this.button42_Click);
             // 
             // label147
             // 
@@ -8632,28 +8736,28 @@
             comboBoxWhisperModelDownload.Name = "comboBoxWhisperModelDownload";
             comboBoxWhisperModelDownload.Size = new Size(239, 23);
             comboBoxWhisperModelDownload.TabIndex = 176;
-            comboBoxWhisperModelDownload.SelectedIndexChanged += this.comboBoxWhisperModelDownload_SelectedIndexChanged;
+            comboBoxWhisperModelDownload.SelectedIndexChanged += (this.comboBoxWhisperModelDownload_SelectedIndexChanged);
             // 
             // button41
             // 
-            button41.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button41.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button41.FlatStyle = FlatStyle.Flat;
             button41.ForeColor = Color.Snow;
-            button41.Location = new Point(463, 220);
+            button41.Location = new Point(463, 287);
             button41.Margin = new Padding(3, 2, 3, 2);
             button41.Name = "button41";
             button41.Size = new Size(50, 25);
             button41.TabIndex = 173;
             button41.Text = "Reset";
             button41.UseVisualStyleBackColor = false;
-            button41.Click += this.button41_Click;
+            button41.Click += (this.button41_Click);
             // 
             // label144
             // 
             label144.AutoSize = true;
             label144.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label144.ForeColor = Color.Snow;
-            label144.Location = new Point(354, 205);
+            label144.Location = new Point(354, 272);
             label144.Name = "label144";
             label144.Size = new Size(103, 15);
             label144.TabIndex = 172;
@@ -8661,7 +8765,7 @@
             // 
             // textBoxWhisperPauseDuration
             // 
-            textBoxWhisperPauseDuration.Location = new Point(354, 222);
+            textBoxWhisperPauseDuration.Location = new Point(354, 289);
             textBoxWhisperPauseDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperPauseDuration.Name = "textBoxWhisperPauseDuration";
             textBoxWhisperPauseDuration.Size = new Size(96, 23);
@@ -8673,7 +8777,7 @@
             label142.AutoSize = true;
             label142.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label142.ForeColor = Color.Snow;
-            label142.Location = new Point(226, 205);
+            label142.Location = new Point(226, 272);
             label142.Name = "label142";
             label142.Size = new Size(116, 15);
             label142.TabIndex = 170;
@@ -8681,7 +8785,7 @@
             // 
             // textBoxWhisperDropSilence
             // 
-            textBoxWhisperDropSilence.Location = new Point(227, 222);
+            textBoxWhisperDropSilence.Location = new Point(227, 289);
             textBoxWhisperDropSilence.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperDropSilence.Name = "textBoxWhisperDropSilence";
             textBoxWhisperDropSilence.Size = new Size(111, 23);
@@ -8693,7 +8797,7 @@
             label41.AutoSize = true;
             label41.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label41.ForeColor = Color.Snow;
-            label41.Location = new Point(116, 205);
+            label41.Location = new Point(116, 272);
             label41.Name = "label41";
             label41.Size = new Size(95, 15);
             label41.TabIndex = 168;
@@ -8701,7 +8805,7 @@
             // 
             // textBoxWhisperMaxDuration
             // 
-            textBoxWhisperMaxDuration.Location = new Point(117, 222);
+            textBoxWhisperMaxDuration.Location = new Point(117, 289);
             textBoxWhisperMaxDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperMaxDuration.Name = "textBoxWhisperMaxDuration";
             textBoxWhisperMaxDuration.Size = new Size(94, 23);
@@ -8713,7 +8817,7 @@
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label40.ForeColor = Color.Snow;
-            label40.Location = new Point(8, 205);
+            label40.Location = new Point(8, 272);
             label40.Name = "label40";
             label40.Size = new Size(93, 15);
             label40.TabIndex = 166;
@@ -8721,7 +8825,7 @@
             // 
             // textBoxWhisperMinDuration
             // 
-            textBoxWhisperMinDuration.Location = new Point(8, 222);
+            textBoxWhisperMinDuration.Location = new Point(8, 289);
             textBoxWhisperMinDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperMinDuration.Name = "textBoxWhisperMinDuration";
             textBoxWhisperMinDuration.Size = new Size(93, 23);
@@ -8732,54 +8836,54 @@
             // 
             label121.AutoSize = true;
             label121.ForeColor = Color.Snow;
-            label121.Location = new Point(52, 141);
+            label121.Location = new Point(53, 132);
             label121.Name = "label121";
-            label121.Size = new Size(66, 15);
+            label121.Size = new Size(214, 15);
             label121.TabIndex = 164;
-            label121.Text = "Filter Noise";
+            label121.Text = "Filter Sounds (typing, clicking, tapping)";
             // 
             // rjToggleButtonFilterNoiseWhisper
             // 
-            this.rjToggleButtonFilterNoiseWhisper.AutoSize = true;
-            this.rjToggleButtonFilterNoiseWhisper.Checked = true;
-            this.rjToggleButtonFilterNoiseWhisper.CheckState = CheckState.Checked;
-            this.rjToggleButtonFilterNoiseWhisper.Location = new Point(7, 139);
-            this.rjToggleButtonFilterNoiseWhisper.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonFilterNoiseWhisper.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonFilterNoiseWhisper.Name = "rjToggleButtonFilterNoiseWhisper";
-            this.rjToggleButtonFilterNoiseWhisper.OffBackColor = Color.Gray;
-            this.rjToggleButtonFilterNoiseWhisper.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonFilterNoiseWhisper.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonFilterNoiseWhisper.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonFilterNoiseWhisper.Size = new Size(39, 16);
-            this.rjToggleButtonFilterNoiseWhisper.TabIndex = 163;
-            this.rjToggleButtonFilterNoiseWhisper.UseVisualStyleBackColor = true;
+            rjToggleButtonFilterNoiseWhisper.AutoSize = true;
+            rjToggleButtonFilterNoiseWhisper.Checked = true;
+            rjToggleButtonFilterNoiseWhisper.CheckState = CheckState.Checked;
+            rjToggleButtonFilterNoiseWhisper.Location = new Point(8, 130);
+            rjToggleButtonFilterNoiseWhisper.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonFilterNoiseWhisper.MinimumSize = new Size(39, 16);
+            rjToggleButtonFilterNoiseWhisper.Name = "rjToggleButtonFilterNoiseWhisper";
+            rjToggleButtonFilterNoiseWhisper.OffBackColor = Color.Gray;
+            rjToggleButtonFilterNoiseWhisper.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonFilterNoiseWhisper.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonFilterNoiseWhisper.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonFilterNoiseWhisper.Size = new Size(39, 16);
+            rjToggleButtonFilterNoiseWhisper.TabIndex = 163;
+            rjToggleButtonFilterNoiseWhisper.UseVisualStyleBackColor = true;
             // 
             // whisperLink
             // 
-            this.whisperLink.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.whisperLink.FlatAppearance.BorderSize = 0;
-            this.whisperLink.FlatStyle = FlatStyle.Flat;
-            this.whisperLink.ForeColor = Color.Snow;
-            this.whisperLink.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.whisperLink.IconColor = Color.White;
-            this.whisperLink.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.whisperLink.IconSize = 40;
-            this.whisperLink.ImageAlign = ContentAlignment.MiddleLeft;
-            this.whisperLink.Location = new Point(675, 18);
-            this.whisperLink.Margin = new Padding(3, 2, 3, 2);
-            this.whisperLink.Name = "whisperLink";
-            this.whisperLink.Size = new Size(44, 46);
-            this.whisperLink.TabIndex = 162;
-            this.whisperLink.TextAlign = ContentAlignment.MiddleLeft;
-            this.whisperLink.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.whisperLink.UseVisualStyleBackColor = true;
-            this.whisperLink.Click += this.whisperLink_Click;
+            whisperLink.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            whisperLink.FlatAppearance.BorderSize = 0;
+            whisperLink.FlatStyle = FlatStyle.Flat;
+            whisperLink.ForeColor = Color.Snow;
+            whisperLink.IconChar = FontAwesome.Sharp.IconChar.Question;
+            whisperLink.IconColor = Color.White;
+            whisperLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            whisperLink.IconSize = 40;
+            whisperLink.ImageAlign = ContentAlignment.MiddleLeft;
+            whisperLink.Location = new Point(675, 18);
+            whisperLink.Margin = new Padding(3, 2, 3, 2);
+            whisperLink.Name = "whisperLink";
+            whisperLink.Size = new Size(44, 46);
+            whisperLink.TabIndex = 162;
+            whisperLink.TextAlign = ContentAlignment.MiddleLeft;
+            whisperLink.TextImageRelation = TextImageRelation.ImageBeforeText;
+            whisperLink.UseVisualStyleBackColor = true;
+            whisperLink.Click += (this.whisperLink_Click);
             // 
             // button34
             // 
-            button34.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button34.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button34.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button34.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button34.FlatStyle = FlatStyle.Flat;
             button34.ForeColor = Color.Snow;
             button34.Location = new Point(605, 95);
@@ -8789,11 +8893,11 @@
             button34.TabIndex = 161;
             button34.Text = "Browse";
             button34.UseVisualStyleBackColor = false;
-            button34.Click += this.button34_Click;
+            button34.Click += (this.button34_Click);
             // 
             // whisperModelTextBox
             // 
-            whisperModelTextBox.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            whisperModelTextBox.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             whisperModelTextBox.Location = new Point(8, 97);
             whisperModelTextBox.Margin = new Padding(3, 2, 3, 2);
             whisperModelTextBox.Name = "whisperModelTextBox";
@@ -8825,7 +8929,7 @@
             // 
             // groupBox24
             // 
-            groupBox24.Controls.Add(this.voskLink);
+            groupBox24.Controls.Add(voskLink);
             groupBox24.Controls.Add(button11);
             groupBox24.Controls.Add(modelTextBox);
             groupBox24.ForeColor = Color.White;
@@ -8840,29 +8944,29 @@
             // 
             // voskLink
             // 
-            this.voskLink.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.voskLink.FlatAppearance.BorderSize = 0;
-            this.voskLink.FlatStyle = FlatStyle.Flat;
-            this.voskLink.ForeColor = Color.Snow;
-            this.voskLink.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.voskLink.IconColor = Color.White;
-            this.voskLink.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.voskLink.IconSize = 40;
-            this.voskLink.ImageAlign = ContentAlignment.MiddleLeft;
-            this.voskLink.Location = new Point(675, 19);
-            this.voskLink.Margin = new Padding(3, 2, 3, 2);
-            this.voskLink.Name = "voskLink";
-            this.voskLink.Size = new Size(44, 42);
-            this.voskLink.TabIndex = 163;
-            this.voskLink.TextAlign = ContentAlignment.MiddleLeft;
-            this.voskLink.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.voskLink.UseVisualStyleBackColor = true;
-            this.voskLink.Click += this.voskLink_Click;
+            voskLink.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            voskLink.FlatAppearance.BorderSize = 0;
+            voskLink.FlatStyle = FlatStyle.Flat;
+            voskLink.ForeColor = Color.Snow;
+            voskLink.IconChar = FontAwesome.Sharp.IconChar.Question;
+            voskLink.IconColor = Color.White;
+            voskLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            voskLink.IconSize = 40;
+            voskLink.ImageAlign = ContentAlignment.MiddleLeft;
+            voskLink.Location = new Point(675, 19);
+            voskLink.Margin = new Padding(3, 2, 3, 2);
+            voskLink.Name = "voskLink";
+            voskLink.Size = new Size(44, 42);
+            voskLink.TabIndex = 163;
+            voskLink.TextAlign = ContentAlignment.MiddleLeft;
+            voskLink.TextImageRelation = TextImageRelation.ImageBeforeText;
+            voskLink.UseVisualStyleBackColor = true;
+            voskLink.Click += (this.voskLink_Click);
             // 
             // button11
             // 
-            button11.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            button11.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button11.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button11.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button11.FlatStyle = FlatStyle.Flat;
             button11.ForeColor = Color.Snow;
             button11.Location = new Point(604, 19);
@@ -8872,11 +8976,11 @@
             button11.TabIndex = 103;
             button11.Text = "Browse";
             button11.UseVisualStyleBackColor = false;
-            button11.Click += this.button11_Click_1;
+            button11.Click += (this.button11_Click_1);
             // 
             // modelTextBox
             // 
-            modelTextBox.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            modelTextBox.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             modelTextBox.Location = new Point(8, 20);
             modelTextBox.Margin = new Padding(3, 2, 3, 2);
             modelTextBox.Name = "modelTextBox";
@@ -8900,7 +9004,7 @@
             // 
             // comboBoxSysSpeechRecog
             // 
-            comboBoxSysSpeechRecog.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            comboBoxSysSpeechRecog.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
             comboBoxSysSpeechRecog.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSysSpeechRecog.FlatStyle = FlatStyle.Flat;
             comboBoxSysSpeechRecog.FormattingEnabled = true;
@@ -8913,7 +9017,7 @@
             // elevenLabs
             // 
             elevenLabs.AutoScroll = true;
-            elevenLabs.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            elevenLabs.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             elevenLabs.Controls.Add(groupBox30);
             elevenLabs.Controls.Add(groupBox39);
             elevenLabs.Controls.Add(label107);
@@ -8931,7 +9035,7 @@
             groupBox30.Controls.Add(trackBarStyleExaggeration);
             groupBox30.Controls.Add(label202);
             groupBox30.Controls.Add(label200);
-            groupBox30.Controls.Add(this.rjToggleSpeakerBoost);
+            groupBox30.Controls.Add(rjToggleSpeakerBoost);
             groupBox30.Controls.Add(button51);
             groupBox30.Controls.Add(labelStability);
             groupBox30.Controls.Add(labelSimboost);
@@ -8943,7 +9047,7 @@
             groupBox30.Controls.Add(comboBoxLabsOptimize);
             groupBox30.Controls.Add(label172);
             groupBox30.Controls.Add(comboBoxLabsModelID);
-            groupBox30.Controls.Add(this.iconButton54);
+            groupBox30.Controls.Add(iconButton54);
             groupBox30.ForeColor = Color.White;
             groupBox30.Location = new Point(18, 142);
             groupBox30.Margin = new Padding(3, 2, 3, 2);
@@ -8973,7 +9077,7 @@
             trackBarStyleExaggeration.Size = new Size(694, 45);
             trackBarStyleExaggeration.TabIndex = 194;
             trackBarStyleExaggeration.TickFrequency = 2;
-            trackBarStyleExaggeration.Scroll += this.trackBarStyleExaggeration_Scroll;
+            trackBarStyleExaggeration.Scroll += (this.trackBarStyleExaggeration_Scroll);
             // 
             // label202
             // 
@@ -8997,24 +9101,24 @@
             // 
             // rjToggleSpeakerBoost
             // 
-            this.rjToggleSpeakerBoost.AutoSize = true;
-            this.rjToggleSpeakerBoost.Checked = true;
-            this.rjToggleSpeakerBoost.CheckState = CheckState.Checked;
-            this.rjToggleSpeakerBoost.Location = new Point(12, 373);
-            this.rjToggleSpeakerBoost.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleSpeakerBoost.MinimumSize = new Size(39, 16);
-            this.rjToggleSpeakerBoost.Name = "rjToggleSpeakerBoost";
-            this.rjToggleSpeakerBoost.OffBackColor = Color.Gray;
-            this.rjToggleSpeakerBoost.OffToggleColor = Color.Gainsboro;
-            this.rjToggleSpeakerBoost.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleSpeakerBoost.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleSpeakerBoost.Size = new Size(39, 16);
-            this.rjToggleSpeakerBoost.TabIndex = 191;
-            this.rjToggleSpeakerBoost.UseVisualStyleBackColor = true;
+            rjToggleSpeakerBoost.AutoSize = true;
+            rjToggleSpeakerBoost.Checked = true;
+            rjToggleSpeakerBoost.CheckState = CheckState.Checked;
+            rjToggleSpeakerBoost.Location = new Point(12, 373);
+            rjToggleSpeakerBoost.Margin = new Padding(3, 2, 3, 2);
+            rjToggleSpeakerBoost.MinimumSize = new Size(39, 16);
+            rjToggleSpeakerBoost.Name = "rjToggleSpeakerBoost";
+            rjToggleSpeakerBoost.OffBackColor = Color.Gray;
+            rjToggleSpeakerBoost.OffToggleColor = Color.Gainsboro;
+            rjToggleSpeakerBoost.OnBackColor = Color.MediumSlateBlue;
+            rjToggleSpeakerBoost.OnToggleColor = Color.WhiteSmoke;
+            rjToggleSpeakerBoost.Size = new Size(39, 16);
+            rjToggleSpeakerBoost.TabIndex = 191;
+            rjToggleSpeakerBoost.UseVisualStyleBackColor = true;
             // 
             // button51
             // 
-            button51.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button51.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button51.FlatStyle = FlatStyle.Flat;
             button51.ForeColor = Color.Snow;
             button51.Location = new Point(12, 401);
@@ -9024,7 +9128,7 @@
             button51.TabIndex = 190;
             button51.Text = "To Default";
             button51.UseVisualStyleBackColor = false;
-            button51.Click += this.button51_Click;
+            button51.Click += (this.button51_Click);
             // 
             // labelStability
             // 
@@ -9066,7 +9170,7 @@
             trackBarSimilarity.TabIndex = 186;
             trackBarSimilarity.TickFrequency = 2;
             trackBarSimilarity.Value = 75;
-            trackBarSimilarity.Scroll += this.trackBarSimilarity_Scroll;
+            trackBarSimilarity.Scroll += (this.trackBarSimilarity_Scroll);
             // 
             // trackBarStability
             // 
@@ -9078,7 +9182,7 @@
             trackBarStability.TabIndex = 187;
             trackBarStability.TickFrequency = 2;
             trackBarStability.Value = 50;
-            trackBarStability.Scroll += this.trackBarStability_Scroll;
+            trackBarStability.Scroll += (this.trackBarStability_Scroll);
             // 
             // label174
             // 
@@ -9138,29 +9242,29 @@
             // 
             // iconButton54
             // 
-            this.iconButton54.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton54.FlatAppearance.BorderSize = 0;
-            this.iconButton54.FlatStyle = FlatStyle.Flat;
-            this.iconButton54.ForeColor = Color.Snow;
-            this.iconButton54.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton54.IconColor = Color.White;
-            this.iconButton54.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton54.IconSize = 40;
-            this.iconButton54.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton54.Location = new Point(649, 22);
-            this.iconButton54.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton54.Name = "iconButton54";
-            this.iconButton54.Size = new Size(55, 56);
-            this.iconButton54.TabIndex = 164;
-            this.iconButton54.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton54.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton54.UseVisualStyleBackColor = true;
-            this.iconButton54.Click += this.iconButton54_Click;
+            iconButton54.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton54.FlatAppearance.BorderSize = 0;
+            iconButton54.FlatStyle = FlatStyle.Flat;
+            iconButton54.ForeColor = Color.Snow;
+            iconButton54.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton54.IconColor = Color.White;
+            iconButton54.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton54.IconSize = 40;
+            iconButton54.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton54.Location = new Point(649, 22);
+            iconButton54.Margin = new Padding(3, 2, 3, 2);
+            iconButton54.Name = "iconButton54";
+            iconButton54.Size = new Size(55, 56);
+            iconButton54.TabIndex = 164;
+            iconButton54.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton54.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton54.UseVisualStyleBackColor = true;
+            iconButton54.Click += (this.iconButton54_Click);
             // 
             // groupBox39
             // 
-            groupBox39.Controls.Add(this.ShowElevenLabsPassword);
-            groupBox39.Controls.Add(this.iconButton35);
+            groupBox39.Controls.Add(ShowElevenLabsPassword);
+            groupBox39.Controls.Add(iconButton35);
             groupBox39.Controls.Add(button35);
             groupBox39.Controls.Add(label111);
             groupBox39.Controls.Add(button37);
@@ -9177,47 +9281,47 @@
             // 
             // ShowElevenLabsPassword
             // 
-            this.ShowElevenLabsPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ShowElevenLabsPassword.BackColor = Color.White;
-            this.ShowElevenLabsPassword.FlatAppearance.BorderSize = 0;
-            this.ShowElevenLabsPassword.FlatStyle = FlatStyle.Flat;
-            this.ShowElevenLabsPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowElevenLabsPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ShowElevenLabsPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ShowElevenLabsPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ShowElevenLabsPassword.IconSize = 15;
-            this.ShowElevenLabsPassword.Location = new Point(438, 36);
-            this.ShowElevenLabsPassword.Margin = new Padding(3, 2, 3, 2);
-            this.ShowElevenLabsPassword.Name = "ShowElevenLabsPassword";
-            this.ShowElevenLabsPassword.Size = new Size(31, 18);
-            this.ShowElevenLabsPassword.TabIndex = 165;
-            this.ShowElevenLabsPassword.UseVisualStyleBackColor = false;
-            this.ShowElevenLabsPassword.Click += this.ShowElevenLabsPassword_Click;
+            ShowElevenLabsPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ShowElevenLabsPassword.BackColor = Color.White;
+            ShowElevenLabsPassword.FlatAppearance.BorderSize = 0;
+            ShowElevenLabsPassword.FlatStyle = FlatStyle.Flat;
+            ShowElevenLabsPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowElevenLabsPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ShowElevenLabsPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ShowElevenLabsPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ShowElevenLabsPassword.IconSize = 15;
+            ShowElevenLabsPassword.Location = new Point(438, 36);
+            ShowElevenLabsPassword.Margin = new Padding(3, 2, 3, 2);
+            ShowElevenLabsPassword.Name = "ShowElevenLabsPassword";
+            ShowElevenLabsPassword.Size = new Size(31, 18);
+            ShowElevenLabsPassword.TabIndex = 165;
+            ShowElevenLabsPassword.UseVisualStyleBackColor = false;
+            ShowElevenLabsPassword.Click += (this.ShowElevenLabsPassword_Click);
             // 
             // iconButton35
             // 
-            this.iconButton35.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton35.FlatAppearance.BorderSize = 0;
-            this.iconButton35.FlatStyle = FlatStyle.Flat;
-            this.iconButton35.ForeColor = Color.Snow;
-            this.iconButton35.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton35.IconColor = Color.White;
-            this.iconButton35.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton35.IconSize = 40;
-            this.iconButton35.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton35.Location = new Point(664, 17);
-            this.iconButton35.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton35.Name = "iconButton35";
-            this.iconButton35.Size = new Size(55, 56);
-            this.iconButton35.TabIndex = 164;
-            this.iconButton35.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton35.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton35.UseVisualStyleBackColor = true;
-            this.iconButton35.Click += this.iconButton35_Click;
+            iconButton35.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton35.FlatAppearance.BorderSize = 0;
+            iconButton35.FlatStyle = FlatStyle.Flat;
+            iconButton35.ForeColor = Color.Snow;
+            iconButton35.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton35.IconColor = Color.White;
+            iconButton35.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton35.IconSize = 40;
+            iconButton35.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton35.Location = new Point(664, 17);
+            iconButton35.Margin = new Padding(3, 2, 3, 2);
+            iconButton35.Name = "iconButton35";
+            iconButton35.Size = new Size(55, 56);
+            iconButton35.TabIndex = 164;
+            iconButton35.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton35.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton35.UseVisualStyleBackColor = true;
+            iconButton35.Click += (this.iconButton35_Click);
             // 
             // button35
             // 
-            button35.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button35.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button35.FlatStyle = FlatStyle.Flat;
             button35.ForeColor = Color.Snow;
             button35.Location = new Point(587, 17);
@@ -9227,7 +9331,7 @@
             button35.TabIndex = 89;
             button35.Text = "Reload Voices";
             button35.UseVisualStyleBackColor = false;
-            button35.Click += this.button35_Click;
+            button35.Click += (this.button35_Click);
             // 
             // label111
             // 
@@ -9241,7 +9345,7 @@
             // 
             // button37
             // 
-            button37.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            button37.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button37.FlatStyle = FlatStyle.Flat;
             button37.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button37.ForeColor = Color.Snow;
@@ -9252,7 +9356,7 @@
             button37.TabIndex = 29;
             button37.Text = "Apply";
             button37.UseVisualStyleBackColor = false;
-            button37.Click += this.button37_Click;
+            button37.Click += (this.button37_Click);
             // 
             // textBoxElevenLabsKey
             // 
@@ -9277,9 +9381,9 @@
             // VoiceWizPro
             // 
             VoiceWizPro.AutoScroll = true;
-            VoiceWizPro.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            VoiceWizPro.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             VoiceWizPro.Controls.Add(groupBox40);
-            VoiceWizPro.Controls.Add(this.iconButton55);
+            VoiceWizPro.Controls.Add(iconButton55);
             VoiceWizPro.Controls.Add(pictureBox3);
             VoiceWizPro.Controls.Add(label165);
             VoiceWizPro.Controls.Add(groupBox23);
@@ -9295,7 +9399,7 @@
             // 
             groupBox40.Controls.Add(label182);
             groupBox40.Controls.Add(label177);
-            groupBox40.Controls.Add(this.pot1);
+            groupBox40.Controls.Add(pot1);
             groupBox40.Controls.Add(textBoxSilence);
             groupBox40.Controls.Add(minimumAudio);
             groupBox40.Controls.Add(label181);
@@ -9339,14 +9443,14 @@
             // 
             // pot1
             // 
-            this.pot1.Location = new Point(556, 17);
-            this.pot1.Margin = new Padding(4, 3, 4, 3);
-            this.pot1.Maximum = 50000D;
-            this.pot1.Minimum = 0D;
-            this.pot1.Name = "pot1";
-            this.pot1.Size = new Size(123, 105);
-            this.pot1.TabIndex = 164;
-            this.pot1.Value = 0D;
+            pot1.Location = new Point(556, 17);
+            pot1.Margin = new Padding(4, 3, 4, 3);
+            pot1.Maximum = 50000D;
+            pot1.Minimum = 0D;
+            pot1.Name = "pot1";
+            pot1.Size = new Size(123, 105);
+            pot1.TabIndex = 164;
+            pot1.Value = 0D;
             // 
             // textBoxSilence
             // 
@@ -9445,7 +9549,7 @@
             trackBarSilence.TabIndex = 191;
             trackBarSilence.TickFrequency = 2;
             trackBarSilence.Value = 50;
-            trackBarSilence.Scroll += this.trackBarSilence_Scroll;
+            trackBarSilence.Scroll += (this.trackBarSilence_Scroll);
             // 
             // SpeechHoursUsed
             // 
@@ -9458,34 +9562,34 @@
             // 
             // iconButton55
             // 
-            this.iconButton55.FlatAppearance.BorderSize = 0;
-            this.iconButton55.FlatStyle = FlatStyle.Flat;
-            this.iconButton55.ForeColor = Color.Snow;
-            this.iconButton55.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton55.IconColor = Color.White;
-            this.iconButton55.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton55.IconSize = 40;
-            this.iconButton55.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton55.Location = new Point(693, 5);
-            this.iconButton55.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton55.Name = "iconButton55";
-            this.iconButton55.Size = new Size(53, 53);
-            this.iconButton55.TabIndex = 161;
-            this.iconButton55.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton55.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton55.UseVisualStyleBackColor = true;
-            this.iconButton55.Click += this.iconButton55_Click;
+            iconButton55.FlatAppearance.BorderSize = 0;
+            iconButton55.FlatStyle = FlatStyle.Flat;
+            iconButton55.ForeColor = Color.Snow;
+            iconButton55.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton55.IconColor = Color.White;
+            iconButton55.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton55.IconSize = 40;
+            iconButton55.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton55.Location = new Point(693, 5);
+            iconButton55.Margin = new Padding(3, 2, 3, 2);
+            iconButton55.Name = "iconButton55";
+            iconButton55.Size = new Size(53, 53);
+            iconButton55.TabIndex = 161;
+            iconButton55.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton55.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton55.UseVisualStyleBackColor = true;
+            iconButton55.Click += (this.iconButton55_Click);
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = (Image)(resources.GetObject("pictureBox3.Image"));
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(176, 718);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(346, 56);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 160;
             pictureBox3.TabStop = false;
-            pictureBox3.Click += this.pictureBox3_Click;
+            pictureBox3.Click += (this.pictureBox3_Click);
             // 
             // label165
             // 
@@ -9501,19 +9605,19 @@
             // 
             groupBox23.Controls.Add(label188);
             groupBox23.Controls.Add(comboBoxProBranch);
-            groupBox23.Controls.Add(this.ProShowKey);
+            groupBox23.Controls.Add(ProShowKey);
             groupBox23.Controls.Add(label168);
-            groupBox23.Controls.Add(this.rjToggleButtonProTranslation);
+            groupBox23.Controls.Add(rjToggleButtonProTranslation);
             groupBox23.Controls.Add(labelTranslationCharacters);
             groupBox23.Controls.Add(labelTTSCharacters);
             groupBox23.Controls.Add(label164);
-            groupBox23.Controls.Add(this.rjToggleButtonUsePro);
+            groupBox23.Controls.Add(rjToggleButtonUsePro);
             groupBox23.Controls.Add(label159);
-            groupBox23.Controls.Add(this.rjToggleButtonProAmazon);
+            groupBox23.Controls.Add(rjToggleButtonProAmazon);
             groupBox23.Controls.Add(label162);
             groupBox23.Controls.Add(label161);
             groupBox23.Controls.Add(textBoxWizardProKey);
-            groupBox23.Controls.Add(this.rjToggleButtonProAzure);
+            groupBox23.Controls.Add(rjToggleButtonProAzure);
             groupBox23.ForeColor = Color.White;
             groupBox23.Location = new Point(7, 116);
             groupBox23.Margin = new Padding(3, 2, 3, 2);
@@ -9526,7 +9630,7 @@
             // 
             // label188
             // 
-            label188.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            label188.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             label188.AutoSize = true;
             label188.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label188.ForeColor = Color.Snow;
@@ -9538,7 +9642,7 @@
             // 
             // comboBoxProBranch
             // 
-            comboBoxProBranch.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
+            comboBoxProBranch.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             comboBoxProBranch.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxProBranch.FlatStyle = FlatStyle.Flat;
             comboBoxProBranch.FormattingEnabled = true;
@@ -9551,22 +9655,22 @@
             // 
             // ProShowKey
             // 
-            this.ProShowKey.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.ProShowKey.BackColor = Color.White;
-            this.ProShowKey.FlatAppearance.BorderSize = 0;
-            this.ProShowKey.FlatStyle = FlatStyle.Flat;
-            this.ProShowKey.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ProShowKey.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.ProShowKey.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.ProShowKey.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.ProShowKey.IconSize = 15;
-            this.ProShowKey.Location = new Point(420, 74);
-            this.ProShowKey.Margin = new Padding(3, 2, 3, 2);
-            this.ProShowKey.Name = "ProShowKey";
-            this.ProShowKey.Size = new Size(31, 18);
-            this.ProShowKey.TabIndex = 121;
-            this.ProShowKey.UseVisualStyleBackColor = false;
-            this.ProShowKey.Click += this.ProShowKey_Click;
+            ProShowKey.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ProShowKey.BackColor = Color.White;
+            ProShowKey.FlatAppearance.BorderSize = 0;
+            ProShowKey.FlatStyle = FlatStyle.Flat;
+            ProShowKey.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ProShowKey.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            ProShowKey.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            ProShowKey.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ProShowKey.IconSize = 15;
+            ProShowKey.Location = new Point(420, 74);
+            ProShowKey.Margin = new Padding(3, 2, 3, 2);
+            ProShowKey.Name = "ProShowKey";
+            ProShowKey.Size = new Size(31, 18);
+            ProShowKey.TabIndex = 121;
+            ProShowKey.UseVisualStyleBackColor = false;
+            ProShowKey.Click += (this.ProShowKey_Click);
             // 
             // label168
             // 
@@ -9581,18 +9685,18 @@
             // 
             // rjToggleButtonProTranslation
             // 
-            this.rjToggleButtonProTranslation.AutoSize = true;
-            this.rjToggleButtonProTranslation.Location = new Point(31, 177);
-            this.rjToggleButtonProTranslation.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonProTranslation.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonProTranslation.Name = "rjToggleButtonProTranslation";
-            this.rjToggleButtonProTranslation.OffBackColor = Color.Gray;
-            this.rjToggleButtonProTranslation.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonProTranslation.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonProTranslation.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonProTranslation.Size = new Size(39, 16);
-            this.rjToggleButtonProTranslation.TabIndex = 120;
-            this.rjToggleButtonProTranslation.UseVisualStyleBackColor = true;
+            rjToggleButtonProTranslation.AutoSize = true;
+            rjToggleButtonProTranslation.Location = new Point(31, 177);
+            rjToggleButtonProTranslation.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonProTranslation.MinimumSize = new Size(39, 16);
+            rjToggleButtonProTranslation.Name = "rjToggleButtonProTranslation";
+            rjToggleButtonProTranslation.OffBackColor = Color.Gray;
+            rjToggleButtonProTranslation.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonProTranslation.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonProTranslation.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonProTranslation.Size = new Size(39, 16);
+            rjToggleButtonProTranslation.TabIndex = 120;
+            rjToggleButtonProTranslation.UseVisualStyleBackColor = true;
             // 
             // labelTranslationCharacters
             // 
@@ -9625,18 +9729,18 @@
             // 
             // rjToggleButtonUsePro
             // 
-            this.rjToggleButtonUsePro.AutoSize = true;
-            this.rjToggleButtonUsePro.Location = new Point(15, 20);
-            this.rjToggleButtonUsePro.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonUsePro.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonUsePro.Name = "rjToggleButtonUsePro";
-            this.rjToggleButtonUsePro.OffBackColor = Color.Gray;
-            this.rjToggleButtonUsePro.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonUsePro.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonUsePro.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonUsePro.Size = new Size(39, 16);
-            this.rjToggleButtonUsePro.TabIndex = 116;
-            this.rjToggleButtonUsePro.UseVisualStyleBackColor = true;
+            rjToggleButtonUsePro.AutoSize = true;
+            rjToggleButtonUsePro.Location = new Point(15, 20);
+            rjToggleButtonUsePro.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonUsePro.MinimumSize = new Size(39, 16);
+            rjToggleButtonUsePro.Name = "rjToggleButtonUsePro";
+            rjToggleButtonUsePro.OffBackColor = Color.Gray;
+            rjToggleButtonUsePro.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonUsePro.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonUsePro.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonUsePro.Size = new Size(39, 16);
+            rjToggleButtonUsePro.TabIndex = 116;
+            rjToggleButtonUsePro.UseVisualStyleBackColor = true;
             // 
             // label159
             // 
@@ -9651,20 +9755,20 @@
             // 
             // rjToggleButtonProAmazon
             // 
-            this.rjToggleButtonProAmazon.AutoSize = true;
-            this.rjToggleButtonProAmazon.Checked = true;
-            this.rjToggleButtonProAmazon.CheckState = CheckState.Checked;
-            this.rjToggleButtonProAmazon.Location = new Point(31, 145);
-            this.rjToggleButtonProAmazon.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonProAmazon.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonProAmazon.Name = "rjToggleButtonProAmazon";
-            this.rjToggleButtonProAmazon.OffBackColor = Color.Gray;
-            this.rjToggleButtonProAmazon.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonProAmazon.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonProAmazon.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonProAmazon.Size = new Size(39, 16);
-            this.rjToggleButtonProAmazon.TabIndex = 112;
-            this.rjToggleButtonProAmazon.UseVisualStyleBackColor = true;
+            rjToggleButtonProAmazon.AutoSize = true;
+            rjToggleButtonProAmazon.Checked = true;
+            rjToggleButtonProAmazon.CheckState = CheckState.Checked;
+            rjToggleButtonProAmazon.Location = new Point(31, 145);
+            rjToggleButtonProAmazon.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonProAmazon.MinimumSize = new Size(39, 16);
+            rjToggleButtonProAmazon.Name = "rjToggleButtonProAmazon";
+            rjToggleButtonProAmazon.OffBackColor = Color.Gray;
+            rjToggleButtonProAmazon.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonProAmazon.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonProAmazon.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonProAmazon.Size = new Size(39, 16);
+            rjToggleButtonProAmazon.TabIndex = 112;
+            rjToggleButtonProAmazon.UseVisualStyleBackColor = true;
             // 
             // label162
             // 
@@ -9698,20 +9802,20 @@
             // 
             // rjToggleButtonProAzure
             // 
-            this.rjToggleButtonProAzure.AutoSize = true;
-            this.rjToggleButtonProAzure.Checked = true;
-            this.rjToggleButtonProAzure.CheckState = CheckState.Checked;
-            this.rjToggleButtonProAzure.Location = new Point(31, 114);
-            this.rjToggleButtonProAzure.Margin = new Padding(3, 2, 3, 2);
-            this.rjToggleButtonProAzure.MinimumSize = new Size(39, 16);
-            this.rjToggleButtonProAzure.Name = "rjToggleButtonProAzure";
-            this.rjToggleButtonProAzure.OffBackColor = Color.Gray;
-            this.rjToggleButtonProAzure.OffToggleColor = Color.Gainsboro;
-            this.rjToggleButtonProAzure.OnBackColor = Color.MediumSlateBlue;
-            this.rjToggleButtonProAzure.OnToggleColor = Color.WhiteSmoke;
-            this.rjToggleButtonProAzure.Size = new Size(39, 16);
-            this.rjToggleButtonProAzure.TabIndex = 107;
-            this.rjToggleButtonProAzure.UseVisualStyleBackColor = true;
+            rjToggleButtonProAzure.AutoSize = true;
+            rjToggleButtonProAzure.Checked = true;
+            rjToggleButtonProAzure.CheckState = CheckState.Checked;
+            rjToggleButtonProAzure.Location = new Point(31, 114);
+            rjToggleButtonProAzure.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonProAzure.MinimumSize = new Size(39, 16);
+            rjToggleButtonProAzure.Name = "rjToggleButtonProAzure";
+            rjToggleButtonProAzure.OffBackColor = Color.Gray;
+            rjToggleButtonProAzure.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonProAzure.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonProAzure.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonProAzure.Size = new Size(39, 16);
+            rjToggleButtonProAzure.TabIndex = 107;
+            rjToggleButtonProAzure.UseVisualStyleBackColor = true;
             // 
             // label163
             // 
@@ -9726,7 +9830,7 @@
             // 
             // uberduck
             // 
-            uberduck.BackColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
+            uberduck.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             uberduck.Controls.Add(groupBox14);
             uberduck.Controls.Add(label171);
             uberduck.Location = new Point(4, 24);
@@ -9738,10 +9842,10 @@
             // 
             // groupBox14
             // 
-            groupBox14.Controls.Add(this.UberDuckShowSecretPassword);
-            groupBox14.Controls.Add(this.UberDuckShowPassword);
+            groupBox14.Controls.Add(UberDuckShowSecretPassword);
+            groupBox14.Controls.Add(UberDuckShowPassword);
             groupBox14.Controls.Add(label160);
-            groupBox14.Controls.Add(this.iconButton53);
+            groupBox14.Controls.Add(iconButton53);
             groupBox14.Controls.Add(textBoxUberSecret);
             groupBox14.Controls.Add(label170);
             groupBox14.Controls.Add(textBoxUberKey);
@@ -9757,41 +9861,41 @@
             // 
             // UberDuckShowSecretPassword
             // 
-            this.UberDuckShowSecretPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.UberDuckShowSecretPassword.BackColor = Color.White;
-            this.UberDuckShowSecretPassword.FlatAppearance.BorderSize = 0;
-            this.UberDuckShowSecretPassword.FlatStyle = FlatStyle.Flat;
-            this.UberDuckShowSecretPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.UberDuckShowSecretPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.UberDuckShowSecretPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.UberDuckShowSecretPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.UberDuckShowSecretPassword.IconSize = 15;
-            this.UberDuckShowSecretPassword.Location = new Point(288, 90);
-            this.UberDuckShowSecretPassword.Margin = new Padding(3, 2, 3, 2);
-            this.UberDuckShowSecretPassword.Name = "UberDuckShowSecretPassword";
-            this.UberDuckShowSecretPassword.Size = new Size(31, 18);
-            this.UberDuckShowSecretPassword.TabIndex = 123;
-            this.UberDuckShowSecretPassword.UseVisualStyleBackColor = false;
-            this.UberDuckShowSecretPassword.Click += this.UberDuckShowSecretPassword_Click;
+            UberDuckShowSecretPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            UberDuckShowSecretPassword.BackColor = Color.White;
+            UberDuckShowSecretPassword.FlatAppearance.BorderSize = 0;
+            UberDuckShowSecretPassword.FlatStyle = FlatStyle.Flat;
+            UberDuckShowSecretPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            UberDuckShowSecretPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            UberDuckShowSecretPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            UberDuckShowSecretPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            UberDuckShowSecretPassword.IconSize = 15;
+            UberDuckShowSecretPassword.Location = new Point(288, 90);
+            UberDuckShowSecretPassword.Margin = new Padding(3, 2, 3, 2);
+            UberDuckShowSecretPassword.Name = "UberDuckShowSecretPassword";
+            UberDuckShowSecretPassword.Size = new Size(31, 18);
+            UberDuckShowSecretPassword.TabIndex = 123;
+            UberDuckShowSecretPassword.UseVisualStyleBackColor = false;
+            UberDuckShowSecretPassword.Click += (this.UberDuckShowSecretPassword_Click);
             // 
             // UberDuckShowPassword
             // 
-            this.UberDuckShowPassword.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.UberDuckShowPassword.BackColor = Color.White;
-            this.UberDuckShowPassword.FlatAppearance.BorderSize = 0;
-            this.UberDuckShowPassword.FlatStyle = FlatStyle.Flat;
-            this.UberDuckShowPassword.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.UberDuckShowPassword.IconChar = global::FontAwesome.Sharp.IconChar.EyeSlash;
-            this.UberDuckShowPassword.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.UberDuckShowPassword.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.UberDuckShowPassword.IconSize = 15;
-            this.UberDuckShowPassword.Location = new Point(288, 36);
-            this.UberDuckShowPassword.Margin = new Padding(3, 2, 3, 2);
-            this.UberDuckShowPassword.Name = "UberDuckShowPassword";
-            this.UberDuckShowPassword.Size = new Size(31, 18);
-            this.UberDuckShowPassword.TabIndex = 122;
-            this.UberDuckShowPassword.UseVisualStyleBackColor = false;
-            this.UberDuckShowPassword.Click += this.UberDuckShowPassword_Click;
+            UberDuckShowPassword.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            UberDuckShowPassword.BackColor = Color.White;
+            UberDuckShowPassword.FlatAppearance.BorderSize = 0;
+            UberDuckShowPassword.FlatStyle = FlatStyle.Flat;
+            UberDuckShowPassword.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            UberDuckShowPassword.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            UberDuckShowPassword.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            UberDuckShowPassword.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            UberDuckShowPassword.IconSize = 15;
+            UberDuckShowPassword.Location = new Point(288, 36);
+            UberDuckShowPassword.Margin = new Padding(3, 2, 3, 2);
+            UberDuckShowPassword.Name = "UberDuckShowPassword";
+            UberDuckShowPassword.Size = new Size(31, 18);
+            UberDuckShowPassword.TabIndex = 122;
+            UberDuckShowPassword.UseVisualStyleBackColor = false;
+            UberDuckShowPassword.Click += (this.UberDuckShowPassword_Click);
             // 
             // label160
             // 
@@ -9805,23 +9909,23 @@
             // 
             // iconButton53
             // 
-            this.iconButton53.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Right));
-            this.iconButton53.FlatAppearance.BorderSize = 0;
-            this.iconButton53.FlatStyle = FlatStyle.Flat;
-            this.iconButton53.ForeColor = Color.Snow;
-            this.iconButton53.IconChar = global::FontAwesome.Sharp.IconChar.Question;
-            this.iconButton53.IconColor = Color.White;
-            this.iconButton53.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton53.ImageAlign = ContentAlignment.MiddleLeft;
-            this.iconButton53.Location = new Point(642, 18);
-            this.iconButton53.Margin = new Padding(3, 2, 3, 2);
-            this.iconButton53.Name = "iconButton53";
-            this.iconButton53.Size = new Size(55, 54);
-            this.iconButton53.TabIndex = 110;
-            this.iconButton53.TextAlign = ContentAlignment.MiddleLeft;
-            this.iconButton53.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.iconButton53.UseVisualStyleBackColor = true;
-            this.iconButton53.Click += this.iconButton53_Click;
+            iconButton53.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton53.FlatAppearance.BorderSize = 0;
+            iconButton53.FlatStyle = FlatStyle.Flat;
+            iconButton53.ForeColor = Color.Snow;
+            iconButton53.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton53.IconColor = Color.White;
+            iconButton53.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton53.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton53.Location = new Point(642, 18);
+            iconButton53.Margin = new Padding(3, 2, 3, 2);
+            iconButton53.Name = "iconButton53";
+            iconButton53.Size = new Size(55, 54);
+            iconButton53.TabIndex = 110;
+            iconButton53.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton53.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton53.UseVisualStyleBackColor = true;
+            iconButton53.Click += (this.iconButton53_Click);
             // 
             // textBoxUberSecret
             // 
@@ -9864,9 +9968,9 @@
             // 
             // WhisperDebugLabel
             // 
-            WhisperDebugLabel.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left));
+            WhisperDebugLabel.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             WhisperDebugLabel.AutoSize = true;
-            WhisperDebugLabel.Location = new Point(15, 584);
+            WhisperDebugLabel.Location = new Point(26, 584);
             WhisperDebugLabel.Name = "WhisperDebugLabel";
             WhisperDebugLabel.Size = new Size(91, 15);
             WhisperDebugLabel.TabIndex = 111;
@@ -9875,9 +9979,10 @@
             // 
             // groupBox9
             // 
-            groupBox9.Anchor = (AnchorStyles)((((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right));
+            groupBox9.Anchor = (AnchorStyles)(((AnchorStyles.Top) | (AnchorStyles.Bottom)) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            groupBox9.Controls.Add(labelVADIndicator);
             groupBox9.Controls.Add(WhisperDebugLabel);
-            groupBox9.Controls.Add(this.logTrash);
+            groupBox9.Controls.Add(logTrash);
             groupBox9.Controls.Add(richTextBox1);
             groupBox9.ForeColor = Color.White;
             groupBox9.Location = new Point(22, 2);
@@ -9889,39 +9994,50 @@
             groupBox9.TabStop = false;
             groupBox9.Text = "Log";
             // 
+            // labelVADIndicator
+            // 
+            labelVADIndicator.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            labelVADIndicator.AutoSize = true;
+            labelVADIndicator.Location = new Point(9, 584);
+            labelVADIndicator.Name = "labelVADIndicator";
+            labelVADIndicator.Size = new Size(19, 15);
+            labelVADIndicator.TabIndex = 112;
+            labelVADIndicator.Text = "🎤";
+            labelVADIndicator.Visible = false;
+            // 
             // logTrash
             // 
-            this.logTrash.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Right));
-            this.logTrash.BackColor = Color.White;
-            this.logTrash.FlatAppearance.BorderSize = 0;
-            this.logTrash.FlatStyle = FlatStyle.Flat;
-            this.logTrash.ForeColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.logTrash.IconChar = global::FontAwesome.Sharp.IconChar.Trash;
-            this.logTrash.IconColor = Color.FromArgb((int)((byte)(68)), (int)((byte)(72)), (int)((byte)(111)));
-            this.logTrash.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.logTrash.IconSize = 15;
-            this.logTrash.Location = new Point(206, 580);
-            this.logTrash.Margin = new Padding(3, 2, 3, 2);
-            this.logTrash.Name = "logTrash";
-            this.logTrash.Size = new Size(31, 22);
-            this.logTrash.TabIndex = 32;
-            this.logTrash.UseVisualStyleBackColor = false;
-            this.logTrash.Click += this.logTrash_Click;
+            logTrash.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            logTrash.BackColor = Color.White;
+            logTrash.FlatAppearance.BorderSize = 0;
+            logTrash.FlatStyle = FlatStyle.Flat;
+            logTrash.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            logTrash.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            logTrash.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            logTrash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            logTrash.IconSize = 15;
+            logTrash.Location = new Point(206, 580);
+            logTrash.Margin = new Padding(3, 2, 3, 2);
+            logTrash.Name = "logTrash";
+            logTrash.Size = new Size(31, 22);
+            logTrash.TabIndex = 32;
+            logTrash.UseVisualStyleBackColor = false;
+            logTrash.Click += (this.logTrash_Click);
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            panel1.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             panel1.Controls.Add(versionLabel);
-            panel1.Controls.Add(this.navbarUpdates);
-            panel1.Controls.Add(this.navbarDonate);
-            panel1.Controls.Add(this.navbarGithub);
-            panel1.Controls.Add(this.navbarDiscord);
-            panel1.Controls.Add(this.navbarSpeechProvider);
-            panel1.Controls.Add(this.navbarIntegrations);
-            panel1.Controls.Add(this.navbarSettings);
-            panel1.Controls.Add(this.navbarTextToText);
-            panel1.Controls.Add(this.navbarTextToSpeech);
-            panel1.Controls.Add(this.navbarHome);
+            panel1.Controls.Add(navbarUpdates);
+            panel1.Controls.Add(navbarDonate);
+            panel1.Controls.Add(navbarGithub);
+            panel1.Controls.Add(navbarDiscord);
+            panel1.Controls.Add(navbarSpeechProvider);
+            panel1.Controls.Add(navbarIntegrations);
+            panel1.Controls.Add(navbarSettings);
+            panel1.Controls.Add(navbarTextToText);
+            panel1.Controls.Add(navbarTextToSpeech);
+            panel1.Controls.Add(navbarHome);
             panel1.Controls.Add(panel2Logo);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
@@ -9940,232 +10056,232 @@
             versionLabel.TabIndex = 12;
             versionLabel.Text = "Version";
             versionLabel.TextAlign = ContentAlignment.MiddleLeft;
-            versionLabel.Click += this.versionLabel_Click;
+            versionLabel.Click += (this.versionLabel_Click);
             // 
             // navbarUpdates
             // 
-            this.navbarUpdates.Dock = DockStyle.Top;
-            this.navbarUpdates.FlatAppearance.BorderSize = 0;
-            this.navbarUpdates.FlatStyle = FlatStyle.Flat;
-            this.navbarUpdates.ForeColor = Color.Gold;
-            this.navbarUpdates.IconChar = global::FontAwesome.Sharp.IconChar.Plus;
-            this.navbarUpdates.IconColor = Color.Gold;
-            this.navbarUpdates.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarUpdates.IconSize = 40;
-            this.navbarUpdates.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarUpdates.Location = new Point(0, 510);
-            this.navbarUpdates.Margin = new Padding(3, 2, 3, 2);
-            this.navbarUpdates.Name = "navbarUpdates";
-            this.navbarUpdates.Size = new Size(159, 45);
-            this.navbarUpdates.TabIndex = 8;
-            this.navbarUpdates.Text = "Update";
-            this.navbarUpdates.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarUpdates.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarUpdates.UseVisualStyleBackColor = true;
-            this.navbarUpdates.Visible = false;
-            this.navbarUpdates.Click += this.iconButton8_Click;
+            navbarUpdates.Dock = DockStyle.Top;
+            navbarUpdates.FlatAppearance.BorderSize = 0;
+            navbarUpdates.FlatStyle = FlatStyle.Flat;
+            navbarUpdates.ForeColor = Color.Gold;
+            navbarUpdates.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            navbarUpdates.IconColor = Color.Gold;
+            navbarUpdates.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarUpdates.IconSize = 40;
+            navbarUpdates.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarUpdates.Location = new Point(0, 510);
+            navbarUpdates.Margin = new Padding(3, 2, 3, 2);
+            navbarUpdates.Name = "navbarUpdates";
+            navbarUpdates.Size = new Size(159, 45);
+            navbarUpdates.TabIndex = 8;
+            navbarUpdates.Text = "Update";
+            navbarUpdates.TextAlign = ContentAlignment.MiddleLeft;
+            navbarUpdates.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarUpdates.UseVisualStyleBackColor = true;
+            navbarUpdates.Visible = false;
+            navbarUpdates.Click += (this.iconButton8_Click);
             // 
             // navbarDonate
             // 
-            this.navbarDonate.Dock = DockStyle.Top;
-            this.navbarDonate.FlatAppearance.BorderSize = 0;
-            this.navbarDonate.FlatStyle = FlatStyle.Flat;
-            this.navbarDonate.ForeColor = Color.Snow;
-            this.navbarDonate.IconChar = global::FontAwesome.Sharp.IconChar.HandHoldingHeart;
-            this.navbarDonate.IconColor = Color.White;
-            this.navbarDonate.IconFont = global::FontAwesome.Sharp.IconFont.Auto;
-            this.navbarDonate.IconSize = 40;
-            this.navbarDonate.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarDonate.Location = new Point(0, 465);
-            this.navbarDonate.Margin = new Padding(3, 2, 3, 2);
-            this.navbarDonate.Name = "navbarDonate";
-            this.navbarDonate.Size = new Size(159, 45);
-            this.navbarDonate.TabIndex = 10;
-            this.navbarDonate.Text = "Donate";
-            this.navbarDonate.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarDonate.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarDonate.UseVisualStyleBackColor = true;
-            this.navbarDonate.Click += this.iconButton12_Click;
+            navbarDonate.Dock = DockStyle.Top;
+            navbarDonate.FlatAppearance.BorderSize = 0;
+            navbarDonate.FlatStyle = FlatStyle.Flat;
+            navbarDonate.ForeColor = Color.Snow;
+            navbarDonate.IconChar = FontAwesome.Sharp.IconChar.HandHoldingHeart;
+            navbarDonate.IconColor = Color.White;
+            navbarDonate.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            navbarDonate.IconSize = 40;
+            navbarDonate.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarDonate.Location = new Point(0, 465);
+            navbarDonate.Margin = new Padding(3, 2, 3, 2);
+            navbarDonate.Name = "navbarDonate";
+            navbarDonate.Size = new Size(159, 45);
+            navbarDonate.TabIndex = 10;
+            navbarDonate.Text = "Donate";
+            navbarDonate.TextAlign = ContentAlignment.MiddleLeft;
+            navbarDonate.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarDonate.UseVisualStyleBackColor = true;
+            navbarDonate.Click += (this.iconButton12_Click);
             // 
             // navbarGithub
             // 
-            this.navbarGithub.Dock = DockStyle.Top;
-            this.navbarGithub.FlatAppearance.BorderSize = 0;
-            this.navbarGithub.FlatStyle = FlatStyle.Flat;
-            this.navbarGithub.ForeColor = Color.Snow;
-            this.navbarGithub.IconChar = global::FontAwesome.Sharp.IconChar.Github;
-            this.navbarGithub.IconColor = Color.White;
-            this.navbarGithub.IconFont = global::FontAwesome.Sharp.IconFont.Brands;
-            this.navbarGithub.IconSize = 40;
-            this.navbarGithub.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarGithub.Location = new Point(0, 420);
-            this.navbarGithub.Margin = new Padding(3, 2, 3, 2);
-            this.navbarGithub.Name = "navbarGithub";
-            this.navbarGithub.Size = new Size(159, 45);
-            this.navbarGithub.TabIndex = 7;
-            this.navbarGithub.Text = "Github";
-            this.navbarGithub.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarGithub.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarGithub.UseVisualStyleBackColor = true;
-            this.navbarGithub.Click += this.iconButton7_Click;
+            navbarGithub.Dock = DockStyle.Top;
+            navbarGithub.FlatAppearance.BorderSize = 0;
+            navbarGithub.FlatStyle = FlatStyle.Flat;
+            navbarGithub.ForeColor = Color.Snow;
+            navbarGithub.IconChar = FontAwesome.Sharp.IconChar.Github;
+            navbarGithub.IconColor = Color.White;
+            navbarGithub.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            navbarGithub.IconSize = 40;
+            navbarGithub.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarGithub.Location = new Point(0, 420);
+            navbarGithub.Margin = new Padding(3, 2, 3, 2);
+            navbarGithub.Name = "navbarGithub";
+            navbarGithub.Size = new Size(159, 45);
+            navbarGithub.TabIndex = 7;
+            navbarGithub.Text = "Github";
+            navbarGithub.TextAlign = ContentAlignment.MiddleLeft;
+            navbarGithub.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarGithub.UseVisualStyleBackColor = true;
+            navbarGithub.Click += (this.iconButton7_Click);
             // 
             // navbarDiscord
             // 
-            this.navbarDiscord.Dock = DockStyle.Top;
-            this.navbarDiscord.FlatAppearance.BorderSize = 0;
-            this.navbarDiscord.FlatStyle = FlatStyle.Flat;
-            this.navbarDiscord.ForeColor = Color.Snow;
-            this.navbarDiscord.IconChar = global::FontAwesome.Sharp.IconChar.Discord;
-            this.navbarDiscord.IconColor = Color.White;
-            this.navbarDiscord.IconFont = global::FontAwesome.Sharp.IconFont.Brands;
-            this.navbarDiscord.IconSize = 40;
-            this.navbarDiscord.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarDiscord.Location = new Point(0, 375);
-            this.navbarDiscord.Margin = new Padding(3, 2, 3, 2);
-            this.navbarDiscord.Name = "navbarDiscord";
-            this.navbarDiscord.Size = new Size(159, 45);
-            this.navbarDiscord.TabIndex = 6;
-            this.navbarDiscord.Text = "Discord";
-            this.navbarDiscord.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarDiscord.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarDiscord.UseVisualStyleBackColor = true;
-            this.navbarDiscord.Click += this.iconButton6_Click;
+            navbarDiscord.Dock = DockStyle.Top;
+            navbarDiscord.FlatAppearance.BorderSize = 0;
+            navbarDiscord.FlatStyle = FlatStyle.Flat;
+            navbarDiscord.ForeColor = Color.Snow;
+            navbarDiscord.IconChar = FontAwesome.Sharp.IconChar.Discord;
+            navbarDiscord.IconColor = Color.White;
+            navbarDiscord.IconFont = FontAwesome.Sharp.IconFont.Brands;
+            navbarDiscord.IconSize = 40;
+            navbarDiscord.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarDiscord.Location = new Point(0, 375);
+            navbarDiscord.Margin = new Padding(3, 2, 3, 2);
+            navbarDiscord.Name = "navbarDiscord";
+            navbarDiscord.Size = new Size(159, 45);
+            navbarDiscord.TabIndex = 6;
+            navbarDiscord.Text = "Discord";
+            navbarDiscord.TextAlign = ContentAlignment.MiddleLeft;
+            navbarDiscord.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarDiscord.UseVisualStyleBackColor = true;
+            navbarDiscord.Click += (this.iconButton6_Click);
             // 
             // navbarSpeechProvider
             // 
-            this.navbarSpeechProvider.Dock = DockStyle.Top;
-            this.navbarSpeechProvider.FlatAppearance.BorderSize = 0;
-            this.navbarSpeechProvider.FlatStyle = FlatStyle.Flat;
-            this.navbarSpeechProvider.ForeColor = Color.Snow;
-            this.navbarSpeechProvider.IconChar = global::FontAwesome.Sharp.IconChar.UsersCog;
-            this.navbarSpeechProvider.IconColor = Color.Snow;
-            this.navbarSpeechProvider.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarSpeechProvider.IconSize = 40;
-            this.navbarSpeechProvider.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarSpeechProvider.Location = new Point(0, 330);
-            this.navbarSpeechProvider.Margin = new Padding(3, 2, 3, 2);
-            this.navbarSpeechProvider.Name = "navbarSpeechProvider";
-            this.navbarSpeechProvider.Size = new Size(159, 45);
-            this.navbarSpeechProvider.TabIndex = 0;
-            this.navbarSpeechProvider.Text = "Speech Provider";
-            this.navbarSpeechProvider.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarSpeechProvider.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarSpeechProvider.UseVisualStyleBackColor = true;
-            this.navbarSpeechProvider.Click += this.iconButton4_Click;
+            navbarSpeechProvider.Dock = DockStyle.Top;
+            navbarSpeechProvider.FlatAppearance.BorderSize = 0;
+            navbarSpeechProvider.FlatStyle = FlatStyle.Flat;
+            navbarSpeechProvider.ForeColor = Color.Snow;
+            navbarSpeechProvider.IconChar = FontAwesome.Sharp.IconChar.UsersCog;
+            navbarSpeechProvider.IconColor = Color.Snow;
+            navbarSpeechProvider.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarSpeechProvider.IconSize = 40;
+            navbarSpeechProvider.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarSpeechProvider.Location = new Point(0, 330);
+            navbarSpeechProvider.Margin = new Padding(3, 2, 3, 2);
+            navbarSpeechProvider.Name = "navbarSpeechProvider";
+            navbarSpeechProvider.Size = new Size(159, 45);
+            navbarSpeechProvider.TabIndex = 0;
+            navbarSpeechProvider.Text = "Speech Provider";
+            navbarSpeechProvider.TextAlign = ContentAlignment.MiddleLeft;
+            navbarSpeechProvider.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarSpeechProvider.UseVisualStyleBackColor = true;
+            navbarSpeechProvider.Click += (this.iconButton4_Click);
             // 
             // navbarIntegrations
             // 
-            this.navbarIntegrations.Dock = DockStyle.Top;
-            this.navbarIntegrations.FlatAppearance.BorderSize = 0;
-            this.navbarIntegrations.FlatStyle = FlatStyle.Flat;
-            this.navbarIntegrations.ForeColor = Color.Snow;
-            this.navbarIntegrations.IconChar = global::FontAwesome.Sharp.IconChar.PuzzlePiece;
-            this.navbarIntegrations.IconColor = Color.Snow;
-            this.navbarIntegrations.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarIntegrations.IconSize = 40;
-            this.navbarIntegrations.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarIntegrations.Location = new Point(0, 285);
-            this.navbarIntegrations.Margin = new Padding(3, 2, 3, 2);
-            this.navbarIntegrations.Name = "navbarIntegrations";
-            this.navbarIntegrations.Size = new Size(159, 45);
-            this.navbarIntegrations.TabIndex = 9;
-            this.navbarIntegrations.Text = "Integrations";
-            this.navbarIntegrations.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarIntegrations.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarIntegrations.UseVisualStyleBackColor = true;
-            this.navbarIntegrations.Click += this.iconButton3_Click;
+            navbarIntegrations.Dock = DockStyle.Top;
+            navbarIntegrations.FlatAppearance.BorderSize = 0;
+            navbarIntegrations.FlatStyle = FlatStyle.Flat;
+            navbarIntegrations.ForeColor = Color.Snow;
+            navbarIntegrations.IconChar = FontAwesome.Sharp.IconChar.PuzzlePiece;
+            navbarIntegrations.IconColor = Color.Snow;
+            navbarIntegrations.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarIntegrations.IconSize = 40;
+            navbarIntegrations.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarIntegrations.Location = new Point(0, 285);
+            navbarIntegrations.Margin = new Padding(3, 2, 3, 2);
+            navbarIntegrations.Name = "navbarIntegrations";
+            navbarIntegrations.Size = new Size(159, 45);
+            navbarIntegrations.TabIndex = 9;
+            navbarIntegrations.Text = "Integrations";
+            navbarIntegrations.TextAlign = ContentAlignment.MiddleLeft;
+            navbarIntegrations.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarIntegrations.UseVisualStyleBackColor = true;
+            navbarIntegrations.Click += (this.iconButton3_Click);
             // 
             // navbarSettings
             // 
-            this.navbarSettings.Dock = DockStyle.Top;
-            this.navbarSettings.FlatAppearance.BorderSize = 0;
-            this.navbarSettings.FlatStyle = FlatStyle.Flat;
-            this.navbarSettings.ForeColor = Color.Snow;
-            this.navbarSettings.IconChar = global::FontAwesome.Sharp.IconChar.Cog;
-            this.navbarSettings.IconColor = Color.Snow;
-            this.navbarSettings.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarSettings.IconSize = 40;
-            this.navbarSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarSettings.Location = new Point(0, 240);
-            this.navbarSettings.Margin = new Padding(3, 2, 3, 2);
-            this.navbarSettings.Name = "navbarSettings";
-            this.navbarSettings.Size = new Size(159, 45);
-            this.navbarSettings.TabIndex = 1;
-            this.navbarSettings.Text = "Settings";
-            this.navbarSettings.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarSettings.UseVisualStyleBackColor = true;
-            this.navbarSettings.Click += this.iconButton5_Click;
+            navbarSettings.Dock = DockStyle.Top;
+            navbarSettings.FlatAppearance.BorderSize = 0;
+            navbarSettings.FlatStyle = FlatStyle.Flat;
+            navbarSettings.ForeColor = Color.Snow;
+            navbarSettings.IconChar = FontAwesome.Sharp.IconChar.Cog;
+            navbarSettings.IconColor = Color.Snow;
+            navbarSettings.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarSettings.IconSize = 40;
+            navbarSettings.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarSettings.Location = new Point(0, 240);
+            navbarSettings.Margin = new Padding(3, 2, 3, 2);
+            navbarSettings.Name = "navbarSettings";
+            navbarSettings.Size = new Size(159, 45);
+            navbarSettings.TabIndex = 1;
+            navbarSettings.Text = "Settings";
+            navbarSettings.TextAlign = ContentAlignment.MiddleLeft;
+            navbarSettings.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarSettings.UseVisualStyleBackColor = true;
+            navbarSettings.Click += (this.iconButton5_Click);
             // 
             // navbarTextToText
             // 
-            this.navbarTextToText.Dock = DockStyle.Top;
-            this.navbarTextToText.FlatAppearance.BorderSize = 0;
-            this.navbarTextToText.FlatStyle = FlatStyle.Flat;
-            this.navbarTextToText.ForeColor = Color.Snow;
-            this.navbarTextToText.IconChar = global::FontAwesome.Sharp.IconChar.Keyboard;
-            this.navbarTextToText.IconColor = Color.Snow;
-            this.navbarTextToText.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarTextToText.IconSize = 40;
-            this.navbarTextToText.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarTextToText.Location = new Point(0, 195);
-            this.navbarTextToText.Margin = new Padding(3, 2, 3, 2);
-            this.navbarTextToText.Name = "navbarTextToText";
-            this.navbarTextToText.Size = new Size(159, 45);
-            this.navbarTextToText.TabIndex = 11;
-            this.navbarTextToText.Text = "Text to Text";
-            this.navbarTextToText.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarTextToText.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarTextToText.UseVisualStyleBackColor = true;
-            this.navbarTextToText.Click += this.iconButton23_Click;
+            navbarTextToText.Dock = DockStyle.Top;
+            navbarTextToText.FlatAppearance.BorderSize = 0;
+            navbarTextToText.FlatStyle = FlatStyle.Flat;
+            navbarTextToText.ForeColor = Color.Snow;
+            navbarTextToText.IconChar = FontAwesome.Sharp.IconChar.Keyboard;
+            navbarTextToText.IconColor = Color.Snow;
+            navbarTextToText.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarTextToText.IconSize = 40;
+            navbarTextToText.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarTextToText.Location = new Point(0, 195);
+            navbarTextToText.Margin = new Padding(3, 2, 3, 2);
+            navbarTextToText.Name = "navbarTextToText";
+            navbarTextToText.Size = new Size(159, 45);
+            navbarTextToText.TabIndex = 11;
+            navbarTextToText.Text = "Text to Text";
+            navbarTextToText.TextAlign = ContentAlignment.MiddleLeft;
+            navbarTextToText.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarTextToText.UseVisualStyleBackColor = true;
+            navbarTextToText.Click += (this.iconButton23_Click);
             // 
             // navbarTextToSpeech
             // 
-            this.navbarTextToSpeech.Dock = DockStyle.Top;
-            this.navbarTextToSpeech.FlatAppearance.BorderSize = 0;
-            this.navbarTextToSpeech.FlatStyle = FlatStyle.Flat;
-            this.navbarTextToSpeech.ForeColor = Color.Snow;
-            this.navbarTextToSpeech.IconChar = global::FontAwesome.Sharp.IconChar.Microphone;
-            this.navbarTextToSpeech.IconColor = Color.Snow;
-            this.navbarTextToSpeech.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarTextToSpeech.IconSize = 40;
-            this.navbarTextToSpeech.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarTextToSpeech.Location = new Point(0, 150);
-            this.navbarTextToSpeech.Margin = new Padding(3, 2, 3, 2);
-            this.navbarTextToSpeech.Name = "navbarTextToSpeech";
-            this.navbarTextToSpeech.Size = new Size(159, 45);
-            this.navbarTextToSpeech.TabIndex = 2;
-            this.navbarTextToSpeech.Text = "Text to Speech";
-            this.navbarTextToSpeech.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarTextToSpeech.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarTextToSpeech.UseVisualStyleBackColor = true;
-            this.navbarTextToSpeech.Click += this.iconButton2_Click;
+            navbarTextToSpeech.Dock = DockStyle.Top;
+            navbarTextToSpeech.FlatAppearance.BorderSize = 0;
+            navbarTextToSpeech.FlatStyle = FlatStyle.Flat;
+            navbarTextToSpeech.ForeColor = Color.Snow;
+            navbarTextToSpeech.IconChar = FontAwesome.Sharp.IconChar.Microphone;
+            navbarTextToSpeech.IconColor = Color.Snow;
+            navbarTextToSpeech.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarTextToSpeech.IconSize = 40;
+            navbarTextToSpeech.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarTextToSpeech.Location = new Point(0, 150);
+            navbarTextToSpeech.Margin = new Padding(3, 2, 3, 2);
+            navbarTextToSpeech.Name = "navbarTextToSpeech";
+            navbarTextToSpeech.Size = new Size(159, 45);
+            navbarTextToSpeech.TabIndex = 2;
+            navbarTextToSpeech.Text = "Text to Speech";
+            navbarTextToSpeech.TextAlign = ContentAlignment.MiddleLeft;
+            navbarTextToSpeech.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarTextToSpeech.UseVisualStyleBackColor = true;
+            navbarTextToSpeech.Click += (this.iconButton2_Click);
             // 
             // navbarHome
             // 
-            this.navbarHome.Dock = DockStyle.Top;
-            this.navbarHome.FlatAppearance.BorderSize = 0;
-            this.navbarHome.FlatStyle = FlatStyle.Flat;
-            this.navbarHome.ForeColor = Color.Snow;
-            this.navbarHome.IconChar = global::FontAwesome.Sharp.IconChar.Home;
-            this.navbarHome.IconColor = Color.Snow;
-            this.navbarHome.IconFont = global::FontAwesome.Sharp.IconFont.Solid;
-            this.navbarHome.IconSize = 40;
-            this.navbarHome.ImageAlign = ContentAlignment.MiddleLeft;
-            this.navbarHome.Location = new Point(0, 105);
-            this.navbarHome.Margin = new Padding(3, 2, 3, 2);
-            this.navbarHome.Name = "navbarHome";
-            this.navbarHome.Size = new Size(159, 45);
-            this.navbarHome.TabIndex = 1;
-            this.navbarHome.Text = "Home";
-            this.navbarHome.TextAlign = ContentAlignment.MiddleLeft;
-            this.navbarHome.TextImageRelation = TextImageRelation.ImageBeforeText;
-            this.navbarHome.UseVisualStyleBackColor = true;
-            this.navbarHome.Click += this.iconButton1_Click;
+            navbarHome.Dock = DockStyle.Top;
+            navbarHome.FlatAppearance.BorderSize = 0;
+            navbarHome.FlatStyle = FlatStyle.Flat;
+            navbarHome.ForeColor = Color.Snow;
+            navbarHome.IconChar = FontAwesome.Sharp.IconChar.Home;
+            navbarHome.IconColor = Color.Snow;
+            navbarHome.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            navbarHome.IconSize = 40;
+            navbarHome.ImageAlign = ContentAlignment.MiddleLeft;
+            navbarHome.Location = new Point(0, 105);
+            navbarHome.Margin = new Padding(3, 2, 3, 2);
+            navbarHome.Name = "navbarHome";
+            navbarHome.Size = new Size(159, 45);
+            navbarHome.TabIndex = 1;
+            navbarHome.Text = "Home";
+            navbarHome.TextAlign = ContentAlignment.MiddleLeft;
+            navbarHome.TextImageRelation = TextImageRelation.ImageBeforeText;
+            navbarHome.UseVisualStyleBackColor = true;
+            navbarHome.Click += (this.iconButton1_Click);
             // 
             // panel2Logo
             // 
-            panel2Logo.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
+            panel2Logo.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             panel2Logo.Controls.Add(pictureBox1);
             panel2Logo.Dock = DockStyle.Top;
             panel2Logo.Location = new Point(0, 0);
@@ -10176,8 +10292,8 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.FromArgb((int)((byte)(31)), (int)((byte)(30)), (int)((byte)(68)));
-            pictureBox1.Image = global::OSCVRCWiz.Properties.Resources.TTSIcon1;
+            pictureBox1.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            pictureBox1.Image = OSCVRCWiz.Properties.Resources.TTSIcon1;
             pictureBox1.Location = new Point(12, -8);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
@@ -10188,9 +10304,9 @@
             // 
             // notifyIcon1
             // 
-            notifyIcon1.Icon = (Icon)(resources.GetObject("notifyIcon1.Icon"));
+            notifyIcon1.Icon = (Icon)resources.GetObject("notifyIcon1.Icon");
             notifyIcon1.Text = "TTS Voice Wizard";
-            notifyIcon1.MouseDoubleClick += this.notifyIcon1_MouseDoubleClick;
+            notifyIcon1.MouseDoubleClick += (this.notifyIcon1_MouseDoubleClick);
             // 
             // openFileDialog1
             // 
@@ -10219,33 +10335,33 @@
             button45.Text = "🢂🢂🢂";
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
-            button45.Click += this.button45_Click;
+            button45.Click += (this.button45_Click);
             // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
-            this.BackColor = Color.FromArgb((int)((byte)(34)), (int)((byte)(33)), (int)((byte)(74)));
+            this.BackColor = Color.FromArgb((int)(byte)34, (int)(byte)33, (int)(byte)74);
             this.ClientSize = new Size(1236, 615);
             this.Controls.Add(mainTabControl);
             this.Controls.Add(panel1);
             this.Controls.Add(logPanel);
-            this.Icon = (Icon)(resources.GetObject("$this.Icon"));
+            this.Icon = (Icon)resources.GetObject("$this.Icon");
             this.KeyPreview = true;
             this.Margin = new Padding(3, 2, 3, 2);
             this.Name = "VoiceWizardWindow";
             this.Text = "TTS Voice Wizard";
-            this.FormClosing += this.Form1_FormClosing;
-            this.Load += this.Form1_Load;
-            this.Resize += this.VoiceWizardWindow_Resize;
+            this.FormClosing += (this.Form1_FormClosing);
+            this.Load += (this.Form1_Load);
+            this.Resize += (this.VoiceWizardWindow_Resize);
             mainTabControl.ResumeLayout(false);
             tabPage4.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel5.ResumeLayout(false);
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox5)).EndInit();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             tabPage1.ResumeLayout(false);
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
@@ -10253,15 +10369,15 @@
             groupBox8.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarVolume)).EndInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarPitch)).EndInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarVolume).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarPitch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarSpeed).EndInit();
             tabPage3.ResumeLayout(false);
             groupBox10.ResumeLayout(false);
             groupBox10.PerformLayout();
             tabAddons.ResumeLayout(false);
             tabAddons.PerformLayout();
-            this.translucentPanel1.ResumeLayout(false);
+            translucentPanel1.ResumeLayout(false);
             tabEmoji.ResumeLayout(false);
             tabEmoji.PerformLayout();
             groupBox34.ResumeLayout(false);
@@ -10295,7 +10411,7 @@
             groupBox21.PerformLayout();
             APIs.ResumeLayout(false);
             APIs.PerformLayout();
-            this.translucentPanel2.ResumeLayout(false);
+            translucentPanel2.ResumeLayout(false);
             General.ResumeLayout(false);
             groupBox17.ResumeLayout(false);
             groupBox17.PerformLayout();
@@ -10364,17 +10480,17 @@
             elevenLabs.PerformLayout();
             groupBox30.ResumeLayout(false);
             groupBox30.PerformLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarStyleExaggeration)).EndInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarSimilarity)).EndInit();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarStability)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarStyleExaggeration).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarSimilarity).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarStability).EndInit();
             groupBox39.ResumeLayout(false);
             groupBox39.PerformLayout();
             VoiceWizPro.ResumeLayout(false);
             VoiceWizPro.PerformLayout();
             groupBox40.ResumeLayout(false);
             groupBox40.PerformLayout();
-            ((global::System.ComponentModel.ISupportInitialize)(trackBarSilence)).EndInit();
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarSilence).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             groupBox23.ResumeLayout(false);
             groupBox23.PerformLayout();
             uberduck.ResumeLayout(false);
@@ -10385,7 +10501,7 @@
             groupBox9.PerformLayout();
             panel1.ResumeLayout(false);
             panel2Logo.ResumeLayout(false);
-            ((global::System.ComponentModel.ISupportInitialize)(pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             logPanel.ResumeLayout(false);
             this.ResumeLayout(false);
         }
@@ -10979,7 +11095,6 @@
         public TextBox textBoxSSSCharLimit;
         public FontAwesome.Sharp.IconButton SpeechToTextBigButton;
         public Label WhisperDebugLabel;
-        private FontAwesome.Sharp.IconButton iconButtonMute;
         public Button buttonMediaPresetDeleteNew;
         public Button buttonMediaPresetEditNew;
         private Button buttonMediaPresetSaveNew;
@@ -11053,6 +11168,16 @@
         public Button buttonPreviousBanner;
         private Label label204;
         public TextBox textBoxPartialResultsInterval;
+        private Label label205;
+        public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleVAD;
+        private Label label206;
+        public ComboBox comboBoxVADMode;
+        private Label label207;
+        public ComboBox comboBoxGPUSelection;
+        public Label labelVADIndicator;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleBothLanguages;
+        private Label label208;
+        public TextBox textBoxCustomTranslationOuput;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

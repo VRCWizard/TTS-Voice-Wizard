@@ -629,5 +629,20 @@
     <Setting Name="partialResultsInterval" Type="System.String" Scope="User">
       <Value Profile="(Default)">2000</Value>
     </Setting>
+    <Setting Name="WhisperVADMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="WhisperGPU" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default</Value>
+    </Setting>
+    <Setting Name="VADForWhisper" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="bothLanguages" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="customTranslateText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">[{inputLangCode}] {originalText}{nline}[{outputLangCode}] {translatedText}</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

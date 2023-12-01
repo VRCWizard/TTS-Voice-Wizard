@@ -321,8 +321,8 @@ namespace OSCVRCWiz
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: " + line + ". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
-
+                // OutputText.outputLog("[Logline Error: " + ex.Message + ". This occured while trying to output: " + line + ". This message is colorless in the case that the issue is caused by colored messages. If you get this error report it in the #tts-voice-wizard-bug channel in discord.]");
+                Debug.WriteLine("Logline Error: " + ex.Message);
 
             }
 
@@ -1040,10 +1040,10 @@ namespace OSCVRCWiz
                     comboBoxStyleSelect.Items.Clear();
                     comboBoxStyleSelect.Items.Add("normal");
 
-                   // Debug.WriteLine("please work: "+comboBoxVoiceSelect.SelectedItem.ToString());
+                    // Debug.WriteLine("please work: "+comboBoxVoiceSelect.SelectedItem.ToString());
                     if (comboBoxVoiceSelect.SelectedItem.ToString().Contains("Expressive"))
                     {
-                        
+
                         comboBoxStyleSelect.Items.Add("cheerful");
                         comboBoxStyleSelect.Items.Add("empathetic");
                         comboBoxStyleSelect.Items.Add("neutral");
@@ -1691,6 +1691,16 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable it manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.DarkOrange);
             }
+            if(comboBoxSTT.Text.ToString()== "Whisper")
+            {
+                labelVADIndicator.Visible = true;
+                WhisperDebugLabel.Visible = true;
+            }
+            else
+            {
+                labelVADIndicator.Visible = false;
+                WhisperDebugLabel.Visible = false;
+            }
 
             switch (comboBoxSTT.Text.ToString())
             {
@@ -1700,8 +1710,6 @@ namespace OSCVRCWiz
                         OutputText.outputLog("[Whisper selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/Whisper ]", Color.DarkOrange);
 
                     }
-                    iconButtonMute.Visible = true;
-                    WhisperDebugLabel.Visible = true;
                     break;
 
                 case "Web Captioner": OutputText.outputLog("[Web Captioner selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/WebCaptioner ]", Color.DarkOrange); break;
@@ -3118,10 +3126,6 @@ namespace OSCVRCWiz
 
         #endregion
         #endregion
-
-
-
-
     }
 
 

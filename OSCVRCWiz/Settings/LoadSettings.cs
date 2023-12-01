@@ -1,11 +1,11 @@
-﻿using OSCVRCWiz.Settings;
-using Settings;
-using OSCVRCWiz.Services.Integrations.Media;
-using OSCVRCWiz.Services.Integrations;
-using OSCVRCWiz.Resources.StartUp;
+﻿using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
+using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Integrations.Heartrate;
+using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Services.Speech.Speech_Recognition;
+using OSCVRCWiz.Settings;
+using Settings;
 
 namespace OSCVRCWiz
 {
@@ -395,6 +395,15 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjTogglePartialResults.Checked = Settings1.Default.azurePartialResults;
 
             VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text = Settings1.Default.partialResultsInterval;
+
+            VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex = Settings1.Default.WhisperVADMode;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked = Settings1.Default.VADForWhisper;
+            VoiceWizardWindow.MainFormGlobal.rjToggleBothLanguages.Checked = Settings1.Default.bothLanguages;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxCustomTranslationOuput.Text = Settings1.Default.customTranslateText;
+
+
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;
             try
             {

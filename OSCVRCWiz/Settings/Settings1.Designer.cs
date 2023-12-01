@@ -12,7 +12,7 @@ namespace OSCVRCWiz.Settings {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Settings1 : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings1 defaultInstance = ((Settings1)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings1())));
@@ -2528,6 +2528,66 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["partialResultsInterval"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int WhisperVADMode {
+            get {
+                return ((int)(this["WhisperVADMode"]));
+            }
+            set {
+                this["WhisperVADMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        public string WhisperGPU {
+            get {
+                return ((string)(this["WhisperGPU"]));
+            }
+            set {
+                this["WhisperGPU"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool VADForWhisper {
+            get {
+                return ((bool)(this["VADForWhisper"]));
+            }
+            set {
+                this["VADForWhisper"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool bothLanguages {
+            get {
+                return ((bool)(this["bothLanguages"]));
+            }
+            set {
+                this["bothLanguages"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("[{inputLangCode}] {originalText}{nline}[{outputLangCode}] {translatedText}")]
+        public string customTranslateText {
+            get {
+                return ((string)(this["customTranslateText"]));
+            }
+            set {
+                this["customTranslateText"] = value;
             }
         }
     }
