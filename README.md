@@ -70,7 +70,6 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## Requirements
 - Windows 10/11 (compatibility not guarenteed with older version of Windows)
-- Microsoft Edge must be installed
 
 ## GitHub Wiki Table of Contents
 ### Quick Start Guide
