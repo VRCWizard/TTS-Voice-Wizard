@@ -630,7 +630,7 @@
       <Value Profile="(Default)">2000</Value>
     </Setting>
     <Setting Name="WhisperVADMode" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">3</Value>
     </Setting>
     <Setting Name="WhisperGPU" Type="System.String" Scope="User">
       <Value Profile="(Default)">default</Value>
