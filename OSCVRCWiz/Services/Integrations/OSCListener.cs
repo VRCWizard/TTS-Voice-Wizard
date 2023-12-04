@@ -455,8 +455,16 @@ namespace OSCVRCWiz.Services.Integrations
                 }
 
             };
+            try
+            {
 
-            var listener = new UDPListener(OSCReceiveport, callback);
+                var listener = new UDPListener(OSCReceiveport, callback);
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Error Starting OSC Listener: " + ex.Message + " ]", System.Drawing.Color.Red);
+                OutputText.outputLog("[Error Starting OSC Listener: " + ex.Message + " ]", System.Drawing.Color.Orange);
+            }
 
         }
     }

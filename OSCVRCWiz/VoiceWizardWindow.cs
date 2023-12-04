@@ -304,6 +304,10 @@ namespace OSCVRCWiz
         {
             try
             {
+                if (VoiceWizardWindow.MainFormGlobal.IsDisposed)
+                {
+                    return; // Exit the delegate if the form is disposed
+                }
 
                 if (InvokeRequired)
                 {
@@ -1677,6 +1681,7 @@ namespace OSCVRCWiz
             Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
             Task.Run(() => VoskRecognition.AutoStopVoskRecog());
             Task.Run(() => WhisperRecognition.autoStopWhisper());
+            VoiceWizardProRecognition.deepgramCt.Cancel();
         }
 
 
@@ -1691,10 +1696,13 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable it manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.DarkOrange);
             }
-            if(comboBoxSTT.Text.ToString()== "Whisper")
+            if(comboBoxSTT.Text.ToString()== "Whisper" || comboBoxSTT.Text.ToString() == "Deepgram (Pro Only)")
             {
                 labelVADIndicator.Visible = true;
-                WhisperDebugLabel.Visible = true;
+                if (comboBoxSTT.Text.ToString() == "Whisper")
+                {
+                    WhisperDebugLabel.Visible = true;
+                }
             }
             else
             {

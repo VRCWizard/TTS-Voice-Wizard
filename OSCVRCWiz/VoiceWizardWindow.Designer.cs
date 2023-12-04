@@ -571,7 +571,6 @@
             groupBox38 = new GroupBox();
             label207 = new Label();
             comboBoxGPUSelection = new ComboBox();
-            label206 = new Label();
             comboBoxVADMode = new ComboBox();
             label205 = new Label();
             rjToggleVAD = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -633,6 +632,15 @@
             label107 = new Label();
             VoiceWizPro = new TabPage();
             groupBox40 = new GroupBox();
+            label213 = new Label();
+            rjToggleDeepGramContinuous = new OSCVRCWiz.RJControls.RJToggleButton();
+            label212 = new Label();
+            rjToggleDeepgramDebug = new OSCVRCWiz.RJControls.RJToggleButton();
+            textBoxSilenceScale = new TextBox();
+            label211 = new Label();
+            label210 = new Label();
+            textBoxMinValidDeepgramDur = new TextBox();
+            label209 = new Label();
             label182 = new Label();
             label177 = new Label();
             pot1 = new NAudio.Gui.Pot();
@@ -700,6 +708,8 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
+            label214 = new Label();
+            label206 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -2417,7 +2427,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 25;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(343, 3);
+            iconButton1.Location = new Point(292, 3);
             iconButton1.Margin = new Padding(3, 2, 3, 2);
             iconButton1.Name = "iconButton1";
             iconButton1.RightToLeft = RightToLeft.No;
@@ -3303,7 +3313,7 @@
             iconButton31.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton31.IconSize = 35;
             iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton31.Location = new Point(511, 3);
+            iconButton31.Location = new Point(460, 3);
             iconButton31.Margin = new Padding(3, 2, 3, 2);
             iconButton31.Name = "iconButton31";
             iconButton31.Size = new Size(44, 38);
@@ -4875,6 +4885,7 @@
             // 
             // groupBox13
             // 
+            groupBox13.Controls.Add(label214);
             groupBox13.Controls.Add(VirtualCableHelp);
             groupBox13.Controls.Add(RefreshAudioDevicesButton);
             groupBox13.Controls.Add(label135);
@@ -4890,6 +4901,7 @@
             groupBox13.Controls.Add(comboBoxInput);
             groupBox13.Controls.Add(label105);
             groupBox13.Controls.Add(rjToggleButtonSounds);
+            groupBox13.Controls.Add(comboBoxVADMode);
             groupBox13.ForeColor = Color.White;
             groupBox13.Location = new Point(19, 619);
             groupBox13.Margin = new Padding(3, 2, 3, 2);
@@ -8544,8 +8556,6 @@
             // 
             groupBox38.Controls.Add(label207);
             groupBox38.Controls.Add(comboBoxGPUSelection);
-            groupBox38.Controls.Add(label206);
-            groupBox38.Controls.Add(comboBoxVADMode);
             groupBox38.Controls.Add(label205);
             groupBox38.Controls.Add(rjToggleVAD);
             groupBox38.Controls.Add(label146);
@@ -8589,6 +8599,7 @@
             label207.Size = new Size(81, 15);
             label207.TabIndex = 188;
             label207.Text = "GPU Selection";
+            label207.Visible = false;
             // 
             // comboBoxGPUSelection
             // 
@@ -8601,17 +8612,7 @@
             comboBoxGPUSelection.Name = "comboBoxGPUSelection";
             comboBoxGPUSelection.Size = new Size(179, 23);
             comboBoxGPUSelection.TabIndex = 187;
-            // 
-            // label206
-            // 
-            label206.AutoSize = true;
-            label206.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label206.ForeColor = Color.Snow;
-            label206.Location = new Point(17, 185);
-            label206.Name = "label206";
-            label206.Size = new Size(96, 15);
-            label206.TabIndex = 186;
-            label206.Text = "VAD Noise Mode";
+            comboBoxGPUSelection.Visible = false;
             // 
             // comboBoxVADMode
             // 
@@ -8620,10 +8621,10 @@
             comboBoxVADMode.FlatStyle = FlatStyle.Flat;
             comboBoxVADMode.FormattingEnabled = true;
             comboBoxVADMode.Items.AddRange(new object[] { "HighQuality", "LowBitrate", "Aggressive", "VeryAggressve" });
-            comboBoxVADMode.Location = new Point(17, 202);
+            comboBoxVADMode.Location = new Point(478, 35);
             comboBoxVADMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxVADMode.Name = "comboBoxVADMode";
-            comboBoxVADMode.Size = new Size(127, 23);
+            comboBoxVADMode.Size = new Size(177, 23);
             comboBoxVADMode.TabIndex = 185;
             // 
             // label205
@@ -8632,9 +8633,9 @@
             label205.ForeColor = Color.Snow;
             label205.Location = new Point(53, 162);
             label205.Name = "label205";
-            label205.Size = new Size(146, 15);
+            label205.Size = new Size(330, 15);
             label205.TabIndex = 184;
-            label205.Text = "Voice Activation Detection";
+            label205.Text = "Voice Activation Detection (select mode in Settings > Audios)";
             // 
             // rjToggleVAD
             // 
@@ -8655,7 +8656,7 @@
             // 
             label146.AutoSize = true;
             label146.ForeColor = Color.Snow;
-            label146.Location = new Point(52, 245);
+            label146.Location = new Point(52, 199);
             label146.Name = "label146";
             label146.Size = new Size(192, 15);
             label146.TabIndex = 182;
@@ -8666,7 +8667,7 @@
             rjToggleButtonWhisperFilterInLog.AutoSize = true;
             rjToggleButtonWhisperFilterInLog.Checked = true;
             rjToggleButtonWhisperFilterInLog.CheckState = CheckState.Checked;
-            rjToggleButtonWhisperFilterInLog.Location = new Point(7, 244);
+            rjToggleButtonWhisperFilterInLog.Location = new Point(7, 198);
             rjToggleButtonWhisperFilterInLog.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonWhisperFilterInLog.MinimumSize = new Size(39, 16);
             rjToggleButtonWhisperFilterInLog.Name = "rjToggleButtonWhisperFilterInLog";
@@ -8743,7 +8744,7 @@
             button41.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button41.FlatStyle = FlatStyle.Flat;
             button41.ForeColor = Color.Snow;
-            button41.Location = new Point(463, 287);
+            button41.Location = new Point(463, 241);
             button41.Margin = new Padding(3, 2, 3, 2);
             button41.Name = "button41";
             button41.Size = new Size(50, 25);
@@ -8757,7 +8758,7 @@
             label144.AutoSize = true;
             label144.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label144.ForeColor = Color.Snow;
-            label144.Location = new Point(354, 272);
+            label144.Location = new Point(354, 226);
             label144.Name = "label144";
             label144.Size = new Size(103, 15);
             label144.TabIndex = 172;
@@ -8765,7 +8766,7 @@
             // 
             // textBoxWhisperPauseDuration
             // 
-            textBoxWhisperPauseDuration.Location = new Point(354, 289);
+            textBoxWhisperPauseDuration.Location = new Point(354, 243);
             textBoxWhisperPauseDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperPauseDuration.Name = "textBoxWhisperPauseDuration";
             textBoxWhisperPauseDuration.Size = new Size(96, 23);
@@ -8777,7 +8778,7 @@
             label142.AutoSize = true;
             label142.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label142.ForeColor = Color.Snow;
-            label142.Location = new Point(226, 272);
+            label142.Location = new Point(226, 226);
             label142.Name = "label142";
             label142.Size = new Size(116, 15);
             label142.TabIndex = 170;
@@ -8785,7 +8786,7 @@
             // 
             // textBoxWhisperDropSilence
             // 
-            textBoxWhisperDropSilence.Location = new Point(227, 289);
+            textBoxWhisperDropSilence.Location = new Point(227, 243);
             textBoxWhisperDropSilence.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperDropSilence.Name = "textBoxWhisperDropSilence";
             textBoxWhisperDropSilence.Size = new Size(111, 23);
@@ -8797,7 +8798,7 @@
             label41.AutoSize = true;
             label41.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label41.ForeColor = Color.Snow;
-            label41.Location = new Point(116, 272);
+            label41.Location = new Point(116, 226);
             label41.Name = "label41";
             label41.Size = new Size(95, 15);
             label41.TabIndex = 168;
@@ -8805,7 +8806,7 @@
             // 
             // textBoxWhisperMaxDuration
             // 
-            textBoxWhisperMaxDuration.Location = new Point(117, 289);
+            textBoxWhisperMaxDuration.Location = new Point(117, 243);
             textBoxWhisperMaxDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperMaxDuration.Name = "textBoxWhisperMaxDuration";
             textBoxWhisperMaxDuration.Size = new Size(94, 23);
@@ -8817,7 +8818,7 @@
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label40.ForeColor = Color.Snow;
-            label40.Location = new Point(8, 272);
+            label40.Location = new Point(8, 226);
             label40.Name = "label40";
             label40.Size = new Size(93, 15);
             label40.TabIndex = 166;
@@ -8825,7 +8826,7 @@
             // 
             // textBoxWhisperMinDuration
             // 
-            textBoxWhisperMinDuration.Location = new Point(8, 289);
+            textBoxWhisperMinDuration.Location = new Point(8, 243);
             textBoxWhisperMinDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperMinDuration.Name = "textBoxWhisperMinDuration";
             textBoxWhisperMinDuration.Size = new Size(93, 23);
@@ -9397,6 +9398,16 @@
             // 
             // groupBox40
             // 
+            groupBox40.Controls.Add(label206);
+            groupBox40.Controls.Add(label213);
+            groupBox40.Controls.Add(rjToggleDeepGramContinuous);
+            groupBox40.Controls.Add(label212);
+            groupBox40.Controls.Add(rjToggleDeepgramDebug);
+            groupBox40.Controls.Add(textBoxSilenceScale);
+            groupBox40.Controls.Add(label211);
+            groupBox40.Controls.Add(label210);
+            groupBox40.Controls.Add(textBoxMinValidDeepgramDur);
+            groupBox40.Controls.Add(label209);
             groupBox40.Controls.Add(label182);
             groupBox40.Controls.Add(label177);
             groupBox40.Controls.Add(pot1);
@@ -9416,16 +9427,117 @@
             groupBox40.Margin = new Padding(3, 2, 3, 2);
             groupBox40.Name = "groupBox40";
             groupBox40.Padding = new Padding(3, 2, 3, 2);
-            groupBox40.Size = new Size(728, 308);
+            groupBox40.Size = new Size(728, 350);
             groupBox40.TabIndex = 162;
             groupBox40.TabStop = false;
             groupBox40.Text = "DeepGram Recognition";
+            // 
+            // label213
+            // 
+            label213.AutoSize = true;
+            label213.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label213.ForeColor = Color.Snow;
+            label213.Location = new Point(323, 25);
+            label213.Name = "label213";
+            label213.Size = new Size(136, 15);
+            label213.TabIndex = 209;
+            label213.Text = "Continuous Recognition";
+            // 
+            // rjToggleDeepGramContinuous
+            // 
+            rjToggleDeepGramContinuous.AutoSize = true;
+            rjToggleDeepGramContinuous.Location = new Point(275, 25);
+            rjToggleDeepGramContinuous.Margin = new Padding(3, 2, 3, 2);
+            rjToggleDeepGramContinuous.MinimumSize = new Size(39, 16);
+            rjToggleDeepGramContinuous.Name = "rjToggleDeepGramContinuous";
+            rjToggleDeepGramContinuous.OffBackColor = Color.Gray;
+            rjToggleDeepGramContinuous.OffToggleColor = Color.Gainsboro;
+            rjToggleDeepGramContinuous.OnBackColor = Color.MediumSlateBlue;
+            rjToggleDeepGramContinuous.OnToggleColor = Color.WhiteSmoke;
+            rjToggleDeepGramContinuous.Size = new Size(39, 16);
+            rjToggleDeepGramContinuous.TabIndex = 210;
+            rjToggleDeepGramContinuous.UseVisualStyleBackColor = true;
+            // 
+            // label212
+            // 
+            label212.AutoSize = true;
+            label212.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label212.ForeColor = Color.Snow;
+            label212.Location = new Point(323, 58);
+            label212.Name = "label212";
+            label212.Size = new Size(134, 15);
+            label212.TabIndex = 207;
+            label212.Text = "Show Debug Info in Log";
+            // 
+            // rjToggleDeepgramDebug
+            // 
+            rjToggleDeepgramDebug.AutoSize = true;
+            rjToggleDeepgramDebug.Location = new Point(275, 58);
+            rjToggleDeepgramDebug.Margin = new Padding(3, 2, 3, 2);
+            rjToggleDeepgramDebug.MinimumSize = new Size(39, 16);
+            rjToggleDeepgramDebug.Name = "rjToggleDeepgramDebug";
+            rjToggleDeepgramDebug.OffBackColor = Color.Gray;
+            rjToggleDeepgramDebug.OffToggleColor = Color.Gainsboro;
+            rjToggleDeepgramDebug.OnBackColor = Color.MediumSlateBlue;
+            rjToggleDeepgramDebug.OnToggleColor = Color.WhiteSmoke;
+            rjToggleDeepgramDebug.Size = new Size(39, 16);
+            rjToggleDeepgramDebug.TabIndex = 208;
+            rjToggleDeepgramDebug.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSilenceScale
+            // 
+            textBoxSilenceScale.Location = new Point(646, 21);
+            textBoxSilenceScale.Margin = new Padding(3, 2, 3, 2);
+            textBoxSilenceScale.Name = "textBoxSilenceScale";
+            textBoxSilenceScale.Size = new Size(59, 23);
+            textBoxSilenceScale.TabIndex = 206;
+            textBoxSilenceScale.Text = "30000";
+            // 
+            // label211
+            // 
+            label211.AutoSize = true;
+            label211.ForeColor = Color.Snow;
+            label211.Location = new Point(566, 24);
+            label211.Name = "label211";
+            label211.Size = new Size(74, 15);
+            label211.TabIndex = 205;
+            label211.Text = "Silence Scale";
+            // 
+            // label210
+            // 
+            label210.AutoSize = true;
+            label210.ForeColor = Color.Snow;
+            label210.Location = new Point(229, 313);
+            label210.Name = "label210";
+            label210.Size = new Size(99, 15);
+            label210.TabIndex = 204;
+            label210.Text = "Silence Threshold";
+            // 
+            // textBoxMinValidDeepgramDur
+            // 
+            textBoxMinValidDeepgramDur.Location = new Point(29, 153);
+            textBoxMinValidDeepgramDur.Margin = new Padding(3, 2, 3, 2);
+            textBoxMinValidDeepgramDur.Name = "textBoxMinValidDeepgramDur";
+            textBoxMinValidDeepgramDur.Size = new Size(59, 23);
+            textBoxMinValidDeepgramDur.TabIndex = 203;
+            textBoxMinValidDeepgramDur.Text = "0.5";
+            // 
+            // label209
+            // 
+            label209.AutoSize = true;
+            label209.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label209.ForeColor = Color.Snow;
+            label209.Location = new Point(18, 131);
+            label209.Name = "label209";
+            label209.Size = new Size(189, 15);
+            label209.TabIndex = 202;
+            label209.Text = "Minimum Valid VAD Duration (ms)";
             // 
             // label182
             // 
             label182.AutoSize = true;
             label182.ForeColor = Color.Snow;
-            label182.Location = new Point(556, 114);
+            label182.Location = new Point(580, 151);
             label182.Name = "label182";
             label182.Size = new Size(44, 15);
             label182.TabIndex = 201;
@@ -9435,7 +9547,7 @@
             // 
             label177.AutoSize = true;
             label177.ForeColor = Color.Snow;
-            label177.Location = new Point(635, 114);
+            label177.Location = new Point(659, 151);
             label177.Name = "label177";
             label177.Size = new Size(44, 15);
             label177.TabIndex = 200;
@@ -9443,7 +9555,7 @@
             // 
             // pot1
             // 
-            pot1.Location = new Point(556, 17);
+            pot1.Location = new Point(580, 54);
             pot1.Margin = new Padding(4, 3, 4, 3);
             pot1.Maximum = 50000D;
             pot1.Minimum = 0D;
@@ -9454,7 +9566,7 @@
             // 
             // textBoxSilence
             // 
-            textBoxSilence.Location = new Point(333, 245);
+            textBoxSilence.Location = new Point(334, 310);
             textBoxSilence.Margin = new Padding(3, 2, 3, 2);
             textBoxSilence.Name = "textBoxSilence";
             textBoxSilence.Size = new Size(59, 23);
@@ -9473,16 +9585,17 @@
             // label181
             // 
             label181.AutoSize = true;
+            label181.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label181.ForeColor = Color.Snow;
             label181.Location = new Point(18, 25);
             label181.Name = "label181";
-            label181.Size = new Size(157, 15);
+            label181.Size = new Size(160, 15);
             label181.TabIndex = 197;
-            label181.Text = "Minimum audio duration (s)";
+            label181.Text = "Minimum Audio Duration (s)";
             // 
             // maximumAudio
             // 
-            maximumAudio.Location = new Point(29, 99);
+            maximumAudio.Location = new Point(29, 106);
             maximumAudio.Margin = new Padding(3, 2, 3, 2);
             maximumAudio.Name = "maximumAudio";
             maximumAudio.Size = new Size(59, 23);
@@ -9492,18 +9605,19 @@
             // label180
             // 
             label180.AutoSize = true;
+            label180.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label180.ForeColor = Color.Snow;
-            label180.Location = new Point(18, 77);
+            label180.Location = new Point(18, 84);
             label180.Name = "label180";
-            label180.Size = new Size(159, 15);
+            label180.Size = new Size(162, 15);
             label180.TabIndex = 195;
-            label180.Text = "Maximum audio duration (s)";
+            label180.Text = "Maximum Audio Duration (s)";
             // 
             // label179
             // 
             label179.AutoSize = true;
             label179.ForeColor = Color.Snow;
-            label179.Location = new Point(214, 166);
+            label179.Location = new Point(209, 238);
             label179.Name = "label179";
             label179.Size = new Size(321, 15);
             label179.TabIndex = 194;
@@ -9513,7 +9627,7 @@
             // 
             label178.AutoSize = true;
             label178.ForeColor = Color.Snow;
-            label178.Location = new Point(280, 136);
+            label178.Location = new Point(275, 208);
             label178.Name = "label178";
             label178.Size = new Size(176, 15);
             label178.TabIndex = 193;
@@ -9523,7 +9637,7 @@
             // 
             label167.AutoSize = true;
             label167.ForeColor = Color.Snow;
-            label167.Location = new Point(677, 187);
+            label167.Location = new Point(678, 252);
             label167.Name = "label167";
             label167.Size = new Size(34, 15);
             label167.TabIndex = 192;
@@ -9533,7 +9647,7 @@
             // 
             label176.AutoSize = true;
             label176.ForeColor = Color.Snow;
-            label176.Location = new Point(17, 188);
+            label176.Location = new Point(18, 253);
             label176.Name = "label176";
             label176.Size = new Size(36, 15);
             label176.TabIndex = 190;
@@ -9542,7 +9656,7 @@
             // trackBarSilence
             // 
             trackBarSilence.LargeChange = 10;
-            trackBarSilence.Location = new Point(17, 205);
+            trackBarSilence.Location = new Point(18, 270);
             trackBarSilence.Maximum = 100;
             trackBarSilence.Name = "trackBarSilence";
             trackBarSilence.Size = new Size(694, 45);
@@ -9554,7 +9668,7 @@
             // SpeechHoursUsed
             // 
             SpeechHoursUsed.AutoSize = true;
-            SpeechHoursUsed.Location = new Point(18, 263);
+            SpeechHoursUsed.Location = new Point(19, 328);
             SpeechHoursUsed.Name = "SpeechHoursUsed";
             SpeechHoursUsed.Size = new Size(132, 15);
             SpeechHoursUsed.TabIndex = 117;
@@ -9583,7 +9697,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(176, 718);
+            pictureBox3.Location = new Point(196, 757);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(346, 56);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -10336,6 +10450,27 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
+            // 
+            // label214
+            // 
+            label214.AutoSize = true;
+            label214.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label214.ForeColor = Color.Snow;
+            label214.Location = new Point(478, 18);
+            label214.Name = "label214";
+            label214.Size = new Size(210, 15);
+            label214.TabIndex = 186;
+            label214.Text = "VAD Noise Mode (Whisper/Deepgram)";
+            // 
+            // label206
+            // 
+            label206.AutoSize = true;
+            label206.ForeColor = Color.Snow;
+            label206.Location = new Point(19, 178);
+            label206.Name = "label206";
+            label206.Size = new Size(200, 15);
+            label206.TabIndex = 211;
+            label206.Text = "select VAD mode in Settings > Audio";
             // 
             // VoiceWizardWindow
             // 
@@ -11170,7 +11305,6 @@
         public TextBox textBoxPartialResultsInterval;
         private Label label205;
         public global::OSCVRCWiz.RJControls.RJToggleButton rjToggleVAD;
-        private Label label206;
         public ComboBox comboBoxVADMode;
         private Label label207;
         public ComboBox comboBoxGPUSelection;
@@ -11178,6 +11312,18 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleBothLanguages;
         private Label label208;
         public TextBox textBoxCustomTranslationOuput;
+        public TextBox textBox2;
+        private Label label209;
+        public TextBox textBoxSilenceScale;
+        private Label label211;
+        private Label label210;
+        private Label label212;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleDeepgramDebug;
+        public TextBox textBoxMinValidDeepgramDur;
+        private Label label213;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleDeepGramContinuous;
+        private Label label214;
+        private Label label206;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

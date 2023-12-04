@@ -47,7 +47,7 @@ namespace OSCVRCWiz.Speech_Recognition
             if (WhisperEnabled == false )
             {
 
-                GetGPUs();
+                //GetGPUs();
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked)
                 {
                     try
@@ -194,7 +194,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
         }
 
-        public static string[] GetGPUs()
+     /*   public static string[] GetGPUs()
         {
             string[] gpuList = Library.listGraphicAdapters();
 
@@ -206,7 +206,7 @@ namespace OSCVRCWiz.Speech_Recognition
             }
             return gpuList;
 
-        }
+        }*/
      
 
         public static void StopWhisper()
@@ -343,30 +343,31 @@ namespace OSCVRCWiz.Speech_Recognition
                     cp.flags |= eCaptureFlags.Stereo;
                 captureDev = mf.openCaptureDevice(devices[cla.captureDeviceIndex], cp);
 
-                string selectedGPU = "default";
+                // string selectedGPU = "default";
 
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    string selectedGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
-                });
-               
-                if (selectedGPU =="default")
-                {
-                    using iModel model = Library.loadModel(cla.model);
-                    context = model.createContext();
-                    OutputText.outputLog($"[Whisper Loaded with default GPU]");
+                /* VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                 {
+                     string selectedGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
+                 });
 
-                }
-                else
-                {
-                  
-                    using iModel model = Library.loadModel(cla.model, adapter: selectedGPU);
-                    context = model.createContext();
-                    OutputText.outputLog($"[Whisper Loaded with GPU: {selectedGPU}]");
-                }
+                 if (selectedGPU =="default")
+                 {
+                     using iModel model = Library.loadModel(cla.model);
+                     context = model.createContext();
+                     OutputText.outputLog($"[Whisper Loaded with default GPU]");
+
+                 }
+                 else
+                 {
+
+                     using iModel model = Library.loadModel(cla.model, adapter: selectedGPU);
+                     context = model.createContext();
+                     OutputText.outputLog($"[Whisper Loaded with GPU: {selectedGPU}]");
+                 }*/
+                using iModel model = Library.loadModel(cla.model);
+                context = model.createContext();
 
 
-                
 
 
                 cla.apply(ref context.parameters);
@@ -447,13 +448,13 @@ namespace OSCVRCWiz.Speech_Recognition
             };
             frameSize = (int)vad.SampleRate / 1000 * 2 * (int)frameLength;
 
-            string[] GPUs = GetGPUs();
-            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add("default");
+          /* // string[] GPUs = GetGPUs();
+          //  VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add("default");
             foreach (var gpu in GPUs)
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add(gpu);
             }
-            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem = Settings1.Default.WhisperGPU;
+            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem = Settings1.Default.WhisperGPU;*/
 
 
 

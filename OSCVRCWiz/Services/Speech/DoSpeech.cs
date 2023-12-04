@@ -542,23 +542,8 @@ namespace OSCVRCWiz.Services.Speech
                     {
 
                         case "Deepgram (Pro Only)":
-                            int min = 0;
-                            int max = 0;
-                            int silence = 0;
-                            string lang = "en";
 
-                            DoSpeech.speechToTextOnSound();
-
-                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                            {
-                                min = Int32.Parse(VoiceWizardWindow.MainFormGlobal.minimumAudio.Text);
-                                max = Int32.Parse(VoiceWizardWindow.MainFormGlobal.maximumAudio.Text);
-                                silence = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text);
-                                lang = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
-
-                            });
-                            Debug.WriteLine(min + " " + max + " " + silence + " " + lang);
-                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), min, max, silence, lang));
+                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString()));
 
                             break;
 
@@ -577,9 +562,6 @@ namespace OSCVRCWiz.Services.Speech
                             {
                                 Task.Run(() => WhisperRecognition.toggleWhisper());
                             }
-
-
-                            //   Task.Run(() => WhisperRecognitionV2.Demo());
 
                             break;
                         case "Web Captioner":
