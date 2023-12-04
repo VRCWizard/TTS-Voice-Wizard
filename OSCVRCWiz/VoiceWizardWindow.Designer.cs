@@ -305,6 +305,7 @@
             rjToggleButtonOSC = new OSCVRCWiz.RJControls.RJToggleButton();
             comboBoxPara = new ComboBox();
             groupBox13 = new GroupBox();
+            label214 = new Label();
             VirtualCableHelp = new FontAwesome.Sharp.IconButton();
             RefreshAudioDevicesButton = new Button();
             label135 = new Label();
@@ -320,6 +321,7 @@
             comboBoxInput = new ComboBox();
             label105 = new Label();
             rjToggleButtonSounds = new OSCVRCWiz.RJControls.RJToggleButton();
+            comboBoxVADMode = new ComboBox();
             groupBox1 = new GroupBox();
             label201 = new Label();
             textBoxDelayBeforeAudio = new TextBox();
@@ -571,7 +573,6 @@
             groupBox38 = new GroupBox();
             label207 = new Label();
             comboBoxGPUSelection = new ComboBox();
-            comboBoxVADMode = new ComboBox();
             label205 = new Label();
             rjToggleVAD = new OSCVRCWiz.RJControls.RJToggleButton();
             label146 = new Label();
@@ -632,6 +633,7 @@
             label107 = new Label();
             VoiceWizPro = new TabPage();
             groupBox40 = new GroupBox();
+            label206 = new Label();
             label213 = new Label();
             rjToggleDeepGramContinuous = new OSCVRCWiz.RJControls.RJToggleButton();
             label212 = new Label();
@@ -708,8 +710,6 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
-            label214 = new Label();
-            label206 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -2427,7 +2427,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 25;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(292, 3);
+            iconButton1.Location = new Point(275, 3);
             iconButton1.Margin = new Padding(3, 2, 3, 2);
             iconButton1.Name = "iconButton1";
             iconButton1.RightToLeft = RightToLeft.No;
@@ -3313,7 +3313,7 @@
             iconButton31.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton31.IconSize = 35;
             iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton31.Location = new Point(460, 3);
+            iconButton31.Location = new Point(443, 3);
             iconButton31.Margin = new Padding(3, 2, 3, 2);
             iconButton31.Name = "iconButton31";
             iconButton31.Size = new Size(44, 38);
@@ -4912,6 +4912,17 @@
             groupBox13.TabStop = false;
             groupBox13.Text = "Audio";
             // 
+            // label214
+            // 
+            label214.AutoSize = true;
+            label214.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label214.ForeColor = Color.Snow;
+            label214.Location = new Point(478, 18);
+            label214.Name = "label214";
+            label214.Size = new Size(210, 15);
+            label214.TabIndex = 186;
+            label214.Text = "VAD Noise Mode (Whisper/Deepgram)";
+            // 
             // VirtualCableHelp
             // 
             VirtualCableHelp.FlatAppearance.BorderSize = 0;
@@ -5116,6 +5127,19 @@
             rjToggleButtonSounds.TabIndex = 125;
             rjToggleButtonSounds.UseVisualStyleBackColor = true;
             rjToggleButtonSounds.CheckedChanged += (this.rjToggleButtonSounds_CheckedChanged);
+            // 
+            // comboBoxVADMode
+            // 
+            comboBoxVADMode.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            comboBoxVADMode.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxVADMode.FlatStyle = FlatStyle.Flat;
+            comboBoxVADMode.FormattingEnabled = true;
+            comboBoxVADMode.Items.AddRange(new object[] { "HighQuality", "LowBitrate", "Aggressive", "VeryAggressve" });
+            comboBoxVADMode.Location = new Point(478, 35);
+            comboBoxVADMode.Margin = new Padding(3, 2, 3, 2);
+            comboBoxVADMode.Name = "comboBoxVADMode";
+            comboBoxVADMode.Size = new Size(177, 23);
+            comboBoxVADMode.TabIndex = 185;
             // 
             // groupBox1
             // 
@@ -8614,19 +8638,6 @@
             comboBoxGPUSelection.TabIndex = 187;
             comboBoxGPUSelection.Visible = false;
             // 
-            // comboBoxVADMode
-            // 
-            comboBoxVADMode.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            comboBoxVADMode.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxVADMode.FlatStyle = FlatStyle.Flat;
-            comboBoxVADMode.FormattingEnabled = true;
-            comboBoxVADMode.Items.AddRange(new object[] { "HighQuality", "LowBitrate", "Aggressive", "VeryAggressve" });
-            comboBoxVADMode.Location = new Point(478, 35);
-            comboBoxVADMode.Margin = new Padding(3, 2, 3, 2);
-            comboBoxVADMode.Name = "comboBoxVADMode";
-            comboBoxVADMode.Size = new Size(177, 23);
-            comboBoxVADMode.TabIndex = 185;
-            // 
             // label205
             // 
             label205.AutoSize = true;
@@ -9432,6 +9443,16 @@
             groupBox40.TabStop = false;
             groupBox40.Text = "DeepGram Recognition";
             // 
+            // label206
+            // 
+            label206.AutoSize = true;
+            label206.ForeColor = Color.Snow;
+            label206.Location = new Point(19, 178);
+            label206.Name = "label206";
+            label206.Size = new Size(200, 15);
+            label206.TabIndex = 211;
+            label206.Text = "select VAD mode in Settings > Audio";
+            // 
             // label213
             // 
             label213.AutoSize = true;
@@ -9529,9 +9550,9 @@
             label209.ForeColor = Color.Snow;
             label209.Location = new Point(18, 131);
             label209.Name = "label209";
-            label209.Size = new Size(189, 15);
+            label209.Size = new Size(178, 15);
             label209.TabIndex = 202;
-            label209.Text = "Minimum Valid VAD Duration (ms)";
+            label209.Text = "Minimum Valid VAD Duration (s)";
             // 
             // label182
             // 
@@ -10450,27 +10471,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label214
-            // 
-            label214.AutoSize = true;
-            label214.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label214.ForeColor = Color.Snow;
-            label214.Location = new Point(478, 18);
-            label214.Name = "label214";
-            label214.Size = new Size(210, 15);
-            label214.TabIndex = 186;
-            label214.Text = "VAD Noise Mode (Whisper/Deepgram)";
-            // 
-            // label206
-            // 
-            label206.AutoSize = true;
-            label206.ForeColor = Color.Snow;
-            label206.Location = new Point(19, 178);
-            label206.Name = "label206";
-            label206.Size = new Size(200, 15);
-            label206.TabIndex = 211;
-            label206.Text = "select VAD mode in Settings > Audio";
             // 
             // VoiceWizardWindow
             // 
