@@ -1696,7 +1696,7 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable it manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.DarkOrange);
             }
-            if(comboBoxSTT.Text.ToString()== "Whisper" || comboBoxSTT.Text.ToString() == "Deepgram (Pro Only)")
+            if (comboBoxSTT.Text.ToString() == "Whisper" || comboBoxSTT.Text.ToString() == "Deepgram (Pro Only)")
             {
                 labelVADIndicator.Visible = true;
                 if (comboBoxSTT.Text.ToString() == "Whisper")
@@ -2699,7 +2699,11 @@ namespace OSCVRCWiz
         }
         private void trackBarSilence_Scroll(object sender, EventArgs e)
         {
-            textBoxSilence.Text = ((int)Math.Floor((trackBarSilence.Value / .5)) * 10).ToString();
+            // textBoxSilence.Text = ((int)Math.Floor((trackBarSilence.Value / .5)) * 10).ToString();
+            if (textBoxSilence.Text != trackBarSilence.Value.ToString())
+            {
+                textBoxSilence.Text = trackBarSilence.Value.ToString();
+            }
         }
 
         private void iconButton55_Click(object sender, EventArgs e)
@@ -3134,6 +3138,24 @@ namespace OSCVRCWiz
 
         #endregion
         #endregion
+
+        private void buttonSilenceCalibrate_Click(object sender, EventArgs e)
+        {
+            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), true));
+        }
+
+        private void textBoxSilence_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxSilence.Text != trackBarSilence.Value.ToString())
+            {
+                int value = Int16.Parse(textBoxSilence.Text);
+                if (value > 2000)
+                {
+                    value = 2000;
+                }
+                trackBarSilence.Value = value;
+            }
+        }
     }
 
 

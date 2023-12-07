@@ -654,7 +654,7 @@
       <Value Profile="(Default)">0.5</Value>
     </Setting>
     <Setting Name="silenceBarValue" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">50</Value>
+      <Value Profile="(Default)">1000</Value>
     </Setting>
     <Setting Name="deepGramContinuous" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

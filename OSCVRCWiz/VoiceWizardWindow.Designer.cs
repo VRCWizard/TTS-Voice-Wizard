@@ -633,6 +633,7 @@
             label107 = new Label();
             VoiceWizPro = new TabPage();
             groupBox40 = new GroupBox();
+            progressBar1 = new ProgressBar();
             label206 = new Label();
             label213 = new Label();
             rjToggleDeepGramContinuous = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -710,6 +711,7 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
+            buttonCalibrate = new Button();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -2427,7 +2429,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 25;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(275, 3);
+            iconButton1.Location = new Point(207, 3);
             iconButton1.Margin = new Padding(3, 2, 3, 2);
             iconButton1.Name = "iconButton1";
             iconButton1.RightToLeft = RightToLeft.No;
@@ -3313,7 +3315,7 @@
             iconButton31.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton31.IconSize = 35;
             iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton31.Location = new Point(443, 3);
+            iconButton31.Location = new Point(375, 3);
             iconButton31.Margin = new Padding(3, 2, 3, 2);
             iconButton31.Name = "iconButton31";
             iconButton31.Size = new Size(44, 38);
@@ -9409,6 +9411,8 @@
             // 
             // groupBox40
             // 
+            groupBox40.Controls.Add(buttonCalibrate);
+            groupBox40.Controls.Add(progressBar1);
             groupBox40.Controls.Add(label206);
             groupBox40.Controls.Add(label213);
             groupBox40.Controls.Add(rjToggleDeepGramContinuous);
@@ -9442,6 +9446,14 @@
             groupBox40.TabIndex = 162;
             groupBox40.TabStop = false;
             groupBox40.Text = "DeepGram Recognition";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(26, 263);
+            progressBar1.Maximum = 2000;
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(678, 10);
+            progressBar1.TabIndex = 214;
             // 
             // label206
             // 
@@ -9638,7 +9650,7 @@
             // 
             label179.AutoSize = true;
             label179.ForeColor = Color.Snow;
-            label179.Location = new Point(209, 238);
+            label179.Location = new Point(217, 211);
             label179.Name = "label179";
             label179.Size = new Size(321, 15);
             label179.TabIndex = 194;
@@ -9648,7 +9660,7 @@
             // 
             label178.AutoSize = true;
             label178.ForeColor = Color.Snow;
-            label178.Location = new Point(275, 208);
+            label178.Location = new Point(283, 181);
             label178.Name = "label178";
             label178.Size = new Size(176, 15);
             label178.TabIndex = 193;
@@ -9658,7 +9670,7 @@
             // 
             label167.AutoSize = true;
             label167.ForeColor = Color.Snow;
-            label167.Location = new Point(678, 252);
+            label167.Location = new Point(678, 241);
             label167.Name = "label167";
             label167.Size = new Size(34, 15);
             label167.TabIndex = 192;
@@ -9668,7 +9680,7 @@
             // 
             label176.AutoSize = true;
             label176.ForeColor = Color.Snow;
-            label176.Location = new Point(18, 253);
+            label176.Location = new Point(19, 241);
             label176.Name = "label176";
             label176.Size = new Size(36, 15);
             label176.TabIndex = 190;
@@ -9676,14 +9688,15 @@
             // 
             // trackBarSilence
             // 
-            trackBarSilence.LargeChange = 10;
+            trackBarSilence.LargeChange = 100;
             trackBarSilence.Location = new Point(18, 270);
-            trackBarSilence.Maximum = 100;
+            trackBarSilence.Maximum = 2000;
             trackBarSilence.Name = "trackBarSilence";
             trackBarSilence.Size = new Size(694, 45);
+            trackBarSilence.SmallChange = 10;
             trackBarSilence.TabIndex = 191;
-            trackBarSilence.TickFrequency = 2;
-            trackBarSilence.Value = 50;
+            trackBarSilence.TickFrequency = 50;
+            trackBarSilence.Value = 1000;
             trackBarSilence.Scroll += (this.trackBarSilence_Scroll);
             // 
             // SpeechHoursUsed
@@ -10471,6 +10484,20 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
+            // 
+            // buttonCalibrate
+            // 
+            buttonCalibrate.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonCalibrate.FlatStyle = FlatStyle.Flat;
+            buttonCalibrate.ForeColor = Color.Snow;
+            buttonCalibrate.Location = new Point(312, 228);
+            buttonCalibrate.Margin = new Padding(3, 2, 3, 2);
+            buttonCalibrate.Name = "buttonCalibrate";
+            buttonCalibrate.Size = new Size(106, 30);
+            buttonCalibrate.TabIndex = 215;
+            buttonCalibrate.Text = "Calibrate";
+            buttonCalibrate.UseVisualStyleBackColor = false;
+            buttonCalibrate.Click += (this.buttonSilenceCalibrate_Click);
             // 
             // VoiceWizardWindow
             // 
@@ -11324,6 +11351,8 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleDeepGramContinuous;
         private Label label214;
         private Label label206;
+        public ProgressBar progressBar1;
+        private Button buttonCalibrate;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

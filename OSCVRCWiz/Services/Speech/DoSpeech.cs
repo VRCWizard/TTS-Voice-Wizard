@@ -543,7 +543,7 @@ namespace OSCVRCWiz.Services.Speech
 
                         case "Deepgram (Pro Only)":
 
-                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString()));
+                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), false));
 
                             break;
 

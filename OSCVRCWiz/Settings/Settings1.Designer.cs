@@ -2629,7 +2629,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
         public int silenceBarValue {
             get {
                 return ((int)(this["silenceBarValue"]));

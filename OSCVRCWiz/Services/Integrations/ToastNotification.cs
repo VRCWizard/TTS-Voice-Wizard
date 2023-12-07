@@ -93,66 +93,74 @@ namespace OSCVRCWiz.Services.Integrations
         }
         private static async void LoopListener()
         {
-            while (true)
+            try
             {
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked == true)
+                while (true)
                 {
-
-
-                    UserNotificationListener listener = UserNotificationListener.Current;
-                    IReadOnlyList<UserNotification> notifs = await listener.GetNotificationsAsync(NotificationKinds.Toast);
-                    foreach (UserNotification noti in notifs)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleDiscordToast.Checked == true)
                     {
-                        if (!alreadySeen.Contains(noti.Id))
+
+
+                        UserNotificationListener listener = UserNotificationListener.Current;
+                        IReadOnlyList<UserNotification> notifs = await listener.GetNotificationsAsync(NotificationKinds.Toast);
+                        foreach (UserNotification noti in notifs)
                         {
-                            NotificationBinding toastBinding = noti.Notification.Visual.GetBinding(KnownNotificationBindings.ToastGeneric);
-                            if (toastBinding != null)
+                            if (!alreadySeen.Contains(noti.Id))
                             {
-                                string appName = noti.AppInfo.DisplayInfo.DisplayName;
-                                if (appName == "Discord")
+                                NotificationBinding toastBinding = noti.Notification.Visual.GetBinding(KnownNotificationBindings.ToastGeneric);
+                                if (toastBinding != null)
                                 {
-                                    IReadOnlyList<AdaptiveNotificationText> textElements = toastBinding.GetTextElements();
-                                    string username = textElements.FirstOrDefault()?.Text;
-                                    if (username != null && username != "")
+                                    string appName = noti.AppInfo.DisplayInfo.DisplayName;
+                                    if (appName == "Discord")
                                     {
-                                        alreadySeen.Add(noti.Id);
-
-                                        // string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text)); this will get the actuall text whhich u dont wanna dispaly for everyone to see
-
-
-                                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
+                                        IReadOnlyList<AdaptiveNotificationText> textElements = toastBinding.GetTextElements();
+                                        string username = textElements.FirstOrDefault()?.Text;
+                                        if (username != null && username != "")
                                         {
-                                            OutputText.outputLog("Discord message recieved from " + username);
+                                            alreadySeen.Add(noti.Id);
 
-                                        }
+                                            // string bodyText = string.Join("\n", textElements.Skip(1).Select(t => t.Text)); this will get the actuall text whhich u dont wanna dispaly for everyone to see
 
-                                        try
-                                        {
-                                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+
+                                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonLog.Checked == true)
                                             {
-                                                var message0 = new CoreOSC.OscMessage(VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text.ToString(), true);
-                                                OSC.OSCSender.Send(message0);
-                                                ToastNotification.toastTimer.Change(int.Parse(VoiceWizardWindow.MainFormGlobal.textBoxDiscTimer.Text.ToString()), 0);
-                                            });
+                                                OutputText.outputLog("Discord message recieved from " + username);
+
+                                            }
+
+                                            try
+                                            {
+                                                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                                                {
+                                                    var message0 = new CoreOSC.OscMessage(VoiceWizardWindow.MainFormGlobal.textBoxDiscordPara.Text.ToString(), true);
+                                                    OSC.OSCSender.Send(message0);
+                                                    ToastNotification.toastTimer.Change(int.Parse(VoiceWizardWindow.MainFormGlobal.textBoxDiscTimer.Text.ToString()), 0);
+                                                });
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                OutputText.outputLog("[Discord Toast Error: " + ex.Message + "]", Color.Red);
+
+                                            }
+
+
 
                                         }
-                                        catch (Exception ex)
-                                        {
-                                            OutputText.outputLog("[Discord Toast Error: " + ex.Message + "]", Color.Red);
-
-                                        }
-
-
-
                                     }
                                 }
                             }
                         }
+
+
                     }
-
-
+                    Thread.Sleep(1000);
                 }
-                Thread.Sleep(1000);
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Discord Toast Error (Stopping): " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[Discord toast feature does not work on x86: " + ex.Message + "]", Color.Orange);
             }
 
         }

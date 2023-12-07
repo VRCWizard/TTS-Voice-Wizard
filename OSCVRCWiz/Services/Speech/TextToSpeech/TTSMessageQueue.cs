@@ -71,6 +71,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
         public static void QueueMessage(string text, string STTMode, string AzureTranslate = "[ERROR]")
         {
             try {
+                if(text ==null)
+                {
+                    OutputText.outputLog("[Message Queue Error: No text found",Color.Red);
+                    return;
+                }
                 text = text.Replace("\n", "");
                 string inputText = text;
                 string firstString = "";

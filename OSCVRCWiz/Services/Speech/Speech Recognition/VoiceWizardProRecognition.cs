@@ -3,6 +3,7 @@ using Deepgram.Keys;
 using Deepgram.Transcription;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
+using NAudio.CoreAudioApi;
 using NAudio.Wave;
 using Newtonsoft.Json.Linq;
 using Octokit;
@@ -19,11 +20,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Markup;
 using WebRtcVadSharp;
 using Windows.Devices.Radios;
@@ -43,7 +46,7 @@ namespace OSCVRCWiz.Speech_Recognition
         private static int frameSize;
         public static CancellationTokenSource deepgramCt = new();
 
-        public static async Task doRecognition(string apiKey)
+        public static async Task doRecognition(string apiKey,bool calibrating)
         {
             try
             {
@@ -69,93 +72,113 @@ namespace OSCVRCWiz.Speech_Recognition
                     VADMode = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
 
                 });
-                if (!VoiceWizardWindow.MainFormGlobal.rjToggleDeepGramContinuous.Checked)
+
+
+                if (!calibrating)
                 {
-                    OutputText.outputLog("[DeepGram Listening]");
-                    DoSpeech.speechToTextOnSound();
-
-                    using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode))
+                    if (!VoiceWizardWindow.MainFormGlobal.rjToggleDeepGramContinuous.Checked)
                     {
-
-                        if (audioStream != null)
-                        {
-
-                            string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
-                            TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
-
-                        }
-                        else
-                        {
-                            if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
-                            {
-                                OutputText.outputLog("[DeepGram: No voice detected]");
-                            }
-
-                        }
-                        DoSpeech.speechToTextButtonOff();
-                    }
-                }
-                else
-                {
-                    if (!DeepGramEnabled)
-                    {
-                        OutputText.outputLog("[DeepGram Listening (Continuous)]");
+                        OutputText.outputLog("[DeepGram Listening]");
                         DoSpeech.speechToTextOnSound();
-                        DeepGramEnabled = true;
 
-
-                        while (DeepGramEnabled)
+                        using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false))
                         {
-                            try
-                            {
-                                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                                {
-                                    minDuration = Int32.Parse(VoiceWizardWindow.MainFormGlobal.minimumAudio.Text);
-                                    maxDuration = Int32.Parse(VoiceWizardWindow.MainFormGlobal.maximumAudio.Text);
-                                    howQuiet = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text);
-                                    language = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
-                                    silenceScale = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text);
-                                    minValidDuration = Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);
-                                    VADMode = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
 
-                                });
+                            if (audioStream != null)
+                            {
+
+                                string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
+                                TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                OutputText.outputLog($"[Deepgram Settings Error: {ex.Message}", Color.Red);
-                            }
-                            using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode))
-                            {
-                                if (DeepGramEnabled)
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                                 {
-                                    if (audioStream != null)
-                                    {
-
-                                        string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
-                                        TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
-
-                                    }
-                                    else
-                                    {
-                                        if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
-                                        {
-                                            OutputText.outputLog("[DeepGram: No voice detected]");
-                                        }
-
-                                    }
+                                    OutputText.outputLog("[DeepGram: No voice detected]");
                                 }
-                                // DoSpeech.speechToTextButtonOff();
+
                             }
+                            DoSpeech.speechToTextButtonOff();
                         }
                     }
                     else
                     {
-                        // must allow canceling of recognition
-                        OutputText.outputLog("[DeepGram Stopped Listening]");
-                        DoSpeech.speechToTextOffSound();
-                        DeepGramEnabled = false;
-                        deepgramCt.Cancel();
+                        if (!DeepGramEnabled)
+                        {
+                            OutputText.outputLog("[DeepGram Listening (Continuous)]");
+                            DoSpeech.speechToTextOnSound();
+                            DeepGramEnabled = true;
+
+
+                            while (DeepGramEnabled)
+                            {
+                                try
+                                {
+                                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                                    {
+                                        minDuration = Int32.Parse(VoiceWizardWindow.MainFormGlobal.minimumAudio.Text);
+                                        maxDuration = Int32.Parse(VoiceWizardWindow.MainFormGlobal.maximumAudio.Text);
+                                        howQuiet = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text);
+                                        language = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
+                                        silenceScale = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text);
+                                        minValidDuration = Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);
+                                        VADMode = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
+
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    OutputText.outputLog($"[Deepgram Settings Error: {ex.Message}", Color.Red);
+                                }
+                                using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false))
+                                {
+                                    if (DeepGramEnabled)
+                                    {
+                                        if (audioStream != null)
+                                        {
+
+                                            string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
+                                            TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+
+                                        }
+                                        else
+                                        {
+                                            if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
+                                            {
+                                                OutputText.outputLog("[DeepGram: No voice detected]");
+                                            }
+
+                                        }
+                                    }
+                                    // DoSpeech.speechToTextButtonOff();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // must allow canceling of recognition
+                            OutputText.outputLog("[DeepGram Stopped Listening]");
+                            DoSpeech.speechToTextOffSound();
+                            DeepGramEnabled = false;
+                            deepgramCt.Cancel();
+                        }
                     }
+                }
+                else
+                {
+                    OutputText.outputLog("[DeepGram Calibrating]");
+                    OutputText.outputLog("[Deepgram is being calibrated to ignore your background noise, do not speak. Speaking will ruin the calibration]",Color.Orange);
+                    DoSpeech.speechToTextOnSound();
+
+                    using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, true))
+                    {
+          
+                        OutputText.outputLog("[DeepGram Calibration Complete]");
+                        OutputText.outputLog("[You may now activate Deepgram recognition]",Color.Green);
+                        DoSpeech.speechToTextButtonOff();
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -283,7 +306,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
 
-        public static async Task<MemoryStream> RecordAudio(int minDuration, int maxDuration, int howQuiet, int silenceDuration, double minValidDuration, OperatingMode VADMode)
+        public static async Task<MemoryStream> RecordAudio(int minDuration, int maxDuration, int howQuiet, int silenceDuration, double minValidDuration, OperatingMode VADMode,bool calibration)
         {
             // Create a MemoryStream to store the recorded audio
             MemoryStream outputStream = new MemoryStream();
@@ -324,6 +347,8 @@ namespace OSCVRCWiz.Speech_Recognition
             bool isSilence = false;
             int silenceCounter = 0;
             int recordingCounter = 0;
+            int soundVolume = 0;
+            int calibrationMax = 0;
 
 
 
@@ -391,7 +416,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 }
 
 
-
+                
 
                 // Check for silence
                 if (e.BytesRecorded > 0)
@@ -402,10 +427,23 @@ namespace OSCVRCWiz.Speech_Recognition
                     // Analyze audio data for silence
                     for (int i = 0; i < bytesRecorded; i += 2)
                     {
-                        short sample = (short)((buffer[i + 1] << 8) | buffer[i]);
-                        if (sample < silenceThreshold && sample > -silenceThreshold)
-                        {
+                       
+                       
 
+                        short sample = (short)((buffer[i + 1] << 8) | buffer[i]);
+                          soundVolume = Math.Abs((int)sample);//has to be int
+
+                        if (calibration && (soundVolume > calibrationMax))
+                        {
+                            calibrationMax = soundVolume;
+                        }
+ 
+                        // int absSample = ab(sample);
+
+                        //  if (sample < silenceThreshold && sample > -silenceThreshold)
+                        if (soundVolume < silenceThreshold)
+                        {
+                            
                             silenceCounter += waveFormat.BlockAlign;
                         }
 
@@ -415,30 +453,59 @@ namespace OSCVRCWiz.Speech_Recognition
                             silenceCounter = 0;
                         }
                     }
+                    //rms = Math.Sqrt(rms / (bytesRecorded / 2)); // Calculate RMS
+                  //  double dbValue = 20 * Math.Log10(rms);
+
+                    //Debug.WriteLine($"dB: {testValue}");
+
+                 //  OutputText.outputLog(AudioDevices.currentInputDevice);
+                   /* var device = AudioDevices.GetDeviceById(AudioDevices.currentInputDevice);
+                    if (device != null)
+                    {
+                        device.AudioEndpointVolume.Mute = false;
+                        OutputText.outputLog(device.AudioMeterInformation.MasterPeakValue.ToString());
+                    }*/
+                   //use to show volume in audio tab
+
+                    //// device.AudioEndpointVolume.Mute = false;
+                    //richTextBox1.Text = device.AudioMeterInformation.MasterPeakValue.ToString();
 
                     // Write audio data to the output stream
                     outputStream.Write(buffer, 0, bytesRecorded);
-                    Debug.WriteLine(silenceCounter); //very helpful for debugging silence
+                  //  Debug.WriteLine(silenceCounter); //very helpful for debugging silence
+                  //  Debug.WriteLine(noiseCounter);
 
 
 
-                  
 
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    if (!VoiceWizardWindow.MainFormGlobal.IsDisposed)
                     {
-                        if (VoiceWizardWindow.MainFormGlobal.IsDisposed)
-                        {
-                            return; // Exit the delegate if the form is disposed
-                        }
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                       {
+                      
                         int checker = silenceCounter;
-                        if (checker >= silenceDuration)
+                        if (checker > silenceDuration)
                         {
                             checker = silenceDuration;
                         }
+                        if (soundVolume > 2000) {soundVolume = 2000;}
+                        if (soundVolume < 0){soundVolume = 0;}
 
+
+                           if (calibration) 
+                         {
+                               VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text = (calibrationMax+100).ToString();
+                          }
+
+                        VoiceWizardWindow.MainFormGlobal.progressBar1.Value = soundVolume;
                         VoiceWizardWindow.MainFormGlobal.pot1.Value = checker;
                         VoiceWizardWindow.MainFormGlobal.pot1.Maximum = silenceDuration;
-                    });
+                       });
+                    }
+                    else
+                    {
+                        return;
+                    }
 
 
                     // Update the recording counter
@@ -446,6 +513,10 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
                     // Check if silence duration or recording duration exceeded
+                    if(calibration && (recordingCounter>=3000))
+                    {
+                        waveSource.StopRecording();
+                    }
                     if (recordingCounter >= recordingDuration)
                     {
                         Debug.WriteLine("Max Record Length");
@@ -477,6 +548,12 @@ namespace OSCVRCWiz.Speech_Recognition
 
             // Wait for the recording to complete
             await recordingTaskCompletionSource.Task;
+
+            if(calibration)
+            {
+                //VoiceWizardWindow.
+                return null;
+            }
 
             if (!isVoiceDetected && !validAudioClip)
             {
