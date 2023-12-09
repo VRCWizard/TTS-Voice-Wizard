@@ -287,6 +287,18 @@ namespace OSCVRCWiz.Services.Speech
                                 Task.Run(() => UberDuckTTS.uberduckTTS(TTSMessageQueued, speechCt.Token));
 
                                 break;
+                            case "VoiceForge":
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
+                                Task.Run(() => VoiceForgeTTS.VoiceForgeTextAsSpeech(TTSMessageQueued, speechCt.Token));
+
+                                break;
 
                             case "IBM Watson (Pro Only)":
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true)

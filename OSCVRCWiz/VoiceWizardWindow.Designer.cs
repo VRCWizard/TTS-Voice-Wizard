@@ -633,6 +633,7 @@
             label107 = new Label();
             VoiceWizPro = new TabPage();
             groupBox40 = new GroupBox();
+            buttonCalibrate = new Button();
             progressBar1 = new ProgressBar();
             label206 = new Label();
             label213 = new Label();
@@ -711,7 +712,6 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
-            buttonCalibrate = new Button();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -1812,7 +1812,7 @@
             comboBoxTTSMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTTSMode.ForeColor = Color.Black;
             comboBoxTTSMode.FormattingEnabled = true;
-            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "Locally Hosted", "No TTS" });
+            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "VoiceForge", "Locally Hosted", "No TTS" });
             comboBoxTTSMode.Location = new Point(18, 21);
             comboBoxTTSMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -2429,7 +2429,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 25;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(207, 3);
+            iconButton1.Location = new Point(530, 3);
             iconButton1.Margin = new Padding(3, 2, 3, 2);
             iconButton1.Name = "iconButton1";
             iconButton1.RightToLeft = RightToLeft.No;
@@ -3315,7 +3315,7 @@
             iconButton31.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton31.IconSize = 35;
             iconButton31.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton31.Location = new Point(375, 3);
+            iconButton31.Location = new Point(698, 3);
             iconButton31.Margin = new Padding(3, 2, 3, 2);
             iconButton31.Name = "iconButton31";
             iconButton31.Size = new Size(44, 38);
@@ -9447,6 +9447,20 @@
             groupBox40.TabStop = false;
             groupBox40.Text = "DeepGram Recognition";
             // 
+            // buttonCalibrate
+            // 
+            buttonCalibrate.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonCalibrate.FlatStyle = FlatStyle.Flat;
+            buttonCalibrate.ForeColor = Color.Snow;
+            buttonCalibrate.Location = new Point(312, 228);
+            buttonCalibrate.Margin = new Padding(3, 2, 3, 2);
+            buttonCalibrate.Name = "buttonCalibrate";
+            buttonCalibrate.Size = new Size(106, 30);
+            buttonCalibrate.TabIndex = 215;
+            buttonCalibrate.Text = "Calibrate";
+            buttonCalibrate.UseVisualStyleBackColor = false;
+            buttonCalibrate.Click += (this.buttonSilenceCalibrate_Click);
+            // 
             // progressBar1
             // 
             progressBar1.Location = new Point(26, 263);
@@ -10484,20 +10498,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // buttonCalibrate
-            // 
-            buttonCalibrate.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
-            buttonCalibrate.FlatStyle = FlatStyle.Flat;
-            buttonCalibrate.ForeColor = Color.Snow;
-            buttonCalibrate.Location = new Point(312, 228);
-            buttonCalibrate.Margin = new Padding(3, 2, 3, 2);
-            buttonCalibrate.Name = "buttonCalibrate";
-            buttonCalibrate.Size = new Size(106, 30);
-            buttonCalibrate.TabIndex = 215;
-            buttonCalibrate.Text = "Calibrate";
-            buttonCalibrate.UseVisualStyleBackColor = false;
-            buttonCalibrate.Click += (this.buttonSilenceCalibrate_Click);
             // 
             // VoiceWizardWindow
             // 

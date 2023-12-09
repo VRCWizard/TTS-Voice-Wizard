@@ -509,7 +509,7 @@ namespace OSCVRCWiz.Resources.Audio
             catch (Exception ex)
             {
                 OutputText.outputLog("[Error Playing Audio: " + ex.Message + "]", Color.Red);
-                OutputText.outputLog("[Your text input was invalid]", Color.DarkOrange);
+                OutputText.outputLog("[Your text input may have been invalid]", Color.DarkOrange);
                 TTSMessageQueue.PlayNextInQueue();
             }
         }

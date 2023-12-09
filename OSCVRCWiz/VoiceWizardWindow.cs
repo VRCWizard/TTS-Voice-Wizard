@@ -19,6 +19,7 @@ using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Integrations.Heartrate;
 using System.Configuration;
 using OSCVRCWiz.Services.Speech.Speech_Recognition;
+using System.Media;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
@@ -830,6 +831,20 @@ namespace OSCVRCWiz
                     {
                         OutputText.outputLog("[You appear to be missing an Uberduck Key: https://ttsvoicewizard.com/docs/TTSMethods/Uberduck ]", Color.DarkOrange);
                     }
+
+                    break;
+
+                case "VoiceForge":
+                    DoSpeech.TTSModeSaved = "VoiceForge";
+                    VoiceForgeTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+
+                    comboBoxTranslationLanguage.Enabled = true;
+                    comboBoxAccentSelect.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+
+                   
 
                     break;
 
@@ -3156,6 +3171,8 @@ namespace OSCVRCWiz
                 trackBarSilence.Value = value;
             }
         }
+
+
     }
 
 
