@@ -1,4 +1,5 @@
-﻿using OSCVRCWiz.Resources.StartUp;
+﻿using NAudio.Wave;
+using OSCVRCWiz.Resources.StartUp;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Integrations.Heartrate;
@@ -314,13 +315,20 @@ namespace OSCVRCWiz
             Settings1.Default.partialResultsInterval = VoiceWizardWindow.MainFormGlobal.textBoxPartialResultsInterval.Text.ToString();
 
             Settings1.Default.WhisperVADMode = VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
-            Settings1.Default.WhisperGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
+            //Settings1.Default.WhisperGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
 
             Settings1.Default.VADForWhisper = VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked;
 
             Settings1.Default.bothLanguages = VoiceWizardWindow.MainFormGlobal.rjToggleBothLanguages.Checked;
 
             Settings1.Default.customTranslateText= VoiceWizardWindow.MainFormGlobal.textBoxCustomTranslationOuput.Text;
+
+            Settings1.Default.silenceBarValue= VoiceWizardWindow.MainFormGlobal.trackBarSilence.Value;
+            Settings1.Default.deepgramLogSpam = VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked;
+            Settings1.Default.deepGramContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleDeepGramContinuous.Checked;
+            Settings1.Default.silenceScale = VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text;
+            Settings1.Default.deepGramValidDuration = VoiceWizardWindow.MainFormGlobal.textBoxMinValidDeepgramDur.Text;
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

@@ -287,6 +287,18 @@ namespace OSCVRCWiz.Services.Speech
                                 Task.Run(() => UberDuckTTS.uberduckTTS(TTSMessageQueued, speechCt.Token));
 
                                 break;
+                            case "VoiceForge":
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
+                                Task.Run(() => VoiceForgeTTS.VoiceForgeTextAsSpeech(TTSMessageQueued, speechCt.Token));
+
+                                break;
 
                             case "IBM Watson (Pro Only)":
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true)
@@ -542,23 +554,8 @@ namespace OSCVRCWiz.Services.Speech
                     {
 
                         case "Deepgram (Pro Only)":
-                            int min = 0;
-                            int max = 0;
-                            int silence = 0;
-                            string lang = "en";
 
-                            DoSpeech.speechToTextOnSound();
-
-                            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                            {
-                                min = Int32.Parse(VoiceWizardWindow.MainFormGlobal.minimumAudio.Text);
-                                max = Int32.Parse(VoiceWizardWindow.MainFormGlobal.maximumAudio.Text);
-                                silence = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text);
-                                lang = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
-
-                            });
-                            Debug.WriteLine(min + " " + max + " " + silence + " " + lang);
-                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), min, max, silence, lang));
+                            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), false));
 
                             break;
 
@@ -577,9 +574,6 @@ namespace OSCVRCWiz.Services.Speech
                             {
                                 Task.Run(() => WhisperRecognition.toggleWhisper());
                             }
-
-
-                            //   Task.Run(() => WhisperRecognitionV2.Demo());
 
                             break;
                         case "Web Captioner":

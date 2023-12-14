@@ -62,6 +62,8 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.trackBarPitch.Value = Settings1.Default.pitchNew;
             VoiceWizardWindow.MainFormGlobal.trackBarVolume.Value = Settings1.Default.volumeNew;
             VoiceWizardWindow.MainFormGlobal.trackBarSpeed.Value = Settings1.Default.speedNew;
+            VoiceWizardWindow.MainFormGlobal.trackBarSilence.Value = Settings1.Default.silenceBarValue;
+
             VoiceWizardWindow.MainFormGlobal.updateAllTrackBarLabels();
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonUse2ndOutput.Checked = Settings1.Default.use2ndDevice;
@@ -402,6 +404,14 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleBothLanguages.Checked = Settings1.Default.bothLanguages;
 
             VoiceWizardWindow.MainFormGlobal.textBoxCustomTranslationOuput.Text = Settings1.Default.customTranslateText;
+
+
+            VoiceWizardWindow.MainFormGlobal.trackBarSilence.Value = Settings1.Default.silenceBarValue;
+            VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked = Settings1.Default.deepgramLogSpam;
+            VoiceWizardWindow.MainFormGlobal.rjToggleDeepGramContinuous.Checked = Settings1.Default.deepGramContinuous;
+            VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text = Settings1.Default.silenceScale;
+            VoiceWizardWindow.MainFormGlobal.textBoxMinValidDeepgramDur.Text = Settings1.Default.deepGramValidDuration;
+
 
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;

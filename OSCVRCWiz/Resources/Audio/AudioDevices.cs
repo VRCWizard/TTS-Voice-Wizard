@@ -8,6 +8,7 @@ using OSCVRCWiz.Resources.Audio.SoundTouch;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
+using SpotifyAPI.Web;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,8 +30,10 @@ namespace OSCVRCWiz.Resources.Audio
         public static List<string> comboIn = new List<string>();
         public static List<string> comboOut = new List<string>();
         public static List<string> micIDs = new List<string>();
+        public static List<MMDevice> micMMs = new List<MMDevice>();
         public static List<string> speakerIDs = new List<string>();
         public static string currentInputDevice = "";
+        public static MMDevice currentInputDeviceMM = null;
         public static string currentOutputDevice = "";
         public static string currentInputDeviceName = "Default";
         public static string currentOutputDeviceName = "Default";
@@ -357,33 +360,47 @@ namespace OSCVRCWiz.Resources.Audio
 
 
                 // Apply audio editing only if specified
-                if (applyAudioEditing)
+                try
                 {
-                    // Create the WaveChannel32 with the audioReader
-                      var wave32 = new WaveChannel32(audioReader, volumeFloat, 0f);
+                    if (applyAudioEditing)
+                    {
 
-                    VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(true, false));
-                    speedControl.PlaybackRate = rateFloat;
+                        // Create the WaveChannel32 with the audioReader
+                        var wave32 = new WaveChannel32(audioReader, volumeFloat, 0f);
 
-
-                    VarispeedSampleProvider speedControl2 = new VarispeedSampleProvider(speedControl, 100, new SoundTouchProfile(false, false));
-                    speedControl2.PlaybackRate = pitchFloat;
-
-
-                    audioProvider = speedControl2;
+                        VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(true, false));
+                        speedControl.PlaybackRate = rateFloat;
 
 
+                        VarispeedSampleProvider speedControl2 = new VarispeedSampleProvider(speedControl, 100, new SoundTouchProfile(false, false));
+                        speedControl2.PlaybackRate = pitchFloat;
+
+
+                        audioProvider = speedControl2;
+
+
+
+
+                    }
+                    else
+                    {
+                        // No audio editing, use WaveToSampleProvider directly
+                        var wave32 = new WaveChannel32(audioReader, volumeFloat, 0f);
+                        audioProvider = wave32.ToSampleProvider();
+
+                        //     wave32.Dispose();
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    // No audio editing, use WaveToSampleProvider directly
+                    OutputText.outputLog($"[Audio editing features could not be applied: {ex.Message}]", Color.Orange);
+
                     var wave32 = new WaveChannel32(audioReader, volumeFloat, 0f);
                     audioProvider = wave32.ToSampleProvider();
-
-                    //     wave32.Dispose();
+                    applyAudioEditing = false;
                 }
 
-                var outputDevice = new WaveOut();
+            var outputDevice = new WaveOut();
                 outputDevice.DeviceNumber = getCurrentOutputDevice();
                 outputDevice.Init(audioProvider);
                 outputDevice.Play();
@@ -416,35 +433,47 @@ namespace OSCVRCWiz.Resources.Audio
                         default:
                             throw new ArgumentException("Invalid audio format specified.");
                     }
-
-                    if (applyAudioEditing)
+                    try
                     {
+
+                        if (applyAudioEditing)
+                        {
                         // Create the WaveChannel32 with the audioReader
-                    
+                      
 
-                        var wave32 = new WaveChannel32(audioReader2, volumeFloat, 0f);
-
-
-
-                        VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(true, false));
-                        speedControl.PlaybackRate = rateFloat;
+                            var wave32 = new WaveChannel32(audioReader2, volumeFloat, 0f);
 
 
-                        VarispeedSampleProvider speedControl2 = new VarispeedSampleProvider(speedControl, 100, new SoundTouchProfile(false, false));
-                        speedControl2.PlaybackRate = pitchFloat;
+
+                            VarispeedSampleProvider speedControl = new VarispeedSampleProvider(new WaveToSampleProvider(wave32), 100, new SoundTouchProfile(true, false));
+                            speedControl.PlaybackRate = rateFloat;
 
 
-                        audioProvider2 = speedControl2;
+                            VarispeedSampleProvider speedControl2 = new VarispeedSampleProvider(speedControl, 100, new SoundTouchProfile(false, false));
+                            speedControl2.PlaybackRate = pitchFloat;
 
-                    }
-                    else
-                    {
-                        // No audio editing, use WaveToSampleProvider directly
-                        var wave32 = new WaveChannel32(audioReader2, volumeFloat, 0f);
-                        audioProvider2 = wave32.ToSampleProvider();
-                    }
 
-                    outputDevice2 = new WaveOut();
+                            audioProvider2 = speedControl2;
+                       
+
+                            }
+                            else
+                            {
+                                // No audio editing, use WaveToSampleProvider directly
+                                var wave32 = new WaveChannel32(audioReader2, volumeFloat, 0f);
+                                audioProvider2 = wave32.ToSampleProvider();
+                            }
+                }
+                catch (Exception ex)
+                {
+                    OutputText.outputLog($"[Audio editing features could not be applied: {ex.Message}]", Color.Orange);
+
+                    var wave32 = new WaveChannel32(audioReader, volumeFloat, 0f);
+                    audioProvider2 = wave32.ToSampleProvider();
+                    applyAudioEditing = false;
+                }
+
+            outputDevice2 = new WaveOut();
                     outputDevice2.DeviceNumber = getCurrentOutputDevice2();
                     outputDevice2.Init(audioProvider2);
                     outputDevice2.Play();
@@ -480,7 +509,7 @@ namespace OSCVRCWiz.Resources.Audio
             catch (Exception ex)
             {
                 OutputText.outputLog("[Error Playing Audio: " + ex.Message + "]", Color.Red);
-                OutputText.outputLog("[Your text input was invalid]", Color.DarkOrange);
+                OutputText.outputLog("[Your text input may have been invalid]", Color.DarkOrange);
                 TTSMessageQueue.PlayNextInQueue();
             }
         }
@@ -519,6 +548,29 @@ namespace OSCVRCWiz.Resources.Audio
 
              // Use async/await to play the sound asynchronously.
              await Task.Run(() => soundPlayer.Play());*/
+        }
+        public static MMDevice GetDeviceById(string deviceId)
+        {
+            var enumerator = new MMDeviceEnumerator();
+            var devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
+            MMDevice defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            if (deviceId != "Default")
+            {
+                foreach (var device in devices)
+                {
+                    if (device.ID == deviceId)
+                    {
+                        return device;
+                    }
+                }
+            }
+            else
+            {
+                return defaultDevice;
+            }
+
+            // Device with the specified ID not found
+            return null;
         }
 
 

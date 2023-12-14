@@ -57,7 +57,7 @@ namespace OSCVRCWiz.Services.Integrations
                 OutputText.outputLog($"[VRChat Listener: Remember that only one program can listen on a UDP port. TTS Voice Wizard is listening on port {FromVRChatPort}.", Color.DarkOrange);
                 if (FromVRChatPort == "9000")
                 {
-                    OutputText.outputLog($"VRChat normally listens on port 9000 so unless you know what you are doing this is probably a mistake.", Color.Red);
+                    OutputText.outputLog($"VRChat Listener: VRChat normally listens on port 9000 so unless you know what you are doing this is probably a mistake.", Color.Red);
                 }
             });
 

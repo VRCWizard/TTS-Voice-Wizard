@@ -47,7 +47,7 @@ namespace OSCVRCWiz.Speech_Recognition
             if (WhisperEnabled == false )
             {
 
-                GetGPUs();
+                //GetGPUs();
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked)
                 {
                     try
@@ -194,7 +194,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
         }
 
-        public static string[] GetGPUs()
+     /*   public static string[] GetGPUs()
         {
             string[] gpuList = Library.listGraphicAdapters();
 
@@ -206,7 +206,7 @@ namespace OSCVRCWiz.Speech_Recognition
             }
             return gpuList;
 
-        }
+        }*/
      
 
         public static void StopWhisper()
@@ -282,10 +282,10 @@ namespace OSCVRCWiz.Speech_Recognition
 
             try
            {
-                Stopwatch stopwatch = new Stopwatch();
+               // Stopwatch stopwatch = new Stopwatch();
 
                 // Start the stopwatch
-                stopwatch.Start();
+              //  stopwatch.Start();
                 // CommandLineArgs cla;
                 try
                 {
@@ -343,42 +343,43 @@ namespace OSCVRCWiz.Speech_Recognition
                     cp.flags |= eCaptureFlags.Stereo;
                 captureDev = mf.openCaptureDevice(devices[cla.captureDeviceIndex], cp);
 
-                string selectedGPU = "default";
+                // string selectedGPU = "default";
 
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    string selectedGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
-                });
-               
-                if (selectedGPU =="default")
-                {
-                    using iModel model = Library.loadModel(cla.model);
-                    context = model.createContext();
-                    OutputText.outputLog($"[Whisper Loaded with default GPU]");
+                /* VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                 {
+                     string selectedGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
+                 });
 
-                }
-                else
-                {
-                  
-                    using iModel model = Library.loadModel(cla.model, adapter: selectedGPU);
-                    context = model.createContext();
-                    OutputText.outputLog($"[Whisper Loaded with GPU: {selectedGPU}]");
-                }
+                 if (selectedGPU =="default")
+                 {
+                     using iModel model = Library.loadModel(cla.model);
+                     context = model.createContext();
+                     OutputText.outputLog($"[Whisper Loaded with default GPU]");
+
+                 }
+                 else
+                 {
+
+                     using iModel model = Library.loadModel(cla.model, adapter: selectedGPU);
+                     context = model.createContext();
+                     OutputText.outputLog($"[Whisper Loaded with GPU: {selectedGPU}]");
+                 }*/
+                using iModel model = Library.loadModel(cla.model);
+                context = model.createContext();
 
 
-                
 
 
                 cla.apply(ref context.parameters);
-                stopwatch.Stop();
-                TimeSpan elapsedTime = stopwatch.Elapsed;
-               // OutputText.outputLog($"Startup Processes Time: {elapsedTime.TotalMilliseconds} ms");
-                stopwatch.Restart();
+                //stopwatch.Stop();
+               // TimeSpan elapsedTime = stopwatch.Elapsed;
+                //OutputText.outputLog($"Time 1: {elapsedTime.TotalMilliseconds} ms");
+               // stopwatch.Restart();
                 WhisperAllowStop = false;
                 ctt = new CaptureThread(cla, context, captureDev);
-                stopwatch.Stop();
-                elapsedTime = stopwatch.Elapsed;
-              //  OutputText.outputLog($"Capture Thread start Time: {elapsedTime.TotalMilliseconds} ms");
+               // stopwatch.Stop();
+              //  elapsedTime = stopwatch.Elapsed;
+             //   OutputText.outputLog($"Time 2: {elapsedTime.TotalMilliseconds} ms");
 
                 Thread.Sleep(500);
                 WhisperAllowStop = true;
@@ -447,13 +448,13 @@ namespace OSCVRCWiz.Speech_Recognition
             };
             frameSize = (int)vad.SampleRate / 1000 * 2 * (int)frameLength;
 
-            string[] GPUs = GetGPUs();
-            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add("default");
+          /* // string[] GPUs = GetGPUs();
+          //  VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add("default");
             foreach (var gpu in GPUs)
             {
                 VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add(gpu);
             }
-            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem = Settings1.Default.WhisperGPU;
+            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem = Settings1.Default.WhisperGPU;*/
 
 
 
@@ -464,6 +465,7 @@ namespace OSCVRCWiz.Speech_Recognition
         private static TimeSpan endTime = DateTime.MinValue.TimeOfDay;
         public static bool isVoiceDetected = false;
         public static List<Tuple<TimeSpan, TimeSpan>> voiceActivationTimes = new List<Tuple<TimeSpan, TimeSpan>>();
+        private static int maxVoiceActivationTimes = 25; // Set the maximum number of voice activation times
         private static void waveIn_DataAvailable(object sender, WaveInEventArgs e)
         {
             var buffer = e.Buffer.Take(frameSize).ToArray();
@@ -505,9 +507,22 @@ namespace OSCVRCWiz.Speech_Recognition
 
                     isVoiceDetected = false;
 
-                  //  if ((endTime - startTime).TotalSeconds >= 0.5)
-                  //  {
-                        voiceActivationTimes.Add(new Tuple<TimeSpan, TimeSpan>(startTime, endTime));
+                    //  if ((endTime - startTime).TotalSeconds >= 0.5)
+                    //  {
+                    if (voiceActivationTimes.Count >= maxVoiceActivationTimes)
+                    {
+                        // Remove the oldest voice activation times
+                        int removeCount = voiceActivationTimes.Count - maxVoiceActivationTimes + 1;
+                        voiceActivationTimes.RemoveRange(0, removeCount);
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                        {
+                            OutputText.outputLog("Removing old whisper activation timestamps from memory");
+                        }
+
+                    }
+
+
+                    voiceActivationTimes.Add(new Tuple<TimeSpan, TimeSpan>(startTime, endTime));
                  //   }
 
                     startTime = DateTime.MinValue.TimeOfDay;

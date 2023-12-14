@@ -2,14 +2,13 @@
 using Octokit;
 using OSCVRCWiz.Services.Text;
 using System.Diagnostics;
-using Windows.Media.Protection.PlayReady;
 
 namespace OSCVRCWiz.Resources.StartUp
 {
     public class Updater
     {
 
-        public static string currentVersion = "1.6.1.4";
+        public static string currentVersion = "1.6.3.2";
         public static string updateXMLName = "https://github.com/VRCWizard/TTS-Voice-Wizard/releases/latest/download/AutoUpdater-x64.xml";
 
         public static async void getGithubInfo()

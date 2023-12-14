@@ -2533,7 +2533,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int WhisperVADMode {
             get {
                 return ((int)(this["WhisperVADMode"]));
@@ -2588,6 +2588,66 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["customTranslateText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30000")]
+        public string silenceScale {
+            get {
+                return ((string)(this["silenceScale"]));
+            }
+            set {
+                this["silenceScale"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool deepgramLogSpam {
+            get {
+                return ((bool)(this["deepgramLogSpam"]));
+            }
+            set {
+                this["deepgramLogSpam"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public string deepGramValidDuration {
+            get {
+                return ((string)(this["deepGramValidDuration"]));
+            }
+            set {
+                this["deepGramValidDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int silenceBarValue {
+            get {
+                return ((int)(this["silenceBarValue"]));
+            }
+            set {
+                this["silenceBarValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool deepGramContinuous {
+            get {
+                return ((bool)(this["deepGramContinuous"]));
+            }
+            set {
+                this["deepGramContinuous"] = value;
             }
         }
     }

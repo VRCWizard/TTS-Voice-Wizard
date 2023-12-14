@@ -19,6 +19,7 @@ using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Integrations.Heartrate;
 using System.Configuration;
 using OSCVRCWiz.Services.Speech.Speech_Recognition;
+using System.Media;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
@@ -304,6 +305,10 @@ namespace OSCVRCWiz
         {
             try
             {
+                if (VoiceWizardWindow.MainFormGlobal.IsDisposed)
+                {
+                    return; // Exit the delegate if the form is disposed
+                }
 
                 if (InvokeRequired)
                 {
@@ -826,6 +831,20 @@ namespace OSCVRCWiz
                     {
                         OutputText.outputLog("[You appear to be missing an Uberduck Key: https://ttsvoicewizard.com/docs/TTSMethods/Uberduck ]", Color.DarkOrange);
                     }
+
+                    break;
+
+                case "VoiceForge":
+                    DoSpeech.TTSModeSaved = "VoiceForge";
+                    VoiceForgeTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+
+                    comboBoxTranslationLanguage.Enabled = true;
+                    comboBoxAccentSelect.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+
+
 
                     break;
 
@@ -1677,6 +1696,7 @@ namespace OSCVRCWiz
             Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
             Task.Run(() => VoskRecognition.AutoStopVoskRecog());
             Task.Run(() => WhisperRecognition.autoStopWhisper());
+            VoiceWizardProRecognition.deepgramCt.Cancel();
         }
 
 
@@ -1691,10 +1711,13 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog("Could not automatically stop your continuous recognition for previous STT Mode. Make sure to disable it manually by swapping back and pressing the 'Speech to Text to Speech' button or it will keep running in the background and give you 'double speech'!", Color.DarkOrange);
             }
-            if(comboBoxSTT.Text.ToString()== "Whisper")
+            if (comboBoxSTT.Text.ToString() == "Whisper" || comboBoxSTT.Text.ToString() == "Deepgram (Pro Only)")
             {
                 labelVADIndicator.Visible = true;
-                WhisperDebugLabel.Visible = true;
+                if (comboBoxSTT.Text.ToString() == "Whisper")
+                {
+                    WhisperDebugLabel.Visible = true;
+                }
             }
             else
             {
@@ -2685,13 +2708,35 @@ namespace OSCVRCWiz
 
         #region Voice Wizard Pro Tab
 
+        private void buttonSilenceCalibrate_Click(object sender, EventArgs e)
+        {
+            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), true));
+        }
+
+        private void textBoxSilence_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBoxSilence.Text != trackBarSilence.Value.ToString())
+            {
+                int value = Int16.Parse(textBoxSilence.Text);
+                if (value > 2000)
+                {
+                    value = 2000;
+                }
+                trackBarSilence.Value = value;
+            }
+        }
+
         private void ProShowKey_Click(object sender, EventArgs e)
         {
             ShowHidePassword(textBoxWizardProKey, ProShowKey);
         }
         private void trackBarSilence_Scroll(object sender, EventArgs e)
         {
-            textBoxSilence.Text = ((int)Math.Floor((trackBarSilence.Value / .5)) * 10).ToString();
+            // textBoxSilence.Text = ((int)Math.Floor((trackBarSilence.Value / .5)) * 10).ToString();
+            if (textBoxSilence.Text != trackBarSilence.Value.ToString())
+            {
+                textBoxSilence.Text = trackBarSilence.Value.ToString();
+            }
         }
 
         private void iconButton55_Click(object sender, EventArgs e)
@@ -3126,6 +3171,8 @@ namespace OSCVRCWiz
 
         #endregion
         #endregion
+
+     
     }
 
 

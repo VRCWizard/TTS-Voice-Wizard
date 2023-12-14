@@ -59,7 +59,7 @@ namespace OSCVRCWiz.Services.Integrations
             OutputText.outputLog($"[OSC Listener Activated ({OSCReceiveport})]", Color.Green);
             if(OSCReceiveport==9000)
             {
-                OutputText.outputLog($"VRChat normally listens on port 9000 so unless you know what you are doing this is probably a mistake.", Color.Red);
+                OutputText.outputLog($"OSC Listener: VRChat normally listens on port 9000 so unless you know what you are doing this is probably a mistake.", Color.Red);
             }
 
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
@@ -455,8 +455,16 @@ namespace OSCVRCWiz.Services.Integrations
                 }
 
             };
+            try
+            {
 
-            var listener = new UDPListener(OSCReceiveport, callback);
+                var listener = new UDPListener(OSCReceiveport, callback);
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Error Starting OSC Listener: " + ex.Message + " ]", System.Drawing.Color.Red);
+              //  OutputText.outputLog("[Error Starting OSC Listener: " + ex.Message + " ]", System.Drawing.Color.Orange);
+            }
 
         }
     }
