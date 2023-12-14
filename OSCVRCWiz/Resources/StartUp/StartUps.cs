@@ -74,7 +74,7 @@ namespace OSCVRCWiz.Resources.StartUp
             WebSocketServer.ActivateOnStartUp();
 
 
-            OutputText.outputLog("[QuickStart Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide ]");
+            OutputText.outputLog("[Guides: https://ttsvoicewizard.com/docs/intro ]");
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == false)
             {

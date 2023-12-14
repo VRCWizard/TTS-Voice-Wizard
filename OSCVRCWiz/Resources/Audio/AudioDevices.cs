@@ -30,10 +30,10 @@ namespace OSCVRCWiz.Resources.Audio
         public static List<string> comboIn = new List<string>();
         public static List<string> comboOut = new List<string>();
         public static List<string> micIDs = new List<string>();
-        public static List<MMDevice> micMMs = new List<MMDevice>();
+      //  public static List<MMDevice> micMMs = new List<MMDevice>();
         public static List<string> speakerIDs = new List<string>();
         public static string currentInputDevice = "";
-        public static MMDevice currentInputDeviceMM = null;
+       // public static MMDevice currentInputDeviceMM = null;
         public static string currentOutputDevice = "";
         public static string currentInputDeviceName = "Default";
         public static string currentOutputDeviceName = "Default";
