@@ -78,7 +78,7 @@ namespace OSCVRCWiz.Resources.StartUp
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == false)
             {
-                OutputText.outputLog("[Consider becoming a VoiceWizardPro member for instant access to all the best voices: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange);
+                OutputText.outputLog("[Consider becoming a VoiceWizardPro member for instant access to all the best voices: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
             }
             else
             {

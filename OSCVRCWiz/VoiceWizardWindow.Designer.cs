@@ -2418,7 +2418,6 @@
             // 
             // iconButton1
             // 
-            iconButton1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             iconButton1.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             iconButton1.FlatAppearance.BorderSize = 3;
             iconButton1.FlatStyle = FlatStyle.Flat;
@@ -3306,7 +3305,6 @@
             // 
             // iconButton31
             // 
-            iconButton31.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             iconButton31.FlatAppearance.BorderSize = 0;
             iconButton31.FlatStyle = FlatStyle.Flat;
             iconButton31.ForeColor = Color.Snow;
@@ -9619,6 +9617,7 @@
             textBoxSilence.Size = new Size(59, 23);
             textBoxSilence.TabIndex = 199;
             textBoxSilence.Text = "1000";
+            textBoxSilence.TextChanged += (this.textBoxSilence_TextChanged_1);
             // 
             // minimumAudio
             // 

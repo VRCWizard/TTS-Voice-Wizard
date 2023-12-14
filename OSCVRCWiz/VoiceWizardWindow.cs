@@ -844,7 +844,7 @@ namespace OSCVRCWiz
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
 
-                   
+
 
                     break;
 
@@ -2708,6 +2708,24 @@ namespace OSCVRCWiz
 
         #region Voice Wizard Pro Tab
 
+        private void buttonSilenceCalibrate_Click(object sender, EventArgs e)
+        {
+            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), true));
+        }
+
+        private void textBoxSilence_TextChanged_1(object sender, EventArgs e)
+        {
+            if (textBoxSilence.Text != trackBarSilence.Value.ToString())
+            {
+                int value = Int16.Parse(textBoxSilence.Text);
+                if (value > 2000)
+                {
+                    value = 2000;
+                }
+                trackBarSilence.Value = value;
+            }
+        }
+
         private void ProShowKey_Click(object sender, EventArgs e)
         {
             ShowHidePassword(textBoxWizardProKey, ProShowKey);
@@ -3154,25 +3172,7 @@ namespace OSCVRCWiz
         #endregion
         #endregion
 
-        private void buttonSilenceCalibrate_Click(object sender, EventArgs e)
-        {
-            Task.Run(async () => await VoiceWizardProRecognition.doRecognition(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), true));
-        }
-
-        private void textBoxSilence_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxSilence.Text != trackBarSilence.Value.ToString())
-            {
-                int value = Int16.Parse(textBoxSilence.Text);
-                if (value > 2000)
-                {
-                    value = 2000;
-                }
-                trackBarSilence.Value = value;
-            }
-        }
-
-
+     
     }
 
 
