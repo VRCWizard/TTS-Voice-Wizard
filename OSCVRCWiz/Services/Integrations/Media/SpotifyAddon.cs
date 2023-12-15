@@ -270,7 +270,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
                             {
-                                OutputText.outputTextFile(theString, @"Output\TextOut\OBSText.txt");
+                                OutputText.outputTextFile(theString, @"Output\TextOutput\OBSText.txt");
                             }
                         }
 
@@ -532,7 +532,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
             {
-                OutputText.outputTextFile(text, @"Output\TextOut\OBSText.txt");
+                OutputText.outputTextFile(text, @"Output\TextOutput\OBSText.txt");
             }
             WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
 
