@@ -407,7 +407,7 @@ namespace OSCVRCWiz.Services.Integrations
                                     }
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
                                     {
-                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("Heartrate: " + messageReceived.Arguments[0].ToString() + " bpm", OutputText.DisplayTextType.HeartRate)); //original
+                                        Task.Run(() => OutputText.outputVRChatSpeechBubbles("💓 " + messageReceived.Arguments[0].ToString() + " bpm", OutputText.DisplayTextType.HeartRate)); //original
 
 
                                     }
