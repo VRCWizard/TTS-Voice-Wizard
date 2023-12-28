@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Media.Animation;
 
 namespace OSCVRCWiz.Services.Integrations.Media
 {
@@ -40,14 +41,14 @@ namespace OSCVRCWiz.Services.Integrations.Media
             if (myPKCEToken != null)
             {
                 // DateTime tokenExpirationTime = DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn);
-                
-               // OutputText.outputLog("checking if token expired: "+ (tokenExpirationTime <= DateTime.Now).ToString());
+
+                // OutputText.outputLog("checking if token expired: "+ (tokenExpirationTime <= DateTime.Now).ToString());
                 return (tokenExpirationTime <= DateTime.Now);
             }
-            else 
+            else
             {
                 Debug.WriteLine("----- updating tokens -----");
-                return true; 
+                return true;
             }
         }
 
@@ -60,10 +61,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
             PKCETokenRefreshRequest refreshRequest = new PKCETokenRefreshRequest(clientId, Settings1.Default.PKCERefreshToken);
             PKCETokenResponse refreshResponse = await new OAuthClient().RequestToken(refreshRequest);
             myPKCEToken = refreshResponse;
-            OutputText.outputLog("[Your Spotify Token will refresh in "+((myPKCEToken.ExpiresIn/60)-1)+" minutes]", Color.Green);
+            OutputText.outputLog("[Your Spotify Token will refresh in " + ((myPKCEToken.ExpiresIn / 60) - 1) + " minutes]", Color.Green);
 
-            tokenExpirationTime = DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn-60);
-           // OutputText.outputLog((DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn - 60) <= DateTime.Now).ToString());
+            tokenExpirationTime = DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn - 60);
+            // OutputText.outputLog((DateTime.Now.AddSeconds(myPKCEToken.ExpiresIn - 60) <= DateTime.Now).ToString());
             return refreshResponse;
         }
 
@@ -76,7 +77,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 if (myClient == null)
                 {
                     myClient = new SpotifyClient(Settings1.Default.PKCEAccessToken);
-                    
+
                 }
                 else
                 {
@@ -122,7 +123,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     var durationHours = "";
                     var progressHours = "";
                     var album = "";
-                    var progressBar = "";
+                    // var progressBar = "";
                     TimeSpan progressT = TimeSpan.FromMinutes(0);
                     TimeSpan durationT = TimeSpan.FromMinutes(0);
 
@@ -158,7 +159,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             progress = progressT.ToString(@"mm\:ss");
                             duration = durationT.ToString(@"mm\:ss");
 
-                           
+
 
                             progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
@@ -172,7 +173,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         // lastSong = title;
                         var spotifyPausedIndicator = "▶️";
 
-                        if (fullSongPauseCheck != progress|| playOnce)
+                        if (fullSongPauseCheck != progress || playOnce)
                         {
                             spotifyPausedIndicator = "▶️";
                         }
@@ -222,27 +223,11 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                         theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
 
-                        try
-                        {
-                            string pattern = @"\{progressBar E:(?<Emoji>.*?) L:(?<LValue>\d+)\}";
-                            Match match = Regex.Match(theString, pattern);
+                        theString = replaceProgresBar(theString, progressT, durationT);
+                        theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));
 
-                            if (match.Success)
-                            {
-                                string emojiValue = match.Groups["Emoji"].Value;
-                                int lValue = int.Parse(match.Groups["LValue"].Value);
-                                progressBar = songProgressBar(progressT, durationT, emojiValue, lValue);
-                                theString = Regex.Replace(theString, pattern, progressBar);
-                            }
-                        } 
-                        catch (Exception e) 
-                        {
-                            OutputText.outputLog("Error Creating ProgressBar: "+e.Message, Color.Red);
-                            OutputText.outputLog(e.StackTrace,Color.Red);
-                           
-                        }
-                       
-   
+
+
 
 
                         if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
@@ -264,7 +249,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
                             {
-                              //  theString = LineBreakerChatbox(theString, 28);//must always be the last
+                                //  theString = LineBreakerChatbox(theString, 28);//must always be the last
                                 Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, OutputText.DisplayTextType.Spotify)); //original
 
                             }
@@ -277,7 +262,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         // lastSong = title;
                         // MainForm.justShowTheSong = false;
                         SpotifyAddon.lastSong = SpotifyAddon.title;
-                       // WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
+                        // WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
                         fullSongPauseCheck = progress;
 
 
@@ -398,28 +383,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                     theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
 
-
-
-                    try
-                    {
-                        
-                        string pattern = @"\{progressBar E:(?<Emoji>.*?) L:(?<LValue>\d+)\}";
-                        Match match = Regex.Match(theString, pattern);
-
-                        if (match.Success)
-                        {
-                            string emojiValue = match.Groups["Emoji"].Value;
-                            int lValue = int.Parse(match.Groups["LValue"].Value);
-                            var progressBar = songProgressBar(progressT, durationT, emojiValue, lValue);
-                            theString = Regex.Replace(theString, pattern, progressBar);
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        OutputText.outputLog("Error Creating ProgressBar: " + e.Message, Color.Red);
-                        OutputText.outputLog(e.StackTrace, Color.Red);
-
-                    }
+                    theString = replaceProgresBar(theString, progressT, durationT);
+                    // replaceHREmoji();
 
 
 
@@ -499,10 +464,11 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                     theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
                     theString = theString.Replace("{pause}", spotifyPausedIndicator);
+                    theString = replaceProgresBar(theString, progressT, durationT);
 
 
                     MediaOutput(theString);
-                    
+
 
 
                 }
@@ -526,7 +492,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
             }
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonSpotifyChatboxDisable.Checked == false)
             {
-              //  text = LineBreakerChatbox(text, 28);//must always be the last
+                //  text = LineBreakerChatbox(text, 28);//must always be the last
                 Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, OutputText.DisplayTextType.WindowsMedia)); //original
 
             }
@@ -568,22 +534,22 @@ namespace OSCVRCWiz.Services.Integrations.Media
             //  var loginRequest = new LoginRequest(_server.BaseUri, clientId,LoginRequest.ResponseType.Code)
             string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
             var loginRequest = new LoginRequest(_server.BaseUri, clientId, LoginRequest.ResponseType.Code)
-                {
-                    CodeChallengeMethod = "S256",
-                    CodeChallenge = challenge,
-                    Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
-                };
-               //  System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
-               // BrowserUtil.Open(loginRequest.ToUri());
+            {
+                CodeChallengeMethod = "S256",
+                CodeChallenge = challenge,
+                Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
+            };
+            //  System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
+            // BrowserUtil.Open(loginRequest.ToUri());
 
-                string url = loginRequest.ToUri().ToString();
-                Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });//this link doesnt like the other method
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleShowConnectURISpotify.Checked)
-                {
-                    OutputText.outputLog(loginRequest.ToUri().ToString());
-                }
+            string url = loginRequest.ToUri().ToString();
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });//this link doesnt like the other method
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleShowConnectURISpotify.Checked)
+            {
+                OutputText.outputLog(loginRequest.ToUri().ToString());
+            }
 
-            
+
 
 
         }
@@ -593,13 +559,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
         {
             Debug.WriteLine("Getcallback code: " + response.Code.ToString());
 
-                string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
-                var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
-                Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
-                Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
-                Settings1.Default.Save();
-            
-            
+            string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
+            var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+            Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
+            Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
+            Settings1.Default.Save();
+
+
 
         }
         public static string Base64Encode(string plainText)
@@ -648,10 +614,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     {
                         soundpad = true;
                     }
-   
+
                 }
 
-                if (soundpad == true) 
+                if (soundpad == true)
                 {
                     Task.Run(() => WindowsMedia.GetSoundPadMedia());
 
@@ -678,7 +644,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                         }
                     }
-                   
+
                 }
 
                 else
@@ -697,7 +663,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                     }
                 }
-              
+
             }
 
             spotifyTimer.Change(Int32.Parse(SpotifyAddon.spotifyInterval), 0);
@@ -730,7 +696,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonCurrentSong.Checked == true)
             {
-                
+
                 Task.Run(() => SpotifyAddon.spotifyGetCurrentSongInfo(true));
             }
 
@@ -748,9 +714,9 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                 if (soundpad == true)
                 {
-                    Task.Run(() => WindowsMedia.GetSoundPadMedia());                  
+                    Task.Run(() => WindowsMedia.GetSoundPadMedia());
                     Task.Run(() => SpotifyAddon.soundpadGetSongInfo());
-                      
+
 
                 }
 
@@ -763,13 +729,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             WindowsMedia.mediaManager.ForceUpdate();//windows media will be forced to update on this interval, this is for debug
                             Debug.WriteLine("forced media");
                         }
-                    } 
-                        Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
+                    }
+                    Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                 }
 
             }
 
-           
+
 
 
         }
@@ -782,7 +748,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
             int circlePosition = CalculateCirclePosition(progress, duration, progressBarLength);
 
             // Display the progress bar
-            string bar = DisplayProgressBar(circlePosition, progressBarLength,emoji);
+            string bar = DisplayProgressBar(circlePosition, progressBarLength, emoji);
             return bar;
 
         }
@@ -804,7 +770,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
             {
                 if (i == circlePosition)
                 {
-                    bar+= emoji;
+                    bar += emoji;
                 }
                 else
                 {
@@ -815,6 +781,97 @@ namespace OSCVRCWiz.Services.Integrations.Media
             bar += "|";
             return bar;
         }
+
+        static string replaceProgresBar(string theString, TimeSpan progressT, TimeSpan durationT)
+        {
+            try
+            {
+                string pattern = @"\{progressBar E:(?<Emoji>.*?) L:(?<LValue>\d+)\}";
+                Match match = Regex.Match(theString, pattern);
+
+                if (match.Success)
+                {
+                    string emojiValue = match.Groups["Emoji"].Value;
+                    int lValue = int.Parse(match.Groups["LValue"].Value);
+                    var progressBar = songProgressBar(progressT, durationT, emojiValue, lValue);
+                    theString = Regex.Replace(theString, pattern, progressBar);
+
+                }
+                return theString;
+            }
+            catch (Exception e)
+            {
+                OutputText.outputLog("Error Creating ProgressBar: " + e.Message, Color.Red);
+                OutputText.outputLog(e.StackTrace, Color.Red);
+                return theString;
+
+            }
+        }
+    
+           // string input = "{HREmoji (BPM: 0 E: 💀)(BPM: 40-59 E: 💔)(BPM: 60-100 E: ❤️)(BPM: 101-120 E: 💓)}";
+
+        static string replaceHREmoji(string theString, int BPM)
+        {
+          //  theString += "{HREmoji (BPM: 0 E: 💀)(BPM: 40-59 E: 💔)(BPM: 60-100 E: ❤️)(BPM: 101-120 E: 💓)}";
+            int index = 0;
+            string emoji = "";
+            
+           // string pattern = @"\{HREmoji(?:\s*\(BPM:\s*(\d+|\d+-\d+)\s*E:\s*([^\s)]+)\))*\}";
+            string pattern = @"\{HREmoji(?:\s*\(BPM:\s*(\d+|\d+\s*-\s*\d+)\s*E:\s*([^)]+)\))*\}";
+
+            MatchCollection matches = Regex.Matches(theString, pattern);
+
+            foreach (Match match in matches)
+            {
+                // Extracting BPM and Emoji values
+                foreach (Capture captureBPM in match.Groups[1].Captures)
+                {
+                    Debug.WriteLine("MADE IT PAST THE FIRST CAPTURRE0**($&YBYB*TNT&");
+                    string bpmValue = captureBPM.Value;
+                    if (IsBPMInRange(BPM, bpmValue))
+                    {
+                        int emojiIndex = 0;
+                        // Extracting Emoji value
+                        foreach (Capture captureEmoji in match.Groups[2].Captures)
+                        {
+                            if (emojiIndex == index)
+                            {
+                                emoji = captureEmoji.Value;
+                            }
+                            emojiIndex++;
+                            
+                        }
+                    }      
+                    index++;
+                }
+            }
+
+           theString = theString = Regex.Replace(theString, pattern, emoji);
+           return theString;
+        }
+
+        static bool IsBPMInRange(int bpm, string bpmValue)
+        {
+            if (bpmValue.Contains("-"))
+            {
+                // Range case
+                string[] range = bpmValue.Split('-');
+                int minBPM = int.Parse(range[0].Trim());
+                int maxBPM = int.Parse(range[1].Trim());
+                return bpm >= minBPM && bpm <= maxBPM;
+            }
+            else
+            {
+                // Single value case
+                int singleBPM = int.Parse(bpmValue);
+                return bpm == singleBPM;
+            }
+        }
+
+
+
+
+
 
 
 
