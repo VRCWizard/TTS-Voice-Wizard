@@ -68,7 +68,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     howQuiet = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text);
                     language = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
                     silenceScale = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text);
-                    minValidDuration = Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);
+                    minValidDuration = Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxMinValidDeepgramDur.Text.ToString(), CultureInfo.InvariantCulture);
                     VADMode = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
 
                 });
@@ -122,7 +122,7 @@ namespace OSCVRCWiz.Speech_Recognition
                                         howQuiet = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilence.Text);
                                         language = VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString();
                                         silenceScale = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text);
-                                        minValidDuration = Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);
+                                        minValidDuration = Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxMinValidDeepgramDur.Text.ToString(), CultureInfo.InvariantCulture);
                                         VADMode = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
 
                                     });
@@ -557,6 +557,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
             if (!isVoiceDetected && !validAudioClip)
             {
+                //OutputText.outputLog("invalid clip");
                 return null;
             }
 

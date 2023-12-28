@@ -384,6 +384,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
 
                     theString = replaceProgresBar(theString, progressT, durationT);
+                    theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));
                     // replaceHREmoji();
 
 
@@ -465,6 +466,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
                     theString = theString.Replace("{pause}", spotifyPausedIndicator);
                     theString = replaceProgresBar(theString, progressT, durationT);
+                    theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));
 
 
                     MediaOutput(theString);
