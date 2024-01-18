@@ -323,6 +323,20 @@
             rjToggleButtonSounds = new OSCVRCWiz.RJControls.RJToggleButton();
             comboBoxVADMode = new ComboBox();
             groupBox1 = new GroupBox();
+            label220 = new Label();
+            label219 = new Label();
+            label218 = new Label();
+            textBoxVoiceScrollDown2 = new TextBox();
+            buttonDownEdit = new Button();
+            buttonDownSave = new Button();
+            textBoxVoiceScrollDown1 = new TextBox();
+            label216 = new Label();
+            textBoxVoiceScrollUp2 = new TextBox();
+            buttonUpEdit = new Button();
+            buttonUpSave = new Button();
+            rjToggleSwitchVoicePresetsBind = new OSCVRCWiz.RJControls.RJToggleButton();
+            textBoxVoiceScrollUp1 = new TextBox();
+            label217 = new Label();
             label201 = new Label();
             textBoxDelayBeforeAudio = new TextBox();
             iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -571,6 +585,8 @@
             button48 = new Button();
             textBoxReadFromTXTFile = new TextBox();
             groupBox38 = new GroupBox();
+            label215 = new Label();
+            textBoxWhisperVADOffset = new TextBox();
             label207 = new Label();
             comboBoxGPUSelection = new ComboBox();
             label205 = new Label();
@@ -5143,6 +5159,20 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label220);
+            groupBox1.Controls.Add(label219);
+            groupBox1.Controls.Add(label218);
+            groupBox1.Controls.Add(textBoxVoiceScrollDown2);
+            groupBox1.Controls.Add(buttonDownEdit);
+            groupBox1.Controls.Add(buttonDownSave);
+            groupBox1.Controls.Add(textBoxVoiceScrollDown1);
+            groupBox1.Controls.Add(label216);
+            groupBox1.Controls.Add(textBoxVoiceScrollUp2);
+            groupBox1.Controls.Add(buttonUpEdit);
+            groupBox1.Controls.Add(buttonUpSave);
+            groupBox1.Controls.Add(rjToggleSwitchVoicePresetsBind);
+            groupBox1.Controls.Add(textBoxVoiceScrollUp1);
+            groupBox1.Controls.Add(label217);
             groupBox1.Controls.Add(label201);
             groupBox1.Controls.Add(textBoxDelayBeforeAudio);
             groupBox1.Controls.Add(iconButton2);
@@ -5213,6 +5243,195 @@
             groupBox1.TabIndex = 100;
             groupBox1.TabStop = false;
             groupBox1.Text = "General";
+            // 
+            // label220
+            // 
+            label220.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            label220.AutoSize = true;
+            label220.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label220.ForeColor = Color.Snow;
+            label220.Location = new Point(452, 236);
+            label220.Name = "label220";
+            label220.Size = new Size(70, 15);
+            label220.TabIndex = 179;
+            label220.Text = "Scroll Down";
+            // 
+            // label219
+            // 
+            label219.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            label219.AutoSize = true;
+            label219.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label219.ForeColor = Color.Snow;
+            label219.Location = new Point(452, 187);
+            label219.Name = "label219";
+            label219.Size = new Size(54, 15);
+            label219.TabIndex = 178;
+            label219.Text = "Scroll Up";
+            // 
+            // label218
+            // 
+            label218.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            label218.AutoSize = true;
+            label218.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label218.ForeColor = Color.Snow;
+            label218.Location = new Point(509, 254);
+            label218.Name = "label218";
+            label218.Size = new Size(15, 15);
+            label218.TabIndex = 177;
+            label218.Text = "+";
+            // 
+            // textBoxVoiceScrollDown2
+            // 
+            textBoxVoiceScrollDown2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            textBoxVoiceScrollDown2.Enabled = false;
+            textBoxVoiceScrollDown2.Location = new Point(534, 252);
+            textBoxVoiceScrollDown2.Margin = new Padding(3, 2, 3, 2);
+            textBoxVoiceScrollDown2.Name = "textBoxVoiceScrollDown2";
+            textBoxVoiceScrollDown2.ReadOnly = true;
+            textBoxVoiceScrollDown2.Size = new Size(53, 23);
+            textBoxVoiceScrollDown2.TabIndex = 176;
+            textBoxVoiceScrollDown2.KeyDown += (this.textBoxVoiceScrollDown2_KeyDown);
+            // 
+            // buttonDownEdit
+            // 
+            buttonDownEdit.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonDownEdit.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonDownEdit.FlatStyle = FlatStyle.Flat;
+            buttonDownEdit.ForeColor = Color.Snow;
+            buttonDownEdit.Location = new Point(592, 251);
+            buttonDownEdit.Margin = new Padding(3, 2, 3, 2);
+            buttonDownEdit.Name = "buttonDownEdit";
+            buttonDownEdit.Size = new Size(52, 22);
+            buttonDownEdit.TabIndex = 175;
+            buttonDownEdit.Text = "Edit";
+            buttonDownEdit.UseVisualStyleBackColor = false;
+            buttonDownEdit.Click += (this.buttonDownEdit_Click);
+            // 
+            // buttonDownSave
+            // 
+            buttonDownSave.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonDownSave.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonDownSave.Enabled = false;
+            buttonDownSave.FlatStyle = FlatStyle.Flat;
+            buttonDownSave.ForeColor = Color.Snow;
+            buttonDownSave.Location = new Point(646, 251);
+            buttonDownSave.Margin = new Padding(3, 2, 3, 2);
+            buttonDownSave.Name = "buttonDownSave";
+            buttonDownSave.Size = new Size(45, 22);
+            buttonDownSave.TabIndex = 174;
+            buttonDownSave.Text = "Save";
+            buttonDownSave.UseVisualStyleBackColor = false;
+            buttonDownSave.Click += (this.buttonDownSave_Click);
+            // 
+            // textBoxVoiceScrollDown1
+            // 
+            textBoxVoiceScrollDown1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            textBoxVoiceScrollDown1.Enabled = false;
+            textBoxVoiceScrollDown1.Location = new Point(452, 253);
+            textBoxVoiceScrollDown1.Margin = new Padding(3, 2, 3, 2);
+            textBoxVoiceScrollDown1.Name = "textBoxVoiceScrollDown1";
+            textBoxVoiceScrollDown1.ReadOnly = true;
+            textBoxVoiceScrollDown1.Size = new Size(53, 23);
+            textBoxVoiceScrollDown1.TabIndex = 173;
+            textBoxVoiceScrollDown1.KeyDown += (this.textBoxVoiceScrollDown1_KeyDown);
+            // 
+            // label216
+            // 
+            label216.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            label216.AutoSize = true;
+            label216.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label216.ForeColor = Color.Snow;
+            label216.Location = new Point(509, 207);
+            label216.Name = "label216";
+            label216.Size = new Size(15, 15);
+            label216.TabIndex = 172;
+            label216.Text = "+";
+            // 
+            // textBoxVoiceScrollUp2
+            // 
+            textBoxVoiceScrollUp2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            textBoxVoiceScrollUp2.Enabled = false;
+            textBoxVoiceScrollUp2.Location = new Point(534, 205);
+            textBoxVoiceScrollUp2.Margin = new Padding(3, 2, 3, 2);
+            textBoxVoiceScrollUp2.Name = "textBoxVoiceScrollUp2";
+            textBoxVoiceScrollUp2.ReadOnly = true;
+            textBoxVoiceScrollUp2.Size = new Size(53, 23);
+            textBoxVoiceScrollUp2.TabIndex = 171;
+            textBoxVoiceScrollUp2.KeyDown += (this.textBoxVoiceScrollUp2_KeyDown);
+            // 
+            // buttonUpEdit
+            // 
+            buttonUpEdit.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonUpEdit.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonUpEdit.FlatStyle = FlatStyle.Flat;
+            buttonUpEdit.ForeColor = Color.Snow;
+            buttonUpEdit.Location = new Point(592, 204);
+            buttonUpEdit.Margin = new Padding(3, 2, 3, 2);
+            buttonUpEdit.Name = "buttonUpEdit";
+            buttonUpEdit.Size = new Size(52, 22);
+            buttonUpEdit.TabIndex = 170;
+            buttonUpEdit.Text = "Edit";
+            buttonUpEdit.UseVisualStyleBackColor = false;
+            buttonUpEdit.Click += (this.buttonUpEdit_Click);
+            // 
+            // buttonUpSave
+            // 
+            buttonUpSave.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            buttonUpSave.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonUpSave.Enabled = false;
+            buttonUpSave.FlatStyle = FlatStyle.Flat;
+            buttonUpSave.ForeColor = Color.Snow;
+            buttonUpSave.Location = new Point(646, 204);
+            buttonUpSave.Margin = new Padding(3, 2, 3, 2);
+            buttonUpSave.Name = "buttonUpSave";
+            buttonUpSave.Size = new Size(45, 22);
+            buttonUpSave.TabIndex = 169;
+            buttonUpSave.Text = "Save";
+            buttonUpSave.UseVisualStyleBackColor = false;
+            buttonUpSave.Click += (this.buttonUpSave_Click);
+            // 
+            // rjToggleSwitchVoicePresetsBind
+            // 
+            rjToggleSwitchVoicePresetsBind.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            rjToggleSwitchVoicePresetsBind.AutoSize = true;
+            rjToggleSwitchVoicePresetsBind.Checked = true;
+            rjToggleSwitchVoicePresetsBind.CheckState = CheckState.Checked;
+            rjToggleSwitchVoicePresetsBind.Location = new Point(452, 169);
+            rjToggleSwitchVoicePresetsBind.Margin = new Padding(3, 2, 3, 2);
+            rjToggleSwitchVoicePresetsBind.MinimumSize = new Size(39, 16);
+            rjToggleSwitchVoicePresetsBind.Name = "rjToggleSwitchVoicePresetsBind";
+            rjToggleSwitchVoicePresetsBind.OffBackColor = Color.Gray;
+            rjToggleSwitchVoicePresetsBind.OffToggleColor = Color.Gainsboro;
+            rjToggleSwitchVoicePresetsBind.OnBackColor = Color.MediumSlateBlue;
+            rjToggleSwitchVoicePresetsBind.OnToggleColor = Color.WhiteSmoke;
+            rjToggleSwitchVoicePresetsBind.Size = new Size(39, 16);
+            rjToggleSwitchVoicePresetsBind.TabIndex = 168;
+            rjToggleSwitchVoicePresetsBind.UseVisualStyleBackColor = true;
+            rjToggleSwitchVoicePresetsBind.CheckedChanged += (this.rjToggleSwitchVoicePresetsBind_CheckedChanged);
+            // 
+            // textBoxVoiceScrollUp1
+            // 
+            textBoxVoiceScrollUp1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            textBoxVoiceScrollUp1.Enabled = false;
+            textBoxVoiceScrollUp1.Location = new Point(452, 206);
+            textBoxVoiceScrollUp1.Margin = new Padding(3, 2, 3, 2);
+            textBoxVoiceScrollUp1.Name = "textBoxVoiceScrollUp1";
+            textBoxVoiceScrollUp1.ReadOnly = true;
+            textBoxVoiceScrollUp1.Size = new Size(53, 23);
+            textBoxVoiceScrollUp1.TabIndex = 167;
+            textBoxVoiceScrollUp1.KeyDown += (this.textBoxVoiceScrollUp1_KeyDown);
+            // 
+            // label217
+            // 
+            label217.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            label217.AutoSize = true;
+            label217.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label217.ForeColor = Color.Snow;
+            label217.Location = new Point(496, 169);
+            label217.Name = "label217";
+            label217.Size = new Size(161, 15);
+            label217.TabIndex = 166;
+            label217.Text = "Switch Voice Presets Shortcut";
             // 
             // label201
             // 
@@ -5349,7 +5568,7 @@
             rjToggleButtonRefocus.AutoSize = true;
             rjToggleButtonRefocus.Checked = true;
             rjToggleButtonRefocus.CheckState = CheckState.Checked;
-            rjToggleButtonRefocus.Location = new Point(452, 225);
+            rjToggleButtonRefocus.Location = new Point(452, 373);
             rjToggleButtonRefocus.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonRefocus.MinimumSize = new Size(39, 16);
             rjToggleButtonRefocus.Name = "rjToggleButtonRefocus";
@@ -5368,7 +5587,7 @@
             label158.AutoSize = true;
             label158.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label158.ForeColor = Color.Snow;
-            label158.Location = new Point(496, 225);
+            label158.Location = new Point(496, 373);
             label158.Name = "label158";
             label158.Size = new Size(188, 15);
             label158.TabIndex = 154;
@@ -5396,7 +5615,7 @@
             label156.AutoSize = true;
             label156.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label156.ForeColor = Color.Snow;
-            label156.Location = new Point(509, 188);
+            label156.Location = new Point(509, 336);
             label156.Name = "label156";
             label156.Size = new Size(15, 15);
             label156.TabIndex = 152;
@@ -5406,7 +5625,7 @@
             // 
             textBoxQuickType2.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBoxQuickType2.Enabled = false;
-            textBoxQuickType2.Location = new Point(534, 186);
+            textBoxQuickType2.Location = new Point(534, 334);
             textBoxQuickType2.Margin = new Padding(3, 2, 3, 2);
             textBoxQuickType2.Name = "textBoxQuickType2";
             textBoxQuickType2.ReadOnly = true;
@@ -5420,7 +5639,7 @@
             buttonQuickTypeEdit.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             buttonQuickTypeEdit.FlatStyle = FlatStyle.Flat;
             buttonQuickTypeEdit.ForeColor = Color.Snow;
-            buttonQuickTypeEdit.Location = new Point(592, 185);
+            buttonQuickTypeEdit.Location = new Point(592, 333);
             buttonQuickTypeEdit.Margin = new Padding(3, 2, 3, 2);
             buttonQuickTypeEdit.Name = "buttonQuickTypeEdit";
             buttonQuickTypeEdit.Size = new Size(52, 22);
@@ -5436,7 +5655,7 @@
             buttonQuickTypeSave.Enabled = false;
             buttonQuickTypeSave.FlatStyle = FlatStyle.Flat;
             buttonQuickTypeSave.ForeColor = Color.Snow;
-            buttonQuickTypeSave.Location = new Point(646, 185);
+            buttonQuickTypeSave.Location = new Point(646, 333);
             buttonQuickTypeSave.Margin = new Padding(3, 2, 3, 2);
             buttonQuickTypeSave.Name = "buttonQuickTypeSave";
             buttonQuickTypeSave.Size = new Size(45, 22);
@@ -5451,7 +5670,7 @@
             rjToggleButtonQuickTypeEnabled.AutoSize = true;
             rjToggleButtonQuickTypeEnabled.Checked = true;
             rjToggleButtonQuickTypeEnabled.CheckState = CheckState.Checked;
-            rjToggleButtonQuickTypeEnabled.Location = new Point(452, 166);
+            rjToggleButtonQuickTypeEnabled.Location = new Point(452, 314);
             rjToggleButtonQuickTypeEnabled.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonQuickTypeEnabled.MinimumSize = new Size(39, 16);
             rjToggleButtonQuickTypeEnabled.Name = "rjToggleButtonQuickTypeEnabled";
@@ -5468,7 +5687,7 @@
             // 
             textBoxQuickType1.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             textBoxQuickType1.Enabled = false;
-            textBoxQuickType1.Location = new Point(452, 187);
+            textBoxQuickType1.Location = new Point(452, 335);
             textBoxQuickType1.Margin = new Padding(3, 2, 3, 2);
             textBoxQuickType1.Name = "textBoxQuickType1";
             textBoxQuickType1.ReadOnly = true;
@@ -5482,7 +5701,7 @@
             label157.AutoSize = true;
             label157.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label157.ForeColor = Color.Snow;
-            label157.Location = new Point(496, 166);
+            label157.Location = new Point(496, 314);
             label157.Name = "label157";
             label157.Size = new Size(113, 15);
             label157.TabIndex = 146;
@@ -7277,7 +7496,7 @@
             groupBox33.Margin = new Padding(3, 2, 3, 2);
             groupBox33.Name = "groupBox33";
             groupBox33.Padding = new Padding(3, 2, 3, 2);
-            groupBox33.Size = new Size(752, 81);
+            groupBox33.Size = new Size(752, 75);
             groupBox33.TabIndex = 159;
             groupBox33.TabStop = false;
             groupBox33.Text = "Word Replacement Settings";
@@ -7288,7 +7507,7 @@
             label62.AutoSize = true;
             label62.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label62.ForeColor = Color.Snow;
-            label62.Location = new Point(55, 29);
+            label62.Location = new Point(55, 23);
             label62.Name = "label62";
             label62.Size = new Size(355, 15);
             label62.TabIndex = 162;
@@ -7300,7 +7519,7 @@
             rjToggleReplaceBeforeTTS.AutoSize = true;
             rjToggleReplaceBeforeTTS.Checked = true;
             rjToggleReplaceBeforeTTS.CheckState = CheckState.Checked;
-            rjToggleReplaceBeforeTTS.Location = new Point(7, 29);
+            rjToggleReplaceBeforeTTS.Location = new Point(7, 23);
             rjToggleReplaceBeforeTTS.Margin = new Padding(3, 2, 3, 2);
             rjToggleReplaceBeforeTTS.MinimumSize = new Size(39, 16);
             rjToggleReplaceBeforeTTS.Name = "rjToggleReplaceBeforeTTS";
@@ -8578,6 +8797,8 @@
             // 
             // groupBox38
             // 
+            groupBox38.Controls.Add(label215);
+            groupBox38.Controls.Add(textBoxWhisperVADOffset);
             groupBox38.Controls.Add(label207);
             groupBox38.Controls.Add(comboBoxGPUSelection);
             groupBox38.Controls.Add(label205);
@@ -8612,6 +8833,26 @@
             groupBox38.TabIndex = 159;
             groupBox38.TabStop = false;
             groupBox38.Text = "Whisper.cpp Model (BIN file)";
+            // 
+            // label215
+            // 
+            label215.AutoSize = true;
+            label215.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label215.ForeColor = Color.Snow;
+            label215.Location = new Point(463, 226);
+            label215.Name = "label215";
+            label215.Size = new Size(80, 15);
+            label215.TabIndex = 190;
+            label215.Text = "VAD Offset (s)";
+            // 
+            // textBoxWhisperVADOffset
+            // 
+            textBoxWhisperVADOffset.Location = new Point(463, 243);
+            textBoxWhisperVADOffset.Margin = new Padding(3, 2, 3, 2);
+            textBoxWhisperVADOffset.Name = "textBoxWhisperVADOffset";
+            textBoxWhisperVADOffset.Size = new Size(96, 23);
+            textBoxWhisperVADOffset.TabIndex = 189;
+            textBoxWhisperVADOffset.Text = "0.5";
             // 
             // label207
             // 
@@ -8755,7 +8996,7 @@
             button41.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button41.FlatStyle = FlatStyle.Flat;
             button41.ForeColor = Color.Snow;
-            button41.Location = new Point(463, 241);
+            button41.Location = new Point(565, 241);
             button41.Margin = new Padding(3, 2, 3, 2);
             button41.Name = "button41";
             button41.Size = new Size(50, 25);
@@ -11352,6 +11593,22 @@
         private Label label206;
         public ProgressBar progressBar1;
         private Button buttonCalibrate;
+        private Label label215;
+        public TextBox textBoxWhisperVADOffset;
+        private Label label220;
+        private Label label219;
+        private Label label218;
+        public TextBox textBoxVoiceScrollDown2;
+        private Button buttonDownEdit;
+        private Button buttonDownSave;
+        public TextBox textBoxVoiceScrollDown1;
+        private Label label216;
+        public TextBox textBoxVoiceScrollUp2;
+        private Button buttonUpEdit;
+        private Button buttonUpSave;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleSwitchVoicePresetsBind;
+        public TextBox textBoxVoiceScrollUp1;
+        private Label label217;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

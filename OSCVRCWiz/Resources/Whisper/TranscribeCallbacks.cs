@@ -11,6 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 using OSCVRCWiz.Speech_Recognition;
 using System.Text.RegularExpressions;
 using OSCVRCWiz.Services.Text;
+using OSCVRCWiz.Resources.StartUp.StartUp;
 
 namespace OSCVRCWiz.Resources.Whisper
 {
@@ -49,12 +50,21 @@ namespace OSCVRCWiz.Resources.Whisper
             ts.ToString("hh':'mm':'ss'.'fff", CultureInfo.InvariantCulture);
 
 
-        private bool IsSegmentInVoiceActivation(TimeSpan segmentStart, TimeSpan segmentEnd)
+        private bool IsSegmentInVoiceActivation(TimeSpan segmentStart, TimeSpan segmentEnd, double offset)
         {
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+            {
+                OutputText.outputLog("[Whisper Transcription Time: " + segmentStart + " -> " + segmentEnd + "]");
+            }
             foreach (var activationTime in WhisperRecognition.voiceActivationTimes)
             {
-                TimeSpan start = activationTime.Item1;
-                TimeSpan end = activationTime.Item2;
+             
+
+
+                TimeSpan start = activationTime.Item1.Subtract(TimeSpan.FromSeconds(offset));
+                TimeSpan end = activationTime.Item2.Add(TimeSpan.FromSeconds(offset));
+
+
 
                 // Check for overlap
                 if (segmentStart < end && segmentEnd > start)
@@ -96,7 +106,7 @@ namespace OSCVRCWiz.Resources.Whisper
                         TimeSpan segmentStart = seg.time.begin + WhisperRecognition.WhisperStartTime;
                         TimeSpan segmentEnd = seg.time.end + WhisperRecognition.WhisperStartTime;
                         Debug.WriteLine(printTime(seg.time.begin + WhisperRecognition.WhisperStartTime) + " - " + printTime(seg.time.end + WhisperRecognition.WhisperStartTime));
-                        if (IsSegmentInVoiceActivation(seg.time.begin + WhisperRecognition.WhisperStartTime, seg.time.end + WhisperRecognition.WhisperStartTime) || WhisperRecognition.isVoiceDetected)
+                        if (IsSegmentInVoiceActivation(seg.time.begin + WhisperRecognition.WhisperStartTime, seg.time.end + WhisperRecognition.WhisperStartTime, Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text.ToString(), CultureInfo.InvariantCulture)) || WhisperRecognition.isVoiceDetected)
                         {
                            // OutputText.outputLog($"segment approved by VAD", Color.Blue);
                         }
@@ -105,6 +115,12 @@ namespace OSCVRCWiz.Resources.Whisper
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                             {
                                 OutputText.outputLog($"VAD (FILTERED): {stuff}", Color.Orange);
+                            }
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                            {
+                                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);
+                                OSC.OSCSender.Send(typingbubble);
+
                             }
                             return;
                         }

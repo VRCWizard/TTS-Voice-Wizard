@@ -232,6 +232,18 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxQuickType2.Text = Hotkeys.normalKeyQuickType;
 
 
+            Hotkeys.modifierKeyScrollUp = Settings1.Default.modifierKeyScrollUp;
+            VoiceWizardWindow.MainFormGlobal.textBoxVoiceScrollUp1.Text = Hotkeys.modifierKeyScrollUp;
+            Hotkeys.normalKeyScrollUp = Settings1.Default.normalKeyScrollUp;
+            VoiceWizardWindow.MainFormGlobal.textBoxVoiceScrollUp2.Text = Hotkeys.normalKeyScrollUp;
+
+
+            Hotkeys.modifierKeyScrollDown = Settings1.Default.modifierKeyScrollDown;
+            VoiceWizardWindow.MainFormGlobal.textBoxVoiceScrollDown1.Text = Hotkeys.modifierKeyScrollDown;
+            Hotkeys.normalKeyScrollDown = Settings1.Default.normalKeyScrollDown;
+            VoiceWizardWindow.MainFormGlobal.textBoxVoiceScrollDown2.Text = Hotkeys.normalKeyScrollDown;
+
+
             VoiceWizardWindow.MainFormGlobal.textBoxAmazonKey.Text = Settings1.Default.yourAWSKey;
             VoiceWizardWindow.MainFormGlobal.textBoxAmazonSecret.Text = Settings1.Default.yourAWSSecret;
             VoiceWizardWindow.MainFormGlobal.textBox8.Text = Settings1.Default.yourAWSRegion;
@@ -411,6 +423,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleDeepGramContinuous.Checked = Settings1.Default.deepGramContinuous;
             VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text = Settings1.Default.silenceScale;
             VoiceWizardWindow.MainFormGlobal.textBoxMinValidDeepgramDur.Text = Settings1.Default.deepGramValidDuration;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text = Settings1.Default.whisperVadOffset;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked = Settings1.Default.switchVoicePresetBindToggle;
 
 
 

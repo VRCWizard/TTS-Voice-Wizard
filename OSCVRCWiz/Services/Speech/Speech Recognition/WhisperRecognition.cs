@@ -4,6 +4,8 @@ using NAudio.Wave;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Resources.Whisper;
+using OSCVRCWiz.Services.Integrations.Media;
+using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
@@ -66,7 +68,7 @@ namespace OSCVRCWiz.Speech_Recognition
                         vad.OperatingMode = OperatingMode.HighQuality;
                         OutputText.outputLog("[Error selecting VAD mode, defaulting to 0]");
                     }
-                    WhisperStartTime = DateTime.Now.TimeOfDay;
+                    
                     waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
                     waveIn.StartRecording();
                 }
@@ -89,6 +91,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 "-l", langcode,
                  };
                 OutputText.outputLog("[Starting Whisper]");
+                WhisperStartTime = DateTime.Now.TimeOfDay;
                 Task.Run(() => doWhisper(args));
 
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
@@ -487,6 +490,12 @@ namespace OSCVRCWiz.Speech_Recognition
                     {
                         OutputText.outputLog("VAD Start Time: " + startTime);
                     }
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    {
+                        var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
+                        OSC.OSCSender.Send(typingbubble);
+
+                    }
                 }
                 // Update the end time while voice is detected
                 endTime = DateTime.Now.TimeOfDay;
@@ -516,7 +525,7 @@ namespace OSCVRCWiz.Speech_Recognition
                         voiceActivationTimes.RemoveRange(0, removeCount);
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                         {
-                            OutputText.outputLog("Removing old whisper activation timestamps from memory");
+                            OutputText.outputLog("[Removing old whisper activation timestamps from memory]");
                         }
 
                     }
