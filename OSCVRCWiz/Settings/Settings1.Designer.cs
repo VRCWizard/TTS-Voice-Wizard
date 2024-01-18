@@ -2650,5 +2650,77 @@ namespace OSCVRCWiz.Settings {
                 this["deepGramContinuous"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public string whisperVadOffset {
+            get {
+                return ((string)(this["whisperVadOffset"]));
+            }
+            set {
+                this["whisperVadOffset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string modifierKeyScrollUp {
+            get {
+                return ((string)(this["modifierKeyScrollUp"]));
+            }
+            set {
+                this["modifierKeyScrollUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string normalKeyScrollUp {
+            get {
+                return ((string)(this["normalKeyScrollUp"]));
+            }
+            set {
+                this["normalKeyScrollUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string modifierKeyScrollDown {
+            get {
+                return ((string)(this["modifierKeyScrollDown"]));
+            }
+            set {
+                this["modifierKeyScrollDown"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string normalKeyScrollDown {
+            get {
+                return ((string)(this["normalKeyScrollDown"]));
+            }
+            set {
+                this["normalKeyScrollDown"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool switchVoicePresetBindToggle {
+            get {
+                return ((bool)(this["switchVoicePresetBindToggle"]));
+            }
+            set {
+                this["switchVoicePresetBindToggle"] = value;
+            }
+        }
     }
 }

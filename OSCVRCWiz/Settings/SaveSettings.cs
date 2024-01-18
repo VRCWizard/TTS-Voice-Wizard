@@ -195,6 +195,12 @@ namespace OSCVRCWiz
             Settings1.Default.modHotkeyQuick = Hotkeys.modifierKeyQuickType;
             Settings1.Default.normalHotkeyQuick = Hotkeys.normalKeyQuickType;
 
+            Settings1.Default.modifierKeyScrollUp = Hotkeys.modifierKeyScrollUp;
+            Settings1.Default.normalKeyScrollUp = Hotkeys.normalKeyScrollUp;
+
+            Settings1.Default.modifierKeyScrollDown = Hotkeys.modifierKeyScrollDown;
+            Settings1.Default.normalKeyScrollDown = Hotkeys.normalKeyScrollDown;
+
 
 
             Settings1.Default.VRCOnRecieve = VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked;
@@ -328,6 +334,10 @@ namespace OSCVRCWiz
             Settings1.Default.deepGramContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleDeepGramContinuous.Checked;
             Settings1.Default.silenceScale = VoiceWizardWindow.MainFormGlobal.textBoxSilenceScale.Text;
             Settings1.Default.deepGramValidDuration = VoiceWizardWindow.MainFormGlobal.textBoxMinValidDeepgramDur.Text;
+
+            Settings1.Default.whisperVadOffset = VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text;
+
+            Settings1.Default.switchVoicePresetBindToggle = VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked;
 
 
             Settings1.Default.Save();

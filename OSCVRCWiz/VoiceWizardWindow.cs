@@ -20,6 +20,9 @@ using OSCVRCWiz.Services.Integrations.Heartrate;
 using System.Configuration;
 using OSCVRCWiz.Services.Speech.Speech_Recognition;
 using System.Media;
+using OSCVRCWiz.RJControls;
+using System.Globalization;
+using AutoUpdaterDotNET;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 #endregion
 
@@ -201,69 +204,120 @@ namespace OSCVRCWiz
             }
         }
 
-        private void rjToggleButtonQuickTypeEnabled_CheckedChanged(object sender, EventArgs e)
+        private void buttonQuickTypeEdit_Click(object sender, EventArgs e)
         {
-            if (rjToggleButtonQuickTypeEnabled.Checked == true)
-            {
-                Hotkeys.CUSTOMRegisterHotKey(2, Hotkeys.modifierKeyQuickType, Hotkeys.normalKeyQuickType);
-            }
-            if (rjToggleButtonQuickTypeEnabled.Checked == false)
-            {
-                Hotkeys.UnregisterHotKey(this.Handle, 2);
-            }
+            Hotkeys.HotkeyEdit(textBoxQuickType1, textBoxQuickType2, buttonQuickTypeEdit, buttonQuickTypeSave);
         }
 
+        private void buttonQuickTypeSave_Click(object sender, EventArgs e)
+        {
+            (Hotkeys.modifierKeyQuickType, Hotkeys.normalKeyQuickType) = Hotkeys.HotkeySave(textBoxQuickType1, textBoxQuickType2, buttonQuickTypeEdit, buttonQuickTypeSave, 2);
+        }
 
+        private void button28_Click(object sender, EventArgs e)//STTTS hotkey edit key
+        {
+            Hotkeys.HotkeyEdit(textBox4, textBox1, button28, button27);
+        }
+        private void button27_Click(object sender, EventArgs e)//STTTS hotkey save key
+        {
+            (Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS) = Hotkeys.HotkeySave(textBox4, textBox1, button28, button27, 0);
+        }
+        private void button39_Click(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEdit(textBoxStopTTS1, textBoxStopTTS2, button39, button40);
+        }
 
+        private void button40_Click(object sender, EventArgs e)
+        {
+            (Hotkeys.modifierKeyStopTTS, Hotkeys.normalKeyStopTTS) = Hotkeys.HotkeySave(textBoxStopTTS1, textBoxStopTTS2, button39, button40, 1);
+        }
+
+        private void rjToggleButtonQuickTypeEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEnableChanged(rjToggleButtonQuickTypeEnabled, Hotkeys.modifierKeyQuickType, Hotkeys.normalKeyQuickType, 2);
+        }
+        private void rjToggleButton9_CheckedChanged(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEnableChanged(rjToggleButton9, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS, 0);
+        }
+        private void rjToggleButton12_CheckedChanged(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEnableChanged(rjToggleButton12, Hotkeys.modifierKeyStopTTS, Hotkeys.normalKeyStopTTS, 1);
+        }
 
 
         private void textBoxQuickType1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBoxQuickType1.Enabled == true)
-            {
-                Keys modifierKeys = e.Modifiers;
-                textBoxQuickType1.Text = modifierKeys.ToString();
-
-            }
+            Hotkeys.HotkeyKeyDown(textBoxQuickType1, e, true);
         }
-
         private void textBoxQuickType2_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBoxQuickType2.Enabled == true)
-            {
-                Keys modifierKeys = e.Modifiers;
-                Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
-                var converter = new KeysConverter();
-                textBoxQuickType2.Text = converter.ConvertToString(pressedKey);
+            Hotkeys.HotkeyKeyDown(textBoxQuickType2, e, false);
 
-            }
         }
-
         private void textBox4_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBox4.Enabled == true)
-            {
-                Keys modifierKeys = e.Modifiers;
-                textBox4.Text = modifierKeys.ToString();
-
-            }
+            Hotkeys.HotkeyKeyDown(textBox4, e, true);
         }
-
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (textBox1.Enabled == true)
-            {
-                Keys modifierKeys = e.Modifiers;
-
-                Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
-
-                //do stuff with pressed and modifier keys
-                var converter = new KeysConverter();
-
-                textBox1.Text = converter.ConvertToString(pressedKey);
-            }
-
+            Hotkeys.HotkeyKeyDown(textBox1, e, false);
         }
+        private void textBoxStopTTS1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Hotkeys.HotkeyKeyDown(textBoxStopTTS1, e, true);
+        }
+
+        private void textBoxStopTTS2_KeyDown(object sender, KeyEventArgs e)
+        {
+            Hotkeys.HotkeyKeyDown(textBoxStopTTS2, e, false);
+        }
+
+        private void buttonUpEdit_Click(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEdit(textBoxVoiceScrollUp1, textBoxVoiceScrollUp2, buttonUpEdit, buttonUpSave);
+        }
+
+        private void buttonUpSave_Click(object sender, EventArgs e)
+        {
+            (Hotkeys.modifierKeyScrollUp, Hotkeys.normalKeyScrollUp) = Hotkeys.HotkeySave(textBoxVoiceScrollUp1, textBoxVoiceScrollUp2, buttonUpEdit, buttonUpSave, 3);
+        }
+
+        private void buttonDownEdit_Click(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEdit(textBoxVoiceScrollDown1, textBoxVoiceScrollDown2, buttonDownEdit, buttonDownSave);
+        }
+
+        private void buttonDownSave_Click(object sender, EventArgs e)
+        {
+            (Hotkeys.modifierKeyScrollDown, Hotkeys.normalKeyScrollDown) = Hotkeys.HotkeySave(textBoxVoiceScrollDown1, textBoxVoiceScrollDown2, buttonDownEdit, buttonDownSave, 4);
+        }
+        private void rjToggleSwitchVoicePresetsBind_CheckedChanged(object sender, EventArgs e)
+        {
+            Hotkeys.HotkeyEnableChanged(rjToggleSwitchVoicePresetsBind, Hotkeys.modifierKeyScrollUp, Hotkeys.normalKeyScrollUp, 3);
+            Hotkeys.HotkeyEnableChanged(rjToggleSwitchVoicePresetsBind, Hotkeys.modifierKeyScrollDown, Hotkeys.normalKeyScrollDown, 4);
+        }
+
+        private void textBoxVoiceScrollUp1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Hotkeys.HotkeyKeyDown(textBoxVoiceScrollUp1, e, true);
+        }
+
+        private void textBoxVoiceScrollUp2_KeyDown(object sender, KeyEventArgs e)
+        {
+            Hotkeys.HotkeyKeyDown(textBoxVoiceScrollUp2, e, false);
+        }
+
+        private void textBoxVoiceScrollDown1_KeyDown(object sender, KeyEventArgs e)
+        {
+            Hotkeys.HotkeyKeyDown(textBoxVoiceScrollDown1, e, true);
+        }
+
+        private void textBoxVoiceScrollDown2_KeyDown(object sender, KeyEventArgs e)
+        {
+            Hotkeys.HotkeyKeyDown(textBoxVoiceScrollDown2, e, false);
+        }
+
         #endregion
 
         #region Textboxes
@@ -1274,27 +1328,9 @@ namespace OSCVRCWiz
 
 
 
-        private void buttonQuickTypeEdit_Click(object sender, EventArgs e)
-        {
-            textBoxQuickType1.Clear();
-            textBoxQuickType2.Clear();
-            buttonQuickTypeSave.Enabled = true;
-            buttonQuickTypeEdit.Enabled = false;
-            textBoxQuickType1.Enabled = true;
-            textBoxQuickType2.Enabled = true;
-        }
 
-        private void buttonQuickTypeSave_Click(object sender, EventArgs e)
-        {
-            textBoxQuickType1.Enabled = false;
-            textBoxQuickType2.Enabled = false;
-            buttonQuickTypeSave.Enabled = false;
-            buttonQuickTypeEdit.Enabled = true;
-            Hotkeys.modifierKeyQuickType = textBoxQuickType1.Text.ToString();
-            Hotkeys.normalKeyQuickType = textBoxQuickType2.Text.ToString();
-            Hotkeys.UnregisterHotKey(this.Handle, 2);
-            Hotkeys.CUSTOMRegisterHotKey(2, Hotkeys.modifierKeyQuickType, Hotkeys.normalKeyQuickType);
-        }
+
+
 
 
         private void rjToggleButtonQueueSystem_CheckedChanged(object sender, EventArgs e)
@@ -1380,93 +1416,7 @@ namespace OSCVRCWiz
             SaveSettings.SavingSettings();
         }
 
-        private void rjToggleButton9_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rjToggleButton9.Checked == true)
-            {
-                Hotkeys.CUSTOMRegisterHotKey(0, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS);
-            }
-            if (rjToggleButton9.Checked == false)
-            {
-                Hotkeys.UnregisterHotKey(this.Handle, 0);
-            }
 
-        }
-        private void button28_Click(object sender, EventArgs e)//STTTS hotkey edit key
-        {
-            textBox4.Clear();
-            textBox1.Clear();
-            button27.Enabled = true;
-            button28.Enabled = false;
-            textBox1.Enabled = true;
-            textBox4.Enabled = true;
-        }
-        private void button27_Click(object sender, EventArgs e)//STTTS hotkey save key
-        {
-            textBox1.Enabled = false;
-            textBox4.Enabled = false;
-            button27.Enabled = false;
-            button28.Enabled = true;
-            Hotkeys.modifierKeySTTTS = textBox4.Text.ToString();
-            Hotkeys.normalKeySTTTS = textBox1.Text.ToString();
-            Hotkeys.UnregisterHotKey(this.Handle, 0);
-            Hotkeys.CUSTOMRegisterHotKey(0, Hotkeys.modifierKeySTTTS, Hotkeys.normalKeySTTTS);
-        }
-        private void button39_Click(object sender, EventArgs e)
-        {
-            textBoxStopTTS1.Clear();
-            textBoxStopTTS2.Clear();
-            button40.Enabled = true;
-            button39.Enabled = false;
-            textBoxStopTTS1.Enabled = true;
-            textBoxStopTTS2.Enabled = true;
-        }
-
-        private void button40_Click(object sender, EventArgs e)
-        {
-            textBoxStopTTS1.Enabled = false;
-            textBoxStopTTS2.Enabled = false;
-            button40.Enabled = false;
-            button39.Enabled = true;
-            Hotkeys.modifierKeyStopTTS = textBoxStopTTS1.Text.ToString();
-            Hotkeys.normalKeyStopTTS = textBoxStopTTS2.Text.ToString();
-            Hotkeys.UnregisterHotKey(this.Handle, 1);
-            Hotkeys.CUSTOMRegisterHotKey(1, Hotkeys.modifierKeyStopTTS, Hotkeys.normalKeyStopTTS);
-        }
-
-        private void rjToggleButton12_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rjToggleButton12.Checked == true)
-            {
-                Hotkeys.CUSTOMRegisterHotKey(1, Hotkeys.modifierKeyStopTTS, Hotkeys.normalKeyStopTTS);
-            }
-            if (rjToggleButton12.Checked == false)
-            {
-                Hotkeys.UnregisterHotKey(this.Handle, 1);
-            }
-        }
-
-        private void textBoxStopTTS1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (textBoxStopTTS1.Enabled == true)
-            {
-                Keys modifierKeys = e.Modifiers;
-                textBoxStopTTS1.Text = modifierKeys.ToString();
-
-            }
-        }
-
-        private void textBoxStopTTS2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (textBoxStopTTS2.Enabled == true)
-            {
-                Keys modifierKeys = e.Modifiers;
-                Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
-                var converter = new KeysConverter();
-                textBoxStopTTS2.Text = converter.ConvertToString(pressedKey);
-
-            }
-        }
 
         private void rjToggleButtonDisableWindowsMedia_CheckedChanged(object sender, EventArgs e)
         {
@@ -3172,7 +3122,9 @@ namespace OSCVRCWiz
         #endregion
         #endregion
 
-     
+
+
+       
     }
 
 

@@ -1,38 +1,15 @@
-﻿using Deepgram;
-using Deepgram.Keys;
-using Deepgram.Transcription;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.Devices;
-using NAudio.CoreAudioApi;
+﻿
 using NAudio.Wave;
 using Newtonsoft.Json.Linq;
-using Octokit;
 using OSCVRCWiz.Resources.Audio;
+using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Markup;
 using WebRtcVadSharp;
-using Windows.Devices.Radios;
-using Windows.Storage.Streams;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.DataFormats;
 
 namespace OSCVRCWiz.Speech_Recognition
 {
@@ -96,6 +73,12 @@ namespace OSCVRCWiz.Speech_Recognition
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                                 {
                                     OutputText.outputLog("[DeepGram: No voice detected]");
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                                    {
+                                        var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);
+                                        OSC.OSCSender.Send(typingbubble);
+
+                                    }
                                 }
 
                             }
@@ -147,6 +130,12 @@ namespace OSCVRCWiz.Speech_Recognition
                                             if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                                             {
                                                 OutputText.outputLog("[DeepGram: No voice detected]");
+                                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                                                {
+                                                    var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);
+                                                    OSC.OSCSender.Send(typingbubble);
+
+                                                }
                                             }
 
                                         }
@@ -384,6 +373,11 @@ namespace OSCVRCWiz.Speech_Recognition
                         if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                         {
                             OutputText.outputLog("VAD Start Time: " + startTime);
+                        }
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                        {
+                            var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
+                            OSC.OSCSender.Send(typingbubble);
                         }
                     }
                     // Update the end time while voice is detected

@@ -1,4 +1,5 @@
-﻿using OSCVRCWiz.Services.Speech;
+﻿using OSCVRCWiz.RJControls;
+using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Settings;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,76 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
         public static string modifierKeyQuickType = "Control";
         public static string normalKeyQuickType = "J";
 
+        public static string modifierKeyScrollUp = "";
+        public static string normalKeyScrollUp = "";
 
+        public static string modifierKeyScrollDown = "";
+        public static string normalKeyScrollDown = "";
+
+
+        public static void HotkeyEdit(TextBox textBoxMod, TextBox textBoxNorm, Button editButton, Button saveButton)
+        {
+            textBoxMod.Clear();
+            textBoxNorm.Clear();
+            saveButton.Enabled = true;
+            editButton.Enabled = false;
+            textBoxMod.Enabled = true;
+            textBoxNorm.Enabled = true;
+
+        }
+        public static (string, string) HotkeySave(TextBox textBoxMod, TextBox textBoxNorm, Button editButton, Button saveButton, int id)
+        {
+            textBoxMod.Enabled = false;
+            textBoxNorm.Enabled = false;
+            saveButton.Enabled = false;
+            editButton.Enabled = true;
+
+            string ModKey = textBoxMod.Text.ToString();
+            string NormKey = textBoxNorm.Text.ToString();
+            Hotkeys.UnregisterHotKey(VoiceWizardWindow.MainFormGlobal.Handle, id);
+            Hotkeys.CUSTOMRegisterHotKey(id, ModKey, NormKey);
+
+            return (ModKey, NormKey);
+        }
+        public static void HotkeyEnableChanged(RJToggleButton rjButton, string ModKey, string NormKey, int id)
+        {
+            if (rjButton.Checked)
+            {
+                Hotkeys.CUSTOMRegisterHotKey(id, ModKey, NormKey);
+            }
+            else
+            {
+                Hotkeys.UnregisterHotKey(VoiceWizardWindow.MainFormGlobal.Handle, id);
+            }
+
+        }
+
+        public static void HotkeyKeyDown(TextBox KeyTextbox, KeyEventArgs e, bool mod)
+        {
+            if (mod)
+            {
+                if (KeyTextbox.Enabled == true)
+                {
+                    Keys modifierKeys = e.Modifiers;
+                    KeyTextbox.Text = modifierKeys.ToString();
+
+                }
+
+            }
+            else
+            {
+                if (KeyTextbox.Enabled == true)
+                {
+                    Keys modifierKeys = e.Modifiers;
+                    Keys pressedKey = e.KeyData ^ modifierKeys; //remove modifier keys
+                    var converter = new KeysConverter();
+                    KeyTextbox.Text = converter.ConvertToString(pressedKey);
+
+                }
+
+            }
+
+        }
 
         public static void CUSTOMRegisterHotKey(int id, string modifierKey, string normalKey)
         {
@@ -48,6 +118,9 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
             if (id == 0 && VoiceWizardWindow.MainFormGlobal.rjToggleButton9.Checked == false) { return; }
             if (id == 1 && VoiceWizardWindow.MainFormGlobal.rjToggleButton12.Checked == false) { return; }
             if (id == 2 && VoiceWizardWindow.MainFormGlobal.rjToggleButtonQuickTypeEnabled.Checked == false) { return; }
+
+            if (id == 3 && VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked == false) { return; }
+            if (id == 4 && VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked == false) { return; }
             KeyModifier modkey;
             Enum.TryParse(modifierKey, out modkey);
 
@@ -75,49 +148,60 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
                 System.Diagnostics.Debug.WriteLine("-------------get key press id: " + key.ToString());
 
-                if (id == 0)//sttts
+                switch (id)
                 {
-                    Task.Run(() => DoSpeech.MainDoSpeechTTS());
-                }
-                if (id == 1)//stop
-                {
-                    Task.Run(() => DoSpeech.MainDoStopTTS());
-
-                }
-                if (id == 2)//game keyboard
-                {
-                    if (captureEnabled == false) // not capturing so turn it on
-                    {
-                        // Save the handle of the previously focused window
-                        prevFocusedWindow = GetForegroundWindow();
-
-                        // Activate and bring the form to the front
-                        VoiceWizardWindow.MainFormGlobal.Activate();
-                        VoiceWizardWindow.MainFormGlobal.BringToFront();
-                        VoiceWizardWindow.MainFormGlobal.richTextBox3.Text = "";
-                        VoiceWizardWindow.MainFormGlobal.mainTabControl.SelectTab(VoiceWizardWindow.MainFormGlobal.tabPage1);//sttts
-                        VoiceWizardWindow.MainFormGlobal.richTextBox3.Select();
-
-
-                        captureEnabled = true;
-
-
-                    }
-                    else if (captureEnabled == true)//is capturing so turn it off
-                    {
-
-                        // Activate and bring the previous window to the front
-                        if (prevFocusedWindow != IntPtr.Zero)
+                    case 0: Task.Run(() => DoSpeech.MainDoSpeechTTS()); break;
+                    case 1: Task.Run(() => DoSpeech.MainDoStopTTS()); break;
+                    case 2:
+                        if (captureEnabled == false) // not capturing so turn it on
                         {
-                            SetForegroundWindow(prevFocusedWindow);
+                            // Save the handle of the previously focused window
+                            prevFocusedWindow = GetForegroundWindow();
+
+                            // Activate and bring the form to the front
+                            VoiceWizardWindow.MainFormGlobal.Activate();
+                            VoiceWizardWindow.MainFormGlobal.BringToFront();
+                            VoiceWizardWindow.MainFormGlobal.richTextBox3.Text = "";
+                            VoiceWizardWindow.MainFormGlobal.mainTabControl.SelectTab(VoiceWizardWindow.MainFormGlobal.tabPage1);//sttts
+                            VoiceWizardWindow.MainFormGlobal.richTextBox3.Select();
+
+
+                            captureEnabled = true;
+
+
                         }
+                        else if (captureEnabled == true)//is capturing so turn it off
+                        {
 
-                        captureEnabled = false;
+                            // Activate and bring the previous window to the front
+                            if (prevFocusedWindow != IntPtr.Zero)
+                            {
+                                SetForegroundWindow(prevFocusedWindow);
+                            }
+
+                            captureEnabled = false;
 
 
-                    }
-
+                        }
+                        break;
+                    case 3:
+                        int index = (VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex - 1 + VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count) % VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count;
+                        if ( index ==0)
+                        {
+                            index = (index- 1 + VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count) % VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count;
+                        }
+                        VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = index;
+                        break;
+                    case 4:
+                        index= (VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex + 1) % VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count;
+                        if ( index ==0)
+                        {
+                            index = (index + 1) % VoiceWizardWindow.MainFormGlobal.comboBoxPreset.Items.Count;
+                        }
+                        VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedIndex = index;
+                        break;
                 }
+              
             }
 
         }
@@ -145,6 +229,15 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
                 modifierKeyQuickType = Settings1.Default.modHotkeyQuick;
                 normalKeyQuickType = Settings1.Default.normalHotkeyQuick;
                 CUSTOMRegisterHotKey(2, modifierKeyQuickType, normalKeyQuickType);
+
+                modifierKeyScrollUp = Settings1.Default.modifierKeyScrollUp;
+                normalKeyScrollUp = Settings1.Default.normalKeyScrollUp;
+                CUSTOMRegisterHotKey(3, modifierKeyScrollUp, normalKeyScrollUp);
+
+
+                modifierKeyScrollDown = Settings1.Default.modifierKeyScrollDown;
+                normalKeyScrollDown = Settings1.Default.normalKeyScrollDown;
+                CUSTOMRegisterHotKey(4, modifierKeyScrollDown, normalKeyScrollDown);
             }
             catch (Exception ex) {
 
