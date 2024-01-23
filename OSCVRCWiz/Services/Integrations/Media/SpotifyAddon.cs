@@ -123,6 +123,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     var durationHours = "";
                     var progressHours = "";
                     var album = "";
+                    var albumArtist = "";
                     // var progressBar = "";
                     TimeSpan progressT = TimeSpan.FromMinutes(0);
                     TimeSpan durationT = TimeSpan.FromMinutes(0);
@@ -165,6 +166,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
 
                             album = m_currentTrack.Album.Name.ToString();
+                            albumArtist = m_currentTrack.Album.Artists[0].ToString();
                         }
                     }
                     if ((lastSong != title || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true || playOnce) && !string.IsNullOrWhiteSpace(title) && title != "" && pauseSpotify != true)
@@ -215,6 +217,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
                         theString = theString.Replace("{album}", album);
+                        theString = theString.Replace("{album}", albumArtist);
                         theString = theString.Replace("{nline}", "\u2028");
                         theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
                         theString = theString.Replace("{counter2}", VRChatListener.counter2.ToString());
@@ -369,6 +372,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{HMDCharge}", OSCListener.controllerChargeHMD);
                     theString = theString.Replace("{title}", WindowsMedia.mediaTitle);
                     theString = theString.Replace("{artist}", WindowsMedia.mediaArtist);
+                    theString = theString.Replace("{album}", WindowsMedia.mediaAlbumTitle);
+                    theString = theString.Replace("{albumArtist}", WindowsMedia.mediaAlbumArtist);
                     theString = theString.Replace("{source}", WindowsMedia.mediaSource);
                     theString = theString.Replace("{progressMinutes}", progressT.ToString(@"mm\:ss"));
                     theString = theString.Replace("{durationMinutes}", durationT.ToString(@"mm\:ss"));

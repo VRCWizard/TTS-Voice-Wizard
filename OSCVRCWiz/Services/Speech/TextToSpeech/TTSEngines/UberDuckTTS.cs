@@ -270,23 +270,20 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 string base64String = Convert.ToBase64String(audioBytes);
                 UberPlayAudio(base64String, message, ct);
             }
+
+
             catch (Exception ex)
             {
-                OutputText.outputLog("[Uberduck TTS Error: " + ex.Message + "]", Color.Red);
+                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
+
                 try
                 {
-                    if (ex.InnerException != null)
-                    {
-                        OutputText.outputLog("[Uberduck TTS Inner Exception: " + ex.InnerException + "]", Color.Red);
-                    }
-                   
-                }
-                catch (Exception exx) 
-                {
+                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
 
                 }
-              
-               PlayNextInQueue();
+                catch { }
+                OutputText.outputLog("Uberduck TTS Error: " + errorMsg,Color.Red);
+                PlayNextInQueue();
             }
 
              //  return base64String;
@@ -312,14 +309,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
         {
             accents.Items.Clear();
-            accents.Items.Add("default");
-            accents.SelectedIndex = 0;
+           // accents.Items.Add("default");
+          //  accents.SelectedIndex = 0;
 
 
             voices.Items.Clear();
             UberDuckTTS.SynthesisGetAvailableVoicesAsync(accents.Text.ToString(), true);
-            
-            styles.SelectedIndex = 0;
+
+            styles.Items.Clear();
+            styles.Items.Add("default");
+            styles.SelectedIndex = 0;   
             styles.Enabled = false;
             voices.Enabled = true;
 
