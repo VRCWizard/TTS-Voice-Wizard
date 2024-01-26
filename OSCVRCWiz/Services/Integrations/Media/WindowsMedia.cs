@@ -22,12 +22,17 @@ namespace OSCVRCWiz.Services.Integrations.Media
         public static string mediaTitle = "";
         public static string mediaSource = "";
         public static string mediaArtist = "";
+        public static string mediaAlbumArtist = "";
+        public static string mediaAlbumTitle = "";
         public static string mediaStatus = "Paused";
         public static string mediaSourceNew = "";
         public static bool pauseMedia = false;
         //  private readonly static object _lock = new();
         static List<string> approvedMediaSourceList = new List<string>();
         private static MediaSession getSession = null;
+
+      //  static TimeSpan newProgress = TimeSpan.FromMinutes(0);
+       // static TimeSpan newDuration = TimeSpan.FromMinutes(0);
 
         public static async Task getWindowsMedia()
         {
@@ -41,6 +46,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     mediaManager.OnAnySessionClosed += MediaManager_OnAnySessionClosed;
                     mediaManager.OnAnyPlaybackStateChanged += MediaManager_OnAnyPlaybackStateChanged;
                     mediaManager.OnAnyMediaPropertyChanged += MediaManager_OnAnyMediaPropertyChanged;
+                 //   mediaManager.OnAnyTimelinePropertyChanged += MediaManager_OnAnyTimelinePropertyChanged;
+                 //   mediaManager.OnFocusedSessionChanged += MediaManager_OnFocusedSessionChanged;
 
 
                     mediaManager.Start();
@@ -58,55 +65,69 @@ namespace OSCVRCWiz.Services.Integrations.Media
         //if time "" then there is no session
         // if time 00:00/00:00 could not get time
         //if time -/- then there was an error
-        public static TimeSpan getMediaProgress()
+      /*  private static void MediaManager_OnAnyTimelinePropertyChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionTimelineProperties args)
         {
-            TimeSpan time = TimeSpan.FromMinutes(0);
-            try
+           // OutputText.outputLog($"{sender.Id} timeline is now {args.Position}/{args.EndTime}");
+            if (sender.Id == mediaSource)
             {
-                
-                if (getSession != null)
-                {
-                    if (getSession.ControlSession != null)
-                    {
+                newProgress = args.Position;
+                newDuration = args.EndTime;
+            }
+        }
+        private static void MediaManager_OnFocusedSessionChanged(MediaManager.MediaSession mediaSession)
+        {
+           // OutputText.outputLog("== Session Focus Changed: " + mediaSession?.ControlSession?.SourceAppUserModelId);
+        }*/
 
-                        //  time = getSession.ControlSession.GetTimelineProperties().Position.ToString(@"mm\:ss").ToString();
+         public static TimeSpan getMediaProgress()
+         {
+             TimeSpan time = TimeSpan.FromMinutes(0);
+             try
+             {
+
+                 if (getSession != null)
+                 {
+                     if (getSession.ControlSession != null)
+                     {
+
+
                         time = getSession.ControlSession.GetTimelineProperties().Position;
 
                     }
-                }
-                return time;
-            }
-            catch (Exception ex)
-            {
-                OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
-            }
-            return time;
-        }
-        public static TimeSpan getMediaDuration()
-        {
-            TimeSpan time = TimeSpan.FromMinutes(0);
-            try
-            {
+                 }
+                 return time;
+             }
+             catch (Exception ex)
+             {
+                 OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
+             }
+             return time;
+         }
+         public static TimeSpan getMediaDuration()
+         {
+             TimeSpan time = TimeSpan.FromMinutes(0);
+             try
+             {
 
-              
-                if (getSession != null)
-                {
-                    if (getSession.ControlSession != null)
-                    {
+
+                 if (getSession != null)
+                 {
+                     if (getSession.ControlSession != null)
+                     {
 
                         time = getSession.ControlSession.GetTimelineProperties().EndTime;
 
                     }
-                }
-                return time;
-            }
-            catch (Exception ex)
-            {
-                OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
-            }
-            return time;
-        }
-       
+                 }
+                 return time;
+             }
+             catch (Exception ex)
+             {
+                 OutputText.outputLog("Duration Exception: " + ex.Message, Color.Red);
+             }
+             return time;
+         } 
+
         public static void MediaManager_OnAnySessionOpened(MediaSession session)
         {
 
@@ -254,6 +275,14 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     if (args.Artist != null)
                     {
                         mediaArtist = args.Artist;
+                    }
+                    if (args.AlbumArtist != null)
+                    {
+                        mediaAlbumArtist = args.AlbumArtist;
+                    }
+                    if (args.AlbumTitle != null)
+                    {
+                        mediaAlbumTitle = args.AlbumTitle;
                     }
                     if (args.Title != null)
                     {

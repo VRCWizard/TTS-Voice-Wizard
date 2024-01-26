@@ -1,0 +1,584 @@
+[
+  {
+    "name": "Afrikaans",
+    "sourceName": "Afrikaans [af-ZA]",
+    "targetName": "Afrikaans [af]",
+    "azureCode": "af-ZA",
+    "whisperCode": "af",
+    "deepLCode": "",
+    "proCode": "af"
+  },
+  {
+    "name": "Arabic",
+    "sourceName": "Arabic [ar-EG]",
+    "targetName": "Arabic [ar]",
+    "azureCode": "ar-EG",
+    "whisperCode": "ar",
+    "deepLCode": "",
+    "proCode": "ar"
+  },
+  {
+    "name": "Armenian",
+    "sourceName": "Armenian [hy-AM]",
+    "targetName": "Armenian [hy]",
+    "azureCode": "hy-AM",
+    "whisperCode": "hy",
+    "deepLCode": "",
+    "proCode": "hy"
+  },
+  {
+    "name": "Azerbaijani",
+    "sourceName": "Azerbaijani [az-AZ]",
+    "targetName": "Azerbaijani [az]",
+    "azureCode": "az-AZ",
+    "whisperCode": "az",
+    "deepLCode": "",
+    "proCode": "az"
+  },
+  {
+    "name": "Bosnian",
+    "sourceName": "Bosnian [bs-BA]",
+    "targetName": "Bosnian [bs]",
+    "azureCode": "bs-BA",
+    "whisperCode": "bs",
+    "deepLCode": "",
+    "proCode": "bs"
+  },
+  {
+    "name": "Bulgarian",
+    "sourceName": "Bulgarian [bg-BG]",
+    "targetName": "Bulgarian [bg]",
+    "azureCode": "bg-BG",
+    "whisperCode": "bg",
+    "deepLCode": "bg",
+    "proCode": "bg"
+  },
+  {
+    "name": "Cantonese (Simplified)",
+    "sourceName": "Cantonese [yue-CN]",
+    "targetName": "Cantonese [yue]",
+    "azureCode": "yue-CN",
+    "whisperCode": "",
+    "deepLCode": "",
+    "proCode": "yue"
+  },
+  {
+    "name": "Catalan",
+    "sourceName": "Catalan [ca-ES]",
+    "targetName": "Catalan [ca]",
+    "azureCode": "ca-ES",
+    "whisperCode": "ca",
+    "deepLCode": "",
+    "proCode": "ca"
+  },
+  {
+    "name": "Chinese",
+    "sourceName": "Chinese [zh-CN]",
+    "targetName": "Chinese [zh]",
+    "azureCode": "zh-CN",
+    "whisperCode": "zh",
+    "deepLCode": "zh",
+    "proCode": "zh"
+  },
+  {
+    "name": "Croatian",
+    "sourceName": "Croatian [hr-HR]",
+    "targetName": "Croatian [hr]",
+    "azureCode": "hr-HR",
+    "whisperCode": "hr",
+    "deepLCode": "",
+    "proCode": "hr"
+  },
+  {
+    "name": "Czech",
+    "sourceName": "Czech [cs-CZ]",
+    "targetName": "Czech [cs]",
+    "azureCode": "cs-CZ",
+    "whisperCode": "cs",
+    "deepLCode": "cs",
+    "proCode": "cs"
+  },
+  {
+    "name": "Danish",
+    "sourceName": "Danish [da-DK]",
+    "targetName": "Danish [da]",
+    "azureCode": "da-DK",
+    "whisperCode": "da",
+    "deepLCode": "da",
+    "proCode": "da"
+  },
+  {
+    "name": "Dutch",
+    "sourceName": "Dutch [nl-NL]",
+    "targetName": "Dutch [nl]",
+    "azureCode": "nl-NL",
+    "whisperCode": "nl",
+    "deepLCode": "nl",
+    "proCode": "nl"
+  },
+  {
+    "name": "English",
+    "sourceName": "English [en-US] (Default)",
+    "targetName": "English [en]",
+    "azureCode": "en-US",
+    "whisperCode": "en",
+    "deepLCode": "en",
+    "proCode": "en"
+  },
+  {
+    "name": "Esperanto",
+    "sourceName": "",
+    "targetName": "Esperanto [eo]",
+    "azureCode": "",
+    "whisperCode": "",
+    "deepLCode": "",
+    "proCode": "eo"
+  },
+  {
+    "name": "Estonian",
+    "sourceName": "Estonian [et-EE]",
+    "targetName": "Estonian [et]",
+    "azureCode": "et-EE",
+    "whisperCode": "et",
+    "deepLCode": "et",
+    "proCode": "et"
+  },
+  {
+    "name": "Filipino",
+    "sourceName": "Filipino [fil-PH]",
+    "targetName": "Filipino [fil]",
+    "azureCode": "fil-PH",
+    "whisperCode": "tl",
+    "deepLCode": "",
+    "proCode": "fil"
+  },
+  {
+    "name": "Finnish",
+    "sourceName": "Finnish [fi-FI]",
+    "targetName": "Finnish [fi]",
+    "azureCode": "fi-FI",
+    "whisperCode": "fi",
+    "deepLCode": "fi",
+    "proCode": "fi"
+  },
+  {
+    "name": "French",
+    "sourceName": "French [fr-FR]",
+    "targetName": "French [fr]",
+    "azureCode": "fr-FR",
+    "whisperCode": "fr",
+    "deepLCode": "fr",
+    "proCode": "fr"
+  },
+  {
+    "name": "Galician",
+    "sourceName": "Galician [gl-ES]",
+    "targetName": "Galician [gl]",
+    "azureCode": "gl-ES",
+    "whisperCode": "gl",
+    "deepLCode": "",
+    "proCode": "gl"
+  },
+  {
+    "name": "German",
+    "sourceName": "German [de-DE]",
+    "targetName": "German [de]",
+    "azureCode": "de-DE",
+    "whisperCode": "de",
+    "deepLCode": "de",
+    "proCode": "de"
+  },
+  {
+    "name": "Greek",
+    "sourceName": "Greek [el-GR]",
+    "targetName": "Greek [el]",
+    "azureCode": "el-GR",
+    "whisperCode": "el",
+    "deepLCode": "el",
+    "proCode": "el"
+  },
+  {
+    "name": "Hebrew",
+    "sourceName": "Hebrew [he-IL]",
+    "targetName": "Hebrew [he]",
+    "azureCode": "he-IL",
+    "whisperCode": "he",
+    "deepLCode": "",
+    "proCode": "he"
+  },
+  {
+    "name": "Hindi",
+    "sourceName": "Hindi [hi-IN]",
+    "targetName": "Hindi [hi]",
+    "azureCode": "hi-IN",
+    "whisperCode": "hi",
+    "deepLCode": "",
+    "proCode": "hi"
+  },
+  {
+    "name": "Hungarian",
+    "sourceName": "Hungarian [hu-HU]",
+    "targetName": "Hungarian [hu]",
+    "azureCode": "hu-HU",
+    "whisperCode": "hu",
+    "deepLCode": "hu",
+    "proCode": "hu"
+  },
+  {
+    "name": "Icelandic",
+    "sourceName": "Icelandic [is-IS]",
+    "targetName": "Icelandic [is]",
+    "azureCode": "is-IS",
+    "whisperCode": "is",
+    "deepLCode": "",
+    "proCode": "is"
+  },
+  {
+    "name": "Indonesian",
+    "sourceName": "Indonesian [id-ID]",
+    "targetName": "Indonesian [id]",
+    "azureCode": "id-ID",
+    "whisperCode": "id",
+    "deepLCode": "id",
+    "proCode": "id"
+  },
+  {
+    "name": "Irish",
+    "sourceName": "Irish [ga-IE]",
+    "targetName": "Irish [ga]",
+    "azureCode": "ga-IE",
+    "whisperCode": "ga",
+    "deepLCode": "",
+    "proCode": "ga"
+  },
+  {
+    "name": "Italian",
+    "sourceName": "Italian [it-IT]",
+    "targetName": "Italian [it]",
+    "azureCode": "it-IT",
+    "whisperCode": "it",
+    "deepLCode": "it",
+    "proCode": "it"
+  },
+  {
+    "name": "Japanese",
+    "sourceName": "Japanese [ja-JP]",
+    "targetName": "Japanese [ja]",
+    "azureCode": "ja-JP",
+    "whisperCode": "ja",
+    "deepLCode": "ja",
+    "proCode": "ja"
+  },
+  {
+    "name": "Kannada",
+    "sourceName": "Kannada [kn-IN]",
+    "targetName": "Kannada [kn]",
+    "azureCode": "kn-IN",
+    "whisperCode": "kn",
+    "deepLCode": "",
+    "proCode": "kn"
+  },
+  {
+    "name": "Kazakh",
+    "sourceName": "Kazakh [kk-KZ]",
+    "targetName": "Kazakh [kk]",
+    "azureCode": "kk-KZ",
+    "whisperCode": "kk",
+    "deepLCode": "",
+    "proCode": "kk"
+  },
+  {
+    "name": "Korean",
+    "sourceName": "Korean [ko-KR]",
+    "targetName": "Korean [ko]",
+    "azureCode": "ko-KR",
+    "whisperCode": "ko",
+    "deepLCode": "ko",
+    "proCode": "ko"
+  },
+  {
+    "name": "Latin",
+    "sourceName": "",
+    "targetName": "Latin [la]",
+    "azureCode": "",
+    "whisperCode": "",
+    "deepLCode": "",
+    "proCode": "la"
+  },
+  {
+    "name": "Latvian",
+    "sourceName": "Latvian [lv-LV]",
+    "targetName": "Latvian [lv]",
+    "azureCode": "lv-LV",
+    "whisperCode": "lv",
+    "deepLCode": "lv",
+    "proCode": "lv"
+  },
+  {
+    "name": "Lithuanian",
+    "sourceName": "Lithuanian [lt-LT]",
+    "targetName": "Lithuanian [lt]",
+    "azureCode": "lt-LT",
+    "whisperCode": "lt",
+    "deepLCode": "lt",
+    "proCode": "lt"
+  },
+  {
+    "name": "Macedonian",
+    "sourceName": "Macedonian [mk-MK]",
+    "targetName": "Macedonian [mk]",
+    "azureCode": "mk-MK",
+    "whisperCode": "mk",
+    "deepLCode": "",
+    "proCode": "mk"
+  },
+  {
+    "name": "Malay",
+    "sourceName": "Malay [ms-MY]",
+    "targetName": "Malay [ms]",
+    "azureCode": "ms-MY",
+    "whisperCode": "ms",
+    "deepLCode": "",
+    "proCode": "ms"
+  },
+  {
+    "name": "Marathi",
+    "sourceName": "Marathi [mr-IN]",
+    "targetName": "Marathi [mr]",
+    "azureCode": "mr-IN",
+    "whisperCode": "mr",
+    "deepLCode": "",
+    "proCode": "mr"
+  },
+  {
+    "name": "Nepali",
+    "sourceName": "Nepali [ne-NP]",
+    "targetName": "Nepali [ne]",
+    "azureCode": "ne-NP",
+    "whisperCode": "ne",
+    "deepLCode": "",
+    "proCode": "ne"
+  },
+  {
+    "name": "Norwegian",
+    "sourceName": "Norwegian [nb-NO]",
+    "targetName": "Norwegian [nb]",
+    "azureCode": "nb-NO",
+    "whisperCode": "no",
+    "deepLCode": "nb",
+    "proCode": "nb"
+  },
+  {
+    "name": "Persian",
+    "sourceName": "Persian [fa-IR]",
+    "targetName": "Persian [fa]",
+    "azureCode": "fa-IR",
+    "whisperCode": "fa",
+    "deepLCode": "",
+    "proCode": "fa"
+  },
+  {
+    "name": "Polish",
+    "sourceName": "Polish [pl-PL]",
+    "targetName": "Polish [pl]",
+    "azureCode": "pl-PL",
+    "whisperCode": "pl",
+    "deepLCode": "pl",
+    "proCode": "pl"
+  },
+  {
+    "name": "Portuguese (Brazil)",
+    "sourceName": "Portuguese [pt-BR]",
+    "targetName": "Portuguese [pt-br]",
+    "azureCode": "pt-BR",
+    "whisperCode": "pt",
+    "deepLCode": "pt-BR",
+    "proCode": "pt-br"
+  },
+  {
+    "name": "Portuguese (Portugal)",
+    "sourceName": "Portuguese [pt-PT]",
+    "targetName": "Portuguese [pt-pt]",
+    "azureCode": "pt-PT",
+    "whisperCode": "pt",
+    "deepLCode": "pt-PT",
+    "proCode": "pt-pt"
+  },
+  {
+    "name": "Punjabi",
+    "sourceName": "Punjabi [pa-IN]",
+    "targetName": "Punjabi [pa]",
+    "azureCode": "pa-IN",
+    "whisperCode": "pa",
+    "deepLCode": "",
+    "proCode": "pa"
+  },
+  {
+    "name": "Romanian",
+    "sourceName": "Romanian [ro-RO]",
+    "targetName": "Romanian [ro]",
+    "azureCode": "ro-RO",
+    "whisperCode": "ro",
+    "deepLCode": "ro",
+    "proCode": "ro"
+  },
+  {
+    "name": "Russian",
+    "sourceName": "Russian [ru-RU]",
+    "targetName": "Russian [ru]",
+    "azureCode": "ru-RU",
+    "whisperCode": "ru",
+    "deepLCode": "ru",
+    "proCode": "ru"
+  },
+  {
+    "name": "Serbian",
+    "sourceName": "Serbian [sr-RS]",
+    "targetName": "Serbian [sr]",
+    "azureCode": "sr-RS",
+    "whisperCode": "sr",
+    "deepLCode": "",
+    "proCode": "sr"
+  },
+  {
+    "name": "Slovak",
+    "sourceName": "Slovak [sk-SK]",
+    "targetName": "Slovak [sk]",
+    "azureCode": "sk-SK",
+    "whisperCode": "sk",
+    "deepLCode": "sk",
+    "proCode": "sk"
+  },
+  {
+    "name": "Slovenian",
+    "sourceName": "Slovenian [sl-SL]",
+    "targetName": "Slovenian [sl]",
+    "azureCode": "sl-SL",
+    "whisperCode": "sl",
+    "deepLCode": "sl",
+    "proCode": "sl"
+  },
+  {
+    "name": "Spanish",
+    "sourceName": "Spanish [es-ES]",
+    "targetName": "Spanish [es]",
+    "azureCode": "es-ES",
+    "whisperCode": "es",
+    "deepLCode": "es",
+    "proCode": "es"
+  },
+  {
+    "name": "Swahili",
+    "sourceName": "Swahili [sw-TZ]",
+    "targetName": "Swahili [sw]",
+    "azureCode": "sw-TZ",
+    "whisperCode": "sw",
+    "deepLCode": "",
+    "proCode": "sw"
+  },
+  {
+    "name": "Swedish",
+    "sourceName": "Swedish [sv-SE]",
+    "targetName": "Swedish [sv]",
+    "azureCode": "sv-SE",
+    "whisperCode": "sv",
+    "deepLCode": "sv",
+    "proCode": "sv"
+  },
+  {
+    "name": "Taiwanese",
+    "sourceName": "Taiwanese [zh-TW]",
+    "targetName": "",
+    "azureCode": "zh-TW",
+    "whisperCode": "",
+    "deepLCode": "",
+    "proCode": ""
+  },
+  {
+    "name": "Tamil",
+    "sourceName": "Tamil [ta-IN]",
+    "targetName": "Tamil [ta]",
+    "azureCode": "ta-IN",
+    "whisperCode": "ta",
+    "deepLCode": "",
+    "proCode": "ta"
+  },
+  {
+    "name": "Telugu",
+    "sourceName": "Telugu [te-IN]",
+    "targetName": "Telugu [te]",
+    "azureCode": "te-IN",
+    "whisperCode": "te",
+    "deepLCode": "",
+    "proCode": "te"
+  },
+  {
+    "name": "Thai",
+    "sourceName": "Thai [th-TH]",
+    "targetName": "Thai [th]",
+    "azureCode": "th-TH",
+    "whisperCode": "th",
+    "deepLCode": "",
+    "proCode": "th"
+  },
+  {
+    "name": "Turkish",
+    "sourceName": "Turkish [tr-TR]",
+    "targetName": "Turkish [tr]",
+    "azureCode": "tr-TR",
+    "whisperCode": "tr",
+    "deepLCode": "tr",
+    "proCode": "tr"
+  },
+  {
+    "name": "Ukrainian",
+    "sourceName": "Ukrainian [uk-UA]",
+    "targetName": "Ukrainian [uk]",
+    "azureCode": "uk-UA",
+    "whisperCode": "uk",
+    "deepLCode": "uk",
+    "proCode": "uk"
+  },
+  {
+    "name": "Urdu",
+    "sourceName": "Urdu [ur-IN]",
+    "targetName": "Urdu [ur]",
+    "azureCode": "ur-IN",
+    "whisperCode": "ur",
+    "deepLCode": "",
+    "proCode": "ur"
+  },
+  {
+    "name": "Uzbek",
+    "sourceName": "Uzbek [uz-UZ]",
+    "targetName": "Uzbek [uz]",
+    "azureCode": "uz-UZ",
+    "whisperCode": "uz",
+    "deepLCode": "",
+    "proCode": "uz"
+  },
+  {
+    "name": "Vietnamese",
+    "sourceName": "Vietnamese [vi-VN]",
+    "targetName": "Vietnamese [vi]",
+    "azureCode": "vi-VN",
+    "whisperCode": "vi",
+    "deepLCode": "",
+    "proCode": "vi"
+  },
+  {
+    "name": "Welsh",
+    "sourceName": "Welsh [cy-GB]",
+    "targetName": "Welsh [cy]",
+    "azureCode": "cy-GB",
+    "whisperCode": "cy",
+    "deepLCode": "",
+    "proCode": "cy"
+  }
+]
+
+
+
+
+
+
