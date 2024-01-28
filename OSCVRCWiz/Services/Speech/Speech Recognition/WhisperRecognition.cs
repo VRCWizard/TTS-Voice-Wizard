@@ -1,603 +1,538 @@
-﻿using Amazon.Runtime.Internal.Util;
-using CoreOSC;
+﻿using CoreOSC;
+using EmbedIO.Utilities;
+using MeaMod.DNS.Model;
+using NAudio;
+using NAudio.Utils;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
+using Octokit;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Resources.StartUp.StartUp;
-using OSCVRCWiz.Resources.Whisper;
-using OSCVRCWiz.Services.Integrations.Media;
-using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Text;
-using OSCVRCWiz.Settings;
-using SpotifyAPI.Web;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Net;
-using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using WebRtcVadSharp;
-using Whisper;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using Whisper.net;
+using Whisper.net.Ggml;
+using Windows.Graphics.Printing3D;
+using Windows.Storage.Streams;
+using static System.Windows.Forms.DataFormats;
 
 namespace OSCVRCWiz.Speech_Recognition
 {
     public class WhisperRecognition
-	{
-       static bool WhisperEnabled = false;
-        public static string WhisperString = "";
-        public static string WhisperPrevText = "";
+    {
+
+
+        static private WebRtcVad vad;
+        static private byte[] rawDataArray;
+        static private int totalBytes;
+        static private FrameLength frameLength = FrameLength.Is30ms;
+        static private int frameSize;
+        static private WaveInEvent waveIn;
+
+        static bool AutoStopAfterSilence = true;
+        static private DateTime lastVoiceDetectedTimeStamp;
+        static bool recording = false;
         private static string langcode = "en";
-        private static bool WhisperError = false;
-        private static bool WhisperAllowStop = false;
-        public static TimeSpan WhisperStartTime = TimeSpan.Zero;
+        static bool voiceDetected = true;
 
-
-        private static WebRtcVad vad;
-        private static WaveInEvent waveIn;
-      //  static OperatingMode NoiseOperatingModel = OperatingMode.VeryAggressive;
-        private static FrameLength frameLength = FrameLength.Is30ms;
-        private static int frameSize;
+        //static bool useGPU = true;
 
 
 
-        private static CaptureThread? ctt;
-        public static void toggleWhisper()
+        static double MsBeforeAutoStop = 0.01;//10ms
+        static OperatingMode NoiseOperatingModel = OperatingMode.HighQuality;
+        static double minDuration = 1.5;//1.5 seconds
+        static double maxDuration = 10;//10 seconds
+        static DateTime silenceGracePeriodInitialisationTime;
+        static DateTime silenceMaxDurationPeriodInitialisationTime;
+
+        static bool WhisperEnabled =false;
+
+
+        static private Stopwatch stopwatch;
+
+
+        public static async void startUp()
         {
-            if (WhisperEnabled == false )
-            {
-
-                //GetGPUs();
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked)
-                {
-                    try
-                    {
-                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                        {
-                            vad.OperatingMode = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex;
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                        {
-                            VoiceWizardWindow.MainFormGlobal.comboBoxVADMode.SelectedIndex = 0;
-                        });
-                        vad.OperatingMode = OperatingMode.HighQuality;
-                        OutputText.outputLog("[Error selecting VAD mode, defaulting to 0]");
-                    }
-                    
-                    waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
-                    waveIn.StartRecording();
-                }
-
-                DoSpeech.speechToTextOnSound();
-                WhisperEnabled = true;
-                string UseThisMic = getWhisperInputDevice().ToString();
-                OutputText.outputLog("[Whisper Mic Selected]");
-                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                {
-                    langcode = LanguageSelect.fromLanguageNew(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString(), "sourceLanguage", "Whisper");
-                   // fromLanguageID(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString());//set lang code for recognition
-
-                });
-                OutputText.outputLog("[Whisper Language Selected]");
-
-                string[] args = {
-                "-c",UseThisMic,
-                "-m",  VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text,
-                "-l", langcode,
-                 };
-                OutputText.outputLog("[Starting Whisper]");
-                WhisperStartTime = DateTime.Now.TimeOfDay;
-                Task.Run(() => doWhisper(args));
-
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                {
-                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
-                    OSC.OSCSender.Send(sttListening);
-                }
-
-
-            }
-
-            else
-            {
-                
-                if (ctt != null && WhisperAllowStop==true)
-                {
-                    waveIn?.StopRecording();
-                    DoSpeech.speechToTextOffSound();
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                    {
-                        VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug: ";
-                    });
-                    try
-                    {
-                        WhisperString = "";
-                        StopWhisper();
-                        WhisperEnabled = false;
-                        OutputText.outputLog("[Whisper Stopping Listening]");
-                        WhisperError = false;
-
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                        {
-                            var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                            OSC.OSCSender.Send(sttListening);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        OutputText.outputLog("[Error Stopping Whisper (manual): "+ ex.Message+ " ]", System.Drawing.Color.Red);
-                    }
-                }
-                else
-                {
-                    OutputText.outputLog("[Could not stop whisper (slow down)]", System.Drawing.Color.Red);
-                }
-
-            }
-        }
-        public static void autoStopWhisper()
-        {
-            try
-            {
-                // if (WhisperEnabled == true && WhisperAllowStop == true)
-                if (WhisperEnabled == true && WhisperAllowStop == true)
-                {
-
-                        WhisperString = "";
-                        StopWhisper();
-                        WhisperEnabled = false;
-                        OutputText.outputLog("[Whisper Stopped Listening]");
-                        WhisperError = false;
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                        {
-                            var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                            OSC.OSCSender.Send(sttListening);
-                        }
-                        DoSpeech.speechToTextOffSound();
-                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                        {
-                            VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug: ";
-                        });
-                    
-
-                }
-               
-
-              }
-                catch(Exception ex) {
-                OutputText.outputLog("[Error Stopping Whisper (auto): " + ex.Message + " ]", System.Drawing.Color.Red);
-            }
-}
-
-            public static int getWhisperInputDevice()
-        {
-            
-
-            // Setting to Correct Input Device
-            using iMediaFoundation mf = Library.initMediaFoundation();
-            CaptureDeviceId[] devices = mf.listCaptureDevices() ??
-                throw new ApplicationException("This computer has no audio capture devices");
-
-            for (int i = 0; i < devices.Length; i++)
-            {
-               // Debug.WriteLine("#{0}: {1}", i, devices[i].displayName);
-                if (AudioDevices.currentInputDeviceName.ToString() == devices[i].displayName.ToString())
-                {
-                    return i;
-
-                }
-            }
-           
-            return 0;
-
-        }
-
-     /*   public static string[] GetGPUs()
-        {
-            string[] gpuList = Library.listGraphicAdapters();
-
-            // Using Console.WriteLine for simple logging
-            Debug.WriteLine("List of GPUs:");
-            foreach (var gpu in gpuList)
-            {
-                Debug.WriteLine(gpu);
-            }
-            return gpuList;
-
-        }*/
-     
-
-        public static void StopWhisper()
-        {
-      
-            ctt?.Stop();
-            ctt = null;
-        }
-
-        // changed to static here -chrisk
-        static CommandLineArgs cla;
-        static Whisper.Context context;
-        static iAudioCapture captureDev;
-      //  static CaptureThread whisperThread;
-
-        // added: set language -chrisk
-        public static void setLanguage(string language)
-        {
-            if (context != null && WhisperEnabled==true)
-            {
-                langcode = LanguageSelect.fromLanguageNew(language, "sourceLanguage", "Whisper");
-                eLanguage? elang = Library.languageFromCode(langcode);
-                if (elang != null)
-                {
-                    Stopwatch stopwatch = new Stopwatch();
-
-                    // Start the stopwatch
-                    stopwatch.Start();
-                    if (ctt != null && WhisperAllowStop == true)
-                    {
-                       // DoSpeech.speechToTextOffSound();
-                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                        {
-                            VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text = $"Whisper Debug: ";
-                        });
-                        try
-                        {
-                            WhisperString = "";
-                            StopWhisper();
-                            OutputText.outputLog("[Whisper Switching Languages]");
-
-                        }
-                        catch (Exception ex)
-                        {
-                            OutputText.outputLog("[Error switch input language (manual): " + ex.Message + " ]", System.Drawing.Color.Red);
-                        }
-                    }
-                    else
-                    {
-                        OutputText.outputLog("[Could not switch input language (slow down)]", System.Drawing.Color.Red);
-                    }
-
-                    context.parameters.language = (eLanguage)elang;
-
-                    stopwatch.Stop();
-                    TimeSpan elapsedTime = stopwatch.Elapsed;
-                    elapsedTime = stopwatch.Elapsed;
-                  //  OutputText.outputLog($"Startup Time: {elapsedTime.TotalMilliseconds} ms");
-                    DoSpeech.speechToTextOnSound();
-                    ctt = new CaptureThread(cla, context, captureDev);
-                   
-                    ctt?.join();
-
-                }
-            }
-        }
-
-
-
-        public static int doWhisper(string[] args)
-		{
-
-
-            try
-           {
-               // Stopwatch stopwatch = new Stopwatch();
-
-                // Start the stopwatch
-              //  stopwatch.Start();
-                // CommandLineArgs cla;
-                try
-                {
-                    cla = new CommandLineArgs(args);
-
-                }
-                catch (OperationCanceledException)
-                {
-                    return 1;
-                }
-
-                using iMediaFoundation mf = Library.initMediaFoundation();
-                CaptureDeviceId[] devices = mf.listCaptureDevices() ??
-                    throw new ApplicationException("This computer has no audio capture devices");
-
-
-                       
-                if (cla.captureDeviceIndex < 0 || cla.captureDeviceIndex >= devices.Length)
-                    throw new ApplicationException($"Capture device index is out of range; the valid range is [ 0 .. {devices.Length - 1} ]");
-                
-                sCaptureParams cp = new sCaptureParams();
-            try
-            {
-                
-                cp.minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString(), CultureInfo.InvariantCulture); //1
-                cp.maxDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text.ToString(), CultureInfo.InvariantCulture); //8
-                cp.dropStartSilence = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text.ToString(), CultureInfo.InvariantCulture);   // 250 ms
-                cp.pauseDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);  //1
-                //we need culture invariant or for some languages like german 8.0 will be converted to 80 because they use "," instead of "."
-            }
-            catch (Exception ex)
-            {
-                    cp.minDuration = 1.0f;
-                    cp.maxDuration = 8.0f;
-                    cp.dropStartSilence = 0.25f;
-                    cp.pauseDuration = 1.0f;
-                    if (WhisperError == false)
-                    {
-                        OutputText.outputLog("[WARNING: Error Occured loading Whisper custom values. Forcing defaults]", System.Drawing.Color.DarkOrange);
-                    }
-                    WhisperError = true;
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                    {
-                        
-                  
-                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text = "1.0";
-                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = "8.0";
-                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = "0.25";
-                    VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = "1.0";
-                    });
-
-                }
-
-                if (cla.diarize)
-                    cp.flags |= eCaptureFlags.Stereo;
-                captureDev = mf.openCaptureDevice(devices[cla.captureDeviceIndex], cp);
-
-                // string selectedGPU = "default";
-
-                /* VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                 {
-                     string selectedGPU = VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem.ToString();
-                 });
-
-                 if (selectedGPU =="default")
-                 {
-                     using iModel model = Library.loadModel(cla.model);
-                     context = model.createContext();
-                     OutputText.outputLog($"[Whisper Loaded with default GPU]");
-
-                 }
-                 else
-                 {
-
-                     using iModel model = Library.loadModel(cla.model, adapter: selectedGPU);
-                     context = model.createContext();
-                     OutputText.outputLog($"[Whisper Loaded with GPU: {selectedGPU}]");
-                 }*/
-                using iModel model = Library.loadModel(cla.model);
-                context = model.createContext();
-
-
-
-
-                cla.apply(ref context.parameters);
-                //stopwatch.Stop();
-               // TimeSpan elapsedTime = stopwatch.Elapsed;
-                //OutputText.outputLog($"Time 1: {elapsedTime.TotalMilliseconds} ms");
-               // stopwatch.Restart();
-                WhisperAllowStop = false;
-                ctt = new CaptureThread(cla, context, captureDev);
-               // stopwatch.Stop();
-              //  elapsedTime = stopwatch.Elapsed;
-             //   OutputText.outputLog($"Time 2: {elapsedTime.TotalMilliseconds} ms");
-
-                Thread.Sleep(500);
-                WhisperAllowStop = true;
-
-
-                ctt?.join();
-
-
-                
-
-
-                //context.timingsPrint();
-                OutputText.outputLog("[Whisper Stopped]");
-                return 0;
-              }
-            catch (Exception ex)
-            {
-
-
-                //  OutputText.outputLog("[Whisper Error: " + ex.Message.ToString()+ "]", System.Drawing.Color.Red);
-                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
-
-                try
-                {
-                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
-
-                }
-                catch { }
-                OutputText.outputLog("[Whisper Error: " + errorMsg + "]", System.Drawing.Color.Red);
-                //System.Windows.Forms.MessageBox.Show("FormLoad Error: " + errorMsg);
-                OutputText.outputLog("[Whisper Setup Guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Whisper ", System.Drawing.Color.DarkOrange);
-
-
-               WhisperEnabled = false;
-
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                {
-                    var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
-                    OSC.OSCSender.Send(sttListening);
-                }
-                DoSpeech.speechToTextOffSound();
-
-                return ex.HResult;
-            }
-        }
-
-
-
-        public static System.Threading.Timer whisperTimer;
-
-        public static void initiateWhisper()
-        {
-            whisperTimer = new System.Threading.Timer(whispertimertick);
-            whisperTimer.Change(Timeout.Infinite, Timeout.Infinite);
+            stopwatch = new Stopwatch();
 
             waveIn = new WaveInEvent();
             waveIn.DataAvailable += waveIn_DataAvailable;
-            waveIn.WaveFormat = new WaveFormat(16000, 1);
+            waveIn.RecordingStopped += waveIn_RecordingStopped;
+            waveIn.WaveFormat = new WaveFormat(16000, 16, 1);
+            silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
+            silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
 
-           // NoiseOperatingModel = (OperatingMode)VoiceWizardWindow.MainFormGlobal.comboBoxVADModel.SelectedIndex;//this needs to be in a try catch incase it's blank for someone
             vad = new WebRtcVad()
             {
-                OperatingMode = OperatingMode.VeryAggressive,
+                OperatingMode = NoiseOperatingModel,
                 FrameLength = frameLength,
                 SampleRate = SampleRate.Is16kHz,
             };
+
             frameSize = (int)vad.SampleRate / 1000 * 2 * (int)frameLength;
-
-          /* // string[] GPUs = GetGPUs();
-          //  VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add("default");
-            foreach (var gpu in GPUs)
-            {
-                VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.Items.Add(gpu);
-            }
-            VoiceWizardWindow.MainFormGlobal.comboBoxGPUSelection.SelectedItem = Settings1.Default.WhisperGPU;*/
-
-
+          //  await InitialiseLocalTranscription();
 
         }
-
-
-        private static TimeSpan startTime = DateTime.MinValue.TimeOfDay;
-        private static TimeSpan endTime = DateTime.MinValue.TimeOfDay;
-        public static bool isVoiceDetected = false;
-        public static List<Tuple<TimeSpan, TimeSpan>> voiceActivationTimes = new List<Tuple<TimeSpan, TimeSpan>>();
-        private static int maxVoiceActivationTimes = 25; // Set the maximum number of voice activation times
-        private static void waveIn_DataAvailable(object sender, WaveInEventArgs e)
+        public static void StopWhisper()
         {
-            var buffer = e.Buffer.Take(frameSize).ToArray();
-
-            if (vad.HasSpeech(buffer))
+            if (!VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked) { DoSpeech.speechToTextOffSound(); }
+            waveIn.StopRecording();
+            recording = false;
+            if (!VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked)
             {
-                if (!isVoiceDetected)
-                {
-                    // Voice has just started
-                    startTime = DateTime.Now.TimeOfDay;
-                    isVoiceDetected = true;
+                OutputText.outputLog("[Whisper Stopped Listening");
+            }
 
-                    //VoiceWizardWindow.MainFormGlobal.WhisperDebugLabel.Text += "🎙️";
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+            {
+                var sttListening = new OscMessage("/avatar/parameters/stt_listening", false);
+                OSC.OSCSender.Send(sttListening);
+            }
+        }
+        public static void StartWhisper()
+        {
+            DoSpeech.speechToTextOnSound();
+            OutputText.outputLog("[Whisper Listening]");
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+            {
+                var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
+                OSC.OSCSender.Send(sttListening);
+            }
+            totalBytes = 0;
+            rawDataArray = new byte[0];
+            waveIn.StartRecording();
+            silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
+            silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
+            recording = true;
+           // firstDataAvailable = false;
+            voiceDetected = false;
+        }
+
+        //static bool WhisperContinuous =false;
+        static TaskCompletionSource<bool> recordingTaskCompletionSource2 = new TaskCompletionSource<bool>();
+        public static async Task ToggleWhisper()
+        {
+
+
+            
+            if (!VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked)
+            {
+
+                if (recording)
+                {
+                    StopWhisper();
+                 //   DoSpeech.speechToTextOffSound();
+                }
+                else if (!recording)
+                {
+                    if (CheckForModel())
                     {
-                        VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.Green;
-                    });
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
-                    {
-                        OutputText.outputLog("VAD Start Time: " + startTime);
-                    }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
-                    {
-                        var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
-                        OSC.OSCSender.Send(typingbubble);
+                        recordingTaskCompletionSource2 = new TaskCompletionSource<bool>();
+                        StartWhisper();
+                      
 
                     }
                 }
-                // Update the end time while voice is detected
-                endTime = DateTime.Now.TimeOfDay;
             }
             else
             {
-                if (isVoiceDetected)
+                if (!WhisperEnabled)
                 {
-                    // Voice has stopped
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                    {
-                        VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.White;
-                    });
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
-                    {
-                        OutputText.outputLog("VAD End Time: " + endTime);
-                    }
+                    OutputText.outputLog("[Whisper Listening (Continuous)]");
+                    DoSpeech.speechToTextOnSound();
+                    WhisperEnabled = true;
+                   // InitialiseLocalTranscription();
 
-                    isVoiceDetected = false;
-
-                    //  if ((endTime - startTime).TotalSeconds >= 0.5)
-                    //  {
-                    if (voiceActivationTimes.Count >= maxVoiceActivationTimes)
-                    {
-                        // Remove the oldest voice activation times
-                        int removeCount = voiceActivationTimes.Count - maxVoiceActivationTimes + 1;
-                        voiceActivationTimes.RemoveRange(0, removeCount);
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                    while (WhisperEnabled)
                         {
-                            OutputText.outputLog("[Removing old whisper activation timestamps from memory]");
+                            if (CheckForModel())
+                            {
+
+                            
+                            minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString(), CultureInfo.InvariantCulture); //1
+                            maxDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text.ToString(), CultureInfo.InvariantCulture); //8    
+                            MsBeforeAutoStop = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text.ToString(), CultureInfo.InvariantCulture);  //1
+
+
+                            
+                            //crashing was caused by model path not being set :), it was only set by checkformodel lol
+                            // recordingTaskCompletionSource2 = new TaskCompletionSource<bool>();
+                              voiceDetected = false;
+                            recordingTaskCompletionSource2 = new TaskCompletionSource<bool>();
+                            totalBytes = 0;
+                            rawDataArray = new byte[0];
+                            waveIn.StartRecording();
+                            silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
+                            silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
+                            recording = true;
+
+                             
+                              await recordingTaskCompletionSource2.Task;
+
+
+                            }
+                            else
+                            {
+                                WhisperEnabled = false;
+                            }
+                          // await recordingTaskCompletionSource2.Task;
+
+
+                    }
+                   
+                    
+                     
+                }
+                      
+                else
+                {
+                    // must allow canceling of recognition             
+                    WhisperEnabled = false;
+                    StopWhisper();
+                    DoSpeech.speechToTextOffSound();
+                    OutputText.outputLog("[Whisper Stopped Listening");
+                }
+            }
+           
+        
+
+        }
+
+
+        static bool firstDataAvailable = false;
+
+        private static void waveIn_DataAvailable(object sender, WaveInEventArgs e)
+        {
+           /* if (firstDataAvailable = false)
+            {
+                voiceDetected = false;
+                firstDataAvailable = true;
+            }*/
+           
+            // copying audio data to raw data array
+            byte[] newArray = new byte[rawDataArray.Length + e.BytesRecorded];
+            System.Buffer.BlockCopy(rawDataArray, 0, newArray, 0, rawDataArray.Length);
+            System.Buffer.BlockCopy(e.Buffer, 0, newArray, rawDataArray.Length, e.BytesRecorded);
+            rawDataArray = newArray;
+            totalBytes += e.BytesRecorded;
+
+
+
+            var buffer = e.Buffer.Take(frameSize).ToArray();
+            if (vad.HasSpeech(buffer)) 
+            {
+                voiceDetected = true;
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.Green;
+                });
+
+                //  OutputText.outputLog("[detected]");
+
+            }
+            else
+            {
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.White;
+                });
+            }
+
+
+            // checking for silence, but only after a grace period at the start
+            if (DateTime.Now > silenceGracePeriodInitialisationTime)//minimum silence duration
+            {
+               // var buffer = e.Buffer.Take(frameSize).ToArray();
+                if (!vad.HasSpeech(buffer))
+                {
+                    if (recording && AutoStopAfterSilence)
+                    {
+                        // Set 'silence' progress bar
+                       // TimeSpan silentPeriod = DateTime.Now - lastVoiceDetectedTimeStamp;
+                       // double silentPeriodInMilliseconds = silentPeriod.TotalMilliseconds;
+
+
+                        if (DateTime.Now > lastVoiceDetectedTimeStamp.AddMilliseconds(MsBeforeAutoStop))
+                        {
+                          //  OutputText.outputLog("[Whisper: Silence Detected, Auto-Stopping");
+                            StopWhisper();
+                            
+
                         }
 
                     }
-
-
-                    voiceActivationTimes.Add(new Tuple<TimeSpan, TimeSpan>(startTime, endTime));
-                 //   }
-
-                    startTime = DateTime.MinValue.TimeOfDay;
-                    endTime = DateTime.MinValue.TimeOfDay;
+                }
+                else
+                {                  
+                    lastVoiceDetectedTimeStamp = DateTime.Now;
                 }
             }
+            if (recording && (DateTime.Now > silenceMaxDurationPeriodInitialisationTime))
+            {
+               // OutputText.outputLog("[Whisper: Max Audio Duration Reached, Auto-Stopping");
+                StopWhisper();
+
+            }
         }
-        public static  void whispertimertick(object sender)
+
+        private static void waveIn_RecordingStopped(object sender, StoppedEventArgs e)
+        {
+            using (MemoryStream outputStream = new MemoryStream())
+            {
+                WaveFileWriter waveWriter = new WaveFileWriter(outputStream, new WaveFormat(16000, 16, 1));
+
+                waveWriter.Write(rawDataArray, 0, totalBytes);
+                waveWriter.Flush();
+
+
+                // this was if (voicedetected) but that detection wasn't great for short utterances.
+                if (voiceDetected)
+                {
+                    // OutputText.outputLog("Transcribing audio stream...");
+
+                    stopwatch.Reset();
+                    stopwatch.Start();
+                    Task<string> transcriptionTask = TranscribeLocalAsync(outputStream);
+                    transcriptionTask.ContinueWith(t =>
+                    {
+                        if (t.IsFaulted)
+                        {
+                            OutputText.outputLog($"Failed to transcribe: {t.Exception}", Color.Red);
+                            return;
+                        }
+                        else
+                        {
+
+                            if (t.Result.Trim() == "[ERROR]")
+                            {
+                                return;
+                            }
+
+                            stopwatch.Stop();
+
+
+                            if (t.Result == null)
+                            {
+                                OutputText.outputLog("[Whisper: No text found]");
+                                return;
+                            }
+
+                            string result = t.Result;
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked)
+                            {
+                                result = purifyOutput(result);
+                            }
+                            //  if(result != "")
+                            //  {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                            {
+                                OutputText.outputLog($"Whisper Processing Time: {stopwatch.Elapsed.TotalSeconds}");
+                            }
+                            //stopwatch.Elapsed.TotalSeconds;
+                            TTSMessageQueue.QueueMessage(result, "Whisper");
+                         //   }
+
+                           
+                        }
+
+
+                    });
+                }
+
+            }
+            recordingTaskCompletionSource2.SetResult(true);
+        }
+
+
+        private static string purifyOutput(string input)
+        {
+            string result = input;
+
+            // Remove bracketed sections such as [ EMPTY ] and ( SILENCE )
+            result = Regex.Replace(result, @"\[.*?\]|\(.*?\)", string.Empty);
+
+            // strip duplicated whitespace and any on the ends.
+            result = result.Replace("[BLANK_AUDIO]", "");
+            result = result.Replace("[MUSIC PLAYING]", "");
+            result = result.Replace("  ", " ").Trim();
+            result = result.Replace("  ", " ").Trim();
+            return result;
+        }
+
+
+        private static string GgmlModelFileName;
+        private static WhisperFactory whisperFactory;
+        private static WhisperProcessor whisperProcessor;
+
+        public static async Task<string> TranscribeLocalAsync(MemoryStream audioStream)
         {
 
-            Thread t = new Thread(doWhisperTimerTick);
-            t.IsBackground = true; // Set the thread as a background thread
-            t.Start();
+            await InitialiseLocalTranscription();
+
+            if (whisperFactory == null)
+            {
+                OutputText.outputLog("[Whisper Error: Failed to initialise whisperFactory]", Color.Red);
+                return "[ERROR]";
+            }
+
+
+            audioStream.Flush();
+            audioStream.Seek(0, SeekOrigin.Begin);
+            var textResult = "";
+            // OutputText.outputLog("[Whisper: Transcribing]");
+            await foreach (var result in whisperProcessor.ProcessAsync(audioStream))
+            {
+                textResult += result.Text + " ";
+            }
+
+            return textResult;
         }
 
-        private static void doWhisperTimerTick() //Whisper on timer to prevent double outputs at the same time
+        private static bool CheckForModel()
+        {
+            GgmlModelFileName = VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text;
+            FileInfo fInfo = new FileInfo(GgmlModelFileName);
+            if (fInfo.Exists)
+            {
+                long lengthInBytes = fInfo.Length;
+
+                // None of the models are <65mb to my knowledge so it's broken if that small.
+                if (lengthInBytes < 65000000)
+                {
+                    File.Delete(GgmlModelFileName);
+                }
+            }
+
+            if (!File.Exists(GgmlModelFileName))
+            {
+                OutputText.outputLog("[No Model Found. Auto installing selected Whisper model. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.Red);
+                downloadWhisperModel();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        private static async Task InitialiseLocalTranscription()
         {
 
-            string text = WhisperRecognition.WhisperString;
 
-            TTSMessageQueue.QueueMessage(text, "Whisper");
-            WhisperRecognition.WhisperPrevText = WhisperRecognition.WhisperString;
-            WhisperRecognition.WhisperString = "";
+
+          //  if (whisperFactory == null)//this was preventing me from switching models
+          //  {
+                // OutputText.outputLog("Creating whisper factory for transcription");
+                GgmlModelFileName = VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text;
+
+                try
+                {
+                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                    string appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    string dllPath = System.IO.Path.Combine(appPath, "runtimes", "win-x64", "whisper.dll");
+                    // OutputText.outputLog("Attempting to load dll at " + dllPath);
+                    whisperFactory = WhisperFactory.FromPath(GgmlModelFileName, libraryPath: dllPath, useGpu: VoiceWizardWindow.MainFormGlobal.rjToggleWhisperUseGPU.Checked);
+                }
+                catch (Exception ex)
+                {
+                    OutputText.outputLog($"[Error creating WhisperFactory: {ex.Message}]", Color.Red);
+                  // OutputText.outputLog("Model location: " + GgmlModelFileName, Color.Red);
+                    OutputText.outputLog(ex.Message, Color.Red);
+                    return;
+                }
+
+
+                
+           // }
+            langcode = LanguageSelect.fromLanguageNew(VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.SelectedItem.ToString(), "sourceLanguage", "Whisper");
+            whisperProcessor = whisperFactory.CreateBuilder().WithLanguage(langcode).Build();
+
+
+
+
 
         }
+
 
         public static void downloadWhisperModel()
         {
             string address = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/";
-            string path = "Assets/models/";
+
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            string relativePath = "Assets\\models\\";
 
 
             switch (VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Text.ToString())
             {
-                case "ggml-tiny.bin (75 MB)":
-                    path += "ggml-tiny.bin";
+                case "ggml-tiny.bin (77.7 MB)":
+                    relativePath += "ggml-tiny.bin";
                     address += "ggml-tiny.bin";
 
                     break;
+                case "ggml-tiny-q5_1.bin (32.2 MB)":
+                    relativePath += "ggml-tiny-q5_1.bin";
+                    address += "ggml-tiny-q5_1.bin";
 
-                case "ggml-base.bin (142 MB)":
-                    path += "ggml-base.bin";
+                    break;
+
+                case "ggml-base.bin (148 MB)":
+                    relativePath += "ggml-base.bin";
                     address += "ggml-base.bin";
 
                     break;
 
-                case "ggml-small.bin (466 MB)":
-                    path += "ggml-small.bin";
+                case "ggml-base-q5_1.bin (59.7 MB)":
+                    relativePath += "ggml-base-q5_1.bin";
+                    address += "ggml-base-q5_1.bin";
+
+                    break;
+
+                case "ggml-small.bin (488 MB)":
+                    relativePath += "ggml-small.bin";
                     address += "ggml-small.bin";
 
                     break;
 
+                case "ggml-small-q5_1.bin (190 MB)":
+                    relativePath += "ggml-small-q5_1.bin";
+                    address += "ggml-small-q5_1.bin";
+
+                    break;
+
                 case "ggml-medium.bin (1.5 GB)":
-                    path += "ggml-medium.bin";
+                    relativePath += "ggml-medium.bin";
                     address += "ggml-medium.bin";
+
+                    break;
+
+                case "ggml-medium-q5_0.bin (539 MB)":
+                    relativePath += "ggml-medium-q5_0.bin";
+                    address += "ggml-medium-q5_0.bin";
 
                     break;
 
                 default: break;
             }
 
+            string path = Path.Combine(basePath, relativePath);
+
             if (!System.IO.File.Exists(path))
             {
                 VoiceWizardWindow.MainFormGlobal.modelLabel.ForeColor = System.Drawing.Color.DarkOrange;
                 VoiceWizardWindow.MainFormGlobal.modelLabel.Text = "model downloading... PLEASE WAIT";
-
+                OutputText.outputLog("[Whisper model downloading... PLEASE WAIT]", Color.DarkOrange);
 
                 WebClient client = new WebClient();
                 Uri uri = new Uri(address);
@@ -649,7 +584,6 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
         }
-
 
 
     }

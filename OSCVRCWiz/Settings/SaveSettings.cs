@@ -339,6 +339,9 @@ namespace OSCVRCWiz
 
             Settings1.Default.switchVoicePresetBindToggle = VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked;
 
+            Settings1.Default.whisperUseGPU = VoiceWizardWindow.MainFormGlobal.rjToggleWhisperUseGPU.Checked;
+            Settings1.Default.whisperContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked;
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

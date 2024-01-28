@@ -4,6 +4,7 @@ using OSCVRCWiz.Services.Integrations;
 using OSCVRCWiz.Services.Integrations.Heartrate;
 using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Services.Speech.Speech_Recognition;
+using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
 using Settings;
 
@@ -319,7 +320,16 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked = Settings1.Default.forwardData;
 
-            VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.SelectedItem = Settings1.Default.modelSelected;
+
+            if (VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.Items.Contains(Settings1.Default.modelSelected))
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.SelectedItem = Settings1.Default.modelSelected;
+            }
+            else
+            {
+                VoiceWizardWindow.MainFormGlobal.comboBoxWhisperModelDownload.SelectedIndex = 0;
+                OutputText.outputLog("Saved Whisper Model in dropdown did not exist, setting to default",Color.DarkOrange);
+            }
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonForceMedia.Checked = Settings1.Default.forceMediaToggle;
 
@@ -427,6 +437,9 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text = Settings1.Default.whisperVadOffset;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked = Settings1.Default.switchVoicePresetBindToggle;
+
+           VoiceWizardWindow.MainFormGlobal.rjToggleWhisperUseGPU.Checked = Settings1.Default.whisperUseGPU;
+            VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked = Settings1.Default.whisperContinuous;
 
 
 

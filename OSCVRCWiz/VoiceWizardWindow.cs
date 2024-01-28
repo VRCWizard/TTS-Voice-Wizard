@@ -1022,20 +1022,7 @@ namespace OSCVRCWiz
                         comboBoxTranslationLanguage.SelectedIndex = 0;
                     }
                 }
-                // added: change language -chrisk
-                switch (comboBoxSTT.Text.ToString())
-                {
-                    case "Whisper":
-                        string language = "";
 
-                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                        {
-                            language = comboBoxSpokenLanguage.SelectedItem.ToString();
-                        });
-                        Task.Run(() => WhisperRecognition.setLanguage(language));
-
-                        break;
-                }
 
             }
 
@@ -1645,7 +1632,8 @@ namespace OSCVRCWiz
             Task.Run(() => WebCaptionerRecognition.autoStopWebCap());
             Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
             Task.Run(() => VoskRecognition.AutoStopVoskRecog());
-            Task.Run(() => WhisperRecognition.autoStopWhisper());
+            //Whisper Todo
+            //Task.Run(() => WhisperRecognitionOld.autoStopWhisper());
             VoiceWizardProRecognition.deepgramCt.Cancel();
         }
 
@@ -3065,20 +3053,36 @@ namespace OSCVRCWiz
             string path = "Assets/models/";
             switch (comboBoxWhisperModelDownload.Text.ToString())
             {
-                case "ggml-tiny.bin (75 MB)":
+                case "ggml-tiny.bin (77.7 MB)":
                     path += "ggml-tiny.bin";
                     break;
 
-                case "ggml-base.bin (142 MB)":
+                case "ggml-base.bin (148 MB)":
                     path += "ggml-base.bin";
                     break;
 
-                case "ggml-small.bin (466 MB)":
+                case "ggml-small.bin (488 MB)":
                     path += "ggml-small.bin";
                     break;
 
                 case "ggml-medium.bin (1.5 GB)":
                     path += "ggml-medium.bin";
+                    break;
+
+                case "ggml-tiny-q5_1.bin (32.2 MB)":
+                    path += "ggml-tiny-q5_1.bin";
+                    break;
+
+                case "ggml-base-q5_1.bin (59.7 MB)":
+                    path += "ggml-base-q5_1.bin";
+                    break;
+
+                case "ggml-small-q5_1.bin (190 MB)":
+                    path += "ggml-small-q5_1.bin";
+                    break;
+
+                case "ggml-medium-q5_0.bin (539 MB)":
+                    path += "ggml-medium-q5_0.bin";
                     break;
 
                 default: break;
@@ -3124,7 +3128,11 @@ namespace OSCVRCWiz
 
 
 
-       
+
+        private void groupBox38_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

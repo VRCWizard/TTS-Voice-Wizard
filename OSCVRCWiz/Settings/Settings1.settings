@@ -408,22 +408,22 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="minDuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.0</Value>
+      <Value Profile="(Default)">1.5</Value>
     </Setting>
     <Setting Name="maxDuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">8.0</Value>
+      <Value Profile="(Default)">10.0</Value>
     </Setting>
     <Setting Name="dropStartSilence" Type="System.String" Scope="User">
       <Value Profile="(Default)">0.25</Value>
     </Setting>
     <Setting Name="pauseDuration" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.0</Value>
+      <Value Profile="(Default)">0.01</Value>
     </Setting>
     <Setting Name="aprilFools2023" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="modelSelected" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ggml-tiny.bin (75 MB)</Value>
+      <Value Profile="(Default)">ggml-tiny.bin (77.7 MB)</Value>
     </Setting>
     <Setting Name="fontSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
@@ -675,6 +675,12 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="switchVoicePresetBindToggle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="whisperUseGPU" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="whisperContinuous" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

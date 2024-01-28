@@ -565,15 +565,17 @@ namespace OSCVRCWiz.Services.Speech
 
                             break;
                         case "Whisper":
-                            if (VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text.ToString() == "no model selected")
-                            {
-                                WhisperRecognition.downloadWhisperModel();
-                                OutputText.outputLog("[Auto installing default Whisper model for you, please wait. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.DarkOrange);
-                            }
-                            else
-                            {
-                                Task.Run(() => WhisperRecognition.toggleWhisper());
-                            }
+                             if (VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text.ToString() == "no model selected")
+                             {
+                                 WhisperRecognition.downloadWhisperModel();
+                                 OutputText.outputLog("[Auto installing default Whisper model for you, please wait. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.DarkOrange);
+                             }
+                             else
+                             {
+                                
+                                 Task.Run(() => WhisperRecognition.ToggleWhisper());
+                             }
+     
 
                             break;
                         case "Web Captioner":

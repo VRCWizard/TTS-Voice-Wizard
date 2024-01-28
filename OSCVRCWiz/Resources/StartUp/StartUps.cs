@@ -49,7 +49,7 @@ namespace OSCVRCWiz.Resources.StartUp
             OutputText.initiateTextTimers();
             VRChatListener.initiateTimer();
             SpotifyAddon.initiateTimer();
-            WhisperRecognition.initiateWhisper();
+            WhisperRecognition.startUp();
             ToastNotification.initiateTimer();
             
 

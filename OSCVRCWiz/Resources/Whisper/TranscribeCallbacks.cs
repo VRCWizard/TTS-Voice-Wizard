@@ -17,9 +17,9 @@ namespace OSCVRCWiz.Resources.Whisper
 {
     //MODIFIED FROM Const-me/Whisper/example
 
-    public sealed class TranscribeCallbacks : Callbacks
-    {
-        readonly CommandLineArgs args;
+   // public sealed class TranscribeCallbacks : Callbacks
+   // {
+     /*   readonly CommandLineArgs args;
         readonly eResultFlags resultFlags;
         public static bool MuteWhisper = false;
 
@@ -56,7 +56,7 @@ namespace OSCVRCWiz.Resources.Whisper
             {
                 OutputText.outputLog("[Whisper Transcription Time: " + segmentStart + " -> " + segmentEnd + "]");
             }
-            foreach (var activationTime in WhisperRecognition.voiceActivationTimes)
+            foreach (var activationTime in WhisperRecognitionOld.voiceActivationTimes)
             {
              
 
@@ -103,10 +103,10 @@ namespace OSCVRCWiz.Resources.Whisper
 
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleVAD.Checked)
                     {
-                        TimeSpan segmentStart = seg.time.begin + WhisperRecognition.WhisperStartTime;
-                        TimeSpan segmentEnd = seg.time.end + WhisperRecognition.WhisperStartTime;
-                        Debug.WriteLine(printTime(seg.time.begin + WhisperRecognition.WhisperStartTime) + " - " + printTime(seg.time.end + WhisperRecognition.WhisperStartTime));
-                        if (IsSegmentInVoiceActivation(seg.time.begin + WhisperRecognition.WhisperStartTime, seg.time.end + WhisperRecognition.WhisperStartTime, Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text.ToString(), CultureInfo.InvariantCulture)) || WhisperRecognition.isVoiceDetected)
+                        TimeSpan segmentStart = seg.time.begin + WhisperRecognitionOld.WhisperStartTime;
+                        TimeSpan segmentEnd = seg.time.end + WhisperRecognitionOld.WhisperStartTime;
+                        Debug.WriteLine(printTime(seg.time.begin + WhisperRecognitionOld.WhisperStartTime) + " - " + printTime(seg.time.end + WhisperRecognitionOld.WhisperStartTime));
+                        if (IsSegmentInVoiceActivation(seg.time.begin + WhisperRecognitionOld.WhisperStartTime, seg.time.end + WhisperRecognitionOld.WhisperStartTime, Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text.ToString(), CultureInfo.InvariantCulture)) || WhisperRecognitionOld.isVoiceDetected)
                         {
                            // OutputText.outputLog($"segment approved by VAD", Color.Blue);
                         }
@@ -161,8 +161,8 @@ namespace OSCVRCWiz.Resources.Whisper
                 }
                 if (text != "")
                 {
-                    WhisperRecognition.WhisperString += text + " ";
-                    WhisperRecognition.whisperTimer.Change(250, 0);
+                    WhisperRecognitionOld.WhisperString += text + " ";
+                    WhisperRecognitionOld.whisperTimer.Change(250, 0);
 
                 }
                
@@ -175,6 +175,6 @@ namespace OSCVRCWiz.Resources.Whisper
             }
 
 
-        }
-    }
+        }*/
+  //  }
 }

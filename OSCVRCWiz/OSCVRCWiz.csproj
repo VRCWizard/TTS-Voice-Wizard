@@ -49,14 +49,13 @@
     <PackageReference Include="System.Speech" Version="7.0.0-preview.2.22152.2" />
     <PackageReference Include="Vosk" Version="0.3.38" />
     <PackageReference Include="WebRtcVadSharp" Version="1.3.2" />
+    <PackageReference Include="Whisper.net" Version="1.5.0" />
+    <PackageReference Include="Whisper.net.Runtime.Clblast" Version="1.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="CoreOSC">
       <HintPath>CoreOSC.dll</HintPath>
-    </Reference>
-    <Reference Include="WhisperNet">
-      <HintPath>WhisperNet.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -194,7 +193,7 @@
     <None Update="Assets\updates\UpdaterInfo.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Whisper.dll">
+    <None Update="whisper.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="WhisperNet.dll">

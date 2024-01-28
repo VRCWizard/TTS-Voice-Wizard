@@ -1645,7 +1645,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.5")]
         public string minDuration {
             get {
                 return ((string)(this["minDuration"]));
@@ -1657,7 +1657,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.0")]
         public string maxDuration {
             get {
                 return ((string)(this["maxDuration"]));
@@ -1681,7 +1681,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.01")]
         public string pauseDuration {
             get {
                 return ((string)(this["pauseDuration"]));
@@ -1705,7 +1705,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ggml-tiny.bin (75 MB)")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ggml-tiny.bin (77.7 MB)")]
         public string modelSelected {
             get {
                 return ((string)(this["modelSelected"]));
@@ -2720,6 +2720,30 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["switchVoicePresetBindToggle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool whisperUseGPU {
+            get {
+                return ((bool)(this["whisperUseGPU"]));
+            }
+            set {
+                this["whisperUseGPU"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool whisperContinuous {
+            get {
+                return ((bool)(this["whisperContinuous"]));
+            }
+            set {
+                this["whisperContinuous"] = value;
             }
         }
     }

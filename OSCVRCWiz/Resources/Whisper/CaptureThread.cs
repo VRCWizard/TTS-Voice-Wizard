@@ -8,7 +8,7 @@ using Whisper;
 namespace OSCVRCWiz.Resources.Whisper
 {
     //MODIFIED FROM Const-me/Whisper/ example
-    public sealed class CaptureThread : CaptureCallbacks
+   /* public sealed class CaptureThread : CaptureCallbacks
     {
         public CaptureThread(CommandLineArgs args, Context context, iAudioCapture source)
         {
@@ -100,5 +100,5 @@ namespace OSCVRCWiz.Resources.Whisper
                 MessageBox.Show("[Whisper threadMain Error: " + ex.Message.ToString());
             }
         }
-    }
+    }*/
 }
