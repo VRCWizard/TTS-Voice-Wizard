@@ -2746,5 +2746,29 @@ namespace OSCVRCWiz.Settings {
                 this["whisperContinuous"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
+        public string whisperValidDuration {
+            get {
+                return ((string)(this["whisperValidDuration"]));
+            }
+            set {
+                this["whisperValidDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public string whisperConfidence {
+            get {
+                return ((string)(this["whisperConfidence"]));
+            }
+            set {
+                this["whisperConfidence"] = value;
+            }
+        }
     }
 }

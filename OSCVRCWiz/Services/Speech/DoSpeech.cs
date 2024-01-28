@@ -567,7 +567,7 @@ namespace OSCVRCWiz.Services.Speech
                         case "Whisper":
                              if (VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text.ToString() == "no model selected")
                              {
-                                 WhisperRecognition.downloadWhisperModel();
+                                Task.Run(() => WhisperRecognition.downloadWhisperModel());
                                  OutputText.outputLog("[Auto installing default Whisper model for you, please wait. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.DarkOrange);
                              }
                              else

@@ -342,6 +342,10 @@ namespace OSCVRCWiz
             Settings1.Default.whisperUseGPU = VoiceWizardWindow.MainFormGlobal.rjToggleWhisperUseGPU.Checked;
             Settings1.Default.whisperContinuous = VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked;
 
+            Settings1.Default.whisperValidDuration = VoiceWizardWindow.MainFormGlobal.textBoxMinVADDuration.Text;
+
+            Settings1.Default.whisperConfidence = VoiceWizardWindow.MainFormGlobal.textBoxMinConfidence.Text;
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

@@ -1633,7 +1633,7 @@ namespace OSCVRCWiz
             Task.Run(() => AzureRecognition.stopContinuousListeningNow());//turns of continuous if it is on
             Task.Run(() => VoskRecognition.AutoStopVoskRecog());
             //Whisper Todo
-            //Task.Run(() => WhisperRecognitionOld.autoStopWhisper());
+            Task.Run(() => WhisperRecognition.StopWhisperNow());
             VoiceWizardProRecognition.deepgramCt.Cancel();
         }
 
@@ -3035,10 +3035,12 @@ namespace OSCVRCWiz
 
         private void button41_Click(object sender, EventArgs e)
         {
-            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text = "1.0";
-            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = "8.0";
-            VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = "0.25";
-            VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = "1.0";
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text = "1.5";
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperMaxDuration.Text = "10.0";
+           // VoiceWizardWindow.MainFormGlobal.textBoxWhisperDropSilence.Text = "0.25";
+            VoiceWizardWindow.MainFormGlobal.textBoxWhisperPauseDuration.Text = "0.01";
+            VoiceWizardWindow.MainFormGlobal.textBoxMinVADDuration.Text = "0.3";
+            VoiceWizardWindow.MainFormGlobal.textBoxMinConfidence.Text = "0.5";
         }
 
 

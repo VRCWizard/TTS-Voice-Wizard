@@ -585,6 +585,8 @@
             button48 = new Button();
             textBoxReadFromTXTFile = new TextBox();
             groupBox38 = new GroupBox();
+            label223 = new Label();
+            textBoxMinVADDuration = new TextBox();
             label222 = new Label();
             rjToggleWhisperUseGPU = new OSCVRCWiz.RJControls.RJToggleButton();
             label221 = new Label();
@@ -732,6 +734,8 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
+            label224 = new Label();
+            textBoxMinConfidence = new TextBox();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -8801,6 +8805,10 @@
             // 
             // groupBox38
             // 
+            groupBox38.Controls.Add(label224);
+            groupBox38.Controls.Add(textBoxMinConfidence);
+            groupBox38.Controls.Add(label223);
+            groupBox38.Controls.Add(textBoxMinVADDuration);
             groupBox38.Controls.Add(label222);
             groupBox38.Controls.Add(rjToggleWhisperUseGPU);
             groupBox38.Controls.Add(label221);
@@ -8842,6 +8850,26 @@
             groupBox38.TabStop = false;
             groupBox38.Text = "Whisper.cpp Model (BIN file)";
             groupBox38.Enter += (this.groupBox38_Enter);
+            // 
+            // label223
+            // 
+            label223.AutoSize = true;
+            label223.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label223.ForeColor = Color.Snow;
+            label223.Location = new Point(338, 250);
+            label223.Name = "label223";
+            label223.Size = new Size(118, 15);
+            label223.TabIndex = 196;
+            label223.Text = "Min VAD Duration (s)";
+            // 
+            // textBoxMinVADDuration
+            // 
+            textBoxMinVADDuration.Location = new Point(338, 267);
+            textBoxMinVADDuration.Margin = new Padding(3, 2, 3, 2);
+            textBoxMinVADDuration.Name = "textBoxMinVADDuration";
+            textBoxMinVADDuration.Size = new Size(118, 23);
+            textBoxMinVADDuration.TabIndex = 195;
+            textBoxMinVADDuration.Text = "0.9";
             // 
             // label222
             // 
@@ -8948,7 +8976,7 @@
             // 
             label205.AutoSize = true;
             label205.ForeColor = Color.Snow;
-            label205.Location = new Point(250, 302);
+            label205.Location = new Point(372, 175);
             label205.Name = "label205";
             label205.Size = new Size(330, 15);
             label205.TabIndex = 184;
@@ -8958,7 +8986,7 @@
             // rjToggleVAD
             // 
             rjToggleVAD.AutoSize = true;
-            rjToggleVAD.Location = new Point(205, 300);
+            rjToggleVAD.Location = new Point(327, 173);
             rjToggleVAD.Margin = new Padding(3, 2, 3, 2);
             rjToggleVAD.MinimumSize = new Size(39, 16);
             rjToggleVAD.Name = "rjToggleVAD";
@@ -9063,7 +9091,7 @@
             button41.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button41.FlatStyle = FlatStyle.Flat;
             button41.ForeColor = Color.Snow;
-            button41.Location = new Point(338, 265);
+            button41.Location = new Point(597, 265);
             button41.Margin = new Padding(3, 2, 3, 2);
             button41.Name = "button41";
             button41.Size = new Size(50, 25);
@@ -9097,7 +9125,7 @@
             label142.AutoSize = true;
             label142.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label142.ForeColor = Color.Snow;
-            label142.Location = new Point(598, 280);
+            label142.Location = new Point(372, 122);
             label142.Name = "label142";
             label142.Size = new Size(116, 15);
             label142.TabIndex = 170;
@@ -9106,7 +9134,7 @@
             // 
             // textBoxWhisperDropSilence
             // 
-            textBoxWhisperDropSilence.Location = new Point(599, 297);
+            textBoxWhisperDropSilence.Location = new Point(373, 139);
             textBoxWhisperDropSilence.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperDropSilence.Name = "textBoxWhisperDropSilence";
             textBoxWhisperDropSilence.Size = new Size(111, 23);
@@ -10808,6 +10836,26 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
+            // label224
+            // 
+            label224.AutoSize = true;
+            label224.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label224.ForeColor = Color.Snow;
+            label224.Location = new Point(473, 250);
+            label224.Name = "label224";
+            label224.Size = new Size(116, 15);
+            label224.TabIndex = 198;
+            label224.Text = "Min Avg Confidence";
+            // 
+            // textBoxMinConfidence
+            // 
+            textBoxMinConfidence.Location = new Point(473, 267);
+            textBoxMinConfidence.Margin = new Padding(3, 2, 3, 2);
+            textBoxMinConfidence.Name = "textBoxMinConfidence";
+            textBoxMinConfidence.Size = new Size(118, 23);
+            textBoxMinConfidence.TabIndex = 197;
+            textBoxMinConfidence.Text = "0.5";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -11648,7 +11696,7 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleBothLanguages;
         private Label label208;
         public TextBox textBoxCustomTranslationOuput;
-        public TextBox textBox2;
+        public TextBox textBoxMinVADDuration;
         private Label label209;
         public TextBox textBoxSilenceScale;
         private Label label211;
@@ -11682,6 +11730,9 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleWhisperUseGPU;
         private Label label221;
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleWhisperContinuous;
+        private Label label223;
+        private Label label224;
+        public TextBox textBoxMinConfidence;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

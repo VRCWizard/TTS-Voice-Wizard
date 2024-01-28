@@ -441,6 +441,10 @@ namespace OSCVRCWiz
            VoiceWizardWindow.MainFormGlobal.rjToggleWhisperUseGPU.Checked = Settings1.Default.whisperUseGPU;
             VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked = Settings1.Default.whisperContinuous;
 
+            VoiceWizardWindow.MainFormGlobal.textBoxMinVADDuration.Text = Settings1.Default.whisperValidDuration;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxMinConfidence.Text = Settings1.Default.whisperConfidence;
+
 
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;
