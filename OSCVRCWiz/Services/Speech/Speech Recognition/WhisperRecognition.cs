@@ -110,6 +110,7 @@ namespace OSCVRCWiz.Speech_Recognition
             }
             totalBytes = 0;
             rawDataArray = new byte[0];
+            waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
             waveIn.StartRecording();
             silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
             silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
@@ -171,6 +172,7 @@ namespace OSCVRCWiz.Speech_Recognition
                             recordingTaskCompletionSource2 = new TaskCompletionSource<bool>();
                             totalBytes = 0;
                             rawDataArray = new byte[0];
+                            waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
                             waveIn.StartRecording();
                             silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
                             silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
