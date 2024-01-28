@@ -656,7 +656,7 @@ namespace OSCVRCWiz.Speech_Recognition
             if (!File.Exists(GgmlModelFileName))
             {
                 OutputText.outputLog("[No Model Found. Auto installing selected Whisper model. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.Red);
-                Task.Run(() => WhisperRecognition.downloadWhisperModel());
+                WhisperRecognition.downloadWhisperModel();
                 return false;
             }
             else
