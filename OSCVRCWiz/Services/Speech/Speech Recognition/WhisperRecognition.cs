@@ -58,11 +58,12 @@ namespace OSCVRCWiz.Speech_Recognition
         static double maxDuration = 10;//10 seconds
         static DateTime silenceGracePeriodInitialisationTime;
         static DateTime silenceMaxDurationPeriodInitialisationTime;
-
+       
         static bool WhisperEnabled = false;
 
 
         static private Stopwatch stopwatch;
+        static private Stopwatch stopwatchClipDuration;
 
         private static CancellationTokenSource whisperCt = new();
 
@@ -70,6 +71,7 @@ namespace OSCVRCWiz.Speech_Recognition
         public static async void startUp()
         {
             stopwatch = new Stopwatch();
+            stopwatchClipDuration = new Stopwatch();
 
             waveIn = new WaveInEvent();
             waveIn.DataAvailable += waveIn_DataAvailable;
@@ -95,6 +97,8 @@ namespace OSCVRCWiz.Speech_Recognition
             {
                 if (!VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked) { DoSpeech.speechToTextOffSound(); }
                 waveIn.StopRecording();
+                stopwatchClipDuration.Stop();
+
                 recording = false;
                 if (!VoiceWizardWindow.MainFormGlobal.rjToggleWhisperContinuous.Checked)
                 {
@@ -137,6 +141,8 @@ namespace OSCVRCWiz.Speech_Recognition
             isDetecting = false;
             voiceDetected = false;
             recording = true;
+            stopwatchClipDuration.Reset();
+            stopwatchClipDuration.Start();
             waveIn.StartRecording();
             silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
             silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
@@ -162,16 +168,16 @@ namespace OSCVRCWiz.Speech_Recognition
 
                     //can not dispose of this before it has chance to trancribe or will cause un-catchable app crash (access violation)
                     OutputText.outputLog("[Stopping Whisper... Please Wait");
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                   /* if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                     {
                         OutputText.outputLog("[Waiting for Whisper to finish transcribing]");
-                    }
+                    }*/
                     await recordingTaskCompletionSource2.Task;
 
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                  /*  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                     {
                         OutputText.outputLog("[Disposing of Whisper factory and processor from memory]");
-                    }
+                    }*/
                     //   Task.Delay(1000);
                     whisperFactory?.Dispose();
                     whisperProcessor?.Dispose();
@@ -199,13 +205,21 @@ namespace OSCVRCWiz.Speech_Recognition
                 {
                     OutputText.outputLog("[Whisper Listening (Continuous)]");
                     DoSpeech.speechToTextOnSound();
-                    WhisperEnabled = true;
+                    if (CheckForModel())
+                    {
+                        WhisperEnabled = true;
+                    }
+                    else
+                    {
+                        WhisperEnabled = false;
+                        OutputText.outputLog("[Whisper Stopped Listening]");
+                        DoSpeech.speechToTextOffSound();
+                    }
                     // InitialiseLocalTranscription();
 
                     while (WhisperEnabled)
                     {
-                        if (CheckForModel())
-                        {
+                       
 
 
                             minDuration = (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxWhisperMinDuration.Text.ToString(), CultureInfo.InvariantCulture); //1
@@ -224,20 +238,17 @@ namespace OSCVRCWiz.Speech_Recognition
                             totalBytes = 0;
                             rawDataArray = new byte[0];
                             waveIn.DeviceNumber = AudioDevices.getCurrentInputDevice();
-                            waveIn.StartRecording();
+                        stopwatchClipDuration.Reset();
+                        stopwatchClipDuration.Start();
+                        waveIn.StartRecording();
                             silenceGracePeriodInitialisationTime = DateTime.Now.AddSeconds(minDuration);
                             silenceMaxDurationPeriodInitialisationTime = DateTime.Now.AddSeconds(maxDuration);
-
 
 
                             await recordingTaskCompletionSource2.Task;
 
 
-                        }
-                        else
-                        {
-                            WhisperEnabled = false;
-                        }
+                       
                         // await recordingTaskCompletionSource2.Task;
 
 
@@ -256,15 +267,16 @@ namespace OSCVRCWiz.Speech_Recognition
 
                     OutputText.outputLog("[Stopping Whisper... Please Wait");
                     //can not dispose of this before it has chance to trancribe or will cause un-catchable app crash (access violation)
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                   /* if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                     {
                         OutputText.outputLog("[Waiting for Whisper to finish transcribing]");
-                    }
+                    }*/
                     await recordingTaskCompletionSource2.Task;
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                   /* if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                     {
                         OutputText.outputLog("[Disposing of Whisper factory and processor from memory]");
                     }
+                    */
                     //  await Task.Delay(5000);
                     whisperFactory?.Dispose();
                     whisperProcessor?.Dispose();
@@ -325,11 +337,13 @@ namespace OSCVRCWiz.Speech_Recognition
                     voiceDetected = true;
                     isDetecting = true;
                     startTime = DateTime.Now.TimeOfDay;//update on inital detect
-
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                  if (!whisperCt.Token.IsCancellationRequested)
+                  {
+                  VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                   {
                       VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.Green;
                   });
+                  }
                 }
                 // Update the end time constantly while detecting
                 endTime = DateTime.Now.TimeOfDay;
@@ -341,10 +355,15 @@ namespace OSCVRCWiz.Speech_Recognition
                 if (isDetecting)
                 {
                     isDetecting = false;
-                    VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    if (!whisperCt.Token.IsCancellationRequested)
                     {
-                        VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.White;
-                    });
+
+
+                        VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                        {
+                            VoiceWizardWindow.MainFormGlobal.labelVADIndicator.ForeColor = Color.White;
+                        });
+                    }
                     voiceActivationTimes.Add(new Tuple<TimeSpan, TimeSpan>(startTime, endTime));
                     startTime = DateTime.MinValue.TimeOfDay;
                     endTime = DateTime.MinValue.TimeOfDay;
@@ -425,8 +444,10 @@ namespace OSCVRCWiz.Speech_Recognition
 
                 using (WaveFileWriter waveWriter = new WaveFileWriter(new IgnoreDisposeStream(outputStream), new WaveFormat(16000, 16, 1)))
                 {
-
+                   
                     waveWriter.Write(rawDataArray, 0, totalBytes);
+                    
+                    
                     // waveWriter.Flush();
                     waveWriter.Dispose();
                 }
@@ -455,15 +476,24 @@ namespace OSCVRCWiz.Speech_Recognition
                         result = await TranscribeLocalAsync(outputStream);
                         stopwatch.Stop();
 
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked)
+                       /* if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonFilterNoiseWhisper.Checked)
                         {
                             result = purifyOutput(result);
-                        }
-                        if (result != "")
+                        }*/
+                        if (result == "" || result == " ")
                         {
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                             {
-                                OutputText.outputLog($"[Processing Time: {stopwatch.Elapsed.TotalSeconds} s]");
+                                OutputText.outputLog($"[No voice detected]", Color.DarkOrange);
+                            }
+                        }
+                        else 
+                        {
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                            {
+                                OutputText.outputLog($"[Processing Time: {Math.Round(stopwatch.Elapsed.TotalMilliseconds)} ms]", Color.Purple);
+                                OutputText.outputLog($"[Clip Duration: {Math.Round(stopwatchClipDuration.Elapsed.TotalMilliseconds)} ms]", Color.Purple);
+
                             }
 
                             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
@@ -478,7 +508,7 @@ namespace OSCVRCWiz.Speech_Recognition
                                 //stopwatch.Elapsed.TotalSeconds;
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                                 {
-                                    OutputText.outputLog($"[VAD Duration: {totalDurationOfAllSpeechMillis} ms]");
+                                    OutputText.outputLog($"[VAD Duration: {totalDurationOfAllSpeechMillis} ms]", Color.Purple);
                                 }
                                 TTSMessageQueue.QueueMessage(result, "Whisper");
                             }
@@ -487,17 +517,11 @@ namespace OSCVRCWiz.Speech_Recognition
                                 //OutputText.outputLog($"[voice detected for a total of {totalDurationOfAllSpeechMillis} ms]");
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                                 {
-                                    OutputText.outputLog($"[VAD Filtered: {result} Duration: {totalDurationOfAllSpeechMillis} ms]", Color.DarkOrange);
+                                    OutputText.outputLog($"[VAD Filtered: {result} VAD Duration: {totalDurationOfAllSpeechMillis} ms]", Color.DarkOrange);
                                 }
                             }
                         }
-                        else
-                        {
-                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
-                            {
-                                OutputText.outputLog($"[No voice detected]", Color.DarkOrange);
-                            }
-                        }
+                      
                     }
                     catch (Exception ex)
                     {
@@ -581,13 +605,20 @@ namespace OSCVRCWiz.Speech_Recognition
             string result = input;
 
             // Remove bracketed sections such as [ EMPTY ] and ( SILENCE )
+            //result = Regex.Replace(result, @"\[.*?\]|\(.*?\)", string.Empty);
             result = Regex.Replace(result, @"\[.*?\]|\(.*?\)", string.Empty);
+            result = Regex.Replace(result, @"\*.*?\*", string.Empty);
 
             // strip duplicated whitespace and any on the ends.
             result = result.Replace("[BLANK_AUDIO]", "");
             result = result.Replace("[MUSIC PLAYING]", "");
             result = result.Replace("  ", " ").Trim();
             result = result.Replace("  ", " ").Trim();
+            if(result.Contains("[")|| result.Contains("(") || result.Contains("【") || result.Contains("】"))
+            {
+                result = "";
+            }
+            result = result.Replace("\"", "");
             return result;
         }
 
@@ -618,19 +649,30 @@ namespace OSCVRCWiz.Speech_Recognition
                 // OutputText.outputLog($"Min Probability: {result.MinProbability}");
                 //  OutputText.outputLog($"Max Probability: {result.MaxProbability}");
                 //  OutputText.outputLog($"Text: {result.Text}");
-                if (result.Probability > (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxMinConfidence.Text.ToString(), CultureInfo.InvariantCulture))
+                string purified=purifyOutput(result.Text);
+                if (purified != " " && purified != "" && purified != " ." && purified != ".")
                 {
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                    if (result.Probability > (float)Convert.ToDouble(VoiceWizardWindow.MainFormGlobal.textBoxMinConfidence.Text.ToString(), CultureInfo.InvariantCulture))
                     {
-                        OutputText.outputLog($"[Result:'{result.Text}' Confidence: {result.Probability}]");
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                        {
+                            OutputText.outputLog($"[Result: {result.Text}]", Color.Purple);
+                            OutputText.outputLog($"[Confidence: {result.Probability}]", Color.Purple);
+                            OutputText.outputLog($"[Min: {result.MinProbability} Max: {result.MaxProbability}]", Color.Purple);
+                        }
+                        if(result.Text.Contains("Thank you") && (result.MaxProbability ==1))
+                        {
+                            OutputText.outputLog($"[Known Hallucination Prevented: {result.Text}]", Color.Green);
+                            return "";
+                        }
+                        textResult += result.Text + " ";
                     }
-                    textResult += result.Text + " ";
-                }
-                else
-                {
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                    else
                     {
-                        OutputText.outputLog($"[Confidence Filtered: '{result.Text}' Confidence: {result.Probability}]", Color.DarkOrange);
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+                        {
+                            OutputText.outputLog($"[Confidence Filtered: '{result.Text}' Confidence: {result.Probability} Min: {result.MinProbability} Max: {result.MaxProbability}]]", Color.DarkOrange);
+                        }
                     }
                 }
             }
@@ -642,7 +684,7 @@ namespace OSCVRCWiz.Speech_Recognition
         {
             GgmlModelFileName = VoiceWizardWindow.MainFormGlobal.whisperModelTextBox.Text;
             FileInfo fInfo = new FileInfo(GgmlModelFileName);
-            if (fInfo.Exists)
+           /* if (fInfo.Exists)
             {
                 long lengthInBytes = fInfo.Length;
 
@@ -651,11 +693,11 @@ namespace OSCVRCWiz.Speech_Recognition
                 {
                     File.Delete(GgmlModelFileName);
                 }
-            }
+            }*/
 
             if (!File.Exists(GgmlModelFileName))
             {
-                OutputText.outputLog("[No Model Found. Auto installing selected Whisper model. To download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.Red);
+                OutputText.outputLog("[No Model Found. Attempting to auto installing selected Whisper model. To manually download higher accuracy Whisper model navigate to Speech Provider > Local > Whisper.cpp Model and download/select a bigger model]", Color.Red);
                 WhisperRecognition.downloadWhisperModel();
                 return false;
             }
@@ -675,10 +717,10 @@ namespace OSCVRCWiz.Speech_Recognition
             {
                 previousLangcode = langcode;
                 previousModel = GgmlModelFileName;
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
+              /*  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonWhisperFilterInLog.Checked)
                 {
                     OutputText.outputLog($"[Disposing of Whisper Factory and Processor from memory and rebuilding]");
-                }
+                }*/
                 whisperFactory?.Dispose();
                 whisperProcessor?.Dispose();
                 whisperFactory = null;
@@ -696,7 +738,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     string appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                     string dllPath = System.IO.Path.Combine(appPath, "runtimes", "win-x64", "whisper.dll");
                     // OutputText.outputLog("Attempting to load dll at " + dllPath);
-                    whisperFactory = WhisperFactory.FromPath(GgmlModelFileName, libraryPath: dllPath, useGpu: VoiceWizardWindow.MainFormGlobal.rjToggleWhisperUseGPU.Checked);
+                    whisperFactory = WhisperFactory.FromPath(GgmlModelFileName, libraryPath: dllPath, useGpu:true);
                 }
                 catch (Exception ex)
                 {

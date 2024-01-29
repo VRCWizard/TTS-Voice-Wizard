@@ -447,7 +447,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="WhisperFilterLog" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="modHotkeyQuick" Type="System.String" Scope="User">
       <Value Profile="(Default)">Control</Value>

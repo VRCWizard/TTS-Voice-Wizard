@@ -585,6 +585,8 @@
             button48 = new Button();
             textBoxReadFromTXTFile = new TextBox();
             groupBox38 = new GroupBox();
+            label224 = new Label();
+            textBoxMinConfidence = new TextBox();
             label223 = new Label();
             textBoxMinVADDuration = new TextBox();
             label222 = new Label();
@@ -734,8 +736,6 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
-            label224 = new Label();
-            textBoxMinConfidence = new TextBox();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -8851,12 +8851,32 @@
             groupBox38.Text = "Whisper.cpp Model (BIN file)";
             groupBox38.Enter += (this.groupBox38_Enter);
             // 
+            // label224
+            // 
+            label224.AutoSize = true;
+            label224.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label224.ForeColor = Color.Snow;
+            label224.Location = new Point(474, 235);
+            label224.Name = "label224";
+            label224.Size = new Size(116, 15);
+            label224.TabIndex = 198;
+            label224.Text = "Min Avg Confidence";
+            // 
+            // textBoxMinConfidence
+            // 
+            textBoxMinConfidence.Location = new Point(474, 252);
+            textBoxMinConfidence.Margin = new Padding(3, 2, 3, 2);
+            textBoxMinConfidence.Name = "textBoxMinConfidence";
+            textBoxMinConfidence.Size = new Size(118, 23);
+            textBoxMinConfidence.TabIndex = 197;
+            textBoxMinConfidence.Text = "0.5";
+            // 
             // label223
             // 
             label223.AutoSize = true;
             label223.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label223.ForeColor = Color.Snow;
-            label223.Location = new Point(338, 250);
+            label223.Location = new Point(339, 235);
             label223.Name = "label223";
             label223.Size = new Size(118, 15);
             label223.TabIndex = 196;
@@ -8864,7 +8884,7 @@
             // 
             // textBoxMinVADDuration
             // 
-            textBoxMinVADDuration.Location = new Point(338, 267);
+            textBoxMinVADDuration.Location = new Point(339, 252);
             textBoxMinVADDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxMinVADDuration.Name = "textBoxMinVADDuration";
             textBoxMinVADDuration.Size = new Size(118, 23);
@@ -8875,18 +8895,19 @@
             // 
             label222.AutoSize = true;
             label222.ForeColor = Color.Snow;
-            label222.Location = new Point(53, 191);
+            label222.Location = new Point(298, 141);
             label222.Name = "label222";
             label222.Size = new Size(52, 15);
             label222.TabIndex = 194;
             label222.Text = "Use GPU";
+            label222.Visible = false;
             // 
             // rjToggleWhisperUseGPU
             // 
             rjToggleWhisperUseGPU.AutoSize = true;
             rjToggleWhisperUseGPU.Checked = true;
             rjToggleWhisperUseGPU.CheckState = CheckState.Checked;
-            rjToggleWhisperUseGPU.Location = new Point(8, 189);
+            rjToggleWhisperUseGPU.Location = new Point(253, 139);
             rjToggleWhisperUseGPU.Margin = new Padding(3, 2, 3, 2);
             rjToggleWhisperUseGPU.MinimumSize = new Size(39, 16);
             rjToggleWhisperUseGPU.Name = "rjToggleWhisperUseGPU";
@@ -8897,12 +8918,13 @@
             rjToggleWhisperUseGPU.Size = new Size(39, 16);
             rjToggleWhisperUseGPU.TabIndex = 193;
             rjToggleWhisperUseGPU.UseVisualStyleBackColor = true;
+            rjToggleWhisperUseGPU.Visible = false;
             // 
             // label221
             // 
             label221.AutoSize = true;
             label221.ForeColor = Color.Snow;
-            label221.Location = new Point(53, 162);
+            label221.Location = new Point(53, 154);
             label221.Name = "label221";
             label221.Size = new Size(136, 15);
             label221.TabIndex = 192;
@@ -8913,7 +8935,7 @@
             rjToggleWhisperContinuous.AutoSize = true;
             rjToggleWhisperContinuous.Checked = true;
             rjToggleWhisperContinuous.CheckState = CheckState.Checked;
-            rjToggleWhisperContinuous.Location = new Point(8, 160);
+            rjToggleWhisperContinuous.Location = new Point(8, 152);
             rjToggleWhisperContinuous.Margin = new Padding(3, 2, 3, 2);
             rjToggleWhisperContinuous.MinimumSize = new Size(39, 16);
             rjToggleWhisperContinuous.Name = "rjToggleWhisperContinuous";
@@ -8930,7 +8952,7 @@
             label215.AutoSize = true;
             label215.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label215.ForeColor = Color.Snow;
-            label215.Location = new Point(605, 190);
+            label215.Location = new Point(629, 172);
             label215.Name = "label215";
             label215.Size = new Size(80, 15);
             label215.TabIndex = 190;
@@ -8939,7 +8961,7 @@
             // 
             // textBoxWhisperVADOffset
             // 
-            textBoxWhisperVADOffset.Location = new Point(605, 207);
+            textBoxWhisperVADOffset.Location = new Point(629, 189);
             textBoxWhisperVADOffset.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperVADOffset.Name = "textBoxWhisperVADOffset";
             textBoxWhisperVADOffset.Size = new Size(96, 23);
@@ -9003,18 +9025,18 @@
             // 
             label146.AutoSize = true;
             label146.ForeColor = Color.Snow;
-            label146.Location = new Point(53, 221);
+            label146.Location = new Point(53, 190);
             label146.Name = "label146";
-            label146.Size = new Size(192, 15);
+            label146.Size = new Size(102, 15);
             label146.TabIndex = 182;
-            label146.Text = "Filtered/Debug Text Appears in Log";
+            label146.Text = "Debug Text in Log";
             // 
             // rjToggleButtonWhisperFilterInLog
             // 
             rjToggleButtonWhisperFilterInLog.AutoSize = true;
             rjToggleButtonWhisperFilterInLog.Checked = true;
             rjToggleButtonWhisperFilterInLog.CheckState = CheckState.Checked;
-            rjToggleButtonWhisperFilterInLog.Location = new Point(8, 220);
+            rjToggleButtonWhisperFilterInLog.Location = new Point(8, 189);
             rjToggleButtonWhisperFilterInLog.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonWhisperFilterInLog.MinimumSize = new Size(39, 16);
             rjToggleButtonWhisperFilterInLog.Name = "rjToggleButtonWhisperFilterInLog";
@@ -9091,7 +9113,7 @@
             button41.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button41.FlatStyle = FlatStyle.Flat;
             button41.ForeColor = Color.Snow;
-            button41.Location = new Point(597, 265);
+            button41.Location = new Point(598, 250);
             button41.Margin = new Padding(3, 2, 3, 2);
             button41.Name = "button41";
             button41.Size = new Size(50, 25);
@@ -9105,7 +9127,7 @@
             label144.AutoSize = true;
             label144.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label144.ForeColor = Color.Snow;
-            label144.Location = new Point(225, 250);
+            label144.Location = new Point(226, 235);
             label144.Name = "label144";
             label144.Size = new Size(107, 15);
             label144.TabIndex = 172;
@@ -9113,7 +9135,7 @@
             // 
             // textBoxWhisperPauseDuration
             // 
-            textBoxWhisperPauseDuration.Location = new Point(225, 267);
+            textBoxWhisperPauseDuration.Location = new Point(226, 252);
             textBoxWhisperPauseDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperPauseDuration.Name = "textBoxWhisperPauseDuration";
             textBoxWhisperPauseDuration.Size = new Size(96, 23);
@@ -9147,7 +9169,7 @@
             label41.AutoSize = true;
             label41.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label41.ForeColor = Color.Snow;
-            label41.Location = new Point(115, 250);
+            label41.Location = new Point(116, 235);
             label41.Name = "label41";
             label41.Size = new Size(95, 15);
             label41.TabIndex = 168;
@@ -9155,7 +9177,7 @@
             // 
             // textBoxWhisperMaxDuration
             // 
-            textBoxWhisperMaxDuration.Location = new Point(116, 267);
+            textBoxWhisperMaxDuration.Location = new Point(117, 252);
             textBoxWhisperMaxDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperMaxDuration.Name = "textBoxWhisperMaxDuration";
             textBoxWhisperMaxDuration.Size = new Size(94, 23);
@@ -9167,7 +9189,7 @@
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label40.ForeColor = Color.Snow;
-            label40.Location = new Point(7, 250);
+            label40.Location = new Point(8, 235);
             label40.Name = "label40";
             label40.Size = new Size(93, 15);
             label40.TabIndex = 166;
@@ -9175,7 +9197,7 @@
             // 
             // textBoxWhisperMinDuration
             // 
-            textBoxWhisperMinDuration.Location = new Point(7, 267);
+            textBoxWhisperMinDuration.Location = new Point(8, 252);
             textBoxWhisperMinDuration.Margin = new Padding(3, 2, 3, 2);
             textBoxWhisperMinDuration.Name = "textBoxWhisperMinDuration";
             textBoxWhisperMinDuration.Size = new Size(93, 23);
@@ -9186,18 +9208,19 @@
             // 
             label121.AutoSize = true;
             label121.ForeColor = Color.Snow;
-            label121.Location = new Point(53, 132);
+            label121.Location = new Point(417, 194);
             label121.Name = "label121";
             label121.Size = new Size(214, 15);
             label121.TabIndex = 164;
             label121.Text = "Filter Sounds (typing, clicking, tapping)";
+            label121.Visible = false;
             // 
             // rjToggleButtonFilterNoiseWhisper
             // 
             rjToggleButtonFilterNoiseWhisper.AutoSize = true;
             rjToggleButtonFilterNoiseWhisper.Checked = true;
             rjToggleButtonFilterNoiseWhisper.CheckState = CheckState.Checked;
-            rjToggleButtonFilterNoiseWhisper.Location = new Point(8, 130);
+            rjToggleButtonFilterNoiseWhisper.Location = new Point(372, 192);
             rjToggleButtonFilterNoiseWhisper.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonFilterNoiseWhisper.MinimumSize = new Size(39, 16);
             rjToggleButtonFilterNoiseWhisper.Name = "rjToggleButtonFilterNoiseWhisper";
@@ -9208,6 +9231,7 @@
             rjToggleButtonFilterNoiseWhisper.Size = new Size(39, 16);
             rjToggleButtonFilterNoiseWhisper.TabIndex = 163;
             rjToggleButtonFilterNoiseWhisper.UseVisualStyleBackColor = true;
+            rjToggleButtonFilterNoiseWhisper.Visible = false;
             // 
             // whisperLink
             // 
@@ -10835,26 +10859,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label224
-            // 
-            label224.AutoSize = true;
-            label224.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label224.ForeColor = Color.Snow;
-            label224.Location = new Point(473, 250);
-            label224.Name = "label224";
-            label224.Size = new Size(116, 15);
-            label224.TabIndex = 198;
-            label224.Text = "Min Avg Confidence";
-            // 
-            // textBoxMinConfidence
-            // 
-            textBoxMinConfidence.Location = new Point(473, 267);
-            textBoxMinConfidence.Margin = new Padding(3, 2, 3, 2);
-            textBoxMinConfidence.Name = "textBoxMinConfidence";
-            textBoxMinConfidence.Size = new Size(118, 23);
-            textBoxMinConfidence.TabIndex = 197;
-            textBoxMinConfidence.Text = "0.5";
             // 
             // VoiceWizardWindow
             // 
