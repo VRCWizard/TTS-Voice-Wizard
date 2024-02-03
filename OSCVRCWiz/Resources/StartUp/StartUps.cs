@@ -50,6 +50,7 @@ namespace OSCVRCWiz.Resources.StartUp
             VRChatListener.initiateTimer();
             SpotifyAddon.initiateTimer();
             WhisperRecognition.initiateWhisper();
+            VoiceWizardProRecognition.deepgramStartup();
             ToastNotification.initiateTimer();
             
 
