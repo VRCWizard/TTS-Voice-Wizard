@@ -13,13 +13,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static async Task TikTokTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
-            // if ("tiktokvoice.mp3" == null)
-            //   throw new NullReferenceException("Output path is null");
-            //text = FormatInputText(text);
-          
-
-
-
             byte[] result = null;
             try
             {

@@ -546,8 +546,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 CodeChallenge = challenge,
                 Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
             };
-            //  System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
-            // BrowserUtil.Open(loginRequest.ToUri());
+
 
             string url = loginRequest.ToUri().ToString();
             Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });//this link doesnt like the other method

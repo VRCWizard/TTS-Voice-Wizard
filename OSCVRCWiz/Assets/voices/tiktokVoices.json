@@ -336,10 +336,6 @@
     "name": "Laizza (Portuguese)"
   },
   {
-    "voice_id": "pt_male_transformer",
-    "name": "Optimus Prime (Portuguese)"
-  },
-  {
     "voice_id": "es_002",
     "name": "Spanish Male"
   },
@@ -358,10 +354,6 @@
   {
     "voice_id": "es_mx_002",
     "name": "Álex (Warm) (Mexican)"
-  },
-  {
-    "voice_id": "es_mx_male_transformer",
-    "name": "Optimus Prime (Mexican)"
   },
   {
     "voice_id": "es_mx_female_supermom",

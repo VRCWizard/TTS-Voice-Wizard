@@ -17,14 +17,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static async Task ElevenLabsTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
-            // if ("tiktokvoice.mp3" == null)
-            //   throw new NullReferenceException("Output path is null");
-            //text = FormatInputText(text);
-
             var voiceID = voiceDict.FirstOrDefault(x => x.Value == TTSMessageQueued.Voice).Key;
-            //  byte[] result = await CallTikTokAPIAsync(text, voice);
-            //  File.WriteAllBytes("TikTokTTS.mp3", result);          
-            //  Task.Run(() => PlayAudioHelper());
 
             MemoryStream memoryStream = new MemoryStream();
 
@@ -37,11 +30,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, true, AudioFormat.Mp3);
             memoryStream.Dispose();
 
-
-
-
-
-            //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());v
         }
 
         public static async Task<Stream> CallElevenLabsAPIAsync(string textIn, string voice)
@@ -105,8 +93,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 request.Headers.Add("xi-api-key", apiKey);
                 request.Headers.Add("Accept", "audio/mpeg");
 
-                //  var data = "{\"text\":\"" + text + "\"}";
-
                 HttpResponseMessage response = await client.SendAsync(request);
 
                 Debug.WriteLine("Eleven Response:" + response.StatusCode);
@@ -114,7 +100,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 if (!response.IsSuccessStatusCode)
                 {
 
-                    //  System.Diagnostics.Debug.WriteLine("Eleven Response:" + response.StatusCode);
                     string json = response.Content.ReadAsStringAsync().Result.ToString();
 
                     dynamic data = JsonConvert.DeserializeObject(json);
@@ -158,6 +143,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         }
 
 
+
+
         public static void CallElevenVoices()
         {
             try
@@ -185,8 +172,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                         using (var streamReader = new StreamReader(stream))
                         {
                             var result = streamReader.ReadToEnd();
-                            // var dataHere = JObject.Parse(result.ToString()).SelectToken("data").ToString();
-                            // audioInBase64 = dataHere.ToString();
 
                             Debug.WriteLine(result.ToString());
                             var json = result.ToString();
@@ -197,19 +182,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                     }
                 }
-                /*foreach (KeyValuePair<string, string> kvp in dict)
-                  {
-                      Console.WriteLine("Voice ID: " + kvp.Key + ", Name: " + kvp.Value);
-                  }*/
 
-                // System.Diagnostics.Debug.WriteLine(audioInBase64);
-                // return Convert.FromBase64String(audioInBase64);
                 elevenFirstLoad = false;
             }
             catch (Exception ex)
             {
                 OutputText.outputLog("[ElevenLabs Voice Load Error: " + ex.Message + "]", Color.Red);
-                OutputText.outputLog("[You appear to be using an incorrect ElevenLabs Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/ElevenLabs-TTS ]", Color.DarkOrange);
+                OutputText.outputLog("[You appear to be using an incorrect ElevenLabs Key, make sure to follow the setup guide: https://ttsvoicewizard.com/docs/TTSMethods/ElevenLabs ]", Color.DarkOrange);
                 TTSMessageQueue.PlayNextInQueue();
 
             }
@@ -261,8 +240,71 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
         }
 
-
-
+        public class ElevenLabsModel
+        {
+            public string model_id { get; set; }
 
         }
+
+        static List<string> modelList;
+
+
+        //not all models are text to speech models, check for "can_do_text_to_speech" too before adding feature
+        //https://elevenlabs.io/docs/api-reference/get-models
+        public static void CallElevenGetModels()//function to give the id of eleven lab models not used yet
+        {
+            try
+            {
+
+                //modified from https://github.com/connorbutler44/bingbot/blob/main/Service/ElevenLabsTextToSpeechService.cs
+
+
+                var url = $"https://api.elevenlabs.io/v1/models";
+                var apiKey = Settings1.Default.elevenLabsAPIKey;
+
+
+
+
+
+                WebRequest request = WebRequest.Create(url);
+                request.Method = "GET";
+                request.Headers.Add("xi-api-key", apiKey);
+                using (WebResponse response = request.GetResponse())
+                {
+
+                    using (Stream stream = response.GetResponseStream())
+                    {
+
+                        using (var streamReader = new StreamReader(stream))
+                        {
+                            var result = streamReader.ReadToEnd();
+
+                            Debug.WriteLine(result.ToString());
+                            var json = result.ToString();
+
+                            List<ElevenLabsModel> models = JsonConvert.DeserializeObject<List<ElevenLabsModel>>(json);
+                            foreach (var model in models)
+                            {
+                                modelList.Add(model.model_id);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[ElevenLabs Models Load Error: " + ex.Message + "]", Color.Red);
+                OutputText.outputLog("[You appear to be using an incorrect ElevenLabs Key, make sure to follow the setup guide: https://ttsvoicewizard.com/docs/TTSMethods/ElevenLabs ]", Color.DarkOrange);
+
+            }
+
+        }
+
+    
+
+
+
+
+    }
 }

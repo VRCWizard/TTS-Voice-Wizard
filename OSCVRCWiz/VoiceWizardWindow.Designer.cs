@@ -9486,7 +9486,7 @@
             comboBoxLabsModelID.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxLabsModelID.FlatStyle = FlatStyle.Flat;
             comboBoxLabsModelID.FormattingEnabled = true;
-            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2" });
+            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2" });
             comboBoxLabsModelID.Location = new Point(21, 40);
             comboBoxLabsModelID.Margin = new Padding(3, 2, 3, 2);
             comboBoxLabsModelID.Name = "comboBoxLabsModelID";
