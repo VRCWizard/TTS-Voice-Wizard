@@ -281,6 +281,37 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     }
                 });
             }
+            catch (APIException e)
+            {
+                if (e.Message != previousError) 
+                {
+                    OutputText.outputLog("Spotify API Exception: " + e.Message + "Status Code: " + e.Response?.StatusCode, Color.Red);
+                }
+                previousError = e.Message;
+                try
+                {
+                    if (e.InnerException != null)
+                    {
+                        OutputText.outputLog("Spotify API Inner Exception: " + e.InnerException?.Message + "Status Code: "+e.Response?.StatusCode, Color.Red);
+                    }
+
+                }
+                catch { }
+
+                OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
+
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+
+
+                    if (VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor != Color.Red)
+                    {
+                        VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Red;
+                    }
+                });
+
+
+            }
             catch (Exception ex)
             {
 
@@ -299,13 +330,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APIException' was thrown.")//only say these once, dont spam them
                     {
-                        OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
+                        OutputText.outputLog("Spotify Exception: " + ex.Message, Color.Red);
                         previousError = ex.Message.ToString();
                         try
                         {
                             if (ex.InnerException != null)
                             {
-                                OutputText.outputLog("Spotify API Inner Exception: " + ex.InnerException.Message, Color.Red);
+                                OutputText.outputLog("Spotify Inner Exception: " + ex.InnerException.Message, Color.Red);
                             }
 
                         }

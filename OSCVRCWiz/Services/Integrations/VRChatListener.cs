@@ -227,7 +227,7 @@ namespace OSCVRCWiz.Services.Integrations
                     }
                 }
 
-
+                bool SentValue = false;
                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOutputVRCCountersOnContact.Checked == true && VoiceWizardWindow.MainFormGlobal.button33.Enabled == false)
                 {
 
@@ -282,17 +282,23 @@ namespace OSCVRCWiz.Services.Integrations
                                     break;
                             }
 
-                            var theString = textBoxes[i].Text.ToString();
-                            theString = theString.Replace("{counter}", counters[i].ToString());
+                            if (!SentValue)//so it can only happen once per tick to prevent timeout
+                            {
+                                SentValue = true;
+                                var theString = textBoxes[i].Text.ToString();
+                                theString = theString.Replace("{counter}", counters[i].ToString());
 
-                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
-                            {
-                                Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, OutputText.DisplayTextType.Counters));
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && OSCListener.pauseBPM != true)
+                                {
+                                    Task.Run(() => OutputText.outputVRChatSpeechBubbles(theString, OutputText.DisplayTextType.Counters));
+                                }
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
+                                {
+                                    Task.Run(() => OutputText.outputVRChat(theString, OutputText.DisplayTextType.Counters, i));
+                                }
                             }
-                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && OSCListener.pauseBPM != true)
-                            {
-                                Task.Run(() => OutputText.outputVRChat(theString, OutputText.DisplayTextType.Counters,i));
-                            }
+
+                           
                         }
                     }
 
