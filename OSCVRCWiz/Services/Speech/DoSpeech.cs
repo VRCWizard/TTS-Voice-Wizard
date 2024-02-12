@@ -417,19 +417,38 @@ namespace OSCVRCWiz.Services.Speech
                     }
 
 
-
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
+                    if (TTSMessageQueued.chatboxOverride == false)
                     {
-                        OSCListener.pauseBPM = true;
-                        SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
+
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
+                        }
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
+
+                        }
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
+                    else
                     {
-                        OSCListener.pauseBPM = true;
-                        SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
-
+                        if(TTSMessageQueued.useKAT)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
+                        }
+                        if(TTSMessageQueued.useChatbox)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
+                        }
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true && TTSMessageQueued.TTSMode == "No TTS")
                     {

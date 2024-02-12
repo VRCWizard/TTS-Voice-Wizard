@@ -21,6 +21,9 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
             public int Speed;
             public string STTMode;
             public string AzureTranslateText;
+            public bool chatboxOverride;
+            public bool useChatbox;
+            public bool useKAT;
         }
         public static void Enqueue(TTSMessage message)
         {
@@ -68,12 +71,13 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
 
         }
 
-        public static void QueueMessage(string text, string STTMode, string AzureTranslate = "[ERROR]")
+        public static void QueueMessage(string text, string STTMode, string AzureTranslate = "[ERROR]",bool chatboxOverride = false, bool useChatbox = true, bool useKAT = true)
         {
-            try {
-                if(text ==null)
+            try
+            {
+                if (text == null)
                 {
-                    OutputText.outputLog("[Message Queue Error: No text found",Color.Red);
+                    OutputText.outputLog("[Message Queue Error: No text found", Color.Red);
                     return;
                 }
                 text = text.Replace("\n", "");
@@ -129,6 +133,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
                     TTSMessageQueued.TranslateLang = VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.Text.ToString();
                     TTSMessageQueued.STTMode = STTMode;
                     TTSMessageQueued.AzureTranslateText = AzureTranslate;
+                    TTSMessageQueued.chatboxOverride = chatboxOverride;
+                    if (chatboxOverride == true)
+                    {
+                        TTSMessageQueued.useChatbox = useChatbox;
+                        TTSMessageQueued.useKAT = useKAT;
+                    }
                 });
                 if (STTMode == "Text")
                 {
@@ -142,7 +152,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
                     }
 
                 }
-                else {
+                else
+                {
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true)
                     {
 
@@ -166,16 +177,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
             catch (Exception ex)
             {
                 OutputText.outputLog("[TTS Queue Message Error: " + ex.Message + "]", Color.Red);
-            {
-               
-            }
-        }
+                {
 
+                }
             }
 
-   
-
-
-
         }
+
+
+
+
+
+    }
 }

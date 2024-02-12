@@ -10,19 +10,23 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
     public class ElevenLabsTTS
     {
+        
 
         private static readonly HttpClient client = new HttpClient();
         public static Dictionary<string, string> voiceDict = null;
         public static bool elevenFirstLoad = true;
         public static async Task ElevenLabsTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
-
+            Stopwatch stopwatch = new Stopwatch();
             var voiceID = voiceDict.FirstOrDefault(x => x.Value == TTSMessageQueued.Voice).Key;
 
             MemoryStream memoryStream = new MemoryStream();
 
+           // stopwatch.Start();
             Task<Stream> streamTask = CallElevenLabsAPIAsync(TTSMessageQueued.text, voiceID);
             Stream stream = streamTask.Result;
+           // stopwatch.Stop();
+          //  OutputText.outputLog($"Processing/Response time:{stopwatch.ElapsedMilliseconds}");
 
             AmazonPollyTTS.WriteSpeechToStream(stream, memoryStream);
 
