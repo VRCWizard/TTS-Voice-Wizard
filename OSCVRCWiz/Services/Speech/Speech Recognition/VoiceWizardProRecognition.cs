@@ -23,6 +23,19 @@ namespace OSCVRCWiz.Speech_Recognition
         private static int frameSize;
         public static CancellationTokenSource deepgramCt = new();
 
+
+        public static void deepgramStartup()
+        {
+
+            vad = new WebRtcVad()
+            {
+                OperatingMode = OperatingMode.HighQuality,
+                FrameLength = frameLength,
+                SampleRate = SampleRate.Is16kHz,
+            };
+            frameSize = (int)vad.SampleRate / 1000 * 2 * (int)frameLength;
+        }
+
         public static async Task doRecognition(string apiKey,bool calibrating)
         {
             try
@@ -311,13 +324,9 @@ namespace OSCVRCWiz.Speech_Recognition
             bool validAudioClip = false;
             TimeSpan startTime = DateTime.MinValue.TimeOfDay;
             TimeSpan endTime = DateTime.MinValue.TimeOfDay;
-            vad = new WebRtcVad()
-            {
-                OperatingMode = VADMode,
-                FrameLength = frameLength,
-                SampleRate = SampleRate.Is16kHz,
-            };
-            frameSize = (int)vad.SampleRate / 1000 * 2 * (int)frameLength;
+
+            vad.OperatingMode = VADMode;
+           
 
             // Set up the silence detection
             int silenceThreshold = 1000; // bigger number = less sensative to noise // if set to 2000 it will end earlier because it can't hear me talking

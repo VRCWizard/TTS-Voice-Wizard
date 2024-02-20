@@ -2,6 +2,7 @@
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
+using Swan;
 
 
 
@@ -421,6 +422,23 @@ namespace OSCVRCWiz.Services.Integrations
                         if (messageReceived.Address == "/TTSVoiceWizard/TextToSpeech")//OSCListener TTS
                         {
                             var text = messageReceived.Arguments[0].ToString();
+                            bool useChatbox = true;
+                            bool useKAT = true;
+                            bool chatboxOverride = false;
+                            try
+                            {
+                                if (messageReceived.Arguments[1] != null && messageReceived.Arguments[2] != null)
+                                {
+                                    
+                                    useChatbox = messageReceived.Arguments[1].ToBoolean();
+                                    useKAT = messageReceived.Arguments[2].ToBoolean();
+                                    chatboxOverride = true;
+                                }
+                            }
+                            catch
+                            {
+
+                            }
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
                             {
                                 var forwardData = new OscMessage("/TTSVoiceWizard/TextToSpeech", text);
@@ -428,7 +446,7 @@ namespace OSCVRCWiz.Services.Integrations
                             }
                             //Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "OSCListener"));
 
-                            TTSMessageQueue.QueueMessage(text, "OSCListener");
+                            TTSMessageQueue.QueueMessage(text, "OSCListener", chatboxOverride: chatboxOverride, useChatbox: useChatbox, useKAT: useKAT);
 
 
 

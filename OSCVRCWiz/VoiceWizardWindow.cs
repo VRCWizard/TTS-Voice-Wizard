@@ -2240,7 +2240,7 @@ namespace OSCVRCWiz
 
         private void iconButton39_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener");
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/category/osc-listener");
         }
         private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
         {

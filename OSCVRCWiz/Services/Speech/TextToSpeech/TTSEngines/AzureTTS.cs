@@ -520,7 +520,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             {
                 //  MessageBox.Show("No valid subscription key given or speech service has been disabled; " + ex.Message.ToString());
                 OutputText.outputLog("[Azure Error: " + ex.Message + "]", Color.Red);
-                OutputText.outputLog("[You may be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                OutputText.outputLog("[You may be missing an Azure Key, make sure to follow the setup guide: https://ttsvoicewizard.com/docs/TTSMethods/AzureTTS ]", Color.DarkOrange);
                 TTSMessageQueue.PlayNextInQueue();
             }
         }

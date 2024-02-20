@@ -95,7 +95,7 @@ namespace OSCVRCWiz.Services.Speech
                     if ((AzureRecognition.YourSubscriptionKey == "" && selectedTTSMode == "Azure") && VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked != true)
                     {
                         //  var ot = new OutputText();
-                        OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://ttsvoicewizard.com/docs/TTSMethods/AzureTTS ]", Color.DarkOrange);
                     }
                     VoiceCommands.MainDoVoiceCommand(TTSMessageQueued.text);
                     if (selectedTTSMode == "Azure" && VoiceWizardWindow.MainFormGlobal.rjToggleButtonStyle.Checked == true)
@@ -417,19 +417,38 @@ namespace OSCVRCWiz.Services.Speech
                     }
 
 
-
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
+                    if (TTSMessageQueued.chatboxOverride == false)
                     {
-                        OSCListener.pauseBPM = true;
-                        SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
+
+
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOSC.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSKAT.Checked == false)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
+                        }
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
+
+                        }
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonNoTTSChat.Checked == false)
+                    else
                     {
-                        OSCListener.pauseBPM = true;
-                        SpotifyAddon.pauseSpotify = true;
-                        Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
-
+                        if(TTSMessageQueued.useKAT)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChat(writeText, OutputText.DisplayTextType.TextToSpeech));
+                        }
+                        if(TTSMessageQueued.useChatbox)
+                        {
+                            OSCListener.pauseBPM = true;
+                            SpotifyAddon.pauseSpotify = true;
+                            Task.Run(() => OutputText.outputVRChatSpeechBubbles(writeText, OutputText.DisplayTextType.TextToSpeech)); //original
+                        }
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonQueueSystem.Checked == true && TTSMessageQueued.TTSMode == "No TTS")
                     {
@@ -588,7 +607,7 @@ namespace OSCVRCWiz.Services.Speech
                         case "Azure":
                             if (AzureRecognition.YourSubscriptionKey == "")
                             {
-                                OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Azure-Speech-Service ]", Color.DarkOrange);
+                                OutputText.outputLog("[You appear to be missing an Azure Key, make sure to follow the setup guide: https://ttsvoicewizard.com/docs/TTSMethods/AzureTTS ]", Color.DarkOrange);
                             }
                             if (AzureRecognition.YourSubscriptionKey != "")
                             {

@@ -281,6 +281,37 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     }
                 });
             }
+            catch (APIException e)
+            {
+                if (e.Message != previousError) 
+                {
+                    OutputText.outputLog("Spotify API Exception: " + e.Message + "Status Code: " + e.Response?.StatusCode, Color.Red);
+                }
+                previousError = e.Message;
+                try
+                {
+                    if (e.InnerException != null)
+                    {
+                        OutputText.outputLog("Spotify API Inner Exception: " + e.InnerException?.Message + "Status Code: "+e.Response?.StatusCode, Color.Red);
+                    }
+
+                }
+                catch { }
+
+                OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
+
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+
+
+                    if (VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor != Color.Red)
+                    {
+                        VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Red;
+                    }
+                });
+
+
+            }
             catch (Exception ex)
             {
 
@@ -299,13 +330,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APIException' was thrown.")//only say these once, dont spam them
                     {
-                        OutputText.outputLog("Spotify API Exception: " + ex.Message, Color.Red);
+                        OutputText.outputLog("Spotify Exception: " + ex.Message, Color.Red);
                         previousError = ex.Message.ToString();
                         try
                         {
                             if (ex.InnerException != null)
                             {
-                                OutputText.outputLog("Spotify API Inner Exception: " + ex.InnerException.Message, Color.Red);
+                                OutputText.outputLog("Spotify Inner Exception: " + ex.InnerException.Message, Color.Red);
                             }
 
                         }
@@ -546,8 +577,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 CodeChallenge = challenge,
                 Scope = new[] { Scopes.UserReadCurrentlyPlaying, Scopes.UserReadPlaybackState }
             };
-            //  System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Media-Setup");
-            // BrowserUtil.Open(loginRequest.ToUri());
+
 
             string url = loginRequest.ToUri().ToString();
             Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });//this link doesnt like the other method
@@ -770,7 +800,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
         static string DisplayProgressBar(int circlePosition, int progressBarLength, string emoji)
         {
-            string bar = "|";
+            //string bar = "┣";
+            string bar = "\u2523";
 
 
             for (int i = 0; i < progressBarLength; i++)
@@ -781,11 +812,15 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 }
                 else
                 {
-                    bar += "-";
+                    // bar += "-";
+                    // bar += "\u2014";
+                    // bar += "━";
+                    bar += "\u2501";
+                   
                 }
             }
-
-            bar += "|";
+            bar += "\u252B";
+           // bar += "┫";
             return bar;
         }
 
