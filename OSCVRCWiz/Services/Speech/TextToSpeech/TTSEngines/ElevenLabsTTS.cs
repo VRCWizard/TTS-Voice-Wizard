@@ -17,7 +17,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static bool elevenFirstLoad = true;
         public static async Task ElevenLabsTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
-            Stopwatch stopwatch = new Stopwatch();
+           // Stopwatch stopwatch = new Stopwatch(); //forgot to get rid of this in v1.6.6.8
             var voiceID = voiceDict.FirstOrDefault(x => x.Value == TTSMessageQueued.Voice).Key;
 
             MemoryStream memoryStream = new MemoryStream();

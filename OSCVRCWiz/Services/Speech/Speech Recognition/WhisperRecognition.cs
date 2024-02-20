@@ -371,19 +371,9 @@ namespace OSCVRCWiz.Speech_Recognition
                 context = model.createContext();
 
 
-
-
                 cla.apply(ref context.parameters);
-                //stopwatch.Stop();
-               // TimeSpan elapsedTime = stopwatch.Elapsed;
-                //OutputText.outputLog($"Time 1: {elapsedTime.TotalMilliseconds} ms");
-               // stopwatch.Restart();
                 WhisperAllowStop = false;
                 ctt = new CaptureThread(cla, context, captureDev);
-               // stopwatch.Stop();
-              //  elapsedTime = stopwatch.Elapsed;
-             //   OutputText.outputLog($"Time 2: {elapsedTime.TotalMilliseconds} ms");
-
                 Thread.Sleep(500);
                 WhisperAllowStop = true;
 
@@ -396,6 +386,9 @@ namespace OSCVRCWiz.Speech_Recognition
 
                 //context.timingsPrint();
                 OutputText.outputLog("[Whisper Stopped]");
+                //model.Dispose();
+               // context.
+               //ctt.
                 return 0;
               }
             catch (Exception ex)

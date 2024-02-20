@@ -800,7 +800,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
         static string DisplayProgressBar(int circlePosition, int progressBarLength, string emoji)
         {
-            string bar = "|";
+            //string bar = "┣";
+            string bar = "\u2523";
 
 
             for (int i = 0; i < progressBarLength; i++)
@@ -811,11 +812,15 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 }
                 else
                 {
-                    bar += "-";
+                    // bar += "-";
+                    // bar += "\u2014";
+                    // bar += "━";
+                    bar += "\u2501";
+                   
                 }
             }
-
-            bar += "|";
+            bar += "\u252B";
+           // bar += "┫";
             return bar;
         }
 
