@@ -165,8 +165,16 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             progressHours = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs).ToString(@"hh\:mm\:ss");
                             durationHours = new TimeSpan(0, 0, 0, 0, m_currentTrack.DurationMs).ToString(@"hh\:mm\:ss");
 
+
                             album = m_currentTrack.Album.Name.ToString();
-                            albumArtist = m_currentTrack.Album.Artists[0].ToString();
+                            try
+                            {
+                                albumArtist = m_currentTrack.Album.Artists[0].ToString();
+                            }
+                            catch 
+                            {
+                                albumArtist = artist;
+                            }
                         }
                     }
                     if ((lastSong != title || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPeriodic.Checked == true || playOnce) && !string.IsNullOrWhiteSpace(title) && title != "" && pauseSpotify != true)
@@ -330,20 +338,23 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                     if (previousError != "The access token expired" && previousError != "String is empty or null (Parameter 'clientId')" && previousError != "Exception of type 'SpotifyAPI.Web.APIException' was thrown.")//only say these once, dont spam them
                     {
-                        OutputText.outputLog("Spotify Exception: " + ex.Message, Color.Red);
+                        var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
+                       // OutputText.outputLog("Spotify Exception: " + ex.Message, Color.Red);
                         previousError = ex.Message.ToString();
                         try
                         {
                             if (ex.InnerException != null)
                             {
-                                OutputText.outputLog("Spotify Inner Exception: " + ex.InnerException.Message, Color.Red);
+                                errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
+                               // OutputText.outputLog("Spotify Inner Exception: " + ex.InnerException.Message, Color.Red);
                             }
 
                         }
                         catch { }
+                        OutputText.outputLog("Spotify Exception: " + errorMsg, Color.Red);
                         // if (ex.Message.Contains("The access token expired"))
                         // {
-                        OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
+                       // OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
 
                         VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                         {
