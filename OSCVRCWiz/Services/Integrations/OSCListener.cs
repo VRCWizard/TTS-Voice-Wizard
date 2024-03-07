@@ -1,6 +1,5 @@
 ﻿using CoreOSC;
 using OSCVRCWiz.Resources.StartUp.StartUp;
-using OSCVRCWiz.Services.Integrations.Media;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Text;
 using Swan;
@@ -447,7 +446,7 @@ namespace OSCVRCWiz.Services.Integrations
                             }
                             //Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "OSCListener"));
 
-                            TTSMessageQueue.QueueMessage(text, "OSCListener: Text to Speech", chatboxOverride: chatboxOverride, useChatbox: useChatbox, useKAT: useKAT);
+                            TTSMessageQueue.QueueMessage(text, "OSCListener-TTS", chatboxOverride: chatboxOverride, useChatbox: useChatbox, useKAT: useKAT);
 
 
 
@@ -465,7 +464,7 @@ namespace OSCVRCWiz.Services.Integrations
 
 
                         }
-                        if (messageReceived.Address == "/TTSVoiceWizard/TextToText")//OSCListener T2T
+                        if (messageReceived.Address == "/TTSVoiceWizard/TextToText")//OSCListener TTT
                         {
                             var text = messageReceived.Arguments[0].ToString();
                             bool useChatbox = true;
@@ -483,52 +482,34 @@ namespace OSCVRCWiz.Services.Integrations
                             }
                             catch
                             {
-                                System.Diagnostics.Debug.WriteLine("****-------*****--------Received a message! null arguments");
-                            }
 
-                            // Directly output to Chatbox or KAT without using the TTSMessageQueue.
-                            if (chatboxOverride == false)
-                            {
-                                if (useChatbox)
-                                {
-                                    OSCListener.pauseBPM = true;
-                                    SpotifyAddon.pauseSpotify = true;
-                                    Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, OutputText.DisplayTextType.TextToText)); // Assuming TextToText is a valid DisplayTextType for your needs
-                                }
-                                if (useKAT)
-                                {
-                                    OSCListener.pauseBPM = true;
-                                    SpotifyAddon.pauseSpotify = true;
-                                    Task.Run(() => OutputText.outputVRChat(text, OutputText.DisplayTextType.TextToText)); // Assuming TextToText is a valid DisplayTextType for your needs
-                                }
                             }
-                            else
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonForwardData.Checked == true)
                             {
-                                if (useChatbox)
-                                {
-                                    OSCListener.pauseBPM = true;
-                                    SpotifyAddon.pauseSpotify = true;
-                                    Task.Run(() => OutputText.outputVRChatSpeechBubbles(text, OutputText.DisplayTextType.TextToText)); // Directly using chatbox method with override
-                                }
-                                if (useKAT)
-                                {
-                                    OSCListener.pauseBPM = true;
-                                    SpotifyAddon.pauseSpotify = true;
-                                    Task.Run(() => OutputText.outputVRChat(text, OutputText.DisplayTextType.TextToText)); // Directly using KAT method with override
-                                }
+                                var forwardData = new OscMessage("/TTSVoiceWizard/TextToText", text);
+                                OSC.OSCSender.Send(forwardData);
                             }
+                            //Task.Run(() => VoiceWizardWindow.MainFormGlobal.MainDoTTS(text, "OSCListener"));
+
+                            TTSMessageQueue.QueueMessage(text, "OSCListener-NoTTS", chatboxOverride: chatboxOverride, useChatbox: useChatbox, useKAT: useKAT);
+
+
 
                             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                             {
                                 if (VoiceWizardWindow.MainFormGlobal.groupBoxOSCtoTTS.ForeColor != Color.Green)
                                 {
-                                    VoiceWizardWindow.MainFormGlobal.groupBoxOSCtoTTS.ForeColor = Color.Green; // Ensure correct control is referenced for color update
+                                    VoiceWizardWindow.MainFormGlobal.groupBoxOSCtoTTS.ForeColor = Color.Green;
+                                    VoiceWizardWindow.MainFormGlobal.labelOSCtoTTS.ForeColor = Color.Green;
                                 }
                             });
+
+
+
+
+
                         }
-
                     }
-
                     catch
                     {
                         System.Diagnostics.Debug.WriteLine("****-------*****--------Received a message! null address");
