@@ -3124,7 +3124,11 @@ namespace OSCVRCWiz
 
 
 
-       
+
+        private void tabHeartBeat_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

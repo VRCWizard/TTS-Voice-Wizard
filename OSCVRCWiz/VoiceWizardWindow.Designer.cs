@@ -228,6 +228,7 @@
             labelRight = new Label();
             groupBoxOSCtoTTS = new GroupBox();
             labelOSCtoTTS = new Label();
+            labelOSCtoT2T = new Label();
             groupBoxControllers = new GroupBox();
             ControllerLabel = new Label();
             groupBoxHeartrate = new GroupBox();
@@ -3780,6 +3781,7 @@
             // 
             // groupBoxOSCtoTTS
             // 
+            groupBoxOSCtoTTS.Controls.Add(labelOSCtoT2T);
             groupBoxOSCtoTTS.Controls.Add(labelOSCtoTTS);
             groupBoxOSCtoTTS.ForeColor = Color.Red;
             groupBoxOSCtoTTS.Location = new Point(419, 490);
@@ -3787,16 +3789,25 @@
             groupBoxOSCtoTTS.Size = new Size(322, 105);
             groupBoxOSCtoTTS.TabIndex = 111;
             groupBoxOSCtoTTS.TabStop = false;
-            groupBoxOSCtoTTS.Text = "OSC to TTS";
+            groupBoxOSCtoTTS.Text = "OSC To TTS/T2T";
             // 
             // labelOSCtoTTS
             // 
             labelOSCtoTTS.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOSCtoTTS.Location = new Point(17, 32);
+            labelOSCtoTTS.Location = new Point(17, 27);
             labelOSCtoTTS.Name = "labelOSCtoTTS";
             labelOSCtoTTS.Size = new Size(257, 21);
             labelOSCtoTTS.TabIndex = 0;
             labelOSCtoTTS.Text = "/TTSVoiceWizard/TextToSpeech";
+            // 
+            // labelOSCtoT2T
+            // 
+            labelOSCtoT2T.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelOSCtoT2T.Location = new Point(17, 57);
+            labelOSCtoT2T.Name = "labelOSCtoT2T";
+            labelOSCtoT2T.Size = new Size(257, 21);
+            labelOSCtoT2T.TabIndex = 1;
+            labelOSCtoT2T.Text = "/TTSVoiceWizard/TextToText";
             // 
             // groupBoxControllers
             // 
@@ -11331,6 +11342,7 @@
         public Button button33;
         public GroupBox groupBoxOSCtoTTS;
         public Label labelOSCtoTTS;
+        public Label labelOSCtoT2T;
         private Label label40;
         public TextBox textBoxWhisperMinDuration;
         private Label label144;
