@@ -460,6 +460,23 @@
         2zl21V2b/fnyzNbs72fW/mPuLya75Zb/H9o2AKz2p0UuAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>594, 17</value>
+  </metadata>
+  <data name="button9.ToolTip" xml:space="preserve">
+    <value>Variable to create a stylish progress bar. The 'E' can be any emoji or string for text and represents the pointer. The 'L" is the length of the progressbar, a length of 13 is the max size for a line of the VRChat chatbox.</value>
+  </data>
+  <data name="label122.ToolTip" xml:space="preserve">
+    <value>When this toggle is enabled Windows Media Mode will not be initialized on program launch and will become unusable.
+Requires restarting the application.
+This setting may be used if you believe windows media mode may be causing crashing.</value>
+  </data>
+  <data name="rjToggleButtonDisableWindowsMedia.ToolTip" xml:space="preserve">
+    <value>When this toggle is enabled Windows Media Mode will not be initialized on program launch and will become unusable.
+Requires restarting the application.
+This setting may be used if you believe windows media mode may be causing crashing.
+</value>
+  </data>
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABXAAAADaCAYAAAAPMGqBAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

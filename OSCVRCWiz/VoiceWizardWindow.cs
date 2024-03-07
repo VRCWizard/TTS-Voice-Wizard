@@ -871,6 +871,23 @@ namespace OSCVRCWiz
 
                     break;
 
+                case "Deepgram Aura (Pro Only)":
+                    DoSpeech.TTSModeSaved = "Deepgram Aura (Pro Only)";
+                    DeepgramAuraTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+                    comboBoxTranslationLanguage.Enabled = true;
+                    comboBoxAccentSelect.Enabled = true;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+
+                    if (textBoxWizardProKey.Text.ToString() == "")
+                    {
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
+                    }
+
+
+                    break;
+
                 case "Uberduck":
                     DoSpeech.TTSModeSaved = "Uberduck";
                     UberDuckTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
@@ -1161,6 +1178,11 @@ namespace OSCVRCWiz
             if (DoSpeech.TTSModeSaved == "IBM Watson (Pro Only)")
             {
                 IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString());
+
+            }
+            if (DoSpeech.TTSModeSaved == "Deepgram Aura (Pro Only)")
+            {
+                DeepgramAuraTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString());
 
             }
 
@@ -2120,6 +2142,12 @@ namespace OSCVRCWiz
         {
             string currentText = textBoxCustomSpot.Text.ToString();
             currentText = currentText + "{nline}";
+            textBoxCustomSpot.Text = currentText;
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "{progressBar E:◯ L:13}";
             textBoxCustomSpot.Text = currentText;
         }
 
@@ -3125,10 +3153,6 @@ namespace OSCVRCWiz
 
 
 
-        private void tabHeartBeat_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 
