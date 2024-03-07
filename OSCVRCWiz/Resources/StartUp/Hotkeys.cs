@@ -27,9 +27,9 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
             Alt = 1,
             Control = 2,
             Shift = 4,
-            WinKey = 8
+            WinKey = 8,
+            Norepeat = 0x4000
         }
-
 
 
         public static string modifierKeySTTTS = "Control";
@@ -127,7 +127,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
             Keys normKey;
             Enum.TryParse(normalKey, out normKey);
 
-            RegisterHotKey(VoiceWizardWindow.MainFormGlobal.Handle, id, (int)modkey, normKey.GetHashCode());
+            RegisterHotKey(VoiceWizardWindow.MainFormGlobal.Handle, id, (int)modkey | (int)KeyModifier.Norepeat, normKey.GetHashCode());
         }
 
         public static void CatchHotkey(ref Message m)
