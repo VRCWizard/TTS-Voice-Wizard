@@ -7020,39 +7020,6 @@
         "WordsPerMinute": "225"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxuanNeural)",
-        "DisplayName": "Xiaoxuan",
-        "LocalName": "\u6653\u8431",
-        "ShortName": "zh-CN-XiaoxuanNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "LocaleName": "Chinese (Mandarin, Simplified)",
-        "StyleList": [
-            "calm",
-            "fearful",
-            "cheerful",
-            "disgruntled",
-            "serious",
-            "angry",
-            "gentle",
-            "depressed"
-        ],
-        "SampleRateHertz": "48000",
-        "VoiceType": "Neural",
-        "Status": "GA",
-        "RolePlayList": [
-            "YoungAdultFemale",
-            "YoungAdultMale",
-            "OlderAdultFemale",
-            "OlderAdultMale",
-            "SeniorFemale",
-            "SeniorMale",
-            "Girl",
-            "Boy"
-        ],
-        "WordsPerMinute": "273"
-    },
-    {
         "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoyanNeural)",
         "DisplayName": "Xiaoyan",
         "LocalName": "\u6653\u989c",
