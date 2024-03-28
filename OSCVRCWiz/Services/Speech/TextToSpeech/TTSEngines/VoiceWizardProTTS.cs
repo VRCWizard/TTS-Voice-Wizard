@@ -73,6 +73,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     Task.Run(() => IBMWatsonTTS.WatsonPlayAudio(audioString, TTSMessageQueued, ct));
 
                     break;
+                case "Deepgram Aura (Pro Only)":
+                    // code to execute when expression is equal to value2
+                    Task.Run(() => DeepgramAuraTTS.AuraPlayAudio(audioString, TTSMessageQueued, ct));
+
+                    break;
                 /*case "Uberduck (Pro Only)":
                     // code to execute when expression is equal to value2
                     Task.Run(() => UberDuckTTS.UberPlayAudio(audioString, TTSMessageQueued, ct));*/

@@ -9,6 +9,15 @@
     "proCode": "af"
   },
   {
+    "name": "Albanian",
+    "sourceName": "Albanian [sq-AL]",
+    "targetName": "Albanian [sq]",
+    "azureCode": "sq-AL",
+    "whisperCode": "",
+    "deepLCode": "",
+    "proCode": "sq"
+  },
+  {
     "name": "Arabic",
     "sourceName": "Arabic [ar-EG]",
     "targetName": "Arabic [ar]",

@@ -65,6 +65,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 switch (fromLanguageFullname)
                 {
                     case "Afrikaans [af]": localList.Add("af-ZA"); break;
+
+                    case "Albanian [sq]": localList.Add("sq-AL"); break;
                     case "Arabic [ar]":
                            localList.Add("ar-AE");
 
@@ -548,7 +550,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
             var voiceAccents = new List<string>()
                     {
-                       "Afrikaans [af]",
+                        "Afrikaans [af]",
+                        "Albanian [sq]",
                         "Arabic [ar]",
                         "Armenian [hy]",
                         "Azerbaijani [az]",

@@ -1,4 +1,5 @@
-﻿using OSCVRCWiz.Services.Text;
+﻿using OSCVRCWiz.Services.Integrations;
+using OSCVRCWiz.Services.Text;
 using System.Windows.Shapes;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech
@@ -122,7 +123,15 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
                     TTSMessageQueued.text = text;
-                    TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                    if(STTMode == "OSCListener-NoTTS") 
+                    {
+                        TTSMessageQueued.TTSMode = "No TTS";
+                    }
+                    else
+                    {
+                        TTSMessageQueued.TTSMode = VoiceWizardWindow.MainFormGlobal.comboBoxTTSMode.Text.ToString();
+                    }
+                   
                     TTSMessageQueued.Voice = VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Text.ToString();
                     TTSMessageQueued.Accent = VoiceWizardWindow.MainFormGlobal.comboBoxAccentSelect.Text.ToString();
                     TTSMessageQueued.Style = VoiceWizardWindow.MainFormGlobal.comboBoxStyleSelect.Text.ToString();

@@ -62,11 +62,12 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 📹 For a more detailed look at the app's features, check out the [Demonstration Video](https://youtu.be/wBRUcx9EWes) (although it's a bit outdated)
 
 ## GETTING STARTED
-<a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.6.4/TTSVoiceWizard-v1.6.4-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
+<a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.6.7.1/TTSVoiceWizard-v1.6.7.1-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
 -  ### **Please read the [Quickstart Guide](https://ttsvoicewizard.com/docs/getting-started/gettingStarted)** or watch the [Tutorial Video](https://youtu.be/Q4kaXcA74Bo) for instructions on how to set up the basic features of TTS Voice Wizard. 
 
 
-<a href="https://youtu.be/Q4kaXcA74Bo"><img alt="Getting Started with TTS Voice Wizard" src="https://cdn.discordapp.com/attachments/719824324973821972/1108809206125043832/Screenshot_2023-05-18_004402.png"></a>
+<a href="https://youtu.be/Q4kaXcA74Bo"><img alt="Getting Started with TTS Voice Wizard" src="https://github.com/VRCWizard/TTS-Voice-Wizard/assets/101527472/68b5676c-5fe3-4de0-8e6d-057c1436f836.png"></a>
+
 
 ## Requirements
 - Windows 10/11 (compatibility not guarenteed with older version of Windows)

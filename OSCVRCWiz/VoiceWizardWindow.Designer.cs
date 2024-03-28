@@ -134,6 +134,7 @@
             tabSpotify = new TabPage();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             groupBox5 = new GroupBox();
+            button9 = new Button();
             button21 = new Button();
             button22 = new Button();
             buttonExportMedia = new FontAwesome.Sharp.IconButton();
@@ -228,7 +229,6 @@
             labelRight = new Label();
             groupBoxOSCtoTTS = new GroupBox();
             labelOSCtoTTS = new Label();
-            labelOSCtoT2T = new Label();
             groupBoxControllers = new GroupBox();
             ControllerLabel = new Label();
             groupBoxHeartrate = new GroupBox();
@@ -729,6 +729,7 @@
             openFileDialog1 = new OpenFileDialog();
             logPanel = new Panel();
             button45 = new Button();
+            toolTip1 = new ToolTip(components);
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -1829,7 +1830,7 @@
             comboBoxTTSMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTTSMode.ForeColor = Color.Black;
             comboBoxTTSMode.FormattingEnabled = true;
-            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Moonbase", "TikTok", "Uberduck", "VoiceForge", "Locally Hosted", "No TTS" });
+            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Deepgram Aura (Pro Only)", "Moonbase", "TikTok", "Uberduck", "VoiceForge", "Locally Hosted", "No TTS" });
             comboBoxTTSMode.Location = new Point(18, 21);
             comboBoxTTSMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -2458,6 +2459,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(button9);
             groupBox5.Controls.Add(button21);
             groupBox5.Controls.Add(button22);
             groupBox5.Controls.Add(buttonExportMedia);
@@ -2497,18 +2499,35 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "General Media Settings";
             // 
+            // button9
+            // 
+            button9.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button9.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.ForeColor = Color.Snow;
+            button9.Location = new Point(664, 74);
+            button9.Margin = new Padding(3, 2, 3, 2);
+            button9.Name = "button9";
+            button9.Size = new Size(25, 25);
+            button9.TabIndex = 161;
+            button9.Text = "⌛️";
+            toolTip1.SetToolTip(button9, resources.GetString("button9.ToolTip"));
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += (this.button9_Click);
+            // 
             // button21
             // 
             button21.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             button21.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button21.FlatStyle = FlatStyle.Flat;
             button21.ForeColor = Color.Snow;
-            button21.Location = new Point(705, 74);
+            button21.Location = new Point(695, 74);
             button21.Margin = new Padding(3, 2, 3, 2);
             button21.Name = "button21";
             button21.Size = new Size(25, 25);
             button21.TabIndex = 160;
-            button21.Text = "\U0001f90f";
+            button21.Text = "↕️";
+            toolTip1.SetToolTip(button21, "Variable used to create a newline in the chatbox.");
             button21.UseVisualStyleBackColor = false;
             button21.Click += (this.button21_Click);
             // 
@@ -2679,12 +2698,13 @@
             volumeStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             volumeStats.FlatStyle = FlatStyle.Flat;
             volumeStats.ForeColor = Color.Snow;
-            volumeStats.Location = new Point(610, 74);
+            volumeStats.Location = new Point(601, 106);
             volumeStats.Margin = new Padding(3, 2, 3, 2);
             volumeStats.Name = "volumeStats";
             volumeStats.Size = new Size(25, 25);
             volumeStats.TabIndex = 140;
             volumeStats.Text = "🔊";
+            toolTip1.SetToolTip(volumeStats, "The current volume percent of your music (Spotify only).");
             volumeStats.UseVisualStyleBackColor = false;
             volumeStats.Click += (this.button14_Click);
             // 
@@ -2909,12 +2929,13 @@
             heartRateStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             heartRateStats.FlatStyle = FlatStyle.Flat;
             heartRateStats.ForeColor = Color.Snow;
-            heartRateStats.Location = new Point(674, 74);
+            heartRateStats.Location = new Point(664, 106);
             heartRateStats.Margin = new Padding(3, 2, 3, 2);
             heartRateStats.Name = "heartRateStats";
             heartRateStats.Size = new Size(25, 25);
             heartRateStats.TabIndex = 136;
             heartRateStats.Text = "💓";
+            toolTip1.SetToolTip(heartRateStats, "Used to output your heartrate. Check out the heartrate integration for further instructions.");
             heartRateStats.UseVisualStyleBackColor = false;
             heartRateStats.Click += (this.button22_Click);
             // 
@@ -2924,12 +2945,13 @@
             batteryStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             batteryStats.FlatStyle = FlatStyle.Flat;
             batteryStats.ForeColor = Color.Snow;
-            batteryStats.Location = new Point(643, 74);
+            batteryStats.Location = new Point(633, 106);
             batteryStats.Margin = new Padding(3, 2, 3, 2);
             batteryStats.Name = "batteryStats";
             batteryStats.Size = new Size(25, 25);
             batteryStats.TabIndex = 135;
             batteryStats.Text = "🔋";
+            toolTip1.SetToolTip(batteryStats, "Variables for the average battery life of your SteamVR Controllers and Trackers. Must be used in conjuction with XSOverlay, check TTSVoiceWizard.com for further instructions.");
             batteryStats.UseVisualStyleBackColor = false;
             batteryStats.Click += (this.button23_Click_1);
             // 
@@ -2939,12 +2961,13 @@
             durationStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             durationStats.FlatStyle = FlatStyle.Flat;
             durationStats.ForeColor = Color.Snow;
-            durationStats.Location = new Point(579, 74);
+            durationStats.Location = new Point(633, 74);
             durationStats.Margin = new Padding(3, 2, 3, 2);
             durationStats.Name = "durationStats";
             durationStats.Size = new Size(25, 25);
             durationStats.TabIndex = 134;
             durationStats.Text = "⏰";
+            toolTip1.SetToolTip(durationStats, "Variables for progress and duration of the current playing song.");
             durationStats.UseVisualStyleBackColor = false;
             durationStats.Click += (this.button21_Click_1);
             // 
@@ -2954,12 +2977,13 @@
             songStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             songStats.FlatStyle = FlatStyle.Flat;
             songStats.ForeColor = Color.Snow;
-            songStats.Location = new Point(547, 74);
+            songStats.Location = new Point(601, 74);
             songStats.Margin = new Padding(3, 2, 3, 2);
             songStats.Name = "songStats";
             songStats.Size = new Size(25, 25);
             songStats.TabIndex = 133;
             songStats.Text = "♫";
+            toolTip1.SetToolTip(songStats, "Variable for basic song info, including the playing status, song name, and artist.");
             songStats.UseVisualStyleBackColor = false;
             songStats.Click += (this.button20_Click_1);
             // 
@@ -3781,7 +3805,6 @@
             // 
             // groupBoxOSCtoTTS
             // 
-            groupBoxOSCtoTTS.Controls.Add(labelOSCtoT2T);
             groupBoxOSCtoTTS.Controls.Add(labelOSCtoTTS);
             groupBoxOSCtoTTS.ForeColor = Color.Red;
             groupBoxOSCtoTTS.Location = new Point(419, 490);
@@ -3789,25 +3812,16 @@
             groupBoxOSCtoTTS.Size = new Size(322, 105);
             groupBoxOSCtoTTS.TabIndex = 111;
             groupBoxOSCtoTTS.TabStop = false;
-            groupBoxOSCtoTTS.Text = "OSC To TTS/T2T";
+            groupBoxOSCtoTTS.Text = "OSC to TTS";
             // 
             // labelOSCtoTTS
             // 
             labelOSCtoTTS.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOSCtoTTS.Location = new Point(17, 27);
+            labelOSCtoTTS.Location = new Point(17, 32);
             labelOSCtoTTS.Name = "labelOSCtoTTS";
             labelOSCtoTTS.Size = new Size(257, 21);
             labelOSCtoTTS.TabIndex = 0;
             labelOSCtoTTS.Text = "/TTSVoiceWizard/TextToSpeech";
-            // 
-            // labelOSCtoT2T
-            // 
-            labelOSCtoT2T.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOSCtoT2T.Location = new Point(17, 57);
-            labelOSCtoT2T.Name = "labelOSCtoT2T";
-            labelOSCtoT2T.Size = new Size(257, 21);
-            labelOSCtoT2T.TabIndex = 1;
-            labelOSCtoT2T.Text = "/TTSVoiceWizard/TextToText";
             // 
             // groupBoxControllers
             // 
@@ -4240,7 +4254,7 @@
             iconButton50.Name = "iconButton50";
             iconButton50.Size = new Size(763, 75);
             iconButton50.TabIndex = 15;
-            iconButton50.Text = "Voice Wizard Pro - (Instant access to Azure, Amazon, and Google voices with one API key)";
+            iconButton50.Text = "Voice Wizard Pro - (Instant access to Azure, Amazon, Google and IBM voices)";
             iconButton50.TextAlign = ContentAlignment.MiddleLeft;
             iconButton50.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton50.UseVisualStyleBackColor = false;
@@ -5454,6 +5468,7 @@
             label201.Size = new Size(135, 15);
             label201.TabIndex = 165;
             label201.Text = "Delay Before Audio (ms)";
+            toolTip1.SetToolTip(label201, "A delay between sending text and playing TTS audio.");
             // 
             // textBoxDelayBeforeAudio
             // 
@@ -5498,6 +5513,7 @@
             button14.Size = new Size(155, 28);
             button14.TabIndex = 162;
             button14.Text = "Open Exports Folder";
+            toolTip1.SetToolTip(button14, "Folder for setting exports.");
             button14.UseVisualStyleBackColor = false;
             button14.Click += (this.button14_Click_2);
             // 
@@ -5514,6 +5530,7 @@
             rjToggleButtonAutoSend.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonAutoSend.Size = new Size(39, 16);
             rjToggleButtonAutoSend.TabIndex = 161;
+            toolTip1.SetToolTip(rjToggleButtonAutoSend, "Automatically sends a TTS Message when the Text to Speech text field is changed. Primary for use in quickly copy and pasting text.");
             rjToggleButtonAutoSend.UseVisualStyleBackColor = true;
             // 
             // label187
@@ -5526,6 +5543,7 @@
             label187.Size = new Size(171, 15);
             label187.TabIndex = 160;
             label187.Text = "Auto Send TTS (for copy/paste)";
+            toolTip1.SetToolTip(label187, "Automatically sends a TTS Message when the Text to Speech text field is changed. Primary for use in quickly copy and pasting text.");
             // 
             // label186
             // 
@@ -5537,6 +5555,7 @@
             label186.Size = new Size(191, 15);
             label186.TabIndex = 159;
             label186.Text = "Queue System: SSS Character Limit";
+            toolTip1.SetToolTip(label186, "The max character limit for Smart String Splitting. Note that 144 the the VR Chatbox character limit, so this can be used to make sure every message it shorter than that.");
             // 
             // textBoxSSSCharLimit
             // 
@@ -5546,6 +5565,7 @@
             textBoxSSSCharLimit.Size = new Size(110, 23);
             textBoxSSSCharLimit.TabIndex = 158;
             textBoxSSSCharLimit.Text = "295";
+            toolTip1.SetToolTip(textBoxSSSCharLimit, "The max character limit for Smart String Splitting. Note that 144 the the VR Chatbox character limit, so this can be used to make sure every message it shorter than that.");
             // 
             // label185
             // 
@@ -5557,6 +5577,7 @@
             label185.Size = new Size(201, 15);
             label185.TabIndex = 156;
             label185.Text = "Queue System: Smart String Splitting";
+            toolTip1.SetToolTip(label185, "Automatically break a message longer than the specified character limit into multiple messages.");
             // 
             // rjToggleButtonSmartStringSplit
             // 
@@ -5571,6 +5592,7 @@
             rjToggleButtonSmartStringSplit.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonSmartStringSplit.Size = new Size(39, 16);
             rjToggleButtonSmartStringSplit.TabIndex = 157;
+            toolTip1.SetToolTip(rjToggleButtonSmartStringSplit, "Automatically break a message longer than the specified character limit into multiple messages.");
             rjToggleButtonSmartStringSplit.UseVisualStyleBackColor = true;
             // 
             // rjToggleButtonRefocus
@@ -5617,6 +5639,7 @@
             button38.Size = new Size(155, 28);
             button38.TabIndex = 153;
             button38.Text = "Manually Save Config";
+            toolTip1.SetToolTip(button38, "Save your app settings manually. Note that TTS Voice Wizard will save settings on a successful close.");
             button38.UseVisualStyleBackColor = false;
             button38.Click += (this.button38_Click_1);
             // 
@@ -5728,6 +5751,7 @@
             label154.Size = new Size(194, 15);
             label154.TabIndex = 144;
             label154.Text = "Queue System: Use With Typed Text";
+            toolTip1.SetToolTip(label154, "Use the Queue System for typed messages.");
             // 
             // rjToggleButtonQueueTypedText
             // 
@@ -5742,6 +5766,7 @@
             rjToggleButtonQueueTypedText.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonQueueTypedText.Size = new Size(39, 16);
             rjToggleButtonQueueTypedText.TabIndex = 145;
+            toolTip1.SetToolTip(rjToggleButtonQueueTypedText, "Use the Queue System for typed messages.");
             rjToggleButtonQueueTypedText.UseVisualStyleBackColor = true;
             rjToggleButtonQueueTypedText.CheckedChanged += (this.rjToggleButtonQueueTypedText_CheckedChanged);
             // 
@@ -5755,6 +5780,7 @@
             label150.Size = new Size(214, 15);
             label150.TabIndex = 143;
             label150.Text = "Queue System: Delay After No TTS (ms)";
+            toolTip1.SetToolTip(label150, "Set the amount of time to wait for moving to the next message for \"No TTS\" Messages.");
             // 
             // label151
             // 
@@ -5766,6 +5792,7 @@
             label151.Size = new Size(261, 15);
             label151.TabIndex = 142;
             label151.Text = "Queue System: Delay Before Next in Queue (ms)";
+            toolTip1.SetToolTip(label151, "Add a delay before playing new TTS Messages");
             // 
             // textBoxQueueDelayBeforeNext
             // 
@@ -5775,6 +5802,7 @@
             textBoxQueueDelayBeforeNext.Size = new Size(110, 23);
             textBoxQueueDelayBeforeNext.TabIndex = 141;
             textBoxQueueDelayBeforeNext.Text = "0";
+            toolTip1.SetToolTip(textBoxQueueDelayBeforeNext, "Add a delay before playing new TTS Messages");
             textBoxQueueDelayBeforeNext.TextChanged += (this.textBoxQueueDelayBeforeNext_TextChanged);
             // 
             // textBoxDelayAfterNoTTS
@@ -5785,6 +5813,7 @@
             textBoxDelayAfterNoTTS.Size = new Size(110, 23);
             textBoxDelayAfterNoTTS.TabIndex = 140;
             textBoxDelayAfterNoTTS.Text = "5000";
+            toolTip1.SetToolTip(textBoxDelayAfterNoTTS, "Set the amount of time to wait for moving to the next message for \"No TTS\" Messages.");
             textBoxDelayAfterNoTTS.TextChanged += (this.textBoxDelayAfterNoTTS_TextChanged);
             // 
             // label79
@@ -5797,6 +5826,7 @@
             label79.Size = new Size(132, 15);
             label79.TabIndex = 138;
             label79.Text = "Message Queue System";
+            toolTip1.SetToolTip(label79, "The Message Queue System allows multiple TTS Messages to be queued and played after each other.");
             // 
             // rjToggleButtonQueueSystem
             // 
@@ -5811,6 +5841,7 @@
             rjToggleButtonQueueSystem.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonQueueSystem.Size = new Size(39, 16);
             rjToggleButtonQueueSystem.TabIndex = 139;
+            toolTip1.SetToolTip(rjToggleButtonQueueSystem, "The Message Queue System allows multiple TTS Messages to be queued and played after each other.");
             rjToggleButtonQueueSystem.UseVisualStyleBackColor = true;
             rjToggleButtonQueueSystem.CheckedChanged += (this.rjToggleButtonQueueSystem_CheckedChanged);
             // 
@@ -5827,6 +5858,7 @@
             button47.Size = new Size(155, 28);
             button47.TabIndex = 137;
             button47.Text = "Open Config Folder";
+            toolTip1.SetToolTip(button47, "Folder where app settings are stored.");
             button47.UseVisualStyleBackColor = false;
             button47.Click += (this.button47_Click);
             // 
@@ -5840,6 +5872,7 @@
             label28.Size = new Size(211, 15);
             label28.TabIndex = 132;
             label28.Text = "Stop Currently Playing TTS on New TTS";
+            toolTip1.SetToolTip(label28, "Upon playing a new TTS Message the currently playing message will be stopped.");
             // 
             // rjToggleButtonStopCurrentTTS
             // 
@@ -5854,6 +5887,7 @@
             rjToggleButtonStopCurrentTTS.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonStopCurrentTTS.Size = new Size(39, 16);
             rjToggleButtonStopCurrentTTS.TabIndex = 133;
+            toolTip1.SetToolTip(rjToggleButtonStopCurrentTTS, "Upon playing a new TTS Message the currently playing message will be stopped.");
             rjToggleButtonStopCurrentTTS.UseVisualStyleBackColor = true;
             rjToggleButtonStopCurrentTTS.CheckedChanged += (this.rjToggleButtonStopCurrentTTS_CheckedChanged);
             // 
@@ -5965,6 +5999,7 @@
             label122.Size = new Size(179, 15);
             label122.TabIndex = 123;
             label122.Text = "Disable Windows Media (Debug)";
+            toolTip1.SetToolTip(label122, resources.GetString("label122.ToolTip"));
             // 
             // rjToggleButtonDisableWindowsMedia
             // 
@@ -5979,6 +6014,7 @@
             rjToggleButtonDisableWindowsMedia.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonDisableWindowsMedia.Size = new Size(39, 16);
             rjToggleButtonDisableWindowsMedia.TabIndex = 124;
+            toolTip1.SetToolTip(rjToggleButtonDisableWindowsMedia, resources.GetString("rjToggleButtonDisableWindowsMedia.ToolTip"));
             rjToggleButtonDisableWindowsMedia.UseVisualStyleBackColor = true;
             rjToggleButtonDisableWindowsMedia.CheckedChanged += (this.rjToggleButtonDisableWindowsMedia_CheckedChanged);
             // 
@@ -6067,6 +6103,7 @@
             label27.Size = new Size(65, 15);
             label27.TabIndex = 100;
             label27.Text = "Dark Mode";
+            toolTip1.SetToolTip(label27, "Toggle between light and dark color schemes.");
             // 
             // rjToggleDarkMode
             // 
@@ -6081,6 +6118,7 @@
             rjToggleDarkMode.OnToggleColor = Color.WhiteSmoke;
             rjToggleDarkMode.Size = new Size(39, 16);
             rjToggleDarkMode.TabIndex = 101;
+            toolTip1.SetToolTip(rjToggleDarkMode, "Toggle between light and dark color schemes.");
             rjToggleDarkMode.UseVisualStyleBackColor = true;
             rjToggleDarkMode.CheckedChanged += (this.rjToggleButton7_CheckedChanged_1);
             // 
@@ -6094,6 +6132,7 @@
             label104.Size = new Size(179, 15);
             label104.TabIndex = 98;
             label104.Text = "Allow Minimizing to System Tray";
+            toolTip1.SetToolTip(label104, "The minimize button now sends TTS Voice Wizard to the system tray. TTS Voice Wizard will minimize to system tray on launch. Double click the icon in system try to bring the app back to the foreground.");
             // 
             // rjToggleButtonSystemTray
             // 
@@ -6108,6 +6147,7 @@
             rjToggleButtonSystemTray.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonSystemTray.Size = new Size(39, 16);
             rjToggleButtonSystemTray.TabIndex = 99;
+            toolTip1.SetToolTip(rjToggleButtonSystemTray, "The minimize button now sends TTS Voice Wizard to the system tray. TTS Voice Wizard will minimize to system tray on launch. Double click the icon in system try to bring the app back to the foreground.");
             rjToggleButtonSystemTray.UseVisualStyleBackColor = true;
             rjToggleButtonSystemTray.CheckedChanged += (this.rjToggleButtonSystemTray_CheckedChanged);
             // 
@@ -6121,6 +6161,7 @@
             label77.Size = new Size(104, 15);
             label77.TabIndex = 96;
             label77.Text = "Minimalist Navbar";
+            toolTip1.SetToolTip(label77, "Make the navigation bar more simple and compact.");
             // 
             // rjToggleButton6
             // 
@@ -6135,6 +6176,7 @@
             rjToggleButton6.OnToggleColor = Color.WhiteSmoke;
             rjToggleButton6.Size = new Size(39, 16);
             rjToggleButton6.TabIndex = 97;
+            toolTip1.SetToolTip(rjToggleButton6, "Make the navigation bar more simple and compact.");
             rjToggleButton6.UseVisualStyleBackColor = true;
             rjToggleButton6.CheckedChanged += (this.rjToggleButton6_CheckedChanged);
             // 
@@ -6151,6 +6193,7 @@
             rjToggleButtonClear.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonClear.Size = new Size(39, 16);
             rjToggleButtonClear.TabIndex = 74;
+            toolTip1.SetToolTip(rjToggleButtonClear, "Clears the Text to Speech text field after clicking the Play button.");
             rjToggleButtonClear.UseVisualStyleBackColor = true;
             rjToggleButtonClear.CheckedChanged += (this.rjToggleButtonClear_CheckedChanged);
             // 
@@ -6164,6 +6207,7 @@
             label25.Size = new Size(83, 15);
             label25.TabIndex = 56;
             label25.Text = "Always on Top";
+            toolTip1.SetToolTip(label25, "TTS Voice Wizard will appear on top of other applications.");
             // 
             // label21
             // 
@@ -6175,6 +6219,7 @@
             label21.Size = new Size(135, 15);
             label21.TabIndex = 50;
             label21.Text = "Output Transcript in Log";
+            toolTip1.SetToolTip(label21, "Whether most text outputs appear in the app log.");
             // 
             // label66
             // 
@@ -6186,6 +6231,7 @@
             label66.Size = new Size(194, 15);
             label66.TabIndex = 88;
             label66.Text = "Close Home Screen Banner on Start";
+            toolTip1.SetToolTip(label66, "Disable scrolling picture box on the home tab.");
             // 
             // rjToggleButtonLog
             // 
@@ -6202,6 +6248,7 @@
             rjToggleButtonLog.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonLog.Size = new Size(39, 16);
             rjToggleButtonLog.TabIndex = 72;
+            toolTip1.SetToolTip(rjToggleButtonLog, "Whether most text outputs appear in the app log.");
             rjToggleButtonLog.UseVisualStyleBackColor = true;
             rjToggleButtonLog.CheckedChanged += (this.rjToggleButtonLog_CheckedChanged);
             // 
@@ -6218,6 +6265,7 @@
             rjToggleBannerOff.OnToggleColor = Color.WhiteSmoke;
             rjToggleBannerOff.Size = new Size(39, 16);
             rjToggleBannerOff.TabIndex = 89;
+            toolTip1.SetToolTip(rjToggleBannerOff, "Disable scrolling picture box on the home tab.");
             rjToggleBannerOff.UseVisualStyleBackColor = true;
             // 
             // rjToggleButtonOnTop2
@@ -6233,6 +6281,7 @@
             rjToggleButtonOnTop2.OnToggleColor = Color.WhiteSmoke;
             rjToggleButtonOnTop2.Size = new Size(39, 16);
             rjToggleButtonOnTop2.TabIndex = 75;
+            toolTip1.SetToolTip(rjToggleButtonOnTop2, "TTS Voice Wizard will appear on top of other applications.");
             rjToggleButtonOnTop2.UseVisualStyleBackColor = true;
             rjToggleButtonOnTop2.CheckedChanged += (this.checkBox9_CheckedChanged);
             // 
@@ -6259,6 +6308,7 @@
             label22.Size = new Size(159, 15);
             label22.TabIndex = 54;
             label22.Text = "Auto Clear TTS Text Box Field";
+            toolTip1.SetToolTip(label22, "Clears the Text to Speech text field after clicking the Play button.");
             // 
             // label11
             // 
@@ -10010,9 +10060,9 @@
             label165.ForeColor = Color.Snow;
             label165.Location = new Point(24, 66);
             label165.Name = "label165";
-            label165.Size = new Size(465, 15);
+            label165.Size = new Size(523, 15);
             label165.TabIndex = 159;
-            label165.Text = "Gain access to supported voices by becoming a member on the TTS Voice Wizard Ko-fi.";
+            label165.Text = "Gain access to supported voices by becoming a member on the TTS Voice Wizard Patreon or Ko-fi.";
             // 
             // groupBox23
             // 
@@ -11342,7 +11392,6 @@
         public Button button33;
         public GroupBox groupBoxOSCtoTTS;
         public Label labelOSCtoTTS;
-        public Label labelOSCtoT2T;
         private Label label40;
         public TextBox textBoxWhisperMinDuration;
         private Label label144;
@@ -11621,6 +11670,8 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleSwitchVoicePresetsBind;
         public TextBox textBoxVoiceScrollUp1;
         private Label label217;
+        private Button button9;
+        private ToolTip toolTip1;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

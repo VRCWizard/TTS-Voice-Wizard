@@ -82,14 +82,15 @@ namespace OSCVRCWiz.Services.Speech
 
                     
                     var language = TTSMessageQueued.TranslateLang;
-                  //  VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
-                  //  {
+                    //  VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                    //  {
 
-                      //  language = TTSMessageQueued.TranslateLang;
+                    //  language = TTSMessageQueued.TranslateLang;
 
-                   // });
+                    // });
 
-                    string selectedTTSMode = TTSModeSaved;
+                    //  string selectedTTSMode = TTSModeSaved;
+                    string selectedTTSMode = TTSMessageQueued.TTSMode;
                     //VoiceCommand task
 
                     if ((AzureRecognition.YourSubscriptionKey == "" && selectedTTSMode == "Azure") && VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked != true)
@@ -204,7 +205,7 @@ namespace OSCVRCWiz.Services.Speech
                                 {
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                     {
-                                        TTSMessageQueued.TTSMode = "No TTS";
+                                       // TTSMessageQueued.TTSMode = "No TTS";
                                         voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
                                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
                                         {
@@ -251,7 +252,7 @@ namespace OSCVRCWiz.Services.Speech
                                 {
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                     {
-                                        TTSMessageQueued.TTSMode = "No TTS";
+                                        //TTSMessageQueued.TTSMode = "No TTS";
                                         voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
                                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
                                         {
@@ -268,7 +269,19 @@ namespace OSCVRCWiz.Services.Speech
                                 }
                                 else
                                 {
-                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange));
+                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange));
+                                    Task.Run(() => TTSMessageQueue.PlayNextInQueue());
+                                    return;
+                                }
+                                break;
+                            case "Deepgram Aura (Pro Only)":
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                }
+                                else
+                                {
+                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange));
                                     Task.Run(() => TTSMessageQueue.PlayNextInQueue());
                                     return;
                                 }
@@ -307,7 +320,7 @@ namespace OSCVRCWiz.Services.Speech
                                 }
                                 else
                                 {
-                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://ko-fi.com/ttsvoicewizard/tiers ]", Color.DarkOrange));
+                                    Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange));
                                     Task.Run(() => TTSMessageQueue.PlayNextInQueue());
                                     return;
                                 }
