@@ -1,26 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using Amazon;
 using Amazon.Polly;
 using Amazon.Polly.Model;
-using NAudio.Wave;
-using Polly.Caching;
-//using SharpTalk;
-using System.Xml.Linq;
-using Amazon.Internal;
-using Amazon;
-using System.Diagnostics;
-using OSCVRCWiz.Settings;
-using static OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines.ElevenLabsTTS;
-using System.Windows;
-using NAudio.Wave.SampleProviders;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
+using OSCVRCWiz.Settings;
+using System.Diagnostics;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
@@ -31,6 +15,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         {
             try
             {
+
+                //Stopwatch stopwatch = new Stopwatch();
                 var AWSaccessKeyId = Settings1.Default.yourAWSKey;
                 var AWSsecretKey = Settings1.Default.yourAWSSecret;
                 var AWSRegion = RegionEndpoint.GetBySystemName(Settings1.Default.yourAWSRegion);
@@ -40,14 +26,21 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 var client = new AmazonPollyClient(AWSaccessKeyId, AWSsecretKey, AWSRegion);
 
 
+              //  stopwatch.Start();
+                
                 var response = await PollySynthesizeSpeech(client, TTSMessageQueued);
+
 
                 MemoryStream memoryStream = new MemoryStream();
                 WriteSpeechToStream(response.AudioStream, memoryStream);
 
 
 
+               // stopwatch.Stop();
+                //OutputText.outputLog($"Processing/Response time:{stopwatch.ElapsedMilliseconds}", Color.Yellow);
                 AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, false, AudioFormat.Mp3);
+              
+
                 memoryStream.Dispose();
 
                 client.Dispose();
@@ -783,8 +776,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         {
             try
             {
+               //Stopwatch stopwatch = new Stopwatch();
+               // stopwatch.Start();              
                 var audiobytes = Convert.FromBase64String(audioString);
                 MemoryStream memoryStream = new MemoryStream(audiobytes);
+               // stopwatch.Stop();
+              //  OutputText.outputLog($"audio convert from string time:{stopwatch.ElapsedMilliseconds}", Color.Yellow);
 
                 AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, false, AudioFormat.Mp3);
                 memoryStream.Dispose();

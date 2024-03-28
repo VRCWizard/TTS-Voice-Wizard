@@ -147,8 +147,8 @@ namespace OSCVRCWiz.Speech_Recognition
                 // if (WhisperEnabled == true && WhisperAllowStop == true)
                 if (WhisperEnabled == true && WhisperAllowStop == true)
                 {
-
-                        WhisperString = "";
+                    waveIn?.StopRecording();//fix for when you switch st methods and switch back while whisper was running
+                    WhisperString = "";
                         StopWhisper();
                         WhisperEnabled = false;
                         OutputText.outputLog("[Whisper Stopped Listening]");

@@ -10,6 +10,8 @@ using System.Media;
 using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Resources.Audio;
+using Octokit;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OSCVRCWiz.Services.Speech
 {
@@ -106,6 +108,21 @@ namespace OSCVRCWiz.Services.Speech
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleReplaceBeforeTTS.Checked == true)
                     {
                         TTSMessageQueued.text = WordReplacements.MainDoWordReplacement(TTSMessageQueued.text);
+                    }
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonEnableChatGPT.Checked)
+                    {
+                        if (!VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4ChatGPT.Checked)
+                        {
+                            OutputText.outputLog($"[{TTSMessageQueued.STTMode} > ChatGPT 🤖]: {TTSMessageQueued.text}", Color.LightBlue);
+                            TTSMessageQueued.text = await ChatGPTAPI.GPTResponse(TTSMessageQueued.text);
+                            TTSMessageQueued.STTMode = "ChatGPT 🤖";
+                        }
+                        else
+                        {
+                            OutputText.outputLog($"[{TTSMessageQueued.STTMode} > ChatGPT (Pro) 🤖]: {TTSMessageQueued.text}", Color.LightBlue);
+                            TTSMessageQueued.text = await VoiceWizardProTTS.CallVoiceProAPIGPT(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued.text);
+                           TTSMessageQueued.STTMode = "ChatGPT (Pro) 🤖";
+                        }
                     }
                     var originalText = TTSMessageQueued.text;
                     var writeText = TTSMessageQueued.text;//send to osc
@@ -284,6 +301,26 @@ namespace OSCVRCWiz.Services.Speech
                                     Task.Run(() => OutputText.outputLog("[You do not have the VoiceWizardPro API enabled, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange));
                                     Task.Run(() => TTSMessageQueue.PlayNextInQueue());
                                     return;
+                                }
+                                break;
+                            case "OpenAI":
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4OpenAITTS.Checked == true)
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    selectedTTSMode = "OpenAI (Pro)";
+                                }
+                                else
+                                {
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
+                                    {
+                                        //TTSMessageQueued.TTSMode = "No TTS";
+                                        voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
+                                        {
+                                            TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                        }
+                                    }
+                                    Task.Run(() => OpenAITTS.OpenAItts(TTSMessageQueued, speechCt.Token));
                                 }
                                 break;
 

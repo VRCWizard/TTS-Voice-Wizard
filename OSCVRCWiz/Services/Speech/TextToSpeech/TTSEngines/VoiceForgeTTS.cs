@@ -27,18 +27,21 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             string key = "8b3f76a8539";
 
             string email = "-";
-           
 
+           // Stopwatch stopwatch = new Stopwatch();
 
             MemoryStream memoryStream = new MemoryStream();
 
+
+           // stopwatch.Start();
             Task<Stream> streamTask = CallVoiceForgeAPIAsync(key, TTSMessageQueued.text, TTSMessageQueued.Voice, email);
            Stream stream = streamTask.Result;
 
 
-          //  OutputText.outputLog("stream: " + stream);
+            //  OutputText.outputLog("stream: " + stream);
 
-
+           // stopwatch.Stop();
+           // OutputText.outputLog($"Processing/Response time:{stopwatch.ElapsedMilliseconds}", Color.Yellow);
             AudioDevices.PlayAudioStream(stream, TTSMessageQueued, ct, true, AudioFormat.Wav);
             memoryStream.Dispose();
 
@@ -51,26 +54,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         {
 
             var url = $"https://api.voiceforge.com/swift_engine?voice={voice}&msg={text}&email={email}";
-
-
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-
             request.Headers.Add("HTTP_X_API_KEY", key);
-
-            // request.Content = JsonContent.Create(new { voice = name, text = textIn });
-            //  request.Content = new FormUrlEncodedContent(new Dictionary<string, string> { { "voice", name }, { "text", textIn } });
-
-
-
             HttpResponseMessage response = await client.SendAsync(request);
 
-           // OutputText.outputLog(response.StatusCode.ToString());
             if (response.IsSuccessStatusCode)
             {
-               // OutputText.outputLog("Vpog: " + response.StatusCode+" "+await response.Content.ReadAsStringAsync());
-                // Debug.WriteLine("Moonbase: " + response.StatusCode);
-
-
                 return await response.Content.ReadAsStreamAsync();
             }
             else

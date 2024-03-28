@@ -252,6 +252,7 @@
             label35 = new Label();
             APIs = new TabPage();
             translucentPanel2 = new OSCVRCWiz.RJControls.TranslucentPanel();
+            iconButton6 = new FontAwesome.Sharp.IconButton();
             iconButton30 = new FontAwesome.Sharp.IconButton();
             iconButton52 = new FontAwesome.Sharp.IconButton();
             iconButton28 = new FontAwesome.Sharp.IconButton();
@@ -650,6 +651,7 @@
             label107 = new Label();
             VoiceWizPro = new TabPage();
             groupBox40 = new GroupBox();
+            progressBar2 = new ProgressBar();
             buttonCalibrate = new Button();
             progressBar1 = new ProgressBar();
             label206 = new Label();
@@ -664,7 +666,6 @@
             label209 = new Label();
             label182 = new Label();
             label177 = new Label();
-            pot1 = new NAudio.Gui.Pot();
             textBoxSilence = new TextBox();
             minimumAudio = new TextBox();
             label181 = new Label();
@@ -680,6 +681,10 @@
             pictureBox3 = new PictureBox();
             label165 = new Label();
             groupBox23 = new GroupBox();
+            label230 = new Label();
+            rjToggleUsePro4ChatGPT = new OSCVRCWiz.RJControls.RJToggleButton();
+            label229 = new Label();
+            rjToggleUsePro4OpenAITTS = new OSCVRCWiz.RJControls.RJToggleButton();
             label188 = new Label();
             comboBoxProBranch = new ComboBox();
             ProShowKey = new FontAwesome.Sharp.IconButton();
@@ -706,6 +711,31 @@
             label170 = new Label();
             textBoxUberKey = new TextBox();
             label171 = new Label();
+            tabChatGPT = new TabPage();
+            groupBox45 = new GroupBox();
+            hidePasswordChatGPT = new FontAwesome.Sharp.IconButton();
+            label222 = new Label();
+            textBoxChatGPT = new TextBox();
+            groupBox44 = new GroupBox();
+            rjToggleGPTUsePrompt = new OSCVRCWiz.RJControls.RJToggleButton();
+            label232 = new Label();
+            label231 = new Label();
+            richTextBoxGPTPrompt = new RichTextBox();
+            label228 = new Label();
+            label224 = new Label();
+            rjToggleUseContextWithGPT = new OSCVRCWiz.RJControls.RJToggleButton();
+            label227 = new Label();
+            rjToggleUseMaxChatHistory = new OSCVRCWiz.RJControls.RJToggleButton();
+            label226 = new Label();
+            textBoxChatGPTMaxHistory = new TextBox();
+            button23 = new Button();
+            label225 = new Label();
+            textBoxGPTModel = new TextBox();
+            buttonApplyChatGPT = new Button();
+            label221 = new Label();
+            rjToggleButtonEnableChatGPT = new OSCVRCWiz.RJControls.RJToggleButton();
+            iconButton12 = new FontAwesome.Sharp.IconButton();
+            label223 = new Label();
             WhisperDebugLabel = new Label();
             groupBox9 = new GroupBox();
             labelVADIndicator = new Label();
@@ -730,6 +760,7 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
+            labelChatGPTCharacters = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -817,6 +848,9 @@
             groupBox23.SuspendLayout();
             uberduck.SuspendLayout();
             groupBox14.SuspendLayout();
+            tabChatGPT.SuspendLayout();
+            groupBox45.SuspendLayout();
+            groupBox44.SuspendLayout();
             groupBox9.SuspendLayout();
             panel1.SuspendLayout();
             panel2Logo.SuspendLayout();
@@ -1009,6 +1043,7 @@
             mainTabControl.Controls.Add(elevenLabs);
             mainTabControl.Controls.Add(VoiceWizPro);
             mainTabControl.Controls.Add(uberduck);
+            mainTabControl.Controls.Add(tabChatGPT);
             mainTabControl.Dock = DockStyle.Fill;
             mainTabControl.Location = new Point(159, 0);
             mainTabControl.Margin = new Padding(3, 2, 3, 2);
@@ -1830,7 +1865,7 @@
             comboBoxTTSMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTTSMode.ForeColor = Color.Black;
             comboBoxTTSMode.FormattingEnabled = true;
-            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Deepgram Aura (Pro Only)", "Moonbase", "TikTok", "Uberduck", "VoiceForge", "Locally Hosted", "No TTS" });
+            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Deepgram Aura (Pro Only)", "OpenAI", "Moonbase", "TikTok", "Uberduck", "VoiceForge", "Locally Hosted", "No TTS" });
             comboBoxTTSMode.Location = new Point(18, 21);
             comboBoxTTSMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -4098,6 +4133,7 @@
             // 
             translucentPanel2.AutoScroll = true;
             translucentPanel2.BackColor = Color.Transparent;
+            translucentPanel2.Controls.Add(iconButton6);
             translucentPanel2.Controls.Add(iconButton30);
             translucentPanel2.Controls.Add(iconButton52);
             translucentPanel2.Controls.Add(iconButton28);
@@ -4112,6 +4148,27 @@
             translucentPanel2.Size = new Size(763, 563);
             translucentPanel2.TabIndex = 1;
             // 
+            // iconButton6
+            // 
+            iconButton6.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            iconButton6.Dock = DockStyle.Top;
+            iconButton6.FlatAppearance.BorderSize = 0;
+            iconButton6.ForeColor = Color.Snow;
+            iconButton6.IconChar = FontAwesome.Sharp.IconChar.Robot;
+            iconButton6.IconColor = Color.White;
+            iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton6.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton6.Location = new Point(0, 490);
+            iconButton6.Margin = new Padding(3, 2, 3, 2);
+            iconButton6.Name = "iconButton6";
+            iconButton6.Size = new Size(763, 70);
+            iconButton6.TabIndex = 17;
+            iconButton6.Text = "OpenAI - (ChatGPT)";
+            iconButton6.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton6.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton6.UseVisualStyleBackColor = false;
+            iconButton6.Click += (this.iconButton6_Click_1);
+            // 
             // iconButton30
             // 
             iconButton30.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
@@ -4122,10 +4179,10 @@
             iconButton30.IconColor = Color.White;
             iconButton30.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton30.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton30.Location = new Point(0, 450);
+            iconButton30.Location = new Point(0, 420);
             iconButton30.Margin = new Padding(3, 2, 3, 2);
             iconButton30.Name = "iconButton30";
-            iconButton30.Size = new Size(763, 75);
+            iconButton30.Size = new Size(763, 70);
             iconButton30.TabIndex = 14;
             iconButton30.Text = "Local - (System Speech, Vosk, Whisper)";
             iconButton30.TextAlign = ContentAlignment.MiddleLeft;
@@ -4143,10 +4200,10 @@
             iconButton52.IconColor = Color.White;
             iconButton52.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton52.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton52.Location = new Point(0, 375);
+            iconButton52.Location = new Point(0, 350);
             iconButton52.Margin = new Padding(3, 2, 3, 2);
             iconButton52.Name = "iconButton52";
-            iconButton52.Size = new Size(763, 75);
+            iconButton52.Size = new Size(763, 70);
             iconButton52.TabIndex = 16;
             iconButton52.Text = "Uberduck";
             iconButton52.TextAlign = ContentAlignment.MiddleLeft;
@@ -4164,10 +4221,10 @@
             iconButton28.IconColor = Color.White;
             iconButton28.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton28.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton28.Location = new Point(0, 300);
+            iconButton28.Location = new Point(0, 280);
             iconButton28.Margin = new Padding(3, 2, 3, 2);
             iconButton28.Name = "iconButton28";
-            iconButton28.Size = new Size(763, 75);
+            iconButton28.Size = new Size(763, 70);
             iconButton28.TabIndex = 13;
             iconButton28.Text = "ElevenLabs";
             iconButton28.TextAlign = ContentAlignment.MiddleLeft;
@@ -4185,10 +4242,10 @@
             iconButton21.IconColor = Color.White;
             iconButton21.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton21.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton21.Location = new Point(0, 225);
+            iconButton21.Location = new Point(0, 210);
             iconButton21.Margin = new Padding(3, 2, 3, 2);
             iconButton21.Name = "iconButton21";
-            iconButton21.Size = new Size(763, 75);
+            iconButton21.Size = new Size(763, 70);
             iconButton21.TabIndex = 12;
             iconButton21.Text = "Translation";
             iconButton21.TextAlign = ContentAlignment.MiddleLeft;
@@ -4206,10 +4263,10 @@
             iconButton19.IconColor = Color.White;
             iconButton19.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton19.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton19.Location = new Point(0, 150);
+            iconButton19.Location = new Point(0, 140);
             iconButton19.Margin = new Padding(3, 2, 3, 2);
             iconButton19.Name = "iconButton19";
-            iconButton19.Size = new Size(763, 75);
+            iconButton19.Size = new Size(763, 70);
             iconButton19.TabIndex = 10;
             iconButton19.Text = "Amazon Polly";
             iconButton19.TextAlign = ContentAlignment.MiddleLeft;
@@ -4227,10 +4284,10 @@
             iconButton20.IconColor = Color.White;
             iconButton20.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton20.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton20.Location = new Point(0, 75);
+            iconButton20.Location = new Point(0, 70);
             iconButton20.Margin = new Padding(3, 2, 3, 2);
             iconButton20.Name = "iconButton20";
-            iconButton20.Size = new Size(763, 75);
+            iconButton20.Size = new Size(763, 70);
             iconButton20.TabIndex = 9;
             iconButton20.Text = "Azure Cognitive Services";
             iconButton20.TextAlign = ContentAlignment.MiddleLeft;
@@ -4252,7 +4309,7 @@
             iconButton50.Location = new Point(0, 0);
             iconButton50.Margin = new Padding(3, 2, 3, 2);
             iconButton50.Name = "iconButton50";
-            iconButton50.Size = new Size(763, 75);
+            iconButton50.Size = new Size(763, 70);
             iconButton50.TabIndex = 15;
             iconButton50.Text = "Voice Wizard Pro - (Instant access to Azure, Amazon, Google and IBM voices)";
             iconButton50.TextAlign = ContentAlignment.MiddleLeft;
@@ -4300,7 +4357,7 @@
             groupBox17.Controls.Add(rjToggleButtonChatBox);
             groupBox17.Controls.Add(rjToggleButtonShowKeyboard);
             groupBox17.ForeColor = Color.White;
-            groupBox17.Location = new Point(19, 1071);
+            groupBox17.Location = new Point(19, 1138);
             groupBox17.Margin = new Padding(3, 2, 3, 2);
             groupBox17.Name = "groupBox17";
             groupBox17.Padding = new Padding(3, 2, 3, 2);
@@ -4433,11 +4490,11 @@
             groupBox18.Controls.Add(label102);
             groupBox18.Controls.Add(rjToggleButtonOBSText);
             groupBox18.ForeColor = Color.White;
-            groupBox18.Location = new Point(20, 1386);
+            groupBox18.Location = new Point(20, 1452);
             groupBox18.Margin = new Padding(3, 2, 3, 2);
             groupBox18.Name = "groupBox18";
             groupBox18.Padding = new Padding(3, 2, 3, 2);
-            groupBox18.Size = new Size(707, 133);
+            groupBox18.Size = new Size(707, 144);
             groupBox18.TabIndex = 120;
             groupBox18.TabStop = false;
             groupBox18.Text = "Output";
@@ -4602,7 +4659,7 @@
             groupBox19.Controls.Add(button1);
             groupBox19.Controls.Add(textBoxErase);
             groupBox19.ForeColor = Color.White;
-            groupBox19.Location = new Point(19, 894);
+            groupBox19.Location = new Point(19, 961);
             groupBox19.Margin = new Padding(3, 2, 3, 2);
             groupBox19.Name = "groupBox19";
             groupBox19.Padding = new Padding(3, 2, 3, 2);
@@ -4785,7 +4842,7 @@
             groupBox20.Controls.Add(buttonDelayHere);
             groupBox20.Controls.Add(textBoxDelay);
             groupBox20.ForeColor = Color.White;
-            groupBox20.Location = new Point(19, 1186);
+            groupBox20.Location = new Point(20, 1252);
             groupBox20.Margin = new Padding(3, 2, 3, 2);
             groupBox20.Name = "groupBox20";
             groupBox20.Padding = new Padding(3, 2, 3, 2);
@@ -4944,7 +5001,7 @@
             groupBox13.Controls.Add(rjToggleButtonSounds);
             groupBox13.Controls.Add(comboBoxVADMode);
             groupBox13.ForeColor = Color.White;
-            groupBox13.Location = new Point(19, 619);
+            groupBox13.Location = new Point(19, 686);
             groupBox13.Margin = new Padding(3, 2, 3, 2);
             groupBox13.Name = "groupBox13";
             groupBox13.Padding = new Padding(3, 2, 3, 2);
@@ -5264,7 +5321,7 @@
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(706, 613);
+            groupBox1.Size = new Size(706, 680);
             groupBox1.TabIndex = 100;
             groupBox1.TabStop = false;
             groupBox1.Text = "General";
@@ -5507,7 +5564,7 @@
             button14.FlatStyle = FlatStyle.Flat;
             button14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button14.ForeColor = Color.Snow;
-            button14.Location = new Point(545, 536);
+            button14.Location = new Point(545, 603);
             button14.Margin = new Padding(3, 2, 3, 2);
             button14.Name = "button14";
             button14.Size = new Size(155, 28);
@@ -5633,7 +5690,7 @@
             button38.FlatStyle = FlatStyle.Flat;
             button38.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button38.ForeColor = Color.Snow;
-            button38.Location = new Point(544, 497);
+            button38.Location = new Point(544, 564);
             button38.Margin = new Padding(3, 2, 3, 2);
             button38.Name = "button38";
             button38.Size = new Size(155, 28);
@@ -5852,7 +5909,7 @@
             button47.FlatStyle = FlatStyle.Flat;
             button47.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button47.ForeColor = Color.Snow;
-            button47.Location = new Point(544, 577);
+            button47.Location = new Point(544, 644);
             button47.Margin = new Padding(3, 2, 3, 2);
             button47.Name = "button47";
             button47.Size = new Size(155, 28);
@@ -9711,6 +9768,7 @@
             // 
             // groupBox40
             // 
+            groupBox40.Controls.Add(progressBar2);
             groupBox40.Controls.Add(buttonCalibrate);
             groupBox40.Controls.Add(progressBar1);
             groupBox40.Controls.Add(label206);
@@ -9725,7 +9783,6 @@
             groupBox40.Controls.Add(label209);
             groupBox40.Controls.Add(label182);
             groupBox40.Controls.Add(label177);
-            groupBox40.Controls.Add(pot1);
             groupBox40.Controls.Add(textBoxSilence);
             groupBox40.Controls.Add(minimumAudio);
             groupBox40.Controls.Add(label181);
@@ -9738,7 +9795,7 @@
             groupBox40.Controls.Add(trackBarSilence);
             groupBox40.Controls.Add(SpeechHoursUsed);
             groupBox40.ForeColor = Color.White;
-            groupBox40.Location = new Point(7, 402);
+            groupBox40.Location = new Point(7, 460);
             groupBox40.Margin = new Padding(3, 2, 3, 2);
             groupBox40.Name = "groupBox40";
             groupBox40.Padding = new Padding(3, 2, 3, 2);
@@ -9746,6 +9803,14 @@
             groupBox40.TabIndex = 162;
             groupBox40.TabStop = false;
             groupBox40.Text = "DeepGram Recognition";
+            // 
+            // progressBar2
+            // 
+            progressBar2.Location = new Point(566, 49);
+            progressBar2.Maximum = 5000;
+            progressBar2.Name = "progressBar2";
+            progressBar2.Size = new Size(139, 27);
+            progressBar2.TabIndex = 216;
             // 
             // buttonCalibrate
             // 
@@ -9884,7 +9949,7 @@
             // 
             label182.AutoSize = true;
             label182.ForeColor = Color.Snow;
-            label182.Location = new Point(580, 151);
+            label182.Location = new Point(661, 79);
             label182.Name = "label182";
             label182.Size = new Size(44, 15);
             label182.TabIndex = 201;
@@ -9894,22 +9959,11 @@
             // 
             label177.AutoSize = true;
             label177.ForeColor = Color.Snow;
-            label177.Location = new Point(659, 151);
+            label177.Location = new Point(566, 79);
             label177.Name = "label177";
-            label177.Size = new Size(44, 15);
+            label177.Size = new Size(36, 15);
             label177.TabIndex = 200;
-            label177.Text = "Silence";
-            // 
-            // pot1
-            // 
-            pot1.Location = new Point(580, 54);
-            pot1.Margin = new Padding(4, 3, 4, 3);
-            pot1.Maximum = 50000D;
-            pot1.Minimum = 0D;
-            pot1.Name = "pot1";
-            pot1.Size = new Size(123, 105);
-            pot1.TabIndex = 164;
-            pot1.Value = 0D;
+            label177.Text = "Silent";
             // 
             // textBoxSilence
             // 
@@ -10046,7 +10100,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(196, 757);
+            pictureBox3.Location = new Point(199, 815);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(346, 56);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -10066,6 +10120,11 @@
             // 
             // groupBox23
             // 
+            groupBox23.Controls.Add(labelChatGPTCharacters);
+            groupBox23.Controls.Add(label230);
+            groupBox23.Controls.Add(rjToggleUsePro4ChatGPT);
+            groupBox23.Controls.Add(label229);
+            groupBox23.Controls.Add(rjToggleUsePro4OpenAITTS);
             groupBox23.Controls.Add(label188);
             groupBox23.Controls.Add(comboBoxProBranch);
             groupBox23.Controls.Add(ProShowKey);
@@ -10086,10 +10145,66 @@
             groupBox23.Margin = new Padding(3, 2, 3, 2);
             groupBox23.Name = "groupBox23";
             groupBox23.Padding = new Padding(3, 2, 3, 2);
-            groupBox23.Size = new Size(728, 278);
+            groupBox23.Size = new Size(728, 340);
             groupBox23.TabIndex = 114;
             groupBox23.TabStop = false;
             groupBox23.Text = "Voice Wizard Pro Settings";
+            // 
+            // label230
+            // 
+            label230.AutoSize = true;
+            label230.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label230.ForeColor = Color.Snow;
+            label230.Location = new Point(81, 207);
+            label230.Name = "label230";
+            label230.Size = new Size(178, 15);
+            label230.TabIndex = 185;
+            label230.Text = "Use Pro API for OpenAI ChatGPT";
+            // 
+            // rjToggleUsePro4ChatGPT
+            // 
+            rjToggleUsePro4ChatGPT.AutoSize = true;
+            rjToggleUsePro4ChatGPT.Checked = true;
+            rjToggleUsePro4ChatGPT.CheckState = CheckState.Checked;
+            rjToggleUsePro4ChatGPT.Location = new Point(33, 207);
+            rjToggleUsePro4ChatGPT.Margin = new Padding(3, 2, 3, 2);
+            rjToggleUsePro4ChatGPT.MinimumSize = new Size(39, 16);
+            rjToggleUsePro4ChatGPT.Name = "rjToggleUsePro4ChatGPT";
+            rjToggleUsePro4ChatGPT.OffBackColor = Color.Gray;
+            rjToggleUsePro4ChatGPT.OffToggleColor = Color.Gainsboro;
+            rjToggleUsePro4ChatGPT.OnBackColor = Color.MediumSlateBlue;
+            rjToggleUsePro4ChatGPT.OnToggleColor = Color.WhiteSmoke;
+            rjToggleUsePro4ChatGPT.Size = new Size(39, 16);
+            rjToggleUsePro4ChatGPT.TabIndex = 186;
+            rjToggleUsePro4ChatGPT.UseVisualStyleBackColor = true;
+            // 
+            // label229
+            // 
+            label229.AutoSize = true;
+            label229.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label229.ForeColor = Color.Snow;
+            label229.Location = new Point(80, 178);
+            label229.Name = "label229";
+            label229.Size = new Size(150, 15);
+            label229.TabIndex = 183;
+            label229.Text = "Use Pro API for OpenAI TTS";
+            // 
+            // rjToggleUsePro4OpenAITTS
+            // 
+            rjToggleUsePro4OpenAITTS.AutoSize = true;
+            rjToggleUsePro4OpenAITTS.Checked = true;
+            rjToggleUsePro4OpenAITTS.CheckState = CheckState.Checked;
+            rjToggleUsePro4OpenAITTS.Location = new Point(32, 178);
+            rjToggleUsePro4OpenAITTS.Margin = new Padding(3, 2, 3, 2);
+            rjToggleUsePro4OpenAITTS.MinimumSize = new Size(39, 16);
+            rjToggleUsePro4OpenAITTS.Name = "rjToggleUsePro4OpenAITTS";
+            rjToggleUsePro4OpenAITTS.OffBackColor = Color.Gray;
+            rjToggleUsePro4OpenAITTS.OffToggleColor = Color.Gainsboro;
+            rjToggleUsePro4OpenAITTS.OnBackColor = Color.MediumSlateBlue;
+            rjToggleUsePro4OpenAITTS.OnToggleColor = Color.WhiteSmoke;
+            rjToggleUsePro4OpenAITTS.Size = new Size(39, 16);
+            rjToggleUsePro4OpenAITTS.TabIndex = 184;
+            rjToggleUsePro4OpenAITTS.UseVisualStyleBackColor = true;
             // 
             // label188
             // 
@@ -10118,7 +10233,7 @@
             // 
             // ProShowKey
             // 
-            ProShowKey.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            ProShowKey.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             ProShowKey.BackColor = Color.White;
             ProShowKey.FlatAppearance.BorderSize = 0;
             ProShowKey.FlatStyle = FlatStyle.Flat;
@@ -10140,7 +10255,7 @@
             label168.AutoSize = true;
             label168.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label168.ForeColor = Color.Snow;
-            label168.Location = new Point(79, 177);
+            label168.Location = new Point(81, 235);
             label168.Name = "label168";
             label168.Size = new Size(109, 15);
             label168.TabIndex = 119;
@@ -10149,7 +10264,7 @@
             // rjToggleButtonProTranslation
             // 
             rjToggleButtonProTranslation.AutoSize = true;
-            rjToggleButtonProTranslation.Location = new Point(31, 177);
+            rjToggleButtonProTranslation.Location = new Point(33, 235);
             rjToggleButtonProTranslation.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonProTranslation.MinimumSize = new Size(39, 16);
             rjToggleButtonProTranslation.Name = "rjToggleButtonProTranslation";
@@ -10164,7 +10279,7 @@
             // labelTranslationCharacters
             // 
             labelTranslationCharacters.AutoSize = true;
-            labelTranslationCharacters.Location = new Point(15, 253);
+            labelTranslationCharacters.Location = new Point(6, 287);
             labelTranslationCharacters.Name = "labelTranslationCharacters";
             labelTranslationCharacters.Size = new Size(175, 15);
             labelTranslationCharacters.TabIndex = 118;
@@ -10173,7 +10288,7 @@
             // labelTTSCharacters
             // 
             labelTTSCharacters.AutoSize = true;
-            labelTTSCharacters.Location = new Point(15, 223);
+            labelTTSCharacters.Location = new Point(6, 265);
             labelTTSCharacters.Name = "labelTTSCharacters";
             labelTTSCharacters.Size = new Size(136, 15);
             labelTTSCharacters.TabIndex = 117;
@@ -10428,6 +10543,336 @@
             label171.Size = new Size(72, 20);
             label171.TabIndex = 112;
             label171.Text = "Uberduck";
+            // 
+            // tabChatGPT
+            // 
+            tabChatGPT.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            tabChatGPT.Controls.Add(groupBox45);
+            tabChatGPT.Controls.Add(groupBox44);
+            tabChatGPT.Controls.Add(label223);
+            tabChatGPT.Location = new Point(4, 24);
+            tabChatGPT.Name = "tabChatGPT";
+            tabChatGPT.Padding = new Padding(3);
+            tabChatGPT.Size = new Size(769, 587);
+            tabChatGPT.TabIndex = 23;
+            tabChatGPT.Text = "OpenAI";
+            // 
+            // groupBox45
+            // 
+            groupBox45.Controls.Add(hidePasswordChatGPT);
+            groupBox45.Controls.Add(label222);
+            groupBox45.Controls.Add(textBoxChatGPT);
+            groupBox45.ForeColor = Color.White;
+            groupBox45.Location = new Point(24, 81);
+            groupBox45.Name = "groupBox45";
+            groupBox45.Size = new Size(722, 90);
+            groupBox45.TabIndex = 161;
+            groupBox45.TabStop = false;
+            groupBox45.Text = "OpenAI";
+            // 
+            // hidePasswordChatGPT
+            // 
+            hidePasswordChatGPT.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            hidePasswordChatGPT.BackColor = Color.White;
+            hidePasswordChatGPT.FlatAppearance.BorderSize = 0;
+            hidePasswordChatGPT.FlatStyle = FlatStyle.Flat;
+            hidePasswordChatGPT.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            hidePasswordChatGPT.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            hidePasswordChatGPT.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            hidePasswordChatGPT.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            hidePasswordChatGPT.IconSize = 15;
+            hidePasswordChatGPT.Location = new Point(594, 47);
+            hidePasswordChatGPT.Margin = new Padding(3, 2, 3, 2);
+            hidePasswordChatGPT.Name = "hidePasswordChatGPT";
+            hidePasswordChatGPT.Size = new Size(31, 18);
+            hidePasswordChatGPT.TabIndex = 123;
+            hidePasswordChatGPT.UseVisualStyleBackColor = false;
+            hidePasswordChatGPT.Click += (this.hidePasswordChatGPT_Click);
+            // 
+            // label222
+            // 
+            label222.AutoSize = true;
+            label222.ForeColor = Color.Snow;
+            label222.Location = new Point(17, 30);
+            label222.Name = "label222";
+            label222.Size = new Size(47, 15);
+            label222.TabIndex = 28;
+            label222.Text = "API Key";
+            // 
+            // textBoxChatGPT
+            // 
+            textBoxChatGPT.Location = new Point(17, 45);
+            textBoxChatGPT.Margin = new Padding(3, 2, 3, 2);
+            textBoxChatGPT.Name = "textBoxChatGPT";
+            textBoxChatGPT.PasswordChar = '*';
+            textBoxChatGPT.Size = new Size(610, 23);
+            textBoxChatGPT.TabIndex = 27;
+            // 
+            // groupBox44
+            // 
+            groupBox44.Controls.Add(rjToggleGPTUsePrompt);
+            groupBox44.Controls.Add(label232);
+            groupBox44.Controls.Add(label231);
+            groupBox44.Controls.Add(richTextBoxGPTPrompt);
+            groupBox44.Controls.Add(label228);
+            groupBox44.Controls.Add(label224);
+            groupBox44.Controls.Add(rjToggleUseContextWithGPT);
+            groupBox44.Controls.Add(label227);
+            groupBox44.Controls.Add(rjToggleUseMaxChatHistory);
+            groupBox44.Controls.Add(label226);
+            groupBox44.Controls.Add(textBoxChatGPTMaxHistory);
+            groupBox44.Controls.Add(button23);
+            groupBox44.Controls.Add(label225);
+            groupBox44.Controls.Add(textBoxGPTModel);
+            groupBox44.Controls.Add(buttonApplyChatGPT);
+            groupBox44.Controls.Add(label221);
+            groupBox44.Controls.Add(rjToggleButtonEnableChatGPT);
+            groupBox44.Controls.Add(iconButton12);
+            groupBox44.ForeColor = Color.White;
+            groupBox44.Location = new Point(24, 177);
+            groupBox44.Margin = new Padding(3, 2, 3, 2);
+            groupBox44.Name = "groupBox44";
+            groupBox44.Padding = new Padding(3, 2, 3, 2);
+            groupBox44.Size = new Size(722, 400);
+            groupBox44.TabIndex = 115;
+            groupBox44.TabStop = false;
+            groupBox44.Text = "ChatGPT";
+            // 
+            // rjToggleGPTUsePrompt
+            // 
+            rjToggleGPTUsePrompt.AutoSize = true;
+            rjToggleGPTUsePrompt.Location = new Point(26, 294);
+            rjToggleGPTUsePrompt.Margin = new Padding(3, 2, 3, 2);
+            rjToggleGPTUsePrompt.MinimumSize = new Size(39, 16);
+            rjToggleGPTUsePrompt.Name = "rjToggleGPTUsePrompt";
+            rjToggleGPTUsePrompt.OffBackColor = Color.Gray;
+            rjToggleGPTUsePrompt.OffToggleColor = Color.Gainsboro;
+            rjToggleGPTUsePrompt.OnBackColor = Color.MediumSlateBlue;
+            rjToggleGPTUsePrompt.OnToggleColor = Color.WhiteSmoke;
+            rjToggleGPTUsePrompt.Size = new Size(39, 16);
+            rjToggleGPTUsePrompt.TabIndex = 164;
+            toolTip1.SetToolTip(rjToggleGPTUsePrompt, resources.GetString("rjToggleGPTUsePrompt.ToolTip"));
+            rjToggleGPTUsePrompt.UseVisualStyleBackColor = true;
+            // 
+            // label232
+            // 
+            label232.AutoSize = true;
+            label232.ForeColor = Color.Snow;
+            label232.Location = new Point(124, 295);
+            label232.Name = "label232";
+            label232.Size = new Size(397, 15);
+            label232.TabIndex = 163;
+            label232.Text = "If enabled, this message will be sent before each of your ChatGPT requests";
+            // 
+            // label231
+            // 
+            label231.AutoSize = true;
+            label231.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label231.ForeColor = Color.Snow;
+            label231.Location = new Point(68, 294);
+            label231.Name = "label231";
+            label231.Size = new Size(50, 15);
+            label231.TabIndex = 162;
+            label231.Text = "Prompt:";
+            // 
+            // richTextBoxGPTPrompt
+            // 
+            richTextBoxGPTPrompt.BorderStyle = BorderStyle.None;
+            richTextBoxGPTPrompt.Location = new Point(26, 312);
+            richTextBoxGPTPrompt.Name = "richTextBoxGPTPrompt";
+            richTextBoxGPTPrompt.Size = new Size(495, 56);
+            richTextBoxGPTPrompt.TabIndex = 161;
+            richTextBoxGPTPrompt.Text = "Keep your response under 100 characters";
+            // 
+            // label228
+            // 
+            label228.AutoSize = true;
+            label228.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label228.ForeColor = Color.Snow;
+            label228.Location = new Point(71, 160);
+            label228.Name = "label228";
+            label228.Size = new Size(105, 15);
+            label228.TabIndex = 134;
+            label228.Text = "Chat With Context";
+            // 
+            // label224
+            // 
+            label224.AutoSize = true;
+            label224.ForeColor = Color.Snow;
+            label224.Location = new Point(17, 24);
+            label224.Name = "label224";
+            label224.Size = new Size(479, 15);
+            label224.TabIndex = 160;
+            label224.Text = "When enabled input text (via text input or speech to text) will be passed through ChatGPT";
+            // 
+            // rjToggleUseContextWithGPT
+            // 
+            rjToggleUseContextWithGPT.AutoSize = true;
+            rjToggleUseContextWithGPT.Location = new Point(23, 160);
+            rjToggleUseContextWithGPT.Margin = new Padding(3, 2, 3, 2);
+            rjToggleUseContextWithGPT.MinimumSize = new Size(39, 16);
+            rjToggleUseContextWithGPT.Name = "rjToggleUseContextWithGPT";
+            rjToggleUseContextWithGPT.OffBackColor = Color.Gray;
+            rjToggleUseContextWithGPT.OffToggleColor = Color.Gainsboro;
+            rjToggleUseContextWithGPT.OnBackColor = Color.MediumSlateBlue;
+            rjToggleUseContextWithGPT.OnToggleColor = Color.WhiteSmoke;
+            rjToggleUseContextWithGPT.Size = new Size(39, 16);
+            rjToggleUseContextWithGPT.TabIndex = 135;
+            toolTip1.SetToolTip(rjToggleUseContextWithGPT, "When enabled each subsequent call will have the context of your previous calls");
+            rjToggleUseContextWithGPT.UseVisualStyleBackColor = true;
+            // 
+            // label227
+            // 
+            label227.AutoSize = true;
+            label227.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label227.ForeColor = Color.Snow;
+            label227.Location = new Point(71, 189);
+            label227.Name = "label227";
+            label227.Size = new Size(121, 15);
+            label227.TabIndex = 132;
+            label227.Text = "Use Max Chat History";
+            toolTip1.SetToolTip(label227, resources.GetString("label227.ToolTip"));
+            // 
+            // rjToggleUseMaxChatHistory
+            // 
+            rjToggleUseMaxChatHistory.AutoSize = true;
+            rjToggleUseMaxChatHistory.Location = new Point(23, 189);
+            rjToggleUseMaxChatHistory.Margin = new Padding(3, 2, 3, 2);
+            rjToggleUseMaxChatHistory.MinimumSize = new Size(39, 16);
+            rjToggleUseMaxChatHistory.Name = "rjToggleUseMaxChatHistory";
+            rjToggleUseMaxChatHistory.OffBackColor = Color.Gray;
+            rjToggleUseMaxChatHistory.OffToggleColor = Color.Gainsboro;
+            rjToggleUseMaxChatHistory.OnBackColor = Color.MediumSlateBlue;
+            rjToggleUseMaxChatHistory.OnToggleColor = Color.WhiteSmoke;
+            rjToggleUseMaxChatHistory.Size = new Size(39, 16);
+            rjToggleUseMaxChatHistory.TabIndex = 133;
+            toolTip1.SetToolTip(rjToggleUseMaxChatHistory, resources.GetString("rjToggleUseMaxChatHistory.ToolTip"));
+            rjToggleUseMaxChatHistory.UseVisualStyleBackColor = true;
+            // 
+            // label226
+            // 
+            label226.AutoSize = true;
+            label226.ForeColor = Color.Snow;
+            label226.Location = new Point(26, 219);
+            label226.Name = "label226";
+            label226.Size = new Size(99, 15);
+            label226.TabIndex = 131;
+            label226.Text = "Max Chat History";
+            toolTip1.SetToolTip(label226, resources.GetString("label226.ToolTip"));
+            // 
+            // textBoxChatGPTMaxHistory
+            // 
+            textBoxChatGPTMaxHistory.Location = new Point(26, 236);
+            textBoxChatGPTMaxHistory.Margin = new Padding(3, 2, 3, 2);
+            textBoxChatGPTMaxHistory.Name = "textBoxChatGPTMaxHistory";
+            textBoxChatGPTMaxHistory.Size = new Size(99, 23);
+            textBoxChatGPTMaxHistory.TabIndex = 130;
+            textBoxChatGPTMaxHistory.Text = "10";
+            toolTip1.SetToolTip(textBoxChatGPTMaxHistory, resources.GetString("textBoxChatGPTMaxHistory.ToolTip"));
+            // 
+            // button23
+            // 
+            button23.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            button23.FlatStyle = FlatStyle.Flat;
+            button23.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button23.ForeColor = Color.Snow;
+            button23.Location = new Point(143, 234);
+            button23.Margin = new Padding(3, 2, 3, 2);
+            button23.Name = "button23";
+            button23.Size = new Size(153, 25);
+            button23.TabIndex = 129;
+            button23.Text = "Clear Chat History";
+            button23.UseVisualStyleBackColor = false;
+            button23.Click += (this.button23_Click);
+            // 
+            // label225
+            // 
+            label225.AutoSize = true;
+            label225.ForeColor = Color.Snow;
+            label225.Location = new Point(23, 100);
+            label225.Name = "label225";
+            label225.Size = new Size(41, 15);
+            label225.TabIndex = 128;
+            label225.Text = "Model";
+            // 
+            // textBoxGPTModel
+            // 
+            textBoxGPTModel.Location = new Point(23, 117);
+            textBoxGPTModel.Margin = new Padding(3, 2, 3, 2);
+            textBoxGPTModel.Name = "textBoxGPTModel";
+            textBoxGPTModel.Size = new Size(312, 23);
+            textBoxGPTModel.TabIndex = 127;
+            // 
+            // buttonApplyChatGPT
+            // 
+            buttonApplyChatGPT.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonApplyChatGPT.FlatStyle = FlatStyle.Flat;
+            buttonApplyChatGPT.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonApplyChatGPT.ForeColor = Color.Snow;
+            buttonApplyChatGPT.Location = new Point(341, 113);
+            buttonApplyChatGPT.Margin = new Padding(3, 2, 3, 2);
+            buttonApplyChatGPT.Name = "buttonApplyChatGPT";
+            buttonApplyChatGPT.Size = new Size(140, 28);
+            buttonApplyChatGPT.TabIndex = 126;
+            buttonApplyChatGPT.Text = "Apply Model and Key";
+            buttonApplyChatGPT.UseVisualStyleBackColor = false;
+            buttonApplyChatGPT.Click += (this.buttonApplyChatGPT_Click);
+            // 
+            // label221
+            // 
+            label221.AutoSize = true;
+            label221.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label221.ForeColor = Color.Snow;
+            label221.Location = new Point(68, 68);
+            label221.Name = "label221";
+            label221.Size = new Size(75, 15);
+            label221.TabIndex = 124;
+            label221.Text = "Use ChatGPT";
+            // 
+            // rjToggleButtonEnableChatGPT
+            // 
+            rjToggleButtonEnableChatGPT.AutoSize = true;
+            rjToggleButtonEnableChatGPT.Location = new Point(20, 68);
+            rjToggleButtonEnableChatGPT.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonEnableChatGPT.MinimumSize = new Size(39, 16);
+            rjToggleButtonEnableChatGPT.Name = "rjToggleButtonEnableChatGPT";
+            rjToggleButtonEnableChatGPT.OffBackColor = Color.Gray;
+            rjToggleButtonEnableChatGPT.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonEnableChatGPT.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonEnableChatGPT.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonEnableChatGPT.Size = new Size(39, 16);
+            rjToggleButtonEnableChatGPT.TabIndex = 125;
+            rjToggleButtonEnableChatGPT.UseVisualStyleBackColor = true;
+            // 
+            // iconButton12
+            // 
+            iconButton12.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            iconButton12.FlatAppearance.BorderSize = 0;
+            iconButton12.FlatStyle = FlatStyle.Flat;
+            iconButton12.ForeColor = Color.Snow;
+            iconButton12.IconChar = FontAwesome.Sharp.IconChar.Question;
+            iconButton12.IconColor = Color.White;
+            iconButton12.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton12.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton12.Location = new Point(662, 16);
+            iconButton12.Margin = new Padding(3, 2, 3, 2);
+            iconButton12.Name = "iconButton12";
+            iconButton12.Size = new Size(54, 56);
+            iconButton12.TabIndex = 110;
+            iconButton12.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton12.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton12.UseVisualStyleBackColor = true;
+            // 
+            // label223
+            // 
+            label223.AutoSize = true;
+            label223.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point);
+            label223.ForeColor = Color.Snow;
+            label223.Location = new Point(15, 16);
+            label223.Name = "label223";
+            label223.Size = new Size(59, 20);
+            label223.TabIndex = 114;
+            label223.Text = "OpenAI";
             // 
             // WhisperDebugLabel
             // 
@@ -10800,6 +11245,15 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
+            // labelChatGPTCharacters
+            // 
+            labelChatGPTCharacters.AutoSize = true;
+            labelChatGPTCharacters.Location = new Point(6, 310);
+            labelChatGPTCharacters.Name = "labelChatGPTCharacters";
+            labelChatGPTCharacters.Size = new Size(164, 15);
+            labelChatGPTCharacters.TabIndex = 187;
+            labelChatGPTCharacters.Text = "ChatGPT Characters Used: 0/0";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -10960,6 +11414,12 @@
             uberduck.PerformLayout();
             groupBox14.ResumeLayout(false);
             groupBox14.PerformLayout();
+            tabChatGPT.ResumeLayout(false);
+            tabChatGPT.PerformLayout();
+            groupBox45.ResumeLayout(false);
+            groupBox45.PerformLayout();
+            groupBox44.ResumeLayout(false);
+            groupBox44.PerformLayout();
             groupBox9.ResumeLayout(false);
             groupBox9.PerformLayout();
             panel1.ResumeLayout(false);
@@ -11526,7 +11986,6 @@
         public TextBox textBoxSilence;
         private Label label182;
         private Label label177;
-        public NAudio.Gui.Pot pot1;
         private Panel panel4;
         private Panel panel3;
         public TextBox counterOutputInterval;
@@ -11640,7 +12099,6 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleBothLanguages;
         private Label label208;
         public TextBox textBoxCustomTranslationOuput;
-        public TextBox textBox2;
         private Label label209;
         public TextBox textBoxSilenceScale;
         private Label label211;
@@ -11672,6 +12130,38 @@
         private Label label217;
         private Button button9;
         private ToolTip toolTip1;
+        private FontAwesome.Sharp.IconButton iconButton6;
+        private TabPage tabChatGPT;
+        private GroupBox groupBox44;
+        private FontAwesome.Sharp.IconButton hidePasswordChatGPT;
+        private FontAwesome.Sharp.IconButton iconButton12;
+        private Label label222;
+        public TextBox textBoxChatGPT;
+        private Label label223;
+        private Label label224;
+        private Label label221;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonEnableChatGPT;
+        private Button buttonApplyChatGPT;
+        private Label label225;
+        public TextBox textBoxGPTModel;
+        private Button button23;
+        private Label label227;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleUseMaxChatHistory;
+        private Label label226;
+        public TextBox textBoxChatGPTMaxHistory;
+        private GroupBox groupBox45;
+        private Label label228;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleUseContextWithGPT;
+        private Label label229;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleUsePro4OpenAITTS;
+        private Label label230;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleUsePro4ChatGPT;
+        private Label label232;
+        private Label label231;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleGPTUsePrompt;
+        public RichTextBox richTextBoxGPTPrompt;
+        public ProgressBar progressBar2;
+        public Label labelChatGPTCharacters;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

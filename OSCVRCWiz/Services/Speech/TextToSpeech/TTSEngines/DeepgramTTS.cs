@@ -1,5 +1,4 @@
 ﻿using OSCVRCWiz.Resources.Audio;
-using OSCVRCWiz.Services.Text;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
@@ -25,7 +24,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
         {
             accents.Items.Clear();
-            // comboBox2.Items.Add("");
 
             var voiceAccents = new List<string>()
                     {

@@ -353,6 +353,7 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.labelTTSCharacters.Text = Settings1.Default.charsUsed;
             VoiceWizardWindow.MainFormGlobal.labelTranslationCharacters.Text = Settings1.Default.transCharsUsed;
+            VoiceWizardWindow.MainFormGlobal.labelChatGPTCharacters.Text = Settings1.Default.GPTUsageLabel;
             VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text = Settings1.Default.hoursUsed;
 
             VoiceWizardWindow.MainFormGlobal.minimumAudio.Text = Settings1.Default.minAudioDuration;
@@ -427,6 +428,18 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxWhisperVADOffset.Text = Settings1.Default.whisperVadOffset;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked = Settings1.Default.switchVoicePresetBindToggle;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonEnableChatGPT.Checked = Settings1.Default.useChatGPT;
+            VoiceWizardWindow.MainFormGlobal.rjToggleUseMaxChatHistory.Checked= Settings1.Default.UseMaxChatHistory;
+
+            VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text= Settings1.Default.ChatGPTAPIKey;
+            VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text = Settings1.Default.ChatGPTModel;
+            VoiceWizardWindow.MainFormGlobal.textBoxChatGPTMaxHistory.Text = Settings1.Default.ChatGPTMaxHistory;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4ChatGPT.Checked = Settings1.Default.useChatGPTPro;
+            VoiceWizardWindow.MainFormGlobal.rjToggleUseContextWithGPT.Checked = Settings1.Default.useContextWithGPT;
+            VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4OpenAITTS.Checked = Settings1.Default.useOpenAITTSPro;
+
 
 
 

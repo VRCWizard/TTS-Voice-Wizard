@@ -848,7 +848,7 @@ namespace OSCVRCWiz
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
 
@@ -865,7 +865,7 @@ namespace OSCVRCWiz
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
 
@@ -882,7 +882,24 @@ namespace OSCVRCWiz
 
                     if (textBoxWizardProKey.Text.ToString() == "")
                     {
-                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a memeber: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
+                    }
+
+
+                    break;
+                case "OpenAI":
+                    DoSpeech.TTSModeSaved = "OpenAI";
+                    OpenAITTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+                    comboBoxTranslationLanguage.Enabled = true;
+                    comboBoxAccentSelect.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+
+                    if (textBoxWizardProKey.Text.ToString() == "" && textBoxChatGPT.Text.ToString()=="")
+                    {
+                        OutputText.outputLog("[You appear to be missing an OpenAI API key, get an OpenAI API key or become a member of member of VoiceWizardPro]", Color.DarkOrange);
+                        OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
                     }
 
 
@@ -1155,37 +1172,15 @@ namespace OSCVRCWiz
         }
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)//Accents/Languages Select
         {
-            if (DoSpeech.TTSModeSaved == "Azure")
+            switch (DoSpeech.TTSModeSaved)
             {
-                AzureTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString());
-
+                case "Azure": AzureTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString()); break;
+                case "Amazon Polly": AmazonPollyTTS.SynthesisGetAvailableVoices(comboBoxAccentSelect.Text.ToString()); break;
+                case "Google (Pro Only)": GoogleTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString()); break;
+                case "Uberduck": UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString(), false); break;
+                case "IBM Watson (Pro Only)": IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString()); break;
+                case "Deepgram Aura (Pro Only)": DeepgramAuraTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString()); break;
             }
-            if (DoSpeech.TTSModeSaved == "Amazon Polly")
-            {
-                AmazonPollyTTS.SynthesisGetAvailableVoices(comboBoxAccentSelect.Text.ToString());
-
-            }
-            if (DoSpeech.TTSModeSaved == "Google (Pro Only)")
-            {
-                GoogleTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString());
-
-            }
-            if (DoSpeech.TTSModeSaved == "Uberduck")
-            {
-                UberDuckTTS.SynthesisGetAvailableVoicesAsync(comboBoxAccentSelect.Text.ToString(), false);
-
-            }
-            if (DoSpeech.TTSModeSaved == "IBM Watson (Pro Only)")
-            {
-                IBMWatsonTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString());
-
-            }
-            if (DoSpeech.TTSModeSaved == "Deepgram Aura (Pro Only)")
-            {
-                DeepgramAuraTTS.SynthesisGetAvailableVoicesAsync(comboBoxVoiceSelect, comboBoxAccentSelect.Text.ToString());
-
-            }
-
 
 
         }
@@ -1487,6 +1482,7 @@ namespace OSCVRCWiz
 
                 iconButton37.BackColor = DarkModeColor;
 
+                hidePasswordChatGPT.BackColor = DarkModeColor;
                 ShowAmazonKeyPassword.BackColor = DarkModeColor;
                 ShowDeepLPassword.BackColor = DarkModeColor;
                 ShowAmazonSecretPassword.BackColor = DarkModeColor;
@@ -1510,6 +1506,7 @@ namespace OSCVRCWiz
                 iconButton36.ForeColor = Color.White;
                 iconButton37.ForeColor = Color.White;
 
+                hidePasswordChatGPT.IconColor = Color.White;
                 ShowAmazonKeyPassword.IconColor = Color.White;
                 ShowDeepLPassword.IconColor = Color.White;
                 ShowAmazonSecretPassword.IconColor = Color.White;
@@ -1554,7 +1551,7 @@ namespace OSCVRCWiz
                 iconButton37.BackColor = Color.White;
 
 
-
+                hidePasswordChatGPT.BackColor = Color.White;
                 ShowAmazonKeyPassword.BackColor = Color.White;
                 ShowDeepLPassword.BackColor = Color.White;
                 ShowAmazonSecretPassword.BackColor = Color.White;
@@ -1581,7 +1578,7 @@ namespace OSCVRCWiz
                 richTextBox4.BackColor = LightModeColor;
                 richTextBox4.ForeColor = Color.White;
 
-
+                hidePasswordChatGPT.IconColor = LightModeColor;
                 ShowAmazonKeyPassword.IconColor = LightModeColor;
                 ShowDeepLPassword.IconColor = LightModeColor;
                 ShowAmazonSecretPassword.IconColor = LightModeColor;
@@ -2681,6 +2678,11 @@ namespace OSCVRCWiz
             mainTabControl.SelectTab(elevenLabs);
         }
 
+        private void iconButton6_Click_1(object sender, EventArgs e)
+        {
+            mainTabControl.SelectTab(tabChatGPT);
+        }
+
 
         #endregion
 
@@ -3153,6 +3155,55 @@ namespace OSCVRCWiz
 
 
 
+        private void hidePasswordChatGPT_Click(object sender, EventArgs e)
+        {
+            ShowHidePassword(textBoxChatGPT, hidePasswordChatGPT);
+        }
+
+        private void buttonApplyChatGPT_Click(object sender, EventArgs e)
+        {
+            string key = VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text.ToString();
+            string model = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text.ToString();
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(model))
+            {
+                OutputText.outputLog("[ChatGPT Error: key or model text field is blank ]", Color.Red);
+            }
+            else
+            {
+               /* if (key.Length > 200)
+                {
+                    ChatGPTAPI.ChatGPTMode = "Token";
+                    ChatGPTAPI.UnOfficialBotSetSession(key, model);
+                    OutputText.outputLog("[ChatGPT loaded with session token]", Color.Green);
+                }
+                else
+                {*/
+                    ChatGPTAPI.ChatGPTMode = "Key";
+                    ChatGPTAPI.OfficialBotSetAPIKey(key, model);
+                    OutputText.outputLog("[ChatGPT loaded with API key]", Color.Green);
+
+              //  }
+                Settings1.Default.ChatGPTAPIKey = VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text;
+                Settings1.Default.ChatGPTModel = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text;
+                Settings1.Default.Save();
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ChatGPTAPI.chatSession.Messages.Clear();
+                ChatGPTAPI.messagesInHistory = ChatGPTAPI.chatSession.Messages.Count;
+
+                OutputText.outputLog($"[ChatGPT message history cleared]");
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog($"[Clear ChatGPT Histroy Exception: {ex.Message}]", Color.Red);
+            }
+           
+        }
     }
 
 

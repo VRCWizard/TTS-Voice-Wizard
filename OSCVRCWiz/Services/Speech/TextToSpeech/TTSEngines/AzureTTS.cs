@@ -1,17 +1,8 @@
 ﻿using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OSCVRCWiz.Settings;
-using NAudio.Wave;
-using System.IO;
-using Swan.Logging;
 using System.Text.Json;
-using Octokit;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
 
@@ -35,13 +26,10 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
     }
     public class AzureTTS
     {
-        // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
 
-        //TTS
         public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
         public static Dictionary<string, string[]> RememberLanguageVoices = new Dictionary<string, string[]>();
         public static bool firstVoiceLoad = true;
-        // public static SpeechSynthesizer synthesizerVoice;
 
         public static async Task SynthesisGetAvailableVoicesAsync(string fromLanguageFullname)
         {
@@ -248,45 +236,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     default: localList.Add("en-US"); break; // if translation to english happens something is wrong
                 }
                 List<string> voiceList = new List<string>();
-                /*   foreach (var local in localList)
-                   {
-                       using (var result = await synthesizer.GetVoicesAsync(local))
-                       {
-                           if (result.Reason == ResultReason.VoicesListRetrieved)
-                           {
-                               OutputText.outputLog("[Voices successfully retrieved from Azure]", Color.Green);
-
-
-                               foreach (var voice in result.Voices)
-                               {
-
-                                   //  ot.outputLog(MainForm,voice.LocalName);
-                                   AllVoices4Language.Add(voice.ShortName, voice.StyleList);
-                                   VoiceWizardWindow.MainFormGlobal.comboBox2.Items.Add(voice.ShortName);
-                                   voiceList.Add(voice.ShortName);
-                                   //   foreach (KeyValuePair<string, string[]> kvp in AllVoices4Language)
-                                   //  {
-                                   //   ot.outputLog(MainForm, kvp.Key.ToString());
-                                   // foreach (string style in kvp.Value)
-                                   //  {
-                                   //  ot.outputLog(MainForm, style);
-                                   //  }
-                                   //    }
-                                   //  ot.outputLog(MainForm, voice.ShortName);
-                                   //ot.outputLog(MainForm, voice.StyleList);
-                                   //  foreach (var style in voice.StyleList)
-                                   // {
-                                   //     ot.outputLog(MainForm, style);
-                                   // }
-                               }
-                           }
-                           else if (result.Reason == ResultReason.Canceled)
-                           {
-                               OutputText.outputLog($"CANCELED: ErrorDetails=[{result.ErrorDetails}]", Color.Red);
-                               OutputText.outputLog($"CANCELED: Did you update the Azure subscription info?", Color.Red);
-                           }
-                       }
-                   }*/
+  
                 foreach (var locale in localList)
                 {
                     string basePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -311,16 +261,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     }
 
 
-                    /*    if (string.IsNullOrWhiteSpace(jsonData))
-                        {
-                            OutputText.outputLog("[Error accessing voice files, try running as admin or moving entire VoiceWizardFolder to new location]", Color.Red);
-                        }*/
 
                     // deserialize the JSON data into an array of Voice objects
                     Voice[] voices = JsonSerializer.Deserialize<Voice[]>(jsonData);
 
-                    // replace with the desired locale
-                    // string locale = "en-GB";
+
 
                     foreach (var voice in voices)
                     {
@@ -388,23 +333,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 int volume = TTSMessageQueued.Volume;
                 string voice = TTSMessageQueued.Voice;
 
-
-
-
-
-
                 var config = SpeechConfig.FromSubscription(AzureRecognition.YourSubscriptionKey, AzureRecognition.YourServiceRegion);
                 // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw16Khz16BitMonoTrueSilk);
-                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
-
+                  config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
+               // config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff16Khz16BitMonoPcm);
                 //   config.SetProperty(PropertyId.Speech_LogFilename, "logfile.txt");
-
-                // Note: if only language is set, the default voice of that language is chosen.
-                // config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // For example, "de-DE"
-                // The voice setting will overwrite the language setting.
-                // The voice setting will not overwrite the voice element in input SSML.
-                // config.SpeechSynthesisVoiceName = "en-US-JennyNeural";
-                // config.SpeechSynthesisVoiceName = "en-US-SaraNeural";
 
                 // https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speaker-recognition
 
@@ -481,7 +414,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                 // var result = await synthesizerVoice.
 
+             //   Stopwatch stopwatch = new Stopwatch();
+
+              //  stopwatch.Start();
                 var result = await synthesizerVoice.SpeakSsmlAsync(ssml0);
+               
 
                 if (result.Reason == ResultReason.SynthesizingAudioCompleted)
                 {
@@ -489,7 +426,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                     MemoryStream memoryStream = new MemoryStream(result.AudioData);
 
+                  //  stopwatch.Stop();
+                 //   OutputText.outputLog($"Processing/Response time:{stopwatch.ElapsedMilliseconds}", Color.Yellow);
                     AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, false, AudioFormat.Wav);
+                    
+
                     memoryStream.Dispose();
 
 
