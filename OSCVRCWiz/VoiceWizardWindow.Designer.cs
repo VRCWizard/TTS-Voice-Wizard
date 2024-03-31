@@ -263,6 +263,8 @@
             label73 = new Label();
             General = new TabPage();
             groupBox17 = new GroupBox();
+            label233 = new Label();
+            rjToggleButtonTypingIndicator = new OSCVRCWiz.RJControls.RJToggleButton();
             label106 = new Label();
             rjToggleButtonChatBoxUseDelay = new OSCVRCWiz.RJControls.RJToggleButton();
             label78 = new Label();
@@ -761,8 +763,6 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            label233 = new Label();
-            rjToggleButtonTypingIndicator = new OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -4370,6 +4370,34 @@
             groupBox17.TabStop = false;
             groupBox17.Text = "Chatbox";
             // 
+            // label233
+            // 
+            label233.AutoSize = true;
+            label233.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label233.ForeColor = Color.Snow;
+            label233.Location = new Point(55, 102);
+            label233.Name = "label233";
+            label233.Size = new Size(92, 15);
+            label233.TabIndex = 111;
+            label233.Text = "Typing Indicator";
+            // 
+            // rjToggleButtonTypingIndicator
+            // 
+            rjToggleButtonTypingIndicator.AutoSize = true;
+            rjToggleButtonTypingIndicator.Checked = true;
+            rjToggleButtonTypingIndicator.CheckState = CheckState.Checked;
+            rjToggleButtonTypingIndicator.Location = new Point(7, 102);
+            rjToggleButtonTypingIndicator.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonTypingIndicator.MinimumSize = new Size(39, 16);
+            rjToggleButtonTypingIndicator.Name = "rjToggleButtonTypingIndicator";
+            rjToggleButtonTypingIndicator.OffBackColor = Color.Gray;
+            rjToggleButtonTypingIndicator.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonTypingIndicator.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonTypingIndicator.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonTypingIndicator.Size = new Size(39, 16);
+            rjToggleButtonTypingIndicator.TabIndex = 112;
+            rjToggleButtonTypingIndicator.UseVisualStyleBackColor = true;
+            // 
             // label106
             // 
             label106.AutoSize = true;
@@ -5147,7 +5175,7 @@
             comboBoxSTT.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSTT.FlatStyle = FlatStyle.Flat;
             comboBoxSTT.FormattingEnabled = true;
-            comboBoxSTT.Items.AddRange(new object[] { "System Speech", "Azure", "Deepgram (Pro Only)", "Vosk", "Web Captioner", "Whisper", "ElevenLabs STS" });
+            comboBoxSTT.Items.AddRange(new object[] { "System Speech", "Azure", "Deepgram (Pro Only)", "Vosk", "Web Captioner", "Whisper" });
             comboBoxSTT.Location = new Point(13, 35);
             comboBoxSTT.Margin = new Padding(3, 2, 3, 2);
             comboBoxSTT.Name = "comboBoxSTT";
@@ -11257,34 +11285,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label233
-            // 
-            label233.AutoSize = true;
-            label233.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label233.ForeColor = Color.Snow;
-            label233.Location = new Point(55, 102);
-            label233.Name = "label233";
-            label233.Size = new Size(92, 15);
-            label233.TabIndex = 111;
-            label233.Text = "Typing Indicator";
-            // 
-            // rjToggleButtonTypingIndicator
-            // 
-            rjToggleButtonTypingIndicator.AutoSize = true;
-            rjToggleButtonTypingIndicator.Checked = true;
-            rjToggleButtonTypingIndicator.CheckState = CheckState.Checked;
-            rjToggleButtonTypingIndicator.Location = new Point(7, 102);
-            rjToggleButtonTypingIndicator.Margin = new Padding(3, 2, 3, 2);
-            rjToggleButtonTypingIndicator.MinimumSize = new Size(39, 16);
-            rjToggleButtonTypingIndicator.Name = "rjToggleButtonTypingIndicator";
-            rjToggleButtonTypingIndicator.OffBackColor = Color.Gray;
-            rjToggleButtonTypingIndicator.OffToggleColor = Color.Gainsboro;
-            rjToggleButtonTypingIndicator.OnBackColor = Color.MediumSlateBlue;
-            rjToggleButtonTypingIndicator.OnToggleColor = Color.WhiteSmoke;
-            rjToggleButtonTypingIndicator.Size = new Size(39, 16);
-            rjToggleButtonTypingIndicator.TabIndex = 112;
-            rjToggleButtonTypingIndicator.UseVisualStyleBackColor = true;
             // 
             // VoiceWizardWindow
             // 
