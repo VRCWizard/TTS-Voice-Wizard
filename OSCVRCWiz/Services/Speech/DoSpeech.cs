@@ -628,6 +628,12 @@ namespace OSCVRCWiz.Services.Speech
 
                             break;
 
+                        case "ElevenLabs STS":
+
+                            Task.Run(async () => await ElevenLabsRecognition.doRecognition(false));
+
+                            break;
+
                         case "Vosk":
 
                             Task.Run(() => VoskRecognition.toggleVosk());

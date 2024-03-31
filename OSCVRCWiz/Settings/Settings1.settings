@@ -704,5 +704,8 @@
     <Setting Name="GPTUsageLabel" Type="System.String" Scope="User">
       <Value Profile="(Default)">ChatGPT Characters Used: 0/0</Value>
     </Setting>
+    <Setting Name="typeIndicator" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

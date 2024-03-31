@@ -23,7 +23,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 OutputText.outputLog("[Locally Hosted TTS Error: " + ex.Message + "]", Color.Red);
                 if (ex.Message.ToString() == "No connection could be made because the target machine actively refused it. [::ffff:127.0.0.1]:8124 (127.0.0.1:8124)")
                 {
-                    OutputText.outputLog("[You did not setup Glados TTS follow the instructions on the wiki here: https://ttsvoicewizard.com/docs/TTSMethods/LocallyHosted ]", Color.DarkOrange);
+                    OutputText.outputLog("[You did not setup The locally hostd option follow the instructions on the wiki here: https://ttsvoicewizard.com/docs/TTSMethods/LocallyHosted ]", Color.DarkOrange);
                 }
 
                 Task.Run(() => TTSMessageQueue.PlayNextInQueue());

@@ -1,21 +1,25 @@
 ﻿
+using Amazon.Polly;
 using NAudio.Wave;
 using Newtonsoft.Json.Linq;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
+using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
 using System.Diagnostics;
 using System.Globalization;
 using WebRtcVadSharp;
+using static System.Net.Mime.MediaTypeNames;
+using Windows.Devices.Spi;
 
 namespace OSCVRCWiz.Speech_Recognition
 {
     public class VoiceWizardProRecognition
     {
-
+       // static CancellationTokenSource speechCt = new();
         private static bool DeepGramEnabled = false;
 
         private static WebRtcVad vad;
@@ -72,14 +76,15 @@ namespace OSCVRCWiz.Speech_Recognition
                         OutputText.outputLog("[DeepGram Listening]");
                         DoSpeech.speechToTextOnSound();
 
-                        using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false))
+                        using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false, deepgramCt))
                         {
 
                             if (audioStream != null)
                             {
-                                
-                                string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
-                                TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+                                //OutputText.outputLog("Hello World");
+                                 string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
+                              
+                                  TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
 
                             }
                             else
@@ -128,7 +133,7 @@ namespace OSCVRCWiz.Speech_Recognition
                                 {
                                     OutputText.outputLog($"[Deepgram Settings Error: {ex.Message}", Color.Red);
                                 }
-                                  using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false))
+                                  using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false,deepgramCt))
                                   {
                               
                               
@@ -196,7 +201,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     OutputText.outputLog("[Deepgram is being calibrated to ignore your background noise, do not speak. Speaking will ruin the calibration]",Color.Orange);
                     DoSpeech.speechToTextOnSound();
 
-                    using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, true))
+                    using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, true, deepgramCt))
                     {
           
                         OutputText.outputLog("[DeepGram Calibration Complete]");
@@ -336,7 +341,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
 
-        public static async Task<MemoryStream> RecordAudio(int minDuration, int maxDuration, int howQuiet, int silenceDuration, double minValidDuration, OperatingMode VADMode,bool calibration)
+        public static async Task<MemoryStream> RecordAudio(int minDuration, int maxDuration, int howQuiet, int silenceDuration, double minValidDuration, OperatingMode VADMode,bool calibration, CancellationTokenSource ct)
         {
             // Create a MemoryStream to store the recorded audio
             MemoryStream outputStream = new MemoryStream();
@@ -382,7 +387,7 @@ namespace OSCVRCWiz.Speech_Recognition
             // Event handler for audio data received
             waveSource.DataAvailable += (sender, e) =>
             {
-                if (deepgramCt.Token.IsCancellationRequested)
+                if (ct.Token.IsCancellationRequested)
                 {
                     validAudioClip = false;
                     waveSource.StopRecording();
@@ -411,7 +416,7 @@ namespace OSCVRCWiz.Speech_Recognition
                         {
                             OutputText.outputLog("VAD Start Time: " + startTime);
                         }
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
                         {
                             var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                             OSC.OSCSender.Send(typingbubble);

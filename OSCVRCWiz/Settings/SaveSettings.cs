@@ -350,6 +350,8 @@ namespace OSCVRCWiz
             Settings1.Default.useContextWithGPT = VoiceWizardWindow.MainFormGlobal.rjToggleUseContextWithGPT.Checked;
             Settings1.Default.useOpenAITTSPro = VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4OpenAITTS.Checked;
 
+            Settings1.Default.typeIndicator = VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked;
+
 
 
             Settings1.Default.Save();

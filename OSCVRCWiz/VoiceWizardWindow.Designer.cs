@@ -681,6 +681,7 @@
             pictureBox3 = new PictureBox();
             label165 = new Label();
             groupBox23 = new GroupBox();
+            labelChatGPTCharacters = new Label();
             label230 = new Label();
             rjToggleUsePro4ChatGPT = new OSCVRCWiz.RJControls.RJToggleButton();
             label229 = new Label();
@@ -760,7 +761,8 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            labelChatGPTCharacters = new Label();
+            label233 = new Label();
+            rjToggleButtonTypingIndicator = new OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -4348,6 +4350,8 @@
             // 
             // groupBox17
             // 
+            groupBox17.Controls.Add(label233);
+            groupBox17.Controls.Add(rjToggleButtonTypingIndicator);
             groupBox17.Controls.Add(label106);
             groupBox17.Controls.Add(rjToggleButtonChatBoxUseDelay);
             groupBox17.Controls.Add(label78);
@@ -4361,7 +4365,7 @@
             groupBox17.Margin = new Padding(3, 2, 3, 2);
             groupBox17.Name = "groupBox17";
             groupBox17.Padding = new Padding(3, 2, 3, 2);
-            groupBox17.Size = new Size(708, 110);
+            groupBox17.Size = new Size(708, 132);
             groupBox17.TabIndex = 119;
             groupBox17.TabStop = false;
             groupBox17.Text = "Chatbox";
@@ -4490,7 +4494,7 @@
             groupBox18.Controls.Add(label102);
             groupBox18.Controls.Add(rjToggleButtonOBSText);
             groupBox18.ForeColor = Color.White;
-            groupBox18.Location = new Point(20, 1452);
+            groupBox18.Location = new Point(20, 1474);
             groupBox18.Margin = new Padding(3, 2, 3, 2);
             groupBox18.Name = "groupBox18";
             groupBox18.Padding = new Padding(3, 2, 3, 2);
@@ -4842,7 +4846,7 @@
             groupBox20.Controls.Add(buttonDelayHere);
             groupBox20.Controls.Add(textBoxDelay);
             groupBox20.ForeColor = Color.White;
-            groupBox20.Location = new Point(20, 1252);
+            groupBox20.Location = new Point(20, 1274);
             groupBox20.Margin = new Padding(3, 2, 3, 2);
             groupBox20.Name = "groupBox20";
             groupBox20.Padding = new Padding(3, 2, 3, 2);
@@ -5143,7 +5147,7 @@
             comboBoxSTT.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSTT.FlatStyle = FlatStyle.Flat;
             comboBoxSTT.FormattingEnabled = true;
-            comboBoxSTT.Items.AddRange(new object[] { "System Speech", "Azure", "Deepgram (Pro Only)", "Vosk", "Web Captioner", "Whisper" });
+            comboBoxSTT.Items.AddRange(new object[] { "System Speech", "Azure", "Deepgram (Pro Only)", "Vosk", "Web Captioner", "Whisper", "ElevenLabs STS" });
             comboBoxSTT.Location = new Point(13, 35);
             comboBoxSTT.Margin = new Padding(3, 2, 3, 2);
             comboBoxSTT.Name = "comboBoxSTT";
@@ -10150,6 +10154,15 @@
             groupBox23.TabStop = false;
             groupBox23.Text = "Voice Wizard Pro Settings";
             // 
+            // labelChatGPTCharacters
+            // 
+            labelChatGPTCharacters.AutoSize = true;
+            labelChatGPTCharacters.Location = new Point(6, 310);
+            labelChatGPTCharacters.Name = "labelChatGPTCharacters";
+            labelChatGPTCharacters.Size = new Size(164, 15);
+            labelChatGPTCharacters.TabIndex = 187;
+            labelChatGPTCharacters.Text = "ChatGPT Characters Used: 0/0";
+            // 
             // label230
             // 
             label230.AutoSize = true;
@@ -11245,14 +11258,33 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
-            // labelChatGPTCharacters
+            // label233
             // 
-            labelChatGPTCharacters.AutoSize = true;
-            labelChatGPTCharacters.Location = new Point(6, 310);
-            labelChatGPTCharacters.Name = "labelChatGPTCharacters";
-            labelChatGPTCharacters.Size = new Size(164, 15);
-            labelChatGPTCharacters.TabIndex = 187;
-            labelChatGPTCharacters.Text = "ChatGPT Characters Used: 0/0";
+            label233.AutoSize = true;
+            label233.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label233.ForeColor = Color.Snow;
+            label233.Location = new Point(55, 102);
+            label233.Name = "label233";
+            label233.Size = new Size(92, 15);
+            label233.TabIndex = 111;
+            label233.Text = "Typing Indicator";
+            // 
+            // rjToggleButtonTypingIndicator
+            // 
+            rjToggleButtonTypingIndicator.AutoSize = true;
+            rjToggleButtonTypingIndicator.Checked = true;
+            rjToggleButtonTypingIndicator.CheckState = CheckState.Checked;
+            rjToggleButtonTypingIndicator.Location = new Point(7, 102);
+            rjToggleButtonTypingIndicator.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonTypingIndicator.MinimumSize = new Size(39, 16);
+            rjToggleButtonTypingIndicator.Name = "rjToggleButtonTypingIndicator";
+            rjToggleButtonTypingIndicator.OffBackColor = Color.Gray;
+            rjToggleButtonTypingIndicator.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonTypingIndicator.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonTypingIndicator.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonTypingIndicator.Size = new Size(39, 16);
+            rjToggleButtonTypingIndicator.TabIndex = 112;
+            rjToggleButtonTypingIndicator.UseVisualStyleBackColor = true;
             // 
             // VoiceWizardWindow
             // 
@@ -12162,6 +12194,8 @@
         public RichTextBox richTextBoxGPTPrompt;
         public ProgressBar progressBar2;
         public Label labelChatGPTCharacters;
+        private Label label233;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonTypingIndicator;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

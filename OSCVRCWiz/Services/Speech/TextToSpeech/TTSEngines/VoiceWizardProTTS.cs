@@ -268,7 +268,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 });
             });
 
-            OutputText.outputLog($"ChatGPT Characters Used: {GPTUsed}/{GPTLimit}");
+          //  OutputText.outputLog($"ChatGPT Characters Used: {GPTUsed}/{GPTLimit}");
 
             return responseText;
 

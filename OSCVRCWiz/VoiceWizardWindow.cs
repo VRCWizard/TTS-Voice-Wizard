@@ -340,7 +340,7 @@ namespace OSCVRCWiz
         {
             int length = richTextBox3.Text.ToString().Length;
 
-            if (rjToggleButtonChatBox.Checked == true && (richTextBox3.Text.ToString().Length > length))
+                if (rjToggleButtonChatBox.Checked == true && (richTextBox3.Text.ToString().Length > length) && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
             {
                 var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                 OSC.OSCSender.Send(typingbubble);
@@ -1265,9 +1265,12 @@ namespace OSCVRCWiz
 
         private void richTextBox9_TextChanged(object sender, EventArgs e)
         {
-            OutputText.typingBox = true;
-            var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
-            OSC.OSCSender.Send(typingbubble);
+            if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
+            {
+                OutputText.typingBox = true;
+                var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
+                OSC.OSCSender.Send(typingbubble);
+            }
         }
 
         private void iconButton22_Click(object sender, EventArgs e)
@@ -1666,6 +1669,7 @@ namespace OSCVRCWiz
             Task.Run(() => VoskRecognition.AutoStopVoskRecog());
             Task.Run(() => WhisperRecognition.autoStopWhisper());
             VoiceWizardProRecognition.deepgramCt.Cancel();
+            ElevenLabsRecognition.elevenCt.Cancel();
         }
 
 
@@ -1693,7 +1697,7 @@ namespace OSCVRCWiz
                 labelVADIndicator.Visible = false;
                 WhisperDebugLabel.Visible = false;
             }
-
+            comboBoxTTSMode.Enabled = true;
             switch (comboBoxSTT.Text.ToString())
             {
                 case "Whisper":
@@ -1719,6 +1723,14 @@ namespace OSCVRCWiz
                     {
                         OutputText.outputLog("[Azure selected for Speech to Text (Voice Recognition). SETUP GUIDE: https://ttsvoicewizard.com/docs/SpeechRecognitionMethods/AzureSTT ]", Color.DarkOrange);
                     }
+                    break;
+                case "ElevenLabs STS":
+                    comboBoxPreset.SelectedItem = "-None Selected-";
+
+                    Task.Delay(1000).Wait();
+                    comboBoxTTSMode.SelectedItem = "ElevenLabs";
+                    comboBoxTTSMode.Enabled = false;
+
                     break;
                 default:
 

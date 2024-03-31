@@ -2830,5 +2830,17 @@ namespace OSCVRCWiz.Settings {
                 this["GPTUsageLabel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool typeIndicator {
+            get {
+                return ((bool)(this["typeIndicator"]));
+            }
+            set {
+                this["typeIndicator"] = value;
+            }
+        }
     }
 }

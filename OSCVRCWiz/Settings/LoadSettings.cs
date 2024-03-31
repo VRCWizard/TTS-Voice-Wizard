@@ -439,7 +439,7 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4ChatGPT.Checked = Settings1.Default.useChatGPTPro;
             VoiceWizardWindow.MainFormGlobal.rjToggleUseContextWithGPT.Checked = Settings1.Default.useContextWithGPT;
             VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4OpenAITTS.Checked = Settings1.Default.useOpenAITTSPro;
-
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked = Settings1.Default.typeIndicator;
 
 
 

@@ -54,8 +54,8 @@ namespace OSCVRCWiz.Services.Text
         }
         public static async void outputLog(string textstring, Color? color = null)
         {
-            _ = Task.Run(() => //This effectily reduces the processing time for any function using output to log since it now runs as a seperate task that the fucntion won't wait for.
-            {
+          //  _ = Task.Run(() => //This effectily reduces the processing time for any function using output to log since it now runs as a seperate task that the fucntion won't wait for.
+          //  {
                 //  MainForm.AppendTextBox("You Said: " + textstring + "\r");
                 if (color == null)
                 {
@@ -65,7 +65,7 @@ namespace OSCVRCWiz.Services.Text
                 {
                     VoiceWizardWindow.MainFormGlobal.logLine("[" + DateTime.Now.ToString("h:mm:ss tt") + "]" + ": " + textstring, color);
                 }
-            });
+         //   });
 
 
         }

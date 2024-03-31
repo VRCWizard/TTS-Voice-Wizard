@@ -483,7 +483,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     {
                         OutputText.outputLog("VAD Start Time: " + startTime);
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
                     {
                         var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                         OSC.OSCSender.Send(typingbubble);
