@@ -2722,5 +2722,125 @@ namespace OSCVRCWiz.Settings {
                 this["switchVoicePresetBindToggle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool useChatGPT {
+            get {
+                return ((bool)(this["useChatGPT"]));
+            }
+            set {
+                this["useChatGPT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool UseMaxChatHistory {
+            get {
+                return ((bool)(this["UseMaxChatHistory"]));
+            }
+            set {
+                this["UseMaxChatHistory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ChatGPTAPIKey {
+            get {
+                return ((string)(this["ChatGPTAPIKey"]));
+            }
+            set {
+                this["ChatGPTAPIKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gpt-3.5-turbo")]
+        public string ChatGPTModel {
+            get {
+                return ((string)(this["ChatGPTModel"]));
+            }
+            set {
+                this["ChatGPTModel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string ChatGPTMaxHistory {
+            get {
+                return ((string)(this["ChatGPTMaxHistory"]));
+            }
+            set {
+                this["ChatGPTMaxHistory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool useChatGPTPro {
+            get {
+                return ((bool)(this["useChatGPTPro"]));
+            }
+            set {
+                this["useChatGPTPro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool useOpenAITTSPro {
+            get {
+                return ((bool)(this["useOpenAITTSPro"]));
+            }
+            set {
+                this["useOpenAITTSPro"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool useContextWithGPT {
+            get {
+                return ((bool)(this["useContextWithGPT"]));
+            }
+            set {
+                this["useContextWithGPT"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ChatGPT Characters Used: 0/0")]
+        public string GPTUsageLabel {
+            get {
+                return ((string)(this["GPTUsageLabel"]));
+            }
+            set {
+                this["GPTUsageLabel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool typeIndicator {
+            get {
+                return ((bool)(this["typeIndicator"]));
+            }
+            set {
+                this["typeIndicator"] = value;
+            }
+        }
     }
 }

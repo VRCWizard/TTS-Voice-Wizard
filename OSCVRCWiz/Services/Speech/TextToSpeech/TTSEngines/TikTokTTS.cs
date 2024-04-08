@@ -3,27 +3,38 @@ using System.Net;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
 using System.Text.Json;
+using System.Diagnostics;
+using Newtonsoft.Json;
+using System.Text;
+using Windows.Media.Protection.PlayReady;
+using ChatGPT.Net.DTO.ChatGPTUnofficial;
+using System.Windows.Markup;
+using System.Net.Http.Headers;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
     public class TikTokTTS
     {
         // public static WaveOut TikTokOutput=null;
+        private static readonly HttpClient client = new HttpClient();//reusing client save so much time!!! around 100ms
+
 
         public static async Task TikTokTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
-
+           // Stopwatch stopwatch = new Stopwatch();
             byte[] result = null;
             try
             {
+               // stopwatch.Start();
                 result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
+
             }
             catch (Exception ex)
             {
 
 
 
-                OutputText.outputLog("[TikTok TTS Error: " + ex.Message+ "]", Color.Red);
+                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
                 if (ex.InnerException != null)
                 {
                     OutputText.outputLog("[TikTok TTS Inner Exception: " + ex.InnerException.Message + "]", Color.Red);
@@ -33,183 +44,158 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
             }
 
-
-
-            //  File.WriteAllBytes("TikTokTTS.mp3", result);          
-            //  Task.Run(() => PlayAudioHelper());
-
             MemoryStream memoryStream = new MemoryStream(result);
 
+           // stopwatch.Stop();
+          //  OutputText.outputLog($"Processing/Response time:{stopwatch.ElapsedMilliseconds}", Color.Yellow);
 
-
-            //   AudioDevices.playMp3Stream(memoryStream, TTSMessageQueued, ct);
             AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, true, AudioFormat.Mp3);
+
             memoryStream.Dispose();
 
-
-
-
-
-
-            //System.Diagnostics.Debug.WriteLine("tiktok speech ran"+result.ToString());
         }
+
 
         public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
         {
-           
-
+            var audioInBase64 = "";
             var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
-
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.Method = "POST";
-
-            httpRequest.ContentType = "application/json";
-
-            //httpRequest.Timeout = 180000;// httpclient-an-error-occurred-while-sending-the-request attempt fix (3 minutes)
-           // httpRequest.KeepAlive = false;// httpclient-an-error-occurred-while-sending-the-request attempt fix                 
-
             var apiVoice = GetTikTokVoice(voice);
+            var input = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
+            var content = new StringContent(input, Encoding.UTF8, "application/json");
 
-            var data = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
-
-            using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
+            using (MemoryStream ms = new MemoryStream())
             {
-                streamWriter.Write(data);
+                using (var streamWriter = new StreamWriter(ms))
+                {
+                    streamWriter.Write(input);
+                    streamWriter.Flush();
+                    ms.Seek(0, SeekOrigin.Begin);
+
+                    var request = new HttpRequestMessage(HttpMethod.Post, url);
+                    request.Content = new StreamContent(ms);
+                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var response = await client.SendAsync(request).ConfigureAwait(false);
+
+                    string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    JObject responseObject = JObject.Parse(responseContent);
+                    audioInBase64 = responseObject["data"].ToString();
+                }
             }
-
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            string audioInBase64 = "";
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-                var dataHere = JObject.Parse(result.ToString()).SelectToken("data").ToString();
-                audioInBase64 = dataHere.ToString();
-
-                System.Diagnostics.Debug.WriteLine(result);
-            }
-
-            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
-          //  OutputText.outputLog("[TikTok TTS Error: " + httpResponse.StatusCode + "]", Color.Red);
-
-
-
-            System.Diagnostics.Debug.WriteLine(audioInBase64);
             return Convert.FromBase64String(audioInBase64);
 
         }
-        public static string GetTikTokVoice(string voice)
+    public static string GetTikTokVoice(string voice)
+    {
+        string apiName = "en_us_001";
+
+        apiName = TiktokRememberVoices[voice];
+
+        return apiName;
+    }
+
+    public class TikTokVoice
+    {
+        public string name { get; set; }
+        public string voice_id { get; set; }
+
+    }
+
+    public static Dictionary<string, string> TiktokRememberVoices = new Dictionary<string, string>();
+    public static bool TiktokfirstVoiceLoad = true;
+
+    public static async Task SynthesisGetAvailableVoicesAsync(ComboBox comboboxVoices)
+    {
+
+        if (TiktokfirstVoiceLoad)
         {
-            string apiName = "en_us_001";
 
-            apiName = TiktokRememberVoices[voice];
 
-            return apiName;
-        }
+            // replace with the path to the JSON file
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
-        public class TikTokVoice
-        {
-            public string name { get; set; }
-            public string voice_id { get; set; }
+            string relativePath = "Assets/voices/TiktokVoices.json";
 
-        }
+            string jsonFilePath = Path.Combine(basePath, relativePath);
 
-        public static Dictionary<string, string> TiktokRememberVoices = new Dictionary<string, string>();
-        public static bool TiktokfirstVoiceLoad = true;
-
-        public static async Task SynthesisGetAvailableVoicesAsync(ComboBox comboboxVoices)
-        {
-
-            if (TiktokfirstVoiceLoad)
+            // read the JSON data from the file
+            string jsonData = "";
+            try
             {
-
-
-                // replace with the path to the JSON file
-                string basePath = AppDomain.CurrentDomain.BaseDirectory;
-
-                string relativePath = "Assets/voices/TiktokVoices.json";
-
-                string jsonFilePath = Path.Combine(basePath, relativePath);
-
-
-                //string jsonFilePath = "Assets/voices/TiktokVoices.json";
-
-                    // read the JSON data from the file
-                    string jsonData = "";
-                    try
-                    {
-                        jsonData = File.ReadAllText(jsonFilePath);
-                    }
-                    catch (Exception ex)
-                    {
-                        OutputText.outputLog("[Could not find directory, try running TTSVoiceWizard as admin or moving the entire folder to a new location. (if it's on the desktop move it to documents or where your games are stored for example)]", Color.Red);
-                    }
+                jsonData = File.ReadAllText(jsonFilePath);
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("[Could not find directory, try running TTSVoiceWizard as admin or moving the entire folder to a new location. (if it's on the desktop move it to documents or where your games are stored for example)]", Color.Red);
+            }
 
 
 
-                    // deserialize the JSON data into an array of Voice objects
-                    TikTokVoice[] voices = JsonSerializer.Deserialize<TikTokVoice[]>(jsonData);
-
-                    
-
-                    foreach (var voice in voices)
-                    {
-                    comboboxVoices.Items.Add(voice.name);
-                      TiktokRememberVoices.Add(voice.name, voice.voice_id);
+            // deserialize the JSON data into an array of Voice objects
+            TikTokVoice[] voices = System.Text.Json.JsonSerializer.Deserialize<TikTokVoice[]>(jsonData);
 
 
 
+            foreach (var voice in voices)
+            {
+                comboboxVoices.Items.Add(voice.name);
+                TiktokRememberVoices.Add(voice.name, voice.voice_id);
 
-                    }
 
 
-              
-                TiktokfirstVoiceLoad = false;
 
             }
-            else
-            {
-                //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: Voices successfully reloaded locally]");
-                foreach (string voice in TiktokRememberVoices.Keys)
-                {
-                    comboboxVoices.Items.Add(voice);
-                }
-            }
-   
-          //  VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex = 0;
-
-           
 
 
+
+            TiktokfirstVoiceLoad = false;
 
         }
-
-        public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
+        else
         {
-            accents.Items.Clear();
-            accents.Items.Add("default");
-            accents.SelectedIndex = 0;
-
-
-            voices.Items.Clear();
-
-    
-
-            SynthesisGetAvailableVoicesAsync(voices);
-
-            voices.SelectedIndex = 0;
-
-            styles.Items.Clear();
-            styles.Items.Add("default");
-            styles.SelectedIndex = 0;
-
-            styles.Enabled = false;
-            voices.Enabled = true;
-
+            //  VoiceWizardWindow.MainFormGlobal.ot.outputLog("[DEBUG: Voices successfully reloaded locally]");
+            foreach (string voice in TiktokRememberVoices.Keys)
+            {
+                comboboxVoices.Items.Add(voice);
+            }
         }
 
+        //  VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.SelectedIndex = 0;
 
 
-        }
+
+
+
+    }
+
+    public static void SetVoices(ComboBox voices, ComboBox styles, ComboBox accents)
+    {
+        accents.Items.Clear();
+        accents.Items.Add("default");
+        accents.SelectedIndex = 0;
+
+
+        voices.Items.Clear();
+
+
+
+        SynthesisGetAvailableVoicesAsync(voices);
+
+        voices.SelectedIndex = 0;
+
+        styles.Items.Clear();
+        styles.Items.Add("default");
+        styles.SelectedIndex = 0;
+
+        styles.Enabled = false;
+        voices.Enabled = true;
+
+    }
+
+
+
+}
 
 
 

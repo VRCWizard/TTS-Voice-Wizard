@@ -1,11 +1,14 @@
 ﻿using System.Net;
+using System.Web;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
+using Windows.Media.Protection.PlayReady;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
     public class GladosTTS
     {
+        private static readonly HttpClient client = new HttpClient();
         public static async Task GladosTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
         {
 
@@ -20,7 +23,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 OutputText.outputLog("[Locally Hosted TTS Error: " + ex.Message + "]", Color.Red);
                 if (ex.Message.ToString() == "No connection could be made because the target machine actively refused it. [::ffff:127.0.0.1]:8124 (127.0.0.1:8124)")
                 {
-                    OutputText.outputLog("[You did not setup Glados TTS follow the instructions on the wiki here: https://ttsvoicewizard.com/docs/TTSMethods/LocallyHosted ]", Color.DarkOrange);
+                    OutputText.outputLog("[You did not setup The locally hostd option follow the instructions on the wiki here: https://ttsvoicewizard.com/docs/TTSMethods/LocallyHosted ]", Color.DarkOrange);
                 }
 
                 Task.Run(() => TTSMessageQueue.PlayNextInQueue());
@@ -38,29 +41,41 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         {
 
 
-            var url = "http://127.0.0.1:8124/synthesize/";
+            /*  var url = "http://127.0.0.1:8124/synthesize/";
 
-            string audioInBase64 = "";
-            WebRequest request = WebRequest.Create("http://127.0.0.1:8124/synthesize/" + "?" + text);
-            request.Method = "GET";
-            using (WebResponse response = request.GetResponse())
-            {
+              string audioInBase64 = "";
+              WebRequest request = WebRequest.Create("http://127.0.0.1:8124/synthesize/" + "?" + text);
+              request.Method = "GET";
+              using (WebResponse response = request.GetResponse())
+              {
 
-                using (Stream stream = response.GetResponseStream())
-                {
+                  using (Stream stream = response.GetResponseStream())
+                  {
 
-                    using (var streamReader = new StreamReader(stream))
-                    {
-                        var result = streamReader.ReadToEnd();
+                      using (var streamReader = new StreamReader(stream))
+                      {
+                          var result = streamReader.ReadToEnd();
 
-                        System.Diagnostics.Debug.WriteLine(result.ToString());
-                        audioInBase64 = result.ToString();
+                          System.Diagnostics.Debug.WriteLine(result.ToString());
+                          audioInBase64 = result.ToString();
 
-                    }
+                      }
 
-                }
-            }
-            return Convert.FromBase64String(audioInBase64);
+                  }
+              }
+              return Convert.FromBase64String(audioInBase64);*/
+
+            string url = "http://127.0.0.1:8124/synthesize/";
+           // string textParam = HttpUtility.UrlEncode(text);
+            string requestUrl = $"{url}?{text}";
+
+            var response = await client.GetAsync(requestUrl).ConfigureAwait(false);
+            
+
+            string result = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+          // System.Diagnostics.Debug.WriteLine(result);
+
+            return Convert.FromBase64String(result);
 
         }
 

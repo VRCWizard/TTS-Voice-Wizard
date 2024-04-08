@@ -32,14 +32,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     TTSMessageQueue.PlayNextInQueue();
 
                 }
-
-
-
-
-
-
-                // Moonbase = true;
-                // Task.Delay(2000).Wait();
             }
             Task<string> stringTask = MoonBase(TTSMessageQueued);
             string audio = stringTask.Result;
@@ -67,23 +59,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         {
             try
             {
-
-
-
-
                 var url = $"http://localhost:54027/audio?voice={TTSMessageQueued.Voice}&text={TTSMessageQueued.text}";
 
 
                 var request = new HttpRequestMessage(HttpMethod.Post, url);
-
-                // request.Content = JsonContent.Create(new { voice = name, text = textIn });
-                //  request.Content = new FormUrlEncodedContent(new Dictionary<string, string> { { "voice", name }, { "text", textIn } });
-
-
-
                 HttpResponseMessage response = await client.SendAsync(request);
 
-                //   System.Diagnostics.Debug.WriteLine("Fonix:" + response.StatusCode);
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine("Moonbase: " + response.StatusCode);

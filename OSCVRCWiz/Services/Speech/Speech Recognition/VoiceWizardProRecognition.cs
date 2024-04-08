@@ -1,27 +1,32 @@
 ﻿
+using Amazon.Polly;
 using NAudio.Wave;
 using Newtonsoft.Json.Linq;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Speech;
 using OSCVRCWiz.Services.Speech.TextToSpeech;
+using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Settings;
 using System.Diagnostics;
 using System.Globalization;
 using WebRtcVadSharp;
+using static System.Net.Mime.MediaTypeNames;
+using Windows.Devices.Spi;
 
 namespace OSCVRCWiz.Speech_Recognition
 {
     public class VoiceWizardProRecognition
     {
-
+       // static CancellationTokenSource speechCt = new();
         private static bool DeepGramEnabled = false;
 
         private static WebRtcVad vad;
         private static FrameLength frameLength = FrameLength.Is30ms;
         private static int frameSize;
         public static CancellationTokenSource deepgramCt = new();
+        private static readonly HttpClient client = new HttpClient();//reusing client save so much time!!! around 100ms
 
 
         public static void deepgramStartup()
@@ -71,14 +76,15 @@ namespace OSCVRCWiz.Speech_Recognition
                         OutputText.outputLog("[DeepGram Listening]");
                         DoSpeech.speechToTextOnSound();
 
-                        using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false))
+                        using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false, deepgramCt))
                         {
 
                             if (audioStream != null)
                             {
-
-                                string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
-                                TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+                                //OutputText.outputLog("Hello World");
+                                 string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
+                              
+                                  TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
 
                             }
                             else
@@ -127,20 +133,41 @@ namespace OSCVRCWiz.Speech_Recognition
                                 {
                                     OutputText.outputLog($"[Deepgram Settings Error: {ex.Message}", Color.Red);
                                 }
-                                using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false))
-                                {
+                                  using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false,deepgramCt))
+                                  {
+                              
+                              
                                     if (DeepGramEnabled)
                                     {
-                                        if (audioStream != null)
+                                   // MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, false);
+                                    if (audioStream != null)
                                         {
+                                          
+                                              //  _ = Task.Run(async () => //code don't wait, making this a task saves 30ms
+                                              //  {
+                                                   
+                                                   // await audioStream.CopyTo(streamCopy);
 
-                                            string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
-                                            TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+
+                                                 //   Debug.WriteLine("DEEPGRAM IS TRANSCRIBING_____________________________________________________________");
+                                                       // Stopwatch stopwatch = new Stopwatch();
+                                                      //  stopwatch.Start();
+                                                        string transcribedText = await Task.Run(() => CallVoiceProAPIAsync(apiKey, audioStream, language, howQuiet));
+                                                      //  stopwatch.Stop();
+                                                     //   OutputText.outputLog($"deepgram full time: {stopwatch.ElapsedMilliseconds}", Color.Yellow);
+                                                        TTSMessageQueue.QueueMessage(transcribedText, "DeepGram (Pro Only)");
+                                                     //   Debug.WriteLine("DEEPGRAM IS TRANSCRIBed++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                                                   //    audioStream.Dispose();
+
+                                            
+                                              //  });
+                                            
 
                                         }
                                         else
                                         {
-                                            if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
+                                        //audioStream.Dispose();
+                                        if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                                             {
                                                 OutputText.outputLog("[DeepGram: No voice detected]");
                                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
@@ -155,6 +182,7 @@ namespace OSCVRCWiz.Speech_Recognition
                                     }
                                     // DoSpeech.speechToTextButtonOff();
                                 }
+                        
                             }
                         }
                         else
@@ -173,7 +201,7 @@ namespace OSCVRCWiz.Speech_Recognition
                     OutputText.outputLog("[Deepgram is being calibrated to ignore your background noise, do not speak. Speaking will ruin the calibration]",Color.Orange);
                     DoSpeech.speechToTextOnSound();
 
-                    using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, true))
+                    using (MemoryStream audioStream = await RecordAudio(minDuration, maxDuration, howQuiet, silenceScale, minValidDuration, VADMode, true, deepgramCt))
                     {
           
                         OutputText.outputLog("[DeepGram Calibration Complete]");
@@ -201,11 +229,11 @@ namespace OSCVRCWiz.Speech_Recognition
                 DoSpeech.speechToTextButtonOff();
             }
         }
-
+        
         private static async Task<string> CallVoiceProAPIAsync(string apiKey, MemoryStream memoryStream, string lang, int silenceThreshold)
         {
-
-
+           // Stopwatch stopwatch = new Stopwatch();
+           
             var branch = "eastus";
             VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
             {
@@ -231,18 +259,16 @@ namespace OSCVRCWiz.Speech_Recognition
                $"&silenceThreshold={silenceThreshold}";
 
 
+            // var request = new HttpRequestMessage(HttpMethod.Post, url);
 
-            var request = new HttpRequestMessage(HttpMethod.Post, url);
 
-
-            HttpClient client = new HttpClient();
+            //HttpClient client = new HttpClient();
 
             // Set the content of the request as the MemoryStream
-            request.Content = new StreamContent(memoryStream);
-
-            HttpResponseMessage response = await client.SendAsync(request);
-
-
+            //   request.Content = new StreamContent(memoryStream);
+            //  HttpResponseMessage response = await client.SendAsync(request);
+           // stopwatch.Start();
+            var response = await client.PostAsync(url, new StreamContent(memoryStream)).ConfigureAwait(false);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -250,9 +276,12 @@ namespace OSCVRCWiz.Speech_Recognition
                 OutputText.outputLog("VoiceWizardPro API Error: " + response.StatusCode + ": " + errorMessage, Color.Red);
                 return null;
             }
+           // stopwatch.Stop();
+           // OutputText.outputLog($"deepgram API response time: {stopwatch.ElapsedMilliseconds}", Color.Yellow);
 
 
-            var json = response.Content.ReadAsStringAsync().Result.ToString();
+            // var json = response.Content.ReadAsStringAsync().Result.ToString();
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             System.Diagnostics.Debug.WriteLine("VoiceWizardPro API: " + json);
 
             // var dataHere = JObject.Parse(json).SelectToken("text").ToString();
@@ -264,21 +293,24 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
 
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            _ = Task.Run(() => //code don't wait, making this a task saves 30ms
             {
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
 
 
 
 
-                VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text = $"Speech Hours Used: {Math.Round(decimal.Parse(hoursUsed), 4)}/{hoursLimit}";
+                    VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text = $"Speech Hours Used: {Math.Round(decimal.Parse(hoursUsed), 4)}/{hoursLimit}";
 
 
-                Settings1.Default.hoursUsed = VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text.ToString();
-                Settings1.Default.Save();
+                    Settings1.Default.hoursUsed = VoiceWizardWindow.MainFormGlobal.SpeechHoursUsed.Text.ToString();
+                    Settings1.Default.Save();
+                });
             });
 
 
-            string transcribedText = JObject.Parse(json).SelectToken("text").ToString();
+
             string duration = JObject.Parse(json).SelectToken("duration").ToString();
 
 
@@ -296,6 +328,7 @@ namespace OSCVRCWiz.Speech_Recognition
                 }
             }
 
+            string transcribedText = JObject.Parse(json).SelectToken("text").ToString();
             return transcribedText;
 
 
@@ -308,7 +341,7 @@ namespace OSCVRCWiz.Speech_Recognition
 
 
 
-        public static async Task<MemoryStream> RecordAudio(int minDuration, int maxDuration, int howQuiet, int silenceDuration, double minValidDuration, OperatingMode VADMode,bool calibration)
+        public static async Task<MemoryStream> RecordAudio(int minDuration, int maxDuration, int howQuiet, int silenceDuration, double minValidDuration, OperatingMode VADMode,bool calibration, CancellationTokenSource ct)
         {
             // Create a MemoryStream to store the recorded audio
             MemoryStream outputStream = new MemoryStream();
@@ -354,7 +387,7 @@ namespace OSCVRCWiz.Speech_Recognition
             // Event handler for audio data received
             waveSource.DataAvailable += (sender, e) =>
             {
-                if (deepgramCt.Token.IsCancellationRequested)
+                if (ct.Token.IsCancellationRequested)
                 {
                     validAudioClip = false;
                     waveSource.StopRecording();
@@ -383,7 +416,7 @@ namespace OSCVRCWiz.Speech_Recognition
                         {
                             OutputText.outputLog("VAD Start Time: " + startTime);
                         }
-                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
                         {
                             var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                             OSC.OSCSender.Send(typingbubble);
@@ -456,32 +489,15 @@ namespace OSCVRCWiz.Speech_Recognition
                             silenceCounter = 0;
                         }
                     }
-                    //rms = Math.Sqrt(rms / (bytesRecorded / 2)); // Calculate RMS
-                  //  double dbValue = 20 * Math.Log10(rms);
 
-                    //Debug.WriteLine($"dB: {testValue}");
-
-                 //  OutputText.outputLog(AudioDevices.currentInputDevice);
-                   /* var device = AudioDevices.GetDeviceById(AudioDevices.currentInputDevice);
-                    if (device != null)
-                    {
-                        device.AudioEndpointVolume.Mute = false;
-                        OutputText.outputLog(device.AudioMeterInformation.MasterPeakValue.ToString());
-                    }*/
-                   //use to show volume in audio tab
-
-                    //// device.AudioEndpointVolume.Mute = false;
-                    //richTextBox1.Text = device.AudioMeterInformation.MasterPeakValue.ToString();
-
-                    // Write audio data to the output stream
                     outputStream.Write(buffer, 0, bytesRecorded);
-                  //  Debug.WriteLine(silenceCounter); //very helpful for debugging silence
-                  //  Debug.WriteLine(noiseCounter);
 
 
 
 
-                    if (!VoiceWizardWindow.MainFormGlobal.IsDisposed)
+                    _ = Task.Run(() => //code don't wait
+                    {
+                        if (!VoiceWizardWindow.MainFormGlobal.IsDisposed)
                     {
                         VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                        {
@@ -501,14 +517,17 @@ namespace OSCVRCWiz.Speech_Recognition
                           }
 
                         VoiceWizardWindow.MainFormGlobal.progressBar1.Value = soundVolume;
-                        VoiceWizardWindow.MainFormGlobal.pot1.Value = checker;
-                        VoiceWizardWindow.MainFormGlobal.pot1.Maximum = silenceDuration;
+                        VoiceWizardWindow.MainFormGlobal.progressBar2.Maximum = silenceDuration;
+                        int reversedValue = silenceDuration - checker;
+                        VoiceWizardWindow.MainFormGlobal.progressBar2.Value = reversedValue;
+                       
                        });
                     }
                     else
                     {
                         return;
                     }
+                    });
 
 
                     // Update the recording counter

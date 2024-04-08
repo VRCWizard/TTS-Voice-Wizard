@@ -244,7 +244,7 @@ namespace OSCVRCWiz
                         var sttListening = new OscMessage("/avatar/parameters/stt_listening", true);
                         OSC.OSCSender.Send(sttListening);
                     }
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
                     {
                         OSCListener.pauseBPM = true;
                         SpotifyAddon.pauseSpotify = true;
@@ -327,7 +327,7 @@ namespace OSCVRCWiz
                 {
                     StartAzureTypingTimer();
                     DoSpeech.speechToTextOnSound();
-                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
                     {
                         OSCListener.pauseBPM = true;
                         SpotifyAddon.pauseSpotify = true;

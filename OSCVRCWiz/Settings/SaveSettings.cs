@@ -339,6 +339,20 @@ namespace OSCVRCWiz
 
             Settings1.Default.switchVoicePresetBindToggle = VoiceWizardWindow.MainFormGlobal.rjToggleSwitchVoicePresetsBind.Checked;
 
+            Settings1.Default.useChatGPT = VoiceWizardWindow.MainFormGlobal.rjToggleButtonEnableChatGPT.Checked;
+           Settings1.Default.UseMaxChatHistory = VoiceWizardWindow.MainFormGlobal.rjToggleUseMaxChatHistory.Checked;
+
+           Settings1.Default.ChatGPTAPIKey = VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text;
+           Settings1.Default.ChatGPTModel = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text;
+           Settings1.Default.ChatGPTMaxHistory = VoiceWizardWindow.MainFormGlobal.textBoxChatGPTMaxHistory.Text;
+
+            Settings1.Default.useChatGPTPro = VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4ChatGPT.Checked;
+            Settings1.Default.useContextWithGPT = VoiceWizardWindow.MainFormGlobal.rjToggleUseContextWithGPT.Checked;
+            Settings1.Default.useOpenAITTSPro = VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4OpenAITTS.Checked;
+
+            Settings1.Default.typeIndicator = VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked;
+
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

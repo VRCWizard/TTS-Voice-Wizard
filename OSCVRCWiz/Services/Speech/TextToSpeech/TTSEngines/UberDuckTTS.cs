@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
 using MeaMod.DNS.Server;
+using System.Diagnostics;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
@@ -22,17 +23,25 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
     public class UberDuckTTS
     {
 
+        // private static readonly HttpClient client = new HttpClient();
+        private static readonly string BaseUrl = "https://api.uberduck.ai/";
+        private static readonly HttpClient client = new HttpClient
+        {
+            BaseAddress = new Uri(BaseUrl),
+            DefaultRequestHeaders =
+        {
+        Accept = { new MediaTypeWithQualityHeaderValue("application/json") }
+        }
+        };
 
-        // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
+        private static readonly HttpClient client2 = new HttpClient();
 
-        //TTS
-        //  public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
+
         public static Dictionary<string, string> UberVoiceNameAndID = new Dictionary<string, string>();
         public static Dictionary<string, string> UberNameAndCategory = new Dictionary<string, string>();
         public static bool UberfirstVoiceLoad = true;
         public static HashSet<string> seenCategories = new HashSet<string>();
-        //    static List<string> voiceList = new List<string>();
-        // public static SpeechSynthesizer synthesizerVoice;
+
 
         public static async Task SynthesisGetAvailableVoicesAsync(string currentCategory, bool changedMethods)
         {
@@ -111,12 +120,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     }
                 }
 
-
-
-
                 UberfirstVoiceLoad = false;
-
-
 
             }
 
@@ -160,9 +164,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 }
 
 
-
-
-
             }
             try
             {
@@ -179,18 +180,15 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             }
 
 
-
-
-
-
-
-
         }
 
         public static async Task uberduckTTS(TTSMessage message, CancellationToken ct = default)
         {
             try
            {
+              //  Stopwatch stopwatch = new Stopwatch();
+
+               // stopwatch.Start();
 
                 var authKey = VoiceWizardWindow.MainFormGlobal.textBoxUberKey.Text.ToString();
                 var authSecret = VoiceWizardWindow.MainFormGlobal.textBoxUberSecret.Text.ToString();
@@ -207,12 +205,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 string text = message.text;
                 string audio_uuid = "";
 
-
-                var client = new HttpClient();
-
-                client.BaseAddress = new Uri("https://api.uberduck.ai/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var content = new StringContent(JsonConvert.SerializeObject(new { speech = text, voicemodel_uuid }));
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -236,7 +228,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 }
 
 
-
+                
                 string audioUrl = null;
 
                 for (int i = 0; i < 10; i++)
@@ -261,13 +253,14 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 }
 
 
-
                 // read the audio file into a byte array
-                client = new HttpClient();
-                byte[] audioBytes = await client.GetByteArrayAsync(audioUrl);
+                byte[] audioBytes = await client2.GetByteArrayAsync(audioUrl);
 
                 // convert the byte array to a base64-encoded string
                 string base64String = Convert.ToBase64String(audioBytes);
+
+              //  stopwatch.Stop();
+               // OutputText.outputLog($"Processing/Response time:{stopwatch.ElapsedMilliseconds}", Color.Yellow);
                 UberPlayAudio(base64String, message, ct);
             }
 

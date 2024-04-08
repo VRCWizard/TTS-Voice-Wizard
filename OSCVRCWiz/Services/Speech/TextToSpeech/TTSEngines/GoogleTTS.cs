@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using System.Windows;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
 
@@ -15,13 +14,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
     }
     public class GoogleTTS
     {
-        // public static Microsoft.CognitiveServices.Speech.SpeechSynthesizer synthesizerVoice;
-
-        //TTS
-        //  public static Dictionary<string, string[]> AllVoices4Language = new Dictionary<string, string[]>();
         public static Dictionary<string, string[]> GoogleRememberLanguageVoices = new Dictionary<string, string[]>();
         public static bool GooglefirstVoiceLoad = true;
-        // public static SpeechSynthesizer synthesizerVoice;
 
         public static async Task SynthesisGetAvailableVoicesAsync(string fromLanguageFullname)
         {
@@ -233,9 +227,6 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         }
         public static async void GooglePlayAudio(string audioString, TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct)
         {
-
-
-
             var audiobytes = Convert.FromBase64String(audioString);
             MemoryStream memoryStream = new MemoryStream(audiobytes);
 
