@@ -340,7 +340,7 @@ namespace OSCVRCWiz
         {
             int length = richTextBox3.Text.ToString().Length;
 
-                if (rjToggleButtonChatBox.Checked == true && (richTextBox3.Text.ToString().Length > length) && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
+            if (rjToggleButtonChatBox.Checked == true && (richTextBox3.Text.ToString().Length > length) && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
             {
                 var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", true);
                 OSC.OSCSender.Send(typingbubble);
@@ -896,7 +896,7 @@ namespace OSCVRCWiz
                     trackBarVolume.Enabled = true;
                     trackBarSpeed.Enabled = true;
 
-                    if (textBoxWizardProKey.Text.ToString() == "" && textBoxChatGPT.Text.ToString()=="")
+                    if (textBoxWizardProKey.Text.ToString() == "" && textBoxChatGPT.Text.ToString() == "")
                     {
                         OutputText.outputLog("[You appear to be missing an OpenAI API key, get an OpenAI API key or become a member of member of VoiceWizardPro]", Color.DarkOrange);
                         OutputText.outputLog("[You appear to be missing an VoiceWizardPro Key, consider becoming a member: https://www.patreon.com/ttsvoicewizard ]", Color.DarkOrange);
@@ -3182,19 +3182,10 @@ namespace OSCVRCWiz
             }
             else
             {
-               /* if (key.Length > 200)
-                {
-                    ChatGPTAPI.ChatGPTMode = "Token";
-                    ChatGPTAPI.UnOfficialBotSetSession(key, model);
-                    OutputText.outputLog("[ChatGPT loaded with session token]", Color.Green);
-                }
-                else
-                {*/
-                    ChatGPTAPI.ChatGPTMode = "Key";
-                    ChatGPTAPI.OfficialBotSetAPIKey(key, model);
-                    OutputText.outputLog("[ChatGPT loaded with API key]", Color.Green);
+                ChatGPTAPI.ChatGPTMode = "Key";
+                ChatGPTAPI.OfficialBotSetAPIKey(key, model);
+                OutputText.outputLog("[ChatGPT loaded with API key]", Color.Green);
 
-              //  }
                 Settings1.Default.ChatGPTAPIKey = VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text;
                 Settings1.Default.ChatGPTModel = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text;
                 Settings1.Default.Save();
@@ -3214,7 +3205,32 @@ namespace OSCVRCWiz
             {
                 OutputText.outputLog($"[Clear ChatGPT Histroy Exception: {ex.Message}]", Color.Red);
             }
-           
+
+        }
+        private void iconButton12_Click_1(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://ttsvoicewizard.com/docs/ChatGPTIntegration");
+        }
+
+        private void button36_Click_1(object sender, EventArgs e)
+        {
+            string key = VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text.ToString();
+            string model = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text.ToString();
+            if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(model))
+            {
+                OutputText.outputLog("[ChatGPT Error: key or model text field is blank ]", Color.Red);
+            }
+            else
+            {
+
+                ChatGPTAPI.ChatGPTMode = "Key";
+                ChatGPTAPI.OfficialBotSetAPIKey(key, model);
+                OutputText.outputLog("[ChatGPT loaded with API key]", Color.Green);
+
+                Settings1.Default.ChatGPTAPIKey = VoiceWizardWindow.MainFormGlobal.textBoxChatGPT.Text;
+                Settings1.Default.ChatGPTModel = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text;
+                Settings1.Default.Save();
+            }
         }
     }
 
