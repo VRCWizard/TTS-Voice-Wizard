@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="rjToggleGPTUsePrompt.ToolTip" xml:space="preserve">
+    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
+  </data>
+  <data name="label226.ToolTip" xml:space="preserve">
+    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
+  </data>
+  <data name="textBoxChatGPTMaxHistory.ToolTip" xml:space="preserve">
+    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -818,21 +827,6 @@ This setting may be used if you believe windows media mode may be causing crashi
         zPWCGwYAAAAAAAAAo3TF7Ry/6raUiZbx6LiqHJl76thrbnO2QS/N/vzG8cPBLgAAAAAAAIBhCweYq+KK
         2zl21V2b/fnyzNbs72fW/mPuLya75Zb/H9o2AKz2p0UuAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="rjToggleGPTUsePrompt.ToolTip" xml:space="preserve">
-    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
-  </data>
-  <data name="label227.ToolTip" xml:space="preserve">
-    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
-  </data>
-  <data name="rjToggleUseMaxChatHistory.ToolTip" xml:space="preserve">
-    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
-  </data>
-  <data name="label226.ToolTip" xml:space="preserve">
-    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
-  </data>
-  <data name="textBoxChatGPTMaxHistory.ToolTip" xml:space="preserve">
-    <value>Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving initial the initial prompt and recent context.</value>
   </data>
   <metadata name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>118, 17</value>
@@ -4984,6 +4978,9 @@ This setting may be used if you believe windows media mode may be causing crashi
   </metadata>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>455, 17</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>594, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>42</value>

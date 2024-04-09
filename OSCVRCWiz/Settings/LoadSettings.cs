@@ -441,6 +441,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4OpenAITTS.Checked = Settings1.Default.useOpenAITTSPro;
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked = Settings1.Default.typeIndicator;
 
+            VoiceWizardWindow.MainFormGlobal.richTextBoxGPTPrompt.Text = Settings1.Default.PromptText;
+            VoiceWizardWindow.MainFormGlobal.rjToggleGPTUsePrompt.Checked = Settings1.Default.enablePrompt;
+
+
 
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;

@@ -2842,5 +2842,29 @@ namespace OSCVRCWiz.Settings {
                 this["typeIndicator"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enablePrompt {
+            get {
+                return ((bool)(this["enablePrompt"]));
+            }
+            set {
+                this["enablePrompt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Keep your response under 100 characters")]
+        public string PromptText {
+            get {
+                return ((string)(this["PromptText"]));
+            }
+            set {
+                this["PromptText"] = value;
+            }
+        }
     }
 }

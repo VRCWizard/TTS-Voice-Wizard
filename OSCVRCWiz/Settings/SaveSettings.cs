@@ -352,6 +352,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.typeIndicator = VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked;
 
+            Settings1.Default.PromptText = VoiceWizardWindow.MainFormGlobal.richTextBoxGPTPrompt.Text;
+            Settings1.Default.enablePrompt = VoiceWizardWindow.MainFormGlobal.rjToggleGPTUsePrompt.Checked;
 
 
             Settings1.Default.Save();
