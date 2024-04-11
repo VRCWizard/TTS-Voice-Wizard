@@ -111,18 +111,19 @@ namespace OSCVRCWiz.Services.Speech
                     }
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonEnableChatGPT.Checked)
                     {
-                        if (!VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4ChatGPT.Checked)
+                        if (VoiceWizardWindow.MainFormGlobal.rjToggleUsePro4ChatGPT.Checked && VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked)
+                        {
+                            OutputText.outputLog($"[{TTSMessageQueued.STTMode} > ChatGPT (Pro) 🤖]: {TTSMessageQueued.text}", Color.LightBlue);
+                            TTSMessageQueued.text = await VoiceWizardProTTS.CallVoiceProAPIGPT(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued.text);
+                            TTSMessageQueued.STTMode = "ChatGPT (Pro) 🤖";
+                        }
+                        else
                         {
                             OutputText.outputLog($"[{TTSMessageQueued.STTMode} > ChatGPT 🤖]: {TTSMessageQueued.text}", Color.LightBlue);
                             TTSMessageQueued.text = await ChatGPTAPI.GPTResponse(TTSMessageQueued.text);
                             TTSMessageQueued.STTMode = "ChatGPT 🤖";
                         }
-                        else
-                        {
-                            OutputText.outputLog($"[{TTSMessageQueued.STTMode} > ChatGPT (Pro) 🤖]: {TTSMessageQueued.text}", Color.LightBlue);
-                            TTSMessageQueued.text = await VoiceWizardProTTS.CallVoiceProAPIGPT(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued.text);
-                           TTSMessageQueued.STTMode = "ChatGPT (Pro) 🤖";
-                        }
+                      
                     }
                     var originalText = TTSMessageQueued.text;
                     var writeText = TTSMessageQueued.text;//send to osc

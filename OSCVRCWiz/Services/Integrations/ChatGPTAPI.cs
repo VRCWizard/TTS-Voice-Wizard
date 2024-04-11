@@ -98,7 +98,7 @@ namespace OSCVRCWiz.Services.Integrations
                     if (VoiceWizardWindow.MainFormGlobal.rjToggleUseContextWithGPT.Checked)
                     {
                         response = await OfficialBot.Ask(input, chatSession.Id);
-                        OutputText.outputLog("session: "+chatSession.ToString());
+                       // OutputText.outputLog("session: "+chatSession.ToString());
 
                         ChatGptMessage messageUser = new ChatGptMessage();
                         messageUser.Role = "user";
@@ -143,7 +143,7 @@ namespace OSCVRCWiz.Services.Integrations
 
                                 chatSession.Messages.RemoveAt(assistantIndex);
                                 chatSession.Messages.RemoveAt(userIndex);
-                                OutputText.outputLog($"removed user message at {userIndex} and assistant message at {assistantIndex}");
+                              //  OutputText.outputLog($"removed user message at {userIndex} and assistant message at {assistantIndex}");
                             }
                             else // Odd number of messages
                             {
@@ -153,14 +153,14 @@ namespace OSCVRCWiz.Services.Integrations
                                 chatSession.Messages.RemoveAt(assistantIndex); //remove assistant index first always
                                 chatSession.Messages.RemoveAt(userIndex);
 
-                                OutputText.outputLog($"removed user message at {userIndex} and assistant message at {assistantIndex}");
+                               // OutputText.outputLog($"removed user message at {userIndex} and assistant message at {assistantIndex}");
 
                             }
 
                             // messagesInHistory = chatSession.Messages.Count;
 
                         }
-                        OutputText.outputLog("Conversation Message Count: " + chatSession.Messages.Count.ToString());
+                      //  OutputText.outputLog("Conversation Message Count: " + chatSession.Messages.Count.ToString());
                     }
                     else
                     {
