@@ -5,13 +5,10 @@ using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Speech_Recognition;
-using System.Diagnostics;
-using System.Media;
 using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Resources.Audio;
-using Octokit;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace OSCVRCWiz.Services.Speech
 {

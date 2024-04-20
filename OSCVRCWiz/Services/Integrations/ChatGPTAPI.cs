@@ -1,21 +1,13 @@
-﻿//using CSCore.XAudio2.X3DAudio;
+﻿
 using ChatGPT.Net;
-using ChatGPT.Net.DTO;
 using ChatGPT.Net.DTO.ChatGPT;
-using MeaMod.DNS.Model;
-using NAudio.Gui;
-using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Services.Text;
-using System.Security.Permissions;
-using Windows.Foundation.Metadata;
-using Windows.UI.Notifications;
-using Windows.UI.Notifications.Management;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace OSCVRCWiz.Services.Integrations
 {
     public class ChatGPTAPI
     {
+        
         private static ChatGpt OfficialBot=null;
 
         //private static ChatGptUnofficial UnofficialBot=null;
@@ -36,18 +28,6 @@ namespace OSCVRCWiz.Services.Integrations
             chatSession = new ChatGptConversation();
 
         }
-       /* public static void UnOfficialBotSetSession(string key, string model)
-        {
-
-            UnofficialBot = new ChatGptUnofficial(key, new ChatGptUnofficialOptions
-            {
-                Model = model,
-            });
-            chatSession = new ChatGptConversation();
-            
-
-        }*/
-
 
 
         public static async Task<string> GPTResponse(string input)
@@ -68,19 +48,12 @@ namespace OSCVRCWiz.Services.Integrations
                     {
 
                     
-                      /*  if (key.Length > 200)
-                        {
-                            ChatGPTAPI.ChatGPTMode = "Token";
-                            ChatGPTAPI.UnOfficialBotSetSession(key, model);
-                            OutputText.outputLog("[ChatGPT loaded with session token]", Color.Green);
-                        }
-                        else
-                        {*/
+    
                             ChatGPTAPI.ChatGPTMode = "Key";
                             ChatGPTAPI.OfficialBotSetAPIKey(key, model);
                             OutputText.outputLog("[ChatGPT loaded with API key]", Color.Green);
 
-                       // }
+                      
                     }
 
                 }
@@ -168,15 +141,7 @@ namespace OSCVRCWiz.Services.Integrations
                     }
 
                }
-                /*else
-                {
-                   // messagesInHistory = chatSession.Messages.Count;
-                  
-                    response = await UnofficialBot.Ask(input, chatSession.Id);
-                   
-                   // OutputText.outputLog(UnofficialBot.Conversations.Count().ToString());
 
-                }*/
                 
             }
             catch (Exception ex)
@@ -185,7 +150,7 @@ namespace OSCVRCWiz.Services.Integrations
             }
             return response;
         }
-       
+
 
     }
 }
