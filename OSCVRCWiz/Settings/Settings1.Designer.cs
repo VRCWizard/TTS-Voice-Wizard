@@ -2866,5 +2866,161 @@ namespace OSCVRCWiz.Settings {
                 this["PromptText"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter7 {
+            get {
+                return ((int)(this["Counter7"]));
+            }
+            set {
+                this["Counter7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter8 {
+            get {
+                return ((int)(this["Counter8"]));
+            }
+            set {
+                this["Counter8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter9 {
+            get {
+                return ((int)(this["Counter9"]));
+            }
+            set {
+                this["Counter9"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Counter10 {
+            get {
+                return ((int)(this["Counter10"]));
+            }
+            set {
+                this["Counter10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Counter7")]
+        public string Counter7Para {
+            get {
+                return ((string)(this["Counter7Para"]));
+            }
+            set {
+                this["Counter7Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Counter8")]
+        public string Counter8Para {
+            get {
+                return ((string)(this["Counter8Para"]));
+            }
+            set {
+                this["Counter8Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Counter9")]
+        public string Counter9Para {
+            get {
+                return ((string)(this["Counter9Para"]));
+            }
+            set {
+                this["Counter9Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/avatar/parameters/Counter10")]
+        public string Counter10Para {
+            get {
+                return ((string)(this["Counter10Para"]));
+            }
+            set {
+                this["Counter10Para"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Counter: {counter}")]
+        public string Counter7Msg {
+            get {
+                return ((string)(this["Counter7Msg"]));
+            }
+            set {
+                this["Counter7Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Counter: {counter}")]
+        public string Counter8Msg {
+            get {
+                return ((string)(this["Counter8Msg"]));
+            }
+            set {
+                this["Counter8Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Counter: {counter}")]
+        public string Counter9Msg {
+            get {
+                return ((string)(this["Counter9Msg"]));
+            }
+            set {
+                this["Counter9Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Counter: {counter}")]
+        public string Counter10Msg {
+            get {
+                return ((string)(this["Counter10Msg"]));
+            }
+            set {
+                this["Counter10Msg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableAzureTranslation {
+            get {
+                return ((bool)(this["DisableAzureTranslation"]));
+            }
+            set {
+                this["DisableAzureTranslation"] = value;
+            }
+        }
     }
 }

@@ -41,6 +41,8 @@ namespace OSCVRCWiz.Services.Integrations
         public static bool pauseBPM = false;
         public static bool stopBPM = false;
 
+        public static string spotifyLyrics = "";
+
 
         public static void OnStartUp()
         {
@@ -509,6 +511,11 @@ namespace OSCVRCWiz.Services.Integrations
 
 
                         }
+                        if (messageReceived.Address == "/Atomikku/VRCSpotifyOSC/Lyrics")//OSCListener TTS
+                        {
+                            spotifyLyrics = messageReceived.Arguments[0].ToString();
+                        }
+
                     }
                     catch
                     {

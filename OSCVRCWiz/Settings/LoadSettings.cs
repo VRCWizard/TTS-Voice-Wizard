@@ -271,6 +271,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxCounter4.Text = Settings1.Default.Counter4Para;
             VoiceWizardWindow.MainFormGlobal.textBoxCounter5.Text = Settings1.Default.Counter5Para;
             VoiceWizardWindow.MainFormGlobal.textBoxCounter6.Text = Settings1.Default.Counter6Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter7.Text = Settings1.Default.Counter7Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter8.Text = Settings1.Default.Counter8Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter9.Text = Settings1.Default.Counter9Para;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounter10.Text = Settings1.Default.Counter10Para;
 
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text = Settings1.Default.Counter1Msg;
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text = Settings1.Default.Counter2Msg;
@@ -278,6 +282,10 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text = Settings1.Default.Counter4Msg;
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text = Settings1.Default.Counter5Msg;
             VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text = Settings1.Default.Counter6Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage7.Text = Settings1.Default.Counter7Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage8.Text = Settings1.Default.Counter8Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage9.Text = Settings1.Default.Counter9Msg;
+            VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage10.Text = Settings1.Default.Counter10Msg;
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked = Settings1.Default.SaveCounter;
 
@@ -305,6 +313,18 @@ namespace OSCVRCWiz
 
                 VRChatListener.prevCounter6 = Settings1.Default.Counter6;
                 VRChatListener.counter6 = Settings1.Default.Counter6;
+
+                VRChatListener.prevCounter7 = Settings1.Default.Counter7;
+                VRChatListener.counter7 = Settings1.Default.Counter7;
+
+                VRChatListener.prevCounter8 = Settings1.Default.Counter8;
+                VRChatListener.counter8 = Settings1.Default.Counter8;
+
+                VRChatListener.prevCounter9 = Settings1.Default.Counter9;
+                VRChatListener.counter9 = Settings1.Default.Counter9;
+
+                VRChatListener.prevCounter10 = Settings1.Default.Counter10;
+                VRChatListener.counter10 = Settings1.Default.Counter10;
             }
 
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonSmartStringSplit.Checked = Settings1.Default.SmartStringSplit;
@@ -443,6 +463,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.richTextBoxGPTPrompt.Text = Settings1.Default.PromptText;
             VoiceWizardWindow.MainFormGlobal.rjToggleGPTUsePrompt.Checked = Settings1.Default.enablePrompt;
+
+            VoiceWizardWindow.MainFormGlobal.rjToggleDisableAzureTranslation.Checked = Settings1.Default.DisableAzureTranslation;
 
 
 

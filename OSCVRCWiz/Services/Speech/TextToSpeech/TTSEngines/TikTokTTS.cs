@@ -1,14 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
-using System.Net;
 using OSCVRCWiz.Resources.Audio;
 using OSCVRCWiz.Services.Text;
-using System.Text.Json;
-using System.Diagnostics;
-using Newtonsoft.Json;
 using System.Text;
-using Windows.Media.Protection.PlayReady;
-using ChatGPT.Net.DTO.ChatGPTUnofficial;
-using System.Windows.Markup;
 using System.Net.Http.Headers;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
