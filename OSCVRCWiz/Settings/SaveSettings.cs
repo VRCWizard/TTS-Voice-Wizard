@@ -217,6 +217,10 @@ namespace OSCVRCWiz
             Settings1.Default.Counter4Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter4.Text.ToString();
             Settings1.Default.Counter5Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter5.Text.ToString();
             Settings1.Default.Counter6Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter6.Text.ToString();
+            Settings1.Default.Counter7Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter7.Text.ToString();
+            Settings1.Default.Counter8Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter8.Text.ToString();
+            Settings1.Default.Counter9Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter9.Text.ToString();
+            Settings1.Default.Counter10Para = VoiceWizardWindow.MainFormGlobal.textBoxCounter10.Text.ToString();
 
             Settings1.Default.Counter1Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage1.Text.ToString();
             Settings1.Default.Counter2Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage2.Text.ToString();
@@ -224,6 +228,10 @@ namespace OSCVRCWiz
             Settings1.Default.Counter4Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage4.Text.ToString();
             Settings1.Default.Counter5Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage5.Text.ToString();
             Settings1.Default.Counter6Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage6.Text.ToString();
+            Settings1.Default.Counter7Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage7.Text.ToString();
+            Settings1.Default.Counter8Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage8.Text.ToString();
+            Settings1.Default.Counter9Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage9.Text.ToString();
+            Settings1.Default.Counter10Msg = VoiceWizardWindow.MainFormGlobal.textBoxCounterMessage10.Text.ToString();
 
             Settings1.Default.SaveCounter = VoiceWizardWindow.MainFormGlobal.rjToggleButtonCounterSaver.Checked;
 
@@ -354,6 +362,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.PromptText = VoiceWizardWindow.MainFormGlobal.richTextBoxGPTPrompt.Text;
             Settings1.Default.enablePrompt = VoiceWizardWindow.MainFormGlobal.rjToggleGPTUsePrompt.Checked;
+
+            Settings1.Default.DisableAzureTranslation = VoiceWizardWindow.MainFormGlobal.rjToggleDisableAzureTranslation.Checked;
 
 
             Settings1.Default.Save();

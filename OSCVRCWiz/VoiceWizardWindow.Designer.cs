@@ -404,6 +404,8 @@
             label11 = new Label();
             AzureSet = new TabPage();
             groupBox12 = new GroupBox();
+            rjToggleDisableAzureTranslation = new OSCVRCWiz.RJControls.RJToggleButton();
+            label235 = new Label();
             label204 = new Label();
             textBoxPartialResultsInterval = new TextBox();
             rjTogglePartialResults = new OSCVRCWiz.RJControls.RJToggleButton();
@@ -525,6 +527,27 @@
             VRCOSC = new TabPage();
             iconButton47 = new FontAwesome.Sharp.IconButton();
             groupBox37 = new GroupBox();
+            buttonCountersApplyChanges = new Button();
+            buttonResetCounter10 = new Button();
+            buttonResetCounter9 = new Button();
+            buttonResetCounter8 = new Button();
+            buttonResetCounter7 = new Button();
+            label237 = new Label();
+            textBoxCounter10 = new TextBox();
+            textBoxCounterMessage10 = new TextBox();
+            label238 = new Label();
+            label239 = new Label();
+            textBoxCounter9 = new TextBox();
+            textBoxCounterMessage9 = new TextBox();
+            label240 = new Label();
+            label241 = new Label();
+            textBoxCounter8 = new TextBox();
+            textBoxCounterMessage8 = new TextBox();
+            label242 = new Label();
+            label243 = new Label();
+            textBoxCounter7 = new TextBox();
+            textBoxCounterMessage7 = new TextBox();
+            label244 = new Label();
             counterOutputInterval = new TextBox();
             label183 = new Label();
             buttonResetCounter6 = new Button();
@@ -721,6 +744,7 @@
             label222 = new Label();
             textBoxChatGPT = new TextBox();
             groupBox44 = new GroupBox();
+            label234 = new Label();
             rjToggleGPTUsePrompt = new OSCVRCWiz.RJControls.RJToggleButton();
             label232 = new Label();
             label231 = new Label();
@@ -764,7 +788,6 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            label234 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -6429,6 +6452,8 @@
             // 
             // groupBox12
             // 
+            groupBox12.Controls.Add(rjToggleDisableAzureTranslation);
+            groupBox12.Controls.Add(label235);
             groupBox12.Controls.Add(label204);
             groupBox12.Controls.Add(textBoxPartialResultsInterval);
             groupBox12.Controls.Add(rjTogglePartialResults);
@@ -6454,17 +6479,45 @@
             groupBox12.Margin = new Padding(3, 2, 3, 2);
             groupBox12.Name = "groupBox12";
             groupBox12.Padding = new Padding(3, 2, 3, 2);
-            groupBox12.Size = new Size(620, 462);
+            groupBox12.Size = new Size(620, 596);
             groupBox12.TabIndex = 109;
             groupBox12.TabStop = false;
             groupBox12.Text = "Azure Settings";
+            // 
+            // rjToggleDisableAzureTranslation
+            // 
+            rjToggleDisableAzureTranslation.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleDisableAzureTranslation.AutoSize = true;
+            rjToggleDisableAzureTranslation.Location = new Point(12, 389);
+            rjToggleDisableAzureTranslation.Margin = new Padding(3, 2, 3, 2);
+            rjToggleDisableAzureTranslation.MinimumSize = new Size(39, 16);
+            rjToggleDisableAzureTranslation.Name = "rjToggleDisableAzureTranslation";
+            rjToggleDisableAzureTranslation.OffBackColor = Color.Gray;
+            rjToggleDisableAzureTranslation.OffToggleColor = Color.Gainsboro;
+            rjToggleDisableAzureTranslation.OnBackColor = Color.MediumSlateBlue;
+            rjToggleDisableAzureTranslation.OnToggleColor = Color.WhiteSmoke;
+            rjToggleDisableAzureTranslation.Size = new Size(39, 16);
+            rjToggleDisableAzureTranslation.TabIndex = 169;
+            rjToggleDisableAzureTranslation.UseVisualStyleBackColor = true;
+            // 
+            // label235
+            // 
+            label235.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            label235.AutoSize = true;
+            label235.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label235.ForeColor = Color.Snow;
+            label235.Location = new Point(59, 388);
+            label235.Name = "label235";
+            label235.Size = new Size(184, 15);
+            label235.TabIndex = 168;
+            label235.Text = "Disable Speech to Text Translation";
             // 
             // label204
             // 
             label204.AutoSize = true;
             label204.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label204.ForeColor = Color.Snow;
-            label204.Location = new Point(9, 346);
+            label204.Location = new Point(10, 483);
             label204.Name = "label204";
             label204.Size = new Size(149, 15);
             label204.TabIndex = 167;
@@ -6472,7 +6525,7 @@
             // 
             // textBoxPartialResultsInterval
             // 
-            textBoxPartialResultsInterval.Location = new Point(10, 363);
+            textBoxPartialResultsInterval.Location = new Point(11, 500);
             textBoxPartialResultsInterval.Margin = new Padding(3, 2, 3, 2);
             textBoxPartialResultsInterval.Name = "textBoxPartialResultsInterval";
             textBoxPartialResultsInterval.Size = new Size(110, 23);
@@ -6483,7 +6536,7 @@
             // 
             rjTogglePartialResults.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjTogglePartialResults.AutoSize = true;
-            rjTogglePartialResults.Location = new Point(9, 316);
+            rjTogglePartialResults.Location = new Point(9, 448);
             rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
             rjTogglePartialResults.MinimumSize = new Size(39, 16);
             rjTogglePartialResults.Name = "rjTogglePartialResults";
@@ -6501,7 +6554,7 @@
             label203.AutoSize = true;
             label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label203.ForeColor = Color.Snow;
-            label203.Location = new Point(57, 317);
+            label203.Location = new Point(57, 449);
             label203.Name = "label203";
             label203.Size = new Size(113, 15);
             label203.TabIndex = 123;
@@ -6511,7 +6564,7 @@
             // 
             rjToggleTranslateSameLanguage.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleTranslateSameLanguage.AutoSize = true;
-            rjToggleTranslateSameLanguage.Location = new Point(8, 257);
+            rjToggleTranslateSameLanguage.Location = new Point(10, 356);
             rjToggleTranslateSameLanguage.Margin = new Padding(3, 2, 3, 2);
             rjToggleTranslateSameLanguage.MinimumSize = new Size(39, 16);
             rjToggleTranslateSameLanguage.Name = "rjToggleTranslateSameLanguage";
@@ -6529,7 +6582,7 @@
             label193.AutoSize = true;
             label193.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label193.ForeColor = Color.Snow;
-            label193.Location = new Point(55, 256);
+            label193.Location = new Point(57, 355);
             label193.Name = "label193";
             label193.Size = new Size(198, 15);
             label193.TabIndex = 121;
@@ -6546,7 +6599,7 @@
             buttonExportDict.IconColor = Color.White;
             buttonExportDict.IconFont = FontAwesome.Sharp.IconFont.Auto;
             buttonExportDict.IconSize = 15;
-            buttonExportDict.Location = new Point(99, 191);
+            buttonExportDict.Location = new Point(101, 290);
             buttonExportDict.Margin = new Padding(3, 2, 3, 2);
             buttonExportDict.Name = "buttonExportDict";
             buttonExportDict.Size = new Size(87, 25);
@@ -6567,7 +6620,7 @@
             buttonImportDict.IconColor = Color.White;
             buttonImportDict.IconFont = FontAwesome.Sharp.IconFont.Auto;
             buttonImportDict.IconSize = 15;
-            buttonImportDict.Location = new Point(6, 191);
+            buttonImportDict.Location = new Point(8, 290);
             buttonImportDict.Margin = new Padding(3, 2, 3, 2);
             buttonImportDict.Name = "buttonImportDict";
             buttonImportDict.Size = new Size(87, 25);
@@ -6581,7 +6634,7 @@
             // 
             rjToggleButtonStyle.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleButtonStyle.AutoSize = true;
-            rjToggleButtonStyle.Location = new Point(9, 288);
+            rjToggleButtonStyle.Location = new Point(9, 420);
             rjToggleButtonStyle.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonStyle.MinimumSize = new Size(39, 16);
             rjToggleButtonStyle.Name = "rjToggleButtonStyle";
@@ -6599,7 +6652,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label30.ForeColor = Color.Snow;
-            label30.Location = new Point(57, 289);
+            label30.Location = new Point(57, 421);
             label30.Name = "label30";
             label30.Size = new Size(260, 30);
             label30.TabIndex = 108;
@@ -6631,7 +6684,7 @@
             label47.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label47.AutoSize = true;
             label47.ForeColor = Color.Snow;
-            label47.Location = new Point(9, 441);
+            label47.Location = new Point(9, 575);
             label47.Name = "label47";
             label47.Size = new Size(403, 15);
             label47.TabIndex = 84;
@@ -6657,7 +6710,7 @@
             label48.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label48.AutoSize = true;
             label48.ForeColor = Color.Snow;
-            label48.Location = new Point(9, 426);
+            label48.Location = new Point(9, 560);
             label48.Name = "label48";
             label48.Size = new Size(511, 15);
             label48.TabIndex = 85;
@@ -6669,7 +6722,7 @@
             richTextBoxAzureDict.Location = new Point(8, 60);
             richTextBoxAzureDict.Margin = new Padding(3, 2, 3, 2);
             richTextBoxAzureDict.Name = "richTextBoxAzureDict";
-            richTextBoxAzureDict.Size = new Size(568, 121);
+            richTextBoxAzureDict.Size = new Size(568, 220);
             richTextBoxAzureDict.TabIndex = 63;
             richTextBoxAzureDict.Text = "";
             // 
@@ -6679,7 +6732,7 @@
             rjToggleButtonProfan.AutoSize = true;
             rjToggleButtonProfan.Checked = true;
             rjToggleButtonProfan.CheckState = CheckState.Checked;
-            rjToggleButtonProfan.Location = new Point(8, 226);
+            rjToggleButtonProfan.Location = new Point(10, 325);
             rjToggleButtonProfan.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonProfan.MinimumSize = new Size(39, 16);
             rjToggleButtonProfan.Name = "rjToggleButtonProfan";
@@ -6698,7 +6751,7 @@
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label20.ForeColor = Color.Snow;
-            label20.Location = new Point(56, 225);
+            label20.Location = new Point(58, 324);
             label20.Name = "label20";
             label20.Size = new Size(182, 15);
             label20.TabIndex = 48;
@@ -6708,7 +6761,7 @@
             // 
             rjToggleButton4.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleButton4.AutoSize = true;
-            rjToggleButton4.Location = new Point(9, 406);
+            rjToggleButton4.Location = new Point(9, 540);
             rjToggleButton4.Margin = new Padding(3, 2, 3, 2);
             rjToggleButton4.MinimumSize = new Size(39, 16);
             rjToggleButton4.Name = "rjToggleButton4";
@@ -6727,7 +6780,7 @@
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label36.ForeColor = Color.Snow;
-            label36.Location = new Point(57, 406);
+            label36.Location = new Point(57, 540);
             label36.Name = "label36";
             label36.Size = new Size(177, 15);
             label36.TabIndex = 82;
@@ -8125,7 +8178,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(713, 9);
+            iconButton47.Location = new Point(542, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -8137,6 +8190,27 @@
             // 
             // groupBox37
             // 
+            groupBox37.Controls.Add(buttonCountersApplyChanges);
+            groupBox37.Controls.Add(buttonResetCounter10);
+            groupBox37.Controls.Add(buttonResetCounter9);
+            groupBox37.Controls.Add(buttonResetCounter8);
+            groupBox37.Controls.Add(buttonResetCounter7);
+            groupBox37.Controls.Add(label237);
+            groupBox37.Controls.Add(textBoxCounter10);
+            groupBox37.Controls.Add(textBoxCounterMessage10);
+            groupBox37.Controls.Add(label238);
+            groupBox37.Controls.Add(label239);
+            groupBox37.Controls.Add(textBoxCounter9);
+            groupBox37.Controls.Add(textBoxCounterMessage9);
+            groupBox37.Controls.Add(label240);
+            groupBox37.Controls.Add(label241);
+            groupBox37.Controls.Add(textBoxCounter8);
+            groupBox37.Controls.Add(textBoxCounterMessage8);
+            groupBox37.Controls.Add(label242);
+            groupBox37.Controls.Add(label243);
+            groupBox37.Controls.Add(textBoxCounter7);
+            groupBox37.Controls.Add(textBoxCounterMessage7);
+            groupBox37.Controls.Add(label244);
             groupBox37.Controls.Add(counterOutputInterval);
             groupBox37.Controls.Add(label183);
             groupBox37.Controls.Add(buttonResetCounter6);
@@ -8181,14 +8255,257 @@
             groupBox37.Margin = new Padding(3, 2, 3, 2);
             groupBox37.Name = "groupBox37";
             groupBox37.Padding = new Padding(3, 2, 3, 2);
-            groupBox37.Size = new Size(745, 376);
+            groupBox37.Size = new Size(728, 582);
             groupBox37.TabIndex = 127;
             groupBox37.TabStop = false;
             groupBox37.Text = "Counters";
             // 
+            // buttonCountersApplyChanges
+            // 
+            buttonCountersApplyChanges.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonCountersApplyChanges.Enabled = false;
+            buttonCountersApplyChanges.FlatStyle = FlatStyle.Flat;
+            buttonCountersApplyChanges.ForeColor = Color.White;
+            buttonCountersApplyChanges.Location = new Point(606, 179);
+            buttonCountersApplyChanges.Margin = new Padding(3, 2, 3, 2);
+            buttonCountersApplyChanges.Name = "buttonCountersApplyChanges";
+            buttonCountersApplyChanges.Size = new Size(91, 109);
+            buttonCountersApplyChanges.TabIndex = 181;
+            buttonCountersApplyChanges.Text = "Debug: Apply Changes";
+            buttonCountersApplyChanges.UseVisualStyleBackColor = false;
+            buttonCountersApplyChanges.Click += (this.button43_Click_1);
+            // 
+            // buttonResetCounter10
+            // 
+            buttonResetCounter10.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonResetCounter10.Enabled = false;
+            buttonResetCounter10.FlatStyle = FlatStyle.Flat;
+            buttonResetCounter10.ForeColor = Color.Snow;
+            buttonResetCounter10.Location = new Point(514, 458);
+            buttonResetCounter10.Margin = new Padding(3, 2, 3, 2);
+            buttonResetCounter10.Name = "buttonResetCounter10";
+            buttonResetCounter10.Size = new Size(65, 22);
+            buttonResetCounter10.TabIndex = 180;
+            buttonResetCounter10.Text = "Reset";
+            buttonResetCounter10.UseVisualStyleBackColor = false;
+            buttonResetCounter10.Click += (this.buttonResetCounter10_Click);
+            // 
+            // buttonResetCounter9
+            // 
+            buttonResetCounter9.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonResetCounter9.Enabled = false;
+            buttonResetCounter9.FlatStyle = FlatStyle.Flat;
+            buttonResetCounter9.ForeColor = Color.Snow;
+            buttonResetCounter9.Location = new Point(514, 413);
+            buttonResetCounter9.Margin = new Padding(3, 2, 3, 2);
+            buttonResetCounter9.Name = "buttonResetCounter9";
+            buttonResetCounter9.Size = new Size(65, 22);
+            buttonResetCounter9.TabIndex = 179;
+            buttonResetCounter9.Text = "Reset";
+            buttonResetCounter9.UseVisualStyleBackColor = false;
+            buttonResetCounter9.Click += (this.buttonResetCounter9_Click);
+            // 
+            // buttonResetCounter8
+            // 
+            buttonResetCounter8.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonResetCounter8.Enabled = false;
+            buttonResetCounter8.FlatStyle = FlatStyle.Flat;
+            buttonResetCounter8.ForeColor = Color.Snow;
+            buttonResetCounter8.Location = new Point(514, 365);
+            buttonResetCounter8.Margin = new Padding(3, 2, 3, 2);
+            buttonResetCounter8.Name = "buttonResetCounter8";
+            buttonResetCounter8.Size = new Size(65, 22);
+            buttonResetCounter8.TabIndex = 178;
+            buttonResetCounter8.Text = "Reset";
+            buttonResetCounter8.UseVisualStyleBackColor = false;
+            buttonResetCounter8.Click += (this.buttonResetCounter8_Click);
+            // 
+            // buttonResetCounter7
+            // 
+            buttonResetCounter7.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            buttonResetCounter7.Enabled = false;
+            buttonResetCounter7.FlatStyle = FlatStyle.Flat;
+            buttonResetCounter7.ForeColor = Color.Snow;
+            buttonResetCounter7.Location = new Point(514, 320);
+            buttonResetCounter7.Margin = new Padding(3, 2, 3, 2);
+            buttonResetCounter7.Name = "buttonResetCounter7";
+            buttonResetCounter7.Size = new Size(65, 22);
+            buttonResetCounter7.TabIndex = 177;
+            buttonResetCounter7.Text = "Reset";
+            buttonResetCounter7.UseVisualStyleBackColor = false;
+            buttonResetCounter7.Click += (this.buttonResetCounter7_Click);
+            // 
+            // label237
+            // 
+            label237.AutoSize = true;
+            label237.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label237.ForeColor = Color.Snow;
+            label237.Location = new Point(12, 440);
+            label237.Name = "label237";
+            label237.Size = new Size(162, 15);
+            label237.TabIndex = 174;
+            label237.Text = "Counter 10: Avatar Parameter";
+            // 
+            // textBoxCounter10
+            // 
+            textBoxCounter10.Location = new Point(12, 458);
+            textBoxCounter10.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounter10.Name = "textBoxCounter10";
+            textBoxCounter10.Size = new Size(210, 23);
+            textBoxCounter10.TabIndex = 173;
+            textBoxCounter10.Text = "/avatar/parameters/Counter10";
+            textBoxCounter10.TextChanged += (OnBoxesChanged);
+            // 
+            // textBoxCounterMessage10
+            // 
+            textBoxCounterMessage10.Location = new Point(234, 458);
+            textBoxCounterMessage10.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounterMessage10.Name = "textBoxCounterMessage10";
+            textBoxCounterMessage10.Size = new Size(274, 23);
+            textBoxCounterMessage10.TabIndex = 175;
+            textBoxCounterMessage10.Text = "Counter: {counter}";
+            textBoxCounterMessage10.TextChanged += (OnBoxesChanged);
+            // 
+            // label238
+            // 
+            label238.AutoSize = true;
+            label238.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label238.ForeColor = Color.Snow;
+            label238.Location = new Point(234, 440);
+            label238.Name = "label238";
+            label238.Size = new Size(53, 15);
+            label238.TabIndex = 176;
+            label238.Text = "Message";
+            // 
+            // label239
+            // 
+            label239.AutoSize = true;
+            label239.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label239.ForeColor = Color.Snow;
+            label239.Location = new Point(12, 395);
+            label239.Name = "label239";
+            label239.Size = new Size(156, 15);
+            label239.TabIndex = 170;
+            label239.Text = "Counter 9: Avatar Parameter";
+            // 
+            // textBoxCounter9
+            // 
+            textBoxCounter9.Location = new Point(12, 412);
+            textBoxCounter9.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounter9.Name = "textBoxCounter9";
+            textBoxCounter9.Size = new Size(210, 23);
+            textBoxCounter9.TabIndex = 169;
+            textBoxCounter9.Text = "/avatar/parameters/Counter9";
+            textBoxCounter9.TextChanged += (OnBoxesChanged);
+            // 
+            // textBoxCounterMessage9
+            // 
+            textBoxCounterMessage9.Location = new Point(234, 412);
+            textBoxCounterMessage9.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounterMessage9.Name = "textBoxCounterMessage9";
+            textBoxCounterMessage9.Size = new Size(274, 23);
+            textBoxCounterMessage9.TabIndex = 171;
+            textBoxCounterMessage9.Text = "Counter: {counter}";
+            textBoxCounterMessage9.TextChanged += (OnBoxesChanged);
+            // 
+            // label240
+            // 
+            label240.AutoSize = true;
+            label240.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label240.ForeColor = Color.Snow;
+            label240.Location = new Point(234, 395);
+            label240.Name = "label240";
+            label240.Size = new Size(53, 15);
+            label240.TabIndex = 172;
+            label240.Text = "Message";
+            // 
+            // label241
+            // 
+            label241.AutoSize = true;
+            label241.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label241.ForeColor = Color.Snow;
+            label241.Location = new Point(12, 346);
+            label241.Name = "label241";
+            label241.Size = new Size(156, 15);
+            label241.TabIndex = 166;
+            label241.Text = "Counter 8: Avatar Parameter";
+            // 
+            // textBoxCounter8
+            // 
+            textBoxCounter8.Location = new Point(12, 364);
+            textBoxCounter8.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounter8.Name = "textBoxCounter8";
+            textBoxCounter8.Size = new Size(210, 23);
+            textBoxCounter8.TabIndex = 165;
+            textBoxCounter8.Text = "/avatar/parameters/Counter8";
+            textBoxCounter8.TextChanged += (OnBoxesChanged);
+            // 
+            // textBoxCounterMessage8
+            // 
+            textBoxCounterMessage8.Location = new Point(234, 364);
+            textBoxCounterMessage8.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounterMessage8.Name = "textBoxCounterMessage8";
+            textBoxCounterMessage8.Size = new Size(274, 23);
+            textBoxCounterMessage8.TabIndex = 167;
+            textBoxCounterMessage8.Text = "Counter: {counter}";
+            textBoxCounterMessage8.TextChanged += (OnBoxesChanged);
+            // 
+            // label242
+            // 
+            label242.AutoSize = true;
+            label242.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label242.ForeColor = Color.Snow;
+            label242.Location = new Point(234, 346);
+            label242.Name = "label242";
+            label242.Size = new Size(53, 15);
+            label242.TabIndex = 168;
+            label242.Text = "Message";
+            // 
+            // label243
+            // 
+            label243.AutoSize = true;
+            label243.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label243.ForeColor = Color.Snow;
+            label243.Location = new Point(12, 302);
+            label243.Name = "label243";
+            label243.Size = new Size(156, 15);
+            label243.TabIndex = 162;
+            label243.Text = "Counter 7: Avatar Parameter";
+            // 
+            // textBoxCounter7
+            // 
+            textBoxCounter7.Location = new Point(12, 319);
+            textBoxCounter7.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounter7.Name = "textBoxCounter7";
+            textBoxCounter7.Size = new Size(210, 23);
+            textBoxCounter7.TabIndex = 161;
+            textBoxCounter7.Text = "/avatar/parameters/Counter7";
+            textBoxCounter7.TextChanged += (OnBoxesChanged);
+            // 
+            // textBoxCounterMessage7
+            // 
+            textBoxCounterMessage7.Location = new Point(234, 319);
+            textBoxCounterMessage7.Margin = new Padding(3, 2, 3, 2);
+            textBoxCounterMessage7.Name = "textBoxCounterMessage7";
+            textBoxCounterMessage7.Size = new Size(274, 23);
+            textBoxCounterMessage7.TabIndex = 163;
+            textBoxCounterMessage7.Text = "Counter: {counter}";
+            textBoxCounterMessage7.TextChanged += (OnBoxesChanged);
+            // 
+            // label244
+            // 
+            label244.AutoSize = true;
+            label244.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label244.ForeColor = Color.Snow;
+            label244.Location = new Point(234, 302);
+            label244.Name = "label244";
+            label244.Size = new Size(53, 15);
+            label244.TabIndex = 164;
+            label244.Text = "Message";
+            // 
             // counterOutputInterval
             // 
-            counterOutputInterval.Location = new Point(619, 345);
+            counterOutputInterval.Location = new Point(606, 544);
             counterOutputInterval.Margin = new Padding(3, 2, 3, 2);
             counterOutputInterval.Name = "counterOutputInterval";
             counterOutputInterval.Size = new Size(104, 23);
@@ -8200,7 +8517,7 @@
             label183.AutoSize = true;
             label183.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label183.ForeColor = Color.Snow;
-            label183.Location = new Point(619, 327);
+            label183.Location = new Point(606, 526);
             label183.Name = "label183";
             label183.Size = new Size(114, 15);
             label183.TabIndex = 155;
@@ -8300,7 +8617,7 @@
             // 
             label166.AutoSize = true;
             label166.ForeColor = Color.Snow;
-            label166.Location = new Point(50, 355);
+            label166.Location = new Point(57, 552);
             label166.Name = "label166";
             label166.Size = new Size(117, 15);
             label166.TabIndex = 147;
@@ -8309,7 +8626,7 @@
             // rjToggleButtonResetButtonsCounter
             // 
             rjToggleButtonResetButtonsCounter.AutoSize = true;
-            rjToggleButtonResetButtonsCounter.Location = new Point(5, 354);
+            rjToggleButtonResetButtonsCounter.Location = new Point(12, 551);
             rjToggleButtonResetButtonsCounter.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonResetButtonsCounter.MinimumSize = new Size(39, 16);
             rjToggleButtonResetButtonsCounter.Name = "rjToggleButtonResetButtonsCounter";
@@ -8331,7 +8648,7 @@
             buttonResetCounterAll.Location = new Point(606, 12);
             buttonResetCounterAll.Margin = new Padding(3, 2, 3, 2);
             buttonResetCounterAll.Name = "buttonResetCounterAll";
-            buttonResetCounterAll.Size = new Size(133, 22);
+            buttonResetCounterAll.Size = new Size(116, 22);
             buttonResetCounterAll.TabIndex = 145;
             buttonResetCounterAll.Text = "Reset All Counters";
             buttonResetCounterAll.UseVisualStyleBackColor = false;
@@ -8356,6 +8673,7 @@
             textBoxCounter6.Size = new Size(210, 23);
             textBoxCounter6.TabIndex = 141;
             textBoxCounter6.Text = "/avatar/parameters/AnothaOne";
+            textBoxCounter6.TextChanged += (OnBoxesChanged);
             // 
             // textBoxCounterMessage6
             // 
@@ -8365,6 +8683,7 @@
             textBoxCounterMessage6.Size = new Size(274, 23);
             textBoxCounterMessage6.TabIndex = 143;
             textBoxCounterMessage6.Text = "Counter: {counter}";
+            textBoxCounterMessage6.TextChanged += (OnBoxesChanged);
             // 
             // label120
             // 
@@ -8396,6 +8715,7 @@
             textBoxCounter5.Size = new Size(210, 23);
             textBoxCounter5.TabIndex = 137;
             textBoxCounter5.Text = "/avatar/parameters/Something";
+            textBoxCounter5.TextChanged += (OnBoxesChanged);
             // 
             // textBoxCounterMessage5
             // 
@@ -8405,6 +8725,7 @@
             textBoxCounterMessage5.Size = new Size(274, 23);
             textBoxCounterMessage5.TabIndex = 139;
             textBoxCounterMessage5.Text = "Counter: {counter}";
+            textBoxCounterMessage5.TextChanged += (OnBoxesChanged);
             // 
             // label116
             // 
@@ -8421,7 +8742,7 @@
             // 
             label112.AutoSize = true;
             label112.ForeColor = Color.Snow;
-            label112.Location = new Point(50, 328);
+            label112.Location = new Point(57, 525);
             label112.Name = "label112";
             label112.Size = new Size(82, 15);
             label112.TabIndex = 136;
@@ -8432,7 +8753,7 @@
             rjToggleButtonCounterSaver.AutoSize = true;
             rjToggleButtonCounterSaver.Checked = true;
             rjToggleButtonCounterSaver.CheckState = CheckState.Checked;
-            rjToggleButtonCounterSaver.Location = new Point(5, 327);
+            rjToggleButtonCounterSaver.Location = new Point(12, 524);
             rjToggleButtonCounterSaver.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonCounterSaver.MinimumSize = new Size(39, 16);
             rjToggleButtonCounterSaver.Name = "rjToggleButtonCounterSaver";
@@ -8463,6 +8784,7 @@
             textBoxCounter4.Size = new Size(210, 23);
             textBoxCounter4.TabIndex = 131;
             textBoxCounter4.Text = "/avatar/parameters/Slap";
+            textBoxCounter4.TextChanged += (OnBoxesChanged);
             // 
             // textBoxCounterMessage4
             // 
@@ -8472,6 +8794,7 @@
             textBoxCounterMessage4.Size = new Size(274, 23);
             textBoxCounterMessage4.TabIndex = 133;
             textBoxCounterMessage4.Text = "Slap Counter: {counter}";
+            textBoxCounterMessage4.TextChanged += (OnBoxesChanged);
             // 
             // label97
             // 
@@ -8503,6 +8826,7 @@
             textBoxCounter3.Size = new Size(210, 23);
             textBoxCounter3.TabIndex = 127;
             textBoxCounter3.Text = "/avatar/parameters/Bonk";
+            textBoxCounter3.TextChanged += (OnBoxesChanged);
             // 
             // textBoxCounterMessage3
             // 
@@ -8512,12 +8836,13 @@
             textBoxCounterMessage3.Size = new Size(274, 23);
             textBoxCounterMessage3.TabIndex = 129;
             textBoxCounterMessage3.Text = "Bonk Counter: {counter}";
+            textBoxCounterMessage3.TextChanged += (OnBoxesChanged);
             // 
             // label89
             // 
             label89.AutoSize = true;
             label89.ForeColor = Color.Snow;
-            label89.Location = new Point(50, 301);
+            label89.Location = new Point(57, 498);
             label89.Name = "label89";
             label89.Size = new Size(429, 15);
             label89.TabIndex = 52;
@@ -8539,7 +8864,7 @@
             rjToggleButtonOutputVRCCountersOnContact.AutoSize = true;
             rjToggleButtonOutputVRCCountersOnContact.Checked = true;
             rjToggleButtonOutputVRCCountersOnContact.CheckState = CheckState.Checked;
-            rjToggleButtonOutputVRCCountersOnContact.Location = new Point(5, 299);
+            rjToggleButtonOutputVRCCountersOnContact.Location = new Point(12, 496);
             rjToggleButtonOutputVRCCountersOnContact.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonOutputVRCCountersOnContact.MinimumSize = new Size(39, 16);
             rjToggleButtonOutputVRCCountersOnContact.Name = "rjToggleButtonOutputVRCCountersOnContact";
@@ -8570,6 +8895,7 @@
             textBoxCounter2.Size = new Size(210, 23);
             textBoxCounter2.TabIndex = 123;
             textBoxCounter2.Text = "/avatar/parameters/HighFive";
+            textBoxCounter2.TextChanged += (OnBoxesChanged);
             // 
             // textBoxCounterMessage2
             // 
@@ -8579,6 +8905,7 @@
             textBoxCounterMessage2.Size = new Size(274, 23);
             textBoxCounterMessage2.TabIndex = 125;
             textBoxCounterMessage2.Text = "HighFive Counter: {counter}";
+            textBoxCounterMessage2.TextChanged += (OnBoxesChanged);
             // 
             // label90
             // 
@@ -8610,6 +8937,7 @@
             textBoxCounter1.Size = new Size(210, 23);
             textBoxCounter1.TabIndex = 119;
             textBoxCounter1.Text = "/avatar/parameters/Boop";
+            textBoxCounter1.TextChanged += (OnBoxesChanged);
             // 
             // textBoxCounterMessage1
             // 
@@ -8619,6 +8947,7 @@
             textBoxCounterMessage1.Size = new Size(274, 23);
             textBoxCounterMessage1.TabIndex = 121;
             textBoxCounterMessage1.Text = "Boop Counter: {counter}";
+            textBoxCounterMessage1.TextChanged += (OnBoxesChanged);
             // 
             // label85
             // 
@@ -8642,7 +8971,7 @@
             groupBox36.Margin = new Padding(3, 2, 3, 2);
             groupBox36.Name = "groupBox36";
             groupBox36.Padding = new Padding(3, 2, 3, 2);
-            groupBox36.Size = new Size(302, 124);
+            groupBox36.Size = new Size(285, 124);
             groupBox36.TabIndex = 126;
             groupBox36.TabStop = false;
             groupBox36.Text = "AFK";
@@ -10698,6 +11027,16 @@
             groupBox44.TabStop = false;
             groupBox44.Text = "ChatGPT";
             // 
+            // label234
+            // 
+            label234.AutoSize = true;
+            label234.ForeColor = Color.Snow;
+            label234.Location = new Point(191, 173);
+            label234.Name = "label234";
+            label234.Size = new Size(450, 15);
+            label234.TabIndex = 165;
+            label234.Text = "Chat Context is not currently preserved when using feature with VoiceWizardPro Key";
+            // 
             // rjToggleGPTUsePrompt
             // 
             rjToggleGPTUsePrompt.AutoSize = true;
@@ -11306,16 +11645,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label234
-            // 
-            label234.AutoSize = true;
-            label234.ForeColor = Color.Snow;
-            label234.Location = new Point(191, 173);
-            label234.Name = "label234";
-            label234.Size = new Size(450, 15);
-            label234.TabIndex = 165;
-            label234.Text = "Chat Context is not currently preserved when using feature with VoiceWizardPro Key";
             // 
             // VoiceWizardWindow
             // 
@@ -12229,6 +12558,29 @@
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonTypingIndicator;
         private Button button36;
         private Label label234;
+        private Button buttonResetCounter10;
+        private Button buttonResetCounter9;
+        private Button buttonResetCounter8;
+        private Button buttonResetCounter7;
+        private Label label237;
+        public TextBox textBoxCounter10;
+        public TextBox textBoxCounterMessage10;
+        private Label label238;
+        private Label label239;
+        public TextBox textBoxCounter9;
+        public TextBox textBoxCounterMessage9;
+        private Label label240;
+        private Label label241;
+        public TextBox textBoxCounter8;
+        public TextBox textBoxCounterMessage8;
+        private Label label242;
+        private Label label243;
+        public TextBox textBoxCounter7;
+        public TextBox textBoxCounterMessage7;
+        private Label label244;
+        private Button buttonCountersApplyChanges;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleDisableAzureTranslation;
+        private Label label235;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

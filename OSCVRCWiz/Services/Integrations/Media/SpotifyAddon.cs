@@ -225,7 +225,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{pause}", spotifyPausedIndicator);
                         theString = theString.Replace("{spotifyVolume}", deviceVolume);
                         theString = theString.Replace("{album}", album);
-                        theString = theString.Replace("{album}", albumArtist);
+                        theString = theString.Replace("{albumArtist}", albumArtist);
                         theString = theString.Replace("{nline}", "\u2028");
                         theString = theString.Replace("{counter1}", VRChatListener.counter1.ToString());
                         theString = theString.Replace("{counter2}", VRChatListener.counter2.ToString());
@@ -233,6 +233,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{counter4}", VRChatListener.counter4.ToString());
                         theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                         theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
+                        theString = theString.Replace("{lyrics}", OSCListener.spotifyLyrics);
 
                         theString = replaceProgresBar(theString, progressT, durationT);
                         theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));

@@ -5,13 +5,10 @@ using OSCVRCWiz.Services.Speech.TextToSpeech;
 using OSCVRCWiz.Services.Speech.TranslationAPIs;
 using OSCVRCWiz.Services.Text;
 using OSCVRCWiz.Speech_Recognition;
-using System.Diagnostics;
-using System.Media;
 using OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines;
 using OSCVRCWiz.Resources.StartUp.StartUp;
 using OSCVRCWiz.Resources.Audio;
-using Octokit;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace OSCVRCWiz.Services.Speech
 {
@@ -670,7 +667,7 @@ namespace OSCVRCWiz.Services.Speech
                             {
                                 //  var azureRec = new AzureRecognition();
 
-                                if (VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.Text.ToString() == "No Translation (Default)" || (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true))
+                                if (VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.Text.ToString() == "No Translation (Default)" || VoiceWizardWindow.MainFormGlobal.rjToggleDisableAzureTranslation.Checked || (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true))
                                 {
                                     AzureRecognition.speechSetup(VoiceWizardWindow.MainFormGlobal.comboBoxTranslationLanguage.Text.ToString(), VoiceWizardWindow.MainFormGlobal.comboBoxSpokenLanguage.Text.ToString()); //only speechSetup needed
                                     System.Diagnostics.Debug.WriteLine("<speechSetup change>");

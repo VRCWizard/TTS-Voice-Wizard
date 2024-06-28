@@ -35,6 +35,7 @@ namespace OSCVRCWiz
 
         public static VoiceWizardWindow MainFormGlobal;
         bool forceClose = false;
+        private static bool settingsLoaded = false;
 
 
         public VoiceWizardWindow()
@@ -81,6 +82,7 @@ namespace OSCVRCWiz
                 try
                 {
                     LoadSettings.LoadingSettings();// this is the source of the configuration error //add a try catch
+                    settingsLoaded = true;
                 }
                 catch (Exception ex)
                 {
@@ -110,6 +112,7 @@ namespace OSCVRCWiz
                 }
                 StartUps.OnFormLoad();
                 StartUps.BackupStatus();
+               
             }
             catch (Exception ex)
             {
@@ -2346,6 +2349,10 @@ namespace OSCVRCWiz
                 buttonResetCounter4.Enabled = true;
                 buttonResetCounter5.Enabled = true;
                 buttonResetCounter6.Enabled = true;
+                buttonResetCounter7.Enabled = true;
+                buttonResetCounter8.Enabled = true;
+                buttonResetCounter9.Enabled = true;
+                buttonResetCounter10.Enabled = true;
                 buttonResetCounterAll.Enabled = true;
             }
             else
@@ -2356,6 +2363,10 @@ namespace OSCVRCWiz
                 buttonResetCounter4.Enabled = false;
                 buttonResetCounter5.Enabled = false;
                 buttonResetCounter6.Enabled = false;
+                buttonResetCounter7.Enabled = false;
+                buttonResetCounter8.Enabled = false;
+                buttonResetCounter9.Enabled = false;
+                buttonResetCounter10.Enabled = false;
                 buttonResetCounterAll.Enabled = false;
             }
         }
@@ -2408,6 +2419,41 @@ namespace OSCVRCWiz
             Settings1.Default.Save();
         }
 
+        private void buttonResetCounter7_Click(object sender, EventArgs e)
+        {
+            VRChatListener.counter7 = 0;
+            VRChatListener.prevCounter7 = 0;
+            Settings1.Default.Counter7 = VRChatListener.counter7;
+            Settings1.Default.Save();
+        }
+
+        private void buttonResetCounter8_Click(object sender, EventArgs e)
+        {
+            VRChatListener.counter8 = 0;
+            VRChatListener.prevCounter8 = 0;
+            Settings1.Default.Counter8 = VRChatListener.counter8;
+            Settings1.Default.Save();
+
+        }
+
+        private void buttonResetCounter9_Click(object sender, EventArgs e)
+        {
+            VRChatListener.counter9 = 0;
+            VRChatListener.prevCounter9 = 0;
+            Settings1.Default.Counter9 = VRChatListener.counter9;
+            Settings1.Default.Save();
+
+        }
+
+        private void buttonResetCounter10_Click(object sender, EventArgs e)
+        {
+            VRChatListener.counter10 = 0;
+            VRChatListener.prevCounter10 = 0;
+            Settings1.Default.Counter10 = VRChatListener.counter10;
+            Settings1.Default.Save();
+        }
+
+
 
 
         private void button32_Click(object sender, EventArgs e)
@@ -2420,8 +2466,10 @@ namespace OSCVRCWiz
             try
             {
                 Task.Run(() => VRChatListener.OSCLegacyVRChatListener());
+                // Task.Run(() => VRChatListener.OSCQueryStart());
             }
-            catch (Exception ex) { OutputText.outputLog("[VRChat OSC Listener Error: " + ex.Message + " ]", Color.Red); }
+            catch (Exception ex) { OutputText.outputLog("[OSC VRChat Listener Error: Another Application is already listening on this port, please close that application and restart TTS Voice Wizard.]", Color.Red); }
+            VoiceWizardWindow.MainFormGlobal.button33.Enabled = false;
 
         }
 
@@ -2433,6 +2481,10 @@ namespace OSCVRCWiz
             VRChatListener.counter4 = 0;
             VRChatListener.counter5 = 0;
             VRChatListener.counter6 = 0;
+            VRChatListener.counter7 = 0;
+            VRChatListener.counter8 = 0;
+            VRChatListener.counter9 = 0;
+            VRChatListener.counter10 = 0;
 
             VRChatListener.prevCounter1 = 0;
             VRChatListener.prevCounter2 = 0;
@@ -2440,7 +2492,10 @@ namespace OSCVRCWiz
             VRChatListener.prevCounter4 = 0;
             VRChatListener.prevCounter5 = 0;
             VRChatListener.prevCounter6 = 0;
-
+            VRChatListener.prevCounter7 = 0;
+            VRChatListener.prevCounter8 = 0;
+            VRChatListener.prevCounter9 = 0;
+            VRChatListener.prevCounter10 = 0;
 
             Settings1.Default.Counter1 = VRChatListener.counter1;
             Settings1.Default.Counter2 = VRChatListener.counter2;
@@ -2448,6 +2503,12 @@ namespace OSCVRCWiz
             Settings1.Default.Counter4 = VRChatListener.counter4;
             Settings1.Default.Counter5 = VRChatListener.counter5;
             Settings1.Default.Counter6 = VRChatListener.counter6;
+            Settings1.Default.Counter7 = VRChatListener.counter7;
+            Settings1.Default.Counter8 = VRChatListener.counter8;
+            Settings1.Default.Counter9 = VRChatListener.counter9;
+            Settings1.Default.Counter10 = VRChatListener.counter10;
+
+
             Settings1.Default.Save();
         }
 
@@ -3231,6 +3292,25 @@ namespace OSCVRCWiz
                 Settings1.Default.ChatGPTModel = VoiceWizardWindow.MainFormGlobal.textBoxGPTModel.Text;
                 Settings1.Default.Save();
             }
+        }
+
+        private void button43_Click_1(object sender, EventArgs e)
+        {
+            VRChatListener.setValues();
+            VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.Enabled = false;
+            VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.ForeColor = Color.White;
+
+        }
+
+        private static void OnBoxesChanged(object sender, EventArgs e)
+        {
+            if (VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.Enabled == false && settingsLoaded == true)
+            {
+                OutputText.outputLog("[Counter Debug: Click the apply changes button for any changes to take effect]", Color.DarkOrange);
+                VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.Enabled = true;
+                VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.ForeColor = Color.Gold;
+            }
+           
         }
     }
 

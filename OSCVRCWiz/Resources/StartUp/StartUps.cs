@@ -108,22 +108,48 @@ namespace OSCVRCWiz.Resources.StartUp
                 safeStart = false;
                 string filename = ex.Filename;
                 configPathBackup = filename + ".bak";
+
+                DateTime timestamp = DateTime.Now;
+                string timestampString = timestamp.ToString("-yyyyMMdd_HHmmss");
+               
+
+
+                string configPathFOREVERBackup = filename + timestampString + ".bak";
                 //_logger.Error(ex, "Cannot open config file");
 
-                if (File.Exists(filename) == true)
+                try
                 {
-                    //_logger.Error("Config file {0} content:\n{1}", filename, File.ReadAllText(filename));
-                    File.Delete(filename);
+                    if (File.Exists(filename) == true)//no reason to delete since override
+                    {
+                        //_logger.Error("Config file {0} content:\n{1}", filename, File.ReadAllText(filename));
+                        File.Delete(filename);//this was possibly causing an error which resulted in settings being lost on double bad closes
+                       // OutputText.outputLog("Deleted corruped config.", Color.MediumVioletRed);
+                    }
+                }
+                catch (System.Exception exx)
+                {
+                  //  OutputText.outputLog($"[Error Deleting Corrupted Config: {exx.Message}]", Color.Red);
+                }
+
+                try
+                {
+
 
                     if (!string.IsNullOrEmpty(configPathBackup) && File.Exists(configPathBackup))
                     {
-                        File.Copy(configPathBackup, filename, true);
-                    }
+                        File.Copy(configPathBackup, configPathFOREVERBackup, true);//create a forever backup of the backup just incase any error happen.
+                        //OutputText.outputLog("Backedup the backup.", Color.MediumVioletRed);
+                        File.Copy(configPathBackup, filename, true);//create new config.
+                       // OutputText.outputLog("Loaded config from backup.", Color.MediumVioletRed);
 
+                    }
                 }
-                //System.Windows.Forms.MessageBox.Show("Corrupted");
-                //  Kinesis.Properties.Settings.Default.Reload();
-                //_logger.Error("Config file {0} does not exist", filename);
+                catch (System.Exception exx)
+                {
+                  //  OutputText.outputLog($"[Error Created New Config (or double backup): {exx.Message}]", Color.Red);
+                }
+
+
             }
 
         }

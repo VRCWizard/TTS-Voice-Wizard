@@ -52,56 +52,7 @@ namespace OSCVRCWiz.Resources.StartUp.StartUp
 
         }
 
-        //VRChat OSCQuery Test Code
-        /*   public static void OSCQueryAdvertMyApp() //no in use yet
-           {
-
-               var OSCQueryService = new OSCQueryServiceBuilder()
-                                 .WithServiceName("TTS Voice Wizard v" + VoiceWizardWindow.currentVersion)
-                                .WithTcpPort(Extensions.GetAvailableTcpPort())
-                                 .WithUdpPort(Convert.ToInt32(OSCPort))
-                                 .Build();
-
-               // Add endpoints for all data tts voice wizard sends out
-              // OSCQueryService.AddEndpoint("/path", "T means bool, i means int, f means float, s means string", Attributes.AccessValues.WriteOnly, null, "description for people to look at");
-
-
-
-
-
-
-           }*/
-
-        /* private static async Task OSCQueryVRchatListener()//no in use yet
-         {
-             var _tcpPort = 9001;//VRChats default TCP // MANY APPS CAN LISTEN HERE
-             var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/avatar/parameters");
-             //  var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/input");
-             //  var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/tracking");
-             //   var response = await new HttpClient().GetAsync($"http://localhost:{_tcpPort}/chatbox");
-
-             if (response.IsSuccessStatusCode)
-             {
-                 var responseString = await response.Content.ReadAsStringAsync();
-                 var result = JsonConvert.DeserializeObject<OSCQueryRootNode>(responseString);
-
-                 var sb = new StringBuilder();
-                 foreach (var pair in result.Contents)
-                 {
-
-                     sb.AppendLine($"{pair.Key}: {pair.Value}");
-
-                 }
-                 System.Diagnostics.Debug.WriteLine(sb.ToString());
-                 // OutputText.outputLog(sb.ToString());
-                 // OutputText.outputLog("hi");
-             }
-
-             await Task.Delay(500); // poll every half second
-
-             OSCQueryVRchatListener();
-
-         }*/
+        
 
 
 

@@ -153,6 +153,14 @@ namespace OSCVRCWiz.Services.Text
                     notificationSound = VoiceWizardWindow.MainFormGlobal.rjToggleSoundNotification.Checked;
                 }
 
+                if (keyboardOff == false)
+                {
+                    if (string.IsNullOrWhiteSpace(textstring)) 
+                    { 
+                        keyboardOff = true; 
+                    }//prevent blank messages from opening keyboard if it's enabled
+                }
+
                 
 
 

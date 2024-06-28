@@ -713,5 +713,44 @@
     <Setting Name="PromptText" Type="System.String" Scope="User">
       <Value Profile="(Default)">Keep your response under 100 characters</Value>
     </Setting>
+    <Setting Name="Counter7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter8" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter9" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter10" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Counter7Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Counter7</Value>
+    </Setting>
+    <Setting Name="Counter8Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Counter8</Value>
+    </Setting>
+    <Setting Name="Counter9Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Counter9</Value>
+    </Setting>
+    <Setting Name="Counter10Para" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/avatar/parameters/Counter10</Value>
+    </Setting>
+    <Setting Name="Counter7Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter8Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter9Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="Counter10Msg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Counter: {counter}</Value>
+    </Setting>
+    <Setting Name="DisableAzureTranslation" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
