@@ -102,7 +102,7 @@ namespace OSCVRCWiz.Speech_Recognition
                                 if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                                 {
                                     OutputText.outputLog("[ElevenLabs: No voice detected]");
-                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonTypingIndicator.Checked == true)
                                     {
                                         var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);
                                         OSC.OSCSender.Send(typingbubble);
@@ -183,7 +183,7 @@ namespace OSCVRCWiz.Speech_Recognition
                                           if (VoiceWizardWindow.MainFormGlobal.rjToggleDeepgramDebug.Checked)
                                               {
                                                   OutputText.outputLog("[ElevenLabs: No voice detected]");
-                                                  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true)
+                                                  if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonChatBox.Checked == true )
                                                   {
                                                       var typingbubble = new CoreOSC.OscMessage("/chatbox/typing", false);
                                                       OSC.OSCSender.Send(typingbubble);

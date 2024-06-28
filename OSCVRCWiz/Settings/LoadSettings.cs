@@ -466,6 +466,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.rjToggleDisableAzureTranslation.Checked = Settings1.Default.DisableAzureTranslation;
 
+           VoiceWizardWindow.MainFormGlobal.rjToggleExplicitPunctuation.Checked = Settings1.Default.ExplicitPunctuation;
+
 
 
 

@@ -86,6 +86,17 @@ namespace OSCVRCWiz
                     audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 
                 }
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleExplicitPunctuation.Checked==true)//will be continuous
+                {
+                    speechConfig.EnableDictation();
+                }
+                else if (VoiceWizardWindow.MainFormGlobal.rjToggleButton4.Checked == false && VoiceWizardWindow.MainFormGlobal.rjToggleExplicitPunctuation.Checked == true)
+                {
+                    speechConfig.SetServiceProperty("punctuation", "explicit", ServicePropertyChannel.UriQueryParameter);
+                }
+
+
                 if (continuousListening == false)//SO THAT STOPPING IT ACTUALLY WORKS
                 {
                     translationRecognizer1 = new TranslationRecognizer(translationConfig, audioConfig);

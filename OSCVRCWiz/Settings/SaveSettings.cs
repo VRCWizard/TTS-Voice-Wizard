@@ -365,6 +365,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.DisableAzureTranslation = VoiceWizardWindow.MainFormGlobal.rjToggleDisableAzureTranslation.Checked;
 
+            Settings1.Default.ExplicitPunctuation = VoiceWizardWindow.MainFormGlobal.rjToggleExplicitPunctuation.Checked;
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

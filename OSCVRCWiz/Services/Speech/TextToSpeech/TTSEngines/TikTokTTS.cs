@@ -25,13 +25,15 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             catch (Exception ex)
             {
 
+                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
 
-
-                OutputText.outputLog("[TikTok TTS Error: " + ex.Message + "]", Color.Red);
-                if (ex.InnerException != null)
+                try
                 {
-                    OutputText.outputLog("[TikTok TTS Inner Exception: " + ex.InnerException.Message + "]", Color.Red);
+                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
+
                 }
+                catch { }
+                OutputText.outputLog("TikTok TTS Error: " + errorMsg, Color.Red);
                 Task.Run(() => TTSMessageQueue.PlayNextInQueue());
 
 
