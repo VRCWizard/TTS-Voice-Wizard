@@ -404,6 +404,8 @@
             label11 = new Label();
             AzureSet = new TabPage();
             groupBox12 = new GroupBox();
+            rjToggleExplicitPunctuation = new OSCVRCWiz.RJControls.RJToggleButton();
+            label236 = new Label();
             rjToggleDisableAzureTranslation = new OSCVRCWiz.RJControls.RJToggleButton();
             label235 = new Label();
             label204 = new Label();
@@ -788,8 +790,8 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            rjToggleExplicitPunctuation = new OSCVRCWiz.RJControls.RJToggleButton();
-            label236 = new Label();
+            label245 = new Label();
+            rjToggleUseWordBoundaries = new OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -6488,6 +6490,34 @@
             groupBox12.TabStop = false;
             groupBox12.Text = "Azure Settings";
             // 
+            // rjToggleExplicitPunctuation
+            // 
+            rjToggleExplicitPunctuation.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleExplicitPunctuation.AutoSize = true;
+            rjToggleExplicitPunctuation.Location = new Point(10, 422);
+            rjToggleExplicitPunctuation.Margin = new Padding(3, 2, 3, 2);
+            rjToggleExplicitPunctuation.MinimumSize = new Size(39, 16);
+            rjToggleExplicitPunctuation.Name = "rjToggleExplicitPunctuation";
+            rjToggleExplicitPunctuation.OffBackColor = Color.Gray;
+            rjToggleExplicitPunctuation.OffToggleColor = Color.Gainsboro;
+            rjToggleExplicitPunctuation.OnBackColor = Color.MediumSlateBlue;
+            rjToggleExplicitPunctuation.OnToggleColor = Color.WhiteSmoke;
+            rjToggleExplicitPunctuation.Size = new Size(39, 16);
+            rjToggleExplicitPunctuation.TabIndex = 171;
+            rjToggleExplicitPunctuation.UseVisualStyleBackColor = true;
+            // 
+            // label236
+            // 
+            label236.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            label236.AutoSize = true;
+            label236.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label236.ForeColor = Color.Snow;
+            label236.Location = new Point(58, 423);
+            label236.Name = "label236";
+            label236.Size = new Size(172, 15);
+            label236.TabIndex = 170;
+            label236.Text = "Dictation / Explicit Punctuation";
+            // 
             // rjToggleDisableAzureTranslation
             // 
             rjToggleDisableAzureTranslation.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
@@ -7700,6 +7730,8 @@
             // groupBox33
             // 
             groupBox33.Anchor = (AnchorStyles)((AnchorStyles.Bottom) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            groupBox33.Controls.Add(label245);
+            groupBox33.Controls.Add(rjToggleUseWordBoundaries);
             groupBox33.Controls.Add(label62);
             groupBox33.Controls.Add(rjToggleReplaceBeforeTTS);
             groupBox33.ForeColor = Color.White;
@@ -8184,7 +8216,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(525, 9);
+            iconButton47.Location = new Point(508, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -11652,33 +11684,35 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
-            // rjToggleExplicitPunctuation
+            // label245
             // 
-            rjToggleExplicitPunctuation.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
-            rjToggleExplicitPunctuation.AutoSize = true;
-            rjToggleExplicitPunctuation.Location = new Point(10, 422);
-            rjToggleExplicitPunctuation.Margin = new Padding(3, 2, 3, 2);
-            rjToggleExplicitPunctuation.MinimumSize = new Size(39, 16);
-            rjToggleExplicitPunctuation.Name = "rjToggleExplicitPunctuation";
-            rjToggleExplicitPunctuation.OffBackColor = Color.Gray;
-            rjToggleExplicitPunctuation.OffToggleColor = Color.Gainsboro;
-            rjToggleExplicitPunctuation.OnBackColor = Color.MediumSlateBlue;
-            rjToggleExplicitPunctuation.OnToggleColor = Color.WhiteSmoke;
-            rjToggleExplicitPunctuation.Size = new Size(39, 16);
-            rjToggleExplicitPunctuation.TabIndex = 171;
-            rjToggleExplicitPunctuation.UseVisualStyleBackColor = true;
+            label245.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            label245.AutoSize = true;
+            label245.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label245.ForeColor = Color.Snow;
+            label245.Location = new Point(55, 50);
+            label245.Name = "label245";
+            label245.Size = new Size(120, 15);
+            label245.TabIndex = 164;
+            label245.Text = "Use Word Boundaries";
             // 
-            // label236
+            // rjToggleUseWordBoundaries
             // 
-            label236.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
-            label236.AutoSize = true;
-            label236.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label236.ForeColor = Color.Snow;
-            label236.Location = new Point(58, 423);
-            label236.Name = "label236";
-            label236.Size = new Size(172, 15);
-            label236.TabIndex = 170;
-            label236.Text = "Dictation / Explicit Punctuation";
+            rjToggleUseWordBoundaries.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleUseWordBoundaries.AutoSize = true;
+            rjToggleUseWordBoundaries.Checked = true;
+            rjToggleUseWordBoundaries.CheckState = CheckState.Checked;
+            rjToggleUseWordBoundaries.Location = new Point(7, 50);
+            rjToggleUseWordBoundaries.Margin = new Padding(3, 2, 3, 2);
+            rjToggleUseWordBoundaries.MinimumSize = new Size(39, 16);
+            rjToggleUseWordBoundaries.Name = "rjToggleUseWordBoundaries";
+            rjToggleUseWordBoundaries.OffBackColor = Color.Gray;
+            rjToggleUseWordBoundaries.OffToggleColor = Color.Gainsboro;
+            rjToggleUseWordBoundaries.OnBackColor = Color.MediumSlateBlue;
+            rjToggleUseWordBoundaries.OnToggleColor = Color.WhiteSmoke;
+            rjToggleUseWordBoundaries.Size = new Size(39, 16);
+            rjToggleUseWordBoundaries.TabIndex = 165;
+            rjToggleUseWordBoundaries.UseVisualStyleBackColor = true;
             // 
             // VoiceWizardWindow
             // 
@@ -12617,6 +12651,8 @@
         private Label label235;
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleExplicitPunctuation;
         private Label label236;
+        private Label label245;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleUseWordBoundaries;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

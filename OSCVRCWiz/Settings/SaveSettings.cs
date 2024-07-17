@@ -367,6 +367,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.ExplicitPunctuation = VoiceWizardWindow.MainFormGlobal.rjToggleExplicitPunctuation.Checked;
 
+            Settings1.Default.useWordBoundaries = VoiceWizardWindow.MainFormGlobal.rjToggleUseWordBoundaries.Checked;
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();
