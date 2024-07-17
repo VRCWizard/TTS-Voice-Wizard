@@ -3022,5 +3022,17 @@ namespace OSCVRCWiz.Settings {
                 this["DisableAzureTranslation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ExplicitPunctuation {
+            get {
+                return ((bool)(this["ExplicitPunctuation"]));
+            }
+            set {
+                this["ExplicitPunctuation"] = value;
+            }
+        }
     }
 }

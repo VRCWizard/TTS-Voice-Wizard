@@ -788,6 +788,8 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
+            rjToggleExplicitPunctuation = new OSCVRCWiz.RJControls.RJToggleButton();
+            label236 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -6452,6 +6454,8 @@
             // 
             // groupBox12
             // 
+            groupBox12.Controls.Add(rjToggleExplicitPunctuation);
+            groupBox12.Controls.Add(label236);
             groupBox12.Controls.Add(rjToggleDisableAzureTranslation);
             groupBox12.Controls.Add(label235);
             groupBox12.Controls.Add(label204);
@@ -6479,7 +6483,7 @@
             groupBox12.Margin = new Padding(3, 2, 3, 2);
             groupBox12.Name = "groupBox12";
             groupBox12.Padding = new Padding(3, 2, 3, 2);
-            groupBox12.Size = new Size(620, 596);
+            groupBox12.Size = new Size(620, 613);
             groupBox12.TabIndex = 109;
             groupBox12.TabStop = false;
             groupBox12.Text = "Azure Settings";
@@ -6488,7 +6492,7 @@
             // 
             rjToggleDisableAzureTranslation.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleDisableAzureTranslation.AutoSize = true;
-            rjToggleDisableAzureTranslation.Location = new Point(12, 389);
+            rjToggleDisableAzureTranslation.Location = new Point(10, 361);
             rjToggleDisableAzureTranslation.Margin = new Padding(3, 2, 3, 2);
             rjToggleDisableAzureTranslation.MinimumSize = new Size(39, 16);
             rjToggleDisableAzureTranslation.Name = "rjToggleDisableAzureTranslation";
@@ -6506,7 +6510,7 @@
             label235.AutoSize = true;
             label235.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label235.ForeColor = Color.Snow;
-            label235.Location = new Point(59, 388);
+            label235.Location = new Point(57, 360);
             label235.Name = "label235";
             label235.Size = new Size(184, 15);
             label235.TabIndex = 168;
@@ -6514,10 +6518,11 @@
             // 
             // label204
             // 
+            label204.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label204.AutoSize = true;
             label204.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label204.ForeColor = Color.Snow;
-            label204.Location = new Point(10, 483);
+            label204.Location = new Point(12, 474);
             label204.Name = "label204";
             label204.Size = new Size(149, 15);
             label204.TabIndex = 167;
@@ -6525,7 +6530,8 @@
             // 
             // textBoxPartialResultsInterval
             // 
-            textBoxPartialResultsInterval.Location = new Point(11, 500);
+            textBoxPartialResultsInterval.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            textBoxPartialResultsInterval.Location = new Point(13, 491);
             textBoxPartialResultsInterval.Margin = new Padding(3, 2, 3, 2);
             textBoxPartialResultsInterval.Name = "textBoxPartialResultsInterval";
             textBoxPartialResultsInterval.Size = new Size(110, 23);
@@ -6536,7 +6542,7 @@
             // 
             rjTogglePartialResults.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjTogglePartialResults.AutoSize = true;
-            rjTogglePartialResults.Location = new Point(9, 448);
+            rjTogglePartialResults.Location = new Point(9, 451);
             rjTogglePartialResults.Margin = new Padding(3, 2, 3, 2);
             rjTogglePartialResults.MinimumSize = new Size(39, 16);
             rjTogglePartialResults.Name = "rjTogglePartialResults";
@@ -6554,7 +6560,7 @@
             label203.AutoSize = true;
             label203.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label203.ForeColor = Color.Snow;
-            label203.Location = new Point(57, 449);
+            label203.Location = new Point(57, 452);
             label203.Name = "label203";
             label203.Size = new Size(113, 15);
             label203.TabIndex = 123;
@@ -6564,7 +6570,7 @@
             // 
             rjToggleTranslateSameLanguage.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleTranslateSameLanguage.AutoSize = true;
-            rjToggleTranslateSameLanguage.Location = new Point(10, 356);
+            rjToggleTranslateSameLanguage.Location = new Point(10, 333);
             rjToggleTranslateSameLanguage.Margin = new Padding(3, 2, 3, 2);
             rjToggleTranslateSameLanguage.MinimumSize = new Size(39, 16);
             rjToggleTranslateSameLanguage.Name = "rjToggleTranslateSameLanguage";
@@ -6582,7 +6588,7 @@
             label193.AutoSize = true;
             label193.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label193.ForeColor = Color.Snow;
-            label193.Location = new Point(57, 355);
+            label193.Location = new Point(57, 332);
             label193.Name = "label193";
             label193.Size = new Size(198, 15);
             label193.TabIndex = 121;
@@ -6599,7 +6605,7 @@
             buttonExportDict.IconColor = Color.White;
             buttonExportDict.IconFont = FontAwesome.Sharp.IconFont.Auto;
             buttonExportDict.IconSize = 15;
-            buttonExportDict.Location = new Point(101, 290);
+            buttonExportDict.Location = new Point(99, 262);
             buttonExportDict.Margin = new Padding(3, 2, 3, 2);
             buttonExportDict.Name = "buttonExportDict";
             buttonExportDict.Size = new Size(87, 25);
@@ -6620,7 +6626,7 @@
             buttonImportDict.IconColor = Color.White;
             buttonImportDict.IconFont = FontAwesome.Sharp.IconFont.Auto;
             buttonImportDict.IconSize = 15;
-            buttonImportDict.Location = new Point(8, 290);
+            buttonImportDict.Location = new Point(6, 262);
             buttonImportDict.Margin = new Padding(3, 2, 3, 2);
             buttonImportDict.Name = "buttonImportDict";
             buttonImportDict.Size = new Size(87, 25);
@@ -6634,7 +6640,7 @@
             // 
             rjToggleButtonStyle.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleButtonStyle.AutoSize = true;
-            rjToggleButtonStyle.Location = new Point(9, 420);
+            rjToggleButtonStyle.Location = new Point(10, 392);
             rjToggleButtonStyle.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonStyle.MinimumSize = new Size(39, 16);
             rjToggleButtonStyle.Name = "rjToggleButtonStyle";
@@ -6652,7 +6658,7 @@
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label30.ForeColor = Color.Snow;
-            label30.Location = new Point(57, 421);
+            label30.Location = new Point(58, 393);
             label30.Name = "label30";
             label30.Size = new Size(260, 30);
             label30.TabIndex = 108;
@@ -6684,7 +6690,7 @@
             label47.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label47.AutoSize = true;
             label47.ForeColor = Color.Snow;
-            label47.Location = new Point(9, 575);
+            label47.Location = new Point(9, 562);
             label47.Name = "label47";
             label47.Size = new Size(403, 15);
             label47.TabIndex = 84;
@@ -6710,7 +6716,7 @@
             label48.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             label48.AutoSize = true;
             label48.ForeColor = Color.Snow;
-            label48.Location = new Point(9, 560);
+            label48.Location = new Point(9, 547);
             label48.Name = "label48";
             label48.Size = new Size(511, 15);
             label48.TabIndex = 85;
@@ -6722,7 +6728,7 @@
             richTextBoxAzureDict.Location = new Point(8, 60);
             richTextBoxAzureDict.Margin = new Padding(3, 2, 3, 2);
             richTextBoxAzureDict.Name = "richTextBoxAzureDict";
-            richTextBoxAzureDict.Size = new Size(568, 220);
+            richTextBoxAzureDict.Size = new Size(568, 193);
             richTextBoxAzureDict.TabIndex = 63;
             richTextBoxAzureDict.Text = "";
             // 
@@ -6732,7 +6738,7 @@
             rjToggleButtonProfan.AutoSize = true;
             rjToggleButtonProfan.Checked = true;
             rjToggleButtonProfan.CheckState = CheckState.Checked;
-            rjToggleButtonProfan.Location = new Point(10, 325);
+            rjToggleButtonProfan.Location = new Point(10, 302);
             rjToggleButtonProfan.Margin = new Padding(3, 2, 3, 2);
             rjToggleButtonProfan.MinimumSize = new Size(39, 16);
             rjToggleButtonProfan.Name = "rjToggleButtonProfan";
@@ -6751,7 +6757,7 @@
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label20.ForeColor = Color.Snow;
-            label20.Location = new Point(58, 324);
+            label20.Location = new Point(58, 301);
             label20.Name = "label20";
             label20.Size = new Size(182, 15);
             label20.TabIndex = 48;
@@ -6761,7 +6767,7 @@
             // 
             rjToggleButton4.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             rjToggleButton4.AutoSize = true;
-            rjToggleButton4.Location = new Point(9, 540);
+            rjToggleButton4.Location = new Point(9, 527);
             rjToggleButton4.Margin = new Padding(3, 2, 3, 2);
             rjToggleButton4.MinimumSize = new Size(39, 16);
             rjToggleButton4.Name = "rjToggleButton4";
@@ -6780,7 +6786,7 @@
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label36.ForeColor = Color.Snow;
-            label36.Location = new Point(57, 540);
+            label36.Location = new Point(57, 527);
             label36.Name = "label36";
             label36.Size = new Size(177, 15);
             label36.TabIndex = 82;
@@ -8178,7 +8184,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(542, 9);
+            iconButton47.Location = new Point(525, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -11646,6 +11652,34 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
+            // rjToggleExplicitPunctuation
+            // 
+            rjToggleExplicitPunctuation.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleExplicitPunctuation.AutoSize = true;
+            rjToggleExplicitPunctuation.Location = new Point(10, 422);
+            rjToggleExplicitPunctuation.Margin = new Padding(3, 2, 3, 2);
+            rjToggleExplicitPunctuation.MinimumSize = new Size(39, 16);
+            rjToggleExplicitPunctuation.Name = "rjToggleExplicitPunctuation";
+            rjToggleExplicitPunctuation.OffBackColor = Color.Gray;
+            rjToggleExplicitPunctuation.OffToggleColor = Color.Gainsboro;
+            rjToggleExplicitPunctuation.OnBackColor = Color.MediumSlateBlue;
+            rjToggleExplicitPunctuation.OnToggleColor = Color.WhiteSmoke;
+            rjToggleExplicitPunctuation.Size = new Size(39, 16);
+            rjToggleExplicitPunctuation.TabIndex = 171;
+            rjToggleExplicitPunctuation.UseVisualStyleBackColor = true;
+            // 
+            // label236
+            // 
+            label236.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            label236.AutoSize = true;
+            label236.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label236.ForeColor = Color.Snow;
+            label236.Location = new Point(58, 423);
+            label236.Name = "label236";
+            label236.Size = new Size(172, 15);
+            label236.TabIndex = 170;
+            label236.Text = "Dictation / Explicit Punctuation";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -12581,6 +12615,8 @@
         private Button buttonCountersApplyChanges;
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleDisableAzureTranslation;
         private Label label235;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleExplicitPunctuation;
+        private Label label236;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }
