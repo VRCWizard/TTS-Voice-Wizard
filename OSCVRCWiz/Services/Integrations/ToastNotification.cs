@@ -159,8 +159,19 @@ namespace OSCVRCWiz.Services.Integrations
             }
             catch (Exception ex)
             {
-                OutputText.outputLog("[Discord Toast Error (Stopping): " + ex.Message + "]", Color.Red);
-                OutputText.outputLog("[Discord toast feature does not work on x86: " + ex.Message + "]", Color.Orange);
+
+                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
+
+                try
+                {
+                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
+
+                }
+                catch { }
+                OutputText.outputLog("Discord Toast Error (Stopping): " + errorMsg, Color.Red);
+                OutputText.outputLog("[Please note that the Discord toast feature does not work on x86 versions]", Color.Orange);
+
+
             }
 
         }

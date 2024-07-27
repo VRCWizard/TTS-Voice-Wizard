@@ -163,7 +163,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 //modified from https://github.com/connorbutler44/bingbot/blob/main/Service/ElevenLabsTextToSpeechService.cs
 
 
-                var url = $"https://api.elevenlabs.io/v1/voices";
+                var url = $"https://api.elevenlabs.io/v1/voices?show_legacy=true";
                 var apiKey = Settings1.Default.elevenLabsAPIKey;
 
 

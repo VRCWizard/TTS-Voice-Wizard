@@ -217,7 +217,7 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
             var message3 = new CoreOSC.OscMessage("/avatar/parameters/hundredsHR", hundreds);
             OSC.OSCSender.Send(message3);
 
-            float HRPercent = (float)currentHR / 256;
+            float HRPercent = (float)currentHR / 255;
             var message4 = new CoreOSC.OscMessage("/avatar/parameters/HRPercent", (float)HRPercent);
             OSC.OSCSender.Send(message4);
 
