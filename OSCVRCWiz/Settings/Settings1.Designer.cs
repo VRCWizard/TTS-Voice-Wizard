@@ -3034,5 +3034,17 @@ namespace OSCVRCWiz.Settings {
                 this["ExplicitPunctuation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool useWordBoundaries {
+            get {
+                return ((bool)(this["useWordBoundaries"]));
+            }
+            set {
+                this["useWordBoundaries"] = value;
+            }
+        }
     }
 }

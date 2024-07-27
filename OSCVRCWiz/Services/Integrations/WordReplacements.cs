@@ -28,6 +28,10 @@ namespace OSCVRCWiz.Services.Integrations
                         {
 
                             string pattern = Regex.Escape(kvp.Key.ToString());
+                            if (VoiceWizardWindow.MainFormGlobal.rjToggleUseWordBoundaries.Checked)
+                            {
+                                pattern = $@"\b{Regex.Escape(kvp.Key.ToString())}\b";
+                            }
                             text = Regex.Replace(text, pattern, kvp.Value.ToString(), RegexOptions.IgnoreCase);
                         }
 

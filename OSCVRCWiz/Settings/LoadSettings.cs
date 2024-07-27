@@ -468,6 +468,8 @@ namespace OSCVRCWiz
 
            VoiceWizardWindow.MainFormGlobal.rjToggleExplicitPunctuation.Checked = Settings1.Default.ExplicitPunctuation;
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleUseWordBoundaries.Checked = Settings1.Default.useWordBoundaries;
+
 
 
 
