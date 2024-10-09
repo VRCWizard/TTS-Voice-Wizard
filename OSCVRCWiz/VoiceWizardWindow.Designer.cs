@@ -494,6 +494,8 @@
             Replacements = new TabPage();
             iconButton45 = new FontAwesome.Sharp.IconButton();
             groupBox33 = new GroupBox();
+            label245 = new Label();
+            rjToggleUseWordBoundaries = new OSCVRCWiz.RJControls.RJToggleButton();
             label62 = new Label();
             rjToggleReplaceBeforeTTS = new OSCVRCWiz.RJControls.RJToggleButton();
             groupBox31 = new GroupBox();
@@ -790,8 +792,6 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            label245 = new Label();
-            rjToggleUseWordBoundaries = new OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -7744,6 +7744,36 @@
             groupBox33.TabStop = false;
             groupBox33.Text = "Word Replacement Settings";
             // 
+            // label245
+            // 
+            label245.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            label245.AutoSize = true;
+            label245.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label245.ForeColor = Color.Snow;
+            label245.Location = new Point(55, 50);
+            label245.Name = "label245";
+            label245.Size = new Size(120, 15);
+            label245.TabIndex = 164;
+            label245.Text = "Use Word Boundaries";
+            // 
+            // rjToggleUseWordBoundaries
+            // 
+            rjToggleUseWordBoundaries.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
+            rjToggleUseWordBoundaries.AutoSize = true;
+            rjToggleUseWordBoundaries.Checked = true;
+            rjToggleUseWordBoundaries.CheckState = CheckState.Checked;
+            rjToggleUseWordBoundaries.Location = new Point(7, 50);
+            rjToggleUseWordBoundaries.Margin = new Padding(3, 2, 3, 2);
+            rjToggleUseWordBoundaries.MinimumSize = new Size(39, 16);
+            rjToggleUseWordBoundaries.Name = "rjToggleUseWordBoundaries";
+            rjToggleUseWordBoundaries.OffBackColor = Color.Gray;
+            rjToggleUseWordBoundaries.OffToggleColor = Color.Gainsboro;
+            rjToggleUseWordBoundaries.OnBackColor = Color.MediumSlateBlue;
+            rjToggleUseWordBoundaries.OnToggleColor = Color.WhiteSmoke;
+            rjToggleUseWordBoundaries.Size = new Size(39, 16);
+            rjToggleUseWordBoundaries.TabIndex = 165;
+            rjToggleUseWordBoundaries.UseVisualStyleBackColor = true;
+            // 
             // label62
             // 
             label62.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
@@ -8216,7 +8246,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(508, 9);
+            iconButton47.Location = new Point(491, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9982,7 +10012,7 @@
             comboBoxLabsOptimize.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxLabsOptimize.FlatStyle = FlatStyle.Flat;
             comboBoxLabsOptimize.FormattingEnabled = true;
-            comboBoxLabsOptimize.Items.AddRange(new object[] { "0", "1", "2", "3", "4" });
+            comboBoxLabsOptimize.Items.AddRange(new object[] { "0", "1", "2", "3", "4", "5" });
             comboBoxLabsOptimize.Location = new Point(21, 109);
             comboBoxLabsOptimize.Margin = new Padding(3, 2, 3, 2);
             comboBoxLabsOptimize.Name = "comboBoxLabsOptimize";
@@ -10005,7 +10035,7 @@
             comboBoxLabsModelID.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxLabsModelID.FlatStyle = FlatStyle.Flat;
             comboBoxLabsModelID.FormattingEnabled = true;
-            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2" });
+            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2", "eleven_turbo_v2_5" });
             comboBoxLabsModelID.Location = new Point(21, 40);
             comboBoxLabsModelID.Margin = new Padding(3, 2, 3, 2);
             comboBoxLabsModelID.Name = "comboBoxLabsModelID";
@@ -11683,36 +11713,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label245
-            // 
-            label245.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
-            label245.AutoSize = true;
-            label245.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label245.ForeColor = Color.Snow;
-            label245.Location = new Point(55, 50);
-            label245.Name = "label245";
-            label245.Size = new Size(120, 15);
-            label245.TabIndex = 164;
-            label245.Text = "Use Word Boundaries";
-            // 
-            // rjToggleUseWordBoundaries
-            // 
-            rjToggleUseWordBoundaries.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
-            rjToggleUseWordBoundaries.AutoSize = true;
-            rjToggleUseWordBoundaries.Checked = true;
-            rjToggleUseWordBoundaries.CheckState = CheckState.Checked;
-            rjToggleUseWordBoundaries.Location = new Point(7, 50);
-            rjToggleUseWordBoundaries.Margin = new Padding(3, 2, 3, 2);
-            rjToggleUseWordBoundaries.MinimumSize = new Size(39, 16);
-            rjToggleUseWordBoundaries.Name = "rjToggleUseWordBoundaries";
-            rjToggleUseWordBoundaries.OffBackColor = Color.Gray;
-            rjToggleUseWordBoundaries.OffToggleColor = Color.Gainsboro;
-            rjToggleUseWordBoundaries.OnBackColor = Color.MediumSlateBlue;
-            rjToggleUseWordBoundaries.OnToggleColor = Color.WhiteSmoke;
-            rjToggleUseWordBoundaries.Size = new Size(39, 16);
-            rjToggleUseWordBoundaries.TabIndex = 165;
-            rjToggleUseWordBoundaries.UseVisualStyleBackColor = true;
             // 
             // VoiceWizardWindow
             // 
