@@ -222,6 +222,10 @@ namespace OSCVRCWiz.Services.Integrations.Heartrate
             OSC.OSCSender.Send(message4);
 
 
+            var message5 = new CoreOSC.OscMessage("/avatar/parameters/hr_percent", (float)HRPercent);//https://booth.pm/en/items/5942069
+            OSC.OSCSender.Send(message5);
+
+
 
             //  Debug.WriteLine(currentHR + "--" + HRPrevious);
 
