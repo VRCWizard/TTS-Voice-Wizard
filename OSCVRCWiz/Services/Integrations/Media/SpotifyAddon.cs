@@ -24,7 +24,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
         public static string title = "";
         public static string spotifyurllink = "https://open.spotify.com/";
         public static bool legacyState = false;
-        static string fullSongPauseCheck = "";
+        //static string fullSongPauseCheck = "";
 
         public static bool pauseSpotify = false;
         public static string spotifyInterval = "1500";
@@ -128,6 +128,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     TimeSpan progressT = TimeSpan.FromMinutes(0);
                     TimeSpan durationT = TimeSpan.FromMinutes(0);
 
+                    
+
                     //  var deviceType = "";
                     var deviceVolume = "";
                     if (m_currentlyPlaying != null)
@@ -190,7 +192,8 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         // lastSong = title;
                         var spotifyPausedIndicator = "▶️";
 
-                        if (fullSongPauseCheck != progress || playOnce)
+                       // if (fullSongPauseCheck != progress || playOnce)
+                       if(m_currentlyPlaying.IsPlaying || playOnce)
                         {
                             spotifyPausedIndicator = "▶️";
                         }
@@ -248,8 +251,9 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
 
 
-
-                        if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
+                        
+                       // if (fullSongPauseCheck != progress && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)//stop outputting periodically if song paused
+                       if (m_currentlyPlaying.IsPlaying && VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == true || VoiceWizardWindow.MainFormGlobal.rjToggleButtonPlayPaused.Checked == false)
                         {
                             var textTime = theString;
                             textTime = textTime.Replace("{time}", DateTime.Now.ToString("h:mm:ss tt"));
@@ -282,7 +286,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         // MainForm.justShowTheSong = false;
                         SpotifyAddon.lastSong = SpotifyAddon.title;
                         // WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
-                        fullSongPauseCheck = progress;
+                       // fullSongPauseCheck = progress;
 
 
                     }
