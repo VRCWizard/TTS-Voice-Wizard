@@ -54,31 +54,31 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
         {
             var audioInBase64 = "";
-            var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
+            // var url = "https://tiktok-tts.weilnet.workers.dev/api/generation"; //deprecated
+            var url = "https://tiktok-tts.weilbyte.dev/api/generate";
             var apiVoice = GetTikTokVoice(voice);
             var input = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
             var content = new StringContent(input, Encoding.UTF8, "application/json");
 
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (var streamWriter = new StreamWriter(ms))
+            
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            request.Content = content;
+            request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await client.SendAsync(request).ConfigureAwait(false);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    streamWriter.Write(input);
-                    streamWriter.Flush();
-                    ms.Seek(0, SeekOrigin.Begin);
-
-                    var request = new HttpRequestMessage(HttpMethod.Post, url);
-                    request.Content = new StreamContent(ms);
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-                    var response = await client.SendAsync(request).ConfigureAwait(false);
-
-                    string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    JObject responseObject = JObject.Parse(responseContent);
-                    audioInBase64 = responseObject["data"].ToString();
+                    var audioBytes = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                    return audioBytes;
                 }
-            }
-            return Convert.FromBase64String(audioInBase64);
+                else
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    OutputText.outputLog($"Error: {response.StatusCode.ToString()} {errorContent}", Color.Red);
+                    return null;
+                }
 
         }
     public static string GetTikTokVoice(string voice)
@@ -118,7 +118,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             string jsonData = "";
             try
             {
-                jsonData = File.ReadAllText(jsonFilePath);
+                jsonData = System.IO.File.ReadAllText(jsonFilePath);
             }
             catch (Exception ex)
             {

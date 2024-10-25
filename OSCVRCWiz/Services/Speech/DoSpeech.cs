@@ -220,7 +220,7 @@ namespace OSCVRCWiz.Services.Speech
                                 {
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                     {
-                                       // TTSMessageQueued.TTSMode = "No TTS";
+                                       TTSMessageQueued.TTSMode = "No TTS";
                                         voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
                                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
                                         {
@@ -241,6 +241,18 @@ namespace OSCVRCWiz.Services.Speech
                                     }
                                 }
                                 Task.Run(() => TikTokTTS.TikTokTextAsSpeech(TTSMessageQueued, speechCt.Token));
+                                break;
+
+                            case "TTSMonster":
+                                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
+                                {
+                                    voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
+                                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
+                                    {
+                                        TTSMessageQueued.text = voiceWizardAPITranslationString;
+                                    }
+                                }
+                                Task.Run(() => TTSMonsterTTS.TTSMonstertts(TTSMessageQueued, speechCt.Token));
                                 break;
 
                             case "NovelAI":
@@ -267,7 +279,7 @@ namespace OSCVRCWiz.Services.Speech
                                 {
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                     {
-                                        //TTSMessageQueued.TTSMode = "No TTS";
+                                        TTSMessageQueued.TTSMode = "No TTS";
                                         voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
                                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
                                         {
@@ -311,7 +323,7 @@ namespace OSCVRCWiz.Services.Speech
                                 {
                                     if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonUsePro.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonProTranslation.Checked == true && language != "No Translation (Default)")
                                     {
-                                        //TTSMessageQueued.TTSMode = "No TTS";
+                                        TTSMessageQueued.TTSMode = "No TTS";
                                         voiceWizardAPITranslationString = await Task.Run(() => VoiceWizardProTTS.VoiceWizardProTextAsSpeech(VoiceWizardWindow.MainFormGlobal.textBoxWizardProKey.Text.ToString(), TTSMessageQueued, speechCt.Token));
                                         if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonVoiceWhatLang.Checked)
                                         {
