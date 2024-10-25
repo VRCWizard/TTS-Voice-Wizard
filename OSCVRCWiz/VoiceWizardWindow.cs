@@ -808,6 +808,17 @@ namespace OSCVRCWiz
                     trackBarSpeed.Enabled = true;
 
 
+                    break;
+                case "TTSMonster":
+                    DoSpeech.TTSModeSaved = "TTSMonster";
+                    TTSMonsterTTS.SetVoices(comboBoxVoiceSelect, comboBoxStyleSelect, comboBoxAccentSelect);
+                    comboBoxTranslationLanguage.Enabled = true;
+                    comboBoxAccentSelect.Enabled = false;
+                    trackBarPitch.Enabled = true;
+                    trackBarVolume.Enabled = true;
+                    trackBarSpeed.Enabled = true;
+
+
 
                     break;
                 case "System Speech":
@@ -1114,6 +1125,8 @@ namespace OSCVRCWiz
                 case "ElevenLabs": break;
 
                 case "TikTok": break;
+
+                case "TTSMonster": break;
 
                 case "NovelAI": break;
 

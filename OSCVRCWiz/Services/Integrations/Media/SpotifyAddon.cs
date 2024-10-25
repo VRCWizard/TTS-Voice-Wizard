@@ -152,6 +152,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             }
 
                             artist = m_currentTrack.Artists[0].Name.ToString();
+
+                            if(title == "Advertisement" && artist =="")
+                            {
+                                title = "";
+                            }
+
+
                             allArtists = string.Join(", ", m_currentTrack.Artists.Select(artist => artist.Name.ToString()));
 
                             progressT = new TimeSpan(0, 0, 0, 0, (int)m_currentlyPlaying.ProgressMs);
