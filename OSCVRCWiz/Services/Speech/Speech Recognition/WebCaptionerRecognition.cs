@@ -12,7 +12,8 @@ namespace OSCVRCWiz
 
     public class WebCaptionerRecognition
     {
-        public static int Port = 54026;
+        private static int Port = 54026;
+        private static string Address = "127.0.0.1";
         public static string recievedString = "";
         private static HttpListener _listener;
         static bool webCapEnabled = false;
@@ -50,10 +51,12 @@ namespace OSCVRCWiz
         private static void webCapOn()
         {
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener...");
+            Port = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxWebCaptionerPort.Text.ToString());
+            Address = VoiceWizardWindow.MainFormGlobal.textBoxWebCaptionerAddress.Text.ToString();
             // var httpServer = new HttpServer();
             Task.Run(() => Start());
             System.Diagnostics.Debug.WriteLine("Starting HTTP listener Started");
-            OutputText.outputLog("[Starting HTTP listener for Web Captioner Started. Webhook URL: http://localhost:54026/ ]");
+            OutputText.outputLog($"[Starting HTTP listener for Web Captioner Started. Webhook URL: http://{Address}:{Port}/ ]");
             //button11.Enabled = false;
         }
         private static void webCapOff()
@@ -72,9 +75,11 @@ namespace OSCVRCWiz
         {
             try
             {
+                //Port = Int32.Parse(VoiceWizardWindow.MainFormGlobal.textBoxWebCaptionerPort.Text.ToString());
+                OutputText.outputLog("Webport: " + Port);
                 _listener = new HttpListener();
                 // _listener.Prefixes.Add("http://*:" + Port.ToString() + "/");//MUST RUN AS ADMIN //http://127.0.0.1:8080/
-                _listener.Prefixes.Add("http://localhost:" + Port.ToString() + "/"); //THIS IS THE EASIEST WAY TO MAKE USERS NOT HAVE TO RUN PROGRAM AS ADMINISTRATOR EVREY TIME!!! //http://localhost:8080/
+                _listener.Prefixes.Add($"http://{Address}:{Port}/"); //THIS IS THE EASIEST WAY TO MAKE USERS NOT HAVE TO RUN PROGRAM AS ADMINISTRATOR EVREY TIME!!! //http://localhost:8080/
                 _listener.Start();
 
                 Task.Run(() => Receive());

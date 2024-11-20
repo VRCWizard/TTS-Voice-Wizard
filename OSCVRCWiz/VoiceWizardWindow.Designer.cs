@@ -608,6 +608,14 @@
             label93 = new Label();
             label94 = new Label();
             LocalSpeech = new TabPage();
+            groupBox47 = new GroupBox();
+            label248 = new Label();
+            textBoxLocalHostAddress = new TextBox();
+            label247 = new Label();
+            textBoxLocalHostPort = new TextBox();
+            groupBox46 = new GroupBox();
+            label246 = new Label();
+            textBoxWebCaptionerPort = new TextBox();
             groupBox6 = new GroupBox();
             button49 = new Button();
             label153 = new Label();
@@ -792,6 +800,8 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
+            label249 = new Label();
+            textBoxWebCaptionerAddress = new TextBox();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -862,6 +872,8 @@
             groupBox36.SuspendLayout();
             groupBox25.SuspendLayout();
             LocalSpeech.SuspendLayout();
+            groupBox47.SuspendLayout();
+            groupBox46.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox38.SuspendLayout();
             groupBox24.SuspendLayout();
@@ -8246,7 +8258,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(457, 9);
+            iconButton47.Location = new Point(372, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9234,6 +9246,8 @@
             // 
             LocalSpeech.AutoScroll = true;
             LocalSpeech.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            LocalSpeech.Controls.Add(groupBox47);
+            LocalSpeech.Controls.Add(groupBox46);
             LocalSpeech.Controls.Add(groupBox6);
             LocalSpeech.Controls.Add(groupBox38);
             LocalSpeech.Controls.Add(label100);
@@ -9248,6 +9262,101 @@
             LocalSpeech.TabIndex = 19;
             LocalSpeech.Text = "LocalSpeech";
             // 
+            // groupBox47
+            // 
+            groupBox47.Controls.Add(label248);
+            groupBox47.Controls.Add(textBoxLocalHostAddress);
+            groupBox47.Controls.Add(label247);
+            groupBox47.Controls.Add(textBoxLocalHostPort);
+            groupBox47.ForeColor = Color.White;
+            groupBox47.Location = new Point(6, 628);
+            groupBox47.Margin = new Padding(3, 2, 3, 2);
+            groupBox47.Name = "groupBox47";
+            groupBox47.Padding = new Padding(3, 2, 3, 2);
+            groupBox47.Size = new Size(723, 122);
+            groupBox47.TabIndex = 192;
+            groupBox47.TabStop = false;
+            groupBox47.Text = "Locally Hosted TTS";
+            // 
+            // label248
+            // 
+            label248.AutoSize = true;
+            label248.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label248.ForeColor = Color.Snow;
+            label248.Location = new Point(8, 17);
+            label248.Name = "label248";
+            label248.Size = new Size(151, 15);
+            label248.TabIndex = 184;
+            label248.Text = "Locally Hosted TTS Address";
+            // 
+            // textBoxLocalHostAddress
+            // 
+            textBoxLocalHostAddress.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxLocalHostAddress.Location = new Point(7, 37);
+            textBoxLocalHostAddress.Margin = new Padding(3, 2, 3, 2);
+            textBoxLocalHostAddress.Name = "textBoxLocalHostAddress";
+            textBoxLocalHostAddress.Size = new Size(112, 23);
+            textBoxLocalHostAddress.TabIndex = 183;
+            textBoxLocalHostAddress.Text = "127.0.0.1";
+            // 
+            // label247
+            // 
+            label247.AutoSize = true;
+            label247.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label247.ForeColor = Color.Snow;
+            label247.Location = new Point(8, 73);
+            label247.Name = "label247";
+            label247.Size = new Size(131, 15);
+            label247.TabIndex = 182;
+            label247.Text = "Locally Hosted TTS Port";
+            // 
+            // textBoxLocalHostPort
+            // 
+            textBoxLocalHostPort.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxLocalHostPort.Location = new Point(7, 93);
+            textBoxLocalHostPort.Margin = new Padding(3, 2, 3, 2);
+            textBoxLocalHostPort.Name = "textBoxLocalHostPort";
+            textBoxLocalHostPort.Size = new Size(112, 23);
+            textBoxLocalHostPort.TabIndex = 181;
+            textBoxLocalHostPort.Text = "8124";
+            // 
+            // groupBox46
+            // 
+            groupBox46.Controls.Add(label249);
+            groupBox46.Controls.Add(textBoxWebCaptionerAddress);
+            groupBox46.Controls.Add(label246);
+            groupBox46.Controls.Add(textBoxWebCaptionerPort);
+            groupBox46.ForeColor = Color.White;
+            groupBox46.Location = new Point(6, 495);
+            groupBox46.Margin = new Padding(3, 2, 3, 2);
+            groupBox46.Name = "groupBox46";
+            groupBox46.Padding = new Padding(3, 2, 3, 2);
+            groupBox46.Size = new Size(723, 129);
+            groupBox46.TabIndex = 191;
+            groupBox46.TabStop = false;
+            groupBox46.Text = "Web Captioner";
+            // 
+            // label246
+            // 
+            label246.AutoSize = true;
+            label246.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label246.ForeColor = Color.Snow;
+            label246.Location = new Point(8, 75);
+            label246.Name = "label246";
+            label246.Size = new Size(111, 15);
+            label246.TabIndex = 182;
+            label246.Text = "Web Captioner Port";
+            // 
+            // textBoxWebCaptionerPort
+            // 
+            textBoxWebCaptionerPort.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxWebCaptionerPort.Location = new Point(7, 95);
+            textBoxWebCaptionerPort.Margin = new Padding(3, 2, 3, 2);
+            textBoxWebCaptionerPort.Name = "textBoxWebCaptionerPort";
+            textBoxWebCaptionerPort.Size = new Size(112, 23);
+            textBoxWebCaptionerPort.TabIndex = 181;
+            textBoxWebCaptionerPort.Text = "54026";
+            // 
             // groupBox6
             // 
             groupBox6.Controls.Add(button49);
@@ -9257,7 +9366,7 @@
             groupBox6.Controls.Add(button48);
             groupBox6.Controls.Add(textBoxReadFromTXTFile);
             groupBox6.ForeColor = Color.White;
-            groupBox6.Location = new Point(6, 568);
+            groupBox6.Location = new Point(6, 382);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);
@@ -9374,7 +9483,7 @@
             groupBox38.Controls.Add(button34);
             groupBox38.Controls.Add(whisperModelTextBox);
             groupBox38.ForeColor = Color.White;
-            groupBox38.Location = new Point(6, 236);
+            groupBox38.Location = new Point(6, 50);
             groupBox38.Margin = new Padding(3, 2, 3, 2);
             groupBox38.Name = "groupBox38";
             groupBox38.Padding = new Padding(3, 2, 3, 2);
@@ -9434,9 +9543,9 @@
             label205.ForeColor = Color.Snow;
             label205.Location = new Point(53, 162);
             label205.Name = "label205";
-            label205.Size = new Size(330, 15);
+            label205.Size = new Size(325, 15);
             label205.TabIndex = 184;
-            label205.Text = "Voice Activation Detection (select mode in Settings > Audios)";
+            label205.Text = "Voice Activation Detection (select mode in Settings > Audio)";
             // 
             // rjToggleVAD
             // 
@@ -9713,7 +9822,7 @@
             label100.AutoSize = true;
             label100.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point);
             label100.ForeColor = Color.Snow;
-            label100.Location = new Point(6, 27);
+            label100.Location = new Point(6, -159);
             label100.Name = "label100";
             label100.Size = new Size(153, 20);
             label100.TabIndex = 157;
@@ -9723,7 +9832,7 @@
             // 
             label101.AutoSize = true;
             label101.ForeColor = Color.Snow;
-            label101.Location = new Point(165, 32);
+            label101.Location = new Point(165, -154);
             label101.Name = "label101";
             label101.Size = new Size(239, 15);
             label101.TabIndex = 158;
@@ -9735,7 +9844,7 @@
             groupBox24.Controls.Add(button11);
             groupBox24.Controls.Add(modelTextBox);
             groupBox24.ForeColor = Color.White;
-            groupBox24.Location = new Point(6, 145);
+            groupBox24.Location = new Point(6, -25);
             groupBox24.Margin = new Padding(3, 2, 3, 2);
             groupBox24.Name = "groupBox24";
             groupBox24.Padding = new Padding(3, 2, 3, 2);
@@ -9795,7 +9904,7 @@
             // 
             groupBox28.Controls.Add(comboBoxSysSpeechRecog);
             groupBox28.ForeColor = Color.White;
-            groupBox28.Location = new Point(6, 74);
+            groupBox28.Location = new Point(6, -92);
             groupBox28.Margin = new Padding(3, 2, 3, 2);
             groupBox28.Name = "groupBox28";
             groupBox28.Padding = new Padding(3, 2, 3, 2);
@@ -11714,6 +11823,27 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
+            // label249
+            // 
+            label249.AutoSize = true;
+            label249.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label249.ForeColor = Color.Snow;
+            label249.Location = new Point(7, 18);
+            label249.Name = "label249";
+            label249.Size = new Size(131, 15);
+            label249.TabIndex = 184;
+            label249.Text = "Web Captioner Address";
+            // 
+            // textBoxWebCaptionerAddress
+            // 
+            textBoxWebCaptionerAddress.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxWebCaptionerAddress.Location = new Point(6, 38);
+            textBoxWebCaptionerAddress.Margin = new Padding(3, 2, 3, 2);
+            textBoxWebCaptionerAddress.Name = "textBoxWebCaptionerAddress";
+            textBoxWebCaptionerAddress.Size = new Size(112, 23);
+            textBoxWebCaptionerAddress.TabIndex = 183;
+            textBoxWebCaptionerAddress.Text = "127.0.0.1";
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -11846,6 +11976,10 @@
             groupBox25.PerformLayout();
             LocalSpeech.ResumeLayout(false);
             LocalSpeech.PerformLayout();
+            groupBox47.ResumeLayout(false);
+            groupBox47.PerformLayout();
+            groupBox46.ResumeLayout(false);
+            groupBox46.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             groupBox38.ResumeLayout(false);
@@ -12653,6 +12787,16 @@
         private Label label236;
         private Label label245;
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleUseWordBoundaries;
+        private GroupBox groupBox46;
+        private Label label246;
+        public TextBox textBoxWebCaptionerPort;
+        private GroupBox groupBox47;
+        private Label label248;
+        public TextBox textBoxLocalHostAddress;
+        private Label label247;
+        public TextBox textBoxLocalHostPort;
+        private Label label249;
+        public TextBox textBoxWebCaptionerAddress;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

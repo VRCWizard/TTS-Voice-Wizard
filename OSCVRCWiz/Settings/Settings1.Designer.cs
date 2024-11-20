@@ -3046,5 +3046,53 @@ namespace OSCVRCWiz.Settings {
                 this["useWordBoundaries"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("54026")]
+        public string WebCaptionerPort {
+            get {
+                return ((string)(this["WebCaptionerPort"]));
+            }
+            set {
+                this["WebCaptionerPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8124")]
+        public string LocalHostedTTSPort {
+            get {
+                return ((string)(this["LocalHostedTTSPort"]));
+            }
+            set {
+                this["LocalHostedTTSPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string LocalHostedTTSAddress {
+            get {
+                return ((string)(this["LocalHostedTTSAddress"]));
+            }
+            set {
+                this["LocalHostedTTSAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string WebCaptionerAddress {
+            get {
+                return ((string)(this["WebCaptionerAddress"]));
+            }
+            set {
+                this["WebCaptionerAddress"] = value;
+            }
+        }
     }
 }
