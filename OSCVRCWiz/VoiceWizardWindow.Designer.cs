@@ -614,6 +614,8 @@
             label247 = new Label();
             textBoxLocalHostPort = new TextBox();
             groupBox46 = new GroupBox();
+            label249 = new Label();
+            textBoxWebCaptionerAddress = new TextBox();
             label246 = new Label();
             textBoxWebCaptionerPort = new TextBox();
             groupBox6 = new GroupBox();
@@ -800,8 +802,6 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            label249 = new Label();
-            textBoxWebCaptionerAddress = new TextBox();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -8258,7 +8258,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(372, 9);
+            iconButton47.Location = new Point(355, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9269,7 +9269,7 @@
             groupBox47.Controls.Add(label247);
             groupBox47.Controls.Add(textBoxLocalHostPort);
             groupBox47.ForeColor = Color.White;
-            groupBox47.Location = new Point(6, 628);
+            groupBox47.Location = new Point(6, 773);
             groupBox47.Margin = new Padding(3, 2, 3, 2);
             groupBox47.Name = "groupBox47";
             groupBox47.Padding = new Padding(3, 2, 3, 2);
@@ -9327,7 +9327,7 @@
             groupBox46.Controls.Add(label246);
             groupBox46.Controls.Add(textBoxWebCaptionerPort);
             groupBox46.ForeColor = Color.White;
-            groupBox46.Location = new Point(6, 495);
+            groupBox46.Location = new Point(6, 640);
             groupBox46.Margin = new Padding(3, 2, 3, 2);
             groupBox46.Name = "groupBox46";
             groupBox46.Padding = new Padding(3, 2, 3, 2);
@@ -9335,6 +9335,27 @@
             groupBox46.TabIndex = 191;
             groupBox46.TabStop = false;
             groupBox46.Text = "Web Captioner";
+            // 
+            // label249
+            // 
+            label249.AutoSize = true;
+            label249.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label249.ForeColor = Color.Snow;
+            label249.Location = new Point(7, 18);
+            label249.Name = "label249";
+            label249.Size = new Size(131, 15);
+            label249.TabIndex = 184;
+            label249.Text = "Web Captioner Address";
+            // 
+            // textBoxWebCaptionerAddress
+            // 
+            textBoxWebCaptionerAddress.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxWebCaptionerAddress.Location = new Point(6, 38);
+            textBoxWebCaptionerAddress.Margin = new Padding(3, 2, 3, 2);
+            textBoxWebCaptionerAddress.Name = "textBoxWebCaptionerAddress";
+            textBoxWebCaptionerAddress.Size = new Size(112, 23);
+            textBoxWebCaptionerAddress.TabIndex = 183;
+            textBoxWebCaptionerAddress.Text = "127.0.0.1";
             // 
             // label246
             // 
@@ -9366,7 +9387,7 @@
             groupBox6.Controls.Add(button48);
             groupBox6.Controls.Add(textBoxReadFromTXTFile);
             groupBox6.ForeColor = Color.White;
-            groupBox6.Location = new Point(6, 382);
+            groupBox6.Location = new Point(6, 528);
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);
@@ -9483,7 +9504,7 @@
             groupBox38.Controls.Add(button34);
             groupBox38.Controls.Add(whisperModelTextBox);
             groupBox38.ForeColor = Color.White;
-            groupBox38.Location = new Point(6, 50);
+            groupBox38.Location = new Point(6, 196);
             groupBox38.Margin = new Padding(3, 2, 3, 2);
             groupBox38.Name = "groupBox38";
             groupBox38.Padding = new Padding(3, 2, 3, 2);
@@ -9822,7 +9843,7 @@
             label100.AutoSize = true;
             label100.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point);
             label100.ForeColor = Color.Snow;
-            label100.Location = new Point(6, -159);
+            label100.Location = new Point(14, 23);
             label100.Name = "label100";
             label100.Size = new Size(153, 20);
             label100.TabIndex = 157;
@@ -9832,7 +9853,7 @@
             // 
             label101.AutoSize = true;
             label101.ForeColor = Color.Snow;
-            label101.Location = new Point(165, -154);
+            label101.Location = new Point(173, 28);
             label101.Name = "label101";
             label101.Size = new Size(239, 15);
             label101.TabIndex = 158;
@@ -9844,7 +9865,7 @@
             groupBox24.Controls.Add(button11);
             groupBox24.Controls.Add(modelTextBox);
             groupBox24.ForeColor = Color.White;
-            groupBox24.Location = new Point(6, -25);
+            groupBox24.Location = new Point(6, 121);
             groupBox24.Margin = new Padding(3, 2, 3, 2);
             groupBox24.Name = "groupBox24";
             groupBox24.Padding = new Padding(3, 2, 3, 2);
@@ -9904,7 +9925,7 @@
             // 
             groupBox28.Controls.Add(comboBoxSysSpeechRecog);
             groupBox28.ForeColor = Color.White;
-            groupBox28.Location = new Point(6, -92);
+            groupBox28.Location = new Point(6, 65);
             groupBox28.Margin = new Padding(3, 2, 3, 2);
             groupBox28.Name = "groupBox28";
             groupBox28.Padding = new Padding(3, 2, 3, 2);
@@ -11822,27 +11843,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label249
-            // 
-            label249.AutoSize = true;
-            label249.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label249.ForeColor = Color.Snow;
-            label249.Location = new Point(7, 18);
-            label249.Name = "label249";
-            label249.Size = new Size(131, 15);
-            label249.TabIndex = 184;
-            label249.Text = "Web Captioner Address";
-            // 
-            // textBoxWebCaptionerAddress
-            // 
-            textBoxWebCaptionerAddress.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            textBoxWebCaptionerAddress.Location = new Point(6, 38);
-            textBoxWebCaptionerAddress.Margin = new Padding(3, 2, 3, 2);
-            textBoxWebCaptionerAddress.Name = "textBoxWebCaptionerAddress";
-            textBoxWebCaptionerAddress.Size = new Size(112, 23);
-            textBoxWebCaptionerAddress.TabIndex = 183;
-            textBoxWebCaptionerAddress.Text = "127.0.0.1";
             // 
             // VoiceWizardWindow
             // 
