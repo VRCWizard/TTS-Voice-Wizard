@@ -79,26 +79,26 @@ Thanks to [babo4d](https://github.com/babo4d) TTS Voice Wizard also can be insta
 
 ## GitHub Wiki Table of Contents
 ### Quick Start Guide
-- [Tutorial Video](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#getting-started-video)
-- [Installation](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#installation)
-- [Speech-to-Text and Text-to-Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#speech-to-text-and-text-to-speech)
-   - [🔌 Playing Audio Through Your Microphone](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#-playing-audio-through-your-microphone)
-   - [🎙️ Speech-to-Text](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#%EF%B8%8F-speech-to-text)
-   - [🔊 Text-to-Speech](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#-text-to-speech)
-   - [🔑 VoiceWizardPro](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#-voicewizardpro)
-- [🗨️ How to get Text in VRChat](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#how-to-get-text-in-vrchat)
-- [🖱️ Can I set hotkey on my VR controllers or mouse for Speech to Text?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#can-i-set-hotkey-on-my-vr-controllers-or-mouse-for-speech-to-text)
-- [🎵 Spotify / Windows Media Integration for VRChat](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#spotify--windows-media-integration-for-vrchat)
-- [📹 OBS Text for Streaming and Recording Videos](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Quickstart-Guide#obs-text-for-streaming-and-recording-videos)
+- [Tutorial Video](https://ttsvoicewizard.com/docs/getting-started/gettingStarted#tutorial-video)
+- [Installation](https://ttsvoicewizard.com/docs/getting-started/gettingStarted#download-and-install)
+- [Speech-to-Text and Text-to-Speech](https://ttsvoicewizard.com/docs/category/quickstart-guide)
+   - [🔌 Playing Audio Through Your Microphone](https://ttsvoicewizard.com/docs/getting-started/VirtualCable)
+   - [🎙️ Speech-to-Text](https://ttsvoicewizard.com/docs/getting-started/speechToText)
+   - [🔊 Text-to-Speech](https://ttsvoicewizard.com/docs/getting-started/textToSpeech)
+   - [🔑 VoiceWizardPro](https://ttsvoicewizard.com/docs/VoiceWizardPro/GetVoiceWizardPro)
+- [🗨️ How to get Text in VRChat](https://ttsvoicewizard.com/docs/getting-started/TextInVRChat)
+- [🖱️ Can I set hotkey on my VR controllers or mouse for Speech to Text?](https://ttsvoicewizard.com/docs/getting-started/AddingHotkeys)
+- [🎵 Spotify / Windows Media Integration for VRChat](https://ttsvoicewizard.com/docs/MediaIntegration/spotifyAPIMode)
+- [📹 OBS Text for Streaming and Recording Videos](https://ttsvoicewizard.com/docs/getting-started/Text4Streaming)
 
 ### Additional Guides
-- [🌐 How to Translate my Words?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/DeepL-Translation-API)
-- [🔑 How to get a VoiceWizardPro Key?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VoiceWizardPro#how-to-get-api-key)
-- [🗣️ How to do Voice Commands?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Voice-Commands)
-- [🫵 How to setup VRChat Counters?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/VRChat-Listener)
-- [🔀 How to do Word Replacements](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Word-Replacements)
-- [💓 How to set up Heartrate for VRChat Chatbox?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/Heartrate-Integration)
-- [🔋 How to set up Tracker/Controller Battery Life for VRChat Chatbox?](https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/OSC-Listener#how-to-connect-xsoverlay-battery-life-osc-data-does-not-support-quest-battery-life)
+- [🌐 How to Translate my Words?](https://ttsvoicewizard.com/docs/Translation/HowToTranslate)
+- [🔑 How to get a VoiceWizardPro Key?](https://ttsvoicewizard.com/docs/VoiceWizardPro/HowToGetKey)
+- [🗣️ How to do Voice Commands?](https://ttsvoicewizard.com/docs/VoiceCommands)
+- [🫵 How to setup VRChat Counters?](https://ttsvoicewizard.com/docs/ReceivingData/VRChatListener/Counters)
+- [🔀 How to do Word Replacements](https://ttsvoicewizard.com/docs/Word%20Replacements)
+- [💓 How to set up Heartrate for VRChat Chatbox?](https://ttsvoicewizard.com/docs/HeartRate/HeartrateWithPulsoid)
+- [🔋 How to set up Tracker/Controller Battery Life for VRChat Chatbox?](https://ttsvoicewizard.com/docs/ReceivingData/OSCListener/BatteryLife)
 
 
 
