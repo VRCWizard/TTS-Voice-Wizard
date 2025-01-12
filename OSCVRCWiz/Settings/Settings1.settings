@@ -758,5 +758,17 @@
     <Setting Name="useWordBoundaries" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="WebCaptionerPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">54026</Value>
+    </Setting>
+    <Setting Name="LocalHostedTTSPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8124</Value>
+    </Setting>
+    <Setting Name="LocalHostedTTSAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="WebCaptionerAddress" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

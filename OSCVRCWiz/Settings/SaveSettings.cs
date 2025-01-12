@@ -369,6 +369,15 @@ namespace OSCVRCWiz
 
             Settings1.Default.useWordBoundaries = VoiceWizardWindow.MainFormGlobal.rjToggleUseWordBoundaries.Checked;
 
+            Settings1.Default.WebCaptionerPort = VoiceWizardWindow.MainFormGlobal.textBoxWebCaptionerPort.Text;
+
+            Settings1.Default.WebCaptionerAddress = VoiceWizardWindow.MainFormGlobal.textBoxWebCaptionerAddress.Text;
+
+            Settings1.Default.LocalHostedTTSAddress = VoiceWizardWindow.MainFormGlobal.textBoxLocalHostAddress.Text;
+
+            Settings1.Default.LocalHostedTTSPort = VoiceWizardWindow.MainFormGlobal.textBoxLocalHostPort.Text;
+
+
 
             Settings1.Default.Save();
             //emojiSettings.Default.Save();

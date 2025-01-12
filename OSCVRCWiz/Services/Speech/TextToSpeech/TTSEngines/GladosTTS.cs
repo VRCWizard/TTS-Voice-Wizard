@@ -65,8 +65,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
               }
               return Convert.FromBase64String(audioInBase64);*/
 
-            string url = "http://127.0.0.1:8124/synthesize/";
-           // string textParam = HttpUtility.UrlEncode(text);
+          //  string url = "http://127.0.0.1:8124/synthesize/";
+          var port = VoiceWizardWindow.MainFormGlobal.textBoxLocalHostPort.Text.ToString();
+          var address = VoiceWizardWindow.MainFormGlobal.textBoxLocalHostAddress.Text.ToString();
+            string url = $"http://{address}:{port}/synthesize/";
+
+            // string textParam = HttpUtility.UrlEncode(text);
             string requestUrl = $"{url}?{text}";
 
             var response = await client.GetAsync(requestUrl).ConfigureAwait(false);
