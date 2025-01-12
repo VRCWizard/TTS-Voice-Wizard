@@ -1,6 +1,7 @@
 ﻿using static OSCVRCWiz.VoiceWizardWindow;
 using System.Text.RegularExpressions;
 using OSCVRCWiz.Services.Text;
+using System.Windows.Input;
 
 namespace OSCVRCWiz.Services.Integrations
 {
@@ -28,9 +29,23 @@ namespace OSCVRCWiz.Services.Integrations
                         {
 
                             string pattern = Regex.Escape(kvp.Key.ToString());
+                            string key = kvp.Key.ToString();
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleUseWordBoundaries.Checked)
                             {
-                                pattern = $@"\b{Regex.Escape(kvp.Key.ToString())}\b";
+                                // pattern = $@"\b{Regex.Escape(kvp.Key.ToString())}\b"; //does not work if the word starts with a special character like $
+                                // pattern = $@"(?<!\S){Regex.Escape(kvp.Key.ToString())}(?!\S)"; //no longer works if punctuation is touching the word...
+                                // pattern = $@"(?<![\w]){Regex.Escape(kvp.Key.ToString())}(?![\w])";
+
+                                if (char.IsLetterOrDigit(key[0]) || key[0] == '_') // Word characters: [a-zA-Z0-9_]
+                                {
+                                    // Use standard word boundary pattern
+                                    pattern = $@"\b{Regex.Escape(key)}\b";
+                                }
+                                else
+                                {
+                                    // Use custom pattern for special characters
+                                    pattern = $@"(?<![\w]){Regex.Escape(key)}(?![\w])";
+                                }
                             }
                             text = Regex.Replace(text, pattern, kvp.Value.ToString(), RegexOptions.IgnoreCase);
                         }

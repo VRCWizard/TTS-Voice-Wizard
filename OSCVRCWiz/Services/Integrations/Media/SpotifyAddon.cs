@@ -155,9 +155,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
                             artist = m_currentTrack.Artists[0].Name.ToString();
 
-                            if(title == "Advertisement" && artist =="")
+                            if(title == "Advertisement")
                             {
                                 title = "";
+                                artist = "";
                             }
 
 

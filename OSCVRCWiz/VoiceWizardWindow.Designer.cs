@@ -8258,7 +8258,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(355, 9);
+            iconButton47.Location = new Point(338, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -10165,7 +10165,7 @@
             comboBoxLabsModelID.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxLabsModelID.FlatStyle = FlatStyle.Flat;
             comboBoxLabsModelID.FormattingEnabled = true;
-            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2", "eleven_turbo_v2_5" });
+            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_flash_v2", "eleven_flash_v2_5" });
             comboBoxLabsModelID.Location = new Point(21, 40);
             comboBoxLabsModelID.Margin = new Padding(3, 2, 3, 2);
             comboBoxLabsModelID.Name = "comboBoxLabsModelID";
