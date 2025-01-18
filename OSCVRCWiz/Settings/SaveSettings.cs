@@ -377,6 +377,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.LocalHostedTTSPort = VoiceWizardWindow.MainFormGlobal.textBoxLocalHostPort.Text;
 
+            Settings1.Default.TikTokSessionID = VoiceWizardWindow.MainFormGlobal.textBoxTikTokSessionID.Text;
+
 
 
             Settings1.Default.Save();

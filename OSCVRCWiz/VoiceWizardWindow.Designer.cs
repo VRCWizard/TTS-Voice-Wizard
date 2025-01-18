@@ -608,11 +608,15 @@
             label93 = new Label();
             label94 = new Label();
             LocalSpeech = new TabPage();
-            groupBox47 = new GroupBox();
+            groupBox48 = new GroupBox();
             label248 = new Label();
             textBoxLocalHostAddress = new TextBox();
-            label247 = new Label();
             textBoxLocalHostPort = new TextBox();
+            label247 = new Label();
+            groupBox47 = new GroupBox();
+            label251 = new Label();
+            textBoxTikTokSessionID = new TextBox();
+            label250 = new Label();
             groupBox46 = new GroupBox();
             label249 = new Label();
             textBoxWebCaptionerAddress = new TextBox();
@@ -872,6 +876,7 @@
             groupBox36.SuspendLayout();
             groupBox25.SuspendLayout();
             LocalSpeech.SuspendLayout();
+            groupBox48.SuspendLayout();
             groupBox47.SuspendLayout();
             groupBox46.SuspendLayout();
             groupBox6.SuspendLayout();
@@ -8258,7 +8263,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(338, 9);
+            iconButton47.Location = new Point(287, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9246,6 +9251,7 @@
             // 
             LocalSpeech.AutoScroll = true;
             LocalSpeech.BackColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            LocalSpeech.Controls.Add(groupBox48);
             LocalSpeech.Controls.Add(groupBox47);
             LocalSpeech.Controls.Add(groupBox46);
             LocalSpeech.Controls.Add(groupBox6);
@@ -9262,28 +9268,28 @@
             LocalSpeech.TabIndex = 19;
             LocalSpeech.Text = "LocalSpeech";
             // 
-            // groupBox47
+            // groupBox48
             // 
-            groupBox47.Controls.Add(label248);
-            groupBox47.Controls.Add(textBoxLocalHostAddress);
-            groupBox47.Controls.Add(label247);
-            groupBox47.Controls.Add(textBoxLocalHostPort);
-            groupBox47.ForeColor = Color.White;
-            groupBox47.Location = new Point(6, 773);
-            groupBox47.Margin = new Padding(3, 2, 3, 2);
-            groupBox47.Name = "groupBox47";
-            groupBox47.Padding = new Padding(3, 2, 3, 2);
-            groupBox47.Size = new Size(723, 122);
-            groupBox47.TabIndex = 192;
-            groupBox47.TabStop = false;
-            groupBox47.Text = "Locally Hosted TTS";
+            groupBox48.Controls.Add(label248);
+            groupBox48.Controls.Add(textBoxLocalHostAddress);
+            groupBox48.Controls.Add(textBoxLocalHostPort);
+            groupBox48.Controls.Add(label247);
+            groupBox48.ForeColor = Color.White;
+            groupBox48.Location = new Point(6, 773);
+            groupBox48.Margin = new Padding(3, 2, 3, 2);
+            groupBox48.Name = "groupBox48";
+            groupBox48.Padding = new Padding(3, 2, 3, 2);
+            groupBox48.Size = new Size(723, 146);
+            groupBox48.TabIndex = 193;
+            groupBox48.TabStop = false;
+            groupBox48.Text = "Locally Hosted TTS";
             // 
             // label248
             // 
             label248.AutoSize = true;
             label248.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label248.ForeColor = Color.Snow;
-            label248.Location = new Point(8, 17);
+            label248.Location = new Point(8, 34);
             label248.Name = "label248";
             label248.Size = new Size(151, 15);
             label248.TabIndex = 184;
@@ -9292,33 +9298,81 @@
             // textBoxLocalHostAddress
             // 
             textBoxLocalHostAddress.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            textBoxLocalHostAddress.Location = new Point(7, 37);
+            textBoxLocalHostAddress.Location = new Point(7, 54);
             textBoxLocalHostAddress.Margin = new Padding(3, 2, 3, 2);
             textBoxLocalHostAddress.Name = "textBoxLocalHostAddress";
             textBoxLocalHostAddress.Size = new Size(112, 23);
             textBoxLocalHostAddress.TabIndex = 183;
             textBoxLocalHostAddress.Text = "127.0.0.1";
             // 
-            // label247
-            // 
-            label247.AutoSize = true;
-            label247.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label247.ForeColor = Color.Snow;
-            label247.Location = new Point(8, 73);
-            label247.Name = "label247";
-            label247.Size = new Size(131, 15);
-            label247.TabIndex = 182;
-            label247.Text = "Locally Hosted TTS Port";
-            // 
             // textBoxLocalHostPort
             // 
             textBoxLocalHostPort.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            textBoxLocalHostPort.Location = new Point(7, 93);
+            textBoxLocalHostPort.Location = new Point(7, 110);
             textBoxLocalHostPort.Margin = new Padding(3, 2, 3, 2);
             textBoxLocalHostPort.Name = "textBoxLocalHostPort";
             textBoxLocalHostPort.Size = new Size(112, 23);
             textBoxLocalHostPort.TabIndex = 181;
             textBoxLocalHostPort.Text = "8124";
+            // 
+            // label247
+            // 
+            label247.AutoSize = true;
+            label247.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label247.ForeColor = Color.Snow;
+            label247.Location = new Point(8, 90);
+            label247.Name = "label247";
+            label247.Size = new Size(131, 15);
+            label247.TabIndex = 182;
+            label247.Text = "Locally Hosted TTS Port";
+            // 
+            // groupBox47
+            // 
+            groupBox47.Controls.Add(label251);
+            groupBox47.Controls.Add(textBoxTikTokSessionID);
+            groupBox47.Controls.Add(label250);
+            groupBox47.ForeColor = Color.White;
+            groupBox47.Location = new Point(6, 923);
+            groupBox47.Margin = new Padding(3, 2, 3, 2);
+            groupBox47.Name = "groupBox47";
+            groupBox47.Padding = new Padding(3, 2, 3, 2);
+            groupBox47.Size = new Size(723, 182);
+            groupBox47.TabIndex = 192;
+            groupBox47.TabStop = false;
+            groupBox47.Text = "TikTok TTS";
+            // 
+            // label251
+            // 
+            label251.AutoSize = true;
+            label251.Cursor = Cursors.Hand;
+            label251.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label251.ForeColor = Color.Cyan;
+            label251.Location = new Point(359, 49);
+            label251.Name = "label251";
+            label251.Size = new Size(185, 15);
+            label251.TabIndex = 185;
+            label251.Text = "How to get your TikTok Session ID";
+            label251.Click += (this.label251_Click);
+            // 
+            // textBoxTikTokSessionID
+            // 
+            textBoxTikTokSessionID.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxTikTokSessionID.Location = new Point(7, 46);
+            textBoxTikTokSessionID.Margin = new Padding(3, 2, 3, 2);
+            textBoxTikTokSessionID.Name = "textBoxTikTokSessionID";
+            textBoxTikTokSessionID.Size = new Size(346, 23);
+            textBoxTikTokSessionID.TabIndex = 183;
+            // 
+            // label250
+            // 
+            label250.AutoSize = true;
+            label250.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label250.ForeColor = Color.Snow;
+            label250.Location = new Point(8, 26);
+            label250.Name = "label250";
+            label250.Size = new Size(60, 15);
+            label250.TabIndex = 184;
+            label250.Text = "Session ID";
             // 
             // groupBox46
             // 
@@ -11976,6 +12030,8 @@
             groupBox25.PerformLayout();
             LocalSpeech.ResumeLayout(false);
             LocalSpeech.PerformLayout();
+            groupBox48.ResumeLayout(false);
+            groupBox48.PerformLayout();
             groupBox47.ResumeLayout(false);
             groupBox47.PerformLayout();
             groupBox46.ResumeLayout(false);
@@ -12797,6 +12853,10 @@
         public TextBox textBoxLocalHostPort;
         private Label label249;
         public TextBox textBoxWebCaptionerAddress;
+        private GroupBox groupBox48;
+        public TextBox textBoxTikTokSessionID;
+        private Label label250;
+        private Label label251;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

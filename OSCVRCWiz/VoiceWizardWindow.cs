@@ -112,7 +112,7 @@ namespace OSCVRCWiz
                 }
                 StartUps.OnFormLoad();
                 StartUps.BackupStatus();
-               
+
             }
             catch (Exception ex)
             {
@@ -3323,7 +3323,12 @@ namespace OSCVRCWiz
                 VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.Enabled = true;
                 VoiceWizardWindow.MainFormGlobal.buttonCountersApplyChanges.ForeColor = Color.Gold;
             }
-           
+
+        }
+
+        private void label251_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/oscie57/tiktok-voice/wiki/Obtaining-SessionID");
         }
     }
 

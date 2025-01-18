@@ -3094,5 +3094,17 @@ namespace OSCVRCWiz.Settings {
                 this["WebCaptionerAddress"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TikTokSessionID {
+            get {
+                return ((string)(this["TikTokSessionID"]));
+            }
+            set {
+                this["TikTokSessionID"] = value;
+            }
+        }
     }
 }
