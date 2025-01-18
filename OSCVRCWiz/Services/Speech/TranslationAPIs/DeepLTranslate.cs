@@ -49,7 +49,16 @@ namespace OSCVRCWiz.Services.Speech.TranslationAPIs
             catch (Exception ex)
             {
                 //MessageBox.Show("DeepL Translation Error: " + ex.Message);
-                OutputText.outputLog("[Translation API Error: " + ex.Message + "]", Color.Red);
+                // OutputText.outputLog("[Translation API Error: " + ex.Message + "]", Color.Red);
+                var errorMsg = ex.Message + "\n" + ex.TargetSite + "\n\nStack Trace:\n" + ex.StackTrace;
+
+                try
+                {
+                    errorMsg += "\n\n" + ex.InnerException.Message + "\n" + ex.InnerException.TargetSite + "\n\nStack Trace:\n" + ex.InnerException.StackTrace;
+
+                }
+                catch { }
+                OutputText.outputLog("[DeepL Translation Error: " + errorMsg + "]", Color.Red);
                 OutputText.outputLog("[You are attempting to translate from one language to another. If this is not your intent then switch 'Translation Language' back to 'No Translation (Default)'. If you are intending to translate then get a VoiceWizardPro key or a DeepL key. ]", Color.DarkOrange);
                 OutputText.outputLog("[Learn how to get a Language Translation Key: https://ttsvoicewizard.com/docs/Translation/DeepL ]", Color.DarkOrange);
                 return "";

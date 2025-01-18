@@ -99,6 +99,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             voices.Items.Add("onyx");
             voices.Items.Add("nova");
             voices.Items.Add("shimmer");
+            //voices.Items.Add("ash");
+            //voices.Items.Add("ballad");
+            //voices.Items.Add("coral");
+            //voices.Items.Add("sage");
+            //voices.Items.Add("verse");
             voices.SelectedIndex = 0;
          
 
