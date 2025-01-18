@@ -4,6 +4,8 @@ using OSCVRCWiz.Services.Text;
 using System.Text;
 using System.Net.Http.Headers;
 using Octokit;
+using Newtonsoft.Json.Serialization;
+using ChatGPT.Net.DTO.ChatGPTUnofficial;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
@@ -11,6 +13,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
     {
         // public static WaveOut TikTokOutput=null;
         private static readonly HttpClient client = new HttpClient();//reusing client save so much time!!! around 100ms
+        private static string ApiUrl = "https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/";
 
 
         public static async Task TikTokTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
@@ -19,9 +22,15 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             byte[] result = null;
             try
             {
+
+                ApiUrl = VoiceWizardWindow.MainFormGlobal.textBoxTikTokURL.Text.ToString();
                 // stopwatch.Start();
                 // result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
                 var sessionID = VoiceWizardWindow.MainFormGlobal.textBoxTikTokSessionID.Text.ToString();
+                if (string.IsNullOrWhiteSpace(sessionID))
+                {
+                    OutputText.outputLog("TikTok TTS now requires you input your own sessionID from TikTok to use the voices. Navigate to 'Speech Provider > Local > TikTok TTS' for further instructions on how to aquire your session ID from TikTok.", Color.DarkOrange);
+                }
                 result = await CallTikTokAPIAsyncSessionID(TTSMessageQueued.text, TTSMessageQueued.Voice, sessionID);
 
             }
@@ -37,6 +46,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 }
                 catch { }
                 OutputText.outputLog("TikTok TTS Error: " + errorMsg, Color.Red);
+                OutputText.outputLog("Attempted URL: " + ApiUrl, Color.Red);
                 Task.Run(() => TTSMessageQueue.PlayNextInQueue());
 
 
@@ -122,12 +132,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
         }
 
-        private static readonly string ApiUrl = "https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/";
+        
         private static readonly string UserAgent = "com.zhiliaoapp.musically/2022600030 (Linux; U; Android 7.1.2; es_ES; SM-G988N; Build/NRD90M;tt-ok/3.12.13.1)";
         public static async Task<byte[]> CallTikTokAPIAsyncSessionID(string text, string voice, string sessionId)
         {
-
             var apiVoice = GetTikTokVoice(voice);
+           // var apiVoice = voice;
             // Replace characters to match the Python implementation
             text = text.Replace("+", "plus")
                        .Replace(" ", "+")
@@ -146,10 +156,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                 HttpResponseMessage response = await client.PostAsync(url, null);
 
+
+               
                 if (!response.IsSuccessStatusCode)
                 {
                     string errorContent = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"TikTok API Error: {response.StatusCode} {errorContent}", Color.Red);
+                    OutputText.outputLog($"TikTok API Error: {response.StatusCode} {errorContent}", Color.Red);
                   //  return null;
                 }
 
@@ -160,26 +172,43 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 if (responseObject["data"] == null || responseObject["data"]["v_str"] == null)
                 {
                     OutputText.outputLog("TikTok TTS Error: No audio was returned by the API.", Color.Red);
-                   // OutputText.outputLog(responseContent);
-                //    return null;
+                    OutputText.outputLog("TikTok API Response:" + responseContent, Color.Red);
+                    OutputText.outputLog("Please double check that your SessionID has been copied correctly and has not expired.", Color.DarkOrange);
+                    //    if(responseObject["message"] != null)
+                    //  {
+                    //   string msgg = responseObject["message"].ToString();
+                    //   OutputText.outputLog("TikTok API Msg:" + msgg, Color.Orange);
+                    //  }
+                    //    return null;
+                }
+                else if(responseObject["status_code"] !=null)
+                {
+                    string scode = responseObject["status_code"].ToString();
+                    if (scode != "0")
+                    {
+                        OutputText.outputLog("TikTok TTS Error: No audio was returned by the API.", Color.Red);
+                        OutputText.outputLog("TikTok API Response:" + responseContent, Color.Red);
+                    }
                 }
 
                 string base64Audio = responseObject["data"]["v_str"].ToString();
 
               //  string msg = responseObject["message"].ToString();
-              //  string scode = responseObject["status_code"].ToString();
-               // string log = responseObject["extra"]["log_id"].ToString();
+             //   string scode = responseObject["status_code"].ToString();
+              //  OutputText.outputLog($"TikTok API Error: {scode} {msg}", Color.Red);
+              //  OutputText.outputLog("TikTok API Response:" + responseContent, Color.Red);
+                // string log = responseObject["extra"]["log_id"].ToString();
 
-               // string dur = responseObject["data"]["duration"].ToString();
-               // string spkr = responseObject["data"]["speaker"].ToString();
+                // string dur = responseObject["data"]["duration"].ToString();
+                // string spkr = responseObject["data"]["speaker"].ToString();
 
-             //   OutputText.outputLog(response.StatusCode.ToString());
-              //  OutputText.outputLog(base64Audio);
-               // OutputText.outputLog("msg: " +msg);
-             //   OutputText.outputLog("scode: " + scode);
-               // OutputText.outputLog("log: " + log);
-              //  OutputText.outputLog("dur: " + dur);
-              //  OutputText.outputLog("spkr: " + spkr);
+                //   OutputText.outputLog(response.StatusCode.ToString());
+                //  OutputText.outputLog(base64Audio);
+                // OutputText.outputLog("msg: " +msg);
+                //   OutputText.outputLog("scode: " + scode);
+                // OutputText.outputLog("log: " + log);
+                //  OutputText.outputLog("dur: " + dur);
+                //  OutputText.outputLog("spkr: " + spkr);
                 return Convert.FromBase64String(base64Audio);
             }
         }

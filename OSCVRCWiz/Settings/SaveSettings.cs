@@ -379,6 +379,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.TikTokSessionID = VoiceWizardWindow.MainFormGlobal.textBoxTikTokSessionID.Text;
 
+            Settings1.Default.TikTokAPIURL = VoiceWizardWindow.MainFormGlobal.textBoxTikTokURL.Text;
+
 
 
             Settings1.Default.Save();

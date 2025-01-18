@@ -1512,7 +1512,7 @@ namespace OSCVRCWiz
                 UberDuckShowPassword.BackColor = DarkModeColor;
                 UberDuckShowSecretPassword.BackColor = DarkModeColor;
                 iconButtonPulsoidHideKey.BackColor = DarkModeColor;
-
+                iconButton7.BackColor = DarkModeColor;
 
 
                 labelCharCount.ForeColor = Color.White;
@@ -1536,6 +1536,7 @@ namespace OSCVRCWiz
                 UberDuckShowPassword.IconColor = Color.White;
                 UberDuckShowSecretPassword.IconColor = Color.White;
                 iconButtonPulsoidHideKey.IconColor = Color.White;
+                iconButton7.IconColor = Color.White;
 
             }
             if (rjToggleDarkMode.Checked == false)//light mode
@@ -1581,6 +1582,7 @@ namespace OSCVRCWiz
                 UberDuckShowPassword.BackColor = Color.White;
                 UberDuckShowSecretPassword.BackColor = Color.White;
                 iconButtonPulsoidHideKey.BackColor = Color.White;
+                iconButton7.BackColor = Color.White;
 
 
 
@@ -1608,6 +1610,7 @@ namespace OSCVRCWiz
                 UberDuckShowPassword.IconColor = LightModeColor;
                 UberDuckShowSecretPassword.IconColor = LightModeColor;
                 iconButtonPulsoidHideKey.IconColor = LightModeColor;
+                iconButton7.IconColor = LightModeColor;
 
 
 
@@ -3328,7 +3331,14 @@ namespace OSCVRCWiz
 
         private void label251_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/oscie57/tiktok-voice/wiki/Obtaining-SessionID");
+            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/VRCWizard/TTS-Voice-Wizard/wiki/TikTok-TTS");
+        }
+
+
+
+        private void iconButton7_Click_1(object sender, EventArgs e)
+        {
+            ShowHidePassword(textBoxTikTokSessionID, iconButton7);
         }
     }
 

@@ -614,6 +614,9 @@
             textBoxLocalHostPort = new TextBox();
             label247 = new Label();
             groupBox47 = new GroupBox();
+            iconButton7 = new FontAwesome.Sharp.IconButton();
+            textBoxTikTokURL = new TextBox();
+            label252 = new Label();
             label251 = new Label();
             textBoxTikTokSessionID = new TextBox();
             label250 = new Label();
@@ -8263,7 +8266,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(287, 9);
+            iconButton47.Location = new Point(253, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9328,6 +9331,9 @@
             // 
             // groupBox47
             // 
+            groupBox47.Controls.Add(iconButton7);
+            groupBox47.Controls.Add(textBoxTikTokURL);
+            groupBox47.Controls.Add(label252);
             groupBox47.Controls.Add(label251);
             groupBox47.Controls.Add(textBoxTikTokSessionID);
             groupBox47.Controls.Add(label250);
@@ -9341,13 +9347,53 @@
             groupBox47.TabStop = false;
             groupBox47.Text = "TikTok TTS";
             // 
+            // iconButton7
+            // 
+            iconButton7.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Right);
+            iconButton7.BackColor = Color.White;
+            iconButton7.FlatAppearance.BorderSize = 0;
+            iconButton7.FlatStyle = FlatStyle.Flat;
+            iconButton7.ForeColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton7.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            iconButton7.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
+            iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton7.IconSize = 15;
+            iconButton7.Location = new Point(381, 103);
+            iconButton7.Margin = new Padding(3, 2, 3, 2);
+            iconButton7.Name = "iconButton7";
+            iconButton7.Size = new Size(31, 18);
+            iconButton7.TabIndex = 188;
+            iconButton7.UseVisualStyleBackColor = false;
+            iconButton7.Click += (this.iconButton7_Click_1);
+            // 
+            // textBoxTikTokURL
+            // 
+            textBoxTikTokURL.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
+            textBoxTikTokURL.Location = new Point(7, 42);
+            textBoxTikTokURL.Margin = new Padding(3, 2, 3, 2);
+            textBoxTikTokURL.Name = "textBoxTikTokURL";
+            textBoxTikTokURL.Size = new Size(537, 23);
+            textBoxTikTokURL.TabIndex = 186;
+            textBoxTikTokURL.Text = "https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/";
+            // 
+            // label252
+            // 
+            label252.AutoSize = true;
+            label252.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label252.ForeColor = Color.Snow;
+            label252.Location = new Point(8, 22);
+            label252.Name = "label252";
+            label252.Size = new Size(49, 15);
+            label252.TabIndex = 187;
+            label252.Text = "API URL";
+            // 
             // label251
             // 
             label251.AutoSize = true;
             label251.Cursor = Cursors.Hand;
             label251.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label251.ForeColor = Color.Cyan;
-            label251.Location = new Point(359, 49);
+            label251.Location = new Point(418, 110);
             label251.Name = "label251";
             label251.Size = new Size(185, 15);
             label251.TabIndex = 185;
@@ -9357,10 +9403,11 @@
             // textBoxTikTokSessionID
             // 
             textBoxTikTokSessionID.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            textBoxTikTokSessionID.Location = new Point(7, 46);
+            textBoxTikTokSessionID.Location = new Point(7, 102);
             textBoxTikTokSessionID.Margin = new Padding(3, 2, 3, 2);
             textBoxTikTokSessionID.Name = "textBoxTikTokSessionID";
-            textBoxTikTokSessionID.Size = new Size(346, 23);
+            textBoxTikTokSessionID.PasswordChar = '*';
+            textBoxTikTokSessionID.Size = new Size(405, 23);
             textBoxTikTokSessionID.TabIndex = 183;
             // 
             // label250
@@ -9368,7 +9415,7 @@
             label250.AutoSize = true;
             label250.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label250.ForeColor = Color.Snow;
-            label250.Location = new Point(8, 26);
+            label250.Location = new Point(8, 82);
             label250.Name = "label250";
             label250.Size = new Size(60, 15);
             label250.TabIndex = 184;
@@ -12857,6 +12904,9 @@
         public TextBox textBoxTikTokSessionID;
         private Label label250;
         private Label label251;
+        public TextBox textBoxTikTokURL;
+        private Label label252;
+        private FontAwesome.Sharp.IconButton iconButton7;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }
