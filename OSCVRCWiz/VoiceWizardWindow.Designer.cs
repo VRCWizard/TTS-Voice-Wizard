@@ -809,6 +809,8 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
+            label253 = new Label();
+            rjToggleButtonTikTokUseSession = new OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -8266,7 +8268,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(253, 9);
+            iconButton47.Location = new Point(236, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9331,6 +9333,8 @@
             // 
             // groupBox47
             // 
+            groupBox47.Controls.Add(label253);
+            groupBox47.Controls.Add(rjToggleButtonTikTokUseSession);
             groupBox47.Controls.Add(iconButton7);
             groupBox47.Controls.Add(textBoxTikTokURL);
             groupBox47.Controls.Add(label252);
@@ -9358,7 +9362,7 @@
             iconButton7.IconColor = Color.FromArgb((int)(byte)68, (int)(byte)72, (int)(byte)111);
             iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton7.IconSize = 15;
-            iconButton7.Location = new Point(381, 103);
+            iconButton7.Location = new Point(381, 147);
             iconButton7.Margin = new Padding(3, 2, 3, 2);
             iconButton7.Name = "iconButton7";
             iconButton7.Size = new Size(31, 18);
@@ -9369,7 +9373,7 @@
             // textBoxTikTokURL
             // 
             textBoxTikTokURL.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            textBoxTikTokURL.Location = new Point(7, 42);
+            textBoxTikTokURL.Location = new Point(7, 86);
             textBoxTikTokURL.Margin = new Padding(3, 2, 3, 2);
             textBoxTikTokURL.Name = "textBoxTikTokURL";
             textBoxTikTokURL.Size = new Size(537, 23);
@@ -9381,7 +9385,7 @@
             label252.AutoSize = true;
             label252.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label252.ForeColor = Color.Snow;
-            label252.Location = new Point(8, 22);
+            label252.Location = new Point(8, 66);
             label252.Name = "label252";
             label252.Size = new Size(49, 15);
             label252.TabIndex = 187;
@@ -9393,7 +9397,7 @@
             label251.Cursor = Cursors.Hand;
             label251.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label251.ForeColor = Color.Cyan;
-            label251.Location = new Point(418, 110);
+            label251.Location = new Point(418, 154);
             label251.Name = "label251";
             label251.Size = new Size(185, 15);
             label251.TabIndex = 185;
@@ -9403,7 +9407,7 @@
             // textBoxTikTokSessionID
             // 
             textBoxTikTokSessionID.Anchor = (AnchorStyles)((AnchorStyles.Top) | (AnchorStyles.Left)) | (AnchorStyles.Right);
-            textBoxTikTokSessionID.Location = new Point(7, 102);
+            textBoxTikTokSessionID.Location = new Point(7, 146);
             textBoxTikTokSessionID.Margin = new Padding(3, 2, 3, 2);
             textBoxTikTokSessionID.Name = "textBoxTikTokSessionID";
             textBoxTikTokSessionID.PasswordChar = '*';
@@ -9415,7 +9419,7 @@
             label250.AutoSize = true;
             label250.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
             label250.ForeColor = Color.Snow;
-            label250.Location = new Point(8, 82);
+            label250.Location = new Point(8, 126);
             label250.Name = "label250";
             label250.Size = new Size(60, 15);
             label250.TabIndex = 184;
@@ -11945,6 +11949,31 @@
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
             // 
+            // label253
+            // 
+            label253.AutoSize = true;
+            label253.ForeColor = Color.Snow;
+            label253.Location = new Point(53, 38);
+            label253.Name = "label253";
+            label253.Size = new Size(135, 15);
+            label253.TabIndex = 190;
+            label253.Text = "Use your own Session ID";
+            // 
+            // rjToggleButtonTikTokUseSession
+            // 
+            rjToggleButtonTikTokUseSession.AutoSize = true;
+            rjToggleButtonTikTokUseSession.Location = new Point(8, 36);
+            rjToggleButtonTikTokUseSession.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonTikTokUseSession.MinimumSize = new Size(39, 16);
+            rjToggleButtonTikTokUseSession.Name = "rjToggleButtonTikTokUseSession";
+            rjToggleButtonTikTokUseSession.OffBackColor = Color.Gray;
+            rjToggleButtonTikTokUseSession.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonTikTokUseSession.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonTikTokUseSession.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonTikTokUseSession.Size = new Size(39, 16);
+            rjToggleButtonTikTokUseSession.TabIndex = 189;
+            rjToggleButtonTikTokUseSession.UseVisualStyleBackColor = true;
+            // 
             // VoiceWizardWindow
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -12907,6 +12936,8 @@
         public TextBox textBoxTikTokURL;
         private Label label252;
         private FontAwesome.Sharp.IconButton iconButton7;
+        private Label label253;
+        public OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonTikTokUseSession;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

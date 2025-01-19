@@ -26,12 +26,20 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 ApiUrl = VoiceWizardWindow.MainFormGlobal.textBoxTikTokURL.Text.ToString();
                 // stopwatch.Start();
                 // result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
-                var sessionID = VoiceWizardWindow.MainFormGlobal.textBoxTikTokSessionID.Text.ToString();
-                if (string.IsNullOrWhiteSpace(sessionID))
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked)
                 {
-                    OutputText.outputLog("TikTok TTS now requires you input your own sessionID from TikTok to use the voices. Navigate to 'Speech Provider > Local > TikTok TTS' for further instructions on how to aquire your session ID from TikTok.", Color.DarkOrange);
+                    var sessionID = VoiceWizardWindow.MainFormGlobal.textBoxTikTokSessionID.Text.ToString();
+                    if (string.IsNullOrWhiteSpace(sessionID))
+                    {
+                        OutputText.outputLog("TikTok TTS now requires you input your own sessionID from TikTok to use the voices. Navigate to 'Speech Provider > Local > TikTok TTS' for further instructions on how to aquire your session ID from TikTok.", Color.DarkOrange);
+                    }
+                    result = await CallTikTokAPIAsyncSessionID(TTSMessageQueued.text, TTSMessageQueued.Voice, sessionID);
                 }
-                result = await CallTikTokAPIAsyncSessionID(TTSMessageQueued.text, TTSMessageQueued.Voice, sessionID);
+                else
+                {
+                    result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
+                }
 
             }
             catch (Exception ex)

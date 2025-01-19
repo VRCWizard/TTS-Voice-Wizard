@@ -482,6 +482,8 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.textBoxTikTokURL.Text = Settings1.Default.TikTokAPIURL;
 
+            VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked = Settings1.Default.TikTokUseSession;
+
 
 
 

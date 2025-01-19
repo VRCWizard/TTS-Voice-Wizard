@@ -776,5 +776,8 @@
     <Setting Name="TikTokAPIURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/</Value>
     </Setting>
+    <Setting Name="TikTokUseSession" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

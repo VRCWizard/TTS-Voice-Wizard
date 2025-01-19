@@ -3118,5 +3118,17 @@ namespace OSCVRCWiz.Settings {
                 this["TikTokAPIURL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TikTokUseSession {
+            get {
+                return ((bool)(this["TikTokUseSession"]));
+            }
+            set {
+                this["TikTokUseSession"] = value;
+            }
+        }
     }
 }
