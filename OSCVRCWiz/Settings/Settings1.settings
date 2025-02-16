@@ -216,7 +216,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ttsMode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">TikTok</Value>
+      <Value Profile="(Default)">System Speech</Value>
     </Setting>
     <Setting Name="approvedSource" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -769,6 +769,15 @@
     </Setting>
     <Setting Name="WebCaptionerAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="TikTokSessionID" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TikTokAPIURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/</Value>
+    </Setting>
+    <Setting Name="TikTokUseSession" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

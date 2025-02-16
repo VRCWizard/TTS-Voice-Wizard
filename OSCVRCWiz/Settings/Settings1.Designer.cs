@@ -877,7 +877,7 @@ namespace OSCVRCWiz.Settings {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TikTok")]
+        [global::System.Configuration.DefaultSettingValueAttribute("System Speech")]
         public string ttsMode {
             get {
                 return ((string)(this["ttsMode"]));
@@ -3092,6 +3092,42 @@ namespace OSCVRCWiz.Settings {
             }
             set {
                 this["WebCaptionerAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TikTokSessionID {
+            get {
+                return ((string)(this["TikTokSessionID"]));
+            }
+            set {
+                this["TikTokSessionID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/")]
+        public string TikTokAPIURL {
+            get {
+                return ((string)(this["TikTokAPIURL"]));
+            }
+            set {
+                this["TikTokAPIURL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TikTokUseSession {
+            get {
+                return ((bool)(this["TikTokUseSession"]));
+            }
+            set {
+                this["TikTokUseSession"] = value;
             }
         }
     }
