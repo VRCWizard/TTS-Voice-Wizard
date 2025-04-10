@@ -245,6 +245,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                         theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
                         theString = theString.Replace("{lyrics}", OSCListener.spotifyLyrics);
+                        theString = theString.Replace("{time}", DateTime.Now.ToString("h:mm tt"));
+                        theString = theString.Replace("{timeSec}", DateTime.Now.ToString("h:mm:ss tt"));
+                        theString = theString.Replace("{time24}", DateTime.Now.ToString("HH:mm"));
+                        theString = theString.Replace("{time24Sec}", DateTime.Now.ToString("HH:mm:ss"));
 
                         theString = replaceProgresBar(theString, progressT, durationT);
                         theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));
@@ -319,7 +323,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                 }
                 catch { }
 
-                OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
+               // OutputText.outputLog("[If this continues, click the Connect Spotify button again.]", Color.DarkOrange);
 
                 VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
                 {
@@ -443,6 +447,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{counter5}", VRChatListener.counter5.ToString());
                     theString = theString.Replace("{counter6}", VRChatListener.counter6.ToString());
                     theString = theString.Replace("{lyrics}", OSCListener.spotifyLyrics);
+                    theString = theString.Replace("{time}", DateTime.Now.ToString("h:mm tt"));
+                    theString = theString.Replace("{timeSec}", DateTime.Now.ToString("h:mm:ss tt"));
+                    theString = theString.Replace("{time24}", DateTime.Now.ToString("HH:mm"));
+                    theString = theString.Replace("{time24Sec}", DateTime.Now.ToString("HH:mm:ss"));
 
                     theString = replaceProgresBar(theString, progressT, durationT);
                     theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));
@@ -528,6 +536,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     theString = theString.Replace("{pause}", spotifyPausedIndicator);
                     theString = replaceProgresBar(theString, progressT, durationT);
                     theString = replaceHREmoji(theString, Int16.Parse(OSCListener.globalBPM));
+                    theString = theString.Replace("{time}", DateTime.Now.ToString("h:mm tt"));
+                    theString = theString.Replace("{timeSec}", DateTime.Now.ToString("h:mm:ss tt"));
+                    theString = theString.Replace("{time24}", DateTime.Now.ToString("HH:mm"));
+                    theString = theString.Replace("{time24Sec}", DateTime.Now.ToString("HH:mm:ss"));
 
 
                     MediaOutput(theString);

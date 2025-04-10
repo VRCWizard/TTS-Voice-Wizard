@@ -54,8 +54,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 }
                 catch { }
                 OutputText.outputLog("TikTok TTS Error: " + errorMsg, Color.Red);
-                OutputText.outputLog("Attempted URL: " + ApiUrl, Color.Red);
-                Task.Run(() => TTSMessageQueue.PlayNextInQueue());
+
+                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked)
+                {
+                    OutputText.outputLog("Attempted URL: " + ApiUrl, Color.Red); 
+                }
+                    Task.Run(() => TTSMessageQueue.PlayNextInQueue());
 
 
             }
