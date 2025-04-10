@@ -450,6 +450,7 @@ namespace OSCVRCWiz.Services.Speech
                         {
                             OutputText.outputTextFile(originalText, @"Output\TextOutput\OBSText.txt");
                             OutputText.outputTextFile(newText, @"Output\TextOutput\OBSTextTranslated.txt");
+                            OutputText.outputTextFile(originalText, @"Output\TextOutput\TranscriptionOnly.txt");
                         }
 
                     }

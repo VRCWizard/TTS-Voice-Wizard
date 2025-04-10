@@ -42,12 +42,12 @@
     <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="MeaMod.DNS" Version="1.0.70" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.25.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
     <PackageReference Include="NAudio" Version="2.1.0" />
     <PackageReference Include="Octokit" Version="5.0.0" />
     <PackageReference Include="SpotifyAPI.Web" Version="6.2.2" />
     <PackageReference Include="SpotifyAPI.Web.Auth" Version="6.2.2" />
-    <PackageReference Include="System.Speech" Version="7.0.0-preview.2.22152.2" />
+    <PackageReference Include="System.Speech" Version="8.0.0" />
     <PackageReference Include="Vosk" Version="0.3.38" />
     <PackageReference Include="WebRtcVadSharp" Version="1.3.2" />
   </ItemGroup>
@@ -133,6 +133,9 @@
     <None Update="Assets\voices\tiktokVoices.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\voices\ttsMonsterVoices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\voices\uberduckVoices.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -164,6 +167,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Output\Exports\Exports.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Output\TextOutput\MediaIntegration.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Output\TextOutput\TranscriptionOnly.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Output\TextOutput\OBSText.txt">

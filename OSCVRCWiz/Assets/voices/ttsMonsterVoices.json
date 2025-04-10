@@ -1,0 +1,488 @@
+[
+      {
+        "voice_id": "050fc1b3-28be-4461-9977-b8b087f02dad",
+        "name": "Barto",
+        "sample": "https://tts.monster/static/sounds/wavs/barto.wav",
+        "metadata": "ES-MX|Male"
+      },
+      {
+        "voice_id": "894b3e9e-a111-4619-aa24-1f54cada781d",
+        "name": "Deepthi",
+        "sample": "https://tts.monster/static/sounds/wavs/deepthi.wav",
+        "metadata": "HI|Female"
+      },
+      {
+        "voice_id": "a9cec055-cf90-4207-9cf3-e0aee3034814",
+        "name": "Cifrar",
+        "sample": "https://tts.monster/static/sounds/wavs/cifrar.wav",
+        "metadata": "ES-MX|Male"
+      },
+      {
+        "voice_id": "f66d7026-41af-4ff6-8f17-a748559eb13e",
+        "name": "Isabelle",
+        "sample": "https://tts.monster/static/sounds/wavs/isabelle.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "87537bb9-71e1-481a-87fc-5ffc805a152b",
+        "name": "Baymax",
+        "sample": "https://tts.monster/static/sounds/wavs/baymax.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "91dcbc54-046e-4a28-94ef-665dd8e9d4ab",
+        "name": "Eminem",
+        "sample": "https://tts.monster/static/sounds/wavs/eminem.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "923bc018-ccd0-4fc7-9642-0cb7ef6dddc5",
+        "name": "Kratos",
+        "sample": "https://tts.monster/static/sounds/wavs/kratos.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "a3278338-241f-47c3-bd2d-aed4d03640dc",
+        "name": "Dr. Disrespect",
+        "sample": "https://tts.monster/static/sounds/wavs/drdisrespect.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "a33aa2c5-47f9-4882-a192-d7aa6a0c0efd",
+        "name": "ASMR Guy",
+        "sample": "https://tts.monster/static/sounds/wavs/asmrguy.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "bac28c6b-cc21-4243-88c4-5774860e0806",
+        "name": "Kanye",
+        "sample": "https://tts.monster/static/sounds/wavs/kanye.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "c4ad44ae-8da9-4375-90c0-55a1e6f1fbc6",
+        "name": "Adam",
+        "sample": "https://tts.monster/static/sounds/wavs/adam.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "c5d9224a-60d1-48db-9dfd-3146842a931c",
+        "name": "Geralt",
+        "sample": "https://tts.monster/static/sounds/wavs/geralt.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "d1179775-d73d-46f4-ab12-bced0baf9cd2",
+        "name": "Knuckles",
+        "sample": "https://tts.monster/static/sounds/wavs/knuckles.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "d421ea19-2263-47d3-a3e7-34ad8b2c5444",
+        "name": "Gunborg",
+        "sample": "https://tts.monster/static/sounds/wavs/gunborg.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "e237c3fc-0f56-4fbc-9333-a891c1e55abc",
+        "name": "Announcer",
+        "sample": "https://tts.monster/static/sounds/wavs/announcer.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "e8a18685-00fd-4798-aa3d-50424f8de7e6",
+        "name": "Linus Tech Tips",
+        "sample": "https://tts.monster/static/sounds/wavs/linus.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "84cd0ca2-8b98-4fb7-9365-1c76965724d9",
+        "name": "Forsen",
+        "sample": "https://tts.monster/static/sounds/wavs/forsen.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "01f69a26-0759-44e4-b317-cdbcb26b26c0",
+        "name": "Gordon",
+        "sample": "https://tts.monster/static/sounds/wavs/gordon.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "0993f688-6719-4cf6-9769-fee7b77b1df5",
+        "name": "Brian",
+        "sample": "https://tts.monster/static/sounds/wavs/brian.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "0d2628eb-bf11-4bc3-88fa-35d519ba068a",
+        "name": "Hobo",
+        "sample": "https://tts.monster/static/sounds/wavs/hobo.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "8f496152-024a-480a-a0af-7ddc3c22398c",
+        "name": "Parable",
+        "sample": "https://tts.monster/static/sounds/wavs/parable.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "148c554a-f58d-4ed3-8395-a67f86d00501",
+        "name": "Joanna",
+        "sample": "https://tts.monster/static/sounds/wavs/joanna.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "1aa9d694-1da5-4bdb-8e07-6392ec526c2f",
+        "name": "ASMR",
+        "sample": "https://tts.monster/static/sounds/wavs/asmr.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "26c9f68f-a1bd-4871-a76c-6eee020c5b07",
+        "name": "Albus",
+        "sample": "https://tts.monster/static/sounds/wavs/albus.wav",
+        "metadata": "FR|Male"
+      },
+      {
+        "voice_id": "38297084-2052-4deb-83dd-024912d9e245",
+        "name": "GLaDOS",
+        "sample": "https://tts.monster/static/sounds/wavs/glados.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "68bc5eb0-fa1f-4d9b-b0bc-89f51edf5fb0",
+        "name": "Hikari",
+        "sample": "https://tts.monster/static/sounds/wavs/hikari.wav",
+        "metadata": "JA|Female"
+      },
+      {
+        "voice_id": "80c6bb8b-c573-44c3-9843-0f2ed9a75afe",
+        "name": "Evelina",
+        "sample": "https://tts.monster/static/sounds/wavs/evelina.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "8393d2bc-88d4-4fd1-a4ac-074b4bae94ba",
+        "name": "Chloe",
+        "sample": "https://tts.monster/static/sounds/wavs/chloe.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "915e9fcc-ab6b-4623-af1c-6a4fb8ef2014",
+        "name": "The Weeknd",
+        "sample": "https://tts.monster/static/sounds/wavs/weeknd.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "98800f7e-05bf-4064-a8d2-cd12ee18496c",
+        "name": "Winston",
+        "sample": "https://tts.monster/static/sounds/wavs/winston.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "0e54e9d5-7471-4d3a-948c-2c9e4a1f4bec",
+        "name": "Baldi",
+        "sample": "https://tts.monster/static/sounds/wavs/baldi.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "105e3e7d-ec3e-47a3-a3d3-86345feed23d",
+        "name": "HAL 9000",
+        "sample": "https://tts.monster/static/sounds/wavs/hal9000.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "172f01d8-32d7-4dba-850b-41f9bd9b2bbc",
+        "name": "Kronk",
+        "sample": "https://tts.monster/static/sounds/wavs/kronk.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "9af5e3d0-b4b2-44eb-9580-849d8d36a30e",
+        "name": "Obama",
+        "sample": "https://tts.monster/static/sounds/wavs/obama.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "9cea1cf6-b4d8-4006-b824-dede5aa7a451",
+        "name": "Andrew Tate",
+        "sample": "https://tts.monster/static/sounds/wavs/tate.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "a0741f38-b14a-4204-a26e-80f795f03637",
+        "name": "Ben Shapiro",
+        "sample": "https://tts.monster/static/sounds/wavs/shapiro.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "a5879188-842e-4971-a281-eae9791e2138",
+        "name": "Zoomer",
+        "sample": "https://tts.monster/static/sounds/wavs/zoomer.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "c6698522-40c8-453b-8027-fdff52299a57",
+        "name": "Mike Tyson",
+        "sample": "https://tts.monster/static/sounds/wavs/miketyson.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "c9485e04-2876-48bc-918e-3e6cb99e405b",
+        "name": "Tom Nook",
+        "sample": "https://tts.monster/static/sounds/wavs/tomnook.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "d2f70685-fbe3-4ca0-b0fd-cfb24f7e0c48",
+        "name": "Sonic",
+        "sample": "https://tts.monster/static/sounds/wavs/sonic.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "da3b4a64-1bbe-498b-9387-183b9c408bb6",
+        "name": "R2-D2",
+        "sample": "https://tts.monster/static/sounds/wavs/r2d2.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "e0f1c6e2-fbb2-4df4-9ec2-f1109371ab1e",
+        "name": "Morgan Freeman",
+        "sample": "https://tts.monster/static/sounds/wavs/morgan.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "1de3db1e-a4aa-4103-b399-ba6c1f1f95db",
+        "name": "Alan Wake",
+        "sample": "https://tts.monster/static/sounds/wavs/alanwake.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "1ee26ef6-b745-4adb-8e47-e81956194b13",
+        "name": "Bateman",
+        "sample": "https://tts.monster/static/sounds/wavs/bateman.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "1faab65c-c489-45ba-b302-b22d9e491d9f",
+        "name": "Jazz Singer",
+        "sample": "https://tts.monster/static/sounds/wavs/jazz.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "24e1a8ff-e5c7-464f-a708-c4fe92c59b28",
+        "name": "Johnny",
+        "sample": "https://tts.monster/static/sounds/wavs/johnny.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "2a18e91b-3050-4e7c-b150-c61eb7b8e34e",
+        "name": "Connor",
+        "sample": "https://tts.monster/static/sounds/wavs/connor.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "30705327-062b-43e9-a00c-7ceb45e34f0a",
+        "name": "Hasan",
+        "sample": "https://tts.monster/static/sounds/wavs/hasan.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "314df8f9-d157-4bb7-b744-0172e2fb8a32",
+        "name": "Chills",
+        "sample": "https://tts.monster/static/sounds/wavs/chills.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "43c6b437-caf9-4ae9-a0e4-208deea2088e",
+        "name": "Doom",
+        "sample": "https://tts.monster/static/sounds/wavs/doom.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "47906020-29e9-4903-91e3-8b66b0528410",
+        "name": "Kermit",
+        "sample": "https://tts.monster/static/sounds/wavs/kermit.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "49826b97-091a-4821-a978-15692387647a",
+        "name": "Biden",
+        "sample": "https://tts.monster/static/sounds/wavs/biden.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "4b6941d0-0d79-424a-8c66-10c2942293dc",
+        "name": "Dagoth",
+        "sample": "https://tts.monster/static/sounds/wavs/dagoth.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "50570964-9672-4927-ac7d-40575e9112d3",
+        "name": "KKona",
+        "sample": "https://tts.monster/static/sounds/wavs/kkona.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "5161b27a-3c2a-4886-9c58-ef96cef0c022",
+        "name": "Brok",
+        "sample": "https://tts.monster/static/sounds/wavs/brok.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "5b694acf-1513-427a-b920-6a68dcf15184",
+        "name": "Drogoz",
+        "sample": "https://tts.monster/static/sounds/wavs/drogoz.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "66141f9a-2e93-4d95-ae09-86c7b677c5ae",
+        "name": "Bart",
+        "sample": "https://tts.monster/static/sounds/wavs/bart.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "f1cd1a3d-ad9e-439e-98cd-34d37d0dd99a",
+        "name": "Vega",
+        "sample": "https://tts.monster/static/sounds/wavs/vega.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "faa92dd8-0517-49da-8f01-1fb03f0e0096",
+        "name": "Spongebob",
+        "sample": "https://tts.monster/static/sounds/wavs/spongebob.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "fb079ccd-2afb-4634-ac59-03bd31071606",
+        "name": "Pager",
+        "sample": "https://tts.monster/static/sounds/wavs/pager.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "ff076c08-31e5-43ad-9d9a-7d9c2e5a34be",
+        "name": "Master Chief",
+        "sample": "https://tts.monster/static/sounds/wavs/masterchief.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "081fc265-c739-4413-b40b-2b1a9996a32a",
+        "name": "Movie Guy",
+        "sample": "https://tts.monster/static/sounds/wavs/movieguy.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "1948c544-0eab-4408-9259-567b5b2059a4",
+        "name": "Trump",
+        "sample": "https://tts.monster/static/sounds/wavs/trump.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "2a795121-afd7-4055-807d-9aee99a2a954",
+        "name": "Optimus Prime",
+        "sample": "https://tts.monster/static/sounds/wavs/optimus_prime.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "599d7aa0-d4c9-4d3c-a666-1b669e3db5eb",
+        "name": "Pepe",
+        "sample": "https://tts.monster/static/sounds/wavs/pepe.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "5dbb63c3-1179-4704-90cf-8dbe0d9b33ab",
+        "name": "Obiwan",
+        "sample": "https://tts.monster/static/sounds/wavs/obiwan.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "5fca4739-1d90-4ebe-acc3-dc542028ef58",
+        "name": "Turles",
+        "sample": "https://tts.monster/static/sounds/wavs/turles.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "61140e69-6cfc-470f-bb91-ad9afbc71092",
+        "name": "Vomit",
+        "sample": "https://tts.monster/static/sounds/wavs/vomit.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "67dbd94d-a097-4676-af2f-1db67c1eb8dd",
+        "name": "Shadow",
+        "sample": "https://tts.monster/static/sounds/wavs/shadow.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "7cbd44df-08ac-4234-bc95-836e0ae6b22c",
+        "name": "Squidward",
+        "sample": "https://tts.monster/static/sounds/wavs/squidward.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "7dfab21a-da07-4474-b7df-dcbbd7c7c69c",
+        "name": "Attenborough",
+        "sample": "https://tts.monster/static/sounds/wavs/narrator.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "7e0ee786-b660-47ce-8de7-02fd49698efc",
+        "name": "Patrick",
+        "sample": "https://tts.monster/static/sounds/wavs/patrick.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "8153e703-4cfb-4716-8a92-ba19cc7f0228",
+        "name": "Plankton",
+        "sample": "https://tts.monster/static/sounds/wavs/plankton.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "8312e7dd-cb15-4d9f-9d51-035209413b7a",
+        "name": "Moist Cr1TiKaL",
+        "sample": "https://tts.monster/static/sounds/wavs/moist.wav",
+        "metadata": "EN-US|Male"
+      },
+      {
+        "voice_id": "1927628e-e55b-4d30-b6fe-85aaa7654f12",
+        "name": "Xi Jinping",
+        "sample": "https://tts.monster/static/sounds/wavs/xijinping.wav",
+        "metadata": "ZH-CN|Male"
+      },
+      {
+        "voice_id": "1364bd06-f252-433e-9eac-f9a9a964a77b",
+        "name": "Megan",
+        "sample": "https://tts.monster/static/sounds/wavs/megan.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "237ba3de-73e0-4000-bd9a-f08c51ac5ef6",
+        "name": "WatchMojo",
+        "sample": "https://tts.monster/static/sounds/wavs/watchmojo.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "32a369aa-5485-4039-beb6-4c757e93a197",
+        "name": "Zero Two",
+        "sample": "https://tts.monster/static/sounds/wavs/zerotwo.wav",
+        "metadata": "JA|Female"
+      },
+      {
+        "voice_id": "4a995df1-5462-444c-a070-90c1d75884f6",
+        "name": "Putin",
+        "sample": "https://tts.monster/static/sounds/wavs/putin.wav",
+        "metadata": "RU|Male"
+      },
+      {
+        "voice_id": "604168da-f156-450b-8794-e89175abdcd4",
+        "name": "Sagiri",
+        "sample": "https://tts.monster/static/sounds/wavs/sagiri.wav",
+        "metadata": "EN-US|Female"
+      },
+      {
+        "voice_id": "7133bf30-43f0-4806-8706-c8b815c211f6",
+        "name": "Weeb",
+        "sample": "https://tts.monster/static/sounds/wavs/weeb.wav",
+        "metadata": "EN-US|Female"
+      }
+    ]

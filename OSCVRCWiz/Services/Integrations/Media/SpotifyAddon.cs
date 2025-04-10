@@ -284,6 +284,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
                             {
                                 OutputText.outputTextFile(theString, @"Output\TextOutput\OBSText.txt");
+                                OutputText.outputTextFile(theString, @"Output\TextOutput\MediaIntegration.txt");
                             }
                         }
 
@@ -574,6 +575,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
             if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonOBSText.Checked == true && VoiceWizardWindow.MainFormGlobal.rjToggleButtonMedia4OBS.Checked == true)
             {
                 OutputText.outputTextFile(text, @"Output\TextOutput\OBSText.txt");
+                OutputText.outputTextFile(text, @"Output\TextOutput\MediaIntegration.txt");
             }
             WindowsMedia.previousTitle = WindowsMedia.mediaTitle;
 
@@ -595,7 +597,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
             Debug.WriteLine("Connect spotify");
 
-            _server = new EmbedIOAuthServer(new Uri("http://localhost:5000/callback"), 5000);
+            _server = new EmbedIOAuthServer(new Uri("http://127.0.0.1:5000/callback"), 5000);
             await _server.Start();
 
 
@@ -628,13 +630,13 @@ namespace OSCVRCWiz.Services.Integrations.Media
 
         }
 
-        // This method should be called from your web-server when the user visits "http://localhost:5000/callback"
+        // This method should be called from your web-server when the user visits "http://127.0.0.1:5000/callback"
         public static async Task GetCallback(object sender, AuthorizationCodeResponse response) //this function gets and saves the 
         {
             Debug.WriteLine("Getcallback code: " + response.Code.ToString());
 
             string clientId = legacyState ? clientIdLegacy : Settings1.Default.SpotifyKey;
-            var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://localhost:5000/callback"), globalVerifier));
+            var initialResponse = await new OAuthClient().RequestToken(new PKCETokenRequest(clientId, response.Code, new Uri("http://127.0.0.1:5000/callback"), globalVerifier));
             Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
             Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
             Settings1.Default.Save();
