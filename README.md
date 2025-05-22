@@ -63,7 +63,7 @@ Use TTS Voice Wizard's accessibility features to improve your VRChat experience 
 
 ## GETTING STARTED
 Download TTS Voice Wizard<br />
-<a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.7.5/TTSVoiceWizard-v1.7.5-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
+<a href="https://github.com/VRCWizard/TTS-Voice-Wizard/releases/download/v1.7.6/TTSVoiceWizard-v1.7.6-x64.zip"><img src="https://custom-icon-badges.demolab.com/badge/-Download-F25278?style=for-the-badge&logo=download&logoColor=white"></a> <br />
 -  ### **Please read the [Quickstart Guide](https://ttsvoicewizard.com/docs/getting-started/gettingStarted)** or watch the [Tutorial Video](https://youtu.be/Q4kaXcA74Bo) for instructions on how to set up the basic features of TTS Voice Wizard. 
 
 
