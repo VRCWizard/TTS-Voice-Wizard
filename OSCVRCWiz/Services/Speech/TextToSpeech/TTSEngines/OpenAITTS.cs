@@ -23,7 +23,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 InputBody input = new InputBody();
                 input.input = TTSMessageQueued.text;
                 input.voice = TTSMessageQueued.Voice;
-                input.model = "tts-1";
+                input.model = "gpt-4o-mini-tts";
 
 
                 var httpRequestMessage = new HttpRequestMessage
@@ -99,10 +99,11 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             voices.Items.Add("onyx");
             voices.Items.Add("nova");
             voices.Items.Add("shimmer");
-            //voices.Items.Add("ash");
-            //voices.Items.Add("ballad");
-            //voices.Items.Add("coral");
-            //voices.Items.Add("sage");
+            //new voices
+            voices.Items.Add("ash");
+           // voices.Items.Add("ballad"); //not producing audio
+            voices.Items.Add("coral");
+            voices.Items.Add("sage");
             //voices.Items.Add("verse");
             voices.SelectedIndex = 0;
          
