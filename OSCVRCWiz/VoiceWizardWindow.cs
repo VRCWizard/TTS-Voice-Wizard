@@ -2077,6 +2077,9 @@ namespace OSCVRCWiz
             SpotifyAddon.SpotifyConnect();
 
             VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Green;
+            OutputText.outputLog("[IMPORTANT]", Color.Red);
+            OutputText.outputLog("IMPORTANT: As of v1.7.5 the redirect URI for Spotify API Mode has been changed. You will need to update your app from the Spotify Dashboard. The new redirect URI is http://127.0.0.1:5000/callback (notice that localhost is now replaced with 127.0.0.1). If you have any questions join the Discord server!", Color.DarkOrange);
+            OutputText.outputLog("[IMPORTANT]", Color.Red);
 
 
         }

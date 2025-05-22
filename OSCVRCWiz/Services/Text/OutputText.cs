@@ -783,6 +783,7 @@ namespace OSCVRCWiz.Services.Text
             {
                 OutputText.outputTextFile("", @"Output\TextOutput\OBSText.txt");
                 OutputText.outputTextFile("", @"Output\TextOutput\OBSTextTranslated.txt");
+                OutputText.outputTextFile("", @"Output\TextOutput\TranscriptionOnly.txt");
             }
 
             System.Diagnostics.Debug.WriteLine("****-------*****--------Tick");
@@ -869,6 +870,7 @@ namespace OSCVRCWiz.Services.Text
                     // System.IO.File.WriteAllTextAsync(@"TextOut\OBSText.txt", String.Empty);
                     OutputText.outputTextFile(String.Empty, @"Output\TextOutput\OBSText.txt");
                     OutputText.outputTextFile(String.Empty, @"Output\TextOutput\OBSTextTranslated.txt");
+                    OutputText.outputTextFile(String.Empty, @"Output\TextOutput\TranscriptionOnly.txt");
                 }
             }
             catch (Exception ex)
