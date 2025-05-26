@@ -261,14 +261,14 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             //Playing
 
                             VoiceWizardWindow.MainFormGlobal.labelMediaPaused.ForeColor = Color.Green;
-                            OutputText.outputLog("Debug Song playing");
+                            //OutputText.outputLog("Debug Song playing");
                             playbackStartTime = DateTime.Now - lastKnownProgress;
                         }
                         else
                         {
                             //Paused
                             VoiceWizardWindow.MainFormGlobal.labelMediaPaused.ForeColor = Color.White;
-                            OutputText.outputLog("Debug Song Paused");
+                            //OutputText.outputLog("Debug Song Paused");
                             lastKnownProgress = getMediaProgress();
                             playbackStartTime = null;
                         }
@@ -345,7 +345,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                         Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                     }
 
-                    OutputText.outputLog("New song, refreshing estimates");
+                  //  OutputText.outputLog("New song, refreshing estimates");
                     lastKnownProgress = TimeSpan.Zero;
                     playbackStartTime = DateTime.Now;
                 }
