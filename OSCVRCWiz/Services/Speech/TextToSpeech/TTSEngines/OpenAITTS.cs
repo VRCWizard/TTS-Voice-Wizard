@@ -41,6 +41,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 var response = await client.SendAsync(httpRequestMessage);
                 var byteArray = await response.Content.ReadAsByteArrayAsync();
 
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    OutputText.outputLog("[" + response.StatusCode + "]", Color.Red);
+                    OutputText.outputLog("[" + response.Headers + "]", Color.Red);
+                }
+
                 MemoryStream memoryStream = new MemoryStream(byteArray);
                 AudioDevices.PlayAudioStream(memoryStream, TTSMessageQueued, ct, true, AudioFormat.Mp3);
 
