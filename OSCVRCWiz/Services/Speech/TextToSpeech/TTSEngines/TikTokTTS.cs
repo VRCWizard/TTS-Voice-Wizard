@@ -110,7 +110,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
         {
             var audioInBase64 = "";
-            var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
+            // var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
+            var url = "https://tiktok-tts.printmechanicalbeltpumpkingutter.workers.dev/api/generation";
             var apiVoice = GetTikTokVoice(voice);
             var input = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
             var content = new StringContent(input, Encoding.UTF8, "application/json");
@@ -137,7 +138,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                     string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     JObject responseObject = JObject.Parse(responseContent);
-                    audioInBase64 = responseObject["data"].ToString();
+                   // audioInBase64 = responseObject["data"].ToString();//weilnet
+                    audioInBase64 = responseObject["audio"].ToString();//printmechanicalbeltpumpkingutter
                 }
             }
             return Convert.FromBase64String(audioInBase64);
