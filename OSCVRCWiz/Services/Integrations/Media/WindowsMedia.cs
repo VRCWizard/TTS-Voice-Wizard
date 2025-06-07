@@ -31,8 +31,11 @@ namespace OSCVRCWiz.Services.Integrations.Media
         static List<string> approvedMediaSourceList = new List<string>();
         private static MediaSession getSession = null;
 
-      //  static TimeSpan newProgress = TimeSpan.FromMinutes(0);
-       // static TimeSpan newDuration = TimeSpan.FromMinutes(0);
+        private static DateTime? playbackStartTime = null;
+        private static TimeSpan lastKnownProgress = TimeSpan.Zero;
+
+        //  static TimeSpan newProgress = TimeSpan.FromMinutes(0);
+        // static TimeSpan newDuration = TimeSpan.FromMinutes(0);
 
         public static async Task getWindowsMedia()
         {
@@ -65,45 +68,81 @@ namespace OSCVRCWiz.Services.Integrations.Media
         //if time "" then there is no session
         // if time 00:00/00:00 could not get time
         //if time -/- then there was an error
-      /*  private static void MediaManager_OnAnyTimelinePropertyChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionTimelineProperties args)
+        /*  private static void MediaManager_OnAnyTimelinePropertyChanged(MediaManager.MediaSession sender, GlobalSystemMediaTransportControlsSessionTimelineProperties args)
+          {
+             // OutputText.outputLog($"{sender.Id} timeline is now {args.Position}/{args.EndTime}");
+              if (sender.Id == mediaSource)
+              {
+                  newProgress = args.Position;
+                  newDuration = args.EndTime;
+              }
+          }
+          private static void MediaManager_OnFocusedSessionChanged(MediaManager.MediaSession mediaSession)
+          {
+             // OutputText.outputLog("== Session Focus Changed: " + mediaSession?.ControlSession?.SourceAppUserModelId);
+          }*/
+
+        /*public static TimeSpan getMediaProgress()
         {
-           // OutputText.outputLog($"{sender.Id} timeline is now {args.Position}/{args.EndTime}");
-            if (sender.Id == mediaSource)
+            TimeSpan time = TimeSpan.FromMinutes(0);
+            try
             {
-                newProgress = args.Position;
-                newDuration = args.EndTime;
+
+                if (getSession != null)
+                {
+                    if (getSession.ControlSession != null)
+                    {
+
+
+                       time = getSession.ControlSession.GetTimelineProperties().Position;
+
+                   }
+                }
+                return time;
             }
-        }
-        private static void MediaManager_OnFocusedSessionChanged(MediaManager.MediaSession mediaSession)
-        {
-           // OutputText.outputLog("== Session Focus Changed: " + mediaSession?.ControlSession?.SourceAppUserModelId);
+            catch (Exception ex)
+            {
+                OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
+            }
+            return time;
         }*/
+        public static TimeSpan getMediaProgress()
+        {
+            try
+            {
+                if (getSession != null && getSession.ControlSession != null)
+                {
+                    var currentPosition = getSession.ControlSession.GetTimelineProperties().Position;
+                    if (currentPosition > TimeSpan.Zero)
+                    {
+                        lastKnownProgress = currentPosition;
+                       // if (mediaStatus == "Playing")
+                          //  playbackStartTime = DateTime.Now - currentPosition;
 
-         public static TimeSpan getMediaProgress()
-         {
-             TimeSpan time = TimeSpan.FromMinutes(0);
-             try
-             {
-
-                 if (getSession != null)
-                 {
-                     if (getSession.ControlSession != null)
-                     {
-
-
-                        time = getSession.ControlSession.GetTimelineProperties().Position;
-
+                       // return currentPosition;
                     }
-                 }
-                 return time;
-             }
-             catch (Exception ex)
-             {
-                 OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
-             }
-             return time;
-         }
-         public static TimeSpan getMediaDuration()
+                }
+            }
+            catch (Exception ex)
+            {
+                OutputText.outputLog("Progress Exception: " + ex.Message, Color.Red);
+            }
+
+            if (mediaStatus == "Paused")
+            {
+                return lastKnownProgress;
+            }
+
+            if (playbackStartTime.HasValue)
+            {
+                TimeSpan estimated = DateTime.Now - playbackStartTime.Value;
+                var duration = getMediaDuration();
+                return estimated < duration ? estimated : duration;
+            }
+
+            return lastKnownProgress;
+        }
+        public static TimeSpan getMediaDuration()
          {
              TimeSpan time = TimeSpan.FromMinutes(0);
              try
@@ -219,11 +258,19 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     {
                         if(mediaStatus =="Playing")
                         {
+                            //Playing
+
                             VoiceWizardWindow.MainFormGlobal.labelMediaPaused.ForeColor = Color.Green;
+                            //OutputText.outputLog("Debug Song playing");
+                            playbackStartTime = DateTime.Now - lastKnownProgress;
                         }
                         else
                         {
+                            //Paused
                             VoiceWizardWindow.MainFormGlobal.labelMediaPaused.ForeColor = Color.White;
+                            //OutputText.outputLog("Debug Song Paused");
+                            lastKnownProgress = getMediaProgress();
+                            playbackStartTime = null;
                         }
                         VoiceWizardWindow.MainFormGlobal.labelMediaPaused.Text = "Media " + mediaStatus;
                     });
@@ -297,6 +344,10 @@ namespace OSCVRCWiz.Services.Integrations.Media
                     {
                         Task.Run(() => SpotifyAddon.windowsMediaGetSongInfo());
                     }
+
+                  //  OutputText.outputLog("New song, refreshing estimates");
+                    lastKnownProgress = TimeSpan.Zero;
+                    playbackStartTime = DateTime.Now;
                 }
 
             }
