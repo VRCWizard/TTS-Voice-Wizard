@@ -2,7 +2,6 @@
 using OSCVRCWiz.Services.Text;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -173,7 +172,7 @@ namespace OSCVRCWiz.Services.Integrations
 
         public static string DoEmojiReplacement(string text)
         {
-            VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+            VoiceWizardWindow.MainFormGlobal.Invoke((System.Windows.Forms.MethodInvoker)delegate ()
             {
                 int index = 0;
                 foreach (var phrase in ReplacePhraseList)

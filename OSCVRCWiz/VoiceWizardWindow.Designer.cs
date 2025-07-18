@@ -134,6 +134,7 @@
             tabSpotify = new TabPage();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             groupBox5 = new GroupBox();
+            button43 = new Button();
             button9 = new Button();
             button21 = new Button();
             button22 = new Button();
@@ -614,6 +615,8 @@
             textBoxLocalHostPort = new TextBox();
             label247 = new Label();
             groupBox47 = new GroupBox();
+            label253 = new Label();
+            rjToggleButtonTikTokUseSession = new OSCVRCWiz.RJControls.RJToggleButton();
             iconButton7 = new FontAwesome.Sharp.IconButton();
             textBoxTikTokURL = new TextBox();
             label252 = new Label();
@@ -809,8 +812,6 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            label253 = new Label();
-            rjToggleButtonTikTokUseSession = new OSCVRCWiz.RJControls.RJToggleButton();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -1555,7 +1556,6 @@
             iconButton37.Name = "iconButton37";
             iconButton37.Size = new Size(39, 25);
             iconButton37.TabIndex = 105;
-            iconButton37.Text = "🗛";
             iconButton37.TextAlign = ContentAlignment.MiddleLeft;
             iconButton37.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton37.UseVisualStyleBackColor = false;
@@ -1577,7 +1577,6 @@
             iconButton36.Name = "iconButton36";
             iconButton36.Size = new Size(38, 26);
             iconButton36.TabIndex = 104;
-            iconButton36.Text = "🗚";
             iconButton36.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton36.UseVisualStyleBackColor = false;
             iconButton36.Click += (this.iconButton36_Click);
@@ -1807,7 +1806,7 @@
             labelSpeedNum.ForeColor = Color.Snow;
             labelSpeedNum.Location = new Point(236, 223);
             labelSpeedNum.Name = "labelSpeedNum";
-            labelSpeedNum.Size = new Size(34, 15);
+            labelSpeedNum.Size = new Size(33, 15);
             labelSpeedNum.TabIndex = 109;
             labelSpeedNum.Text = "x1.00";
             // 
@@ -1848,7 +1847,7 @@
             labelPitchNum.ForeColor = Color.Snow;
             labelPitchNum.Location = new Point(236, 171);
             labelPitchNum.Name = "labelPitchNum";
-            labelPitchNum.Size = new Size(34, 15);
+            labelPitchNum.Size = new Size(33, 15);
             labelPitchNum.TabIndex = 108;
             labelPitchNum.Text = "x1.00";
             // 
@@ -1860,7 +1859,7 @@
             label3.ForeColor = Color.Snow;
             label3.Location = new Point(18, 394);
             label3.Name = "label3";
-            label3.Size = new Size(119, 15);
+            label3.Size = new Size(120, 15);
             label3.TabIndex = 26;
             label3.Text = "Translation Language";
             // 
@@ -2002,7 +2001,7 @@
             button50.Name = "button50";
             button50.Size = new Size(16, 583);
             button50.TabIndex = 111;
-            button50.Text = "🢂🢂🢂";
+            button50.Text = ">>>";
             button50.TextAlign = ContentAlignment.TopCenter;
             button50.UseVisualStyleBackColor = true;
             button50.Click += (this.button50_Click);
@@ -2040,7 +2039,7 @@
             label110.ForeColor = Color.Snow;
             label110.Location = new Point(18, 29);
             label110.Name = "label110";
-            label110.Size = new Size(302, 15);
+            label110.Size = new Size(303, 15);
             label110.TabIndex = 99;
             label110.Text = "Type directly into the VRChat Chatbox or KAT from here!\r\n";
             // 
@@ -2547,6 +2546,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(button43);
             groupBox5.Controls.Add(button9);
             groupBox5.Controls.Add(button21);
             groupBox5.Controls.Add(button22);
@@ -2587,18 +2587,34 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "General Media Settings";
             // 
+            // button43
+            // 
+            button43.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
+            button43.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
+            button43.FlatStyle = FlatStyle.Flat;
+            button43.ForeColor = Color.Snow;
+            button43.Location = new Point(649, 103);
+            button43.Margin = new Padding(3, 2, 3, 2);
+            button43.Name = "button43";
+            button43.Size = new Size(82, 25);
+            button43.TabIndex = 162;
+            button43.Text = "Time";
+            toolTip1.SetToolTip(button43, "Used to output your heartrate. Check out the heartrate integration for further instructions.");
+            button43.UseVisualStyleBackColor = false;
+            button43.Click += (this.button43_Click_2);
+            // 
             // button9
             // 
             button9.Anchor = (AnchorStyles)(AnchorStyles.Top) | (AnchorStyles.Right);
             button9.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button9.FlatStyle = FlatStyle.Flat;
             button9.ForeColor = Color.Snow;
-            button9.Location = new Point(664, 74);
+            button9.Location = new Point(536, 74);
             button9.Margin = new Padding(3, 2, 3, 2);
             button9.Name = "button9";
-            button9.Size = new Size(25, 25);
+            button9.Size = new Size(88, 25);
             button9.TabIndex = 161;
-            button9.Text = "⌛️";
+            button9.Text = "Progress Bar";
             toolTip1.SetToolTip(button9, resources.GetString("button9.ToolTip"));
             button9.UseVisualStyleBackColor = false;
             button9.Click += (this.button9_Click);
@@ -2609,12 +2625,12 @@
             button21.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             button21.FlatStyle = FlatStyle.Flat;
             button21.ForeColor = Color.Snow;
-            button21.Location = new Point(695, 74);
+            button21.Location = new Point(633, 74);
             button21.Margin = new Padding(3, 2, 3, 2);
             button21.Name = "button21";
-            button21.Size = new Size(25, 25);
+            button21.Size = new Size(87, 25);
             button21.TabIndex = 160;
-            button21.Text = "↕️";
+            button21.Text = "New Line";
             toolTip1.SetToolTip(button21, "Variable used to create a newline in the chatbox.");
             button21.UseVisualStyleBackColor = false;
             button21.Click += (this.button21_Click);
@@ -2786,12 +2802,12 @@
             volumeStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             volumeStats.FlatStyle = FlatStyle.Flat;
             volumeStats.ForeColor = Color.Snow;
-            volumeStats.Location = new Point(601, 106);
+            volumeStats.Location = new Point(277, 104);
             volumeStats.Margin = new Padding(3, 2, 3, 2);
             volumeStats.Name = "volumeStats";
-            volumeStats.Size = new Size(25, 25);
+            volumeStats.Size = new Size(148, 25);
             volumeStats.TabIndex = 140;
-            volumeStats.Text = "🔊";
+            volumeStats.Text = "Volume (Spotify Only)";
             toolTip1.SetToolTip(volumeStats, "The current volume percent of your music (Spotify only).");
             volumeStats.UseVisualStyleBackColor = false;
             volumeStats.Click += (this.button14_Click);
@@ -2910,7 +2926,7 @@
             label136.ForeColor = Color.Snow;
             label136.Location = new Point(60, 43);
             label136.Name = "label136";
-            label136.Size = new Size(173, 15);
+            label136.Size = new Size(174, 15);
             label136.TabIndex = 120;
             label136.Text = "Disable TTS Output for Chatbox";
             // 
@@ -2937,7 +2953,7 @@
             label134.ForeColor = Color.Snow;
             label134.Location = new Point(60, 86);
             label134.Name = "label134";
-            label134.Size = new Size(192, 15);
+            label134.Size = new Size(191, 15);
             label134.TabIndex = 117;
             label134.Text = "Disable Spotify Output for Chatbox";
             // 
@@ -2964,7 +2980,7 @@
             label133.ForeColor = Color.Snow;
             label133.Location = new Point(60, 65);
             label133.Name = "label133";
-            label133.Size = new Size(167, 15);
+            label133.Size = new Size(168, 15);
             label133.TabIndex = 115;
             label133.Text = "Disable Spotify Output for KAT";
             // 
@@ -2991,7 +3007,7 @@
             label132.ForeColor = Color.Snow;
             label132.Location = new Point(60, 20);
             label132.Name = "label132";
-            label132.Size = new Size(148, 15);
+            label132.Size = new Size(151, 15);
             label132.TabIndex = 113;
             label132.Text = "Disable TTS Output for KAT";
             // 
@@ -3017,12 +3033,12 @@
             heartRateStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             heartRateStats.FlatStyle = FlatStyle.Flat;
             heartRateStats.ForeColor = Color.Snow;
-            heartRateStats.Location = new Point(664, 106);
+            heartRateStats.Location = new Point(559, 103);
             heartRateStats.Margin = new Padding(3, 2, 3, 2);
             heartRateStats.Name = "heartRateStats";
-            heartRateStats.Size = new Size(25, 25);
+            heartRateStats.Size = new Size(82, 25);
             heartRateStats.TabIndex = 136;
-            heartRateStats.Text = "💓";
+            heartRateStats.Text = "Heartrate";
             toolTip1.SetToolTip(heartRateStats, "Used to output your heartrate. Check out the heartrate integration for further instructions.");
             heartRateStats.UseVisualStyleBackColor = false;
             heartRateStats.Click += (this.button22_Click);
@@ -3033,12 +3049,12 @@
             batteryStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             batteryStats.FlatStyle = FlatStyle.Flat;
             batteryStats.ForeColor = Color.Snow;
-            batteryStats.Location = new Point(633, 106);
+            batteryStats.Location = new Point(431, 104);
             batteryStats.Margin = new Padding(3, 2, 3, 2);
             batteryStats.Name = "batteryStats";
-            batteryStats.Size = new Size(25, 25);
+            batteryStats.Size = new Size(122, 25);
             batteryStats.TabIndex = 135;
-            batteryStats.Text = "🔋";
+            batteryStats.Text = "Tracker Battery";
             toolTip1.SetToolTip(batteryStats, "Variables for the average battery life of your SteamVR Controllers and Trackers. Must be used in conjuction with XSOverlay, check TTSVoiceWizard.com for further instructions.");
             batteryStats.UseVisualStyleBackColor = false;
             batteryStats.Click += (this.button23_Click_1);
@@ -3049,12 +3065,12 @@
             durationStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             durationStats.FlatStyle = FlatStyle.Flat;
             durationStats.ForeColor = Color.Snow;
-            durationStats.Location = new Point(633, 74);
+            durationStats.Location = new Point(405, 74);
             durationStats.Margin = new Padding(3, 2, 3, 2);
             durationStats.Name = "durationStats";
-            durationStats.Size = new Size(25, 25);
+            durationStats.Size = new Size(125, 25);
             durationStats.TabIndex = 134;
-            durationStats.Text = "⏰";
+            durationStats.Text = "Song Progress";
             toolTip1.SetToolTip(durationStats, "Variables for progress and duration of the current playing song.");
             durationStats.UseVisualStyleBackColor = false;
             durationStats.Click += (this.button21_Click_1);
@@ -3065,12 +3081,12 @@
             songStats.BackColor = Color.FromArgb((int)(byte)31, (int)(byte)30, (int)(byte)68);
             songStats.FlatStyle = FlatStyle.Flat;
             songStats.ForeColor = Color.Snow;
-            songStats.Location = new Point(601, 74);
+            songStats.Location = new Point(290, 74);
             songStats.Margin = new Padding(3, 2, 3, 2);
             songStats.Name = "songStats";
-            songStats.Size = new Size(25, 25);
+            songStats.Size = new Size(109, 25);
             songStats.TabIndex = 133;
-            songStats.Text = "♫";
+            songStats.Text = "Title / Artist";
             toolTip1.SetToolTip(songStats, "Variable for basic song info, including the playing status, song name, and artist.");
             songStats.UseVisualStyleBackColor = false;
             songStats.Click += (this.button20_Click_1);
@@ -3537,7 +3553,7 @@
             label195.ForeColor = Color.Cyan;
             label195.Location = new Point(219, 16);
             label195.Name = "label195";
-            label195.Size = new Size(147, 15);
+            label195.Size = new Size(149, 15);
             label195.TabIndex = 161;
             label195.Text = "TTS Voice Wizard Web App";
             label195.Click += (this.label195_Click);
@@ -3702,7 +3718,7 @@
             label192.ForeColor = Color.Cyan;
             label192.Location = new Point(194, 15);
             label192.Name = "label192";
-            label192.Size = new Size(176, 15);
+            label192.Size = new Size(177, 15);
             label192.TabIndex = 161;
             label192.Text = "Get Pulsoid Authorization Token";
             label192.Click += (this.label192_Click);
@@ -3772,7 +3788,7 @@
             labelHeartIntervalTooFast.ForeColor = Color.Red;
             labelHeartIntervalTooFast.Location = new Point(23, 193);
             labelHeartIntervalTooFast.Name = "labelHeartIntervalTooFast";
-            labelHeartIntervalTooFast.Size = new Size(202, 15);
+            labelHeartIntervalTooFast.Size = new Size(201, 15);
             labelHeartIntervalTooFast.TabIndex = 130;
             labelHeartIntervalTooFast.Text = "too fast to output directly to chatbox";
             labelHeartIntervalTooFast.Visible = false;
@@ -3815,7 +3831,7 @@
             label194.ForeColor = Color.Snow;
             label194.Location = new Point(20, 31);
             label194.Name = "label194";
-            label194.Size = new Size(113, 15);
+            label194.Size = new Size(114, 15);
             label194.TabIndex = 126;
             label194.Text = "Authorization Token";
             // 
@@ -4428,7 +4444,7 @@
             label233.ForeColor = Color.Snow;
             label233.Location = new Point(55, 102);
             label233.Name = "label233";
-            label233.Size = new Size(92, 15);
+            label233.Size = new Size(93, 15);
             label233.TabIndex = 111;
             label233.Text = "Typing Indicator";
             // 
@@ -4523,7 +4539,7 @@
             label32.ForeColor = Color.Snow;
             label32.Location = new Point(55, 20);
             label32.Name = "label32";
-            label32.Size = new Size(212, 15);
+            label32.Size = new Size(211, 15);
             label32.TabIndex = 90;
             label32.Text = "Send Text to VRChat with VRC Chatbox";
             // 
@@ -4659,7 +4675,7 @@
             label175.ForeColor = Color.Snow;
             label175.Location = new Point(60, 61);
             label175.Name = "label175";
-            label175.Size = new Size(173, 15);
+            label175.Size = new Size(175, 15);
             label175.TabIndex = 156;
             label175.Text = "Save TTS Messages to Wave File";
             // 
@@ -4941,7 +4957,7 @@
             label189.ForeColor = Color.Snow;
             label189.Location = new Point(10, 131);
             label189.Name = "label189";
-            label189.Size = new Size(216, 15);
+            label189.Size = new Size(217, 15);
             label189.TabIndex = 112;
             label189.Text = "KAT Line Length (prevents word cut off)";
             // 
@@ -4961,7 +4977,7 @@
             label63.ForeColor = Color.Snow;
             label63.Location = new Point(58, 46);
             label63.Name = "label63";
-            label63.Size = new Size(94, 15);
+            label63.Size = new Size(95, 15);
             label63.TabIndex = 109;
             label63.Text = "Auto Replay KAT";
             // 
@@ -5020,7 +5036,7 @@
             label15.ForeColor = Color.Snow;
             label15.Location = new Point(7, 78);
             label15.Name = "label15";
-            label15.Size = new Size(117, 15);
+            label15.Size = new Size(118, 15);
             label15.TabIndex = 66;
             label15.Text = "KAT Sync Parameters";
             // 
@@ -5031,7 +5047,7 @@
             label23.ForeColor = Color.Snow;
             label23.Location = new Point(57, 20);
             label23.Name = "label23";
-            label23.Size = new Size(162, 15);
+            label23.Size = new Size(163, 15);
             label23.TabIndex = 52;
             label23.Text = "Send Text to VRChat with KAT";
             // 
@@ -5680,7 +5696,7 @@
             label187.ForeColor = Color.Snow;
             label187.Location = new Point(53, 164);
             label187.Name = "label187";
-            label187.Size = new Size(171, 15);
+            label187.Size = new Size(173, 15);
             label187.TabIndex = 160;
             label187.Text = "Auto Send TTS (for copy/paste)";
             toolTip1.SetToolTip(label187, "Automatically sends a TTS Message when the Text to Speech text field is changed. Primary for use in quickly copy and pasting text.");
@@ -5762,7 +5778,7 @@
             label158.ForeColor = Color.Snow;
             label158.Location = new Point(496, 373);
             label158.Name = "label158";
-            label158.Size = new Size(188, 15);
+            label158.Size = new Size(189, 15);
             label158.TabIndex = 154;
             label158.Text = "Quick Type: Refocus game on Play";
             // 
@@ -5877,7 +5893,7 @@
             label157.ForeColor = Color.Snow;
             label157.Location = new Point(496, 314);
             label157.Name = "label157";
-            label157.Size = new Size(113, 15);
+            label157.Size = new Size(114, 15);
             label157.TabIndex = 146;
             label157.Text = "Quick Type Shortcut";
             // 
@@ -5888,7 +5904,7 @@
             label154.ForeColor = Color.Snow;
             label154.Location = new Point(53, 436);
             label154.Name = "label154";
-            label154.Size = new Size(194, 15);
+            label154.Size = new Size(195, 15);
             label154.TabIndex = 144;
             label154.Text = "Queue System: Use With Typed Text";
             toolTip1.SetToolTip(label154, "Use the Queue System for typed messages.");
@@ -5917,7 +5933,7 @@
             label150.ForeColor = Color.Snow;
             label150.Location = new Point(11, 378);
             label150.Name = "label150";
-            label150.Size = new Size(214, 15);
+            label150.Size = new Size(216, 15);
             label150.TabIndex = 143;
             label150.Text = "Queue System: Delay After No TTS (ms)";
             toolTip1.SetToolTip(label150, "Set the amount of time to wait for moving to the next message for \"No TTS\" Messages.");
@@ -5929,7 +5945,7 @@
             label151.ForeColor = Color.Snow;
             label151.Location = new Point(11, 333);
             label151.Name = "label151";
-            label151.Size = new Size(261, 15);
+            label151.Size = new Size(260, 15);
             label151.TabIndex = 142;
             label151.Text = "Queue System: Delay Before Next in Queue (ms)";
             toolTip1.SetToolTip(label151, "Add a delay before playing new TTS Messages");
@@ -6009,7 +6025,7 @@
             label28.ForeColor = Color.Snow;
             label28.Location = new Point(53, 286);
             label28.Name = "label28";
-            label28.Size = new Size(211, 15);
+            label28.Size = new Size(215, 15);
             label28.TabIndex = 132;
             label28.Text = "Stop Currently Playing TTS on New TTS";
             toolTip1.SetToolTip(label28, "Upon playing a new TTS Message the currently playing message will be stopped.");
@@ -6125,7 +6141,7 @@
             label124.ForeColor = Color.Snow;
             label124.Location = new Point(496, 109);
             label124.Name = "label124";
-            label124.Size = new Size(100, 15);
+            label124.Size = new Size(102, 15);
             label124.TabIndex = 125;
             label124.Text = "Stop TTS Shortcut";
             // 
@@ -6269,7 +6285,7 @@
             label104.ForeColor = Color.Snow;
             label104.Location = new Point(53, 223);
             label104.Name = "label104";
-            label104.Size = new Size(179, 15);
+            label104.Size = new Size(180, 15);
             label104.TabIndex = 98;
             label104.Text = "Allow Minimizing to System Tray";
             toolTip1.SetToolTip(label104, "The minimize button now sends TTS Voice Wizard to the system tray. TTS Voice Wizard will minimize to system tray on launch. Double click the icon in system try to bring the app back to the foreground.");
@@ -6344,7 +6360,7 @@
             label25.ForeColor = Color.Snow;
             label25.Location = new Point(53, 51);
             label25.Name = "label25";
-            label25.Size = new Size(83, 15);
+            label25.Size = new Size(84, 15);
             label25.TabIndex = 56;
             label25.Text = "Always on Top";
             toolTip1.SetToolTip(label25, "TTS Voice Wizard will appear on top of other applications.");
@@ -6356,7 +6372,7 @@
             label21.ForeColor = Color.Snow;
             label21.Location = new Point(53, 108);
             label21.Name = "label21";
-            label21.Size = new Size(135, 15);
+            label21.Size = new Size(136, 15);
             label21.TabIndex = 50;
             label21.Text = "Output Transcript in Log";
             toolTip1.SetToolTip(label21, "Whether most text outputs appear in the app log.");
@@ -6445,7 +6461,7 @@
             label22.ForeColor = Color.Snow;
             label22.Location = new Point(53, 137);
             label22.Name = "label22";
-            label22.Size = new Size(159, 15);
+            label22.Size = new Size(160, 15);
             label22.TabIndex = 54;
             label22.Text = "Auto Clear TTS Text Box Field";
             toolTip1.SetToolTip(label22, "Clears the Text to Speech text field after clicking the Play button.");
@@ -6458,7 +6474,7 @@
             label11.ForeColor = Color.Snow;
             label11.Location = new Point(496, 51);
             label11.Name = "label11";
-            label11.Size = new Size(85, 15);
+            label11.Size = new Size(88, 15);
             label11.TabIndex = 27;
             label11.Text = "STTTS Shortcut";
             // 
@@ -6536,7 +6552,7 @@
             label236.ForeColor = Color.Snow;
             label236.Location = new Point(58, 423);
             label236.Name = "label236";
-            label236.Size = new Size(172, 15);
+            label236.Size = new Size(171, 15);
             label236.TabIndex = 170;
             label236.Text = "Dictation / Explicit Punctuation";
             // 
@@ -6564,7 +6580,7 @@
             label235.ForeColor = Color.Snow;
             label235.Location = new Point(57, 360);
             label235.Name = "label235";
-            label235.Size = new Size(184, 15);
+            label235.Size = new Size(185, 15);
             label235.TabIndex = 168;
             label235.Text = "Disable Speech to Text Translation";
             // 
@@ -6642,7 +6658,7 @@
             label193.ForeColor = Color.Snow;
             label193.Location = new Point(57, 332);
             label193.Name = "label193";
-            label193.Size = new Size(198, 15);
+            label193.Size = new Size(199, 15);
             label193.TabIndex = 121;
             label193.Text = "Allow Translation to Same Language";
             // 
@@ -7197,7 +7213,7 @@
             label141.ForeColor = Color.Snow;
             label141.Location = new Point(496, 26);
             label141.Name = "label141";
-            label141.Size = new Size(58, 15);
+            label141.Size = new Size(59, 15);
             label141.TabIndex = 148;
             label141.Text = "Data Type";
             // 
@@ -7383,7 +7399,7 @@
             label208.ForeColor = Color.Snow;
             label208.Location = new Point(61, 142);
             label208.Name = "label208";
-            label208.Size = new Size(230, 15);
+            label208.Size = new Size(231, 15);
             label208.TabIndex = 112;
             label208.Text = "Custom Translation Text Output (Override)";
             // 
@@ -7411,7 +7427,7 @@
             label16.ForeColor = Color.Snow;
             label16.Location = new Point(61, 52);
             label16.Name = "label16";
-            label16.Size = new Size(152, 15);
+            label16.Size = new Size(153, 15);
             label16.TabIndex = 34;
             label16.Text = "Text in Translated Language";
             // 
@@ -7420,7 +7436,7 @@
             label24.AutoSize = true;
             label24.Location = new Point(14, 25);
             label24.Name = "label24";
-            label24.Size = new Size(453, 15);
+            label24.Size = new Size(452, 15);
             label24.TabIndex = 111;
             label24.Text = "Settings apply to Azure (speech to text only), DeepL, and VoiceWizardPro translations";
             // 
@@ -7432,7 +7448,7 @@
             label118.ForeColor = Color.Snow;
             label118.Location = new Point(60, 84);
             label118.Name = "label118";
-            label118.Size = new Size(180, 15);
+            label118.Size = new Size(183, 15);
             label118.TabIndex = 106;
             label118.Text = "TTS Voice in Translated Language";
             // 
@@ -7663,7 +7679,7 @@
             label54.ForeColor = Color.Snow;
             label54.Location = new Point(5, 125);
             label54.Name = "label54";
-            label54.Size = new Size(78, 15);
+            label54.Size = new Size(79, 15);
             label54.TabIndex = 117;
             label54.Text = "Disable Timer";
             // 
@@ -7804,7 +7820,7 @@
             label62.ForeColor = Color.Snow;
             label62.Location = new Point(55, 23);
             label62.Name = "label62";
-            label62.Size = new Size(355, 15);
+            label62.Size = new Size(359, 15);
             label62.TabIndex = 162;
             label62.Text = "Word Replacements Before TTS (Will Happen After TTS If Disabled)";
             // 
@@ -7984,7 +8000,7 @@
             label65.ForeColor = Color.Snow;
             label65.Location = new Point(7, 27);
             label65.Name = "label65";
-            label65.Size = new Size(133, 15);
+            label65.Size = new Size(134, 15);
             label65.TabIndex = 134;
             label65.Text = "Spoken / Typed Word(s)\r\n";
             // 
@@ -8268,7 +8284,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(236, 9);
+            iconButton47.Location = new Point(202, 9);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9237,7 +9253,7 @@
             label93.ForeColor = Color.Snow;
             label93.Location = new Point(135, 40);
             label93.Name = "label93";
-            label93.Size = new Size(365, 15);
+            label93.Size = new Size(366, 15);
             label93.TabIndex = 124;
             label93.Text = "This feature will allow you to recieve avatar parameters from VRChat";
             // 
@@ -9296,7 +9312,7 @@
             label248.ForeColor = Color.Snow;
             label248.Location = new Point(8, 34);
             label248.Name = "label248";
-            label248.Size = new Size(151, 15);
+            label248.Size = new Size(153, 15);
             label248.TabIndex = 184;
             label248.Text = "Locally Hosted TTS Address";
             // 
@@ -9327,7 +9343,7 @@
             label247.ForeColor = Color.Snow;
             label247.Location = new Point(8, 90);
             label247.Name = "label247";
-            label247.Size = new Size(131, 15);
+            label247.Size = new Size(133, 15);
             label247.TabIndex = 182;
             label247.Text = "Locally Hosted TTS Port";
             // 
@@ -9350,6 +9366,31 @@
             groupBox47.TabIndex = 192;
             groupBox47.TabStop = false;
             groupBox47.Text = "TikTok TTS";
+            // 
+            // label253
+            // 
+            label253.AutoSize = true;
+            label253.ForeColor = Color.Snow;
+            label253.Location = new Point(53, 38);
+            label253.Name = "label253";
+            label253.Size = new Size(135, 15);
+            label253.TabIndex = 190;
+            label253.Text = "Use your own Session ID";
+            // 
+            // rjToggleButtonTikTokUseSession
+            // 
+            rjToggleButtonTikTokUseSession.AutoSize = true;
+            rjToggleButtonTikTokUseSession.Location = new Point(8, 36);
+            rjToggleButtonTikTokUseSession.Margin = new Padding(3, 2, 3, 2);
+            rjToggleButtonTikTokUseSession.MinimumSize = new Size(39, 16);
+            rjToggleButtonTikTokUseSession.Name = "rjToggleButtonTikTokUseSession";
+            rjToggleButtonTikTokUseSession.OffBackColor = Color.Gray;
+            rjToggleButtonTikTokUseSession.OffToggleColor = Color.Gainsboro;
+            rjToggleButtonTikTokUseSession.OnBackColor = Color.MediumSlateBlue;
+            rjToggleButtonTikTokUseSession.OnToggleColor = Color.WhiteSmoke;
+            rjToggleButtonTikTokUseSession.Size = new Size(39, 16);
+            rjToggleButtonTikTokUseSession.TabIndex = 189;
+            rjToggleButtonTikTokUseSession.UseVisualStyleBackColor = true;
             // 
             // iconButton7
             // 
@@ -9399,7 +9440,7 @@
             label251.ForeColor = Color.Cyan;
             label251.Location = new Point(418, 154);
             label251.Name = "label251";
-            label251.Size = new Size(185, 15);
+            label251.Size = new Size(187, 15);
             label251.TabIndex = 185;
             label251.Text = "How to get your TikTok Session ID";
             label251.Click += (this.label251_Click);
@@ -9533,7 +9574,7 @@
             label152.ForeColor = Color.Snow;
             label152.Location = new Point(53, 22);
             label152.Name = "label152";
-            label152.Size = new Size(173, 15);
+            label152.Size = new Size(174, 15);
             label152.TabIndex = 166;
             label152.Text = "Read from text file and play TTS";
             // 
@@ -9836,7 +9877,7 @@
             label41.ForeColor = Color.Snow;
             label41.Location = new Point(116, 226);
             label41.Name = "label41";
-            label41.Size = new Size(95, 15);
+            label41.Size = new Size(94, 15);
             label41.TabIndex = 168;
             label41.Text = "Max Duration (s)";
             // 
@@ -10122,7 +10163,7 @@
             label202.ForeColor = Color.Snow;
             label202.Location = new Point(12, 297);
             label202.Name = "label202";
-            label202.Size = new Size(104, 15);
+            label202.Size = new Size(103, 15);
             label202.TabIndex = 193;
             label202.Text = "Style Exaggeration";
             // 
@@ -10270,7 +10311,7 @@
             comboBoxLabsModelID.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxLabsModelID.FlatStyle = FlatStyle.Flat;
             comboBoxLabsModelID.FormattingEnabled = true;
-            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_flash_v2", "eleven_flash_v2_5" });
+            comboBoxLabsModelID.Items.AddRange(new object[] { "eleven_monolingual_v1", "eleven_multilingual_v1", "eleven_multilingual_v2", "eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_flash_v2", "eleven_flash_v2_5", "eleven_v3" });
             comboBoxLabsModelID.Location = new Point(21, 40);
             comboBoxLabsModelID.Margin = new Padding(3, 2, 3, 2);
             comboBoxLabsModelID.Name = "comboBoxLabsModelID";
@@ -10587,7 +10628,7 @@
             label210.ForeColor = Color.Snow;
             label210.Location = new Point(229, 313);
             label210.Name = "label210";
-            label210.Size = new Size(99, 15);
+            label210.Size = new Size(100, 15);
             label210.TabIndex = 204;
             label210.Text = "Silence Threshold";
             // 
@@ -10617,7 +10658,7 @@
             label182.ForeColor = Color.Snow;
             label182.Location = new Point(661, 79);
             label182.Name = "label182";
-            label182.Size = new Size(44, 15);
+            label182.Size = new Size(45, 15);
             label182.TabIndex = 201;
             label182.Text = "Talking";
             // 
@@ -10677,7 +10718,7 @@
             label180.ForeColor = Color.Snow;
             label180.Location = new Point(18, 84);
             label180.Name = "label180";
-            label180.Size = new Size(162, 15);
+            label180.Size = new Size(161, 15);
             label180.TabIndex = 195;
             label180.Text = "Maximum Audio Duration (s)";
             // 
@@ -10780,7 +10821,7 @@
             label165.ForeColor = Color.Snow;
             label165.Location = new Point(24, 66);
             label165.Name = "label165";
-            label165.Size = new Size(523, 15);
+            label165.Size = new Size(525, 15);
             label165.TabIndex = 159;
             label165.Text = "Gain access to supported voices by becoming a member on the TTS Voice Wizard Patreon or Ko-fi.";
             // 
@@ -10821,7 +10862,7 @@
             labelChatGPTCharacters.AutoSize = true;
             labelChatGPTCharacters.Location = new Point(6, 310);
             labelChatGPTCharacters.Name = "labelChatGPTCharacters";
-            labelChatGPTCharacters.Size = new Size(164, 15);
+            labelChatGPTCharacters.Size = new Size(165, 15);
             labelChatGPTCharacters.TabIndex = 187;
             labelChatGPTCharacters.Text = "ChatGPT Characters Used: 0/0";
             // 
@@ -10832,7 +10873,7 @@
             label230.ForeColor = Color.Snow;
             label230.Location = new Point(81, 207);
             label230.Name = "label230";
-            label230.Size = new Size(178, 15);
+            label230.Size = new Size(179, 15);
             label230.TabIndex = 185;
             label230.Text = "Use Pro API for OpenAI ChatGPT";
             // 
@@ -10860,7 +10901,7 @@
             label229.ForeColor = Color.Snow;
             label229.Location = new Point(80, 178);
             label229.Name = "label229";
-            label229.Size = new Size(150, 15);
+            label229.Size = new Size(152, 15);
             label229.TabIndex = 183;
             label229.Text = "Use Pro API for OpenAI TTS";
             // 
@@ -10932,7 +10973,7 @@
             label168.ForeColor = Color.Snow;
             label168.Location = new Point(81, 235);
             label168.Name = "label168";
-            label168.Size = new Size(109, 15);
+            label168.Size = new Size(110, 15);
             label168.TabIndex = 119;
             label168.Text = "Use for Translations";
             // 
@@ -10956,7 +10997,7 @@
             labelTranslationCharacters.AutoSize = true;
             labelTranslationCharacters.Location = new Point(6, 287);
             labelTranslationCharacters.Name = "labelTranslationCharacters";
-            labelTranslationCharacters.Size = new Size(175, 15);
+            labelTranslationCharacters.Size = new Size(176, 15);
             labelTranslationCharacters.TabIndex = 118;
             labelTranslationCharacters.Text = "Translation Characters Used: 0/0";
             // 
@@ -10965,7 +11006,7 @@
             labelTTSCharacters.AutoSize = true;
             labelTTSCharacters.Location = new Point(6, 265);
             labelTTSCharacters.Name = "labelTTSCharacters";
-            labelTTSCharacters.Size = new Size(136, 15);
+            labelTTSCharacters.Size = new Size(138, 15);
             labelTTSCharacters.TabIndex = 117;
             labelTTSCharacters.Text = "TTS Characters Used: 0/0";
             // 
@@ -11002,7 +11043,7 @@
             label159.ForeColor = Color.Snow;
             label159.Location = new Point(79, 145);
             label159.Name = "label159";
-            label159.Size = new Size(183, 15);
+            label159.Size = new Size(185, 15);
             label159.TabIndex = 111;
             label159.Text = "Use Pro API for Amazon Polly TTS";
             // 
@@ -11040,7 +11081,7 @@
             label161.ForeColor = Color.Snow;
             label161.Location = new Point(79, 114);
             label161.Name = "label161";
-            label161.Size = new Size(140, 15);
+            label161.Size = new Size(142, 15);
             label161.TabIndex = 106;
             label161.Text = "Use Pro API for Azure TTS";
             // 
@@ -11336,7 +11377,7 @@
             label234.ForeColor = Color.Snow;
             label234.Location = new Point(191, 173);
             label234.Name = "label234";
-            label234.Size = new Size(450, 15);
+            label234.Size = new Size(449, 15);
             label234.TabIndex = 165;
             label234.Text = "Chat Context is not currently preserved when using feature with VoiceWizardPro Key";
             // 
@@ -11362,7 +11403,7 @@
             label232.ForeColor = Color.Snow;
             label232.Location = new Point(121, 308);
             label232.Name = "label232";
-            label232.Size = new Size(397, 15);
+            label232.Size = new Size(398, 15);
             label232.TabIndex = 163;
             label232.Text = "If enabled, this message will be sent before each of your ChatGPT requests";
             // 
@@ -11393,7 +11434,7 @@
             label228.ForeColor = Color.Snow;
             label228.Location = new Point(71, 172);
             label228.Name = "label228";
-            label228.Size = new Size(105, 15);
+            label228.Size = new Size(104, 15);
             label228.TabIndex = 134;
             label228.Text = "Chat With Context";
             toolTip1.SetToolTip(label228, "When enabled each subsequent call will have the context of your previous calls");
@@ -11404,7 +11445,7 @@
             label224.ForeColor = Color.Snow;
             label224.Location = new Point(17, 24);
             label224.Name = "label224";
-            label224.Size = new Size(485, 30);
+            label224.Size = new Size(483, 30);
             label224.TabIndex = 160;
             label224.Text = "When enabled input text (via text input or speech to text) will be passed through ChatGPT. \r\nWIP, leave suggestions in the Discord";
             // 
@@ -11431,7 +11472,7 @@
             label227.ForeColor = Color.Snow;
             label227.Location = new Point(71, 203);
             label227.Name = "label227";
-            label227.Size = new Size(121, 15);
+            label227.Size = new Size(120, 15);
             label227.TabIndex = 132;
             label227.Text = "Use Max Chat History";
             toolTip1.SetToolTip(label227, "Prevents excessive usage for long chats (entire chat is used as context for new messages). Messages will be purged from the middle of chat history preserving the initial prompt and recent context.");
@@ -11458,7 +11499,7 @@
             label226.ForeColor = Color.Snow;
             label226.Location = new Point(26, 233);
             label226.Name = "label226";
-            label226.Size = new Size(99, 15);
+            label226.Size = new Size(98, 15);
             label226.TabIndex = 131;
             label226.Text = "Max Chat History";
             toolTip1.SetToolTip(label226, resources.GetString("label226.ToolTip"));
@@ -11528,7 +11569,7 @@
             label221.ForeColor = Color.Snow;
             label221.Location = new Point(71, 67);
             label221.Name = "label221";
-            label221.Size = new Size(75, 15);
+            label221.Size = new Size(76, 15);
             label221.TabIndex = 124;
             label221.Text = "Use ChatGPT";
             // 
@@ -11610,11 +11651,11 @@
             // 
             labelVADIndicator.Anchor = (AnchorStyles)(AnchorStyles.Bottom) | (AnchorStyles.Left);
             labelVADIndicator.AutoSize = true;
-            labelVADIndicator.Location = new Point(9, 584);
+            labelVADIndicator.Location = new Point(17, 584);
             labelVADIndicator.Name = "labelVADIndicator";
-            labelVADIndicator.Size = new Size(19, 15);
+            labelVADIndicator.Size = new Size(12, 15);
             labelVADIndicator.TabIndex = 112;
-            labelVADIndicator.Text = "🎤";
+            labelVADIndicator.Text = "*";
             labelVADIndicator.Visible = false;
             // 
             // logTrash
@@ -11944,35 +11985,10 @@
             button45.Name = "button45";
             button45.Size = new Size(16, 615);
             button45.TabIndex = 110;
-            button45.Text = "🢂🢂🢂";
+            button45.Text = ">>>";
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // label253
-            // 
-            label253.AutoSize = true;
-            label253.ForeColor = Color.Snow;
-            label253.Location = new Point(53, 38);
-            label253.Name = "label253";
-            label253.Size = new Size(135, 15);
-            label253.TabIndex = 190;
-            label253.Text = "Use your own Session ID";
-            // 
-            // rjToggleButtonTikTokUseSession
-            // 
-            rjToggleButtonTikTokUseSession.AutoSize = true;
-            rjToggleButtonTikTokUseSession.Location = new Point(8, 36);
-            rjToggleButtonTikTokUseSession.Margin = new Padding(3, 2, 3, 2);
-            rjToggleButtonTikTokUseSession.MinimumSize = new Size(39, 16);
-            rjToggleButtonTikTokUseSession.Name = "rjToggleButtonTikTokUseSession";
-            rjToggleButtonTikTokUseSession.OffBackColor = Color.Gray;
-            rjToggleButtonTikTokUseSession.OffToggleColor = Color.Gainsboro;
-            rjToggleButtonTikTokUseSession.OnBackColor = Color.MediumSlateBlue;
-            rjToggleButtonTikTokUseSession.OnToggleColor = Color.WhiteSmoke;
-            rjToggleButtonTikTokUseSession.Size = new Size(39, 16);
-            rjToggleButtonTikTokUseSession.TabIndex = 189;
-            rjToggleButtonTikTokUseSession.UseVisualStyleBackColor = true;
             // 
             // VoiceWizardWindow
             // 
@@ -12938,6 +12954,7 @@
         private FontAwesome.Sharp.IconButton iconButton7;
         private Label label253;
         public OSCVRCWiz.RJControls.RJToggleButton rjToggleButtonTikTokUseSession;
+        private Button button43;
         // public FontAwesome.Sharp.IconButton iconButton2;
     }
 }

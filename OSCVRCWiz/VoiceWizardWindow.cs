@@ -603,13 +603,13 @@ namespace OSCVRCWiz
             if (logPanelExtended == true)
             {
                 logPanel.Size = new System.Drawing.Size(20, logPanel.Height);
-                button45.Text = "🢀🢀🢀";
+                button45.Text = "<<<";
                 logPanelExtended = false;
             }
             else
             {
                 logPanel.Size = new System.Drawing.Size(300, logPanel.Height);
-                button45.Text = "🢂🢂🢂";
+                button45.Text = ">>>";
                 logPanelExtended = true;
             }
 
@@ -1039,13 +1039,13 @@ namespace OSCVRCWiz
             if (logPanelExtended2 == true)
             {
                 panelCustomize.Size = new System.Drawing.Size(20, logPanel.Height);
-                button50.Text = "🢀🢀🢀";
+                button50.Text = "<<<";
                 logPanelExtended2 = false;
             }
             else
             {
                 panelCustomize.Size = new System.Drawing.Size(315, logPanel.Height);
-                button50.Text = "🢂🢂🢂";
+                button50.Text = ">>>";
                 logPanelExtended2 = true;
             }
 
@@ -2179,6 +2179,13 @@ namespace OSCVRCWiz
         {
             string currentText = textBoxCustomSpot.Text.ToString();
             currentText = currentText + "{progressBar E:◯ L:13}";
+            textBoxCustomSpot.Text = currentText;
+        }
+
+        private void button43_Click_2(object sender, EventArgs e)
+        {
+            string currentText = textBoxCustomSpot.Text.ToString();
+            currentText = currentText + "{time}";
             textBoxCustomSpot.Text = currentText;
         }
 
@@ -3343,6 +3350,8 @@ namespace OSCVRCWiz
         {
             ShowHidePassword(textBoxTikTokSessionID, iconButton7);
         }
+
+     
     }
 
 
