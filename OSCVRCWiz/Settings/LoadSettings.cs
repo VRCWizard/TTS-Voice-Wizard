@@ -485,6 +485,11 @@ namespace OSCVRCWiz
             VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked = Settings1.Default.TikTokUseSession;
 
 
+            VoiceWizardWindow.MainFormGlobal.comboBoxTikTok.SelectedItem = Settings1.Default.SelectedTikTokAPI;
+
+
+
+
 
 
             //  VoiceWizardWindow.MainFormGlobal.comboBoxPreset.SelectedItem = Settings1.Default.saveVoicePreset;

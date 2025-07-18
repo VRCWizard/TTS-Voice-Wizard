@@ -14,6 +14,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         // public static WaveOut TikTokOutput=null;
         private static readonly HttpClient client = new HttpClient();//reusing client save so much time!!! around 100ms
         private static string ApiUrl = "https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/";
+        private static string APIHost = "Weilbyte";
 
 
         public static async Task TikTokTextAsSpeech(TTSMessageQueue.TTSMessage TTSMessageQueued, CancellationToken ct = default)
@@ -24,10 +25,14 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             {
 
                 ApiUrl = VoiceWizardWindow.MainFormGlobal.textBoxTikTokURL.Text.ToString();
-                // stopwatch.Start();
-                // result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
+                VoiceWizardWindow.MainFormGlobal.Invoke((MethodInvoker)delegate ()
+                {
+                    APIHost = VoiceWizardWindow.MainFormGlobal.comboBoxTikTok.SelectedItem.ToString();
+                });
+                    // stopwatch.Start();
+                    // result = await CallTikTokAPIAsync(TTSMessageQueued.text, TTSMessageQueued.Voice);
 
-                if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked)
+                    if (VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked)
                 {
                     var sessionID = VoiceWizardWindow.MainFormGlobal.textBoxTikTokSessionID.Text.ToString();
                     if (string.IsNullOrWhiteSpace(sessionID))
@@ -110,8 +115,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
         public static async Task<byte[]> CallTikTokAPIAsync(string text, string voice)
         {
             var audioInBase64 = "";
-            // var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
-            var url = "https://tiktok-tts.printmechanicalbeltpumpkingutter.workers.dev/api/generation";
+            var url = "https://tiktok-tts.weilnet.workers.dev/api/generation";
+
+            if (APIHost == "BlueberryWolf")
+            {
+                url = "https://tiktok-tts.printmechanicalbeltpumpkingutter.workers.dev/api/generation";
+            }
             var apiVoice = GetTikTokVoice(voice);
             var input = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
             var content = new StringContent(input, Encoding.UTF8, "application/json");
@@ -138,8 +147,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
                     string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     JObject responseObject = JObject.Parse(responseContent);
-                   // audioInBase64 = responseObject["data"].ToString();//weilnet
-                    audioInBase64 = responseObject["audio"].ToString();//printmechanicalbeltpumpkingutter
+                    
+                    if (APIHost == "BlueberryWolf")
+                    {
+                        audioInBase64 = responseObject["audio"].ToString();//printmechanicalbeltpumpkingutter
+                    }
+                    else
+                    {
+                        audioInBase64 = responseObject["data"].ToString();//weilnet
+
+                    }
                 }
             }
             return Convert.FromBase64String(audioInBase64);

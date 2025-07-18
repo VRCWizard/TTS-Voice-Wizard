@@ -3130,5 +3130,17 @@ namespace OSCVRCWiz.Settings {
                 this["TikTokUseSession"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Weilbyte")]
+        public string SelectedTikTokAPI {
+            get {
+                return ((string)(this["SelectedTikTokAPI"]));
+            }
+            set {
+                this["SelectedTikTokAPI"] = value;
+            }
+        }
     }
 }

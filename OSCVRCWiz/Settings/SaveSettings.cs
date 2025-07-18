@@ -383,6 +383,8 @@ namespace OSCVRCWiz
 
             Settings1.Default.TikTokUseSession = VoiceWizardWindow.MainFormGlobal.rjToggleButtonTikTokUseSession.Checked;
 
+           Settings1.Default.SelectedTikTokAPI = VoiceWizardWindow.MainFormGlobal.comboBoxTikTok.SelectedItem.ToString();
+
 
 
             Settings1.Default.Save();
