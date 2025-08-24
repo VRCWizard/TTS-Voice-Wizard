@@ -80,8 +80,8 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 var stabilityFloat = stabilities * 0.01f;
                 var styleFloat = styles * 0.01f;
 
-                var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}?optimize_streaming_latency={optimize}";
-                //  var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}";
+                //var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}?optimize_streaming_latency={optimize}"; //optimize steaming latency deprecated
+                var url = $"https://api.elevenlabs.io/v1/text-to-speech/{voice}";
                 var apiKey = Settings1.Default.elevenLabsAPIKey;
 
                 var request = new HttpRequestMessage(HttpMethod.Post, url);
