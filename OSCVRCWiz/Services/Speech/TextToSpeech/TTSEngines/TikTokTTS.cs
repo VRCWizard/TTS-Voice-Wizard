@@ -136,6 +136,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                     var request = new HttpRequestMessage(HttpMethod.Post, url);
                     request.Content = new StreamContent(ms);
                     request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    request.Headers.UserAgent.ParseAdd(UserAgent);
 
                     var response = await client.SendAsync(request).ConfigureAwait(false);
 
