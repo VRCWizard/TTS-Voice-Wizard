@@ -71,7 +71,7 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
             string url = $"http://{address}:{port}/synthesize/";
 
             // string textParam = HttpUtility.UrlEncode(text);
-            string requestUrl = $"{url}?{text}";
+            string requestUrl = $"{url}?text={text}";
 
             var response = await client.GetAsync(requestUrl).ConfigureAwait(false);
             
@@ -108,3 +108,4 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
     }
 }
+
