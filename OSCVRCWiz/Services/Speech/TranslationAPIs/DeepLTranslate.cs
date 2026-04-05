@@ -37,6 +37,9 @@ namespace OSCVRCWiz.Services.Speech.TranslationAPIs
                     case "en": to = "en-US"; break;
                 }
 
+               // var options = new TextTranslateOptions();
+             //   options.ExtraBodyParameters["enable_beta_languages"] = "true";
+
 
                 var translatedText = await translator.TranslateTextAsync(text, from, to);
                 System.Diagnostics.Debug.WriteLine(translatedText);
