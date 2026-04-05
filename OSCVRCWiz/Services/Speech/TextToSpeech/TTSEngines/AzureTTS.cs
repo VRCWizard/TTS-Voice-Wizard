@@ -278,10 +278,14 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                                 styleList.AddRange(voice.StyleList);
                             }
 
+                            if (voice.ShortName.Contains(":"))
+                            {
+                                voice.ShortName = voice.ShortName.Replace(":", "///");
 
-                            AllVoices4Language.Add(voice.ShortName, styleList.ToArray());
-                            VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Items.Add(voice.ShortName);
-                            voiceList.Add(voice.ShortName);
+                            }
+                                AllVoices4Language.Add(voice.ShortName, styleList.ToArray());
+                                VoiceWizardWindow.MainFormGlobal.comboBoxVoiceSelect.Items.Add(voice.ShortName);
+                                voiceList.Add(voice.ShortName);
                         }
 
                     }
@@ -348,6 +352,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 string rateString = "<prosody rate=\"" + ratePercent + "%\">"; //1
                 string pitchString = "<prosody pitch=\"" + pitchPercent + "%\">"; //1
                 string volumeString = "<prosody volume=\"" + volumePercent + "%\">"; //1
+
+                if (voice.Contains("///"))
+                {
+                    voice = voice.Replace("///", ":");
+
+                }
 
                 Debug.WriteLine("rate: " + ratePercent);
                 Debug.WriteLine("pitch: " + pitchPercent);
