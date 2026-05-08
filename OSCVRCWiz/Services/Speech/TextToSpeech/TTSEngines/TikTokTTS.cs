@@ -6,13 +6,29 @@ using System.Net.Http.Headers;
 using Octokit;
 using Newtonsoft.Json.Serialization;
 using ChatGPT.Net.DTO.ChatGPTUnofficial;
+using Newtonsoft.Json;
+using System.Net.Security;
 
 namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 {
     public class TikTokTTS
     {
-        // public static WaveOut TikTokOutput=null;
-        private static readonly HttpClient client = new HttpClient();//reusing client save so much time!!! around 100ms
+
+        private static readonly HttpClient client;
+        //Quick fix for Welbyte endpoint issue: "AuthenticationException: The remote certificate is invalid because of errors in the certificate chain: NotTimeValid"
+        static TikTokTTS()
+        {
+            var handler = new HttpClientHandler();
+
+            handler.ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+
+            client = new HttpClient(handler);
+
+            client.Timeout = TimeSpan.FromSeconds(30);
+        }
+       
+
         private static string ApiUrl = "https://api16-normal-useast5.us.tiktokv.com/media/api/text/speech/invoke/";
         private static string APIHost = "Weilbyte";
 
@@ -122,7 +138,14 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 url = "https://tiktok-tts.printmechanicalbeltpumpkingutter.workers.dev/api/generation";
             }
             var apiVoice = GetTikTokVoice(voice);
-            var input = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
+            var payload = new
+            {
+                text = text,
+                voice = apiVoice
+            };
+
+            var input = JsonConvert.SerializeObject(payload);
+            //var input = "{\"text\":\"" + text + "\",\"voice\":\"" + apiVoice + "\"}";
             var content = new StringContent(input, Encoding.UTF8, "application/json");
 
             using (MemoryStream ms = new MemoryStream())
@@ -181,12 +204,12 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
 
             string url = $"{ApiUrl}?text_speaker={apiVoice}&req_text={text}&speaker_map_type=0&aid=1233";
 
-            using (HttpClient client = new HttpClient())
+            using (HttpClient clientUsingOwnSessionID = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
-                client.DefaultRequestHeaders.Add("Cookie", $"sessionid={sessionId}");
+                clientUsingOwnSessionID.DefaultRequestHeaders.Add("User-Agent", UserAgent);
+                clientUsingOwnSessionID.DefaultRequestHeaders.Add("Cookie", $"sessionid={sessionId}");
 
-                HttpResponseMessage response = await client.PostAsync(url, null);
+                HttpResponseMessage response = await clientUsingOwnSessionID.PostAsync(url, null);
 
 
                
