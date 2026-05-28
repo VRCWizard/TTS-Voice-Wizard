@@ -140,6 +140,16 @@ namespace OSCVRCWiz.Services.Speech.TextToSpeech.TTSEngines
                 default: break;
             }
 
+            if (message.TTSMode == "Azure")
+            {
+
+                if (message.Voice.Contains("///"))
+                {
+                    message.Voice = message.Voice.Replace("///", ":");
+
+                }
+            }
+
             url +=
               $"apiKey={apiKey}" +
                 $"&TTSMode={message.TTSMode}" +
