@@ -615,6 +615,8 @@
             textBoxLocalHostPort = new TextBox();
             label247 = new Label();
             groupBox47 = new GroupBox();
+            label254 = new Label();
+            comboBoxTikTok = new ComboBox();
             label253 = new Label();
             rjToggleButtonTikTokUseSession = new OSCVRCWiz.RJControls.RJToggleButton();
             iconButton7 = new FontAwesome.Sharp.IconButton();
@@ -812,8 +814,6 @@
             logPanel = new Panel();
             button45 = new Button();
             toolTip1 = new ToolTip(components);
-            comboBoxTikTok = new ComboBox();
-            label254 = new Label();
             mainTabControl.SuspendLayout();
             tabPage4.SuspendLayout();
             panel4.SuspendLayout();
@@ -1919,7 +1919,7 @@
             comboBoxTTSMode.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTTSMode.ForeColor = Color.Black;
             comboBoxTTSMode.FormattingEnabled = true;
-            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Deepgram Aura (Pro Only)", "OpenAI", "Moonbase", "TikTok", "Uberduck", "VoiceForge", "Locally Hosted", "No TTS" });
+            comboBoxTTSMode.Items.AddRange(new object[] { "System Speech", "Amazon Polly", "Azure", "ElevenLabs", "Google (Pro Only)", "IBM Watson (Pro Only)", "Deepgram Aura (Pro Only)", "OpenAI", "Moonbase", "TikTok", "Uberduck", "Locally Hosted", "No TTS" });
             comboBoxTTSMode.Location = new Point(18, 21);
             comboBoxTTSMode.Margin = new Padding(3, 2, 3, 2);
             comboBoxTTSMode.Name = "comboBoxTTSMode";
@@ -8286,7 +8286,7 @@
             iconButton47.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton47.IconSize = 40;
             iconButton47.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton47.Location = new Point(185, 9);
+            iconButton47.Location = new Point(690, 14);
             iconButton47.Margin = new Padding(3, 2, 3, 2);
             iconButton47.Name = "iconButton47";
             iconButton47.Size = new Size(44, 46);
@@ -9370,6 +9370,29 @@
             groupBox47.TabIndex = 192;
             groupBox47.TabStop = false;
             groupBox47.Text = "TikTok TTS";
+            // 
+            // label254
+            // 
+            label254.AutoSize = true;
+            label254.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
+            label254.ForeColor = Color.Snow;
+            label254.Location = new Point(10, 23);
+            label254.Name = "label254";
+            label254.Size = new Size(114, 15);
+            label254.TabIndex = 192;
+            label254.Text = "TikTok API Endpoint";
+            // 
+            // comboBoxTikTok
+            // 
+            comboBoxTikTok.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTikTok.FlatStyle = FlatStyle.Flat;
+            comboBoxTikTok.FormattingEnabled = true;
+            comboBoxTikTok.Items.AddRange(new object[] { "Weilbyte", "BlueberryWolf" });
+            comboBoxTikTok.Location = new Point(10, 43);
+            comboBoxTikTok.Margin = new Padding(3, 2, 3, 2);
+            comboBoxTikTok.Name = "comboBoxTikTok";
+            comboBoxTikTok.Size = new Size(239, 23);
+            comboBoxTikTok.TabIndex = 191;
             // 
             // label253
             // 
@@ -11993,29 +12016,6 @@
             button45.TextAlign = ContentAlignment.TopCenter;
             button45.UseVisualStyleBackColor = true;
             button45.Click += (this.button45_Click);
-            // 
-            // comboBoxTikTok
-            // 
-            comboBoxTikTok.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxTikTok.FlatStyle = FlatStyle.Flat;
-            comboBoxTikTok.FormattingEnabled = true;
-            comboBoxTikTok.Items.AddRange(new object[] { "Weilbyte", "BlueberryWolf" });
-            comboBoxTikTok.Location = new Point(10, 43);
-            comboBoxTikTok.Margin = new Padding(3, 2, 3, 2);
-            comboBoxTikTok.Name = "comboBoxTikTok";
-            comboBoxTikTok.Size = new Size(239, 23);
-            comboBoxTikTok.TabIndex = 191;
-            // 
-            // label254
-            // 
-            label254.AutoSize = true;
-            label254.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point);
-            label254.ForeColor = Color.Snow;
-            label254.Location = new Point(10, 23);
-            label254.Name = "label254";
-            label254.Size = new Size(114, 15);
-            label254.TabIndex = 192;
-            label254.Text = "TikTok API Endpoint";
             // 
             // VoiceWizardWindow
             // 
