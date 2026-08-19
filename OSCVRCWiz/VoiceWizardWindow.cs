@@ -2078,8 +2078,9 @@ namespace OSCVRCWiz
 
             VoiceWizardWindow.MainFormGlobal.buttonSpotify.ForeColor = Color.Green;
             //OutputText.outputLog("[IMPORTANT]", Color.Red);
-            OutputText.outputLog("IMPORTANT REMINDER: As of v1.7.5 the redirect URI for Spotify API Mode has been changed. You will need to update your app from the Spotify Dashboard. The new redirect URI is http://127.0.0.1:5000/callback (notice that localhost is now replaced with 127.0.0.1). If you have any questions join the Discord server!", Color.DarkOrange);
-            OutputText.outputLog("IMPORTANT REMINDER: Spotify Premium is now required to use Spotify API mode. If this causes any issues please consider switching to Windows Media Mode instead.", Color.DarkOrange);
+            OutputText.outputLog("REMINDER: As of v1.7.5 the redirect URI for Spotify API Mode has been changed. You will need to update your app from the Spotify Dashboard. The new redirect URI is http://127.0.0.1:5000/callback (notice that localhost is now replaced with 127.0.0.1). If you have any questions join the Discord server!", Color.DarkOrange);
+            OutputText.outputLog("REMINDER: Spotify Premium is now required to use Spotify API mode. If this causes any issues please consider switching to Windows Media Mode instead.", Color.DarkOrange);
+            OutputText.outputLog("REMINDER: Spotify must be reconnected using the \"Connect Spotify\" button at least once every 6 months to keep the connection active.", Color.DarkOrange);
             //OutputText.outputLog("[IMPORTANT]", Color.Red);
 
 
