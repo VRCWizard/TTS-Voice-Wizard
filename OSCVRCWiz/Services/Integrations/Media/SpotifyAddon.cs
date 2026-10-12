@@ -89,7 +89,7 @@ namespace OSCVRCWiz.Services.Integrations.Media
                             Debug.WriteLine("----Spotify token needs refreshing-----");
                             PKCETokenResponse refreshResponse = await RefreshAccessToken();
                             myClient = new SpotifyClient(refreshResponse.AccessToken);
-                            Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;
+                            //Settings1.Default.PKCERefreshToken = refreshResponse.RefreshToken;         
                             Settings1.Default.PKCEAccessToken = refreshResponse.AccessToken;
                             Settings1.Default.Save();
                             Debug.WriteLine("----Spotify token refreshed Successfully-----");
@@ -640,9 +640,6 @@ namespace OSCVRCWiz.Services.Integrations.Media
             Settings1.Default.PKCERefreshToken = initialResponse.RefreshToken;
             Settings1.Default.PKCEAccessToken = initialResponse.AccessToken;
             Settings1.Default.Save();
-
-
-
         }
         public static string Base64Encode(string plainText)
         {
